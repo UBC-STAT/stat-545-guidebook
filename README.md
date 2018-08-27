@@ -1,2 +1,1 @@
-# Classroom
-Content for running instances of STAT 545/547M at UBC 
+Pre-2018 of the year-specific content of STAT 545/547. 
