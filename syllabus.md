@@ -1,6 +1,6 @@
 # STAT 545: Data wrangling, exploration, and analysis with R, Part I
 
-This is the course syllabus for the Fall 2018 edition of STAT 545. You should use this syllabus to:
+This is the course syllabus for the Fall 2018 edition of STAT 545 (click [here](https://github.com/STAT545-UBC/Classroom/blob/master/syllabus-547.md) for the STAT 547M syllabus). You should use this syllabus to:
 
 1. find information about the course, and
 2. navigate the course.
@@ -59,6 +59,8 @@ Here is your dedicated teaching team!
 | Hossameldin Mohammed | Teaching Assistant | [`@hsmohammed`](https://github.com/hsmohammed) |
 | Rashedul Islam       | Teaching Assistant | [`@rashedul`](https://github.com/rashedul) |
 | Sherrie Wang         | Teaching Assistant | [`@sherrie9`](https://github.com/sherrie9) |
+
+Although not a member of this year's teaching team, Jenny Bryan deserves a huge amount of credit for founding and developing this course over the past many years. Thank you, Jenny!
 
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
 
