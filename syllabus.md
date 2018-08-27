@@ -7,7 +7,7 @@ This is the course syllabus for the Fall 2018 edition of STAT 545 (click [here](
 
 ## About STAT 545
 
-#### Course Description
+### Course Description
 
 STAT 545 is "Part I" of learning how to
 
@@ -17,17 +17,20 @@ STAT 545 is "Part I" of learning how to
 
 Part II is STAT 547M -- hope to see you there, too!
 
-#### Course Learning Objectives:
+### Course Learning Objectives:
 
-By the end of the course, students are anticipted to:
+By the end of the course, students are expected to:
 
 -
-
-#### Timing and Location
+### Timing and Location
 
 This course runs from September 4 until October 18, 2018.
 
 We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
+
+### Roots
+
+Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Thank you!
 
 ## Course Destinations
 
@@ -59,8 +62,6 @@ Here is your dedicated teaching team!
 | Hossameldin Mohammed | Teaching Assistant | [`@hsmohammed`](https://github.com/hsmohammed) |
 | Rashedul Islam       | Teaching Assistant | [`@rashedul`](https://github.com/rashedul) |
 | Sherrie Wang         | Teaching Assistant | [`@sherrie9`](https://github.com/sherrie9) |
-
-Although not a member of this year's teaching team, Jenny Bryan deserves a huge amount of credit for founding and developing this course over the past many years. Thank you, Jenny!
 
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
 
