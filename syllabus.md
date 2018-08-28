@@ -49,7 +49,7 @@ Both STAT 545 and STAT 547M make use of the following tools:
     - This is for grade management. You'll be interacting with it by submitting a link to your homework. 
 6. <http://stat545.com>.
     - This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. 
-    - Used to contain the information contained in `Classroom`. That eventually became confusing. Some headers there are becoming deprecated. 
+    - Previously contained the information contained in `Classroom`. That eventually became confusing. Some headers there are becoming deprecated. 
 
 ## Teaching Team
 
