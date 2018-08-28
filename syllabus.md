@@ -137,29 +137,11 @@ Here's the breakdown of your course grade:
 
 There is no final exam. 
 
-### Assignments and Peer Review
+Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis. 
 
-Here are the deadlines assignments and peer reviews, with links (to appear after assignments are released). All submissions are due by 11:59pm.
+__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the `assignments` folder](https://github.com/STAT545-UBC/Classroom/assignments). 
 
-| Assignment  | Assignment Due Date | Peer Review Due Date |
-|-------------|---------------------|----------------------|
-| Homework 01 | September 18, 2018  | September 24, 2018 |
-| Homework 02 | September 25, 2018  | October 01, 2018 |
-| Homework 03 | October 02,   2018  | October 08, 2018 |
-| Homework 04 | October 09,   2018  | October 15, 2018 |
-| Homework 05 | October 19,   2018  | October 24, 2018 |
-
-The logistics are as follows:
-
-1. When an assignment is released, I will post a GitHub Issue in [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal), tagging the teaching team and students (you should get an email notification, too, unless you've somehow disabled this).
-2. You develop your homework responses on your STAT545 home GitHub repository, contained in the [STAT545-UBC-students](https://github.com/STAT545-UBC-students) Organization.
-3. When your homework is complete, tag a release of your repository before the deadline, and submit a link to the release on [UBC canvas](canvas.ubc.ca).
-4. You will be notified of two classmates to provide a peer review. Check out their submission, then write your feedback as an Issue in their repository before the deadline.
-    - There is no need to tag the teaching team!
-
-### Participation
-
-Participation will be evaluated by:
+__Participation__: will be evaluated by:
 
 - Participation in class discussions
 - Submitting work on in-class activities to your STAT 545 home GitHub repository.
@@ -168,9 +150,9 @@ Participation will be evaluated by:
 
 ## Annotated Resources
 
-Here are some resources to learn more about each of the tools we're using.
+Here are the resources we will be referring to throughout the course, along with a brief description of the resource. 
 
-Prominent resources:
+Overarching resources:
 
 1. <http://stat545.com>
     - As mentioned earlier, this website can be thought of as a textbook for STAT 545/547.
