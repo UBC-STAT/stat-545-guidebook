@@ -65,25 +65,33 @@ Here is your dedicated teaching team!
 
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
 
-__Office hours__: Want to talk about the course outside of lecture? Let's talk during these dedicated times. You're always welcome to schedule alternative times, too.
+__Office hours__: Want to talk about the course outside of lecture? Let's talk during these dedicated times (generally, 11:00-12:00 every Monday, Tuesday, Wednesday). You're always welcome to schedule alternative times, too.
 
 | Teaching Member | Date | Time | Place |
 |-----------------|------|------|-------|
-| Vincenzo        | Wednesdays, Sept 5 - Oct 24 | 11:00-12:00 | ESB 1043 |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
-| TBD |  |  |  |
+| TBD      | Tue, Sept 04 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Sept 05 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Sept 10 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Sept 11 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Sept 12 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Sept 17 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Sept 18 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Sept 19 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Sept 24 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Sept 25 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Sept 26 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Oct  01 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Oct  02 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  03 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Oct  08 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Oct  09 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  10 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Oct  15 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Oct  16 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  17 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Oct  22 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 
 ## Conversation
 
