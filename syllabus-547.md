@@ -30,9 +30,28 @@ __Office hours__
 
 Want to talk about the course outside of lecture? Let's talk during these dedicated times.
 
-| Instructor | Date | Time | Place |
-|------------|------|------|-------|
-| Vincenzo | Wednesdays, Oct 24 - Nov 28 | 11:00-12:00 | ESB 1043 |
+| Teaching Member | Date | Time | Place |
+|-----------------|------|------|-------|
+| TBD      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Oct  29 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Oct  30 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  31 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Nov  05 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Nov  06 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  07 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Nov  12 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Nov  13 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  14 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Nov  19 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Nov  20 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  21 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Nov  26 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Nov  27 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  28 | 11:00 - 12:00 | ESB 1043 |
+| TBD      | Mon, Dec  03 | 11:00 - 12:00 | ESB 3174 |
+| TBD      | Tue, Dec  04 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Dec  05 | 11:00 - 12:00 | ESB 1043 |
 
 
 ##### Homework topics:
