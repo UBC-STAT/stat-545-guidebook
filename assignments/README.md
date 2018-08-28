@@ -109,7 +109,7 @@ As part of this course you will be reviewing, commenting on, and marking other s
 
 -   Give thoughtful, constructive and considerate comments.
 -   Be specific and concise.
--   Use the assignment rubric (above) for ideas about criteria to evaluate and comment on -- we've given you a template to work with [here](https://github.com/STAT545-UBC/Classroom/assignments/blob/master/peer-review-template.md).
+-   Use the assignment rubric (above) for ideas about criteria to evaluate and comment on -- we've given you a template to work with [here](https://github.com/STAT545-UBC/Classroom/blob/master/assignments/peer-review-template.md).
 -   Try to learn something new and, if you succeed, point that out.
 -   If you can't find anything to praise or that you found helpful, then at least offer some suggestions in a kind way.
 
