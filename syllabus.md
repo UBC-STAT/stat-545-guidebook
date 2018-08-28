@@ -58,10 +58,10 @@ Here is your dedicated teaching team!
 | Teaching Member | Position | Contact | 
 |-----------------|----------|---------|
 | Vincenzo Coia   | Instructor | <p> - Email: <vincen.coia@stat.ubc.ca> <p> - GitHub: [`@vincenzocoia`](https://github.com/vincenzocoia) <p> - Twitter: [\@VincenzoCoia](https://twitter.com/vincenzocoia) <p> - LinkedIn: [vincenzocoia](https://www.linkedin.com/in/vincenzocoia/) | 
-| Chad Fibke           | Teaching Assistant | [`@ChadFibke`](https://github.com/ChadFibke) |
-| Hossameldin Mohammed | Teaching Assistant | [`@hsmohammed`](https://github.com/hsmohammed) |
-| Rashedul Islam       | Teaching Assistant | [`@rashedul`](https://github.com/rashedul) |
-| Sherrie Wang         | Teaching Assistant | [`@sherrie9`](https://github.com/sherrie9) |
+| Chad Fibke           | Teaching Assistant | GitHub: [`@ChadFibke`](https://github.com/ChadFibke) |
+| Hossameldin Mohammed | Teaching Assistant | GitHub: [`@hsmohammed`](https://github.com/hsmohammed) |
+| Rashedul Islam       | Teaching Assistant | GitHub: [`@rashedul`](https://github.com/rashedul) |
+| Sherrie Wang         | Teaching Assistant | GitHub: [`@sherrie9`](https://github.com/sherrie9) |
 
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
 
@@ -139,7 +139,7 @@ There is no final exam.
 
 ### Assignments and Peer Review
 
-Here are the deadlines assignments and peer reviews, with links (to appear after assignments are released). All submissions are due by midnight.
+Here are the deadlines assignments and peer reviews, with links (to appear after assignments are released). All submissions are due by 11:59pm.
 
 | Assignment  | Assignment Due Date | Peer Review Due Date |
 |-------------|---------------------|----------------------|
@@ -174,12 +174,14 @@ Prominent resources:
 
 1. <http://stat545.com>
     - As mentioned earlier, this website can be thought of as a textbook for STAT 545/547.
-2. R for Data Science (aka "r4ds")
+2. [R for Data Science](http://r4ds.had.co.nz/) (aka "r4ds"), by Garrett Grolemund and Hadley Wickham.
     - STAT 545/547 closely mirrors the topics of this book, making this book more of a true "textbook" for the course.
 
 Resources for more specific topics:
 
-1. Advanced R, by Hadley Wickham
+1. [Happy git with R](http://happygitwithr.com/), by Jenny Bryan and the STAT 545 TA's
+    - Great for marrying git, GitHub, R, and RStudio in your workflow.
+2. [Advanced R](http://adv-r.had.co.nz/), by Hadley Wickham
     - If you want to learn more about R as a programming language, this is a very readable and concise way of doing so.
-2. ggplot2
+3. [ggplot2 book](http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511), by Hadley Wickham
     - Useful for digging deeper into `ggplot2`.
