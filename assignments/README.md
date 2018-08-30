@@ -8,6 +8,8 @@ Schedule
 
 Here are the deadlines for assignments and peer reviews, with links (to appear after assignments are released). All submissions are due by 11:59pm.
 
+### STAT 545
+
 | Assignment  | Assignment Due Date | Peer Review Due Date |
 |-------------|---------------------|----------------------|
 | Homework 01 | September 18, 2018  | September 24, 2018   |
@@ -15,6 +17,57 @@ Here are the deadlines for assignments and peer reviews, with links (to appear a
 | Homework 03 | October 02, 2018    | October 08, 2018     |
 | Homework 04 | October 09, 2018    | October 15, 2018     |
 | Homework 05 | October 19, 2018    | October 24, 2018     |
+
+### STAT 547
+
+<table style="width:69%;">
+<colgroup>
+<col width="6%" />
+<col width="25%" />
+<col width="27%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Link</th>
+<th align="center">Homework Due Date</th>
+<th align="center">Peer Review Due Date</th>
+<th align="center">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Homework 06</td>
+<td align="center">November 09, 2018</td>
+<td align="center">November 12, 2018</td>
+<td align="center">Choose your adventure!</td>
+</tr>
+<tr class="even">
+<td align="center">Homework 07</td>
+<td align="center">November 13, 2018</td>
+<td align="center">November 16, 2018</td>
+<td align="center">Automate a data analysis pipeline</td>
+</tr>
+<tr class="odd">
+<td align="center">Homework 08</td>
+<td align="center">November 20, 2018</td>
+<td align="center">November 23, 2018</td>
+<td align="center">Build a Shiny app</td>
+</tr>
+<tr class="even">
+<td align="center">Homework 09</td>
+<td align="center">November 27, 2018</td>
+<td align="center">December 05, 2018</td>
+<td align="center">Write an R package</td>
+</tr>
+<tr class="odd">
+<td align="center">Homework 10</td>
+<td align="center">December 06, 2018</td>
+<td align="center">December 12, 2018</td>
+<td align="center">Get data from the web</td>
+</tr>
+</tbody>
+</table>
 
 Logistics
 ---------

@@ -9,6 +9,8 @@ Assignments will be posted here as they are made available.
 
 Here are the deadlines for assignments and peer reviews, with links (to appear after assignments are released). All submissions are due by 11:59pm.
 
+### STAT 545
+
 | Assignment  | Assignment Due Date | Peer Review Due Date |
 |-------------|---------------------|----------------------|
 | Homework 01 | September 18, 2018  | September 24, 2018 |
@@ -16,6 +18,16 @@ Here are the deadlines for assignments and peer reviews, with links (to appear a
 | Homework 03 | October 02,   2018  | October 08, 2018 |
 | Homework 04 | October 09,   2018  | October 15, 2018 |
 | Homework 05 | October 19,   2018  | October 24, 2018 |
+
+### STAT 547
+
+| Link |  Homework Due Date  |  Peer Review Due Date | Topic |
+| :--: | :---------------: | :-----------------: | :----: |
+| Homework 06 | November 09, 2018 | November 12, 2018 | Choose your adventure! |
+| Homework 07 | November 13, 2018 | November 16, 2018 | Automate a data analysis pipeline |
+| Homework 08 | November 20, 2018 | November 23, 2018 | Build a Shiny app |
+| Homework 09 | November 27, 2018 | December 05, 2018 | Write an R package |
+| Homework 10 | December 06, 2018 | December 12, 2018 | Get data from the web |
 
 ## Logistics
 

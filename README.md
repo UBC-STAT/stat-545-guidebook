@@ -36,7 +36,7 @@ Jenny Bryan deserves a huge amount of credit for founding and developing both ST
 
 Both STAT 545 and STAT 547M make use of the following tools:
 
-1. [Classroom](https://github.com/STAT545-UBC/Classroom) GitHub repository.
+1. This "Classroom" website.
     - Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. 
     - Contains lecture notes, assignments, and course information.
 2. [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository.
@@ -57,22 +57,25 @@ Here are the topics and links to the notes for each class meeting.
 
 Warning: adjustments are still being made!
 
-| Meeting No.         | Date         | Topic | Resources |
-|---------------------|--------------|-------|-----------|
-| [01](cm001.nb.html) | sep-04 tues  | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
-| [02](cm002.nb.html) | sep-06 thurs | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
-| [03](cm003.nb.html) | sep-11 tues  | Run/render an R script |
-| [04](cm004.nb.html) | sep-13 thurs | R Markdown test drive. R Notebooks. |
-| [05](cm005.nb.html) | sep-18 tues  | Care and feeding of data frames or "tibbles" |
-| [06](cm006.nb.html) | sep-20 thurs | First look at dplyr, %>%, and ggplot2 |
-| [07](cm007.nb.html) | sep-25 tues  | ggplot2 |
-| [08](cm008.nb.html) | sep-27 thurs | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
-| [09](cm009.nb.html) | oct-02 tues  | Tidy data, reshaping |
-| [10](cm010.nb.html) | oct-04 thurs | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
-| [11](cm011.nb.html) | oct-09 tues  | R as a programming language, getting data out of R (and back in) |
-| [12](cm012.nb.html) | oct-11 thurs | Be the boss of your factors, getting data out of R (and back in) | 
-| [13](cm013.nb.html) | oct-16 tues  | Revisit ggplot, practicalities of daily figure-making |
-| [14](cm014.nb.html) | oct-18 thurs | The model-fitting paradigm in R |
+| Meeting No.         | Date         | TA's | Topic | Resources |
+|---------------------|--------------|------|-------|-----------|
+| [01](cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
+| [02](cm002.nb.html) | sep-06 thurs | Chad, Hossam | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
+| [03](cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Run/render an R script |
+| [04](cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | R Markdown test drive. R Notebooks. |
+| [05](cm005.nb.html) | sep-18 tues  | Chad, Sherrie | Care and feeding of data frames or "tibbles" |
+| [06](cm006.nb.html) | sep-20 thurs | Chad, Rashedul | First look at dplyr, %>%, and ggplot2 |
+| [07](cm007.nb.html) | sep-25 tues  | Hossam, Sherrie | ggplot2 |
+| [08](cm008.nb.html) | sep-27 thurs | Hossam, Rashedul | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
+| [09](cm009.nb.html) | oct-02 tues  | Rashedul, Sherrie | Tidy data, reshaping |
+| [10](cm010.nb.html) | oct-04 thurs | Rashedul, Chad | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
+| [11](cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | R as a programming language, getting data out of R (and back in) |
+| [12](cm012.nb.html) | oct-11 thurs | Hossam, Chad | Be the boss of your factors, getting data out of R (and back in) | 
+| [13](cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
+| [14](cm014.nb.html) | oct-18 thurs | Rashedul, Hossam | The model-fitting paradigm in R |
+
+
+
 
 ## Evaluation
 
@@ -118,29 +121,31 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 
 | Teaching Member | Date | Time | Place |
 |-----------------|------|------|-------|
-| TBD      | Tue, Sept 04 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Sept 04 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Sept 05 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Sept 10 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Sept 11 | 11:00 - 12:00 | ESB 3174 |
+| Sherrie      | Mon, Sept 10 | 11:00 - 12:00 | ESB 3174 |
+| Chad      | Tue, Sept 11 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Sept 12 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Sept 17 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Sept 18 | 11:00 - 12:00 | ESB 3174 |
+| Hossam      | Mon, Sept 17 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Sept 18 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Sept 19 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Sept 24 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Sept 25 | 11:00 - 12:00 | ESB 3174 |
+| Sherrie      | Mon, Sept 24 | 11:00 - 12:00 | ESB 3174 |
+| Chad      | Tue, Sept 25 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Sept 26 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Oct  01 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Oct  02 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Mon, Oct  01 | 11:00 - 12:00 | ESB 3174 |
+| Hossam      | Tue, Oct  02 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  03 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Oct  08 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Oct  09 | 11:00 - 12:00 | ESB 3174 |
+| Sherrie      | Mon, Oct  08 | 11:00 - 12:00 | ESB 3174 |
+| Chad      | Tue, Oct  09 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  10 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Oct  15 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Oct  16 | 11:00 - 12:00 | ESB 3174 |
+| Chad      | Mon, Oct  15 | 11:00 - 12:00 | ESB 3174 |
+| Hossam      | Tue, Oct  16 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  17 | 11:00 - 12:00 | ESB 1043 |
-| TBD      | Mon, Oct  22 | 11:00 - 12:00 | ESB 3174 |
-| TBD      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
+| Sherrie      | Mon, Oct  22 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
+
+
 
 ## Conversation
 
