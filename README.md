@@ -51,6 +51,55 @@ Both STAT 545 and STAT 547M make use of the following tools:
     - This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. 
     - Previously contained the information contained in `Classroom`. That eventually became confusing. Some headers there are becoming deprecated. 
 
+## Class Meetings
+
+Here are the topics and links to the notes for each class meeting. 
+
+Warning: adjustments are still being made!
+
+| Meeting No.         | Date         | Topic | Resources |
+|---------------------|--------------|-------|-----------|
+| [01](cm001.nb.html) | sep-04 tues  | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
+| [02](cm002.nb.html) | sep-06 thurs | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
+| [03](cm003.nb.html) | sep-11 tues  | Run/render an R script |
+| [04](cm004.nb.html) | sep-13 thurs | R Markdown test drive. R Notebooks. |
+| [05](cm005.nb.html) | sep-18 tues  | Care and feeding of data frames or "tibbles" |
+| [06](cm006.nb.html) | sep-20 thurs | First look at dplyr, %>%, and ggplot2 |
+| [07](cm007.nb.html) | sep-25 tues  | ggplot2 |
+| [08](cm008.nb.html) | sep-27 thurs | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
+| [09](cm009.nb.html) | oct-02 tues  | Tidy data, reshaping |
+| [10](cm010.nb.html) | oct-04 thurs | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
+| [11](cm011.nb.html) | oct-09 tues  | R as a programming language, getting data out of R (and back in) |
+| [12](cm012.nb.html) | oct-11 thurs | Be the boss of your factors, getting data out of R (and back in) | 
+| [13](cm013.nb.html) | oct-16 tues  | Revisit ggplot, practicalities of daily figure-making |
+| [14](cm014.nb.html) | oct-18 thurs | The model-fitting paradigm in R |
+
+## Evaluation
+
+To gain marks in this course, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
+
+Here's the breakdown of your course grade:
+
+| Assessment | Weight |
+|------------|--------|
+| 5 Assignments | 75% (15% per assignment) |
+| 10 Peer Reviews | 15% (3% per assignment) |
+| Participation | 10% |
+
+There is no final exam. 
+
+Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis. 
+
+__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the `assignments` folder](https://github.com/STAT545-UBC/Classroom/assignments). 
+
+__Participation__: will be evaluated by:
+
+- Participation in class discussions
+- Submitting work on in-class activities to your STAT 545 home GitHub repository.
+    - Be sure to submit these in class, not at some other time!
+- Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
+
+
 ## Teaching Team
 
 Here is your dedicated teaching team!
@@ -107,54 +156,6 @@ __Note__:
 - To get the attention of the teaching team, add the `@2018_teaching_team` tag to notify all five of us.
 - To get the attention of your fellow students, add the `@2018_students` tag to notify them.
 - Don't just create Issues -- also respond to them! Think about this in terms of adding to the conversation, not in terms of "correctness". 
-
-## Class Meetings
-
-Here are the topics and links to the notes for each class meeting. 
-
-Warning: adjustments are still being made!
-
-| Meeting No.         | Date         | Topic | Resources |
-|---------------------|--------------|-------|-----------|
-| [01](cm001.nb.html) | sep-04 tues  | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
-| [02](cm002.nb.html) | sep-06 thurs | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
-| [03](cm003.nb.html) | sep-11 tues  | Run/render an R script |
-| [04](cm004.nb.html) | sep-13 thurs | R Markdown test drive. R Notebooks. |
-| [05](cm005.nb.html) | sep-18 tues  | Care and feeding of data frames or "tibbles" |
-| [06](cm006.nb.html) | sep-20 thurs | First look at dplyr, %>%, and ggplot2 |
-| [07](cm007.nb.html) | sep-25 tues  | ggplot2 |
-| [08](cm008.nb.html) | sep-27 thurs | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
-| [09](cm009.nb.html) | oct-02 tues  | Tidy data, reshaping |
-| [10](cm010.nb.html) | oct-04 thurs | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
-| [11](cm011.nb.html) | oct-09 tues  | R as a programming language, getting data out of R (and back in) |
-| [12](cm012.nb.html) | oct-11 thurs | Be the boss of your factors, getting data out of R (and back in) | 
-| [13](cm013.nb.html) | oct-16 tues  | Revisit ggplot, practicalities of daily figure-making |
-| [14](cm014.nb.html) | oct-18 thurs | The model-fitting paradigm in R |
-
-## Evaluation
-
-To gain marks in this course, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
-
-Here's the breakdown of your course grade:
-
-| Assessment | Weight |
-|------------|--------|
-| 5 Assignments | 75% (15% per assignment) |
-| 10 Peer Reviews | 15% (3% per assignment) |
-| Participation | 10% |
-
-There is no final exam. 
-
-Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis. 
-
-__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the `assignments` folder](https://github.com/STAT545-UBC/Classroom/assignments). 
-
-__Participation__: will be evaluated by:
-
-- Participation in class discussions
-- Submitting work on in-class activities to your STAT 545 home GitHub repository.
-    - Be sure to submit these in class, not at some other time!
-- Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
 
 ## Annotated Resources
 
