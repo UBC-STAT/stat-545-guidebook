@@ -93,7 +93,7 @@ There is no final exam.
 
 Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis. 
 
-__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the `assignments` folder](https://github.com/STAT545-UBC/Classroom/assignments). 
+__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the assignments page](http://stat545.com/Classroom/assignments/). 
 
 __Participation__: will be evaluated by:
 
