@@ -75,11 +75,12 @@ By the end of today’s class, students are expected to be able to:
 
 # STAT 545 framework: checklist
 
-- Syllabus, without links
+1. Syllabus
+2. GitHub as a storage and file-sharing service
 
 # About GitHub
 
-First, as a storage and file-sharing service. 
+First, 
 
 - Organizations, Repositories, Issues. 
 
