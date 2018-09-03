@@ -9,9 +9,59 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Today's Learning Objectives
+Welcome to STAT 545A!
 
-By the end of today's class, students are anticipated to:
+# Teaching Team
+
+## Who am I?
+
+![](cm001_files/vincenzo.jpg)
+
+Dr. Vincenzo Coia   
+Core teaching team of MDS   
+Department of Statistics   
+UBC   
+
+My Background:
+
+- PhD in Statistics at UBC
+- MSc in Mathematical Statistics at Brock U
+- BSc in Math + Stats at Brock U
+- BSc in Biology w/ Earth Science at Brock U
+
+## Meet your TA's!
+
+![Chad](cm001_files/chad.jpeg)
+
+
+![Hossam](cm001_files/hossam.jpeg)
+
+
+![Rashedul](cm001_files/rashedul.jpeg)
+
+## Meet your classmates
+
+- Name
+- Program
+- Something great you did in your summer (2 minutes)
+
+# Today's Outline
+
+Here's our agenda for today. But first, lids down, please!
+
+1. Go over the [course syllabus](http://stat545.com/Classroom).
+2. Every [20 minutes](https://www.youtube.com/watch?v=kxGWsHYITAw), do an activity:
+    - GitHub activity
+    - Navigation activity
+    - Discussion Issues activity
+3. 
+
+By the end of today’s class, students are expected to be able to:
+
+- Navigate the STAT 545 “framework”
+- Describe our expectations of you as a student
+- Name families of tools that aid in data analytics
+
 
 - Be oriented with the course structure and resources
 - Understand how to get help within the course -- we'll cover "getting help out in the world" next time.
@@ -23,7 +73,40 @@ By the end of today's class, students are anticipated to:
 - Markdown
 - Assignment 1
 
-# Orientation to STAT 545
+# STAT 545 framework: checklist
 
-- Course history
-    - Jenny Bryan, the Twitter account, why information appears scattered.
+- Syllabus, without links
+
+# About GitHub
+
+First, as a storage and file-sharing service. 
+
+- Organizations, Repositories, Issues. 
+
+Tomorrow: as a version-control system. 
+
+# Activities
+
+## GitHub activity
+
+- Also, please put up a headshot.
+
+## Navigation activity
+
+- Find the assignments
+
+## Discussion Issues activity
+
+- Reply to the issue introducing yourself. Tag the person immediately above you. 
+
+
+
+
+
+
+
+
+
+
+
+

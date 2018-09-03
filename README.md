@@ -56,20 +56,20 @@ Warning: adjustments are still being made!
 
 | Meeting No.         | Date         | TA's | Topic | Resources |
 |---------------------|--------------|------|-------|-----------|
-| [01](cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
-| [02](cm002.nb.html) | sep-06 thurs | Chad, Hossam | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
-| [03](cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Run/render an R script |
-| [04](cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | R Markdown test drive. R Notebooks. |
-| [05](cm005.nb.html) | sep-18 tues  | Chad, Sherrie | Care and feeding of data frames or "tibbles" |
-| [06](cm006.nb.html) | sep-20 thurs | Chad, Rashedul | First look at dplyr, %>%, and ggplot2 |
-| [07](cm007.nb.html) | sep-25 tues  | Hossam, Sherrie | ggplot2 |
-| [08](cm008.nb.html) | sep-27 thurs | Hossam, Rashedul | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
-| [09](cm009.nb.html) | oct-02 tues  | Rashedul, Sherrie | Tidy data, reshaping |
-| [10](cm010.nb.html) | oct-04 thurs | Rashedul, Chad | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
-| [11](cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | R as a programming language, getting data out of R (and back in) |
-| [12](cm012.nb.html) | oct-11 thurs | Hossam, Chad | Be the boss of your factors, getting data out of R (and back in) | 
-| [13](cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
-| [14](cm014.nb.html) | oct-18 thurs | Rashedul, Hossam | The model-fitting paradigm in R |
+| [01](notes/cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course; S/W install; acct sign-ups. Intro to RStudio. |
+| [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Git(Hub) test drive. Typesetting with markdown. Getting familiar with R. |
+| [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Run/render an R script |
+| [04](notes/cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | R Markdown test drive. R Notebooks. |
+| [05](notes/cm005.nb.html) | sep-18 tues  | Chad, Sherrie | Care and feeding of data frames or "tibbles" |
+| [06](notes/cm006.nb.html) | sep-20 thurs | Chad, Rashedul | First look at dplyr, %>%, and ggplot2 |
+| [07](notes/cm007.nb.html) | sep-25 tues  | Hossam, Sherrie | ggplot2 |
+| [08](notes/cm008.nb.html) | sep-27 thurs | Hossam, Rashedul | dplyr: mutate, group, summarize. The model-fitting paradigm in R. |
+| [09](notes/cm009.nb.html) | oct-02 tues  | Rashedul, Sherrie | Tidy data, reshaping |
+| [10](notes/cm010.nb.html) | oct-04 thurs | Rashedul, Chad | dplyr joins, reshaping part 1. Minimum "need to know" re: R as a programming language. |
+| [11](notes/cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | R as a programming language, getting data out of R (and back in) |
+| [12](notes/cm012.nb.html) | oct-11 thurs | Hossam, Chad | Be the boss of your factors, getting data out of R (and back in) | 
+| [13](notes/cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
+| [14](notes/cm014.nb.html) | oct-18 thurs | Rashedul, Hossam | The model-fitting paradigm in R |
 
 
 
