@@ -12,13 +12,14 @@ Both STAT 545 and STAT 547M make use of the following tools:
 | Tool + Link | Description |
 |-------------|-------------|
 | <http://stat545.com/Classroom> (here) | Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. Contains lecture notes, assignments, and course information. |
+| <http://stat545.com/Classroom/assignments> | Assignments and assignment info can be found here. |
 | [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository | For internal discussion. The world cannot see this. |
 | [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository. | For public discussion. The world can see this. |
 | [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization | This will contain one GitHub repository per student, for you to submit homework to and give peer reviews. |
 | [UBC canvas](http://canvas.ubc.ca/) | This is for grade management. You'll be interacting with it by submitting a link to your homework. |
 | <http://stat545.com> | This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. This previously contained the information contained in `Classroom`, but that eventually became confusing. Some headers there are becoming deprecated.  |
 
-This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We welcome your feedback!
+This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We appreciate your patience and welcome your feedback!
 
 ## About STAT 545
 
