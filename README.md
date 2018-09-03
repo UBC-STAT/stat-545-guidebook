@@ -5,6 +5,21 @@ This is the course syllabus for the Fall 2018 edition of STAT 545 (click [here](
 1. find information about the course, and
 2. navigate the course.
 
+## Quick Navigation
+
+Both STAT 545 and STAT 547M make use of the following tools:
+
+| Tool + Link | Description |
+|-------------|-------------|
+| <http://stat545.com/Classroom> (here) | Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. Contains lecture notes, assignments, and course information. |
+| [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository | For internal discussion. The world cannot see this. |
+| [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository. | For public discussion. The world can see this. |
+| [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization | This will contain one GitHub repository per student, for you to submit homework to and give peer reviews. |
+| [UBC canvas](http://canvas.ubc.ca/) | This is for grade management. You'll be interacting with it by submitting a link to your homework. |
+| <http://stat545.com> | This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. This previously contained the information contained in `Classroom`, but that eventually became confusing. Some headers there are becoming deprecated.  |
+
+This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We welcome your feedback!
+
 ## About STAT 545
 
 ### Course Description
@@ -32,24 +47,6 @@ We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
 
 Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Thank you!
 
-## Course Destinations
-
-Both STAT 545 and STAT 547M make use of the following tools:
-
-1. This "Classroom" website.
-    - Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. 
-    - Contains lecture notes, assignments, and course information.
-2. [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository.
-    - For internal discussion. The world cannot see this.
-3. [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository.
-    - For public discussion. The world can see this.
-4. [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization.
-    - This will contain one GitHub repository per student, for you to submit homework to and give peer reviews.
-5. [UBC canvas](http://canvas.ubc.ca/)
-    - This is for grade management. You'll be interacting with it by submitting a link to your homework. 
-6. <http://stat545.com>.
-    - This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. 
-    - Previously contained the information contained in `Classroom`. That eventually became confusing. Some headers there are becoming deprecated. 
 
 ## Class Meetings
 
