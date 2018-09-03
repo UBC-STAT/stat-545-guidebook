@@ -76,34 +76,94 @@ By the end of today’s class, students are expected to be able to:
 # STAT 545 framework: checklist
 
 1. Syllabus
-2. GitHub as a storage and file-sharing service
+2. GitHub as a storage and file-sharing service:
 
-# About GitHub
+# Some Tools
 
-First, 
+# Course Mantras
 
-- Organizations, Repositories, Issues. 
+- Embrace plain text
+    - Always readable; no surprise re-formatting.
+    - When authoring: Distraction-free.
+- Source is real
+- Can you reproduce that?
 
-Tomorrow: as a version-control system. 
+__Example__: markdown -> HTML. This webpage was generated from [this markdown source file](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/notes/cm001.Rmd).
+
+## GitHub as a file-sharing and storage solution
+
+Checklist:
+
+- What are: Repositories
+- Why: README's
+- How: Drag-and-drop file addition
+- What are: Issues
+- What are: Organizations
+- What are: Teams
+
+Tomorrow: GitHub as a version-control system. 
+
+## The Command Line
+
+We will avoid this when we can. Here is the minimum need-to-know about the __command line__:
+
+- Way to control your computer.
+- OS-specific language!
+    - Mac/linux/unix are about the same.
+    - Windows has its own
+- Navigate with `cd`, `pwd`, and `ls`. `.` and `..`.
+- Related terminology:
+    - The command line is your system's _shell_
+    - _Bash_ is the Unix scripting language
+    - _Terminal_ is a command line interface 
 
 # Activities
 
 ## GitHub activity
 
+- Register for a GitHub.com account. Don't pay!
+    - Want detailed instructions? See  [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
 - Also, please put up a headshot.
 
-## Navigation activity
+## Course Navigation activity
 
-- Find the assignments
+- Find the assignments. When is the first one due? Where is it due? How do you submit?
 
 ## Discussion Issues activity
 
+- "Watch" the Discussion-Internal repo
 - Reply to the issue introducing yourself. Tag the person immediately above you. 
 
+BONUS: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub. It's free!
 
+## Install your stuff
 
+1. Install R and RStudio.
+    - R here: <https://cloud.r-project.org>
+    - RStudio here: <https://www.rstudio.com/products/rstudio/download/preview/>
+    - Commentary on installing this stuff can be found at [stat545.com: r-rstudio-install](http://stat545.com/block000_r-rstudio-install.html)
+2. Install git. See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
+    - You'll need to work with the command line. 
 
+# Summary
 
+Here's what we've seen today. Any remaining questions about these?
+
+- The course syllabus and tools
+- Course mantras
+- GitHub as a file-storage and collaboration platform
+- The command line
+
+# Homework
+
+- If you haven't already:
+    - Make a GitHub account
+    - Fill out survey
+    - Introduce yourself in "Discussions"
+    - Install your stuff
+- Need help?
+    - Post an Issue in one of the "Discussion" repositories.
+    - Come to office hours!
 
 
 
