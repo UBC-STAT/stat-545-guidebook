@@ -76,6 +76,8 @@ Warning: adjustments are still being made!
 
 ## Evaluation
 
+[(Navigation link to Assignments)](http://stat545.com/Classroom/assignments/)
+
 To gain marks in this course, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
 
 Here's the breakdown of your course grade:
