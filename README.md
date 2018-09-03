@@ -111,7 +111,7 @@ Here is your dedicated teaching team!
 | Vincenzo Coia   | Instructor | Email: <vincen.coia@stat.ubc.ca> GitHub: [`@vincenzocoia`](https://github.com/vincenzocoia) Twitter: [\@VincenzoCoia](https://twitter.com/vincenzocoia) LinkedIn: [vincenzocoia](https://www.linkedin.com/in/vincenzocoia/) | 
 | Chad Fibke           | Teaching Assistant | GitHub: [`@ChadFibke`](https://github.com/ChadFibke) |
 | Hossameldin Mohammed | Teaching Assistant | GitHub: [`@hsmohammed`](https://github.com/hsmohammed) |
-| Rashedul Islam       | Teaching Assistant | GitHub: [`@rashedul`](https://github.com/rashedul) |
+| Rashedul Islam       | Teaching Assistant | GitHub: [`@rashedul`](https://github.com/rashedul), [LinkedIn](https://www.linkedin.com/in/rashedul-islam-12170432/) |
 | Sherrie Wang         | Teaching Assistant | GitHub: [`@sherrie9`](https://github.com/sherrie9) |
 
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
