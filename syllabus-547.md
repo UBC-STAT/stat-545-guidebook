@@ -1,4 +1,4 @@
-#### STAT 547M: Data wrangling, exploration, and analysis with R, Part II
+#### STAT 547M: Basic Training for Data Science
 
 This is the course syllabus for the Fall 2018 edition of STAT 547M (click [here](https://github.com/STAT545-UBC/Classroom/blob/master/syllabus-545.md) for the STAT 545 syllabus preceding this course). You should use this syllabus to:
 
