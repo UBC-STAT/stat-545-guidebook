@@ -17,11 +17,13 @@ STAT 547M is "Part II" of learning how to
 
 Part I was STAT 545.
 
-### Course Learning Objectives:
+### Selected Topics
 
-By the end of the course, students are expected to:
-
--
+* Be the boss of non-numeric data, esp. character and factor
+* Interactive pages, apps, and graphics with [Shiny](http://shiny.rstudio.com)
+* Get data off the web and expose data, code, results on the web
+* Distribute data and code via an R package
+* Automate an analytical pipeline, e.g. via `Make`
 
 ### Timing and Location
 
@@ -29,9 +31,11 @@ This course runs from October 23 until November 29, 2018.
 
 We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
 
+I'll aim to end class at 10:45. 
+
 ### Roots
 
-Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Thank you!
+Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Some of their content is even being used in this very syllabus. Thank you!
 
 
 ## Course Destinations

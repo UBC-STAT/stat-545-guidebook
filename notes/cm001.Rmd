@@ -63,7 +63,7 @@ Here's our agenda for today.
 
 1. Go over the [course syllabus](http://stat545.com/Classroom).
 2. Light exposure to some course tools: GitHub, the command line, markdown: [20 minute](https://www.youtube.com/watch?v=kxGWsHYITAw) periods. Lids down, please!
-3. Do an activity: [5 minute](https://www.youtube.com/watch?v=MxQWLbdGLfE) periods. 
+3. Do an activity.
     - Didn't bring a device? Ask your neighbour if you can follow along!
 
 By the end of today's class, students are expected to be able to:
@@ -129,20 +129,17 @@ A great introduction to this stuff is in [happygitwithr: Appendix A](http://happ
 
 ## GitHub activity
 
+[5 minute timer](https://www.youtube.com/watch?v=MxQWLbdGLfE).
+
 1. Register for a GitHub.com account. Don't pay!
     - Want detailed instructions? See  [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
 2. Navigate to the [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) repository.
 3. Click `Watch` on the upper-right corner of the repo, so that you get email notifications. 
 4. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username!
     - NOTE: The `Discussion-Internal` repo will be made private soon (you'll have access).
-5. Complete the survey
+5. Complete [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2).
 6. Please put up a profile photo -- it makes the STAT 545 community more personable. You can do this from your profile homepage. 
 7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub. It's free!
-
-## Course Navigation activity
-
-- Find the assignments. When is the first one due?
-- When is the next office hour? Who's leading it?
 
 ## Install your stuff
 
@@ -157,11 +154,8 @@ A great introduction to this stuff is in [happygitwithr: Appendix A](http://happ
 
 If you haven't already, please do the following before next class:
 
-- Complete the GitHub activity above (under "Activities")
-- Please fill out this survey!
-- Install your stuff (under "Activities")
-
-
+- Complete activities under "Activities" section.
+- Please fill out [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), so that I can give you a repo under the students Org.
 
 
 

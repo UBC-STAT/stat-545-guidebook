@@ -33,11 +33,15 @@ Part II is STAT 547M -- hope to see you there, too!
 
 __Credits__: 1.5
 
-### Course Learning Objectives:
+### Selected Topics
 
-By the end of the course, students are expected to:
-
--
+* Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/): scripts, the workspace, RStudio Projects, daily workflow
+* Generate reports from R scripts and [R Markdown](http://rmarkdown.rstudio.com)
+* Coding style, file and project organization
+* Data frames or "tibbles" are the core data structure for data analysis: care for them with the tidyverse
+* Data visualization with [`ggplot2`](http://ggplot2.org)
+* How to write functions and work with R in a functional style
+* Version control with Git; collaboration via [GitHub](https://github.com)
 
 ### Timing and Location
 
@@ -45,14 +49,15 @@ This course runs from September 4 until October 18, 2018.
 
 We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
 
+I'll aim to end class at 10:45. 
+
 ### Prerequisites
 
 There are no official pre-requisites for STAT 545A, but most students will have had at least one prior statistics course or comparable experience.
 
 ### Roots
 
-Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Thank you!
-
+Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA's. Some of their content is even being used in this very syllabus. Thank you!
 
 ## Class Meetings
 
