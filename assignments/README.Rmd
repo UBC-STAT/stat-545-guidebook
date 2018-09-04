@@ -88,7 +88,7 @@ As part of this course you will be reviewing, commenting on, and marking other s
 
 ### How you will be marked: 
 
-* It's binary. Each peer review will be deemed "good" or "needs more".
+* It's binary. Each peer review will be deemed "good" or "needs more". This means you either get 0 or 100% on each peer review. 
 
 * Hallmarks of "needs more" feedback:
 	- Your review is so generic that it's hard to determine which assignment you're reviewing.
