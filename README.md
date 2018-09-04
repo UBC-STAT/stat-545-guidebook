@@ -158,7 +158,12 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 | Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 
+Do you need my permission to enroll or audit in this course? There is [probably space available](https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=5&dept=STAT&course=545A&section=101). Come to Vincenzo's September 5 office hour:
 
+- 11:00-11:30 for those wanting to __enrol__.
+- 11:30-12:00 for those wanting to __audit__. 
+
+You'll probably need the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form. 
 
 ## Conversation, and Getting Help
 
