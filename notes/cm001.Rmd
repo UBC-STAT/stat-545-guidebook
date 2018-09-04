@@ -62,11 +62,9 @@ Afterwards: let's here from a few of you!
 Here's our agenda for today. 
 
 1. Go over the [course syllabus](http://stat545.com/Classroom).
-3. Light exposure to some course tools: GitHub, the command line, markdown: [20 minute](https://www.youtube.com/watch?v=kxGWsHYITAw) periods.
-2. Do an activity: [5 minute]() periods. 
-    - GitHub activity
-    - Navigation activity
-    - Discussion Issues activity
+2. Light exposure to some course tools: GitHub, the command line, markdown: [20 minute](https://www.youtube.com/watch?v=kxGWsHYITAw) periods. Lids down, please!
+3. Do an activity: [5 minute](https://www.youtube.com/watch?v=MxQWLbdGLfE) periods. 
+    - Didn't bring a device? Ask your neighbour if you can follow along!
 
 By the end of today's class, students are expected to be able to:
 
