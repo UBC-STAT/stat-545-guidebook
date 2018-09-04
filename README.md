@@ -1,4 +1,4 @@
-# STAT 545: Data wrangling, exploration, and analysis with R, Part I
+# STAT 545A: Exploratory Data Analysis
 
 This is the course syllabus for the Fall 2018 edition of STAT 545 (click [here](https://github.com/STAT545-UBC/Classroom/blob/master/syllabus-547.md) for the STAT 547M syllabus). You should use this syllabus to:
 
@@ -23,8 +23,6 @@ This framework of tools is under construction, as we move to a solution that's m
 
 ## About STAT 545
 
-### Course Description
-
 STAT 545 is "Part I" of learning how to
 
 - explore, groom, visualize, and analyze data
@@ -33,16 +31,23 @@ STAT 545 is "Part I" of learning how to
 
 Part II is STAT 547M -- hope to see you there, too!
 
+__Credits__: 1.5
+
 ### Course Learning Objectives:
 
 By the end of the course, students are expected to:
 
 -
+
 ### Timing and Location
 
 This course runs from September 4 until October 18, 2018.
 
 We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
+
+### Prerequisites
+
+There are no official pre-requisites for STAT 545A, but most students will have had at least one prior statistics course or comparable experience.
 
 ### Roots
 
@@ -72,7 +77,10 @@ Warning: adjustments are still being made!
 | [13](notes/cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
 | [14](notes/cm014.nb.html) | oct-18 thurs | Rashedul, Hossam | The model-fitting paradigm in R |
 
+Expectations:
 
+- Show up to every class, and
+- Bring a laptop to every class
 
 
 ## Evaluation
@@ -147,9 +155,15 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 
 
 
-## Conversation
+## Conversation, and Getting Help
 
-We strongly encourage you to communicate with the teaching team _and_ your classmates, both for getting help and other conversation. The best way to do this is by posting an Issue in one of the two `Discussion` GitHub repositories:
+Are you stuck? First, try to get unstuck by yourself by following the advice of [stat545.com: help-general](http://stat545.com/help-general.html).
+
+While you are getting started, we recommend you seek help within the STAT545 community first, before, e.g. posting to external forums. We are more cuddly.
+
+The instructor and TAs stand ready to assist you, but your peers will also be a great source of good questions and answers. For that reason, we encourage you to seek help in ways that are visible to others. 
+
+The options are sort of listed in order of preference. But we realize every situation is different and your comfort level with these approaches will change as you learn more.
 
 1. Want to talk about content/coding issues? Post an Issue in the [Discussion](https://github.com/STAT545-UBC/Discussion) (public) repository.
 2. Want to talk about the course? Post an Issue in the [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) (private) repository.
@@ -157,11 +171,31 @@ We strongly encourage you to communicate with the teaching team _and_ your class
 4. Want to privately contact Vincenzo? Feel free to send me an email.
     - I look forward to receiving your email, though I do encourage you to post in one of the `Discussion` repositories unless it's really not appropriate for either platform. 
 
-__Note__:
 
-- To get the attention of the teaching team, add the `@2018_teaching_team` tag to notify all five of us.
-- To get the attention of your fellow students, add the `@2018_students` tag to notify them.
-- Don't just create Issues -- also respond to them! Think about this in terms of adding to the conversation, not in terms of "correctness". 
+### Basic Issue workflow
+
+Some advice on opening an Issue on GitHub:
+
+* Give it a specific title.
+  - BAD: "aaaaaarrrrrrgh!", "things not working", "i need help"
+  - GOOD: 'error when indexing a matrix: "incorrect number of dimensions"'
+* Stay specific and be complete-but-concise in the body of the description. Don't expect your helper to play 20 questions with you.
+* (Optional) Tag someone: 
+	- To get the attention of the teaching team, add the `@2018_teaching_team` tag to notify all five of us.
+	- To get the attention of your fellow students, add the `@2018_students` tag to notify them.
+* Don't just create Issues -- also respond to them! Think about this in terms of adding to the conversation, not in terms of "correctness". 
+* Don't forget to click "Submit new issue"!
+
+Typically, this will trigger an email to the person/team you tagged. The title of your issue will be in the subject line, so I repeat, *make it specific*. Your description will become the body of the email. At the bottom will be a link to the issue on GitHub.
+
+If all goes well, your helper will respond. I almost always do this directly via GitHub, though simply replying to the email basically works. In any case, this back-and-forth will show up as a series of comments on your original issue. It's like an email dialogue but better:
+
+* It's embedded in a relevant Organization/project/repo, so it will be easier to find later vs. digging out of your giant vat of unfiled email.
+* It's potentially visible to others (depending on the repo), which could save us from asking/answering the same questions repeatedly.
+* The whole discussion will be mirrored via email, so that still serves as a great way to prompt participants to tune in.
+* Later you can get fancy and refer to commits and other issues within the repo in slick ways.
+  
+Once the problem is resolved, the issue can be closed. Note that closed issues remain accessible, in case anyone needs to consult them in the future.
 
 ## Annotated Resources
 
