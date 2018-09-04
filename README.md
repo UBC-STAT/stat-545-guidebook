@@ -149,11 +149,12 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 
 ## Conversation
 
-We strongly encourage you to communicate with the teaching team _and_ your classmates. The best way to do this is by posting an Issue in one of the two `Discussion` GitHub repositories:
+We strongly encourage you to communicate with the teaching team _and_ your classmates, both for getting help and other conversation. The best way to do this is by posting an Issue in one of the two `Discussion` GitHub repositories:
 
 1. Want to talk about content/coding issues? Post an Issue in the [Discussion](https://github.com/STAT545-UBC/Discussion) (public) repository.
 2. Want to talk about the course? Post an Issue in the [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) (private) repository.
-3. Want to privately contact Vincenzo? Feel free to send me an email.
+3. Want to talk in person? Come visit us during office hours!
+4. Want to privately contact Vincenzo? Feel free to send me an email.
     - I look forward to receiving your email, though I do encourage you to post in one of the `Discussion` repositories unless it's really not appropriate for either platform. 
 
 __Note__:

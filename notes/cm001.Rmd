@@ -31,6 +31,12 @@ My Background:
 
 ## Meet your TA's!
 
+STAT 545 has four TA's.
+
+Sherrie
+
+(photo missing)
+
 ![Chad](cm001_files/chad.jpeg)
 
 
@@ -41,100 +47,104 @@ My Background:
 
 ## Meet your classmates
 
-- Name
-- Program
-- Something great you did in your summer (2 minutes)
+Get to know your neighbour! Choose someone to go first. In [2 minutes](https://www.youtube.com/watch?v=48z7nQaehWI), share:
+
+- Your name
+- Your program
+- Something notable you did over the summer
+
+Then switch for another two minutes.
+
+Afterwards: let's here from a few of you!
 
 # Today's Outline
 
-Here's our agenda for today. But first, lids down, please!
+Here's our agenda for today. 
 
 1. Go over the [course syllabus](http://stat545.com/Classroom).
-2. Every [20 minutes](https://www.youtube.com/watch?v=kxGWsHYITAw), do an activity:
+3. Light exposure to some course tools: GitHub, the command line, markdown: [20 minute](https://www.youtube.com/watch?v=kxGWsHYITAw) periods.
+2. Do an activity: [5 minute]() periods. 
     - GitHub activity
     - Navigation activity
     - Discussion Issues activity
-3. 
 
-By the end of today’s class, students are expected to be able to:
+By the end of today's class, students are expected to be able to:
 
-- Navigate the STAT 545 “framework”
-- Describe our expectations of you as a student
-- Name families of tools that aid in data analytics
+- Understand what is expected of them in the course
+- List four ways to get help/converse about the course
+- Navigate the STAT 545 GitHub framework, and their own profile
+- Create and comment on GitHub Issues
+- Explain how the course mantras apply in the case of this webpage
+- Navigate the files of your computer using the command line
 
+# The syllabus
 
-- Be oriented with the course structure and resources
-- Understand how to get help within the course -- we'll cover "getting help out in the world" next time.
-- Be exposed to the main themes of the course, and understand their value.
-- Gain exposure to the command line, and some basic things one can do with it.
-- Have created a GitHub account, and have installed RStudio.
-- Understand what a plain text file is, their value, and alternatives (that are less desireable for data analytic work).
-- Know how to make plain text files with RStudio.
-- Markdown
-- Assignment 1
+Let's go over the [syllabus](http://stat545.com/Classroom) and the course assignments. 
 
-# STAT 545 framework: checklist
+Other course destinations: defer until after we're familiar with GitHub.
 
-1. Syllabus
-2. GitHub as a storage and file-sharing service:
-
-# Some Tools
-
-# Course Mantras
-
-- Embrace plain text
-    - Always readable; no surprise re-formatting.
-    - When authoring: Distraction-free.
-- Source is real
-- Can you reproduce that?
-
-__Example__: markdown -> HTML. This webpage was generated from [this markdown source file](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/notes/cm001.Rmd).
-
-## GitHub as a file-sharing and storage solution
+# GitHub as a file-sharing and storage solution
 
 Checklist:
 
-- What are: Repositories
+- What are: Repositories (aka. "repo"s)
 - Why: README's
-- How: Drag-and-drop file addition
 - What are: Issues
 - What are: Organizations
 - What are: Teams
+- What is: GitHub pages
 
-Tomorrow: GitHub as a version-control system. 
+Next time: GitHub as a version-control system. 
 
-## The Command Line
+# Course Destinations: revisited
 
-We will avoid this when we can. Here is the minimum need-to-know about the __command line__:
+Checklist:
+
+- Org/repo/website diagram of STAT 545 destinations.
+- Let's spend time on:
+    - Discussion repositories. 
+    - Students Org
+
+# Course Mantras
+
+Here are some philosophies that will get you far in data analytic work. We will be revisiting these over and over again. 
+
+- Embrace plain text (as opposed to rich text) when authoring. (What is plain text?)
+- Think in terms of source and output, and remember that source is real. 
+- Your stuff should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
+
+__Example__: markdown -> HTML. This webpage was generated from [this markdown source file](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/notes/cm001.Rmd) on GitHub.
+
+# The Shell
+
+We will avoid this when we can, but we'll at least need it to install _git_ later. Here is the minimum need-to-know about the __shell__:
 
 - Way to control your computer.
 - OS-specific language!
     - Mac/linux/unix are about the same.
     - Windows has its own
 - Navigate with `cd`, `pwd`, and `ls`. `.` and `..`.
-- Related terminology:
-    - The command line is your system's _shell_
-    - _Bash_ is the Unix scripting language
-    - _Terminal_ is a command line interface 
+
+A great introduction to this stuff is in [happygitwithr: Appendix A](http://happygitwithr.com/shell.html).
 
 # Activities
 
 ## GitHub activity
 
-- Register for a GitHub.com account. Don't pay!
+1. Register for a GitHub.com account. Don't pay!
     - Want detailed instructions? See  [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
-- Also, please put up a headshot.
+2. Navigate to the [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) repository.
+3. Click `Watch` on the upper-right corner of the repo, so that you get email notifications. 
+4. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username!
+    - NOTE: The `Discussion-Internal` repo will be made private soon (you'll have access).
+5. Complete the survey
+6. Please put up a profile photo -- it makes the STAT 545 community more personable. You can do this from your profile homepage. 
+7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub. It's free!
 
 ## Course Navigation activity
 
-- Find the assignments. When is the first one due? Where is it due? How do you submit?
-
-## Discussion Issues activity
-
-- "Watch" the Discussion-Internal repo
-- Reply to the issue introducing yourself. Tag the person immediately above you. 
-
-BONUS: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub. It's free!
+- Find the assignments. When is the first one due?
+- When is the next office hour? Who's leading it?
 
 ## Install your stuff
 
@@ -145,26 +155,13 @@ BONUS: Register for the [Student Developer Pack](https://education.github.com/pa
 2. Install git. See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
     - You'll need to work with the command line. 
 
-# Summary
+# To do
 
-Here's what we've seen today. Any remaining questions about these?
+If you haven't already, please do the following before next class:
 
-- The course syllabus and tools
-- Course mantras
-- GitHub as a file-storage and collaboration platform
-- The command line
-
-# Homework
-
-- If you haven't already:
-    - Make a GitHub account
-    - Fill out survey
-    - Introduce yourself in "Discussions"
-    - Install your stuff
-- Need help?
-    - Post an Issue in one of the "Discussion" repositories.
-    - Come to office hours!
-
+- Complete the GitHub activity above (under "Activities")
+- Please fill out this survey!
+- Install your stuff (under "Activities")
 
 
 
