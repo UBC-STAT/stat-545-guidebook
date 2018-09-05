@@ -1,5 +1,5 @@
 ---
-title: "STAT 545 Class Meeting 02: Getting Familiar with R"
+title: "STAT 545 Class Meeting 02: Markdown and GitHub"
 output:
     html_notebook:
         toc: true
