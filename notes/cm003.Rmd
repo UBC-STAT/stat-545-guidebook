@@ -11,55 +11,19 @@ editor_options:
 
 # Learning Objectives
 
-Today, time permitting, we'll aim to:
+By the end of today's class, students are anticipated to be able to:
 
-- have a github repo set up 
-- have that repo cloned locally
-- if there's time: RMarkdown
+- Name the most important data structures in R
+- know about useful resources online to get help with R, and technical tools in general.
+- design effective questions through minimum workable examples (MWE's).
 
-By the end of today's class, students are anticipated to:
+## Local version control
 
+- Great resource on undoing: https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/
 - Demonstrate usage of RStudio's git client
 
-## Working on GitHub
+## Old notes for working locally:
 
-- Let's start with a survey of github. Let's use the [MDS public repo](https://github.com/UBC-MDS/public) as an example. Notice...
-    - __Directory__: You can see a directory of files, along with a _README_ (in other folders, too).
-        - Can't make folders on gh... need to make locally. 
-    - __File Rendering__: GitHub renders certain file types nicely.
-        - Markdown! csv/tsv! pdf!
-        - Not html :(
-        - Basically get a free website. [Make it browsable!](http://happygitwithr.com/repo-browsability.html).
-    - __Editing__: Use the "pen" icon. Then "commit". Not so good for big changes (can't save) -- we'll see how to make changes locally later. 
-    - __Commits__: List that shows the entire "history" of the project since you initiated git. See at the repo's "home" directory. 
-    - __diffs__: Click on a commit to see what was changed!
-    - File __History__ and __Blame__: History shows the commit history of the file; blame shows who did what. 
-    - __Issues__: A way for open dialogue to happen amongst your team.
-- Exercise 1:
-    - Create a new public github repo.
-    - Initiate with a README file. 
-    - Edit the README file by adding some new text.
-- Exercise 2: Navigate to the [github repo that makes the stat545.com website](https://github.com/STAT545-UBC/STAT545-UBC.github.io). Investigate the file `cm001_course-intro-sw-install-account-signup.md` in the main repo.
-    - When was the last change made? By whom?
-    - What was added on line 10 in the most recent change?
-    - Who was the last person to change line 17?
-    - When was the first commit made? By whom? What did the file look like after that change?
-- Exercise 3: Collaboration
-    - Add your neighbour as a collaborator to your github repo. Go to Settings -> Collaborators, and type in their github username.
-    - Modify _your neighbour's_ README by adding some text, like "<my name> was here."
-    - Add an issue titled something like "README should be reviewed" and tag the repo owner by preceding their username with `@`.
-    - Repo owners: check your email. You should have a notification. Close the issue (or comment+close).
-        - NOTE: Click "Watch" to be notified of issues even if your aren't tagged!
-- Exercise 4: forking.
-    - _Fork_ your _other_ neighbour's repo by navigating to their repo and clicking "fork".
-        - You'll have your own copy of their repo on your account.
-    - Add a new file called `testing.md`, and add some text to it.
-    - Make a pull request by clicking `pull request`. Be sure to leave a comment. 
-    - Owners of the repo: Accept the pull request.
-- What happened in Exercise 4? A _separate copy_ of the repo was modified, and _merged_ to the main repo. 
-
-
-## Working Locally
 
 GitHub can't offer the suite of editing capabilities that you have on your local machine. So we set up a _local_ version of the repo and communicate with the _remote_ repo. 
 
@@ -82,13 +46,10 @@ GitHub can't offer the suite of editing capabilities that you have on your local
 - Advanced stuff.
     - FYI: Alternatives to GitHub: bare repo on your own server.
     - Merge conflicts. Branch. Revert.
-        - Do via source tree, or bash. 
+        - Do via source tree, or bash.
+        
+Git take-home Lessons
 
-## Git and GitHub take-home Lessons
-
-- GitHub is not git! It holds your repo remotely.
-    - There are alternatives to GitHub, like Bitbucket or a bare repo on your own server. 
-    - Useful for collaboration! How many times do you want to send a file to your supervisor/advisor? email is clunky... 
 - Working with git:
     - local repository: a self-contained project on your computer
     - remote repository: that project on some "cloud", like GitHub, BitBucket, your own server, ...
@@ -103,22 +64,3 @@ GitHub can't offer the suite of editing capabilities that you have on your local
     - Documentation difficult to read. Check out [this parody](https://git-man-page-generator.lokaltog.net/) of github documentation. 
     - Use a git client to make it easier to work with git. RStudio, Source Tree, GitHub desktop, ...
 
-
-## Markdown and R Markdown
-
-Regular markdown:
-
-- [Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
-    - Some functionality in Slack.
-    - Can also include raw HTML.
-- In RStudio, render this to HTML by clicking "preview".
-    - Files: `md` -> `html`. Could do `pdf` or even Word, too.
-
-RMarkdown:
-
-- Differences between markdown and R markdown.
-    - Includes LaTeX (super useful for theses -- check out LyX if you're new).
-    - code chunks!
-    - YAML header. Can make some [pretty html files](http://rmarkdown.rstudio.com/html_document_format.html) with YAML.
-- How to render: `rmarkdown::render` or click "knit". 
-    - Files: `Rmd` -> `md` -> `html` or `pdf` or word (and other permutations... `keep_md: yes` to keep the intermediate `md` file. Or `output: github_document`). [Useful slide](https://speakerdeck.com/jennybc/happy-git-and-github-for-the-user?slide=56)

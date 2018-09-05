@@ -17,3 +17,12 @@ editor_options:
 - Care and feeding of data frames!
     - In our first R Markdown document, we will explore the Gapminder data.
     - [Basic care and feeding of data in R](block006_care-feeding-data.html)
+
+RMarkdown:
+
+- Differences between markdown and R markdown.
+    - Includes LaTeX (super useful for theses -- check out LyX if you're new).
+    - code chunks!
+    - YAML header. Can make some [pretty html files](http://rmarkdown.rstudio.com/html_document_format.html) with YAML.
+- How to render: `rmarkdown::render` or click "knit". 
+    - Files: `Rmd` -> `md` -> `html` or `pdf` or word (and other permutations... `keep_md: yes` to keep the intermediate `md` file. Or `output: github_document`). [Useful slide](https://speakerdeck.com/jennybc/happy-git-and-github-for-the-user?slide=56)
