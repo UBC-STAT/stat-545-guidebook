@@ -122,10 +122,10 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 | Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 | Chad      | Mon, Oct  29 | 11:00 - 12:00 | ESB 3174 |
-| Rashedul    | Tue, Oct  30 | 11:00 - 12:00 | ESB 3174 |
+| Hossam    | Tue, Oct  30 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  31 | 11:00 - 12:00 | ESB 1043 |
 | Chad    | Mon, Nov  05 | 11:00 - 12:00 | ESB 3174 |
-| Hossam      | Tue, Nov  06 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Nov  06 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Nov  07 | 11:00 - 12:00 | ESB 1043 |
 | Sherrie      | Mon, Nov  12 | 11:00 - 12:00 | ESB 3174 |
 | Rashedul | Tue, Nov  13 | 11:00 - 12:00 | ESB 3174 |
