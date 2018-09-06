@@ -9,6 +9,10 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Note:
+
+- Participation grades from in-class activities are not based on _correctness_, but rather whether the activity was _attempted_. 
+
 # Learning Objectives
 
 By the end of today's class, students are anticipated to be able to:
