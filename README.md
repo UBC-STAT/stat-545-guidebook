@@ -68,7 +68,7 @@ Warning: adjustments are still being made!
 | Meeting No.         | Date         | TA's | Topic | Resources |
 |---------------------|--------------|------|-------|-----------|
 | [01](notes/cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course and software |
-| [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Markdown and GitHub |
+| [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Markdown and GitHub | Tutorials for getting started with [markdown](https://commonmark.org/help/tutorial/) and [GitHub](https://guides.github.com/activities/hello-world/)
 | [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | git; Getting familiar with R |
 | [04](notes/cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | R Markdown and Notebooks |
 | [05](notes/cm005.nb.html) | sep-18 tues  | Chad, Sherrie | working with data in R; `dplyr` and the `tidyverse` |

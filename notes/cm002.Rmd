@@ -103,6 +103,7 @@ Resources:
 
 - [Original Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
 - [Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) for md and gh-flavoured md. 
+- [Tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
 
 # Version Control with GitHub
 
@@ -124,6 +125,8 @@ Specifically, by the end of today's class, students are expected to be able to:
 - Navigate the commit history of various repository branches on GitHub
 - Visualize a tree diagram of commits across branches
 - Merge repository branches via pull requests on GitHub, resolving merge conflicts if necessary
+
+GitHub offers [a nice tutorial](https://guides.github.com/activities/hello-world/) on getting started with GitHub that you might find useful.
 
 ## About Version Control
 
@@ -166,7 +169,7 @@ Commits, diffs, and commit history.
 
 The notion of _branching_ and _merging_ shows up seemingly everywhere in version control. You'll encounter _merge conflicts_, too.
 
-To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see.
+To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see. For more info on this, see [the GitHub documentation](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/). 
 
 NOTE: I'm deferring the motivation for repo branching until later. 
 
@@ -213,6 +216,7 @@ Let's look at the how and why of the following:
     - Viewing is different from collaborating!
     - If you can, making your work public is a remarkably good thing: world of "open source".
 - Forking as another type of branching
+    - Learn more with [happygitwithr: fork](http://happygitwithr.com/fork.html)
 - Tag a release of your repo
 - Turn your repo into a website using GitHub pages
 
