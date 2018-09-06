@@ -80,7 +80,7 @@ Warning: adjustments are still being made!
 | [11](notes/cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | Advanced R programming; file I/O |
 | [12](notes/cm012.nb.html) | oct-11 thurs | Hossam, Hossam | The joy of Factors | 
 | [13](notes/cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
-| [14](notes/cm014.nb.html) | oct-18 thurs | Rashedul, Chad | The model-fitting paradigm in R; `broom` |
+| [14](notes/cm014.nb.html) | oct-18 thurs | Rashedul, Chad | The model-fitting paradigm in R; `broom`; deep thoughts about data analytic work |
 
 Expectations:
 
