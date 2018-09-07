@@ -74,9 +74,9 @@ Logistics
 
 Here is the general flow that will happen for the assignments and peer reviews.
 
-1.  When an assignment is released, I will post a GitHub Issue in [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal), tagging the teaching team and students (you should get an email notification, too, unless you've somehow disabled this).
-2.  You develop your homework responses on your STAT545 home GitHub repository, contained in the [STAT545-UBC-students](https://github.com/STAT545-UBC-students) Organization.
-3.  When your homework is complete, tag a release of your repository before the deadline, and submit a link to the release on [UBC canvas](canvas.ubc.ca).
+1.  When an assignment is released, I will post a GitHub Issue in [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal), tagging the teaching team and students (you should get an email notification, too, unless you've somehow disabled this, are not `Watch`ing the Discussion-Internal repo, or did not inform me of your GitHub username).
+2.  You will be prompted to create a repository through GitHub Classroom, develop your homework responses on this repository, contained in the [STAT545-UBC-students](https://github.com/STAT545-UBC-students) Organization.
+3.  It would be useful for you to submit a link to your URL in canvas. We will be putting your grades there.
 4.  You will be notified of two classmates to provide a peer review. Check out their submission, then write your feedback as an Issue in their repository before the deadline.
     -   There is no need to tag the teaching team!
 
