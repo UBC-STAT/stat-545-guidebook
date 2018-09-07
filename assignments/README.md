@@ -10,13 +10,13 @@ Here are the deadlines for assignments and peer reviews, with links (to appear a
 
 ### STAT 545
 
-| Assignment  | Assignment Due Date | Peer Review Due Date |
-|-------------|---------------------|----------------------|
-| Homework 01 | September 18, 2018  | September 24, 2018   |
-| Homework 02 | September 25, 2018  | October 01, 2018     |
-| Homework 03 | October 02, 2018    | October 08, 2018     |
-| Homework 04 | October 09, 2018    | October 15, 2018     |
-| Homework 05 | October 19, 2018    | October 24, 2018     |
+| Assignment                    | Assignment Due Date | Peer Review Due Date |
+|-------------------------------|---------------------|----------------------|
+| [Homework 01](hw01/hw01.html) | September 18, 2018  | September 24, 2018   |
+| Homework 02                   | September 25, 2018  | October 01, 2018     |
+| Homework 03                   | October 02, 2018    | October 08, 2018     |
+| Homework 04                   | October 09, 2018    | October 15, 2018     |
+| Homework 05                   | October 19, 2018    | October 24, 2018     |
 
 ### STAT 547
 
