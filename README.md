@@ -93,6 +93,8 @@ Expectations:
 
 To gain marks in this course, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
 
+__NOTE__: You must have a GitHub account (free) to earn marks in this course, and then [complete the course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2).
+
 Here's the breakdown of your course grade:
 
 | Assessment | Weight |
@@ -113,7 +115,6 @@ __Participation__: will be evaluated by:
 - Submitting work on in-class activities to your STAT 545 home GitHub repository.
     - Be sure to submit these in class, not at some other time!
 - Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
-
 
 ## Teaching Team
 
