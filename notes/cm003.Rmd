@@ -9,62 +9,107 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Note:
+Announcements:
 
 - Participation grades from in-class activities are not based on _correctness_, but rather whether the activity was _attempted_. 
+- Homework how-to (fork if you want to work privately); survey! We are not looking at your commit history for this one. 
+- How to ask for help from TA's specifically!
 
-# Learning Objectives
+Today's topics are:
 
-By the end of today's class, students are anticipated to be able to:
+- Getting familiar with R
+- Intro to RMarkdown
 
-- Name the most important data structures in R
-- know about useful resources online to get help with R, and technical tools in general.
-- design effective questions through minimum workable examples (MWE's).
+To participate in today's lecture, you should have:
 
-## Local version control
+- R and RStudio installed
+- Optionally, LaTeX installed for outputting to pdf.
 
-- Great resource on undoing: https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/
-- Demonstrate usage of RStudio's git client
+# Getting Familiar with R
 
-## Old notes for working locally:
+## Learning Objectives
+
+By the end of today's class, students are expected to be able to:
+
+- Have a sense of the capabilities, and pros and cons, of R
+- Identify and probe the most prominent data types and data structures in R, with a special focus on data frames
+- Demonstrate the concept of vectorization in R via simple computations
+- Access the documentation of R functions
+- Access functions/objects stored in external R packages
+- Know about useful resources online to get help with R, and technical tools in general.
+- Design effective questions through minimum workable examples (MWE's).
+
+## Resources:
+
+We'll be roughly following these resources:
+
+- The [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R objects.
+- The [stat545.com: care-feeding-data](http://stat545.com/block006_care-feeding-data.html) page for exploring data frames.
+
+More comprehensive resource:
+
+- [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects.
+    - For those already experience with R: I recommend you look this over. You'll probably learn something new.   
+    - Also applicable for those new to R, who want the depth.
+
+Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
+
+## R!
+
+- R is not RStudio
 
 
-GitHub can't offer the suite of editing capabilities that you have on your local machine. So we set up a _local_ version of the repo and communicate with the _remote_ repo. 
+# RMarkdown
 
-- Exercise 5: (Do together) Connect RStudio to git and GitHub
-    - Did you `config` git? Enter the commands (with your credentials) specified at the top of [this](http://happygitwithr.com/hello-git.html#hello-git) page.
-    - Psst... what is this "terminal" or "shell"? A "control center" for your computer (and remote servers!)
-    - _Clone_ your github repo to your local machine in RStudio. [instructions](http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio)
-        - Don't have the "Version Control" option after clicking File -> New Project? Follow [these](http://happygitwithr.com/rstudio-see-git.html) instructions.
-    - Open your README file, and add a line. Could be `I added this line locally.`
-        - YES RStudio can be used as a regular text editor!
-    - Go over to the `git` tab. Stage, commit, pull, and push your change.
-    - Navigate to your remote repo. Do you see the change? You should!
+## Learning Objectives
+
+- Create an RMarkdown document and render it to md/html/pdf
+- Style an RMarkdown document by editing the YAML header
+- Demonstrate at least two RMarkdown code chunk options
+- Informatively choose between writing an R script/RMarkdown/R Notebook.
+
+## Resources
+
+Here are some resources that are well-aligned with today's goals:
+
+- The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). Read this if you missed something from today's class.
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of RMarkdown. The following lessons parallel today's content:
+    - Lessons 1-4 (Intro - Inline Code)
+    - Lessons 9-10 (Output Formats - Notebooks)
+
+Although not a learning resource, you might find the official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) a useful reference.
+
+To dig deeper into any (?) aspect of RMarkdown, check out the free [RMarkdown book](https://bookdown.org/yihui/rmarkdown/).
+
+## Getting Started
+
+You'll need to install RMarkdown. To do so, in any R console, run the following:
+
+```
+install.packages('rmarkdown')
+```
+
+## Old Content
+
+- Care and feeding of data frames!
+    - In our first R Markdown document, we will explore the Gapminder data.
+    - [Basic care and feeding of data in R](block006_care-feeding-data.html)
+
+RMarkdown:
+
+- Differences between markdown and R markdown.
+    - Includes LaTeX (super useful for theses -- check out LyX if you're new).
+    - code chunks!
+    - YAML header. Can make some [pretty html files](http://rmarkdown.rstudio.com/html_document_format.html) with YAML.
+- How to render: `rmarkdown::render` or click "knit". 
+    - Files: `Rmd` -> `md` -> `html` or `pdf` or word (and other permutations... `keep_md: yes` to keep the intermediate `md` file. Or `output: github_document`). [Useful slide](https://speakerdeck.com/jennybc/happy-git-and-github-for-the-user?slide=56)
+
+# To do before next class
+
+To participate in tomorrow's lecture, you should:
+
+- Complete the course survey, if you haven't already.
+    - You MUST do this in order to do your first assignment!
+- LaTeX installed?
+
     
-- Exercise 6: (Do yourself) Toy line
-    - Make a new R script in your local repo.
-    - Go [here](http://stat545.com/block002_hello-r-workspace-wd-project.html#rstudio-projects) and copy-and-paste the "toy line" script (chunks 3,4,5 in that section).
-    - Click "compile notebook" on it!
-    - Commit these changes, and push to your repo (after `pull`ing!)
-    - Do you see the change on your remote repo?
-- Advanced stuff.
-    - FYI: Alternatives to GitHub: bare repo on your own server.
-    - Merge conflicts. Branch. Revert.
-        - Do via source tree, or bash.
-        
-Git take-home Lessons
-
-- Working with git:
-    - local repository: a self-contained project on your computer
-    - remote repository: that project on some "cloud", like GitHub, BitBucket, your own server, ...
-    - git client: program on your computer that helps you use git (commit, push, pull, ...)
-- Adopt git in your workflow! This means:
-    - Dedicate a self-contained directory to your project.
-    - Set up an R project for the directory.
-    - Set up git for that directory. 
-    - __Save__ perpetually, __commit__ often, __pull/push__ (to github) periodically!
-- git can be painful.
-    - Problems? Often best to just burn it down and start fresh...
-    - Documentation difficult to read. Check out [this parody](https://git-man-page-generator.lokaltog.net/) of github documentation. 
-    - Use a git client to make it easier to work with git. RStudio, Source Tree, GitHub desktop, ...
-
