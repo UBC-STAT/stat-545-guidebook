@@ -15,8 +15,8 @@ Today, we'll be looking at three things:
     - With a focus on authoring with markdown
 2. Version control with GitHub
     - Fundamental concepts in version control through GitHub
-3. Collaboration with GitHub
-    - Workflows to optimize collaboration
+3. ~~Collaboration with GitHub~~ Moved to cm004. 
+    - ~~Workflows to optimize collaboration~~
 
 To participate in today's lecture, you should have:
 
@@ -185,40 +185,6 @@ Part 2:
 1. Make a new branch called `test2`.
 2. Edit line 1 of the README _on both branches_ to something different in both cases.
 3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
-
-# Collaboration with GitHub
-
-## Learning Objectives: Collaboration with GitHub
-
-The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
-
-- Collaborators
-- Forking
-- Pull Request
-- Release
-- GitHub Pages
-
-Specifically, by the end of today's class, students are expected to be able to:
-
-- Make a basic website out of their GitHub repository using GitHub Pages
-- Tag a release of their GitHub repository 
-
-## Collaboration Concepts and Workflows
-
-Let's look at the how and why of the following:
-
-- Adding a collaborator
-- Repo branching: why?
-    - try new features
-    - work separately
-    - hold different content
-- Private vs public repositories
-    - Viewing is different from collaborating!
-    - If you can, making your work public is a remarkably good thing: world of "open source".
-- Forking as another type of branching
-    - Learn more with [happygitwithr: fork](http://happygitwithr.com/fork.html)
-- Tag a release of your repo
-- Turn your repo into a website using GitHub pages
 
 # If we finish early
 
