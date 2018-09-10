@@ -12,7 +12,7 @@ Both STAT 545 and STAT 547M make use of the following tools:
 | Tool + Link | Description |
 |-------------|-------------|
 | <http://stat545.com/Classroom> (here) | Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. Contains lecture notes, assignments, and course information. |
-| [assignments](http://stat545.com/Classroom/assignments) | Assignments and assignment info can be found here. |
+| [assignments](http://stat545.com/Classroom/assignments) and [participation](participation.html) information | Assignments, assignment info, and participation info can be found here. |
 | [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository | For internal discussion. The world cannot see this. |
 | [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository. | For public discussion. The world can see this. |
 | [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization | This will contain one GitHub repository per student, for you to submit homework to and give peer reviews. |
@@ -69,7 +69,7 @@ Warning: adjustments are still being made!
 |---------------------|--------------|------|-------|-----------|
 | [01](notes/cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course and software |
 | [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Markdown and GitHub | Tutorials for getting started with [markdown](https://commonmark.org/help/tutorial/) and [GitHub](https://guides.github.com/activities/hello-world/)
-| [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Getting familiar with R & RMarkdown |
+| [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Getting familiar with R & RMarkdown | R: [stat545: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html), or [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) for a more advanced intro. Rmd: [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). |
 | [04](notes/cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | The git workflow; collab with GitHub |
 | [05](notes/cm005.nb.html) | sep-18 tues  | Chad, Sherrie | working with data in R; `dplyr` and the `tidyverse` |
 | [06](notes/cm006.nb.html) | sep-20 thurs | Chad, Rashedul | ggplot2, Part I |
@@ -109,13 +109,7 @@ Auditing students must still complete and submit all assessments, to be graded o
 
 __Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the assignments page](http://stat545.com/Classroom/assignments/). 
 
-__Participation__: will be evaluated by:
-
-- Participation in class discussions
-    - We do not evaluate _correctness_ of these! Only whether or not the attempt was there. 
-- Submitting work on in-class activities to your STAT 545 home GitHub repository.
-    - Be sure to submit these in class, not at some other time!
-- Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
+__Participation__: See the [participation](participation.html) page.
 
 ## Teaching Team
 
