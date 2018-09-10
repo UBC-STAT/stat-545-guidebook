@@ -112,6 +112,7 @@ __Assignments and peer review__: For information about and links to assignments 
 __Participation__: will be evaluated by:
 
 - Participation in class discussions
+    - We do not evaluate _correctness_ of these! Only whether or not the attempt was there. 
 - Submitting work on in-class activities to your STAT 545 home GitHub repository.
     - Be sure to submit these in class, not at some other time!
 - Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
