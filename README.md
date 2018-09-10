@@ -221,3 +221,5 @@ Resources for more specific topics:
     - If you want to learn more about R as a programming language, this is a very readable and concise way of doing so.
 3. [ggplot2 book](http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511), by Hadley Wickham
     - Useful for digging deeper into `ggplot2`.
+4. [RMarkdown book](https://bookdown.org/yihui/rmarkdown/), by Yihui Xie et al.
+    - Brand new! Looks like a comprehensive resource for everything R Markdown related. 
