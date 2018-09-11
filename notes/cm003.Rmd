@@ -93,7 +93,7 @@ Set up shop to follow along:
 
 1. Open RStudio.
 2. Either:
-    - Ideally, download and open the template R script (if you're online); OR
+    - Ideally, download and open the [template R script](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise.R) (if you're online); OR
     - Start a new R Script. (File -> New File -> R Script)
 
 To get participation marks for this activity:
