@@ -9,7 +9,7 @@
 ## 2. Execute the command; take a look at the console
 ## 3. Execute *this* very line. What happens?
 ## 4. Print out `my_commute`
-x <- 5
+
 
 ## Assign the text "My commute time, in minutes:" to a variable: 
 ## 1. Try assigning it to `_x` or `1x`. Does it work?
