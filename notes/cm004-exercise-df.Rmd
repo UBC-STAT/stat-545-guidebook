@@ -1,0 +1,38 @@
+---
+title: "Data Frame Exploration"
+output: 
+    html_document:
+        theme: cerulean
+        toc: true
+        keep_md: true
+---
+
+## LaTeX Equations in R Markdown
+
+Here is an equation:
+
+$$\alpha = 5 + 2$$
+
+Inline equation: $\alpha = 5 + 2$. 
+
+## Data frame exploration
+
+### Setting up
+
+First, load the `gapminder` R package. If you don't have it installed, run `install.packages("gapminder")` in the console first.
+
+```{r}
+library(gapminder)
+```
+
+### What is a data frame?
+
+It's tabular data. To get a sense of this, go ahead and print out the `gapminder` object (you might want to do this in the console!).
+
+### Exploration of data frames
+
+Let's explore `gapminder` with functions like `head`, `ncol`, `str`, `summary`.
+
+### Extracting columns/"variables"
+
+Let's extract a column with `$`. Maybe compute its variance.
