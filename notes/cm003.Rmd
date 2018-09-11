@@ -21,7 +21,6 @@ Today's topics are:
 
 1. Getting familiar with R
 2. Intro to R Markdown
-3. Exploring data frames
 
 To participate in today's lecture, you should have:
 
@@ -102,6 +101,8 @@ To get participation marks for this activity:
     - Remember, you're not graded on correctness, just on the attempt!
 2. Upload your worksheet to your STAT 545 participation repo.
 
+The completed worksheet can be found [here](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise-complete.R).
+
 # R Markdown
 
 ## Learning Objectives
@@ -138,13 +139,7 @@ install.packages('rmarkdown')
 
 ## Demonstration
 
-- Create an R Markdown (Rmd) document and render it to md/html/pdf
-- Write basic equations in Rmd using LaTeX
-- Style an Rmd document by editing the YAML header
-- Demonstrate at least two Rmd code chunk options
-- Informatively choose between writing an R script/Rmd/R Notebook.
-
-Let's play with Rmd.
+Let's play with Rmd. No need to submit anything for participation marks! We'll do that next time when we explore data frames.
 
 1. Create a new Rmd document: File -> New File -> R Markdown...
 2. Title: "Data Frame Exploration".
@@ -161,42 +156,6 @@ Let's play with Rmd.
 10. Try making an R _Notebook_. 
     - R script/Rmd/R Notebook -- which to use?
 
-# Exploring data frames
-
-## Learning Objectives
-
-In our R exploration, we saw one way to bundle together multiple pieces of information: _vectors_. Now, we'll turn to _data frames_.
-
-By the end of this lesson, students are expected to be able to:
-
-- Describe common properties of "built-in" R data frames
-- Extract columns (observations on a variable) from a data frame
-
-## Resources
-
-This lesson closely mirrors the [stat545.com: care-feeding-data](http://stat545.com/block006_care-feeding-data.html) page for exploring data frames.
-
-## Getting Started
-
-We'll be working with the gapminder data set. To access it, in any R console, run the following:
-
-```
-install.packages('gapminder')
-```
-
-## Demonstration
-
-Let's explore the gapminder dataset by continuing to work on the R Markdown document we started earlier.
-
-1. What _is_ a data frame? Minimum need-to know: tabular data.
-    - Load the gapminder package with the `library` function, and print `gapminder` to screen.
-2. Explore a data frame with things like `ncol`, `str`, `summary`, `head`.
-3. Extract a column with `$`. Maybe compute its variance.
-
-# If there's time remaining
-
-- Know about useful resources online to get help with R, and technical tools in general.
-- Design effective questions through minimum workable examples (MWE's).
 
 # To do before next class
 
