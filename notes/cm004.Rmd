@@ -17,6 +17,13 @@ Today's topics are:
 3. Collaboration with GitHub
     - (originally from cm002)
 
+To participate in today's class, you'll need:
+
+- [git installed](http://happygitwithr.com/install-git.html)
+- A GitHub account
+- RStudio installed
+- Access to the command line (can do through RStudio)
+
 # Exploring data frames (in Rmd!)
 
 ## Learning Objectives
@@ -25,8 +32,8 @@ In our R exploration last time, we saw one way to bundle together multiple piece
 
 By the end of this lesson, students are expected to be able to:
 
-- Describe common properties of "built-in" R data frames
-- Extract columns (observations on a variable) from a data frame
+- Describe common properties of "built-in" R data frames using R
+- Extract columns from a data frame
 
 ## Resources
 
@@ -56,12 +63,25 @@ Let's build this up. Submit the result to your [participation repository](http:/
 
 - Excellent [resource by GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) on how to "undo" almost anything
 
+## Getting Started
+
+You'll need to [config your git](http://happygitwithr.com/hello-git.html) using the command line.
+
+__Optional__ (but recommended): After class, you might want to [cache](http://happygitwithr.com/credential-caching.html) your credentials so that you don't have to keep inserting your password.
+
 ## Demonstration
+
+- Let's look at cloning: 
+    1. Concept (remember "branches"?)
+    2. Practice with your participation repo, or if you don't have that, the [Classroom](https://github.com/STAT545-UBC/Classroom) repo.
+- What are "git clients"? We'll be using RStudio's built-in git client.
+    1. File -> New Project
+
+
 
 GitHub can't offer the suite of editing capabilities that you have on your local machine. So we set up a _local_ version of the repo and communicate with the _remote_ repo. 
 
 - Exercise: (Do together) Connect RStudio to git and GitHub
-    - Did you `config` git? Enter the commands (with your credentials) specified at the top of [this](http://happygitwithr.com/hello-git.html#hello-git) page.
     - _Clone_ your github repo to your local machine in RStudio. [instructions](http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio)
         - Don't have the "Version Control" option after clicking File -> New Project? Follow [these](http://happygitwithr.com/rstudio-see-git.html) instructions.
     - Open your README file, and add a line. Could be `I added this line locally.`
@@ -124,3 +144,4 @@ Let's look at the how and why of the following:
 
 - Know about useful resources online to get help with R, and technical tools in general.
 - Design effective questions through minimum workable examples (MWE's).
+
