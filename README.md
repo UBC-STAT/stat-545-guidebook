@@ -76,7 +76,7 @@ Warning: adjustments are still being made!
 | [07](notes/cm007.nb.html) | sep-25 tues  | Hossam, Sherrie | ggplot2, Part II |
 | [08](notes/cm008.nb.html) | sep-27 thurs | Hossam, Rashedul | Grouping of tibbles |
 | [09](notes/cm009.nb.html) | oct-02 tues  | Rashedul, Sherrie | Tidy data, reshaping |
-| [10](notes/cm010.nb.html) | oct-04 thurs | Rashedul, Chad, Hossam | Guest Lecture: Rashedul |
+| [10](notes/cm010.nb.html) | oct-04 thurs | Rashedul, Chad, Hossam | Guest Lecture: Rashedul, on table joins |
 | [11](notes/cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | Advanced R programming; file I/O |
 | [12](notes/cm012.nb.html) | oct-11 thurs | Hossam, Rashedul | The joy of Factors | 
 | [13](notes/cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot, practicalities of daily figure-making |
@@ -153,12 +153,7 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 | Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 
-Do you need my permission to enroll or audit in this course? There is [probably space available](https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=5&dept=STAT&course=545A&section=101). Come to Vincenzo's September 5 office hour:
-
-- 11:00-11:30 for those wanting to __enrol__.
-- 11:30-12:00 for those wanting to __audit__. 
-
-You'll probably need the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form. 
+Do you need my permission to enroll or audit in this course? [Space is limited](https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=5&dept=STAT&course=545A&section=101), but I'm happy to sign the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form if there's still room. 
 
 ## Conversation, and Getting Help
 
