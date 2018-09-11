@@ -44,6 +44,8 @@ install.packages('gapminder')
 
 I've started a "cleaned up" version of the Rmd file we were exploring last time. Find it [on GitHub](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm004-exercise-df.Rmd)!
 
+Let's build this up. Submit the result to your [participation repository](http://stat545.com/Classroom/participation.html) for your participation assessment. 
+
 # Working locally with git
 
 ## Learning Objectives
