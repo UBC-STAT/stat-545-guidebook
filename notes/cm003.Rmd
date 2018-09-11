@@ -1,5 +1,5 @@
 ---
-title: "STAT 545 Class Meeting 03"
+title: "STAT 545 Class Meeting 03: R and Rmd"
 output:
     html_notebook:
         toc: true
@@ -11,19 +11,23 @@ editor_options:
 
 Announcements:
 
-- Participation grades from in-class activities are not based on _correctness_, but rather whether the activity was _attempted_. 
-- Homework how-to (fork if you want to work privately); survey! We are not looking at your commit history for this one. 
-- How to ask for help from TA's specifically!
+- Homework has been released.
+    - Public repo.
+    - Need to have submitted the survey.
+- New guidelines for [participation](http://stat545.com/Classroom/participation.html) assessment -- link is made available on the course syllabus.
+- On my radar: asking for help from TA's in class!
 
 Today's topics are:
 
-- Getting familiar with R
-- Intro to RMarkdown
+1. Getting familiar with R
+2. Intro to R Markdown
+3. Exploring data frames
 
 To participate in today's lecture, you should have:
 
 - R and RStudio installed
 - Optionally, LaTeX installed for outputting to pdf.
+- A participation repo to put in-class work
 
 # Getting Familiar with R
 
@@ -32,84 +36,175 @@ To participate in today's lecture, you should have:
 By the end of today's class, students are expected to be able to:
 
 - Have a sense of the capabilities, and pros and cons, of R
-- Identify and probe the most prominent data types and data structures in R, with a special focus on data frames
-- Demonstrate the concept of vectorization in R via simple computations
-- Access the documentation of R functions
-- Access functions/objects stored in external R packages
-- Know about useful resources online to get help with R, and technical tools in general.
-- Design effective questions through minimum workable examples (MWE's).
+- Write an R script to perform simple calculations
+- Describe the main idea of vectorization
+- Access the R documentation on an as-needed basis
 
 ## Resources:
 
-We'll be roughly following these resources:
-
-- The [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R objects.
-- The [stat545.com: care-feeding-data](http://stat545.com/block006_care-feeding-data.html) page for exploring data frames.
-
-More comprehensive resource:
-
-- [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects.
-    - For those already experience with R: I recommend you look this over. You'll probably learn something new.   
-    - Also applicable for those new to R, who want the depth.
+- We'll be roughly following the [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R.
+- [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects. 
+    - For those already experience with R: I recommend you look this chapter over. You'll probably learn something new.   
+    - For those new to R, who want the depth, read until the end of the "Vectors" section.
 
 Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
 
-## R!
+## About R
 
-- R is not RStudio
+Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction.html):
 
+- Free, platform-wide
+- Open source
+- Comprehensive set of "add on" packages for analysis
+- Huge community
+- ...
 
-# RMarkdown
+Strengths that tend to be specific to R: 
+
+- Naturally handles data (and therefore its analysis)
+- Vectorization
+- ..
+
+Its downfalls?
+
+- Slow
+- To learners, seems "quirky" (due to reliance on "metaprogramming")
+- S3 OO objects & methods not always transparent
+- ...
+
+Alternatives for data analysis?
+
+- python is becoming more prominent in the data science community.
+    - faster, more "all-purpose"
+    - tends to handle text better
+    - jupyter notebooks instead of RStudio and R Markdown
+
+Methods for interacting with R (I'll demo basic calculations)
+
+- Rstudio. __NOTE__: R is not RStudio! RStudio is an _IDE_. 
+    - The STAT 545 (and largely the world's) choice!
+- "R console"
+- Terminal/ESS
+- ...
+
+## Demonstration
+
+Set up shop to follow along:
+
+1. Open RStudio.
+2. Either:
+    - Ideally, download and open the template R script (if you're online); OR
+    - Start a new R Script. (File -> New File -> R Script)
+
+To get participation marks for this activity:
+
+1. Work with me as we fill in the worksheet.
+    - Remember, you're not graded on correctness, just on the attempt!
+2. Upload your worksheet to your STAT 545 participation repo.
+
+# R Markdown
 
 ## Learning Objectives
 
-- Create an RMarkdown document and render it to md/html/pdf
-- Style an RMarkdown document by editing the YAML header
-- Demonstrate at least two RMarkdown code chunk options
-- Informatively choose between writing an R script/RMarkdown/R Notebook.
+- Create an R Markdown (Rmd) document and render it to md/html/pdf
+- Write basic equations in Rmd using LaTeX
+- Style an Rmd document by editing the YAML header
+- Demonstrate at least two Rmd code chunk options
+- Informatively choose between writing an R script/Rmd/R Notebook.
 
 ## Resources
 
 Here are some resources that are well-aligned with today's goals:
 
 - The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). Read this if you missed something from today's class.
-- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of RMarkdown. The following lessons parallel today's content:
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. The following lessons parallel today's content:
     - Lessons 1-4 (Intro - Inline Code)
     - Lessons 9-10 (Output Formats - Notebooks)
 
-Although not a learning resource, you might find the official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) a useful reference.
+Here are resources that are great to reference:
 
-To dig deeper into any (?) aspect of RMarkdown, check out the free [RMarkdown book](https://bookdown.org/yihui/rmarkdown/).
+- The official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) has seemingly everything bundled together in a concise way.
+- An updated list of options for the YAML header can be found in the [rmd book: html-document](https://bookdown.org/yihui/rmarkdown/html-document.html)
+
+To dig deeper into any (?) aspect of R Markdown, check out the free [R Markdown book](https://bookdown.org/yihui/rmarkdown/) (also listed on the course syllabus).
 
 ## Getting Started
 
-You'll need to install RMarkdown. To do so, in any R console, run the following:
+You'll need to install R Markdown. To do so, in any R console, run the following:
 
 ```
 install.packages('rmarkdown')
 ```
 
-## Old Content
+## Demonstration
 
-- Care and feeding of data frames!
-    - In our first R Markdown document, we will explore the Gapminder data.
-    - [Basic care and feeding of data in R](block006_care-feeding-data.html)
+- Create an R Markdown (Rmd) document and render it to md/html/pdf
+- Write basic equations in Rmd using LaTeX
+- Style an Rmd document by editing the YAML header
+- Demonstrate at least two Rmd code chunk options
+- Informatively choose between writing an R script/Rmd/R Notebook.
 
-RMarkdown:
+Let's play with Rmd.
 
-- Differences between markdown and R markdown.
-    - Includes LaTeX (super useful for theses -- check out LyX if you're new).
-    - code chunks!
-    - YAML header. Can make some [pretty html files](http://rmarkdown.rstudio.com/html_document_format.html) with YAML.
-- How to render: `rmarkdown::render` or click "knit". 
-    - Files: `Rmd` -> `md` -> `html` or `pdf` or word (and other permutations... `keep_md: yes` to keep the intermediate `md` file. Or `output: github_document`). [Useful slide](https://speakerdeck.com/jennybc/happy-git-and-github-for-the-user?slide=56)
+1. Create a new Rmd document: File -> New File -> R Markdown...
+2. Title: "Data Frame Exploration".
+
+- Notice the differences from regular markdown: YAML header, code chunks!
+
+3. Save it -- I'll call it `cm003-exercise-df`.
+4. Click `Knit`.
+5. Try other outputs.
+6. Try LaTeX equations.
+7. Try inserting new chunks of code.
+8. Try changing the theme with YAML.
+9. Try changing chunk options.
+10. Try making an R _Notebook_. 
+    - R script/Rmd/R Notebook -- which to use?
+
+# Exploring data frames
+
+## Learning Objectives
+
+In our R exploration, we saw one way to bundle together multiple pieces of information: _vectors_. Now, we'll turn to _data frames_.
+
+By the end of this lesson, students are expected to be able to:
+
+- Describe common properties of "built-in" R data frames
+- Extract columns (observations on a variable) from a data frame
+
+## Resources
+
+This lesson closely mirrors the [stat545.com: care-feeding-data](http://stat545.com/block006_care-feeding-data.html) page for exploring data frames.
+
+## Getting Started
+
+We'll be working with the gapminder data set. To access it, in any R console, run the following:
+
+```
+install.packages('gapminder')
+```
+
+## Demonstration
+
+Let's explore the gapminder dataset by continuing to work on the R Markdown document we started earlier.
+
+1. What _is_ a data frame? Minimum need-to know: tabular data.
+    - Load the gapminder package with the `library` function, and print `gapminder` to screen.
+2. Explore a data frame with things like `ncol`, `str`, `summary`, `head`.
+3. Extract a column with `$`. Maybe compute its variance.
+
+# If there's time remaining
+
+- Know about useful resources online to get help with R, and technical tools in general.
+- Design effective questions through minimum workable examples (MWE's).
 
 # To do before next class
 
 To participate in tomorrow's lecture, you should:
 
-- Complete the course survey, if you haven't already.
+- Ensure you [follow the steps](http://stat545.com/Classroom/participation.html) to set up your "participation" repository.
+- Complete the [course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), if you haven't already.
     - You MUST do this in order to do your first assignment!
-- LaTeX installed?
+- You might want to try installing LaTeX, _if_ you want to be able to output to pdf and are not able to.
 
     
