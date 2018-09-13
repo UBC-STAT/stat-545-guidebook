@@ -9,6 +9,14 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Announcements
+
+- Getting help during office hours:
+    - Feel free to use this as a "STAT545-dedicated workspace".
+- Getting help during class, me vs. your TA's:
+    - Feel free to ask TA's for help liberally!
+    - Still brainstorming ideas for distinguishing.
+
 Today's topics are:
 
 1. Exploring data frames (in Rmd!)
@@ -49,60 +57,90 @@ install.packages('gapminder')
 
 ## Demonstration
 
-I've started a "cleaned up" version of the Rmd file we were exploring last time. Find it [on GitHub](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm004-exercise-df.Rmd)!
+FIRST, let's ensure your [participation repo](http://stat545.com/Classroom/participation.html) is setup.
 
-Let's build this up. Submit the result to your [participation repository](http://stat545.com/Classroom/participation.html) for your participation assessment. 
+1. Go to your github.com profile.
+2. If you have a participation repository, but it's not called `STAT545_participation`, I'll show you how to rename it. 
+3. If you DON'T have a participation repository set up, let's do that (I'll make one, too).
+
+Now, I've started a "cleaned up" version of the Rmd file we were exploring last time. Find it [on GitHub](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm004-exercise-df.Rmd)!
+
+Let's build this up, and submit the result to your [participation repository](http://stat545.com/Classroom/participation.html) for your participation assessment. 
 
 # Working locally with git
 
 ## Learning Objectives
 
-- Demonstrate usage of RStudio's git client
+The concepts we'll be touching on here are:
+
+- clone
+- stage
+- commit (again!)
+- pull/push
+
+By the end of the lesson, students are expected to be able to:
+
+- Demonstrate the above concepts using RStudio's git client with your participation GitHub repository.
 
 ## Resources
 
-- Excellent [resource by GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) on how to "undo" almost anything
+Want to try a similar lesson to today's, but on your own? Follow along with [happygitwithr: rstudio-git-github](http://happygitwithr.com/rstudio-git-github.html), which is closely aligned with the goals of this lesson.
+
+Want to learn more, above and beyond what's done in class? Take a look at these:
+
+- Excellent [resource by GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) on how to "undo" almost anything (including "going back" to a previous state).
 
 ## Getting Started
 
 You'll need to [config your git](http://happygitwithr.com/hello-git.html) using the command line.
 
+Your RStudio will probably be able to "find" git. But if it can't, you'll encounter errors. See [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help. 
+
 __Optional__ (but recommended): After class, you might want to [cache](http://happygitwithr.com/credential-caching.html) your credentials so that you don't have to keep inserting your password.
 
 ## Demonstration
 
-- Let's look at cloning: 
+The end product of this demonstration is a locally modified version of our data frame exploration, pushed to GitHub.
+
+- What are "git clients"? 
+    - We'll be using the git client built-in to RStudio.
+- Cloning: 
     1. Concept (remember "branches"?)
-    2. Practice with your participation repo, or if you don't have that, the [Classroom](https://github.com/STAT545-UBC/Classroom) repo.
-- What are "git clients"? We'll be using RStudio's built-in git client.
-    1. File -> New Project
+    2. Practice with your participation repo. I'll be using the [Classroom](https://github.com/STAT545-UBC/Classroom) repo. 
+        - In RStudio, File -> New Project -> Version Control -> Git.
+        - You should see a `Git` tab in RStudio, upper-right corner window. If not, see [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help.
+    3. Take a look at the files you just downloaded!
+- By the way:   
+    - What's an RStudio "project"?
+    - We don't need to edit a file _with RStudio_ to use its git client!
+    - File doesn't need to have anything to do with R, either.
+- Staging and committing:
+    1. Concept
+    2. Modify your Rmd exploration from earlier (just add a new line).
+    3. Stage and commit
+- Push/Pull:
+    1. Concept
+    2. Try pushing!
 
+## Adopting git in your workflow
 
+__Before the world of git:__
 
-GitHub can't offer the suite of editing capabilities that you have on your local machine. So we set up a _local_ version of the repo and communicate with the _remote_ repo. 
+_Save_ perpetually.
 
-- Exercise: (Do together) Connect RStudio to git and GitHub
-    - _Clone_ your github repo to your local machine in RStudio. [instructions](http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio)
-        - Don't have the "Version Control" option after clicking File -> New Project? Follow [these](http://happygitwithr.com/rstudio-see-git.html) instructions.
-    - Open your README file, and add a line. Could be `I added this line locally.`
-    - Go over to the `git` tab. Stage, commit, pull, and push your change.
-    - Navigate to your remote repo. Do you see the change? You should!
+__After embracing git:__
 
-## Git take-home Lessons
+_Save_ perpetually, _commit_ often, _push_ [in case of fire](https://github.com/louim/in-case-of-fire/blob/master/in_case_of_fire.pdf).
 
-- Working with git:
-    - local repository: a self-contained project on your computer
-    - remote repository: that project on some "cloud", like GitHub, BitBucket, your own server, ...
-    - git client: program on your computer that helps you use git (commit, push, pull, ...)
-- Adopt git in your workflow! This means:
-    - Dedicate a self-contained directory to your project.
-    - Set up an R project for the directory.
-    - Set up git for that directory. 
-    - __Save__ perpetually, __commit__ often, __pull/push__ (to github) periodically!
-- git can be painful.
-    - Problems? Often best to just burn it down and start fresh...
-    - Documentation difficult to read. Check out [this parody](https://git-man-page-generator.lokaltog.net/) of github documentation. 
-    - Use a git client to make it easier to work with git. RStudio, Source Tree, GitHub desktop, ...
+__Need help?__
+
+If you're encountering problems, try:
+
+- As always, google search. 
+- [Burn it all down](http://happygitwithr.com/burn.html).
+    - There's even an [xkcd comic](https://xkcd.com/1597/) on this.
+
+The git documentation is not friendly. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it.
 
 # Collaboration with GitHub
 
@@ -110,38 +148,47 @@ GitHub can't offer the suite of editing capabilities that you have on your local
 
 The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
 
-- Collaborators
+- GitHub Pages
 - Forking
 - Pull Request
-- Release
-- GitHub Pages
 
-Specifically, by the end of today's class, students are expected to be able to:
+Specifically, by the end of today's class, students are expected to:
 
-- Make a basic website out of their GitHub repository using GitHub Pages
-- Tag a release of their GitHub repository 
+- Be able to make a basic website out of your participation repository using GitHub Pages
+- Know roughly what the above concepts are about
 
 ## Resources
 
-## Collaboration Concepts and Workflows
+The GitHub documentation is perhaps the best place to learn about these outside of class:
 
-Let's look at the how and why of the following:
+- [GitHub Pages](https://pages.github.com/)
+- [Forking](https://help.github.com/articles/fork-a-repo/)
+    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
+- [Pull Request](https://help.github.com/articles/about-pull-requests/)
 
-- Adding a collaborator
-- Repo branching: why?
-    - try new features
-    - work separately
-    - hold different content
-- Private vs public repositories
-    - Viewing is different from collaborating!
-    - If you can, making your work public is a remarkably good thing: world of "open source".
-- Forking as another type of branching
-    - Learn more with [happygitwithr: fork](http://happygitwithr.com/fork.html)
-- Tag a release of your repo
-- Turn your repo into a website using GitHub pages
+PS: You might want to sign up for a free [GitHub Student Developer Pack](https://education.github.com/pack). Amongst other perks, you get to make private repositories for free!
+
+## Demonstration
+
+For participation marks, by the end of this demonstration: 
+
+- you'll have a GitHub pages website set up for your participation repo
+- you __don't need to have__ anything for the forking exercise!
+
+Checklist:
+
+1. Set up a basic "GitHub pages" website with your participation repo:
+    1. Go to "settings" on your repo.
+    2. Scroll down to "GitHub Pages"
+    3. Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
+2. Forking a repo: 
+    1. Let's try forking the `Classroom` repo.
+    2. We'll make a change, and will submit a pull request.
 
 # If there's time remaining
 
-- Know about useful resources online to get help with R, and technical tools in general.
-- Design effective questions through minimum workable examples (MWE's).
-
+- Concepts related to [getting help](http://stat545.com/help-general.html) in R (or with other computational problems):
+    - Google the error message (works most of the time)
+    - Write a question using a MWE. You'll solve it yourself most of the time.
+    - Post question to thread such as SO.
+- "Lab"
