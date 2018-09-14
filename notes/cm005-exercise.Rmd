@@ -5,108 +5,53 @@ editor_options:
   chunk_output_type: inline
 ---
 
-## Optional, but recommended startup
+**Optional, but recommended startup**:
 
-For practice, change the file output to both html and md _documents_ (not notebook).
+Change the file output to both html and md _documents_ (not notebook).
 
-## dplyr
+# Intro to `dplyr` syntax
 
-Note that you need to use the assignment operator to make any changes.
+1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
+    - This loads `dplyr`, too.
+2. `knit` the document. 
 
-### `filter()`
+## `select()`
 
-1. Find all entries of Canada and Algeria. 
+1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
-```{r}
-filter(gapminder, 
-       country == "Canada" |
-           country == "Algeria")
-filter(gapminder,
-       country %in% c("Canada", "Algeria"))
-```
+2. Select all variables, from `country` to `lifeExp`. 
 
+3. Select all variables, except `lifeExp`.
 
-2. Find all entries of Canada and Algeria, occuring in the '60s. 
+4. Put `continent` first. Hint: use the `everything()` function.
 
-```{r}
-filter(gapminder,
-       country %in% c("Canada", "Algeria"), year < 1970, year >= 1960)
-```
+5. Rename `continent` to `cont`.
 
+## `arrange()`
 
-3. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
-```{r}
-filter(gapminder,
-       (country == "Canada") |
-           (country == "Algeria" & 
-            year %in% 1960:1969))
-```
+1. Order by year.
 
+2. Order by year, in descending order.
 
-4. Find all entries _not_ including European countries.
+3. Order by year, then by life expectancy.
 
-```{r}
-filter(gapminder, 
-       continent != "Europe")
-```
+## Piping, `%>%`
 
-__Exercise__: Take all countries in Europe that have a GPD per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+Note: think of `%>%` as the word "then"!
 
-```{r}
-gapminder %>% 
-    filter(continent == "Europe",
-           gdpPercap > 10000) %>% 
-    select(-gdpPercap)
-```
+1. Combine `select()` Task 1 with `arrange()` Task 3.
 
-Order `gapminder` by population, then life expectancy:
+## `filter()`
 
-```{r}
-arrange(gapminder, pop, lifeExp)
-```
+1. Only take data with population greater than 100 million.
 
-__Exercises__:
+2. Of those, only take data from Asia.
 
-1. Order the data frame by year, then descending by life expectancy.
+## git stuff (Optional)
 
-```{r}
-arrange(gapminder, year, desc(lifeExp))
-```
+Knit, commit, push!
 
-
-2. In addition to the above exercise, rearrange the variables so that `year` comes first, followed by life expectancy. (Hint: check the documentation for the `select` function for a related handy function).
-
-```{r}
-gapminder %>% 
-    arrange(year, desc(lifeExp)) %>% 
-    select(year, lifeExp, everything())
-```
-
-### piping
-
-- take all entries of Canada and Algeria occuring in the '60s, and
-- select the `country`, `year`, and `gdpPercap` columns.
-
-We could do...
-
-```{r}
-select(filter(gapminder, 
-              country %in% c("Canada", "Algeria"), 
-              year <= 1969, year >= 1960),
-       country, year, gdpPercap)
-```
-
-The same operation above becomes:
-
-```{r}
-gapminder %>% 
-    filter(country %in% c("Canada", "Algeria"), 
-           year <= 1969, year >= 1960) %>% 
-    select(country, year, gdpPercap)
-```
-
-
-## Challenge: metaprogramming
+# Break/Challenge: metaprogramming
 
 Here's an activity for you to do during the break, in case you're all caught up. It should help you understand metaprogramming a bit more.
 
@@ -126,3 +71,22 @@ Your task is to use metaprogramming to check whether a response (like the one ab
 1. Wrap the above block of code in the `expr()` function from the `rlang` package.
 2. Use the `eval()` function to execute the code, to see if the code runs.
 3. Use the `as.character()` function to check whether this response contains an `if` statement.
+
+# Relational/Comparison and Logical Operators in R
+
+1. Find all entries of Canada and Algeria occuring in the '60s. 
+
+2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
+3. Find all entries _not_ including Canada and Algeria.
+
+# Bonus Exercises
+
+If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
+
+1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+
+2. Take the first three columns, and extract the names.
+
+3. Of the `iris` data frame, take all columns that start with the word "Petal". 
+    - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
+    - Exercise from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).

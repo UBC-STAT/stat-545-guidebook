@@ -81,7 +81,6 @@ Here are the concepts we'll be exploring in this lesson:
 
 By the end of this lesson, students are expected to be able to:
 
-- start to see the value of the `dplyr` package
 - subset and rearrange data with `dplyr`
 - use piping (`%>%`) when implementing function chains
 
@@ -156,6 +155,7 @@ OR, use the `subset` argument that's often offered by R functions like `lm()`.
 
 Especially don't use magic numbers to subset!
 
+Note that you need to use the assignment operator to store changes!
 
 # Small break
 
@@ -182,3 +182,8 @@ By the end of this lesson, students are expected to be able to:
 ## Demonstration
 
 Continue along with the `cm005-exercise.Rmd` file. 
+
+# If there's time remaining
+
+1. Let's do the bonus exercises together, in the `cm05-exercise.Rmd` file.
+2. Another "break"
