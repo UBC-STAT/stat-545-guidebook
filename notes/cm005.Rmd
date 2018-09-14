@@ -107,19 +107,55 @@ Let's get started with the exercise:
 
 ## Learning Objectives
 
-Here are the concepts we'll be exploring in this lesson:
-
-- metaprogramming: pros and cons
-- self-documenting code; compare to the "base R way"
-    - no need to take excerpts of your data, esp. using magic numbers
-- pure functions:
-    - I=O, and does not impact workspace
-
 By the end of this lesson, students are expected to be able to:
 
-- Have a sense of why `dplyr` is advantageous compared to the "base R" way with respect to the above concepts. 
+- Have a sense of why `dplyr` is advantageous compared to the "base R" way with respect to good coding practice.
+
+Why?
+
+- Having this in the back of your mind will help you identify qualities of and produce a readable analysis.
 
 ## Compare base R to `dplyr`
+
+Let's talk about these concepts:
+
+__Metaprogramming__.
+
+Hadley Wickham says it best in [adv-r: meta](https://adv-r.hadley.nz/meta.html): you trade precision for concision. Here's the example he gives:
+
+- `subset(diamonds, x == 0 & y == 0 & z == 0)`, vs.
+- `diamonds[diamonds$x == 0 & diamonds$y == 0 & diamonds$z == 0, ]`
+
+__Pure functions__.
+
+I=O, and does not impact workspace.
+
+__Self-documenting code__. 
+
+This is where the tidyverse shines.
+
+Example of `dplyr` vs base R:
+
+```
+gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp)
+```
+
+vs.
+
+```
+gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
+```
+
+__No need to take excerpts__.
+
+Wrangle with `dplyr` first, then pipe into a plot/analysis.
+
+OR, use the `subset` argument that's often offered by R functions like `lm()`.
+
+Especially don't use magic numbers to subset!
+
 
 # Small break
 
