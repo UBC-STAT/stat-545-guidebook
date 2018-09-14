@@ -1,0 +1,97 @@
+---
+title: "cm008 Exercises"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## mutate
+
+`mutate` creates a new variable by calculating from other variables. Let's get GDP by multiplying GPD per capita with population:
+
+```{r}
+mutate(gapminder, gdp = gdpPercap * pop)
+```
+
+You can define multiple new variables -- even back-dependent on new ones! Let's also create a column for GDP in billions, rounded to one decimal:
+
+```{r}
+mutate(gapminder, 
+       gdp     = gdpPercap * pop, 
+       gdpBill = round(gdp/1000000000, 1))
+```
+
+`transmute` works the same way, but drops all other variables. 
+
+__Exercise__: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
+
+```{r}
+mutate(gapminder, cc = paste(country, continent, sep=", "))
+```
+
+
+## `summarize` and `group_by`
+
+`summarize` reduces a tibble according to summary statistics.
+
+```{r}
+summarize(gapminder, mean_pop=mean(pop), sd_pop=sd(pop))
+```
+
+Not very useful by itself! But, with the `group_by` function, the `summarize` function is very useful:
+
+```{r}
+gapminder %>% 
+    group_by(country) %>% 
+    summarize(mean_pop=mean(pop), sd_pop=sd(pop))
+```
+
+The `group_by` function splits the tibble into parts -- in the above case, by country. Notice the "Groups" indicator in the following output:
+
+```{r}
+group_by(gapminder, continent, country, year < 1970)
+```
+
+Let's get a summary of this grouping:
+
+```{r}
+(out1 <- gapminder %>% 
+    group_by(continent, country, year < 1970) %>% 
+    summarize(mean_pop=mean(pop), sd_pop=sd(pop)))
+```
+
+Note that the output is still a tibble, but one "layer" of grouping has been peeled back: the `year < 1970` variable. `summarize` again and you'll see that the tibble was no longer grouped by `year < 1970`. 
+
+```{r}
+out1 %>% 
+    summarize(mean_pop=mean(mean_pop))
+```
+
+
+__Exercise__: Find the minimum GDP per capita experienced by each country
+
+```{r}
+gapminder %>%
+    group_by(country) %>% 
+    summarize(mingdp=min(gdpPercap))
+```
+
+
+__Exercise__: How many years of record does each country have?
+
+```{r}
+gapminder %>%
+    group_by(country) %>% 
+    summarize(n_distinct(year))
+```
+
+
+__Exercise__: Within Asia, what are the min and max life expectancies experienced in each year?
+
+```{r}
+gapminder %>% 
+    filter(continent=="Asia") %>% 
+    group_by(year) %>% 
+    summarize(minexp=min(lifeExp),
+              maxexp=max(lifeExp))
+```

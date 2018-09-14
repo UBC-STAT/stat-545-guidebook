@@ -1,0 +1,106 @@
+---
+title: 'cm005: `dplyr` Exercise'
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Optional, but recommended startup
+
+For practice, change the file output to both html and md _documents_ (not notebook).
+
+## dplyr
+
+Note that you need to use the assignment operator to make any changes.
+
+### `filter()`
+
+1. Find all entries of Canada and Algeria. 
+
+```{r}
+filter(gapminder, 
+       country == "Canada" |
+           country == "Algeria")
+filter(gapminder,
+       country %in% c("Canada", "Algeria"))
+```
+
+
+2. Find all entries of Canada and Algeria, occuring in the '60s. 
+
+```{r}
+filter(gapminder,
+       country %in% c("Canada", "Algeria"), year < 1970, year >= 1960)
+```
+
+
+3. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
+```{r}
+filter(gapminder,
+       (country == "Canada") |
+           (country == "Algeria" & 
+            year %in% 1960:1969))
+```
+
+
+4. Find all entries _not_ including European countries.
+
+```{r}
+filter(gapminder, 
+       continent != "Europe")
+```
+
+__Exercise__: Take all countries in Europe that have a GPD per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+
+```{r}
+gapminder %>% 
+    filter(continent == "Europe",
+           gdpPercap > 10000) %>% 
+    select(-gdpPercap)
+```
+
+Order `gapminder` by population, then life expectancy:
+
+```{r}
+arrange(gapminder, pop, lifeExp)
+```
+
+__Exercises__:
+
+1. Order the data frame by year, then descending by life expectancy.
+
+```{r}
+arrange(gapminder, year, desc(lifeExp))
+```
+
+
+2. In addition to the above exercise, rearrange the variables so that `year` comes first, followed by life expectancy. (Hint: check the documentation for the `select` function for a related handy function).
+
+```{r}
+gapminder %>% 
+    arrange(year, desc(lifeExp)) %>% 
+    select(year, lifeExp, everything())
+```
+
+### piping
+
+- take all entries of Canada and Algeria occuring in the '60s, and
+- select the `country`, `year`, and `gdpPercap` columns.
+
+We could do...
+
+```{r}
+select(filter(gapminder, 
+              country %in% c("Canada", "Algeria"), 
+              year <= 1969, year >= 1960),
+       country, year, gdpPercap)
+```
+
+The same operation above becomes:
+
+```{r}
+gapminder %>% 
+    filter(country %in% c("Canada", "Algeria"), 
+           year <= 1969, year >= 1960) %>% 
+    select(country, year, gdpPercap)
+```

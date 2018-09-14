@@ -1,5 +1,5 @@
 ---
-title: "STAT 545 Class Meeting 05"
+title: "STAT 545 Class Meeting 05: Intro to data wrangling"
 output:
     html_notebook:
         toc: true
@@ -12,6 +12,7 @@ editor_options:
 ## Announcements
 
 - Assignment 01 is due tonight!
+- Assignment 02 released today.
 - Update on getting help in class: let's take this approach:
     - TA’s more mobile during lecture
     - Students: 
@@ -36,33 +37,36 @@ We've done a lot so far! Let's recap/review. Here are the main concepts we've co
 In short, we've covered the foundation of key _tools_ for data analysis. For the next few weeks, we're going to focus more on the data itself, for the purpose of _exploratory data analysis_. Specifically, and not in this particular order, 
 
 - Data wrangling
-- Calculations on data
+- Data computations
 - Plotting
 
 ## Today's Topics
 
 Today we'll introduce the `dplyr` package. Specifically, we'll look at these three topics:
 
-- Intro to `dplyr` syntax: subsetting data
+- Intro to `dplyr` syntax
 - The `dplyr` advantage
-- Relational and logical operators in R
+- Relational/comparison and logical operators in R
 
 ## Resources
 
 All three of today's topics are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
 
-It would help to brush up on relational and logical operators in R -- [this](https://www.datamentor.io/r-programming/operator/) looks like a good resource for  that.
+More detail can be found in the [r4ds: transform](http://r4ds.had.co.nz/transform.html) chapter, up until and including the `select()` section. Section 5.2 also elaborates on relational/comparison and logical operators in R
 
-
-Here are some supplementary resources you might want to check out:
-
-- The [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) up until and including the `select()` section
+A similar resource to the r4ds one above is the [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html), up until and including the `select()` section.
 
 ## Participation
 
-To get participation points for today, be sure to push the completed [cm005-exercise.Rmd]() file (developed in class today) to your participation repo.
+To get participation points for today, we'll be filling out the [cm005-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm005-exercise.Rmd) file, and adding it to your participation repo:
 
-# Intro to `dplyr` syntax: subsetting data
+1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.html).
+2. Download the `.Rmd` version to your local participation repo.
+    - You should have it cloned to your local machine (aka your computer) from last time.
+3. _Optional, by recommended_: Stage and commit the Rmd file (you can do this through RStudio).
+    - You can still get participation marks by uploading the final files to GitHub.
+
+# Intro to `dplyr` syntax
 
 ## Learning Objectives
 
@@ -78,35 +82,67 @@ Here are the concepts we'll be exploring in this lesson:
 By the end of this lesson, students are expected to be able to:
 
 - start to see the value of the `dplyr` package
-- subset and arrange data with `dplyr`
+- subset and rearrange data with `dplyr`
 - use piping (`%>%`) when implementing function chains
-
-
-## Getting Started
-
-To complete this lesson, it would be nice if you already have:
-
-- Your `STAT545_participation` repository cloned to your local machine (aka your computer).
 
 ## Preamble
 
-I have some things to say about:
+Let's talk about:
 
-- dplyr and its predecessor, plyr
-- tibbles
+- The history of `dplyr`: `plyr`
+- tibbles are a special type of data frame
 - the tidyverse
 
 ## Demonstration
 
-Let's follow along with this checklist:
+Let's get started with the exercise:
 
-1. 
-n. Knit, commit, push.
+1. Open RStudio, and download the `tidyverse` meta-package by executing `install.packages("tidyverse")` into the R console.
+2. _Optional_: open the `STAT545_participation` RStudio project in RStudio.
+3. With RStudio, open the `cm005-exercise.Rmd` file you downloaded and committed earlier.
+4. Follow the instructions in the `.Rmd` file.
+5. Knit, commit, push.
 
-Note that you need to use the assignment operator to make any changes.
+# The `dplyr` advantage
 
+## Learning Objectives
 
-- the base R way
-- metaprogramming: pros and cons here
-- the dplyr advantage: self-documenting code; pure functions
-- logical operators in R
+Here are the concepts we'll be exploring in this lesson:
+
+- metaprogramming: pros and cons
+- self-documenting code; compare to the "base R way"
+    - no need to take excerpts of your data, esp. using magic numbers
+- pure functions:
+    - I=O, and does not impact workspace
+
+By the end of this lesson, students are expected to be able to:
+
+- Have a sense of why `dplyr` is advantageous compared to the "base R" way with respect to the above concepts. 
+
+## Compare base R to `dplyr`
+
+# Small break
+
+Here are some things you might choose to do on this break:
+
+- Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
+- Fill out the challenge on the `cm005-exercise.Rmd` file.
+- Work on an assignment.
+
+# Relational/Comparison and Logical Operators in R
+
+## Learning Objectives
+
+Here are the concepts we'll be exploring in this lesson:
+
+- Relational/Comparison operators
+- Logical operators
+
+By the end of this lesson, students are expected to be able to:
+
+- Predict the output of R code containing the above operators.
+- Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
+
+## Demonstration
+
+Continue along with the `cm005-exercise.Rmd` file. 
