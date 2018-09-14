@@ -7,6 +7,8 @@ editor_options:
 
 ## mutate
 
+No need for loops!
+
 `mutate` creates a new variable by calculating from other variables. Let's get GDP by multiplying GPD per capita with population:
 
 ```{r}
