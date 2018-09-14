@@ -13,6 +13,9 @@ editor_options:
 
 - Assignment 01 is due tonight!
 - Assignment 02 released today.
+- GitHub Issues:
+    - All are excellent discussions!
+    - You can "Close" an Issue if you consider it "resolved". 
 - Update on getting help in class: let's take this approach:
     - TA’s more mobile during lecture
     - Students: 
