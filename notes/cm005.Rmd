@@ -9,6 +9,17 @@ editor_options:
   chunk_output_type: inline
 ---
 
+## Announcements
+
+- Assignment 01 is due tonight!
+- Update on getting help in class: let's take this approach:
+    - TA’s more mobile during lecture
+    - Students: 
+        - Question for the class: hands up fully. 
+        - Question for TA's: something different of your choice. Maybe a wave, holding up a pen/object, hand not fully extended, ...
+    - I'll aim to take a brief break in class, but with a challenge exercise for those not needing the break.
+- We'll be more strict on your participation as of this week. This means your commit timestamp matters! Your commit(s) shouldn't be made too long after lecture. I'll aim to include this in our demonstrations.
+
 ## Review
 
 We've done a lot so far! Let's recap/review. Here are the main concepts we've covered:
@@ -22,45 +33,80 @@ We've done a lot so far! Let's recap/review. Here are the main concepts we've co
     - as a command line tool
     - as a git client
 
-In short, we've covered the foundation of key _tools_ for data analysis. Now, we're going to focus more on the data itself. 
-    
+In short, we've covered the foundation of key _tools_ for data analysis. For the next few weeks, we're going to focus more on the data itself, for the purpose of _exploratory data analysis_. Specifically, and not in this particular order, 
 
-Today's topics are:
+- Data wrangling
+- Calculations on data
+- Plotting
 
-- Fundamentals to data wrangling with `dplyr`
+## Today's Topics
 
-We'll split it into two parts.
+Today we'll introduce the `dplyr` package. Specifically, we'll look at these three topics:
 
-# Fundamentals to data wrangling with `dplyr`: Part I
+- Intro to `dplyr` syntax: subsetting data
+- The `dplyr` advantage
+- Relational and logical operators in R
+
+## Resources
+
+All three of today's topics are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
+
+It would help to brush up on relational and logical operators in R -- [this](https://www.datamentor.io/r-programming/operator/) looks like a good resource for  that.
+
+
+Here are some supplementary resources you might want to check out:
+
+- The [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) up until and including the `select()` section
+
+## Participation
+
+To get participation points for today, be sure to push the completed [cm005-exercise.Rmd]() file (developed in class today) to your participation repo.
+
+# Intro to `dplyr` syntax: subsetting data
 
 ## Learning Objectives
 
-Here are the concepts we’ll be exploring in this lesson:
+Here are the concepts we'll be exploring in this lesson:
 
-- tibbles
+- tidyverse
+- `dplyr` functions:
+    - select
+    - arrange
+    - filter
 - piping
 
 By the end of this lesson, students are expected to be able to:
 
-- ...
+- start to see the value of the `dplyr` package
+- subset and arrange data with `dplyr`
+- use piping (`%>%`) when implementing function chains
 
-## Resources
-
-Want to follow along outside of class? We’ll roughly be following these resources:
-
-- ...
-
-Here are some supplementary resources you might want to check out:
-
-- ...
 
 ## Getting Started
 
-To complete this lesson, you are expected to have done the following:
+To complete this lesson, it would be nice if you already have:
 
-- ...
+- Your `STAT545_participation` repository cloned to your local machine (aka your computer).
+
+## Preamble
+
+I have some things to say about:
+
+- dplyr and its predecessor, plyr
+- tibbles
+- the tidyverse
 
 ## Demonstration
 
-Let’s follow along with this checklist:
-1. ...
+Let's follow along with this checklist:
+
+1. 
+n. Knit, commit, push.
+
+Note that you need to use the assignment operator to make any changes.
+
+
+- the base R way
+- metaprogramming: pros and cons here
+- the dplyr advantage: self-documenting code; pure functions
+- logical operators in R

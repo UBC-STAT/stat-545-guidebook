@@ -176,19 +176,40 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#review"><span class="toc-section-number">0.1</span> Review</a></li>
-<li><a href="#fundamentals-to-data-wrangling-with-dplyr-part-i"><span class="toc-section-number">1</span> Fundamentals to data wrangling with <code>dplyr</code>: Part I</a><ul>
+<li><a href="#announcements"><span class="toc-section-number">0.1</span> Announcements</a></li>
+<li><a href="#review"><span class="toc-section-number">0.2</span> Review</a></li>
+<li><a href="#todays-topics"><span class="toc-section-number">0.3</span> Today’s Topics</a></li>
+<li><a href="#resources"><span class="toc-section-number">0.4</span> Resources</a></li>
+<li><a href="#participation"><span class="toc-section-number">0.5</span> Participation</a></li>
+<li><a href="#intro-to-dplyr-syntax-subsetting-data"><span class="toc-section-number">1</span> Intro to <code>dplyr</code> syntax: subsetting data</a><ul>
 <li><a href="#learning-objectives"><span class="toc-section-number">1.1</span> Learning Objectives</a></li>
-<li><a href="#resources"><span class="toc-section-number">1.2</span> Resources</a></li>
-<li><a href="#getting-started"><span class="toc-section-number">1.3</span> Getting Started</a></li>
+<li><a href="#getting-started"><span class="toc-section-number">1.2</span> Getting Started</a></li>
+<li><a href="#preamble"><span class="toc-section-number">1.3</span> Preamble</a></li>
 <li><a href="#demonstration"><span class="toc-section-number">1.4</span> Demonstration</a></li>
 </ul></li>
 </ul>
 </div>
 
 <!-- rnb-text-begin -->
+<div id="announcements" class="section level2">
+<h2><span class="header-section-number">0.1</span> Announcements</h2>
+<ul>
+<li>Assignment 01 is due tonight!</li>
+<li>Update on getting help in class: let’s take this approach:
+<ul>
+<li>TA’s more mobile during lecture</li>
+<li>Students:
+<ul>
+<li>Question for the class: hands up fully.</li>
+<li>Question for TA’s: something different of your choice. Maybe a wave, holding up a pen/object, hand not fully extended, …</li>
+</ul></li>
+<li>I’ll aim to take a brief break in class, but with a challenge exercise for those not needing the break.</li>
+</ul></li>
+<li>We’ll be more strict on your participation as of this week. This means your commit timestamp matters! Your commit(s) shouldn’t be made too long after lecture. I’ll aim to include this in our demonstrations.</li>
+</ul>
+</div>
 <div id="review" class="section level2">
-<h2><span class="header-section-number">0.1</span> Review</h2>
+<h2><span class="header-section-number">0.2</span> Review</h2>
 <p>We’ve done a lot so far! Let’s recap/review. Here are the main concepts we’ve covered:</p>
 <ul>
 <li>git and GitHub concepts and how-to</li>
@@ -202,53 +223,94 @@ $(document).ready(function () {
 <li>as a git client</li>
 </ul></li>
 </ul>
-<p>In short, we’ve covered the foundation of key <em>tools</em> for data analysis. Now, we’re going to focus more on the data itself.</p>
-<p>Today’s topics are:</p>
+<p>In short, we’ve covered the foundation of key <em>tools</em> for data analysis. For the next few weeks, we’re going to focus more on the data itself, for the purpose of <em>exploratory data analysis</em>. Specifically, and not in this particular order,</p>
 <ul>
-<li>Fundamentals to data wrangling with <code>dplyr</code></li>
+<li>Data wrangling</li>
+<li>Calculations on data</li>
+<li>Plotting</li>
 </ul>
-<p>We’ll split it into two parts.</p>
 </div>
-<div id="fundamentals-to-data-wrangling-with-dplyr-part-i" class="section level1">
-<h1><span class="header-section-number">1</span> Fundamentals to data wrangling with <code>dplyr</code>: Part I</h1>
+<div id="todays-topics" class="section level2">
+<h2><span class="header-section-number">0.3</span> Today’s Topics</h2>
+<p>Today we’ll introduce the <code>dplyr</code> package. Specifically, we’ll look at these three topics:</p>
+<ul>
+<li>Intro to <code>dplyr</code> syntax: subsetting data</li>
+<li>The <code>dplyr</code> advantage</li>
+<li>Relational and logical operators in R</li>
+</ul>
+</div>
+<div id="resources" class="section level2">
+<h2><span class="header-section-number">0.4</span> Resources</h2>
+<p>All three of today’s topics are closely aligned to the <a href="http://stat545.com/block009_dplyr-intro.html">stat545: dplyr-intro</a>.</p>
+<p>It would help to brush up on relational and logical operators in R – <a href="https://www.datamentor.io/r-programming/operator/">this</a> looks like a good resource for that.</p>
+<p>Here are some supplementary resources you might want to check out:</p>
+<ul>
+<li>The <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">intro to dplyr vignette</a> up until and including the <code>select()</code> section</li>
+</ul>
+</div>
+<div id="participation" class="section level2">
+<h2><span class="header-section-number">0.5</span> Participation</h2>
+<p>To get participation points for today, be sure to push the completed <a href>cm005-exercise.Rmd</a> file (developed in class today) to your participation repo.</p>
+</div>
+<div id="intro-to-dplyr-syntax-subsetting-data" class="section level1">
+<h1><span class="header-section-number">1</span> Intro to <code>dplyr</code> syntax: subsetting data</h1>
 <div id="learning-objectives" class="section level2">
 <h2><span class="header-section-number">1.1</span> Learning Objectives</h2>
 <p>Here are the concepts we’ll be exploring in this lesson:</p>
 <ul>
-<li>tibbles</li>
+<li>tidyverse</li>
+<li><code>dplyr</code> functions:
+<ul>
+<li>select</li>
+<li>arrange</li>
+<li>filter</li>
+</ul></li>
 <li>piping</li>
 </ul>
 <p>By the end of this lesson, students are expected to be able to:</p>
 <ul>
-<li>…</li>
-</ul>
-</div>
-<div id="resources" class="section level2">
-<h2><span class="header-section-number">1.2</span> Resources</h2>
-<p>Want to follow along outside of class? We’ll roughly be following these resources:</p>
-<ul>
-<li>…</li>
-</ul>
-<p>Here are some supplementary resources you might want to check out:</p>
-<ul>
-<li>…</li>
+<li>start to see the value of the <code>dplyr</code> package</li>
+<li>subset and arrange data with <code>dplyr</code></li>
+<li>use piping (<code>%&gt;%</code>) when implementing function chains</li>
 </ul>
 </div>
 <div id="getting-started" class="section level2">
-<h2><span class="header-section-number">1.3</span> Getting Started</h2>
-<p>To complete this lesson, you are expected to have done the following:</p>
+<h2><span class="header-section-number">1.2</span> Getting Started</h2>
+<p>To complete this lesson, it would be nice if you already have:</p>
 <ul>
-<li>…</li>
+<li>Your <code>STAT545_participation</code> repository cloned to your local machine (aka your computer).</li>
+</ul>
+</div>
+<div id="preamble" class="section level2">
+<h2><span class="header-section-number">1.3</span> Preamble</h2>
+<p>I have some things to say about:</p>
+<ul>
+<li>dplyr and its predecessor, plyr</li>
+<li>tibbles</li>
+<li>the tidyverse</li>
 </ul>
 </div>
 <div id="demonstration" class="section level2">
 <h2><span class="header-section-number">1.4</span> Demonstration</h2>
-<p>Let’s follow along with this checklist: 1. …</p>
+<p>Let’s follow along with this checklist:</p>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<ol start="14" style="list-style-type: lower-alpha">
+<li>Knit, commit, push.</li>
+</ol>
+<p>Note that you need to use the assignment operator to make any changes.</p>
+<ul>
+<li>the base R way</li>
+<li>metaprogramming: pros and cons here</li>
+<li>the dplyr advantage: self-documenting code; pure functions</li>
+<li>logical operators in R</li>
+</ul>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAwNSIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIyBSZXZpZXcKCldlJ3ZlIGRvbmUgYSBsb3Qgc28gZmFyISBMZXQncyByZWNhcC9yZXZpZXcuIEhlcmUgYXJlIHRoZSBtYWluIGNvbmNlcHRzIHdlJ3ZlIGNvdmVyZWQ6CgotIGdpdCBhbmQgR2l0SHViIGNvbmNlcHRzIGFuZCBob3ctdG8KLSBCYXNpY3Mgb2YgUgotIEJhc2ljcyBvZiBhdXRob3JpbmcgaW4gbWFya2Rvd24gKHdpdGggdmFyaW91cyBmbGF2b3VycykKLSBSU3R1ZGlvIGZlYXR1cmVzOgogICAgLSBhcyBhIHRleHQgZWRpdG9yICgubWQsIC5SLCAuUm1kLCBldGMuLi4pCiAgICAtIGFzIGNvbnRhaW5pbmcgdGhlIFIgbWFjaGluZXJ5IChydW5uaW5nIGNvZGUgaW4gdGhlIGNvbnNvbGUpCiAgICAtIGFzIGEgY29tbWFuZCBsaW5lIHRvb2wKICAgIC0gYXMgYSBnaXQgY2xpZW50CgpJbiBzaG9ydCwgd2UndmUgY292ZXJlZCB0aGUgZm91bmRhdGlvbiBvZiBrZXkgX3Rvb2xzXyBmb3IgZGF0YSBhbmFseXNpcy4gTm93LCB3ZSdyZSBnb2luZyB0byBmb2N1cyBtb3JlIG9uIHRoZSBkYXRhIGl0c2VsZi4gCiAgICAKClRvZGF5J3MgdG9waWNzIGFyZToKCi0gRnVuZGFtZW50YWxzIHRvIGRhdGEgd3JhbmdsaW5nIHdpdGggYGRwbHlyYAoKV2UnbGwgc3BsaXQgaXQgaW50byB0d28gcGFydHMuCgojIEZ1bmRhbWVudGFscyB0byBkYXRhIHdyYW5nbGluZyB3aXRoIGBkcGx5cmA6IFBhcnQgSQoKIyMgTGVhcm5pbmcgT2JqZWN0aXZlcwoKSGVyZSBhcmUgdGhlIGNvbmNlcHRzIHdl4oCZbGwgYmUgZXhwbG9yaW5nIGluIHRoaXMgbGVzc29uOgoKLSB0aWJibGVzCi0gcGlwaW5nCgpCeSB0aGUgZW5kIG9mIHRoaXMgbGVzc29uLCBzdHVkZW50cyBhcmUgZXhwZWN0ZWQgdG8gYmUgYWJsZSB0bzoKCi0gLi4uCgojIyBSZXNvdXJjZXMKCldhbnQgdG8gZm9sbG93IGFsb25nIG91dHNpZGUgb2YgY2xhc3M/IFdl4oCZbGwgcm91Z2hseSBiZSBmb2xsb3dpbmcgdGhlc2UgcmVzb3VyY2VzOgoKLSAuLi4KCkhlcmUgYXJlIHNvbWUgc3VwcGxlbWVudGFyeSByZXNvdXJjZXMgeW91IG1pZ2h0IHdhbnQgdG8gY2hlY2sgb3V0OgoKLSAuLi4KCiMjIEdldHRpbmcgU3RhcnRlZAoKVG8gY29tcGxldGUgdGhpcyBsZXNzb24sIHlvdSBhcmUgZXhwZWN0ZWQgdG8gaGF2ZSBkb25lIHRoZSBmb2xsb3dpbmc6CgotIC4uLgoKIyMgRGVtb25zdHJhdGlvbgoKTGV04oCZcyBmb2xsb3cgYWxvbmcgd2l0aCB0aGlzIGNoZWNrbGlzdDoKMS4gLi4u</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAwNSIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIyBBbm5vdW5jZW1lbnRzCgotIEFzc2lnbm1lbnQgMDEgaXMgZHVlIHRvbmlnaHQhCi0gVXBkYXRlIG9uIGdldHRpbmcgaGVscCBpbiBjbGFzczogbGV0J3MgdGFrZSB0aGlzIGFwcHJvYWNoOgogICAgLSBUQeKAmXMgbW9yZSBtb2JpbGUgZHVyaW5nIGxlY3R1cmUKICAgIC0gU3R1ZGVudHM6IAogICAgICAgIC0gUXVlc3Rpb24gZm9yIHRoZSBjbGFzczogaGFuZHMgdXAgZnVsbHkuIAogICAgICAgIC0gUXVlc3Rpb24gZm9yIFRBJ3M6IHNvbWV0aGluZyBkaWZmZXJlbnQgb2YgeW91ciBjaG9pY2UuIE1heWJlIGEgd2F2ZSwgaG9sZGluZyB1cCBhIHBlbi9vYmplY3QsIGhhbmQgbm90IGZ1bGx5IGV4dGVuZGVkLCAuLi4KICAgIC0gSSdsbCBhaW0gdG8gdGFrZSBhIGJyaWVmIGJyZWFrIGluIGNsYXNzLCBidXQgd2l0aCBhIGNoYWxsZW5nZSBleGVyY2lzZSBmb3IgdGhvc2Ugbm90IG5lZWRpbmcgdGhlIGJyZWFrLgotIFdlJ2xsIGJlIG1vcmUgc3RyaWN0IG9uIHlvdXIgcGFydGljaXBhdGlvbiBhcyBvZiB0aGlzIHdlZWsuIFRoaXMgbWVhbnMgeW91ciBjb21taXQgdGltZXN0YW1wIG1hdHRlcnMhIFlvdXIgY29tbWl0KHMpIHNob3VsZG4ndCBiZSBtYWRlIHRvbyBsb25nIGFmdGVyIGxlY3R1cmUuIEknbGwgYWltIHRvIGluY2x1ZGUgdGhpcyBpbiBvdXIgZGVtb25zdHJhdGlvbnMuCgojIyBSZXZpZXcKCldlJ3ZlIGRvbmUgYSBsb3Qgc28gZmFyISBMZXQncyByZWNhcC9yZXZpZXcuIEhlcmUgYXJlIHRoZSBtYWluIGNvbmNlcHRzIHdlJ3ZlIGNvdmVyZWQ6CgotIGdpdCBhbmQgR2l0SHViIGNvbmNlcHRzIGFuZCBob3ctdG8KLSBCYXNpY3Mgb2YgUgotIEJhc2ljcyBvZiBhdXRob3JpbmcgaW4gbWFya2Rvd24gKHdpdGggdmFyaW91cyBmbGF2b3VycykKLSBSU3R1ZGlvIGZlYXR1cmVzOgogICAgLSBhcyBhIHRleHQgZWRpdG9yICgubWQsIC5SLCAuUm1kLCBldGMuLi4pCiAgICAtIGFzIGNvbnRhaW5pbmcgdGhlIFIgbWFjaGluZXJ5IChydW5uaW5nIGNvZGUgaW4gdGhlIGNvbnNvbGUpCiAgICAtIGFzIGEgY29tbWFuZCBsaW5lIHRvb2wKICAgIC0gYXMgYSBnaXQgY2xpZW50CgpJbiBzaG9ydCwgd2UndmUgY292ZXJlZCB0aGUgZm91bmRhdGlvbiBvZiBrZXkgX3Rvb2xzXyBmb3IgZGF0YSBhbmFseXNpcy4gRm9yIHRoZSBuZXh0IGZldyB3ZWVrcywgd2UncmUgZ29pbmcgdG8gZm9jdXMgbW9yZSBvbiB0aGUgZGF0YSBpdHNlbGYsIGZvciB0aGUgcHVycG9zZSBvZiBfZXhwbG9yYXRvcnkgZGF0YSBhbmFseXNpc18uIFNwZWNpZmljYWxseSwgYW5kIG5vdCBpbiB0aGlzIHBhcnRpY3VsYXIgb3JkZXIsIAoKLSBEYXRhIHdyYW5nbGluZwotIENhbGN1bGF0aW9ucyBvbiBkYXRhCi0gUGxvdHRpbmcKCiMjIFRvZGF5J3MgVG9waWNzCgpUb2RheSB3ZSdsbCBpbnRyb2R1Y2UgdGhlIGBkcGx5cmAgcGFja2FnZS4gU3BlY2lmaWNhbGx5LCB3ZSdsbCBsb29rIGF0IHRoZXNlIHRocmVlIHRvcGljczoKCi0gSW50cm8gdG8gYGRwbHlyYCBzeW50YXg6IHN1YnNldHRpbmcgZGF0YQotIFRoZSBgZHBseXJgIGFkdmFudGFnZQotIFJlbGF0aW9uYWwgYW5kIGxvZ2ljYWwgb3BlcmF0b3JzIGluIFIKCiMjIFJlc291cmNlcwoKQWxsIHRocmVlIG9mIHRvZGF5J3MgdG9waWNzIGFyZSBjbG9zZWx5IGFsaWduZWQgdG8gdGhlIFtzdGF0NTQ1OiBkcGx5ci1pbnRyb10oaHR0cDovL3N0YXQ1NDUuY29tL2Jsb2NrMDA5X2RwbHlyLWludHJvLmh0bWwpLgoKSXQgd291bGQgaGVscCB0byBicnVzaCB1cCBvbiByZWxhdGlvbmFsIGFuZCBsb2dpY2FsIG9wZXJhdG9ycyBpbiBSIC0tIFt0aGlzXShodHRwczovL3d3dy5kYXRhbWVudG9yLmlvL3ItcHJvZ3JhbW1pbmcvb3BlcmF0b3IvKSBsb29rcyBsaWtlIGEgZ29vZCByZXNvdXJjZSBmb3IgIHRoYXQuCgoKSGVyZSBhcmUgc29tZSBzdXBwbGVtZW50YXJ5IHJlc291cmNlcyB5b3UgbWlnaHQgd2FudCB0byBjaGVjayBvdXQ6CgotIFRoZSBbaW50cm8gdG8gZHBseXIgdmlnbmV0dGVdKGh0dHBzOi8vY3Jhbi5yLXByb2plY3Qub3JnL3dlYi9wYWNrYWdlcy9kcGx5ci92aWduZXR0ZXMvZHBseXIuaHRtbCkgdXAgdW50aWwgYW5kIGluY2x1ZGluZyB0aGUgYHNlbGVjdCgpYCBzZWN0aW9uCgojIyBQYXJ0aWNpcGF0aW9uCgpUbyBnZXQgcGFydGljaXBhdGlvbiBwb2ludHMgZm9yIHRvZGF5LCBiZSBzdXJlIHRvIHB1c2ggdGhlIGNvbXBsZXRlZCBbY20wMDUtZXhlcmNpc2UuUm1kXSgpIGZpbGUgKGRldmVsb3BlZCBpbiBjbGFzcyB0b2RheSkgdG8geW91ciBwYXJ0aWNpcGF0aW9uIHJlcG8uCgojIEludHJvIHRvIGBkcGx5cmAgc3ludGF4OiBzdWJzZXR0aW5nIGRhdGEKCiMjIExlYXJuaW5nIE9iamVjdGl2ZXMKCkhlcmUgYXJlIHRoZSBjb25jZXB0cyB3ZSdsbCBiZSBleHBsb3JpbmcgaW4gdGhpcyBsZXNzb246CgotIHRpZHl2ZXJzZQotIGBkcGx5cmAgZnVuY3Rpb25zOgogICAgLSBzZWxlY3QKICAgIC0gYXJyYW5nZQogICAgLSBmaWx0ZXIKLSBwaXBpbmcKCkJ5IHRoZSBlbmQgb2YgdGhpcyBsZXNzb24sIHN0dWRlbnRzIGFyZSBleHBlY3RlZCB0byBiZSBhYmxlIHRvOgoKLSBzdGFydCB0byBzZWUgdGhlIHZhbHVlIG9mIHRoZSBgZHBseXJgIHBhY2thZ2UKLSBzdWJzZXQgYW5kIGFycmFuZ2UgZGF0YSB3aXRoIGBkcGx5cmAKLSB1c2UgcGlwaW5nIChgJT4lYCkgd2hlbiBpbXBsZW1lbnRpbmcgZnVuY3Rpb24gY2hhaW5zCgoKIyMgR2V0dGluZyBTdGFydGVkCgpUbyBjb21wbGV0ZSB0aGlzIGxlc3NvbiwgaXQgd291bGQgYmUgbmljZSBpZiB5b3UgYWxyZWFkeSBoYXZlOgoKLSBZb3VyIGBTVEFUNTQ1X3BhcnRpY2lwYXRpb25gIHJlcG9zaXRvcnkgY2xvbmVkIHRvIHlvdXIgbG9jYWwgbWFjaGluZSAoYWthIHlvdXIgY29tcHV0ZXIpLgoKIyMgUHJlYW1ibGUKCkkgaGF2ZSBzb21lIHRoaW5ncyB0byBzYXkgYWJvdXQ6CgotIGRwbHlyIGFuZCBpdHMgcHJlZGVjZXNzb3IsIHBseXIKLSB0aWJibGVzCi0gdGhlIHRpZHl2ZXJzZQoKIyMgRGVtb25zdHJhdGlvbgoKTGV0J3MgZm9sbG93IGFsb25nIHdpdGggdGhpcyBjaGVja2xpc3Q6CgoxLiAKbi4gS25pdCwgY29tbWl0LCBwdXNoLgoKTm90ZSB0aGF0IHlvdSBuZWVkIHRvIHVzZSB0aGUgYXNzaWdubWVudCBvcGVyYXRvciB0byBtYWtlIGFueSBjaGFuZ2VzLgoKCi0gdGhlIGJhc2UgUiB3YXkKLSBtZXRhcHJvZ3JhbW1pbmc6IHByb3MgYW5kIGNvbnMgaGVyZQotIHRoZSBkcGx5ciBhZHZhbnRhZ2U6IHNlbGYtZG9jdW1lbnRpbmcgY29kZTsgcHVyZSBmdW5jdGlvbnMKLSBsb2dpY2FsIG9wZXJhdG9ycyBpbiBS</div>
 
 
 
