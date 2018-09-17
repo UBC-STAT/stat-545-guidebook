@@ -1,167 +1,141 @@
 ---
-title: "STAT 545 Class Meeting 06"
+title: "STAT 545 Class Meeting 06: Introduction to plotting with `ggplot2`"
 output:
-    html_notebook:
+    html_document:
         toc: true
         theme: cerulean
         number_sections: true
-editor_options: 
-  chunk_output_type: inline
 ---
 
-# Learning Objectives
-
-
-
-```{r}
-suppressPackageStartupMessages(library(tidyverse))  # The tidyverse contains ggplot2!
+```{r, echo=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(gapminder))
-knitr::opts_chunk$set(fig.width=4, fig.height=3)
+knitr::opts_chunk$set(echo=FALSE, fig.width=5, fig.height=3, fig.align='center')
 ```
 
-- See [cm005](http://stat545.com/cm005_tidyverse-tibbles.html) for `dplyr` resources
-- Jenny's [`ggplot2` tutorial](https://github.com/jennybc/ggplot2-tutorial) and corresponding [slides](https://speakerdeck.com/jennybc/ggplot2-tutorial)
-- `ggplot2` [official website](http://ggplot2.org/) -- has other resources too.
-- [The R Graphics Cookbook](http://shop.oreilly.com/product/0636920023135.do), an excellent book by Winston Chang. 
-    - The [graphs section](http://www.cookbook-r.com/Graphs/) of Winston Chang's website Cookbook for R. The book listed above contains much more material, but the website is good too.
-- A [`ggplot2` tutorial](http://stcorp.nl/R_course/tutorial_ggplot2.html) by Paul Hiemstra, one of [many excellent R courses](http://stcorp.nl/R_course/) he offers.
-- [A quick introduction to ggplot2](http://inundata.org/2013/04/10/a-quick-introduction-to-ggplot2/) by Karthik Ram. Slides and code from a 2 hour talk/hands on presentation for ggplot2 beginners.
+## Announcements
 
-Why do I teach `ggplot2`? Shouldn't beginners see "base" graphics first? I think not. David Robinson explains it well in [Don't teach built-in plotting to beginners (teach ggplot2)](http://varianceexplained.org/r/teach_ggplot2_to_beginners/).
+- No break today.
 
-Zev Ross has a lovely blog post: [Beautiful plotting in R: A ggplot2 cheatsheet](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
+## Today's Lessons
 
+Today's lessons are:
 
-## Plotting in R
+- Orientation to statistical graphics
+- The grammar of graphics
+- Plotting with `x` and `y` aesthetics
+
+## Resources
+
+Concepts from today's class (and next class) are closely mirrored by the following resources, which introduce `ggplot2`, although are organized in different ways for each.
+
+The following are good walk-throughs that introduce `ggplot2`:
+
+- [r4ds: data-vis](http://r4ds.had.co.nz/data-visualisation.html) chapter.
+    - Perhaps the most compact "walk-through" style resource.
+- The [ggplot2 book](http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511), Chapter 2.
+    - A bit more comprehensive "walk-through" style resource.
+    - Section 1.2 introduces the actual grammar components. 
+
+Here are some other resources you might find useful:
+
+- [Jenny's ggplot2 tutorial](https://github.com/jennybc/ggplot2-tutorial).
+    - Has a lot of examples, but less dialogue.
+- [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/)
+    - Good as a reference if you want to learn how to make a specific type of plot.
+- [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+
+## Participation
+
+To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm006-exercise.Rmd) file, and adding it to your participation repo. 
+
+Let's get set up:
+
+1. To download the file the easy way, just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm006-exercise.html) of the file.
+2. Download the `.Rmd` version to your local participation repo.
+3. Open the `.Rmd` file, and change the output type to `html_document`, keeping the `.md` file, too.
+4. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
+    - You can still get participation marks by uploading the final files to GitHub.
+
+# Orientation to statistical graphics
+
+## Learning Objectives
+
+By the end of this lesson, students are expected to be able to:
+
+- Identify the plotting framework available in R
+- Have a sense of why we're learning the `ggplot2` tool
+- Have a sense of the importance of statistical graphics in communicating information
+
+## Discussion
 
 There are three main ways you can produce graphics in R. In order of inception, they are
 
 - base R
 - `lattice` (an R package)
 - `ggplot2` (an R package)
+    - Part of the `tidyverse`
 
-Base R is tedious and unwieldly. Lattice is a nice option, but I find it requires setting up a plot to then just override everything.
+Why `ggplot2`?
 
-`ggplot2` is a very powerful plotting system that...
-
-- creates graphics by adding layers.
-- is based off of the [grammar of graphics](http://www.springer.com/gp/book/9780387245447) (book by Leland Wilkinson) -- hence "gg".
-- comes with the `tidyverse` meta-package.
-- has a steep learning curve, but pays dividends.
+- once fluent, can make most plots up to publication quality standard very quickly.
+- has theoretical underpinning in the "layered grammar of graphics", which is described in [the book by Leland Wilkinson](http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=5507286 ).
 
 Stackoverflow was my main source of learning. Google what you're trying to do, and persevere. You can do it.
 
-## `ggplot2` framework
+[Jenny Bryan on statistical graphics](https://speakerdeck.com/jennybc/ggplot2-tutorial?slide=7):
 
-First, there are two ways you can make a plot wth `ggplot2`.
+- A picture is worth 1000 words
+- More philosophy on graphics
+- Comparing base R/lattice/ggplot2
+- The learning curve
 
-1. The `qplot` function: limited functionality. "quick plot"
-    - We won't be focussing on this. No training wheels!
-2. The `ggplot` function: full functionality.
+# The grammar of graphics
 
-Let's go through the basic syntax using the `gapminder` dataset.
+## Learning Objectives
 
-#### Basic scatterplot
+By the end of this lesson, students are expected to be able to:
 
-Let's try to make a basic scatterplot of `year` vs. `lifeExp`. 
+- Identify the seven components of the grammar of graphics underlying `ggplot2`
+- Have a sense of what the seven components are
 
-Quick ways:
-    - `plot(gapminder$year, gapminder$lifeExp)` -- base R
-    - `qplot(year, lifeExp, data=gapminder)` -- `ggplot2`'s "quick plot".
+## Discussion
 
-Let's just see the syntax right off the bat.
+Leland Wilkinson lays out the grammar of graphics [in his book](http://www.springer.com/gp/book/9780387245447).
 
-```{r}
-ggplot(gapminder, aes(x=year, y=lifeExp)) +
-    geom_point()
-```
+They define the "space of statistical graphics".
 
-The first line initiates the plot. The second one _adds a layer_ of points. 
+The grammar components, adapted to `ggplot2` (gg = grammar of graphics), where the __bold__ ones are necessary to specify for every plot:
 
-Let's see the components of each of these. 
-
-Two of the most important aspects of a ggplot are the __geometric objects__ and the __scales__ (part of the grammar of graphics). 
-
-- __geometric objects__ are things that you can draw to represent data.
-    - Examples: points, lines, polygons, bars, boxplots, histograms
-    - Indicated as new layers with `geom_*` where `*` is `point`, `line`, ...
-- __scales__ are aspects of a geometric object that correspond to a numeric scale.
-    - Examples:
-        - horizontal (x) position can indicate one variable.
-        - vertical (y) position can indicate another variable.
-        - size of a point
-        - shape of a point
-        - transparency
-    - __aesthetic mappings__ link variables to scales through the function `aes`.
-
-Every geometric object has _required_ and _optional_ aesthetic mappings. Check the documentation of the `geom_` to see what's required (in bold). Examples:
-    - _points_ require a horizontal (x) and vertical (y) position.
-    - line _segments_ require starting and ending x and y
-
-Let's revisit the above plot. The first line outputs an empty plot because there are no `geom`'s (geometric objects):
-
-```{r}
-p <- ggplot(gapminder, aes(x=year, y=lifeExp))
-p
-```
-
-(Yes, we can assign ggplots to variables in R)
-
-Contains:
-    1. the data frame, `gapminder`, and
-    2. an indication of which variables in the data frame go with which scale.
-    
-Next, we can add a _layer_ with the `+` symbol. We add the "point" geometry to "execute" the setup and display points, to obtain the original plot.
-
-This plot would benefit with some _alpha transparency_ -- another type of scale. Let's put in 25% transparency:
-
-```{r}
-p + geom_point(alpha=0.25)
-```
-
-Notes:
-    - This scale is _outside of an aesthetic mapping_, meaning that ggplot will not associate it with a variable.
-    - Scales can be indicated in the `geom` call. Scales within `aes` that appear in the `ggplot` function apply "globally" to the plot. 
-
-__Exercises__:
-
-1. Make a scatterplot of `gdpPercap` vs `lifeExp`. Store ~it~ the output of the `ggplot` function in a variable called `p2`.
-
-```{r}
-p2 <- ggplot(gapminder, 
-             aes(x=gdpPercap,
-                 y=lifeExp))
-p2 + geom_point()
-```
+- __Data__
+- __Aesthetic mappings__
+- __Geometric objects__
+- Scales
+- Statistical transformations
+- Coordinate system
+- Facet specification
 
 
-2. To `p2`, make the size of the points indicate the `year`, choose a level of alpha transparency that you're happy with, and make the points your favourite colour.
+# Plotting with `x` and `y` aesthetics
 
-```{r}
-p2 + geom_point(aes(size=year),
-                colour="blue", 
-                alpha=0.1)
-## This *doesn't* work: (why not?)
-p2 + geom_point(aes(size=year, colour="blue"), 
-                alpha=0.1)
-```
+## Learning Objectives
 
+This live-coding-based lesson focusses on: 
 
-3. To `p2`, colour the points by `continent`, ~~but this time~~ with year being represented by the size of the points, like we did in the previous exercise.
+- using the `x` and `y` aesthetic mappings, while
+- using different geometric objects to explore various plot "types".
 
-```{r}
-p2 + geom_point(aes(colour=continent, size=year))
-```
+By the end of this lesson, students are expected to be able to:
 
+- Create a variety of "plot types" using `ggplot2` under the following situations:
+    - two numeric variables
+    - one numeric variable
+    - one numeric, one categorical variable
 
-4. To `p2`, add another layer called `scale_x_log10()` _in addition to the original `geom_point()` layer_. Make a second plot by redoing the plot in (1), but replacing `gdpPercap` with `log10(gdpPercap)`. What do you notice?
+## Demonstration
 
-```{r}
-p2 + geom_point() + scale_x_log10()
-ggplot(gapminder, 
-             aes(x=log(gdpPercap),
-                 y=lifeExp)) + geom_point()
-```
+Note: We'll be jumping straight into the `ggplot()` function, instead of the more limited `qplot()` function.
+
+Follow along with the [`cm006-exercise.Rmd`](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm006-exercise.Rmd) file we downloaded earlier.
 
 
-----Stuff that used to be here has been moved to [cm007's notes and exercises](cm007-notes_and_exercises.html)----

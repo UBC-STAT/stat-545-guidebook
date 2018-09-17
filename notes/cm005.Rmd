@@ -24,7 +24,7 @@ editor_options:
     - I'll aim to take a brief break in class, but with a challenge exercise for those not needing the break.
 - We'll be more strict on your participation as of this week. This means your commit timestamp matters! Your commit(s) shouldn't be made too long after lecture. I'll aim to include this in our demonstrations.
 
-## Review
+## Review, and Looking Ahead
 
 We've done a lot so far! Let's recap/review. Here are the main concepts we've covered:
 
@@ -43,9 +43,9 @@ In short, we've covered the foundation of key _tools_ for data analysis. For the
 - Data computations
 - Plotting
 
-## Today's Topics
+## Today's Lessons
 
-Today we'll introduce the `dplyr` package. Specifically, we'll look at these three topics:
+Today we'll introduce the `dplyr` package. Specifically, we'll look at these three lessons:
 
 - Intro to `dplyr` syntax
 - The `dplyr` advantage
@@ -53,20 +53,25 @@ Today we'll introduce the `dplyr` package. Specifically, we'll look at these thr
 
 ## Resources
 
-All three of today's topics are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
+All three of today's lessons are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
 
 More detail can be found in the [r4ds: transform](http://r4ds.had.co.nz/transform.html) chapter, up until and including the `select()` section. Section 5.2 also elaborates on relational/comparison and logical operators in R
 
-A similar resource to the r4ds one above is the [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html), up until and including the `select()` section.
+Here are some supplementary resources:
+
+- A similar resource to the r4ds one above is the [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html), up until and including the `select()` section.
+- Want to read more about piping? See [r4ds: pipes](http://r4ds.had.co.nz/pipes.html).
 
 ## Participation
 
-To get participation points for today, we'll be filling out the [cm005-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm005-exercise.Rmd) file, and adding it to your participation repo:
+To get participation points for today, we'll be filling out the [cm005-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm005-exercise.Rmd) file, and adding it to your participation repo.
+
+Let's get set up:
 
 1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.html).
 2. Download the `.Rmd` version to your local participation repo.
     - You should have it cloned to your local machine (aka your computer) from last time.
-3. _Optional, by recommended_: Stage and commit the Rmd file (you can do this through RStudio).
+3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
     - You can still get participation marks by uploading the final files to GitHub.
 
 # Intro to `dplyr` syntax
