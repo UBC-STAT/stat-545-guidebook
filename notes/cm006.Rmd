@@ -1,7 +1,7 @@
 ---
 title: "STAT 545 Class Meeting 06: Introduction to plotting with `ggplot2`"
 output:
-    html_document:
+    html_notebook:
         toc: true
         theme: cerulean
         number_sections: true
