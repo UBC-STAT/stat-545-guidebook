@@ -68,7 +68,7 @@ To get participation points for today, we'll be filling out the [cm005-exercise.
 
 Let's get set up:
 
-1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.html).
+1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.nb.html).
 2. Download the `.Rmd` version to your local participation repo.
     - You should have it cloned to your local machine (aka your computer) from last time.
 3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
