@@ -53,6 +53,7 @@ Notice the "metaprogramming" again!
 7. The aesthetic mappings can be specified on the geom layer if you want, instead of the main `ggplot` call. Give it a try:
 
 
+8. Optional: git stage and commit
 
 __Uses of a scatterplot__: 
 
@@ -85,6 +86,7 @@ Let's build a histogram of life expectancy.
 
 
 
+5. Optional: git stage and commit
 
 __Uses of a histogram__: Explore the distribution of a single numeric variable.
 
@@ -114,6 +116,8 @@ Let's make _box plots_ of population for each continent. Note: y-axis is much be
 4. A violin plot is a kernel density on its side, made symmetric. Add that geom to `a`.
     - What's better here, boxplots or violin plots? Why?
 
+5. Optional: git stage and commit
+
 __Use of boxplot__: Visualize 1-dimensional distributions (of a single numeric variable).
 
 ## Jitter plots
@@ -140,6 +144,8 @@ Let's hold off on identifying the grammar.
 5. We can add multiple geom _layers_ to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa. 
 
 
+
+6. Optional: git stage and commit
 
 __Uses of jitterplot__: Visualize 1-dimensional distributions, AND get a sense of the sample size.
 
@@ -173,6 +179,8 @@ Let's make some time/line plot, starting with Canada's life expectancy over time
 
 
 
+5. Optional: git stage and commit
+
 __Uses of time/line plots__: Visualize trends of a numeric variable over time.
 
 ## Path plots
@@ -190,6 +198,7 @@ Let's see how Rwanda's life expectancy and GDP per capita have evolved over time
 3. Add the appropriate geom to `c`. In that geom, specify a property of the geom: `arrow=arrow()`. 
 
 
+4. Optional: git stage and commit
 
 __Uses of path plots__: The four "corners" of the plot usually indicate different qualities. This plot allows you to see how Rwanda (or some entity) evolves over these qualities.
 
@@ -214,5 +223,7 @@ How many countries are in each continent? Use the year 2007.
 3. Notice the y-axis. Oddly, `ggplot2` doesn't make it obvious how to change to proportion. Try adding a `y` aesthetic: `y=..count../sum(..count..)`.
 
 
+
+4. Optional: git stage, commit, and push!
 
 __Uses of bar plots__: Get a sense of relative quantities of categories, or see the probability mass function of a categorical random variable.
