@@ -1,0 +1,8 @@
+---
+title: "Peer Review 01"
+output: html_document
+---
+
+```{r, echo=FALSE}
+suppressMessages(knitr::kable(readr::read_csv("pr01.csv")))
+```
