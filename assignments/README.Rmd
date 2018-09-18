@@ -99,7 +99,11 @@ As part of this course you will be reviewing, commenting on, and marking other s
 
 ### How to submit a peer review:
 
-
+1. Find who you need to provide a peer review for in the provided table (link can be found in above table, or on canvas).
+2. Navigate to your reviewee's homework page, and explore their submission.
+3. Provide your review as an Issue on their repo before the deadline. 
+    - You might want to tag the reviewee, too, but not the teaching team. 
+4. On canvas, provide us with a link to both reviews you left.
 
 ### Additional resources:
 
