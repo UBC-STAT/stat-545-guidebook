@@ -1,6 +1,8 @@
 ---
 title: "Assignments and Peer Review"
-output: html_document
+output: 
+    html_document:
+        keep_md: true
 ---
 
 Assignments will be posted here as they are made available. 
