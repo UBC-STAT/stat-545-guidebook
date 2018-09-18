@@ -10,13 +10,13 @@ Here are the deadlines for assignments and peer reviews, with links (to appear a
 
 ### STAT 545
 
-| Assignment                    | Assignment Due Date | Peer Review Due Date |
-|-------------------------------|---------------------|----------------------|
-| [Homework 01](hw01/hw01.html) | September 18, 2018  | September 24, 2018   |
-| [Homework 02](hw02/hw02.html) | September 25, 2018  | October 01, 2018     |
-| Homework 03                   | October 02, 2018    | October 08, 2018     |
-| Homework 04                   | October 09, 2018    | October 15, 2018     |
-| Homework 05                   | October 19, 2018    | October 24, 2018     |
+| Assignment                    | Assignment Due Date | Peer Review Due Date                        |
+|-------------------------------|---------------------|---------------------------------------------|
+| [Homework 01](hw01/hw01.html) | September 18, 2018  | September 24, 2018 ([link](hw01/pr01.html)) |
+| [Homework 02](hw02/hw02.html) | September 25, 2018  | October 01, 2018                            |
+| Homework 03                   | October 02, 2018    | October 08, 2018                            |
+| Homework 04                   | October 09, 2018    | October 15, 2018                            |
+| Homework 05                   | October 19, 2018    | October 24, 2018                            |
 
 ### STAT 547
 
@@ -158,7 +158,7 @@ Peer Review
 
 As part of this course you will be reviewing, commenting on, and marking other students' assignments. This is a mandatory part of the course and you will be marked on your peer reviews (15% of overall course mark).
 
-### How to do peer review well:
+### How to give a good peer review:
 
 -   Give thoughtful, constructive and considerate comments.
 -   Be specific and concise.
@@ -175,6 +175,8 @@ As part of this course you will be reviewing, commenting on, and marking other s
     -   Your review is mean.
     -   You can't find anything to praise/learn and yet you don't offer any suggestions either.
 -   Each review you do will get you 1 point if "good" and 0 points if "needs more". Those will be totalled over all assignments to form your peer review mark.
+
+### How to submit a peer review:
 
 ### Additional resources:
 

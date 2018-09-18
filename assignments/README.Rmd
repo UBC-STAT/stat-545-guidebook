@@ -1,6 +1,6 @@
 ---
 title: "Assignments and Peer Review"
-output: github_document
+output: html_document
 ---
 
 Assignments will be posted here as they are made available. 
@@ -78,7 +78,7 @@ qplot(c(0,1,2,3), c(0, 50, 80, 100), geom=c("point", "line")) +
 
 As part of this course you will be reviewing, commenting on, and marking other students' assignments. This is a mandatory part of the course and you will be marked on your peer reviews (15% of overall course mark).
 
-### How to do peer review well: 
+### How to give a good peer review: 
 
 * Give thoughtful, constructive and considerate comments. 
 * Be specific and concise.
@@ -96,6 +96,10 @@ As part of this course you will be reviewing, commenting on, and marking other s
     - You can't find anything to praise/learn and yet you don't offer any suggestions either.
 
 * Each review you do will get you 1 point if "good" and 0 points if "needs more". Those will be totalled over all assignments to form your peer review mark.
+
+### How to submit a peer review:
+
+
 
 ### Additional resources:
 
