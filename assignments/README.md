@@ -1,12 +1,12 @@
 Assignments
-===========
+================
 
 Assignments will be posted here as they are made available.
 
 Schedule
 --------
 
-Here are the deadlines for assignments, with links (to appear after assignments are released). All submissions are due by 11:59pm.
+Here are the deadlines for assignments, with links (to appear after assignments are released). All submissions are due by 23:59.
 
 ### STAT 545
 
@@ -20,54 +20,13 @@ Here are the deadlines for assignments, with links (to appear after assignments 
 
 ### STAT 547
 
-<table style="width:69%;">
-<colgroup>
-<col width="6%" />
-<col width="25%" />
-<col width="27%" />
-<col width="9%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Link</th>
-<th align="center">Homework Due Date</th>
-<th align="center">Peer Review Due Date</th>
-<th align="center">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Homework 06</td>
-<td align="center">November 09, 2018</td>
-<td align="center">November 12, 2018</td>
-<td align="center">Choose your adventure!</td>
-</tr>
-<tr class="even">
-<td align="center">Homework 07</td>
-<td align="center">November 13, 2018</td>
-<td align="center">November 16, 2018</td>
-<td align="center">Automate a data analysis pipeline</td>
-</tr>
-<tr class="odd">
-<td align="center">Homework 08</td>
-<td align="center">November 20, 2018</td>
-<td align="center">November 23, 2018</td>
-<td align="center">Build a Shiny app</td>
-</tr>
-<tr class="even">
-<td align="center">Homework 09</td>
-<td align="center">November 27, 2018</td>
-<td align="center">December 05, 2018</td>
-<td align="center">Write an R package</td>
-</tr>
-<tr class="odd">
-<td align="center">Homework 10</td>
-<td align="center">December 06, 2018</td>
-<td align="center">December 12, 2018</td>
-<td align="center">Get data from the web</td>
-</tr>
-</tbody>
-</table>
+| Assignment  | Assignment Due Date |
+|-------------|---------------------|
+| Homework 06 | November 09, 2018   |
+| Homework 07 | November 13, 2018   |
+| Homework 08 | November 20, 2018   |
+| Homework 09 | November 27, 2018   |
+| Homework 10 | December 06, 2018   |
 
 Logistics
 ---------
@@ -77,10 +36,9 @@ Here is the general flow that will happen for the assignments.
 1.  When an assignment is released, I will post a GitHub Issue in [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal), tagging the teaching team and students (you should get an email notification, too, unless you've somehow disabled this, are not `Watch`ing the Discussion-Internal repo, or did not inform me of your GitHub username).
 2.  You will be prompted to create a repository through GitHub Classroom. Develop your homework responses on this repository, which will be contained in the [STAT545-UBC-students](https://github.com/STAT545-UBC-students) Organization.
 3.  Upon completion, it would be useful for you to submit a link to your URL in the UBC Canvas page. We will be putting your grades there.
-4.  You will be notified of two classmates to provide a peer review. Check out their submission, then write your feedback as an Issue in their repository before the deadline.
-    -   There is no need to tag the teaching team!
 
-## Assignment Evaluation
+Evaluation
+----------
 
 Components of each assignment will be graded on a 3-point scale. Here is the general rubric (*also consult any specific guidance given in the relevant assignment itself*).
 
@@ -152,3 +110,7 @@ Intermediate points are allowed, and follow a linear scale in between each point
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
+Peer Review
+-----------
+
+Information about the peer review can now be found on the [peer review page](peer_review.html)
