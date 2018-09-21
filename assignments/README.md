@@ -3,6 +3,8 @@ Assignments
 
 Assignments will be posted here as they are made available.
 
+(Information about the peer review can now be found on the [peer review page](peer_review.html).)
+
 Schedule
 --------
 
@@ -113,4 +115,4 @@ Intermediate points are allowed, and follow a linear scale in between each point
 Peer Review
 -----------
 
-Information about the peer review can now be found on the [peer review page](peer_review.html)
+Information about the peer review can now be found on the [peer review page](peer_review.html).

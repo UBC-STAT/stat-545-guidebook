@@ -5,6 +5,8 @@ output: github_document
 
 Assignments will be posted here as they are made available. 
 
+(Information about the peer review can now be found on the [peer review page](peer_review.html).)
+
 ## Schedule
 
 Here are the deadlines for assignments, with links (to appear after assignments are released). All submissions are due by 23:59.
@@ -76,4 +78,4 @@ qplot(c(0,1,2,3), c(0, 50, 80, 100), geom=c("point", "line")) +
 
 ## Peer Review
 
-Information about the peer review can now be found on the [peer review page](peer_review.html)
+Information about the peer review can now be found on the [peer review page](peer_review.html).
