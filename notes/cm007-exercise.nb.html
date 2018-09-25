@@ -178,64 +178,115 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <div id="beyond-the-x-and-y-aesthetics" class="section level1">
 <h1>Beyond the x and y aesthetics</h1>
-<p>For each geometric object, there is a set of aesthetic mappings that must be specified.</p>
+<p>Switch focus to exploring aesthetic mappings, instead of geoms.</p>
+<div id="shapes" class="section level2">
+<h2>Shapes</h2>
 <ul>
-<li>Heat map, being sure to fill in missing categories.</li>
+<li>Try a scatterplot of <code>gdpPercap</code> vs <code>pop</code> with a categorical variable (continent) as <code>shape</code>.</li>
+<li>As with all (?) aesthetics, we can also have them <em>not</em> as aesthetics!
+<ul>
+<li>Try some shapes: first as integer from 0-24, then as keyboard characters.</li>
+<li>What’s up with <code>pch</code>?</li>
+</ul></li>
 </ul>
-<p>OLD:</p>
+<p>List of shapes can be found <a href="https://ggplot2.tidyverse.org/reference/scale_shape.html">at the bottom of the <code>scale_shape</code> documentation</a>.</p>
+</div>
+<div id="colour" class="section level2">
+<h2>Colour</h2>
+<p>Make a scatterplot. Then:</p>
+<ul>
+<li>Try colour as categorical variable.</li>
+<li>Try <code>colour</code> and <code>color</code>.</li>
+<li>Try colour as numeric variable.
+<ul>
+<li>Try <code>trans=&quot;log10&quot;</code> for log scale.</li>
+</ul></li>
+</ul>
+<p>Make a line plot of <code>gdpPercap</code> over time for all countries. Colour by <code>lifeExp &gt; 60</code> (remember that <code>lifeExp</code> looks bimodal?)</p>
+<p>Try adding colour to a histogram. How is this different?</p>
+</div>
+<div id="facetting" class="section level2">
+<h2>Facetting</h2>
+<p>Make histograms of <code>gdpPercap</code> for each continent. Try the <code>scales</code> and <code>ncol</code> arguments.</p>
+<p>Remove Oceania. Add another variable: <code>lifeExp &gt; 60</code>.</p>
+</div>
+<div id="bubble-plots" class="section level2">
+<h2>Bubble Plots</h2>
+<ul>
+<li>Add a <code>size</code> aesthetic to a scatterplot. What about <code>cex</code>?</li>
+<li>Try adding <code>scale_radius()</code> and <code>scale_size_area()</code>. What’s better?</li>
+<li>Use <code>shape=21</code> to distinguish between <code>fill</code> (interior) and <code>colour</code> (exterior).</li>
+</ul>
+</div>
+<div id="complete-plot" class="section level2">
+<h2>“Complete” plot</h2>
+<p>Let’s try plotting much of the data.</p>
+<ul>
+<li>gdpPercap vs lifeExp with pop bubbles</li>
+<li>facet by year</li>
+<li>colour by continent</li>
+</ul>
+</div>
+</div>
+<div id="continue-from-last-time-geom-exploration-with-x-and-y-aesthetics" class="section level1">
+<h1>Continue from last time (geom exploration with <code>x</code> and <code>y</code> aesthetics)</h1>
+<div id="path-plots" class="section level2">
+<h2>Path plots</h2>
+<p>Let’s see how Rwanda’s life expectancy and GDP per capita have evolved over time, using a path plot.</p>
+<ul>
+<li>Try <code>geom_line()</code>. Try <code>geom_point()</code>.</li>
+<li>Add <code>arrow=arrow()</code> option.</li>
+<li>Add <code>geom_text</code>, with year label.</li>
+</ul>
+</div>
+<div id="two-categorical-variables" class="section level2">
+<h2>Two categorical variables</h2>
+<p>Try <code>cyl</code> (number of cylinders) ~ <code>am</code> (transmission) in the <code>mtcars</code> data frame.</p>
+<ul>
+<li>Scatterplot? Jitterplot? No.</li>
+<li><code>geom_count()</code>.</li>
+<li><code>geom_bin2d()</code>. Compare with <code>geom_tile()</code> with <code>fill</code> aes.</li>
+</ul>
+</div>
+<div id="overplotting" class="section level2">
+<h2>Overplotting</h2>
+<p>Try a scatterplot with:</p>
+<ul>
+<li>Alpha transparency.</li>
+<li><code>geom_hex()</code></li>
+<li><code>geom_density2d()</code></li>
+<li><code>geom_smooth()</code></li>
+</ul>
+</div>
+<div id="bar-plots" class="section level2">
+<h2>Bar plots</h2>
+<p>How many countries are in each continent? Use the year 2007.</p>
 <ol style="list-style-type: decimal">
-<li>Make a scatterplot of <code>gdpPercap</code> vs <code>lifeExp</code>. Store <sub>it</sub> the output of the <code>ggplot</code> function in a variable called <code>p2</code>.</li>
+<li><p>After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable <code>d</code>.</p></li>
+<li><p>Notice the y-axis. Oddly, <code>ggplot2</code> doesn’t make it obvious how to change to proportion. Try adding a <code>y</code> aesthetic: <code>y=..count../sum(..count..)</code>.</p></li>
 </ol>
+<p><strong>Uses of bar plots</strong>: Get a sense of relative quantities of categories, or see the probability mass function of a categorical random variable.</p>
+</div>
+<div id="polar-coordinates" class="section level2">
+<h2>Polar coordinates</h2>
+<ul>
+<li>Add <code>coord_polar()</code> to a scatterplot.</li>
+</ul>
+</div>
+</div>
+<div id="want-more-practice" class="section level1">
+<h1>Want more practice?</h1>
+<p>If you’d like some practice, give these exercises a try</p>
+<p><strong>Exercise 1</strong>: Make a plot of <code>year</code> (x) vs <code>lifeExp</code> (y), with points coloured by continent. Then, to that same plot, fit a straight regression line to each continent, without the error bars. If you can, try piping the data frame into the <code>ggplot</code> function.</p>
+<p><strong>Exercise 2</strong>: Repeat Exercise 1, but switch the <em>regression line</em> and <em>geom_point</em> layers. How is this plot different from that of Exercise 1?</p>
+<p><strong>Exercise 3</strong>: Omit the <code>geom_point</code> layer from either of the above two plots (it doesn’t matter which). Does the line still show up, even though the data aren’t shown? Why or why not?</p>
+<p><strong>Exercise 4</strong>: Make a plot of <code>year</code> (x) vs <code>lifeExp</code> (y), facetted by continent. Then, fit a smoother through the data for each continent, without the error bars. Choose a span that you feel is appropriate.</p>
+<p><strong>Exercise 5</strong>: Plot the population over time (year) using lines, so that each country has its own line. Colour by <code>gdpPercap</code>. Add alpha transparency to your liking.</p>
+<p><strong>Exercise 6</strong>: Add points to the plot in Exercise 5.</p>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDIgPC0gZ2dwbG90KGdhcG1pbmRlciwgXG4gICAgICAgICAgICAgYWVzKHg9Z2RwUGVyY2FwLFxuICAgICAgICAgICAgICAgICB5PWxpZmVFeHApKVxucDIgKyBnZW9tX3BvaW50KClcbmBgYCJ9 -->
-<pre class="r"><code>p2 &lt;- ggplot(gapminder, 
-             aes(x=gdpPercap,
-                 y=lifeExp))
-p2 + geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>To <code>p2</code>, make the size of the points indicate the <code>year</code>, choose a level of alpha transparency that you’re happy with, and make the points your favourite colour.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDIgKyBnZW9tX3BvaW50KGFlcyhzaXplPXllYXIpLFxuICAgICAgICAgICAgICAgIGNvbG91cj1cImJsdWVcIiwgXG4gICAgICAgICAgICAgICAgYWxwaGE9MC4xKVxuIyMgVGhpcyAqZG9lc24ndCogd29yazogKHdoeSBub3Q/KVxucDIgKyBnZW9tX3BvaW50KGFlcyhzaXplPXllYXIsIGNvbG91cj1cImJsdWVcIiksIFxuICAgICAgICAgICAgICAgIGFscGhhPTAuMSlcbmBgYCJ9 -->
-<pre class="r"><code>p2 + geom_point(aes(size=year),
-                colour=&quot;blue&quot;, 
-                alpha=0.1)
-## This *doesn't* work: (why not?)
-p2 + geom_point(aes(size=year, colour=&quot;blue&quot;), 
-                alpha=0.1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>To <code>p2</code>, colour the points by <code>continent</code>, <del>but this time</del> with year being represented by the size of the points, like we did in the previous exercise.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDIgKyBnZW9tX3BvaW50KGFlcyhjb2xvdXI9Y29udGluZW50LCBzaXplPXllYXIpKVxuYGBgIn0= -->
-<pre class="r"><code>p2 + geom_point(aes(colour=continent, size=year))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: decimal">
-<li>To <code>p2</code>, add another layer called <code>scale_x_log10()</code> <em>in addition to the original <code>geom_point()</code> layer</em>. Make a second plot by redoing the plot in (1), but replacing <code>gdpPercap</code> with <code>log10(gdpPercap)</code>. What do you notice?</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucDIgKyBnZW9tX3BvaW50KCkgKyBzY2FsZV94X2xvZzEwKClcbmdncGxvdChnYXBtaW5kZXIsIFxuICAgICAgICAgICAgIGFlcyh4PWxvZyhnZHBQZXJjYXApLFxuICAgICAgICAgICAgICAgICB5PWxpZmVFeHApKSArIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
-<pre class="r"><code>p2 + geom_point() + scale_x_log10()
-ggplot(gapminder, 
-             aes(x=log(gdpPercap),
-                 y=lifeExp)) + geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiY20wMDcgRXhlcmNpc2VzOiBFeHBsb3JpbmcgQWVzdGhldGljIE1hcHBpbmdzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgoKIyBCZXlvbmQgdGhlIHggYW5kIHkgYWVzdGhldGljcwoKRm9yIGVhY2ggZ2VvbWV0cmljIG9iamVjdCwgdGhlcmUgaXMgYSBzZXQgb2YgYWVzdGhldGljIG1hcHBpbmdzIHRoYXQgbXVzdCBiZSBzcGVjaWZpZWQuIAoKLSBIZWF0IG1hcCwgYmVpbmcgc3VyZSB0byBmaWxsIGluIG1pc3NpbmcgY2F0ZWdvcmllcy4KCk9MRDoKCjEuIE1ha2UgYSBzY2F0dGVycGxvdCBvZiBgZ2RwUGVyY2FwYCB2cyBgbGlmZUV4cGAuIFN0b3JlIH5pdH4gdGhlIG91dHB1dCBvZiB0aGUgYGdncGxvdGAgZnVuY3Rpb24gaW4gYSB2YXJpYWJsZSBjYWxsZWQgYHAyYC4KCmBgYHtyfQpwMiA8LSBnZ3Bsb3QoZ2FwbWluZGVyLCAKICAgICAgICAgICAgIGFlcyh4PWdkcFBlcmNhcCwKICAgICAgICAgICAgICAgICB5PWxpZmVFeHApKQpwMiArIGdlb21fcG9pbnQoKQpgYGAKCgoyLiBUbyBgcDJgLCBtYWtlIHRoZSBzaXplIG9mIHRoZSBwb2ludHMgaW5kaWNhdGUgdGhlIGB5ZWFyYCwgY2hvb3NlIGEgbGV2ZWwgb2YgYWxwaGEgdHJhbnNwYXJlbmN5IHRoYXQgeW91J3JlIGhhcHB5IHdpdGgsIGFuZCBtYWtlIHRoZSBwb2ludHMgeW91ciBmYXZvdXJpdGUgY29sb3VyLgoKYGBge3J9CnAyICsgZ2VvbV9wb2ludChhZXMoc2l6ZT15ZWFyKSwKICAgICAgICAgICAgICAgIGNvbG91cj0iYmx1ZSIsIAogICAgICAgICAgICAgICAgYWxwaGE9MC4xKQojIyBUaGlzICpkb2Vzbid0KiB3b3JrOiAod2h5IG5vdD8pCnAyICsgZ2VvbV9wb2ludChhZXMoc2l6ZT15ZWFyLCBjb2xvdXI9ImJsdWUiKSwgCiAgICAgICAgICAgICAgICBhbHBoYT0wLjEpCmBgYAoKCjMuIFRvIGBwMmAsIGNvbG91ciB0aGUgcG9pbnRzIGJ5IGBjb250aW5lbnRgLCB+fmJ1dCB0aGlzIHRpbWV+fiB3aXRoIHllYXIgYmVpbmcgcmVwcmVzZW50ZWQgYnkgdGhlIHNpemUgb2YgdGhlIHBvaW50cywgbGlrZSB3ZSBkaWQgaW4gdGhlIHByZXZpb3VzIGV4ZXJjaXNlLgoKYGBge3J9CnAyICsgZ2VvbV9wb2ludChhZXMoY29sb3VyPWNvbnRpbmVudCwgc2l6ZT15ZWFyKSkKYGBgCgoKNC4gVG8gYHAyYCwgYWRkIGFub3RoZXIgbGF5ZXIgY2FsbGVkIGBzY2FsZV94X2xvZzEwKClgIF9pbiBhZGRpdGlvbiB0byB0aGUgb3JpZ2luYWwgYGdlb21fcG9pbnQoKWAgbGF5ZXJfLiBNYWtlIGEgc2Vjb25kIHBsb3QgYnkgcmVkb2luZyB0aGUgcGxvdCBpbiAoMSksIGJ1dCByZXBsYWNpbmcgYGdkcFBlcmNhcGAgd2l0aCBgbG9nMTAoZ2RwUGVyY2FwKWAuIFdoYXQgZG8geW91IG5vdGljZT8KCmBgYHtyfQpwMiArIGdlb21fcG9pbnQoKSArIHNjYWxlX3hfbG9nMTAoKQpnZ3Bsb3QoZ2FwbWluZGVyLCAKICAgICAgICAgICAgIGFlcyh4PWxvZyhnZHBQZXJjYXApLAogICAgICAgICAgICAgICAgIHk9bGlmZUV4cCkpICsgZ2VvbV9wb2ludCgpCmBgYA==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiY20wMDcgRXhlcmNpc2VzOiBFeHBsb3JpbmcgQWVzdGhldGljIE1hcHBpbmdzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgoKCiMgQmV5b25kIHRoZSB4IGFuZCB5IGFlc3RoZXRpY3MKClN3aXRjaCBmb2N1cyB0byBleHBsb3JpbmcgYWVzdGhldGljIG1hcHBpbmdzLCBpbnN0ZWFkIG9mIGdlb21zLiAKCiMjIFNoYXBlcwoKLSBUcnkgYSBzY2F0dGVycGxvdCBvZiBgZ2RwUGVyY2FwYCB2cyBgcG9wYCB3aXRoIGEgY2F0ZWdvcmljYWwgdmFyaWFibGUgKGNvbnRpbmVudCkgYXMgYHNoYXBlYC4KLSBBcyB3aXRoIGFsbCAoPykgYWVzdGhldGljcywgd2UgY2FuIGFsc28gaGF2ZSB0aGVtIF9ub3RfIGFzIGFlc3RoZXRpY3MhCiAgICAtIFRyeSBzb21lIHNoYXBlczogZmlyc3QgYXMgaW50ZWdlciBmcm9tIDAtMjQsIHRoZW4gYXMga2V5Ym9hcmQgY2hhcmFjdGVycy4KICAgIC0gV2hhdCdzIHVwIHdpdGggYHBjaGA/CgpMaXN0IG9mIHNoYXBlcyBjYW4gYmUgZm91bmQgW2F0IHRoZSBib3R0b20gb2YgdGhlIGBzY2FsZV9zaGFwZWAgZG9jdW1lbnRhdGlvbl0oaHR0cHM6Ly9nZ3Bsb3QyLnRpZHl2ZXJzZS5vcmcvcmVmZXJlbmNlL3NjYWxlX3NoYXBlLmh0bWwpLgoKIyMgQ29sb3VyCgpNYWtlIGEgc2NhdHRlcnBsb3QuIFRoZW46CgotIFRyeSBjb2xvdXIgYXMgY2F0ZWdvcmljYWwgdmFyaWFibGUuCi0gVHJ5IGBjb2xvdXJgIGFuZCBgY29sb3JgLiAKLSBUcnkgY29sb3VyIGFzIG51bWVyaWMgdmFyaWFibGUuCiAgICAtIFRyeSBgdHJhbnM9ImxvZzEwImAgZm9yIGxvZyBzY2FsZS4KCgpNYWtlIGEgbGluZSBwbG90IG9mIGBnZHBQZXJjYXBgIG92ZXIgdGltZSBmb3IgYWxsIGNvdW50cmllcy4gQ29sb3VyIGJ5IGBsaWZlRXhwID4gNjBgIChyZW1lbWJlciB0aGF0IGBsaWZlRXhwYCBsb29rcyBiaW1vZGFsPykKCgpUcnkgYWRkaW5nIGNvbG91ciB0byBhIGhpc3RvZ3JhbS4gSG93IGlzIHRoaXMgZGlmZmVyZW50PwoKIyMgRmFjZXR0aW5nCgpNYWtlIGhpc3RvZ3JhbXMgb2YgYGdkcFBlcmNhcGAgZm9yIGVhY2ggY29udGluZW50LiBUcnkgdGhlIGBzY2FsZXNgIGFuZCBgbmNvbGAgYXJndW1lbnRzLiAKClJlbW92ZSBPY2VhbmlhLiBBZGQgYW5vdGhlciB2YXJpYWJsZTogYGxpZmVFeHAgPiA2MGAuIAoKIyMgQnViYmxlIFBsb3RzCgotIEFkZCBhIGBzaXplYCBhZXN0aGV0aWMgdG8gYSBzY2F0dGVycGxvdC4gV2hhdCBhYm91dCBgY2V4YD8KLSBUcnkgYWRkaW5nIGBzY2FsZV9yYWRpdXMoKWAgYW5kIGBzY2FsZV9zaXplX2FyZWEoKWAuIFdoYXQncyBiZXR0ZXI/Ci0gVXNlIGBzaGFwZT0yMWAgdG8gZGlzdGluZ3Vpc2ggYmV0d2VlbiBgZmlsbGAgKGludGVyaW9yKSBhbmQgYGNvbG91cmAgKGV4dGVyaW9yKS4KCiMjICJDb21wbGV0ZSIgcGxvdAoKTGV0J3MgdHJ5IHBsb3R0aW5nIG11Y2ggb2YgdGhlIGRhdGEuCgotIGdkcFBlcmNhcCB2cyBsaWZlRXhwIHdpdGggcG9wIGJ1YmJsZXMKLSBmYWNldCBieSB5ZWFyCi0gY29sb3VyIGJ5IGNvbnRpbmVudAoKCgojIENvbnRpbnVlIGZyb20gbGFzdCB0aW1lIChnZW9tIGV4cGxvcmF0aW9uIHdpdGggYHhgIGFuZCBgeWAgYWVzdGhldGljcykKCiMjIFBhdGggcGxvdHMKCkxldCdzIHNlZSBob3cgUndhbmRhJ3MgbGlmZSBleHBlY3RhbmN5IGFuZCBHRFAgcGVyIGNhcGl0YSBoYXZlIGV2b2x2ZWQgb3ZlciB0aW1lLCB1c2luZyBhIHBhdGggcGxvdC4KCi0gVHJ5IGBnZW9tX2xpbmUoKWAuIFRyeSBgZ2VvbV9wb2ludCgpYC4KLSBBZGQgYGFycm93PWFycm93KClgIG9wdGlvbi4KLSBBZGQgYGdlb21fdGV4dGAsIHdpdGggeWVhciBsYWJlbC4gCgoKIyMgVHdvIGNhdGVnb3JpY2FsIHZhcmlhYmxlcwoKVHJ5IGBjeWxgIChudW1iZXIgb2YgY3lsaW5kZXJzKSB+IGBhbWAgKHRyYW5zbWlzc2lvbikgaW4gdGhlIGBtdGNhcnNgIGRhdGEgZnJhbWUuCgotIFNjYXR0ZXJwbG90PyBKaXR0ZXJwbG90PyBOby4KLSBgZ2VvbV9jb3VudCgpYC4KLSBgZ2VvbV9iaW4yZCgpYC4gQ29tcGFyZSB3aXRoIGBnZW9tX3RpbGUoKWAgd2l0aCBgZmlsbGAgYWVzLgoKIyMgT3ZlcnBsb3R0aW5nCgpUcnkgYSBzY2F0dGVycGxvdCB3aXRoOgoKLSBBbHBoYSB0cmFuc3BhcmVuY3kuCi0gYGdlb21faGV4KClgCi0gYGdlb21fZGVuc2l0eTJkKClgCi0gYGdlb21fc21vb3RoKClgCgoKIyMgQmFyIHBsb3RzCgpIb3cgbWFueSBjb3VudHJpZXMgYXJlIGluIGVhY2ggY29udGluZW50PyBVc2UgdGhlIHllYXIgMjAwNy4KCjEuIEFmdGVyIGZpbHRlcmluZyB0aGUgZ2FwbWluZGVyIGRhdGEgdG8gMjAwNywgbWFrZSBhIGJhciBjaGFydCBvZiB0aGUgbnVtYmVyIG9mIGNvdW50cmllcyBpbiBlYWNoIGNvbnRpbmVudC4gU3RvcmUgZXZlcnl0aGluZyBleGNlcHQgdGhlIGdlb20gaW4gdGhlIHZhcmlhYmxlIGBkYC4KCgoKMi4gTm90aWNlIHRoZSB5LWF4aXMuIE9kZGx5LCBgZ2dwbG90MmAgZG9lc24ndCBtYWtlIGl0IG9idmlvdXMgaG93IHRvIGNoYW5nZSB0byBwcm9wb3J0aW9uLiBUcnkgYWRkaW5nIGEgYHlgIGFlc3RoZXRpYzogYHk9Li5jb3VudC4uL3N1bSguLmNvdW50Li4pYC4KCgoKX19Vc2VzIG9mIGJhciBwbG90c19fOiBHZXQgYSBzZW5zZSBvZiByZWxhdGl2ZSBxdWFudGl0aWVzIG9mIGNhdGVnb3JpZXMsIG9yIHNlZSB0aGUgcHJvYmFiaWxpdHkgbWFzcyBmdW5jdGlvbiBvZiBhIGNhdGVnb3JpY2FsIHJhbmRvbSB2YXJpYWJsZS4KCgoKIyMgUG9sYXIgY29vcmRpbmF0ZXMKCi0gQWRkIGBjb29yZF9wb2xhcigpYCB0byBhIHNjYXR0ZXJwbG90LgoKCiMgV2FudCBtb3JlIHByYWN0aWNlPwoKSWYgeW91J2QgbGlrZSBzb21lIHByYWN0aWNlLCBnaXZlIHRoZXNlIGV4ZXJjaXNlcyBhIHRyeQoKX19FeGVyY2lzZSAxX186IE1ha2UgYSBwbG90IG9mIGB5ZWFyYCAoeCkgdnMgYGxpZmVFeHBgICh5KSwgd2l0aCBwb2ludHMgY29sb3VyZWQgYnkgY29udGluZW50LiBUaGVuLCB0byB0aGF0IHNhbWUgcGxvdCwgZml0IGEgc3RyYWlnaHQgcmVncmVzc2lvbiBsaW5lIHRvIGVhY2ggY29udGluZW50LCB3aXRob3V0IHRoZSBlcnJvciBiYXJzLiBJZiB5b3UgY2FuLCB0cnkgcGlwaW5nIHRoZSBkYXRhIGZyYW1lIGludG8gdGhlIGBnZ3Bsb3RgIGZ1bmN0aW9uLgoKX19FeGVyY2lzZSAyX186IFJlcGVhdCBFeGVyY2lzZSAxLCBidXQgc3dpdGNoIHRoZSBfcmVncmVzc2lvbiBsaW5lXyBhbmQgX2dlb21cX3BvaW50XyBsYXllcnMuIEhvdyBpcyB0aGlzIHBsb3QgZGlmZmVyZW50IGZyb20gdGhhdCBvZiBFeGVyY2lzZSAxPwoKX19FeGVyY2lzZSAzX186IE9taXQgdGhlIGBnZW9tX3BvaW50YCBsYXllciBmcm9tIGVpdGhlciBvZiB0aGUgYWJvdmUgdHdvIHBsb3RzIChpdCBkb2Vzbid0IG1hdHRlciB3aGljaCkuIERvZXMgdGhlIGxpbmUgc3RpbGwgc2hvdyB1cCwgZXZlbiB0aG91Z2ggdGhlIGRhdGEgYXJlbid0IHNob3duPyBXaHkgb3Igd2h5IG5vdD8KCl9fRXhlcmNpc2UgNF9fOiBNYWtlIGEgcGxvdCBvZiBgeWVhcmAgKHgpIHZzIGBsaWZlRXhwYCAoeSksIGZhY2V0dGVkIGJ5IGNvbnRpbmVudC4gVGhlbiwgZml0IGEgc21vb3RoZXIgdGhyb3VnaCB0aGUgZGF0YSBmb3IgZWFjaCBjb250aW5lbnQsIHdpdGhvdXQgdGhlIGVycm9yIGJhcnMuIENob29zZSBhIHNwYW4gdGhhdCB5b3UgZmVlbCBpcyBhcHByb3ByaWF0ZS4KCl9fRXhlcmNpc2UgNV9fOiBQbG90IHRoZSBwb3B1bGF0aW9uIG92ZXIgdGltZSAoeWVhcikgdXNpbmcgbGluZXMsIHNvIHRoYXQgZWFjaCBjb3VudHJ5IGhhcyBpdHMgb3duIGxpbmUuIENvbG91ciBieSBgZ2RwUGVyY2FwYC4gQWRkIGFscGhhIHRyYW5zcGFyZW5jeSB0byB5b3VyIGxpa2luZy4gCgpfX0V4ZXJjaXNlIDZfXzogQWRkIHBvaW50cyB0byB0aGUgcGxvdCBpbiBFeGVyY2lzZSA1Lg==</div>
 
 
 
