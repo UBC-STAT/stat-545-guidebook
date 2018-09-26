@@ -11,3 +11,4 @@ editor_options:
 
 # Learning Objectives
 
+Be sure to also go over the concept of regression at a high level. Some people were confused as to what the smoother/regression line meant when I mentioned it in the ggplot2 tutorial.
