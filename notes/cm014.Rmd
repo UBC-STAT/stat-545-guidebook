@@ -12,3 +12,192 @@ editor_options:
 # Learning Objectives
 
 Be sure to also go over the concept of regression at a high level. Some people were confused as to what the smoother/regression line meant when I mentioned it in the ggplot2 tutorial.
+
+## OLD NOTES:
+
+
+
+## 1. Statistical Modelling in R
+
+We'll look at typical data analyses using R.
+
+**Note**: 
+
+- You aren't expected to apply this is in your assignments! It's new to the course because we're ahead of schedule.
+- It's OK if you've never heard of these statistical analyses. The point is that many model fitting procedures in R are similar.
+
+Many statistical analyses in R follow a similar syntax.
+
+### 1.1 Linear Regression
+
+#### Model Fitting
+
+You can run a linear regression in R with the `lm` function. Syntax:
+
+```
+lm(y ~ x1 + x2 + ... + xp, data=your_data_frame)
+```
+
+The first argument is a "formula" object in R. It's typically used in modelling to separate Y and X values. (In fact, you've seen this already in `ggplot`'s  `facet_wrap` and `facet_grid`)
+
+Let's fit the regression curve that we see in this plot, using `lm`:
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+    geom_point() +
+    geom_smooth(method="lm") +
+    scale_x_log10()
+```
+
+Here's the code:
+
+```{r}
+fit1 <- lm(lifeExp ~ log(gdpPercap), data=gapminder)
+```
+
+What does this `fit1` object look like?
+
+```{r}
+fit1
+```
+
+That's odd... what kind of R object is that??
+
+```{r}
+typeof(fit1)
+```
+
+It's a list, but R isn't presenting it that way. It just looks like a bunch of text, but it's not. Let's use the `lapply` function to uncover its true nature -- a list.
+
+- NOTE: 
+    - `lapply` loops over each component of a vector or list (_first argument_), applies a function to it (that you specify in the _second argument_), and outputs the function output in a list.
+    - Let's do this for an `lm` fit to `head(gapminder)`, so that the output doesn't take up a lot of space. 
+
+```{r}
+fit1_small <- lm(lifeExp ~ log(gdpPercap), data=head(gapminder))
+lapply(fit1_small, identity) 
+```
+
+Why isn't R printing out the list, then? Because it's a special type of list -- it's of class `"lm"`, something that the makers of the `lm` function decided. Whenever R encounters this object, it also has a special way of printing it to screen. 
+
+This is the idea of the "object oriented" part of R -- something covered more in STAT 547 in the "R packages" section. 
+
+#### Making predictions from the model
+
+The `predict` function works on `"lm"` objects to make predictions. If you don't specify new data, it will make predictions using the existing X values. Let's look at the first six:
+
+```{r}
+predict(fit1) %>% head
+```
+
+How about plotted against the original X values? (Which was log gdpPercap)
+
+```{r}
+qplot(log(gapminder$gdpPercap), predict(fit1))
+```
+
+For fun... let's put this overtop of the scatterplot:
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+    geom_point(alpha=0.1) +
+    geom_point(y=predict(fit1), colour="red") +
+    scale_x_log10()
+```
+
+You can predict with new data, too, as long as the data frame you enter has the same column names as your X values. 
+
+```{r}
+(my_newdata <- data.frame(gdpPercap=c(100, 547, 289)))
+predict(fit1, newdata=my_newdata)
+predict(fit1, newdata=filter(gapminder, country=="Canada"))
+```
+
+
+#### Extracting model characteristics
+
+We can extract a bunch of things from the `lm` output.
+
+- Regression coefficients? They're stored in the `$coefficients` part of the list. Or, use the `coeff` function.
+
+```{r}
+fit1$coefficients
+coef(fit1)
+```
+
+- Residuals? They're stored in the `$residuals` part of the list. Or, use the `resid` function. (Let's only display the first six... but plot all of them!)
+
+```{r}
+fit1$residuals %>% head
+resid(fit1) %>% head
+qplot(log(gapminder$gdpPercap), resid(fit1)) +
+    geom_hline(yintercept=0,
+               linetype="dashed")
+```
+
+`lm` is kind of annoying in that not everything you might want is there. You can access more things using the `summary` function. What's printed to screen after `summary`, though, _is_ quite nice!
+
+```{r}
+(summ_fit1 <- summary(fit1))
+```
+
+You can see all sorts of things, like p-values, $R^2$ (and adjusted $R^2$ values), and standard errors. 
+
+As before, this looks nice and all... but what the heck is this new object? Again, it's a list. Let's see its components (again, with the smaller fit, so that we don't take over all the space on the screen).
+
+```{r}
+summ_fit1_small <- summary(fit1_small)
+typeof(summ_fit1_small)
+lapply(summ_fit1_small, identity)  # Pry it open!!
+```
+
+There we have it. Now, what would you like to extract?:
+
+- R-squared? R-squared adjusted? Okay:
+
+```{r}
+summ_fit1$r.squared
+summ_fit1$adj.r.squared
+```
+
+- Estimated standard devaition of the random error term? Okay:
+
+```{r}
+summ_fit1$sigma
+```
+
+Where can we find the documentation for the components of _this_ list, though, if it's not in the documentation for `lm`? Look at the documentation of `summary.lm`. 
+
+But wait! Why not just look at the documentation for `summary`? It's because `summary` is a generic function, and depends on the _class_ of object it's being applied to. If it's of class `"lm"`, then `summary.lm` is what's actually secretly run. Running `summary` on an object of class `"glm"`? R will secretly run `summary.glm` instead. 
+
+PS: The `broom` package makes a lot of this easier and less cryptic. We won't go over it here. Check out [its vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html).
+
+### 1.2 Generalized Linear Models (like Logistic Regression)
+
+We won't go over this in as much detail, because it's quite similar to `lm`. But if you want to run a Generalized Linear Model (GLM) -- such as logistic/binomial regression, or Poission regression -- just use the `glm` function.
+
+Probably the biggest noteworthy difference is the `family` argument, specifying what type of regression you want to do. Syntax:
+
+```
+## Poisson regression:
+glm(y ~ x1 + x2 + ... + xp, family=poisson, data=your_data_frame)
+## Logistic (aka Binomial) regression:
+glm(y ~ x1 + x2 + ... + xp, family=binomial, data=your_data_frame)
+```
+
+Its output looks similar to `lm`. It's also a list disguised as text. It also shows more when you use the `summary` function. It also works with the `predict` function. It also becomes tidier when used in conjunction with the `broom` package.
+
+### 1.3 Others...
+
+Here are some other packages/functions you might find useful to fit models:
+
+- (Generalized) Mixed Effects Models
+    - Two R packages are available: `lme4` and `nlme`. 
+        - Check out [this](http://stats.stackexchange.com/questions/5344/how-to-choose-nlme-or-lme4-r-library-for-mixed-effects-models) discussion on Cross Validated for a comparison of the two packages.
+    - I've found the function `glmer` in the `lme4` package to be fruitful.
+- Kernel smoothing (i.e. fitting a "smoother"): check out the `loess` function.
+- Generalized Additive Models: The `gam` function in _either_ the `gam` package or `mgcv` package.
+- Robust linear regression: The `rlm` function in the `MASS` package is your friend.
+- Regularized regression (GLM) (lasso, elastic net, or ridge regression): Use the `glmnet` function in the `glmnet` package.
+    - PS: I _highly_ recommend this if you have more predictors/covariates/features than you know what to do with... this will weed out the unnecessary ones, _and_ produce a model with good prediction accuracy at the same time.
+

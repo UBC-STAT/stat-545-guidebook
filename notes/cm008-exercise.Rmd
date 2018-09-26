@@ -5,95 +5,181 @@ editor_options:
   chunk_output_type: inline
 ---
 
-## mutate
-
-No need for loops!
-
-`mutate` creates a new variable by calculating from other variables. Let's get GDP by multiplying GPD per capita with population:
-
 ```{r}
-mutate(gapminder, gdp = gdpPercap * pop)
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
 ```
 
-You can define multiple new variables -- even back-dependent on new ones! Let's also create a column for GDP in billions, rounded to one decimal:
+## `mutate()`
+
+Let's get: 
+
+- GDP by multiplying GPD per capita with population, and
+- GDP in billions, named (`gdpBill`), rounded to two decimals.
 
 ```{r}
-mutate(gapminder, 
-       gdp     = gdpPercap * pop, 
-       gdpBill = round(gdp/1000000000, 1))
-```
 
-`transmute` works the same way, but drops all other variables. 
-
-__Exercise__: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
-
-```{r}
-mutate(gapminder, cc = paste(country, continent, sep=", "))
 ```
 
 
-## `summarize` and `group_by`
+Notice the backwards compatibility! No need for loops!
 
-`summarize` reduces a tibble according to summary statistics.
+Try the same thing, but with `transmute` (drops all other variables). 
 
 ```{r}
-summarize(gapminder, mean_pop=mean(pop), sd_pop=sd(pop))
+
 ```
 
-Not very useful by itself! But, with the `group_by` function, the `summarize` function is very useful:
+The `if_else` function is useful for changing certain elements in a data frame.
+
+Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in the data frame, but is actually 70. Fix it using `if_else` and `mutate`. 
 
 ```{r}
-gapminder %>% 
-    group_by(country) %>% 
-    summarize(mean_pop=mean(pop), sd_pop=sd(pop))
-```
 
-The `group_by` function splits the tibble into parts -- in the above case, by country. Notice the "Groups" indicator in the following output:
-
-```{r}
-group_by(gapminder, continent, country, year < 1970)
-```
-
-Let's get a summary of this grouping:
-
-```{r}
-(out1 <- gapminder %>% 
-    group_by(continent, country, year < 1970) %>% 
-    summarize(mean_pop=mean(pop), sd_pop=sd(pop)))
-```
-
-Note that the output is still a tibble, but one "layer" of grouping has been peeled back: the `year < 1970` variable. `summarize` again and you'll see that the tibble was no longer grouped by `year < 1970`. 
-
-```{r}
-out1 %>% 
-    summarize(mean_pop=mean(mean_pop))
 ```
 
 
-__Exercise__: Find the minimum GDP per capita experienced by each country
+Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
 
 ```{r}
-gapminder %>%
-    group_by(country) %>% 
-    summarize(mingdp=min(gdpPercap))
+
+```
+
+These functions we've seen are called __vectorized functions__. 
+
+## `summarize()` and `group_by()`
+
+Use `summarize()` to compute the mean and median life expectancy using all entries:
+
+```{r}
+
+```
+
+Do the same thing, but try:
+
+1. grouping by country
+2. grouping by continent and country
+
+```{r}
+
+```
+
+- Notice the columns that are kept. 
+- Notice the grouping listed above the tibble, especially without a call after grouping.
+- Notice the peeling of groups for each summarize. 
+
+Question: What if I wanted to keep the other numeric columns (gdpPercap, pop)? Can I? Would this even make sense?
+
+For each continent: What is the smallest country-wide median GDP per capita?
+
+```{r}
+
+```
+
+Note that ggplot2's grouping is different from dplyr's! Try making a spaghetti plot of lifeExp over time for each coutry, by piping in a grouped data frame -- it won't work:
+
+```{r}
+
 ```
 
 
-__Exercise__: How many years of record does each country have?
+Your turn! For each continent, what is the median GDP per capita of countries with high (>60) life expectancy vs countries with low (<=60)? Sort this data frame by median GDP per capita.
 
 ```{r}
-gapminder %>%
-    group_by(country) %>% 
-    summarize(n_distinct(year))
+
 ```
 
+There are special functions to summarize by. Let's see some of them:
 
-__Exercise__: Within Asia, what are the min and max life expectancies experienced in each year?
+- `n()`: Number of rows in the group.
+- `n_distinct()`
+
+Convenience functions:
+
+- `tally()` (= `summarize(n = n())`)
+- `count(...)` (= `group_by(...) %>% tally()`)
+
+n_distinct: How many years of record does each country have?
 
 ```{r}
-gapminder %>% 
-    filter(continent=="Asia") %>% 
-    group_by(year) %>% 
-    summarize(minexp=min(lifeExp),
-              maxexp=max(lifeExp))
+
 ```
+
+count
+
+## Function types
+
+Let's stop to identify some theory of function types, and the `dplyr` approach to them.
+
+| Function type | Explanation | Examples | In `dplyr` |
+|------|-----|----|----|
+| Vectorized functions | These take a vector, and operate on each component independently to return a vector of the same length. In other words, they work element-wise. | `cos`, `sin`, `log`, `exp`, `round` | `mutate` |
+| Aggregate functions | These take a vector, and return a vector of length 1 | `mean`, `sd`, `length`, `typeof` | `summarize`, esp with `group_by`. |
+| Window Functions | these take a vector, and return a vector of the same length that depends on the vector as a whole. | `lag`, `rank`, `cumsum` | `mutate`, esp with `group_by` |
+
+For any generic output, we can use dplyr's `do()` function -- but that's a topic for STAT 547. 
+
+## Grouped `mutate()`
+
+Calculate the growth in population since the first year on record _for each country_. `first()` is useful.
+
+```{r}
+
+```
+
+Notice that `dplyr` has retained the original grouping.
+
+How about growth compared to `1972`?
+
+```{r}
+
+```
+
+Make a new variable `pop_last_time`, as the "lag-1" population -- that is, the population from the previous entry of that country. Use the `lag` function.
+
+```{r}
+
+```
+
+Similar: `lead` function.
+
+Notice the NA's. 
+
+## Putting it all together
+
+Your turn: Use what we learned to answer the following questions.
+
+1. Determine the country that experienced the sharpest 5-year drop in life expectancy, in each continent.
+
+```{r}
+
+```
+
+2. Compute the relative gdp (NOT per capita!) of each country compared to Canada (= GDP of a country / GDP of Canada).
+
+```{r}
+
+```
+
+Sanity check: are Canada's numbers = 1? What is the spread of numbers like (should be small)?
+
+## Summary of major one-table functions
+
+- `select()`
+- `filter()`
+- `arrange()`
+- `mutate()`
+- `summarize()`
+
+Together with `group_by()` and "twists" of the above. 
+
+
+## Practice Exercises
+
+Practice these concepts in the following exercises. It might help you to first identify the type of function you are applying.
+
+1. Convert the population to a number in billions.
+
+2. Compute the change in population from 1962 to 1972 for each country.
+
+3. Rank the continents by GDP per capita. You should have two columns: one with continent, and another with the ranking (1 through 5). __Hint__: use the `rank()` or `min_rank()` function.

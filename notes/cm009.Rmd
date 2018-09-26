@@ -11,6 +11,9 @@ editor_options:
 
 # Learning Objectives
 
+tidyr::complete for completing a time series.
+
+drop_na
 
 ```{r}
 suppressPackageStartupMessages(library(dplyr))
