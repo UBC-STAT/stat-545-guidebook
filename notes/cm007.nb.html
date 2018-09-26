@@ -176,259 +176,32 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#topics"><span class="toc-section-number">0.1</span> Topics</a></li>
-<li><a href="#learning-objectives"><span class="toc-section-number">1</span> Learning Objectives</a><ul>
-<li><a href="#continuation-of-scatterplots"><span class="toc-section-number">1.1</span> Continuation of Scatterplots</a><ul>
-<li><a href="#regression-curve"><span class="toc-section-number">1.1.1</span> Regression curve</a></li>
-<li><a href="#facetting"><span class="toc-section-number">1.1.2</span> Facetting</a></li>
-<li><a href="#connect-the-dots-with-geom_line"><span class="toc-section-number">1.1.3</span> Connect the dots with <code>geom_line</code></a></li>
-</ul></li>
-</ul></li>
+<li><a href="#announcements"><span class="toc-section-number">0.1</span> Announcements</a></li>
+<li><a href="#today"><span class="toc-section-number">0.2</span> Today</a></li>
 </ul>
 </div>
 
 <!-- rnb-text-begin -->
-<div id="topics" class="section level2">
-<h2><span class="header-section-number">0.1</span> Topics</h2>
+<div id="announcements" class="section level2">
+<h2><span class="header-section-number">0.1</span> Announcements</h2>
+<ul>
+<li>For Assignments 2+, new late penalty: 50% deduction first time, then 0 afterwards.</li>
+</ul>
 </div>
-<div id="learning-objectives" class="section level1">
-<h1><span class="header-section-number">1</span> Learning Objectives</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VwcHJlc3NQYWNrYWdlU3RhcnR1cE1lc3NhZ2VzKGxpYnJhcnkodGlkeXZlcnNlKSkgICMgVGhlIHRpZHl2ZXJzZSBjb250YWlucyBnZ3Bsb3QyIVxuc3VwcHJlc3NQYWNrYWdlU3RhcnR1cE1lc3NhZ2VzKGxpYnJhcnkoZ2FwbWluZGVyKSlcbmtuaXRyOjpvcHRzX2NodW5rJHNldChmaWcud2lkdGg9NCwgZmlnLmhlaWdodD0zKVxuYGBgIn0= -->
-<pre class="r"><code>suppressPackageStartupMessages(library(tidyverse))  # The tidyverse contains ggplot2!
-suppressPackageStartupMessages(library(gapminder))
-knitr::opts_chunk$set(fig.width=4, fig.height=3)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<div id="continuation-of-scatterplots" class="section level2">
-<h2><span class="header-section-number">1.1</span> Continuation of Scatterplots</h2>
-<div id="regression-curve" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Regression curve</h3>
+<div id="today" class="section level2">
+<h2><span class="header-section-number">0.2</span> Today</h2>
 <ul>
-<li>Crash course on regression
+<li>Continue with <code>ggplot2</code>.
 <ul>
-<li>Regression analysis fits some curve through the data, representing the mean of Y given the specified X value.</li>
-<li>Sometimes we assume it’s a line, and take this “mean curve” to be the line of best fit.</li>
-<li>Sometimes we fit a generic curve by averaging “nearby” points.</li>
+<li>This time, exploration of aesthetics (and facetting).</li>
+<li>Continue with geom exploration if time permits.</li>
 </ul></li>
 </ul>
-<p>To add a regression line/curve, add a layer <code>geom_smooth</code> to your plot. Probably two of the most useful arguments to <code>geom_smooth</code> are:</p>
-<ul>
-<li><code>method=</code>…
-<ul>
-<li>…<code>&quot;lm&quot;</code> for a straight line. Stands for “Linear Model”.</li>
-<li>…other for a generic curve (called a smoother; default, hence the “smooth” part of <code>geom_smooth</code>).</li>
-</ul></li>
-<li><code>se=</code>… controls whether or not a confidence interval is plotted.</li>
-</ul>
-<p>Examples:</p>
+<p>Links to cm007 exercise file: download from <a href="https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm007-exercise.Rmd">Rmd</a> or <a href="http://stat545.com/Classroom/notes/cm007-exercise.nb.html">html</a>.</p>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmMxIDwtIGdncGxvdChnYXBtaW5kZXIsIGFlcyh5ZWFyLCBsaWZlRXhwKSkgK1xuICAgIGdlb21fcG9pbnQoKSBcbnZjMSArIGdlb21fc21vb3RoKHNlPUZBTFNFKVxudmMxICsgZ2VvbV9zbW9vdGgobWV0aG9kPVwibG1cIilcbmBgYCJ9 -->
-<pre class="r"><code>vc1 &lt;- ggplot(gapminder, aes(year, lifeExp)) +
-    geom_point() 
-vc1 + geom_smooth(se=FALSE)
-vc1 + geom_smooth(method=&quot;lm&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><strong>Exercise 1</strong>: Make a plot of <code>year</code> (x) vs <code>lifeExp</code> (y), with points coloured by continent. Then, to that same plot, fit a straight regression line to each continent, without the error bars. If you can, try piping the data frame into the <code>ggplot</code> function.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHAsXG4gICAgICAgICAgICAgICAgICAgICAgY29sb3VyPWNvbnRpbmVudCkpICtcbiAgICBnZW9tX3BvaW50KCkgK1xuICAgIGdlb21fc21vb3RoKG1ldGhvZD1cImxtXCIsIHNlPUZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>ggplot(gapminder, aes(year, lifeExp,
-                      colour=continent)) +
-    geom_point() +
-    geom_smooth(method=&quot;lm&quot;, se=FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><strong>Exercise 2</strong>: Repeat Exercise 1, but switch the <em>regression line</em> and <em>geom_point</em> layers. How is this plot different from that of Exercise 1?</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHAsXG4gICAgICAgICAgICAgICAgICAgICAgY29sb3VyPWNvbnRpbmVudCkpICtcbiAgICBnZW9tX3Ntb290aChtZXRob2Q9XCJsbVwiLCBzZT1GQUxTRSkgK1xuICAgIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
-<pre class="r"><code>ggplot(gapminder, aes(year, lifeExp,
-                      colour=continent)) +
-    geom_smooth(method=&quot;lm&quot;, se=FALSE) +
-    geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><strong>Exercise 3</strong>: Omit the <code>geom_point</code> layer from either of the above two plots (it doesn’t matter which). Does the line still show up, even though the data aren’t shown? Why or why not?</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHAsXG4gICAgICAgICAgICAgICAgICAgICAgY29sb3VyPWNvbnRpbmVudCkpICtcbiAgICBnZW9tX3Ntb290aChtZXRob2Q9XCJsbVwiLCBzZT1GQUxTRSlcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(gapminder, aes(year, lifeExp,
-                      colour=continent)) +
-    geom_smooth(method=&quot;lm&quot;, se=FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="facetting" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Facetting</h3>
-<p>We saw that we can <strong>group</strong> by using scales. For example, we can distinguish continents by using different shape or colour:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKGdkcFBlcmNhcCwgbGlmZUV4cCkpICtcbiAgICBnZW9tX3BvaW50KGFlcyhjb2xvdXI9Y29udGluZW50KSlcbmdncGxvdChnYXBtaW5kZXIsIGFlcyhnZHBQZXJjYXAsIGxpZmVFeHApKSArXG4gICAgZ2VvbV9wb2ludChhZXMoc2hhcGU9Y29udGluZW50KSlcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(gapminder, aes(gdpPercap, lifeExp)) +
-    geom_point(aes(colour=continent))
-ggplot(gapminder, aes(gdpPercap, lifeExp)) +
-    geom_point(aes(shape=continent))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>But these plots can get overloaded. In comes <strong>facetting</strong> to save the day! Let’s add this to our list of concepts:</p>
-<ul>
-<li>:white_check_mark: <strong>geometric objects</strong>, or <code>geom_</code>s.</li>
-<li>:white_check_mark: <strong>scales</strong>, linked by…</li>
-<li>:white_check_mark: <strong>aesthetics</strong>, through the <code>aes</code> function.</li>
-<li>*NEW* <strong>facetting</strong>.</li>
-</ul>
-<p>Facetting separates data from each group into its own “mini plot”, called a <em>panel</em>. These panels are arranged next to each otherfor easier comparison. There are two facetting functions in <code>ggplot2</code>:</p>
-<ul>
-<li><code>facet_wrap</code>: 1D facetting – we’ll focus on this first.</li>
-<li><code>facet_grid</code>: 2D facetting</li>
-</ul>
-<p><code>facet_wrap</code> puts the panels in “reading order”, and goes to a new line if there’s not enough room. Mandatory argument specification is <code>facet_wrap(~ VARIABLE)</code>. Example:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKGdkcFBlcmNhcCwgbGlmZUV4cCkpICtcbiAgICBmYWNldF93cmFwKH4gY29udGluZW50KSArXG4gICAgZ2VvbV9wb2ludCgpXG5gYGAifQ== -->
-<pre class="r"><code>ggplot(gapminder, aes(gdpPercap, lifeExp)) +
-    facet_wrap(~ continent) +
-    geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>As for other arguments of <code>facet_wrap</code> that I find to be most useful, check the documentation for <code>scales</code> and <code>ncol</code> – and if you’re brave, <code>labeller</code>.</p>
-<p><strong>Exercise 4</strong>: Make a plot of <code>year</code> (x) vs <code>lifeExp</code> (y), facetted by continent. Then, fit a smoother through the data for each continent, without the error bars. Choose a span that you feel is appropriate.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHApKSArXG4gICAgZmFjZXRfd3JhcCh+IGNvbnRpbmVudCkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgZ2VvbV9zbW9vdGgoc2U9RkFMU0UsIHNwYW49MSwgbWV0aG9kPVwibG9lc3NcIilcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(gapminder, aes(year, lifeExp)) +
-    facet_wrap(~ continent) +
-    geom_point() +
-    geom_smooth(se=FALSE, span=1, method=&quot;loess&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>A small span results in a more jagged curve; a larger one results in a smoother curve. Here’s a better example of using the <code>span</code> argument – first too small, then too big, then “just right”. The idea is to “play” with this parameter to get it just right. NOTE: <code>span</code> only works with <code>method=&quot;loess&quot;</code>!</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmMzIDwtIGdncGxvdChnYXBtaW5kZXIsIGFlcyhnZHBQZXJjYXAsIGxpZmVFeHApKSArXG4gICAgZmFjZXRfd3JhcCh+IGNvbnRpbmVudCkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgc2NhbGVfeF9sb2cxMCgpXG52YzMgKyBnZW9tX3Ntb290aChtZXRob2Q9XCJsb2Vzc1wiLCBzcGFuPTAuMikgIyBTcGFuIHRvbyBzbWFsbFxudmMzICsgZ2VvbV9zbW9vdGgobWV0aG9kPVwibG9lc3NcIiwgc3Bhbj0xMCkgIyBTcGFuIHRvbyBiaWdcbnZjMyArIGdlb21fc21vb3RoKG1ldGhvZD1cImxvZXNzXCIsIHNwYW49MC45KSAjIFNwYW4ganVzdCByaWdodFxuYGBgIn0= -->
-<pre class="r"><code>vc3 &lt;- ggplot(gapminder, aes(gdpPercap, lifeExp)) +
-    facet_wrap(~ continent) +
-    geom_point() +
-    scale_x_log10()
-vc3 + geom_smooth(method=&quot;loess&quot;, span=0.2) # Span too small
-vc3 + geom_smooth(method=&quot;loess&quot;, span=10) # Span too big
-vc3 + geom_smooth(method=&quot;loess&quot;, span=0.9) # Span just right</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><code>facet_grid</code> puts the panels in a grid. Each row corresponds to one grouping, and each column corresponds to another grouping. Mandatory argument specification: <code>facet_grid(GROUPING_VARIABLE_1 ~ GROUPING_VARIABLE_2)</code>.</p>
-<p>Example: Let’s also facet by “small” (&lt;=7,000,000 population) and “large” (&gt;7,000,000 population) countries. We’ll need to add a “size” variable; we’ll do that with <code>dplyr</code>, and pipe the result into the <code>ggplot</code> function:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmMyIDwtIGdhcG1pbmRlciAlPiUgXG4gICAgbXV0YXRlKHNpemU9aWZlbHNlKHBvcCA+IDcwMDAwMDAsIFwibGFyZ2VcIiwgXCJzbWFsbFwiKSkgJT4lIFxuICAgIGdncGxvdChhZXMoZ2RwUGVyY2FwLCBsaWZlRXhwKSkgK1xuICAgIGZhY2V0X2dyaWQoc2l6ZSB+IGNvbnRpbmVudCkgXG52YzIgKyBnZW9tX3BvaW50KClcbmBgYCJ9 -->
-<pre class="r"><code>vc2 &lt;- gapminder %&gt;% 
-    mutate(size=ifelse(pop &gt; 7000000, &quot;large&quot;, &quot;small&quot;)) %&gt;% 
-    ggplot(aes(gdpPercap, lifeExp)) +
-    facet_grid(size ~ continent) 
-vc2 + geom_point()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Everything we’ve learned prior to this works in conjunction with facetting:</p>
-<ul>
-<li>Colours:</li>
-</ul>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmMyICsgZ2VvbV9wb2ludChhZXMoY29sb3VyPXllYXIpKVxuYGBgIn0= -->
-<pre class="r"><code>vc2 + geom_point(aes(colour=year))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ul>
-<li>Regression curves and log scales:</li>
-</ul>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmMyICsgXG4gICAgZ2VvbV9wb2ludChjb2xvdXI9XCJicm93blwiLFxuICAgICAgICAgICAgICAgYWxwaGE9MC4yKSArXG4gICAgZ2VvbV9zbW9vdGgoKSArXG4gICAgc2NhbGVfeF9sb2cxMCgpXG5gYGAifQ== -->
-<pre class="r"><code>vc2 + 
-    geom_point(colour=&quot;brown&quot;,
-               alpha=0.2) +
-    geom_smooth() +
-    scale_x_log10()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="connect-the-dots-with-geom_line" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> Connect the dots with <code>geom_line</code></h3>
-<p>Sometimes it makes sense to “connect the dots” in a scatterplot, especially if time is involved. The two functions to help us do this are:</p>
-<ul>
-<li><code>geom_line</code>: connect the dots from left-to-right.</li>
-<li><code>geom_path</code>: connect the dots in the order that they appear in the data frame.</li>
-</ul>
-<p>With these <code>geom</code>s, it’s so important to remember to specify <code>group=VARIABLE</code> in your aesthetics (<code>aes</code> function), otherwise ggplot won’t distinguish between groups.</p>
-<p>Example: life expectancy over time for each country.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgV2l0aG91dCB0aGUgYGdyb3VwYCBzcGVjaWZpY2F0aW9uOlxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHApKSArXG4gICAgZ2VvbV9saW5lKClcbiMjIFdpdGggdGhlIGdyb3VwIHNwZWNpZmljYXRpb246XG5nZ3Bsb3QoZ2FwbWluZGVyLCBhZXMoeWVhciwgbGlmZUV4cCwgZ3JvdXA9Y291bnRyeSkpICtcbiAgICBnZW9tX2xpbmUoYWxwaGE9MC4yKVxuYGBgIn0= -->
-<pre class="r"><code>## Without the `group` specification:
-ggplot(gapminder, aes(year, lifeExp)) +
-    geom_line()
-## With the group specification:
-ggplot(gapminder, aes(year, lifeExp, group=country)) +
-    geom_line(alpha=0.2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>PS: such “spaghetti plots” <em>are</em> actually useful – they give us a sense of the <em>distribution</em> of trends.</p>
-<p><code>geom_path</code> is typically used when a “time” variable is not shown on an axis. For example, let’s look at a scatterplot of <code>pop</code> vs. <code>gdpPercap</code> of Afghanistan, and let’s “connect the dots” in the order of time.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FwbWluZGVyICU+JVxuICAgIGZpbHRlcihjb3VudHJ5PT1cIkFmZ2hhbmlzdGFuXCIpICU+JSBcbiAgICBhcnJhbmdlKHllYXIpICU+JSBcbiAgICBnZ3Bsb3QoYWVzKHBvcCwgZ2RwUGVyY2FwKSkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgZ2VvbV9wYXRoKClcbmBgYCJ9 -->
-<pre class="r"><code>gapminder %&gt;%
-    filter(country==&quot;Afghanistan&quot;) %&gt;% 
-    arrange(year) %&gt;% 
-    ggplot(aes(pop, gdpPercap)) +
-    geom_point() +
-    geom_path()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>We can see the <em>path</em> that the population and GDP per capita took for Afghanistan.</p>
-<p><strong>Exercise 5</strong>: Plot the population over time (year) using lines, so that each country has its own line. Colour by <code>gdpPercap</code>. Add alpha transparency to your liking.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIHBvcCwgZ3JvdXA9Y291bnRyeSwgY29sb3VyPWdkcFBlcmNhcCkpICtcbiAgICBnZW9tX2xpbmUoYWxwaGE9MC4yKSBcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(gapminder, aes(year, pop, group=country, colour=gdpPercap)) +
-    geom_line(alpha=0.2) </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p><strong>Exercise 6</strong>: Add points to the plot in Exercise 5.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIHBvcCwgZ3JvdXA9Y291bnRyeSkpICtcbiAgICBnZW9tX2xpbmUoYWVzKGNvbG91cj1nZHBQZXJjYXApLCBhbHBoYT0wLjIpICtcbiAgICBnZW9tX3BvaW50KCkgK1xuICAgIHNjYWxlX3lfbG9nMTAoKVxuYGBgIn0= -->
-<pre class="r"><code>ggplot(gapminder, aes(year, pop, group=country)) +
-    geom_line(aes(colour=gdpPercap), alpha=0.2) +
-    geom_point() +
-    scale_y_log10()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-</div>
-</div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAwNyIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIyBUb3BpY3MKCgoKIyBMZWFybmluZyBPYmplY3RpdmVzCgoKCgoKYGBge3J9CnN1cHByZXNzUGFja2FnZVN0YXJ0dXBNZXNzYWdlcyhsaWJyYXJ5KHRpZHl2ZXJzZSkpICAjIFRoZSB0aWR5dmVyc2UgY29udGFpbnMgZ2dwbG90MiEKc3VwcHJlc3NQYWNrYWdlU3RhcnR1cE1lc3NhZ2VzKGxpYnJhcnkoZ2FwbWluZGVyKSkKa25pdHI6Om9wdHNfY2h1bmskc2V0KGZpZy53aWR0aD00LCBmaWcuaGVpZ2h0PTMpCmBgYAoKIyMgQ29udGludWF0aW9uIG9mIFNjYXR0ZXJwbG90cwoKIyMjIFJlZ3Jlc3Npb24gY3VydmUKCi0gQ3Jhc2ggY291cnNlIG9uIHJlZ3Jlc3Npb24KICAgIC0gUmVncmVzc2lvbiBhbmFseXNpcyBmaXRzIHNvbWUgY3VydmUgdGhyb3VnaCB0aGUgZGF0YSwgcmVwcmVzZW50aW5nIHRoZSBtZWFuIG9mIFkgZ2l2ZW4gdGhlIHNwZWNpZmllZCBYIHZhbHVlLgogICAgLSBTb21ldGltZXMgd2UgYXNzdW1lIGl0J3MgYSBsaW5lLCBhbmQgdGFrZSB0aGlzICJtZWFuIGN1cnZlIiB0byBiZSB0aGUgbGluZSBvZiBiZXN0IGZpdC4KICAgIC0gU29tZXRpbWVzIHdlIGZpdCBhIGdlbmVyaWMgY3VydmUgYnkgYXZlcmFnaW5nICJuZWFyYnkiIHBvaW50cy4gCgpUbyBhZGQgYSByZWdyZXNzaW9uIGxpbmUvY3VydmUsIGFkZCBhIGxheWVyIGBnZW9tX3Ntb290aGAgdG8geW91ciBwbG90LiBQcm9iYWJseSB0d28gb2YgdGhlIG1vc3QgdXNlZnVsIGFyZ3VtZW50cyB0byBgZ2VvbV9zbW9vdGhgIGFyZToKCi0gYG1ldGhvZD1gLi4uCiAgICAtIC4uLmAibG0iYCBmb3IgYSBzdHJhaWdodCBsaW5lLiBTdGFuZHMgZm9yICJMaW5lYXIgTW9kZWwiLgogICAgLSAuLi5vdGhlciBmb3IgYSBnZW5lcmljIGN1cnZlIChjYWxsZWQgYSBzbW9vdGhlcjsgZGVmYXVsdCwgaGVuY2UgdGhlICJzbW9vdGgiIHBhcnQgb2YgYGdlb21fc21vb3RoYCkuCi0gYHNlPWAuLi4gY29udHJvbHMgd2hldGhlciBvciBub3QgYSBjb25maWRlbmNlIGludGVydmFsIGlzIHBsb3R0ZWQuCgpFeGFtcGxlczoKCmBgYHtyfQp2YzEgPC0gZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHApKSArCiAgICBnZW9tX3BvaW50KCkgCnZjMSArIGdlb21fc21vb3RoKHNlPUZBTFNFKQp2YzEgKyBnZW9tX3Ntb290aChtZXRob2Q9ImxtIikKYGBgCgoKX19FeGVyY2lzZSAxX186IE1ha2UgYSBwbG90IG9mIGB5ZWFyYCAoeCkgdnMgYGxpZmVFeHBgICh5KSwgd2l0aCBwb2ludHMgY29sb3VyZWQgYnkgY29udGluZW50LiBUaGVuLCB0byB0aGF0IHNhbWUgcGxvdCwgZml0IGEgc3RyYWlnaHQgcmVncmVzc2lvbiBsaW5lIHRvIGVhY2ggY29udGluZW50LCB3aXRob3V0IHRoZSBlcnJvciBiYXJzLiBJZiB5b3UgY2FuLCB0cnkgcGlwaW5nIHRoZSBkYXRhIGZyYW1lIGludG8gdGhlIGBnZ3Bsb3RgIGZ1bmN0aW9uLgoKYGBge3J9CmdncGxvdChnYXBtaW5kZXIsIGFlcyh5ZWFyLCBsaWZlRXhwLAogICAgICAgICAgICAgICAgICAgICAgY29sb3VyPWNvbnRpbmVudCkpICsKICAgIGdlb21fcG9pbnQoKSArCiAgICBnZW9tX3Ntb290aChtZXRob2Q9ImxtIiwgc2U9RkFMU0UpCmBgYAoKCl9fRXhlcmNpc2UgMl9fOiBSZXBlYXQgRXhlcmNpc2UgMSwgYnV0IHN3aXRjaCB0aGUgX3JlZ3Jlc3Npb24gbGluZV8gYW5kIF9nZW9tXF9wb2ludF8gbGF5ZXJzLiBIb3cgaXMgdGhpcyBwbG90IGRpZmZlcmVudCBmcm9tIHRoYXQgb2YgRXhlcmNpc2UgMT8KCmBgYHtyfQpnZ3Bsb3QoZ2FwbWluZGVyLCBhZXMoeWVhciwgbGlmZUV4cCwKICAgICAgICAgICAgICAgICAgICAgIGNvbG91cj1jb250aW5lbnQpKSArCiAgICBnZW9tX3Ntb290aChtZXRob2Q9ImxtIiwgc2U9RkFMU0UpICsKICAgIGdlb21fcG9pbnQoKQpgYGAKCgpfX0V4ZXJjaXNlIDNfXzogT21pdCB0aGUgYGdlb21fcG9pbnRgIGxheWVyIGZyb20gZWl0aGVyIG9mIHRoZSBhYm92ZSB0d28gcGxvdHMgKGl0IGRvZXNuJ3QgbWF0dGVyIHdoaWNoKS4gRG9lcyB0aGUgbGluZSBzdGlsbCBzaG93IHVwLCBldmVuIHRob3VnaCB0aGUgZGF0YSBhcmVuJ3Qgc2hvd24/IFdoeSBvciB3aHkgbm90PwoKYGBge3J9CmdncGxvdChnYXBtaW5kZXIsIGFlcyh5ZWFyLCBsaWZlRXhwLAogICAgICAgICAgICAgICAgICAgICAgY29sb3VyPWNvbnRpbmVudCkpICsKICAgIGdlb21fc21vb3RoKG1ldGhvZD0ibG0iLCBzZT1GQUxTRSkKYGBgCgoKIyMjIEZhY2V0dGluZwoKV2Ugc2F3IHRoYXQgd2UgY2FuIF9fZ3JvdXBfXyBieSB1c2luZyBzY2FsZXMuIEZvciBleGFtcGxlLCB3ZSBjYW4gZGlzdGluZ3Vpc2ggY29udGluZW50cyBieSB1c2luZyBkaWZmZXJlbnQgc2hhcGUgb3IgY29sb3VyOgoKYGBge3J9CmdncGxvdChnYXBtaW5kZXIsIGFlcyhnZHBQZXJjYXAsIGxpZmVFeHApKSArCiAgICBnZW9tX3BvaW50KGFlcyhjb2xvdXI9Y29udGluZW50KSkKZ2dwbG90KGdhcG1pbmRlciwgYWVzKGdkcFBlcmNhcCwgbGlmZUV4cCkpICsKICAgIGdlb21fcG9pbnQoYWVzKHNoYXBlPWNvbnRpbmVudCkpCmBgYAoKQnV0IHRoZXNlIHBsb3RzIGNhbiBnZXQgb3ZlcmxvYWRlZC4gSW4gY29tZXMgX19mYWNldHRpbmdfXyB0byBzYXZlIHRoZSBkYXkhIExldCdzIGFkZCB0aGlzIHRvIG91ciBsaXN0IG9mIGNvbmNlcHRzOgoKLSA6d2hpdGVfY2hlY2tfbWFyazogX19nZW9tZXRyaWMgb2JqZWN0c19fLCBvciBgZ2VvbV9gcy4gCi0gOndoaXRlX2NoZWNrX21hcms6IF9fc2NhbGVzX18sIGxpbmtlZCBieS4uLgotIDp3aGl0ZV9jaGVja19tYXJrOiBfX2Flc3RoZXRpY3NfXywgdGhyb3VnaCB0aGUgYGFlc2AgZnVuY3Rpb24uCi0gXCpORVcqIF9fZmFjZXR0aW5nX18uCgpGYWNldHRpbmcgc2VwYXJhdGVzIGRhdGEgZnJvbSBlYWNoIGdyb3VwIGludG8gaXRzIG93biAibWluaSBwbG90IiwgY2FsbGVkIGEgX3BhbmVsXy4gVGhlc2UgcGFuZWxzIGFyZSBhcnJhbmdlZCBuZXh0IHRvIGVhY2ggb3RoZXJmb3IgZWFzaWVyIGNvbXBhcmlzb24uIFRoZXJlIGFyZSB0d28gZmFjZXR0aW5nIGZ1bmN0aW9ucyBpbiBgZ2dwbG90MmA6CgotIGBmYWNldF93cmFwYDogMUQgZmFjZXR0aW5nIC0tIHdlJ2xsIGZvY3VzIG9uIHRoaXMgZmlyc3QuCi0gYGZhY2V0X2dyaWRgOiAyRCBmYWNldHRpbmcKCmBmYWNldF93cmFwYCBwdXRzIHRoZSBwYW5lbHMgaW4gInJlYWRpbmcgb3JkZXIiLCBhbmQgZ29lcyB0byBhIG5ldyBsaW5lIGlmIHRoZXJlJ3Mgbm90IGVub3VnaCByb29tLiBNYW5kYXRvcnkgYXJndW1lbnQgc3BlY2lmaWNhdGlvbiBpcyBgZmFjZXRfd3JhcCh+IFZBUklBQkxFKWAuIEV4YW1wbGU6CgpgYGB7ciwgZmlnLndpZHRoPTh9CmdncGxvdChnYXBtaW5kZXIsIGFlcyhnZHBQZXJjYXAsIGxpZmVFeHApKSArCiAgICBmYWNldF93cmFwKH4gY29udGluZW50KSArCiAgICBnZW9tX3BvaW50KCkKYGBgCgpBcyBmb3Igb3RoZXIgYXJndW1lbnRzIG9mIGBmYWNldF93cmFwYCB0aGF0IEkgZmluZCB0byBiZSBtb3N0IHVzZWZ1bCwgY2hlY2sgdGhlIGRvY3VtZW50YXRpb24gZm9yIGBzY2FsZXNgIGFuZCBgbmNvbGAgLS0gYW5kIGlmIHlvdSdyZSBicmF2ZSwgYGxhYmVsbGVyYC4gCgpfX0V4ZXJjaXNlIDRfXzogTWFrZSBhIHBsb3Qgb2YgYHllYXJgICh4KSB2cyBgbGlmZUV4cGAgKHkpLCBmYWNldHRlZCBieSBjb250aW5lbnQuIFRoZW4sIGZpdCBhIHNtb290aGVyIHRocm91Z2ggdGhlIGRhdGEgZm9yIGVhY2ggY29udGluZW50LCB3aXRob3V0IHRoZSBlcnJvciBiYXJzLiBDaG9vc2UgYSBzcGFuIHRoYXQgeW91IGZlZWwgaXMgYXBwcm9wcmlhdGUuCgpgYGB7cn0KZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIGxpZmVFeHApKSArCiAgICBmYWNldF93cmFwKH4gY29udGluZW50KSArCiAgICBnZW9tX3BvaW50KCkgKwogICAgZ2VvbV9zbW9vdGgoc2U9RkFMU0UsIHNwYW49MSwgbWV0aG9kPSJsb2VzcyIpCmBgYAoKQSBzbWFsbCBzcGFuIHJlc3VsdHMgaW4gYSBtb3JlIGphZ2dlZCBjdXJ2ZTsgYSBsYXJnZXIgb25lIHJlc3VsdHMgaW4gYSBzbW9vdGhlciBjdXJ2ZS4gSGVyZSdzIGEgYmV0dGVyIGV4YW1wbGUgb2YgdXNpbmcgdGhlIGBzcGFuYCBhcmd1bWVudCAtLSBmaXJzdCB0b28gc21hbGwsIHRoZW4gdG9vIGJpZywgdGhlbiAianVzdCByaWdodCIuIFRoZSBpZGVhIGlzIHRvICJwbGF5IiB3aXRoIHRoaXMgcGFyYW1ldGVyIHRvIGdldCBpdCBqdXN0IHJpZ2h0LiBOT1RFOiBgc3BhbmAgb25seSB3b3JrcyB3aXRoIGBtZXRob2Q9ImxvZXNzImAhCgpgYGB7cn0KdmMzIDwtIGdncGxvdChnYXBtaW5kZXIsIGFlcyhnZHBQZXJjYXAsIGxpZmVFeHApKSArCiAgICBmYWNldF93cmFwKH4gY29udGluZW50KSArCiAgICBnZW9tX3BvaW50KCkgKwogICAgc2NhbGVfeF9sb2cxMCgpCnZjMyArIGdlb21fc21vb3RoKG1ldGhvZD0ibG9lc3MiLCBzcGFuPTAuMikgIyBTcGFuIHRvbyBzbWFsbAp2YzMgKyBnZW9tX3Ntb290aChtZXRob2Q9ImxvZXNzIiwgc3Bhbj0xMCkgIyBTcGFuIHRvbyBiaWcKdmMzICsgZ2VvbV9zbW9vdGgobWV0aG9kPSJsb2VzcyIsIHNwYW49MC45KSAjIFNwYW4ganVzdCByaWdodApgYGAKCgoKYGZhY2V0X2dyaWRgIHB1dHMgdGhlIHBhbmVscyBpbiBhIGdyaWQuIEVhY2ggcm93IGNvcnJlc3BvbmRzIHRvIG9uZSBncm91cGluZywgYW5kIGVhY2ggY29sdW1uIGNvcnJlc3BvbmRzIHRvIGFub3RoZXIgZ3JvdXBpbmcuIE1hbmRhdG9yeSBhcmd1bWVudCBzcGVjaWZpY2F0aW9uOiBgZmFjZXRfZ3JpZChHUk9VUElOR19WQVJJQUJMRV8xIH4gR1JPVVBJTkdfVkFSSUFCTEVfMilgLgoKRXhhbXBsZTogTGV0J3MgYWxzbyBmYWNldCBieSAic21hbGwiICg8PTcsMDAwLDAwMCBwb3B1bGF0aW9uKSBhbmQgImxhcmdlIiAoPjcsMDAwLDAwMCBwb3B1bGF0aW9uKSBjb3VudHJpZXMuIFdlJ2xsIG5lZWQgdG8gYWRkIGEgInNpemUiIHZhcmlhYmxlOyB3ZSdsbCBkbyB0aGF0IHdpdGggYGRwbHlyYCwgYW5kIHBpcGUgdGhlIHJlc3VsdCBpbnRvIHRoZSBgZ2dwbG90YCBmdW5jdGlvbjoKCmBgYHtyLCBmaWcud2lkdGg9OH0KdmMyIDwtIGdhcG1pbmRlciAlPiUgCiAgICBtdXRhdGUoc2l6ZT1pZmVsc2UocG9wID4gNzAwMDAwMCwgImxhcmdlIiwgInNtYWxsIikpICU+JSAKICAgIGdncGxvdChhZXMoZ2RwUGVyY2FwLCBsaWZlRXhwKSkgKwogICAgZmFjZXRfZ3JpZChzaXplIH4gY29udGluZW50KSAKdmMyICsgZ2VvbV9wb2ludCgpCmBgYAoKRXZlcnl0aGluZyB3ZSd2ZSBsZWFybmVkIHByaW9yIHRvIHRoaXMgd29ya3MgaW4gY29uanVuY3Rpb24gd2l0aCBmYWNldHRpbmc6CgotIENvbG91cnM6CgpgYGB7ciwgZmlnLndpZHRoPTh9CnZjMiArIGdlb21fcG9pbnQoYWVzKGNvbG91cj15ZWFyKSkKYGBgCgotIFJlZ3Jlc3Npb24gY3VydmVzIGFuZCBsb2cgc2NhbGVzOgoKYGBge3IsIGZpZy53aWR0aD04fQp2YzIgKyAKICAgIGdlb21fcG9pbnQoY29sb3VyPSJicm93biIsCiAgICAgICAgICAgICAgIGFscGhhPTAuMikgKwogICAgZ2VvbV9zbW9vdGgoKSArCiAgICBzY2FsZV94X2xvZzEwKCkKYGBgCgoKIyMjIENvbm5lY3QgdGhlIGRvdHMgd2l0aCBgZ2VvbV9saW5lYCAKClNvbWV0aW1lcyBpdCBtYWtlcyBzZW5zZSB0byAiY29ubmVjdCB0aGUgZG90cyIgaW4gYSBzY2F0dGVycGxvdCwgZXNwZWNpYWxseSBpZiB0aW1lIGlzIGludm9sdmVkLiBUaGUgdHdvIGZ1bmN0aW9ucyB0byBoZWxwIHVzIGRvIHRoaXMgYXJlOgoKLSBgZ2VvbV9saW5lYDogY29ubmVjdCB0aGUgZG90cyBmcm9tIGxlZnQtdG8tcmlnaHQuCi0gYGdlb21fcGF0aGA6IGNvbm5lY3QgdGhlIGRvdHMgaW4gdGhlIG9yZGVyIHRoYXQgdGhleSBhcHBlYXIgaW4gdGhlIGRhdGEgZnJhbWUuIAoKV2l0aCB0aGVzZSBgZ2VvbWBzLCBpdCdzIHNvIGltcG9ydGFudCB0byByZW1lbWJlciB0byBzcGVjaWZ5IGBncm91cD1WQVJJQUJMRWAgaW4geW91ciBhZXN0aGV0aWNzIChgYWVzYCBmdW5jdGlvbiksIG90aGVyd2lzZSBnZ3Bsb3Qgd29uJ3QgZGlzdGluZ3Vpc2ggYmV0d2VlbiBncm91cHMuCgpFeGFtcGxlOiBsaWZlIGV4cGVjdGFuY3kgb3ZlciB0aW1lIGZvciBlYWNoIGNvdW50cnkuCgpgYGB7cn0KIyMgV2l0aG91dCB0aGUgYGdyb3VwYCBzcGVjaWZpY2F0aW9uOgpnZ3Bsb3QoZ2FwbWluZGVyLCBhZXMoeWVhciwgbGlmZUV4cCkpICsKICAgIGdlb21fbGluZSgpCiMjIFdpdGggdGhlIGdyb3VwIHNwZWNpZmljYXRpb246CmdncGxvdChnYXBtaW5kZXIsIGFlcyh5ZWFyLCBsaWZlRXhwLCBncm91cD1jb3VudHJ5KSkgKwogICAgZ2VvbV9saW5lKGFscGhhPTAuMikKYGBgCgpQUzogc3VjaCAic3BhZ2hldHRpIHBsb3RzIiBfYXJlXyBhY3R1YWxseSB1c2VmdWwgLS0gdGhleSBnaXZlIHVzIGEgc2Vuc2Ugb2YgdGhlIF9kaXN0cmlidXRpb25fIG9mIHRyZW5kcy4gCgpgZ2VvbV9wYXRoYCBpcyB0eXBpY2FsbHkgdXNlZCB3aGVuIGEgInRpbWUiIHZhcmlhYmxlIGlzIG5vdCBzaG93biBvbiBhbiBheGlzLiBGb3IgZXhhbXBsZSwgbGV0J3MgbG9vayBhdCBhIHNjYXR0ZXJwbG90IG9mIGBwb3BgIHZzLiBgZ2RwUGVyY2FwYCBvZiBBZmdoYW5pc3RhbiwgYW5kIGxldCdzICJjb25uZWN0IHRoZSBkb3RzIiBpbiB0aGUgb3JkZXIgb2YgdGltZS4KCmBgYHtyfQpnYXBtaW5kZXIgJT4lCiAgICBmaWx0ZXIoY291bnRyeT09IkFmZ2hhbmlzdGFuIikgJT4lIAogICAgYXJyYW5nZSh5ZWFyKSAlPiUgCiAgICBnZ3Bsb3QoYWVzKHBvcCwgZ2RwUGVyY2FwKSkgKwogICAgZ2VvbV9wb2ludCgpICsKICAgIGdlb21fcGF0aCgpCmBgYAoKV2UgY2FuIHNlZSB0aGUgX3BhdGhfIHRoYXQgdGhlIHBvcHVsYXRpb24gYW5kIEdEUCBwZXIgY2FwaXRhIHRvb2sgZm9yIEFmZ2hhbmlzdGFuLiAKCl9fRXhlcmNpc2UgNV9fOiBQbG90IHRoZSBwb3B1bGF0aW9uIG92ZXIgdGltZSAoeWVhcikgdXNpbmcgbGluZXMsIHNvIHRoYXQgZWFjaCBjb3VudHJ5IGhhcyBpdHMgb3duIGxpbmUuIENvbG91ciBieSBgZ2RwUGVyY2FwYC4gQWRkIGFscGhhIHRyYW5zcGFyZW5jeSB0byB5b3VyIGxpa2luZy4gCgpgYGB7cn0KZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIHBvcCwgZ3JvdXA9Y291bnRyeSwgY29sb3VyPWdkcFBlcmNhcCkpICsKICAgIGdlb21fbGluZShhbHBoYT0wLjIpIApgYGAKCl9fRXhlcmNpc2UgNl9fOiBBZGQgcG9pbnRzIHRvIHRoZSBwbG90IGluIEV4ZXJjaXNlIDUuCgpgYGB7cn0KZ2dwbG90KGdhcG1pbmRlciwgYWVzKHllYXIsIHBvcCwgZ3JvdXA9Y291bnRyeSkpICsKICAgIGdlb21fbGluZShhZXMoY29sb3VyPWdkcFBlcmNhcCksIGFscGhhPTAuMikgKwogICAgZ2VvbV9wb2ludCgpICsKICAgIHNjYWxlX3lfbG9nMTAoKQpgYGAKCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAwNyIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIyBBbm5vdW5jZW1lbnRzCgotIEZvciBBc3NpZ25tZW50cyAyKywgbmV3IGxhdGUgcGVuYWx0eTogNTAlIGRlZHVjdGlvbiBmaXJzdCB0aW1lLCB0aGVuIDAgYWZ0ZXJ3YXJkcy4KCiMjIFRvZGF5CgotIENvbnRpbnVlIHdpdGggYGdncGxvdDJgLgogICAgLSBUaGlzIHRpbWUsIGV4cGxvcmF0aW9uIG9mIGFlc3RoZXRpY3MgKGFuZCBmYWNldHRpbmcpLiAKICAgIC0gQ29udGludWUgd2l0aCBnZW9tIGV4cGxvcmF0aW9uIGlmIHRpbWUgcGVybWl0cy4gCgpMaW5rcyB0byBjbTAwNyBleGVyY2lzZSBmaWxlOiBkb3dubG9hZCBmcm9tIFtSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9TVEFUNTQ1LVVCQy9DbGFzc3Jvb20vYmxvYi9tYXN0ZXIvbm90ZXMvY20wMDctZXhlcmNpc2UuUm1kKSBvciAKW2h0bWxdKGh0dHA6Ly9zdGF0NTQ1LmNvbS9DbGFzc3Jvb20vbm90ZXMvY20wMDctZXhlcmNpc2UubmIuaHRtbCkuCgoK</div>
 
 
 

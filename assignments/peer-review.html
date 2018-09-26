@@ -90,9 +90,6 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -124,539 +121,126 @@ $(document).ready(function () {
 </div>
 
 
-<div id="stat-545a-exploratory-data-analysis" class="section level1">
-<h1>STAT 545A: Exploratory Data Analysis</h1>
-<p>This is the course syllabus for the Fall 2018 edition of STAT 545 (click <a href="https://github.com/STAT545-UBC/Classroom/blob/master/syllabus-547.md">here</a> for the STAT 547M syllabus). You should use this syllabus to:</p>
+<div id="peer-reviews" class="section level1">
+<h1>Peer Reviews</h1>
+<p>As part of this course you will be reviewing, commenting on, and marking other students’ assignments. This is a mandatory part of the course and you will be marked on your peer reviews (15% of overall course mark).</p>
+<div id="schedule" class="section level2">
+<h2>Schedule</h2>
+<p>Peer Reviews will be posted here as they are made available.</p>
+<p>Here are the deadlines for peer reviews, with links (to appear after assignments are released). All submissions are due by 11:59pm.</p>
+<div id="stat-545" class="section level3">
+<h3>STAT 545</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Peer Review</th>
+<th>Peer Review Due Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="hw01/pr01.html">Peer Review 01</a></td>
+<td>September 24, 2018</td>
+</tr>
+<tr class="even">
+<td><a href="hw02/pr02.html">Peer Review 02</a></td>
+<td>October 01, 2018</td>
+</tr>
+<tr class="odd">
+<td>Peer Review 02</td>
+<td>October 08, 2018</td>
+</tr>
+<tr class="even">
+<td>Peer Review 02</td>
+<td>October 15, 2018</td>
+</tr>
+<tr class="odd">
+<td>Peer Review 02</td>
+<td>October 24, 2018</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="stat-547" class="section level3">
+<h3>STAT 547</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Peer Review</th>
+<th>Peer Review Due Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Peer Review 06</td>
+<td>November 12, 2018</td>
+</tr>
+<tr class="even">
+<td>Peer Review 07</td>
+<td>November 16, 2018</td>
+</tr>
+<tr class="odd">
+<td>Peer Review 08</td>
+<td>November 23, 2018</td>
+</tr>
+<tr class="even">
+<td>Peer Review 09</td>
+<td>December 05, 2018</td>
+</tr>
+<tr class="odd">
+<td>Peer Review 10</td>
+<td>December 12, 2018</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="logistics" class="section level2">
+<h2>Logistics</h2>
+<p>Here is the general flow that will happen for the peer reviews.</p>
 <ol style="list-style-type: decimal">
-<li>find information about the course, and</li>
-<li>navigate the course.</li>
+<li>When a peer review is released, I will post a GitHub Issue in <a href="https://github.com/STAT545-UBC/Discussion-Internal">Discussion-Internal</a>, tagging the teaching team and students.</li>
+<li>Click the link in the table above (which can also be found on the corresponding Canvas page), to find a table outlining which two classmates you are to provide a review for, and where to find their homework submissions.</li>
+<li>Navigate to your classmates’ homework submissions, look it over, and open a new Issue on their homework repository with your review.
+<ul>
+<li>You might want to tag the reviewee, too, but not the teaching team.</li>
+</ul></li>
+<li>Upon completion, it would be useful for you to submit a link to the two reviews you left; do so on the UBC Canvas page for the peer review. We will be putting your grades there.</li>
 </ol>
-<div id="quick-navigation" class="section level2">
-<h2>Quick Navigation</h2>
-<p>Both STAT 545 and STAT 547M make use of the following tools:</p>
-<table style="width:39%;">
-<colgroup>
-<col width="19%"></col>
-<col width="19%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool + Link</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="http://stat545.com/Classroom" class="uri">http://stat545.com/Classroom</a> (here)</td>
-<td>Think of this as the course “home” – and this syllabus as your launch pad to other destinations. Contains lecture notes, assignments, and course information.</td>
-</tr>
-<tr class="even">
-<td><a href="http://stat545.com/Classroom/assignments" class="uri">http://stat545.com/Classroom/assignments</a> branch</td>
-<td>Assignments and assignment info can be found here.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/STAT545-UBC/Discussion-Internal">Discussion-Internal</a> GitHub repository</td>
-<td>For internal discussion. The world cannot see this.</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/STAT545-UBC/Discussion">Discussion</a> GitHub repository.</td>
-<td>For public discussion. The world can see this.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/STAT545-UBC-students">STAT545-UBC-students</a> GitHub Organization</td>
-<td>This will contain one GitHub repository per student, for you to submit homework to and give peer reviews.</td>
-</tr>
-<tr class="even">
-<td><a href="http://canvas.ubc.ca/">UBC canvas</a></td>
-<td>This is for grade management. You’ll be interacting with it by submitting a link to your homework.</td>
-</tr>
-<tr class="odd">
-<td><a href="http://stat545.com" class="uri">http://stat545.com</a></td>
-<td>This holds course content, such as tutorials. Think of this as a textbook. We’ll point you there when needed. This previously contained the information contained in <code>Classroom</code>, but that eventually became confusing. Some headers there are becoming deprecated.</td>
-</tr>
-</tbody>
-</table>
-<p>This framework of tools is under construction, as we move to a solution that’s more scalable in terms of future iterations and multiple collaborators. We appreciate your patience and welcome your feedback!</p>
-</div>
-<div id="about-stat-545" class="section level2">
-<h2>About STAT 545</h2>
-<p>STAT 545 is “Part I” of learning how to</p>
-<ul>
-<li>explore, groom, visualize, and analyze data</li>
-<li>make all of that reproducible, reusable, and shareable</li>
-<li>using R</li>
-</ul>
-<p>Part II is STAT 547M – hope to see you there, too!</p>
-<p><strong>Credits</strong>: 1.5</p>
-<div id="selected-topics" class="section level3">
-<h3>Selected Topics</h3>
-<ul>
-<li>Introduction to <a href="http://www.r-project.org">R</a> and the <a href="http://www.rstudio.com/products/rstudio/">RStudio IDE</a>: scripts, the workspace, RStudio Projects, daily workflow</li>
-<li>Generate reports from R scripts and <a href="http://rmarkdown.rstudio.com">R Markdown</a></li>
-<li>Coding style, file and project organization</li>
-<li>Data frames or “tibbles” are the core data structure for data analysis: care for them with the tidyverse</li>
-<li>Data visualization with <a href="http://ggplot2.org"><code>ggplot2</code></a></li>
-<li>How to write functions and work with R in a functional style</li>
-<li>Version control with Git; collaboration via <a href="https://github.com">GitHub</a></li>
-</ul>
-</div>
-<div id="timing-and-location" class="section level3">
-<h3>Timing and Location</h3>
-<p>This course runs from September 4 until October 18, 2018.</p>
-<p>We’ll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.</p>
-<p>I’ll aim to end class at 10:45.</p>
-</div>
-<div id="prerequisites" class="section level3">
-<h3>Prerequisites</h3>
-<p>There are no official pre-requisites for STAT 545A, but most students will have had at least one prior statistics course or comparable experience.</p>
-</div>
-<div id="roots" class="section level3">
-<h3>Roots</h3>
-<p>Jenny Bryan deserves a huge amount of credit for founding and developing both STAT 545 and 547M over many years, along with her TA’s. Some of their content is even being used in this very syllabus. Thank you!</p>
-</div>
-</div>
-<div id="class-meetings" class="section level2">
-<h2>Class Meetings</h2>
-<p>Here are the topics and links to the notes for each class meeting.</p>
-<p>Warning: adjustments are still being made!</p>
-<table style="width:89%;">
-<colgroup>
-<col width="30%"></col>
-<col width="20%"></col>
-<col width="9%"></col>
-<col width="11%"></col>
-<col width="16%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th>Meeting No.</th>
-<th>Date</th>
-<th>TA’s</th>
-<th>Topic</th>
-<th>Resources</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="notes/cm001.nb.html">01</a></td>
-<td>sep-04 tues</td>
-<td>Chad, Sherrie</td>
-<td>Intro to course and software</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm002.nb.html">02</a></td>
-<td>sep-06 thurs</td>
-<td>Chad, Hossam</td>
-<td>Markdown and GitHub</td>
-<td>Tutorials for getting started with <a href="https://commonmark.org/help/tutorial/">markdown</a> and <a href="https://guides.github.com/activities/hello-world/">GitHub</a></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm003.nb.html">03</a></td>
-<td>sep-11 tues</td>
-<td>Rashedul, Sherrie</td>
-<td>git; Getting familiar with R</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm004.nb.html">04</a></td>
-<td>sep-13 thurs</td>
-<td>Rashedul, Hossam</td>
-<td>R Markdown and Notebooks</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm005.nb.html">05</a></td>
-<td>sep-18 tues</td>
-<td>Chad, Sherrie</td>
-<td>working with data in R; <code>dplyr</code> and the <code>tidyverse</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm006.nb.html">06</a></td>
-<td>sep-20 thurs</td>
-<td>Chad, Rashedul</td>
-<td>ggplot2, Part I</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm007.nb.html">07</a></td>
-<td>sep-25 tues</td>
-<td>Hossam, Sherrie</td>
-<td>ggplot2, Part II</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm008.nb.html">08</a></td>
-<td>sep-27 thurs</td>
-<td>Hossam, Rashedul</td>
-<td>Grouping of tibbles</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm009.nb.html">09</a></td>
-<td>oct-02 tues</td>
-<td>Rashedul, Sherrie</td>
-<td>Tidy data, reshaping</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm010.nb.html">10</a></td>
-<td>oct-04 thurs</td>
-<td>Rashedul, Chad, Hossam</td>
-<td>Guest Lecture: Rashedul</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm011.nb.html">11</a></td>
-<td>oct-09 tues</td>
-<td>Hossam, Sherrie</td>
-<td>Advanced R programming; file I/O</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm012.nb.html">12</a></td>
-<td>oct-11 thurs</td>
-<td>Hossam, Hossam</td>
-<td>The joy of Factors</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="notes/cm013.nb.html">13</a></td>
-<td>oct-16 tues</td>
-<td>Rashedul, Sherrie</td>
-<td>Revisit ggplot, practicalities of daily figure-making</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="notes/cm014.nb.html">14</a></td>
-<td>oct-18 thurs</td>
-<td>Rashedul, Chad</td>
-<td>The model-fitting paradigm in R; <code>broom</code>; deep thoughts about data analytic work</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Expectations:</p>
-<ul>
-<li>Show up to every class, and</li>
-<li>Bring a laptop to every class</li>
-</ul>
+<p><strong>If you do not find your github username on the list</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Complete the peer review steps, but for two randomly chosen classmates.</li>
+<li>Indicate that your name was not on the list when you make a submission through canvas.</li>
+<li>Email Vincenzo with the situation, so that the class list can be updated.</li>
+</ol>
 </div>
 <div id="evaluation" class="section level2">
 <h2>Evaluation</h2>
-<p><a href="http://stat545.com/Classroom/assignments/">(Navigation link to Assignments)</a></p>
-<p>To gain marks in this course, you’ll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!</p>
-<p>Here’s the breakdown of your course grade:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Assessment</th>
-<th>Weight</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>5 Assignments</td>
-<td>75% (15% per assignment)</td>
-</tr>
-<tr class="even">
-<td>10 Peer Reviews</td>
-<td>15% (3% per assignment)</td>
-</tr>
-<tr class="odd">
-<td>Participation</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-<p>There is no final exam.</p>
-<p>Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis.</p>
-<p><strong>Assignments and peer review</strong>: For information about and links to assignments and peer reviews, go to <a href="http://stat545.com/Classroom/assignments/">the assignments page</a>.</p>
-<p><strong>Participation</strong>: will be evaluated by:</p>
+<p>Each peer review you give is graded on a binary scale: as either 0 (for “needs more”) or 100% (for “good”).</p>
+<p>Hallmarks of feedback that “needs more”:</p>
 <ul>
-<li>Participation in class discussions</li>
-<li>Submitting work on in-class activities to your STAT 545 home GitHub repository.
-<ul>
-<li>Be sure to submit these in class, not at some other time!</li>
-</ul></li>
-<li>Activity in the Issues of the two <code>Discussion</code> repositories – with preference given to <a href="https://github.com/STAT545-UBC/Discussion"><code>Discussion</code></a> (public) over <a href="https://github.com/STAT545-UBC/Discussion-Internal"><code>Discussion-Internal</code></a> (private).</li>
+<li>Your review is so generic that it’s hard to determine which assignment you’re reviewing.</li>
+<li>Your review is mean.</li>
+<li>You can’t find anything to praise/learn and yet you don’t offer any suggestions either.</li>
 </ul>
 </div>
-<div id="teaching-team" class="section level2">
-<h2>Teaching Team</h2>
-<p>Here is your dedicated teaching team!</p>
-<table style="width:54%;">
-<colgroup>
-<col width="25%"></col>
-<col width="15%"></col>
-<col width="13%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th>Teaching Member</th>
-<th>Position</th>
-<th>Contact</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Vincenzo Coia</td>
-<td>Instructor</td>
-<td>Email: <a href="mailto:vincen.coia@stat.ubc.ca">vincen.coia@stat.ubc.ca</a> GitHub: <a href="https://github.com/vincenzocoia"><code>@vincenzocoia</code></a> Twitter: <a href="https://twitter.com/vincenzocoia">@VincenzoCoia</a> LinkedIn: <a href="https://www.linkedin.com/in/vincenzocoia/">vincenzocoia</a></td>
-</tr>
-<tr class="even">
-<td>Chad Fibke</td>
-<td>Teaching Assistant</td>
-<td>GitHub: <a href="https://github.com/ChadFibke"><code>@ChadFibke</code></a></td>
-</tr>
-<tr class="odd">
-<td>Hossameldin Mohammed</td>
-<td>Teaching Assistant</td>
-<td>GitHub: <a href="https://github.com/hsmohammed"><code>@hsmohammed</code></a>; <a href="http://linkedin.com/in/hossameldin-mohammed-4a091160">LinkedIn</a></td>
-</tr>
-<tr class="even">
-<td>Rashedul Islam</td>
-<td>Teaching Assistant</td>
-<td>GitHub: <a href="https://github.com/rashedul"><code>@rashedul</code></a>, <a href="https://www.linkedin.com/in/rashedul-islam-12170432/">LinkedIn</a></td>
-</tr>
-<tr class="odd">
-<td>Sherrie Lau</td>
-<td>Teaching Assistant</td>
-<td>GitHub: <a href="https://github.com/sherrie9"><code>@sherrie9</code></a></td>
-</tr>
-</tbody>
-</table>
-<p>Please see the “Conversation” section below to determine who to get in touch with for what, and how.</p>
-<p><strong>Office hours</strong>: Want to talk about the course outside of lecture? Let’s talk during these dedicated times (generally, 11:00-12:00 every Monday, Tuesday, Wednesday). You’re always welcome to schedule alternative times, too.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Teaching Member</th>
-<th>Date</th>
-<th>Time</th>
-<th>Place</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Rashedul</td>
-<td>Tue, Sept 04</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Vincenzo</td>
-<td>Wed, Sept 05</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="odd">
-<td>Sherrie</td>
-<td>Mon, Sept 10</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Chad</td>
-<td>Tue, Sept 11</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Vincenzo</td>
-<td>Wed, Sept 12</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="even">
-<td>Hossam</td>
-<td>Mon, Sept 17</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Rashedul</td>
-<td>Tue, Sept 18</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Vincenzo</td>
-<td>Wed, Sept 19</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="odd">
-<td>Sherrie</td>
-<td>Mon, Sept 24</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Rashedul</td>
-<td>Tue, Sept 25</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Vincenzo</td>
-<td>Wed, Sept 26</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="even">
-<td>Chad</td>
-<td>Mon, Oct 01</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Hossam</td>
-<td>Tue, Oct 02</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Vincenzo</td>
-<td>Wed, Oct 03</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="odd">
-<td>Sherrie</td>
-<td>Mon, Oct 08</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Chad</td>
-<td>Tue, Oct 09</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Vincenzo</td>
-<td>Wed, Oct 10</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="even">
-<td>Chad</td>
-<td>Mon, Oct 15</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Hossam</td>
-<td>Tue, Oct 16</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Vincenzo</td>
-<td>Wed, Oct 17</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-<tr class="odd">
-<td>Sherrie</td>
-<td>Mon, Oct 22</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="even">
-<td>Rashedul</td>
-<td>Tue, Oct 23</td>
-<td>11:00 - 12:00</td>
-<td>ESB 3174</td>
-</tr>
-<tr class="odd">
-<td>Vincenzo</td>
-<td>Wed, Oct 24</td>
-<td>11:00 - 12:00</td>
-<td>ESB 1043</td>
-</tr>
-</tbody>
-</table>
-<p>Do you need my permission to enroll or audit in this course? There is <a href="https://courses.students.ubc.ca/cs/main?pname=subjarea&amp;tname=subjareas&amp;req=5&amp;dept=STAT&amp;course=545A&amp;section=101">probably space available</a>. Come to Vincenzo’s September 5 office hour:</p>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>How to give a good peer review:</p>
 <ul>
-<li>11:00-11:30 for those wanting to <strong>enrol</strong>.</li>
-<li>11:30-12:00 for those wanting to <strong>audit</strong>.</li>
+<li>Give thoughtful, constructive and considerate comments.</li>
+<li>Be specific and concise.</li>
+<li>Use the assignment rubric (above) for ideas about criteria to evaluate and comment on – we’ve given you a template to work with <a href="https://github.com/STAT545-UBC/Classroom/blob/master/assignments/peer-review-template.md">here</a>.</li>
+<li>Try to learn something new and, if you succeed, point that out.</li>
+<li>If you can’t find anything to praise or that you found helpful, then at least offer some suggestions in a kind way.</li>
 </ul>
-<p>You’ll probably need the <a href="https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf">Change of Registration</a> form.</p>
-</div>
-<div id="conversation-and-getting-help" class="section level2">
-<h2>Conversation, and Getting Help</h2>
-<p>Are you stuck? First, try to get unstuck by yourself by following the advice of <a href="http://stat545.com/help-general.html">stat545.com: help-general</a>.</p>
-<p>While you are getting started, we recommend you seek help within the STAT545 community first, before, e.g. posting to external forums. We are more cuddly.</p>
-<p>The instructor and TAs stand ready to assist you, but your peers will also be a great source of good questions and answers. For that reason, we encourage you to seek help in ways that are visible to others.</p>
-<p>The options are sort of listed in order of preference. But we realize every situation is different and your comfort level with these approaches will change as you learn more.</p>
-<ol style="list-style-type: decimal">
-<li>Want to talk about content/coding issues? Post an Issue in the <a href="https://github.com/STAT545-UBC/Discussion">Discussion</a> (public) repository.</li>
-<li>Want to talk about the course? Post an Issue in the <a href="https://github.com/STAT545-UBC/Discussion-Internal">Discussion-Internal</a> (private) repository.</li>
-<li>Want to talk in person? Come visit us during office hours!</li>
-<li>Want to privately contact Vincenzo? Feel free to send me an email.
+<p>Peer reviewing and critiquing others’ work is a useful skill to develop during your graduate studies. Although these links deal mainly with the peer review of academic papers, most of the key points are applicable to our peer review process.</p>
 <ul>
-<li>I look forward to receiving your email, though I do encourage you to post in one of the <code>Discussion</code> repositories unless it’s really not appropriate for either platform.</li>
-</ul></li>
-</ol>
-<div id="basic-issue-workflow" class="section level3">
-<h3>Basic Issue workflow</h3>
-<p>Some advice on opening an Issue on GitHub:</p>
-<ul>
-<li>Give it a specific title.</li>
-<li>BAD: “aaaaaarrrrrrgh!”, “things not working”, “i need help”</li>
-<li>GOOD: ‘error when indexing a matrix: “incorrect number of dimensions”’</li>
-<li>Stay specific and be complete-but-concise in the body of the description. Don’t expect your helper to play 20 questions with you.</li>
-<li>(Optional) Tag someone:
-<ul>
-<li>To get the attention of the teaching team, add the <code>@2018_teaching_team</code> tag to notify all five of us.</li>
-<li>To get the attention of your fellow students, add the <code>@2018_students</code> tag to notify them.</li>
-</ul></li>
-<li>Don’t just create Issues – also respond to them! Think about this in terms of adding to the conversation, not in terms of “correctness”.</li>
-<li>Don’t forget to click “Submit new issue”!</li>
+<li><a href="https://github.com/jtleek/reviews/blob/master/README.md">Reviewing academic papers by Jeff Leek</a></li>
+<li><a href="http://evol-eco.blogspot.ca/2014/09/edicts-for-peer-reviewing.html">Edicts for peer reviewing (Ebb &amp; Flow blog)</a></li>
+<li><a href="http://f1000research.com/peer-reviewing-tips">Faculty of 1000 Research: tips for peer reviewing</a></li>
+<li><a href="http://zonca.github.io/2014/08/code-review-for-scientific-computing.html">The section entitled “How to perform the actual code review”</a></li>
 </ul>
-<p>Typically, this will trigger an email to the person/team you tagged. The title of your issue will be in the subject line, so I repeat, <em>make it specific</em>. Your description will become the body of the email. At the bottom will be a link to the issue on GitHub.</p>
-<p>If all goes well, your helper will respond. I almost always do this directly via GitHub, though simply replying to the email basically works. In any case, this back-and-forth will show up as a series of comments on your original issue. It’s like an email dialogue but better:</p>
-<ul>
-<li>It’s embedded in a relevant Organization/project/repo, so it will be easier to find later vs. digging out of your giant vat of unfiled email.</li>
-<li>It’s potentially visible to others (depending on the repo), which could save us from asking/answering the same questions repeatedly.</li>
-<li>The whole discussion will be mirrored via email, so that still serves as a great way to prompt participants to tune in.</li>
-<li>Later you can get fancy and refer to commits and other issues within the repo in slick ways.</li>
-</ul>
-<p>Once the problem is resolved, the issue can be closed. Note that closed issues remain accessible, in case anyone needs to consult them in the future.</p>
-</div>
-</div>
-<div id="annotated-resources" class="section level2">
-<h2>Annotated Resources</h2>
-<p>Here are the resources we will be referring to throughout the course, along with a brief description of the resource.</p>
-<p>Overarching resources:</p>
-<ol style="list-style-type: decimal">
-<li><a href="http://stat545.com" class="uri">http://stat545.com</a>
-<ul>
-<li>As mentioned earlier, this website can be thought of as a textbook for STAT 545/547.</li>
-</ul></li>
-<li><a href="http://r4ds.had.co.nz/">R for Data Science</a> (aka “r4ds”), by Garrett Grolemund and Hadley Wickham.
-<ul>
-<li>STAT 545/547 closely mirrors the topics of this book, making this book more of a true “textbook” for the course.</li>
-</ul></li>
-</ol>
-<p>Resources for more specific topics:</p>
-<ol style="list-style-type: decimal">
-<li><a href="http://happygitwithr.com/">Happy git with R</a>, by Jenny Bryan and the STAT 545 TA’s
-<ul>
-<li>Great for marrying git, GitHub, R, and RStudio in your workflow.</li>
-</ul></li>
-<li><a href="http://adv-r.had.co.nz/">Advanced R</a>, by Hadley Wickham
-<ul>
-<li>If you want to learn more about R as a programming language, this is a very readable and concise way of doing so.</li>
-</ul></li>
-<li><a href="http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511">ggplot2 book</a>, by Hadley Wickham
-<ul>
-<li>Useful for digging deeper into <code>ggplot2</code>.</li>
-</ul></li>
-</ol>
 </div>
 </div>
 
