@@ -37,7 +37,7 @@ Resources for specific concepts:
 
 ## Participation
 
-To get participation points for today, we'll be filling out the cm008-exercise.Rmd file ([Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm008-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm008-exercise.html)), and adding it to your participation repo. 
+To get participation points for today, we'll be filling out the cm008-exercise.Rmd file ([Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm008-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm008-exercise.nb.html)), and adding it to your participation repo. 
 
 Let's take time to get set up:
 
