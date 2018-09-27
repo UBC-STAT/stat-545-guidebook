@@ -18,6 +18,7 @@ Both STAT 545 and STAT 547M make use of the following tools:
 | [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization | This will contain one GitHub repository per student, for you to submit homework to and give peer reviews. |
 | [UBC canvas](http://canvas.ubc.ca/) | This is for grade management. You'll be interacting with it by submitting a link to your homework. |
 | <http://stat545.com> | This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. This previously contained the information contained in `Classroom`, but that eventually became confusing. Some headers there are becoming deprecated.  |
+| [My](https://github.com/vincenzocoia/STAT545_participation) participation repository | You can find completed exercises here |
 
 This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We appreciate your patience and welcome your feedback!
 
