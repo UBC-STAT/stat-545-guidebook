@@ -1,5 +1,5 @@
 ---
-title: "STAT 545 Class Meeting 09"
+title: "STAT 545 Class Meeting 09: Tidy Data"
 output:
     html_notebook:
         toc: true
@@ -9,94 +9,114 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Learning Objectives
+## Review, and Looking Ahead
 
-tidyr::complete for completing a time series.
+For the past two weeks, we've been looking at "clean" exploratory data analysis by:
 
-drop_na
+- Wrangling single data frames with `dplyr`
+- Making plots of that data with `ggplot2`
 
-```{r}
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(gapminder))
-```
+This is a powerful framework for drawing information from data. 
 
-#### Resources
+This week, we'll focus on data not in an immediately ready-to-use format:
 
-Some useful resources for data frame joins.
+- Today: data reshaping
+- Thursday: joining two tables (Rashedul to take the lead)
 
-- Jenny's [Cheatsheet](bit001_dplyr-cheatsheet.html) for `dplyr` join functions.
-- The [Relational Data](http://r4ds.had.co.nz/relational-data.html) chapter in "R for Data Science" goes through these concepts in detail. 
+Starting next week, the rest of the course will look at more advanced versions of what we've seen:
 
+- R programming
+- Factors
+- Plotting (including `plotly`).
 
-After going through the `dplyr` [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) on "two-table verbs", we'll work on the following exercises.
-
-
-Consider the following areas of countries, in hectares:
-
-```{r}
-(areas <- data.frame(country=c("Canada", "United States", "India", "Vatican City"),
-                     area=c(998.5*10^6, 983.4*10^6, 328.7*10^6, 44)) %>% 
-     as.tbl)
-```
+We'll finish with a discussion on the model-fitting paradigm in R, and the `broom` package.  
 
 
-1. To the `gapminder` dataset, add an `area` variable using the `areas` tibble. Be sure to preserve all the rows of the original `gapminder` dataset.
+## Today's Lessons
 
-```{r}
-left_join(gapminder, areas)
-```
+Today's lessons are:
+
+- `readr`: Reading and writing data into and out of R
+- `tidyr`: Tidying and untidying data
+- Time permitting: other `tidyr` goodies
+
+## Resources
+
+Concepts from today's class are closely mirrored by Jenny Bryan's [LOTR tidy data lesson](https://github.com/jennybc/lotr-tidy#readme).
+
+## Participation
+
+To get participation points for today, fill out the cm009-exercise.Rmd file with the class (get it from [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm009-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm009-exercise.html)), and add it to your participation repo.
+
+# Reading and Writing data
+
+## Working Directory 
+
+R has a notion of "working directory". You can get with `getwd()`, set (with caution) with `setwd()`.
+
+## The functions
+
+Let's see an example of how tabular data are stored:
+
+- csv example: [gapminder](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/gapminder.csv)
+- tsv example: [LOTR](https://raw.githubusercontent.com/jennybc/lotr/master/lotr_clean.tsv)
+
+Reading and writing csv's
+
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.csv()` | `write.csv()` |
+| tidyverse (`readr`) | `read_csv()` | `write_csv()` |
+
+Reading and writing tsv's
+
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.delim()` | `write.table(sep="\t")` |
+| tidyverse (`readr`) | `read_tsv()` | `write_tsv()` |
 
 
-2. To the `gapminder` dataset, add an `area` variable using the `areas` tibble, but only keeping obervations for which areas are available. 
+Reading and writing delimited files in general
 
-```{r}
-inner_join(gapminder, areas)
-```
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.delim()` | `write.table()` |
+| tidyverse (`readr`) | `read_delim()` | `write_delim()` |
 
-3. Use a `_join` function to output the rows in `areas` corresponding to countries that _are not_ found in the `gapminder` dataset. 
+With Base R: beware the factors with `read.csv()`!
 
-```{r}
-anti_join(areas, gapminder)
-```
+## Making tibbles within R
 
+Base R: `data.frame()` function.
 
-4. Use a `_join` function to output the rows in `areas` corresponding to countries that _are_ found in the `gapminder` dataset. 
+Tidyverse version: `tibble()` function from `tibble` package.
 
-```{r}
-semi_join(areas, gapminder, by="country")
-```
+Truly manual construction of tibbles: `tribble()` from the `tibble` package. 
 
-5. Construct a tibble that joins `gapminder` and `areas`, so that all rows found in each original tibble are also found in the final tibble. 
+# Tidy Data
 
-```{r}
-full_join(areas, gapminder)
-full_join(gapminder, areas)
-```
+## Learning Objectives
 
-Here are the rows containing the Vatican City:
+Here are the concepts we'll be exploring in this lesson:
 
-```{r}
-full_join(areas, gapminder) %>% 
-    filter(country=="Vatican City")
-```
+- tidy data
+- gather
+- spread
 
+By the end of this lesson, students are expected to be able to:
 
-6. Subset the `gapminder` dataset to have countries that are only found in the `areas` data frame. 
+- identify when data are tidy, and when they are not.
+- when either form is useful.
+- use the `tidy::gather()` and `tidyr::spread()` functions to convert between tidy and untidy data
 
-```{r}
-semi_join(gapminder, areas)
-```
+## Tidy Data
 
-7. Subset the `gapminder` dataset to have countries that are _not_ found in the `areas` data frame. 
+We'll look at Jenny's [intro](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md) page for an example of tidy/untidy data. 
 
-```{r}
-anti_join(gapminder, areas)
-```
+## gather and spread
 
-Let's check.... Canada should not be in there:
+History: Data reshaping has not been the most natural thing to program. First came the `reshape` package. Then the `reshape2` package. Now the `tidyr` package makes it easy(er).
 
-```{r}
-anti_join(gapminder, areas) %>% 
-    filter(country=="Canada")
-```
+Spreadsheets like Excel? pivot. 
 
+Let's try some exercises. 
