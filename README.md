@@ -77,7 +77,7 @@ Warning: adjustments are still being made!
 | [07](notes/cm007.nb.html) | sep-25 tues  | Hossam, Sherrie | ggplot2, Part II |
 | [08](notes/cm008.nb.html) | sep-27 thurs | Hossam, Rashedul | Grouping of tibbles |
 | [09](notes/cm009.nb.html) | oct-02 tues  | Rashedul, Sherrie | Tidy data, reshaping |
-| [10](notes/cm010.nb.html) | oct-04 thurs | Rashedul, Chad, Hossam | Guest Lecture: Rashedul, on table joins |
+| [10](https://github.com/Rashedul/stat545_guest_lecture) | oct-04 thurs | Rashedul, Chad, Hossam | Guest Lecture: Rashedul, on table joins |
 | [11](notes/cm011.nb.html) | oct-09 tues  | Hossam, Sherrie | Advanced R programming; file I/O |
 | [12](notes/cm012.nb.html) | oct-11 thurs | Hossam, Rashedul | The joy of Factors | 
 | [13](notes/cm013.nb.html) | oct-16 tues  | Rashedul, Sherrie | Revisit ggplot; plotly; practicalities of daily figure-making |
