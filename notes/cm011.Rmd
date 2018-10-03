@@ -11,3 +11,56 @@ editor_options:
 
 # Learning Objectives
 
+R as a programming language. 
+
+Today:
+
+- More on the "flavours" of R objects
+- Vectors and lists
+- Vectorization and recycling
+
+## Announcements
+
+- Assignment 5 due later than usual: October 19, 2018
+
+## Review, and Looking Ahead
+
+We're done with the "core concepts" of data wrangling and data vis, both of which are fundamental to exploratory data analysis (EDA). 
+
+Now, we're starting more "specialized" topics for EDA.
+
+## Today's Lessons
+
+Today's class is on R programming. 
+
+When we first saw R:
+
+- we made a script to compute the variance of commute times.
+- we saw that R can handle more than just numbers -- it can also handle things like characters and logicals.
+
+Today, we'll aim to cover the following topics (which we'll call Part I):
+
+- "Flavours" of R objects
+- Vectors, vectorization, and recycling.
+- Lists
+
+If time remains, we'll move on to Part II:
+
+- Environments and Scoping
+
+## Resources
+
+Part I:
+
+- Jenny's [Basic R Objects](http://stat545.com/block004_basic-r-objects.html) tutorial covers Part I. 
+- A more thorough treatment of the topic can be found in [adv-r: Data Structures](http://adv-r.had.co.nz/Data-structures.html) and [adv-r: Subsetting](http://adv-r.had.co.nz/Subsetting.html).
+
+Part II:
+
+- [adv-r: Functions: Lexical Scoping section](http://adv-r.had.co.nz/Functions.html#lexical-scoping) 
+- [adv-r: Environments](http://adv-r.had.co.nz/Environments.html): "Environment Basics" section, and "Function Environments" section (but don't worry about "binding environments" and "calling environments").
+
+
+## Participation
+
+Fill out the cm011-exercise.Rmd file, and push it to your participation repo. Links: [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm011-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm011-exercise.html).
