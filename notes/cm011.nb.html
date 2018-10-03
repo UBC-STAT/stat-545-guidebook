@@ -176,39 +176,28 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#learning-objectives"><span class="toc-section-number">1</span> Learning Objectives</a><ul>
-<li><a href="#announcements"><span class="toc-section-number">1.1</span> Announcements</a></li>
-<li><a href="#review-and-looking-ahead"><span class="toc-section-number">1.2</span> Review, and Looking Ahead</a></li>
-<li><a href="#todays-lessons"><span class="toc-section-number">1.3</span> Today’s Lessons</a></li>
-<li><a href="#resources"><span class="toc-section-number">1.4</span> Resources</a></li>
-<li><a href="#participation"><span class="toc-section-number">1.5</span> Participation</a></li>
-</ul></li>
+<li><a href="#announcements"><span class="toc-section-number">0.1</span> Announcements</a></li>
+<li><a href="#review-and-looking-ahead"><span class="toc-section-number">0.2</span> Review, and Looking Ahead</a></li>
+<li><a href="#todays-lessons"><span class="toc-section-number">0.3</span> Today’s Lessons</a></li>
+<li><a href="#resources"><span class="toc-section-number">0.4</span> Resources</a></li>
+<li><a href="#participation"><span class="toc-section-number">0.5</span> Participation</a></li>
 </ul>
 </div>
 
 <!-- rnb-text-begin -->
-<div id="learning-objectives" class="section level1">
-<h1><span class="header-section-number">1</span> Learning Objectives</h1>
-<p>R as a programming language.</p>
-<p>Today:</p>
-<ul>
-<li>More on the “flavours” of R objects</li>
-<li>Vectors and lists</li>
-<li>Vectorization and recycling</li>
-</ul>
 <div id="announcements" class="section level2">
-<h2><span class="header-section-number">1.1</span> Announcements</h2>
+<h2><span class="header-section-number">0.1</span> Announcements</h2>
 <ul>
 <li>Assignment 5 due later than usual: October 19, 2018</li>
 </ul>
 </div>
 <div id="review-and-looking-ahead" class="section level2">
-<h2><span class="header-section-number">1.2</span> Review, and Looking Ahead</h2>
+<h2><span class="header-section-number">0.2</span> Review, and Looking Ahead</h2>
 <p>We’re done with the “core concepts” of data wrangling and data vis, both of which are fundamental to exploratory data analysis (EDA).</p>
 <p>Now, we’re starting more “specialized” topics for EDA.</p>
 </div>
 <div id="todays-lessons" class="section level2">
-<h2><span class="header-section-number">1.3</span> Today’s Lessons</h2>
+<h2><span class="header-section-number">0.3</span> Today’s Lessons</h2>
 <p>Today’s class is on R programming.</p>
 <p>When we first saw R:</p>
 <ul>
@@ -227,7 +216,7 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="resources" class="section level2">
-<h2><span class="header-section-number">1.4</span> Resources</h2>
+<h2><span class="header-section-number">0.4</span> Resources</h2>
 <p>Part I:</p>
 <ul>
 <li>Jenny’s <a href="http://stat545.com/block004_basic-r-objects.html">Basic R Objects</a> tutorial covers Part I.</li>
@@ -240,13 +229,12 @@ $(document).ready(function () {
 </ul>
 </div>
 <div id="participation" class="section level2">
-<h2><span class="header-section-number">1.5</span> Participation</h2>
+<h2><span class="header-section-number">0.5</span> Participation</h2>
 <p>Fill out the cm011-exercise.Rmd file, and push it to your participation repo. Links: <a href="https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm011-exercise.Rmd">Rmd</a>, or <a href="http://stat545.com/Classroom/notes/cm011-exercise.html">from html</a>.</p>
 <!-- rnb-text-end -->
 </div>
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAxMSIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIExlYXJuaW5nIE9iamVjdGl2ZXMKClIgYXMgYSBwcm9ncmFtbWluZyBsYW5ndWFnZS4gCgpUb2RheToKCi0gTW9yZSBvbiB0aGUgImZsYXZvdXJzIiBvZiBSIG9iamVjdHMKLSBWZWN0b3JzIGFuZCBsaXN0cwotIFZlY3Rvcml6YXRpb24gYW5kIHJlY3ljbGluZwoKIyMgQW5ub3VuY2VtZW50cwoKLSBBc3NpZ25tZW50IDUgZHVlIGxhdGVyIHRoYW4gdXN1YWw6IE9jdG9iZXIgMTksIDIwMTgKCiMjIFJldmlldywgYW5kIExvb2tpbmcgQWhlYWQKCldlJ3JlIGRvbmUgd2l0aCB0aGUgImNvcmUgY29uY2VwdHMiIG9mIGRhdGEgd3JhbmdsaW5nIGFuZCBkYXRhIHZpcywgYm90aCBvZiB3aGljaCBhcmUgZnVuZGFtZW50YWwgdG8gZXhwbG9yYXRvcnkgZGF0YSBhbmFseXNpcyAoRURBKS4gCgpOb3csIHdlJ3JlIHN0YXJ0aW5nIG1vcmUgInNwZWNpYWxpemVkIiB0b3BpY3MgZm9yIEVEQS4KCiMjIFRvZGF5J3MgTGVzc29ucwoKVG9kYXkncyBjbGFzcyBpcyBvbiBSIHByb2dyYW1taW5nLiAKCldoZW4gd2UgZmlyc3Qgc2F3IFI6CgotIHdlIG1hZGUgYSBzY3JpcHQgdG8gY29tcHV0ZSB0aGUgdmFyaWFuY2Ugb2YgY29tbXV0ZSB0aW1lcy4KLSB3ZSBzYXcgdGhhdCBSIGNhbiBoYW5kbGUgbW9yZSB0aGFuIGp1c3QgbnVtYmVycyAtLSBpdCBjYW4gYWxzbyBoYW5kbGUgdGhpbmdzIGxpa2UgY2hhcmFjdGVycyBhbmQgbG9naWNhbHMuCgpUb2RheSwgd2UnbGwgYWltIHRvIGNvdmVyIHRoZSBmb2xsb3dpbmcgdG9waWNzICh3aGljaCB3ZSdsbCBjYWxsIFBhcnQgSSk6CgotICJGbGF2b3VycyIgb2YgUiBvYmplY3RzCi0gVmVjdG9ycywgdmVjdG9yaXphdGlvbiwgYW5kIHJlY3ljbGluZy4KLSBMaXN0cwoKSWYgdGltZSByZW1haW5zLCB3ZSdsbCBtb3ZlIG9uIHRvIFBhcnQgSUk6CgotIEVudmlyb25tZW50cyBhbmQgU2NvcGluZwoKIyMgUmVzb3VyY2VzCgpQYXJ0IEk6CgotIEplbm55J3MgW0Jhc2ljIFIgT2JqZWN0c10oaHR0cDovL3N0YXQ1NDUuY29tL2Jsb2NrMDA0X2Jhc2ljLXItb2JqZWN0cy5odG1sKSB0dXRvcmlhbCBjb3ZlcnMgUGFydCBJLiAKLSBBIG1vcmUgdGhvcm91Z2ggdHJlYXRtZW50IG9mIHRoZSB0b3BpYyBjYW4gYmUgZm91bmQgaW4gW2Fkdi1yOiBEYXRhIFN0cnVjdHVyZXNdKGh0dHA6Ly9hZHYtci5oYWQuY28ubnovRGF0YS1zdHJ1Y3R1cmVzLmh0bWwpIGFuZCBbYWR2LXI6IFN1YnNldHRpbmddKGh0dHA6Ly9hZHYtci5oYWQuY28ubnovU3Vic2V0dGluZy5odG1sKS4KClBhcnQgSUk6CgotIFthZHYtcjogRnVuY3Rpb25zOiBMZXhpY2FsIFNjb3Bpbmcgc2VjdGlvbl0oaHR0cDovL2Fkdi1yLmhhZC5jby5uei9GdW5jdGlvbnMuaHRtbCNsZXhpY2FsLXNjb3BpbmcpIAotIFthZHYtcjogRW52aXJvbm1lbnRzXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L0Vudmlyb25tZW50cy5odG1sKTogIkVudmlyb25tZW50IEJhc2ljcyIgc2VjdGlvbiwgYW5kICJGdW5jdGlvbiBFbnZpcm9ubWVudHMiIHNlY3Rpb24gKGJ1dCBkb24ndCB3b3JyeSBhYm91dCAiYmluZGluZyBlbnZpcm9ubWVudHMiIGFuZCAiY2FsbGluZyBlbnZpcm9ubWVudHMiKS4KCgojIyBQYXJ0aWNpcGF0aW9uCgpGaWxsIG91dCB0aGUgY20wMTEtZXhlcmNpc2UuUm1kIGZpbGUsIGFuZCBwdXNoIGl0IHRvIHlvdXIgcGFydGljaXBhdGlvbiByZXBvLiBMaW5rczogW1JtZF0oaHR0cHM6Ly9naXRodWIuY29tL1NUQVQ1NDUtVUJDL0NsYXNzcm9vbS9ibG9iL21hc3Rlci9ub3Rlcy9jbTAxMS1leGVyY2lzZS5SbWQpLCBvciBbZnJvbSBodG1sXShodHRwOi8vc3RhdDU0NS5jb20vQ2xhc3Nyb29tL25vdGVzL2NtMDExLWV4ZXJjaXNlLmh0bWwpLg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDUgQ2xhc3MgTWVldGluZyAxMSIKb3V0cHV0OgogICAgaHRtbF9ub3RlYm9vazoKICAgICAgICB0b2M6IHRydWUKICAgICAgICB0aGVtZTogY2VydWxlYW4KICAgICAgICBudW1iZXJfc2VjdGlvbnM6IHRydWUKZWRpdG9yX29wdGlvbnM6IAogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUKLS0tCgojIyBBbm5vdW5jZW1lbnRzCgotIEFzc2lnbm1lbnQgNSBkdWUgbGF0ZXIgdGhhbiB1c3VhbDogT2N0b2JlciAxOSwgMjAxOAoKIyMgUmV2aWV3LCBhbmQgTG9va2luZyBBaGVhZAoKV2UncmUgZG9uZSB3aXRoIHRoZSAiY29yZSBjb25jZXB0cyIgb2YgZGF0YSB3cmFuZ2xpbmcgYW5kIGRhdGEgdmlzLCBib3RoIG9mIHdoaWNoIGFyZSBmdW5kYW1lbnRhbCB0byBleHBsb3JhdG9yeSBkYXRhIGFuYWx5c2lzIChFREEpLiAKCk5vdywgd2UncmUgc3RhcnRpbmcgbW9yZSAic3BlY2lhbGl6ZWQiIHRvcGljcyBmb3IgRURBLgoKIyMgVG9kYXkncyBMZXNzb25zCgpUb2RheSdzIGNsYXNzIGlzIG9uIFIgcHJvZ3JhbW1pbmcuIAoKV2hlbiB3ZSBmaXJzdCBzYXcgUjoKCi0gd2UgbWFkZSBhIHNjcmlwdCB0byBjb21wdXRlIHRoZSB2YXJpYW5jZSBvZiBjb21tdXRlIHRpbWVzLgotIHdlIHNhdyB0aGF0IFIgY2FuIGhhbmRsZSBtb3JlIHRoYW4ganVzdCBudW1iZXJzIC0tIGl0IGNhbiBhbHNvIGhhbmRsZSB0aGluZ3MgbGlrZSBjaGFyYWN0ZXJzIGFuZCBsb2dpY2Fscy4KClRvZGF5LCB3ZSdsbCBhaW0gdG8gY292ZXIgdGhlIGZvbGxvd2luZyB0b3BpY3MgKHdoaWNoIHdlJ2xsIGNhbGwgUGFydCBJKToKCi0gIkZsYXZvdXJzIiBvZiBSIG9iamVjdHMKLSBWZWN0b3JzLCB2ZWN0b3JpemF0aW9uLCBhbmQgcmVjeWNsaW5nLgotIExpc3RzCgpJZiB0aW1lIHJlbWFpbnMsIHdlJ2xsIG1vdmUgb24gdG8gUGFydCBJSToKCi0gRW52aXJvbm1lbnRzIGFuZCBTY29waW5nCgojIyBSZXNvdXJjZXMKClBhcnQgSToKCi0gSmVubnkncyBbQmFzaWMgUiBPYmplY3RzXShodHRwOi8vc3RhdDU0NS5jb20vYmxvY2swMDRfYmFzaWMtci1vYmplY3RzLmh0bWwpIHR1dG9yaWFsIGNvdmVycyBQYXJ0IEkuIAotIEEgbW9yZSB0aG9yb3VnaCB0cmVhdG1lbnQgb2YgdGhlIHRvcGljIGNhbiBiZSBmb3VuZCBpbiBbYWR2LXI6IERhdGEgU3RydWN0dXJlc10oaHR0cDovL2Fkdi1yLmhhZC5jby5uei9EYXRhLXN0cnVjdHVyZXMuaHRtbCkgYW5kIFthZHYtcjogU3Vic2V0dGluZ10oaHR0cDovL2Fkdi1yLmhhZC5jby5uei9TdWJzZXR0aW5nLmh0bWwpLgoKUGFydCBJSToKCi0gW2Fkdi1yOiBGdW5jdGlvbnM6IExleGljYWwgU2NvcGluZyBzZWN0aW9uXShodHRwOi8vYWR2LXIuaGFkLmNvLm56L0Z1bmN0aW9ucy5odG1sI2xleGljYWwtc2NvcGluZykgCi0gW2Fkdi1yOiBFbnZpcm9ubWVudHNdKGh0dHA6Ly9hZHYtci5oYWQuY28ubnovRW52aXJvbm1lbnRzLmh0bWwpOiAiRW52aXJvbm1lbnQgQmFzaWNzIiBzZWN0aW9uLCBhbmQgIkZ1bmN0aW9uIEVudmlyb25tZW50cyIgc2VjdGlvbiAoYnV0IGRvbid0IHdvcnJ5IGFib3V0ICJiaW5kaW5nIGVudmlyb25tZW50cyIgYW5kICJjYWxsaW5nIGVudmlyb25tZW50cyIpLgoKCiMjIFBhcnRpY2lwYXRpb24KCkZpbGwgb3V0IHRoZSBjbTAxMS1leGVyY2lzZS5SbWQgZmlsZSwgYW5kIHB1c2ggaXQgdG8geW91ciBwYXJ0aWNpcGF0aW9uIHJlcG8uIExpbmtzOiBbUm1kXShodHRwczovL2dpdGh1Yi5jb20vU1RBVDU0NS1VQkMvQ2xhc3Nyb29tL2Jsb2IvbWFzdGVyL25vdGVzL2NtMDExLWV4ZXJjaXNlLlJtZCksIG9yIFtmcm9tIGh0bWxdKGh0dHA6Ly9zdGF0NTQ1LmNvbS9DbGFzc3Jvb20vbm90ZXMvY20wMTEtZXhlcmNpc2UuaHRtbCku</div>
 
 
 
