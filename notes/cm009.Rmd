@@ -46,7 +46,7 @@ Concepts from today's class are closely mirrored by Jenny Bryan's [LOTR tidy dat
 
 ## Participation
 
-To get participation points for today, fill out the cm009-exercise.Rmd file with the class (get it from [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm009-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm009-exercise.html)), and add it to your participation repo.
+To get participation points for today, fill out the cm009-exercise.Rmd file with the class (get it from [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm009-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm009-exercise.nb.html)), and add it to your participation repo.
 
 # Reading and Writing data
 
