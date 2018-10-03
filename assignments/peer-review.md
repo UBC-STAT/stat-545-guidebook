@@ -14,8 +14,8 @@ Here are the deadlines for peer reviews, with links (to appear after assignments
 |----------------|-----------------------|
 | [Peer Review 01](hw01/pr01.html) | September 24, 2018 |
 | [Peer Review 02](hw02/pr02.html) | October 01, 2018 |
-| Peer Review 02 | October 08, 2018 |
-| Peer Review 02 | October 15, 2018 |
+| [Peer Review 03](hw03/pr03.html) | October 08, 2018 |
+| [Peer Review 04](hw04/pr04.html) | October 15, 2018 |
 | Peer Review 02 | October 24, 2018 |
 
 ### STAT 547
