@@ -18,7 +18,7 @@ Here are the deadlines for assignments, with links (to appear after assignments 
 | [Homework 02](hw02/hw02.html) | September 25, 2018  |
 | [Homework 03](hw03/hw03.html) | October 02, 2018    |
 | [Homework 04](hw04/hw04.html) | October 09, 2018    |
-| Homework 05                   | October 19, 2018    |
+| [Homework 05](hw04/hw04.html) | October 19, 2018    |
 
 ### STAT 547
 
