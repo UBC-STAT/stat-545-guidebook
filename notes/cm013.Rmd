@@ -9,6 +9,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Reminder: Vincenzo to mention in class to organize their homework repos to make it easy to find. Example of a good homework submission.
+
 # Learning Objectives
 
 
