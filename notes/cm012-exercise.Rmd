@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
+`forcats` package comes loaded with `tiyverse`:
+
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 library(gapminder)
@@ -301,3 +303,58 @@ gap_africa %>%
     ggplot(aes(country, lifeExp)) +
     geom_violin()
 ```
+
+
+## Exercises
+
+Use the `gss_cat` data to answer the following questions (from http://r4ds.had.co.nz/factors.html).
+
+1. (15.3.1 Ex. 1) Explore the distribution of rincome (reported income). What makes the default bar chart hard to understand? How could you improve the plot?
+
+```{r}
+
+```
+
+2. (15.3.2 Ex. 2) What is the most common relig in this survey? What’s the most common partyid?
+
+```{r}
+
+```
+
+3. (15.5.1 Ex. 1) How have the proportions of people identifying as Democrat, Republican, and Independent changed over time? Modify the following plot to a friendlier legend order.
+
+```{r, fig.width=4, fig.height=2}
+gss_cat %>%
+  mutate(partyid = fct_collapse(partyid,
+    other = c("No answer", "Don't know", "Other party"),
+    rep = c("Strong republican", "Not str republican"),
+    ind = c("Ind,near rep", "Independent", "Ind,near dem"),
+    dem = c("Not str democrat", "Strong democrat")
+  )) %>% 
+  count(year, partyid) %>% 
+  ggplot(aes(year, n)) +
+  geom_line(aes(group=partyid, colour=partyid))
+```
+
+# Dates and Times with Lubridate
+
+Goal here: some exposure to `lubridate`; know it exists.
+
+1. Use different combinations of y, m, d to make a date time object.
+
+```{r}
+
+```
+
+2. Get `year`, `month`, `yday`, `wday`, `day`.
+
+```{r}
+
+```
+
+3. Add durations (exact time spans) with `ddays`, `dweeks`, ... and periods (human-interpretable time spans) with `days`, `weeks`, and especially `months`.
+
+```{r}
+
+```
+
