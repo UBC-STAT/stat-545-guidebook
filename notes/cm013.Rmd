@@ -9,8 +9,12 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Today: various plotting topics.
 
+Worksheet: 
 
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm013-exercise.Rmd), 
+- [from html](http://stat545.com/Classroom/notes/cm013-exercise.nb.html)
 
 If we finish the worksheet before the end of class:
 
