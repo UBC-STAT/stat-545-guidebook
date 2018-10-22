@@ -46,24 +46,3 @@ To gain participation marks, you'll need to submit a link to your `STAT545_parti
 1. Go to [UBC Canvas](https://canvas.ubc.ca).
 2. Find the "Participation" assignment.
 3. Submit a link to your participation repository.
-
-## What we're looking for
-
-If you've been following along in class, you should have the following components:
-
-| Class | Participation |
-|-------|---------------|
-| cm001 | Introduce yourself in an Issue in `Discussion-Internal` |
-| cm002 | Creation of your participation repository, and editing some md files |
-| cm003 | R script for R exploration |
-| cm004 | Rmd script for data frame exploration |
-| cm005 | 
-| cm006 | 
-| cm007 | 
-| cm008 | 
-| cm009 | 
-| cm010 | 
-| cm011 | 
-| cm012 | 
-| cm013 | 
-| cm014 | 
