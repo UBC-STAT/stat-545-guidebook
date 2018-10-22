@@ -46,3 +46,7 @@ To gain participation marks, you'll need to submit a link to your `STAT545_parti
 1. Go to [UBC Canvas](https://canvas.ubc.ca).
 2. Find the "Participation" assignment.
 3. Submit a link to your participation repository.
+
+## STAT 547M
+
+You can use your STAT 545 participation repo for STAT 547M.
