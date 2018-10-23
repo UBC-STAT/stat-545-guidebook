@@ -82,18 +82,18 @@ __STAT 547__:
 
 | Meeting No.         | Date         | TA's | Topic | 
 |---------------------|--------------|------|-------|-----------|
-| [01](cm101.nb.html) | oct-23 tues  | Chad, Sherrie | Writing your own R functions |
-| [02](cm102.nb.html) | oct-25 thurs | Chad, Hossam | Regular expressions and character data |
-| [03](cm103.nb.html) | oct-30 tues  | Hossam, Sherrie | purrr, list-columns, nested data frames |
-| [04](cm104.nb.html) | nov-01 thurs | Hossam, Rashedul | Part II |
-| [05](cm105.nb.html) | nov-06 tues  | Chad, Sherrie | Build your first R package |
-| [06](cm106.nb.html) | nov-08 thurs | Chad, Rashedul | Part II |
-| [07](cm107.nb.html) | nov-13 tues  | Rashedul, Sherrie | shiny apps, and related tools |
-| [08](cm108.nb.html) | nov-15 thurs | Rashedul, Chad | Part II |
-| [09](cm109.nb.html) | nov-20 tues  | Hossam, Sherrie | Automate tasks and pipelines |
-| [10](cm110.nb.html) | nov-22 thurs | Hossam, Chad | Part II |
-| [11](cm111.nb.html) | nov-27 tues  | Chad, Sherrie | Get data from the web |
-| [12](cm112.nb.html) | nov-29 thurs | Hossam, Rashedul | Part II | 
+| [01](notes/cm101.nb.html) | oct-23 tues  | Chad, Sherrie | Writing your own R functions |
+| [02](notes/cm102.nb.html) | oct-25 thurs | Chad, Hossam | Regular expressions and character data |
+| [03](notes/cm103.nb.html) | oct-30 tues  | Hossam, Sherrie | purrr, list-columns, nested data frames |
+| [04](notes/cm104.nb.html) | nov-01 thurs | Hossam, Rashedul | Part II |
+| [05](notes/cm105.nb.html) | nov-06 tues  | Chad, Sherrie | Build your first R package |
+| [06](notes/cm106.nb.html) | nov-08 thurs | Chad, Rashedul | Part II |
+| [07](notes/cm107.nb.html) | nov-13 tues  | Rashedul, Sherrie | shiny apps, and related tools |
+| [08](notes/cm108.nb.html) | nov-15 thurs | Rashedul, Chad | Part II |
+| [09](notes/cm109.nb.html) | nov-20 tues  | Hossam, Sherrie | Automate tasks and pipelines |
+| [10](notes/cm110.nb.html) | nov-22 thurs | Hossam, Chad | Part II |
+| [11](notes/cm111.nb.html) | nov-27 tues  | Chad, Sherrie | Get data from the web |
+| [12](notes/cm112.nb.html) | nov-29 thurs | Hossam, Rashedul | Part II | 
 
 
 

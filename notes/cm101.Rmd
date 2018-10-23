@@ -27,6 +27,6 @@ Concepts from today's class are closely mirrored by the following resources.
 To get participation points for today, we'll be filling out the cm101-exercise.Rmd file.
 
 - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm101-exercise.Rmd)
-- [html](http://stat545.com/Classroom/notes/cm101-exercise.html).
+- [html](http://stat545.com/Classroom/notes/cm101-exercise.nb.html).
 
 Add this to your participation repo. 
