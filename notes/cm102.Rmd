@@ -9,5 +9,5 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Learning Objectives
+- Give time to fill out class survey; make participation repo; submit link to participation repo on canvas. 
 
