@@ -1,13 +1,13 @@
-# STAT 545A: Exploratory Data Analysis
+# STAT 545A/547M: Exploratory Data Analysis
 
-This is the course syllabus for the Fall 2018 edition of STAT 545 (click [here](https://github.com/STAT545-UBC/Classroom/blob/master/syllabus-547.md) for the STAT 547M syllabus). You should use this syllabus to:
+This is the course syllabus for the Fall 2018 edition of STAT 545 and STAT 547. You should use this syllabus to:
 
 1. find information about the course, and
 2. navigate the course.
 
 ## Quick Navigation
 
-Both STAT 545 and STAT 547M make use of the following tools:
+Both STAT 545 and STAT 547 make use of the following tools:
 
 | Tool + Link | Description |
 |-------------|-------------|
@@ -22,7 +22,7 @@ Both STAT 545 and STAT 547M make use of the following tools:
 
 This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We appreciate your patience and welcome your feedback!
 
-## About STAT 545
+## About STAT 545/547M
 
 STAT 545 is "Part I" of learning how to
 
@@ -30,11 +30,13 @@ STAT 545 is "Part I" of learning how to
 - make all of that reproducible, reusable, and shareable
 - using R
 
-Part II is STAT 547M -- hope to see you there, too!
+STAT 547M is "Part II".
 
-__Credits__: 1.5
+Each course is worth 1.5 credits.
 
 ### Selected Topics
+
+STAT 545:
 
 * Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/): scripts, the workspace, RStudio Projects, daily workflow
 * Generate reports from R scripts and [R Markdown](http://rmarkdown.rstudio.com)
@@ -44,9 +46,19 @@ __Credits__: 1.5
 * How to write functions and work with R in a functional style
 * Version control with Git; collaboration via [GitHub](https://github.com)
 
+STAT 547:
+
+* Be the boss of non-numeric data, esp. character and factor
+* Interactive pages, apps, and graphics with [Shiny](http://shiny.rstudio.com)
+* Get data off the web and expose data, code, results on the web
+* Distribute data and code via an R package
+* Automate an analytical pipeline, e.g. via `Make`
+
 ### Timing and Location
 
-This course runs from September 4 until October 18, 2018.
+STAT 545 runs from September 4 until October 18, 2018.
+
+STAT 547 runs from October 23 until November 29, 2018.
 
 We'll meet as a class every Tuesday and Thursday, 09:30-11:00, in ESB 2012.
 
@@ -54,7 +66,9 @@ I'll aim to end class at 10:45.
 
 ### Prerequisites
 
-There are no official pre-requisites for STAT 545A, but most students will have had at least one prior statistics course or comparable experience.
+There are no official pre-requisites for STAT 545, but most students will have had at least one prior statistics course or comparable experience. 
+
+STAT 547 requires STAT 545.
 
 ### Roots
 
@@ -64,7 +78,26 @@ Jenny Bryan deserves a huge amount of credit for founding and developing both ST
 
 Here are the topics and links to the notes for each class meeting. 
 
-Warning: adjustments are still being made!
+__STAT 547__:
+
+| Meeting No.         | Date         | TA's | Topic | Resources |
+|---------------------|--------------|------|-------|-----------|
+| [01](cm101.nb.html) | oct-23 tues  | Chad, Sherrie | Writing your own R functions |
+| [02](cm102.nb.html) | oct-25 thurs | Chad, Hossam | Regular expressions and character data |
+| [03](cm103.nb.html) | oct-30 tues  | Hossam, Sherrie | purrr, list-columns, nested data frames |
+| [04](cm104.nb.html) | nov-01 thurs | Hossam, Rashedul | Part II |
+| [05](cm105.nb.html) | nov-06 tues  | Chad, Sherrie | Build your first R package |
+| [06](cm106.nb.html) | nov-08 thurs | Chad, Rashedul | Part II |
+| [07](cm107.nb.html) | nov-13 tues  | Rashedul, Sherrie | shiny apps, and related tools |
+| [08](cm108.nb.html) | nov-15 thurs | Rashedul, Chad | Part II |
+| [09](cm109.nb.html) | nov-20 tues  | Hossam, Sherrie | Automate tasks and pipelines |
+| [10](cm110.nb.html) | nov-22 thurs | Hossam, Chad | Part II |
+| [11](cm111.nb.html) | nov-27 tues  | Chad, Sherrie | Get data from the web |
+| [12](cm112.nb.html) | nov-29 thurs | Hossam, Rashedul | Part II | 
+
+
+
+__STAT 545__:
 
 | Meeting No.         | Date         | TA's | Topic | Resources |
 |---------------------|--------------|------|-------|-----------|
@@ -90,13 +123,11 @@ Expectations:
 
 ## Evaluation
 
-[(Navigation link to Assignments)](http://stat545.com/Classroom/assignments/)
+To gain marks in either STAT 545 or 547, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
 
-To gain marks in this course, you'll be completing five assignments, and submitting two peer reviews for each assignment. Participation counts too!
+__NOTE__: You must have a GitHub account (free) to earn marks in this course, and then [complete the course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2). Between STAT 545 and 547, you only need to complete the survey once. 
 
-__NOTE__: You must have a GitHub account (free) to earn marks in this course, and then [complete the course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2).
-
-Here's the breakdown of your course grade:
+Here's the breakdown of your course grade for either course:
 
 | Assessment | Weight |
 |------------|--------|
@@ -104,13 +135,11 @@ Here's the breakdown of your course grade:
 | 10 Peer Reviews | 15% (3% per assignment) |
 | Participation | 10% |
 
-There is no final exam. 
+There is no final exam for either course.
 
 Auditing students must still complete and submit all assessments, to be graded on a pass/fail basis. 
 
-__Assignments and peer review__: For information about and links to assignments and peer reviews, go to [the assignments page](http://stat545.com/Classroom/assignments/). 
-
-__Participation__: See the [participation](participation.html) page.
+For more information on each assessment, navigate to the corresponding page in the navigation table above.
 
 ## Teaching Team
 
@@ -127,6 +156,34 @@ Here is your dedicated teaching team!
 Please see the "Conversation" section below to determine who to get in touch with for what, and how.
 
 __Office hours__: Want to talk about the course outside of lecture? Let's talk during these dedicated times (generally, 11:00-12:00 every Monday, Tuesday, Wednesday). You're always welcome to schedule alternative times, too.
+
+
+STAT 547:
+
+| Teaching Member | Date | Time | Place |
+|-----------------|------|------|-------|
+| Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
+| Chad      | Mon, Oct  29 | 11:00 - 12:00 | ESB 3174 |
+| Hossam    | Tue, Oct  30 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Oct  31 | 11:00 - 12:00 | ESB 1043 |
+| Chad    | Mon, Nov  05 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Nov  06 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  07 | 11:00 - 12:00 | ESB 1043 |
+| Sherrie      | Mon, Nov  12 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul | Tue, Nov  13 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  14 | 11:00 - 12:00 | ESB 1043 |
+| Hossam    | Mon, Nov  19 | 11:00 - 12:00 | ESB 3174 |
+| Chad      | Tue, Nov  20 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  21 | 11:00 - 12:00 | ESB 1043 |
+| Sherrie      | Mon, Nov  26 | 11:00 - 12:00 | ESB 3174 |
+| Hossam      | Tue, Nov  27 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Nov  28 | 11:00 - 12:00 | ESB 1043 |
+| Sherrie      | Mon, Dec  03 | 11:00 - 12:00 | ESB 3174 |
+| Rashedul      | Tue, Dec  04 | 11:00 - 12:00 | ESB 3174 |
+| Vincenzo | Wed, Dec  05 | 11:00 - 12:00 | ESB 1043 |
+
+STAT 545:
 
 | Teaching Member | Date | Time | Place |
 |-----------------|------|------|-------|
@@ -154,7 +211,7 @@ __Office hours__: Want to talk about the course outside of lecture? Let's talk d
 | Rashedul      | Tue, Oct  23 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 
-Do you need my permission to enroll or audit in this course? [Space is limited](https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=5&dept=STAT&course=545A&section=101), but I'm happy to sign the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form if there's still room. 
+Do you need my permission to enroll or audit in this course? I'm happy to sign the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form if there's still room -- come see me.
 
 ## Conversation, and Getting Help
 
@@ -183,7 +240,6 @@ Some advice on opening an Issue on GitHub:
 * Stay specific and be complete-but-concise in the body of the description. Don't expect your helper to play 20 questions with you.
 * (Optional) Tag someone: 
 	- To get the attention of the teaching team, add the `@2018_teaching_team` tag to notify all five of us.
-	- To get the attention of your fellow students, add the `@2018_students` tag to notify them.
 * Don't just create Issues -- also respond to them! Think about this in terms of adding to the conversation, not in terms of "correctness". 
 * Don't forget to click "Submit new issue"!
 
@@ -219,3 +275,7 @@ Resources for more specific topics:
     - Useful for digging deeper into `ggplot2`.
 4. [RMarkdown book](https://bookdown.org/yihui/rmarkdown/), by Yihui Xie et al.
     - Brand new! Looks like a comprehensive resource for everything R Markdown related. 
+5. [R packages](http://r-pkgs.had.co.nz/) by Hadley Wickham
+    - Readable, approachable help for making R packages.
+6. [Advanced R](http://adv-r.had.co.nz/), by Hadley Wickham
+    - If you want to learn more about R as a programming language, this is a very readable and concise way of doing so.
