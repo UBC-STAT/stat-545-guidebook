@@ -80,7 +80,7 @@ Here are the topics and links to the notes for each class meeting.
 
 __STAT 547__:
 
-| Meeting No.         | Date         | TA's | Topic | Resources |
+| Meeting No.         | Date         | TA's | Topic | 
 |---------------------|--------------|------|-------|-----------|
 | [01](cm101.nb.html) | oct-23 tues  | Chad, Sherrie | Writing your own R functions |
 | [02](cm102.nb.html) | oct-25 thurs | Chad, Hossam | Regular expressions and character data |
@@ -99,11 +99,11 @@ __STAT 547__:
 
 __STAT 545__:
 
-| Meeting No.         | Date         | TA's | Topic | Resources |
-|---------------------|--------------|------|-------|-----------|
+| Meeting No.         | Date         | TA's | Topic | 
+|---------------------|--------------|------|-------|
 | [01](notes/cm001.nb.html) | sep-04 tues  | Chad, Sherrie | Intro to course and software |
-| [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Markdown and GitHub | Tutorials for getting started with [markdown](https://commonmark.org/help/tutorial/) and [GitHub](https://guides.github.com/activities/hello-world/)
-| [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Getting familiar with R & RMarkdown | R: [stat545: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html), or [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) for a more advanced intro. Rmd: [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). |
+| [02](notes/cm002.nb.html) | sep-06 thurs | Chad, Hossam | Markdown and GitHub | 
+| [03](notes/cm003.nb.html) | sep-11 tues  | Rashedul, Sherrie | Getting familiar with R & RMarkdown | 
 | [04](notes/cm004.nb.html) | sep-13 thurs | Rashedul, Hossam | The git workflow; collab with GitHub |
 | [05](notes/cm005.nb.html) | sep-18 tues  | Chad, Sherrie | working with data in R; `dplyr` and the `tidyverse` |
 | [06](notes/cm006.nb.html) | sep-20 thurs | Chad, Rashedul | ggplot2, Part I |
