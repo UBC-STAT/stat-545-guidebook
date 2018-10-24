@@ -1,5 +1,5 @@
 ---
-title: "STAT 547M Class Meeting 02"
+title: "STAT 547M Class Meeting 02: Be the boss of your character data"
 output:
     html_notebook:
         toc: true
@@ -9,5 +9,23 @@ editor_options:
   chunk_output_type: inline
 ---
 
-- Give time to fill out class survey; make participation repo; submit link to participation repo on canvas. 
+## Announcements
 
+- Fill out [class survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2) if you haven't already done so in STAT 545A. This allows us to link you to your github username. The link is also available on the course homepage, stat545.com/Classroom.
+- Participation:
+    - Can't attend lecture for some legitimate reason (besides not wanting to come)? Let me know. We won't look for your commit timestamp for that day, but will still expect you to show that you engaged with the material at some point.
+    - Contributing to the discussion boards is also part of participation.
+
+## Concepts
+
+
+## Resources
+
+Today's concepts closely follow these resources:
+
+- [stat545.com: character data](http://stat545.com/block028_character-data.html)
+- [stat545.com: character encoding](http://stat545.com/block032_character-encoding.html)
+
+## Preface
+
+- Dealing with data of class `character` here (not factor).
