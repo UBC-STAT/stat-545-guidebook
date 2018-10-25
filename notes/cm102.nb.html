@@ -200,8 +200,30 @@ $(document).ready(function () {
 <p>We’ll be using the following data that ships with <code>stringr</code>, today’s R package that comes shipped with <code>tidyverse</code>:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHNlbnRlbmNlcylcblxuYGBgIn0= -->
-<pre class="r"><code>str(sentences)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHN0cmluZ3I6OmZydWl0KVxuXG5gYGAifQ== -->
+<pre class="r"><code>str(stringr::fruit)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIGNociBbMTo4MF0gXCJhcHBsZVwiIFwiYXByaWNvdFwiIFwiYXZvY2Fkb1wiIFwiYmFuYW5hXCIgXCJiZWxsIHBlcHBlclwiIFwiYmlsYmVycnlcIiBcImJsYWNrYmVycnlcIiAuLi5cbiJ9 -->
+<pre><code> chr [1:80] &quot;apple&quot; &quot;apricot&quot; &quot;avocado&quot; &quot;banana&quot; &quot;bell pepper&quot; &quot;bilberry&quot; &quot;blackberry&quot; ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHN0cmluZ3I6OndvcmRzKVxuXG5gYGAifQ== -->
+<pre class="r"><code>str(stringr::words)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIGNociBbMTo5ODBdIFwiYVwiIFwiYWJsZVwiIFwiYWJvdXRcIiBcImFic29sdXRlXCIgXCJhY2NlcHRcIiBcImFjY291bnRcIiBcImFjaGlldmVcIiBcImFjcm9zc1wiIFwiYWN0XCIgXCJhY3RpdmVcIiAuLi5cbiJ9 -->
+<pre><code> chr [1:980] &quot;a&quot; &quot;able&quot; &quot;about&quot; &quot;absolute&quot; &quot;accept&quot; &quot;account&quot; &quot;achieve&quot; &quot;across&quot; &quot;act&quot; &quot;active&quot; ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKHN0cmluZ3I6OnNlbnRlbmNlcylcblxuYGBgIn0= -->
+<pre class="r"><code>str(stringr::sentences)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiIGNociBbMTo3MjBdIFwiVGhlIGJpcmNoIGNhbm9lIHNsaWQgb24gdGhlIHNtb290aCBwbGFua3MuXCIgLi4uXG4ifQ== -->
@@ -221,7 +243,7 @@ $(document).ready(function () {
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDdNIENsYXNzIE1lZXRpbmcgMDI6IEJlIHRoZSBib3NzIG9mIHlvdXIgY2hhcmFjdGVyIGRhdGEiCm91dHB1dDoKICAgIGh0bWxfbm90ZWJvb2s6CiAgICAgICAgdG9jOiB0cnVlCiAgICAgICAgdGhlbWU6IGNlcnVsZWFuCiAgICAgICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlCmVkaXRvcl9vcHRpb25zOiAKICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lCi0tLQoKIyMgQW5ub3VuY2VtZW50cwoKLSBGaWxsIG91dCBbY2xhc3Mgc3VydmV5XShodHRwczovL2dvby5nbC9mb3Jtcy9VUHZSQTZhOVdSb2Q4SlBiMikgaWYgeW91IGhhdmVuJ3QgYWxyZWFkeSBkb25lIHNvIGluIFNUQVQgNTQ1QS4gVGhpcyBhbGxvd3MgdXMgdG8gbGluayB5b3UgdG8geW91ciBnaXRodWIgdXNlcm5hbWUuIFRoZSBsaW5rIGlzIGFsc28gYXZhaWxhYmxlIG9uIHRoZSBjb3Vyc2UgaG9tZXBhZ2UsIHN0YXQ1NDUuY29tL0NsYXNzcm9vbS4KLSBQYXJ0aWNpcGF0aW9uOgogICAgLSBDYW4ndCBhdHRlbmQgbGVjdHVyZSBmb3Igc29tZSBsZWdpdGltYXRlIHJlYXNvbiAoYmVzaWRlcyBub3Qgd2FudGluZyB0byBjb21lKT8gTGV0IG1lIGtub3cuIFdlIHdvbid0IGxvb2sgZm9yIHlvdXIgY29tbWl0IHRpbWVzdGFtcCBmb3IgdGhhdCBkYXksIGJ1dCB3aWxsIHN0aWxsIGV4cGVjdCB5b3UgdG8gc2hvdyB0aGF0IHlvdSBlbmdhZ2VkIHdpdGggdGhlIG1hdGVyaWFsIGF0IHNvbWUgcG9pbnQuCiAgICAtIENvbnRyaWJ1dGluZyB0byB0aGUgZGlzY3Vzc2lvbiBib2FyZHMgaXMgYWxzbyBwYXJ0IG9mIHBhcnRpY2lwYXRpb24uCgojIyBBZ2VuZGEKCk1ha2luZyBzZW5zZSBvZiBzdHJpbmdzOiBob3cgdG8gZGVhbCB3aXRoIGRhdGEgb2YgY2xhc3MgYGNoYXJhY3RlcmAuCgpXZSdsbCBiZSB1c2luZyB0aGUgZm9sbG93aW5nIGRhdGEgdGhhdCBzaGlwcyB3aXRoIGBzdHJpbmdyYCwgdG9kYXkncyBSIHBhY2thZ2UgdGhhdCBjb21lcyBzaGlwcGVkIHdpdGggYHRpZHl2ZXJzZWA6CgpgYGB7cn0KCnN0cihmcnVpdCkKc3RyKHdvcmRzKQpzdHIoc2VudGVuY2VzKQpgYGAKCiMjIFdvcmtzaGVldAoKVG8gZ2V0IHBhcnRpY2lwYXRpb24gcG9pbnRzIGZvciB0b2RheSwgd2UnbGwgYmUgZmlsbGluZyBvdXQgdGhlIGNtMTAyLWV4ZXJjaXNlLlJtZCBmaWxlLgoKLSBbUm1kXShodHRwczovL2dpdGh1Yi5jb20vU1RBVDU0NS1VQkMvQ2xhc3Nyb29tL2Jsb2IvbWFzdGVyL25vdGVzL2NtMTAyLWV4ZXJjaXNlLlJtZCkKLSBbaHRtbF0oaHR0cDovL3N0YXQ1NDUuY29tL0NsYXNzcm9vbS9ub3Rlcy9jbTEwMi1leGVyY2lzZS5uYi5odG1sKS4KCkFkZCB0aGlzIHRvIHlvdXIgcGFydGljaXBhdGlvbiByZXBvLiAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU1RBVCA1NDdNIENsYXNzIE1lZXRpbmcgMDI6IEJlIHRoZSBib3NzIG9mIHlvdXIgY2hhcmFjdGVyIGRhdGEiCm91dHB1dDoKICAgIGh0bWxfbm90ZWJvb2s6CiAgICAgICAgdG9jOiB0cnVlCiAgICAgICAgdGhlbWU6IGNlcnVsZWFuCiAgICAgICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlCmVkaXRvcl9vcHRpb25zOiAKICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lCi0tLQoKIyMgQW5ub3VuY2VtZW50cwoKLSBGaWxsIG91dCBbY2xhc3Mgc3VydmV5XShodHRwczovL2dvby5nbC9mb3Jtcy9VUHZSQTZhOVdSb2Q4SlBiMikgaWYgeW91IGhhdmVuJ3QgYWxyZWFkeSBkb25lIHNvIGluIFNUQVQgNTQ1QS4gVGhpcyBhbGxvd3MgdXMgdG8gbGluayB5b3UgdG8geW91ciBnaXRodWIgdXNlcm5hbWUuIFRoZSBsaW5rIGlzIGFsc28gYXZhaWxhYmxlIG9uIHRoZSBjb3Vyc2UgaG9tZXBhZ2UsIHN0YXQ1NDUuY29tL0NsYXNzcm9vbS4KLSBQYXJ0aWNpcGF0aW9uOgogICAgLSBDYW4ndCBhdHRlbmQgbGVjdHVyZSBmb3Igc29tZSBsZWdpdGltYXRlIHJlYXNvbiAoYmVzaWRlcyBub3Qgd2FudGluZyB0byBjb21lKT8gTGV0IG1lIGtub3cuIFdlIHdvbid0IGxvb2sgZm9yIHlvdXIgY29tbWl0IHRpbWVzdGFtcCBmb3IgdGhhdCBkYXksIGJ1dCB3aWxsIHN0aWxsIGV4cGVjdCB5b3UgdG8gc2hvdyB0aGF0IHlvdSBlbmdhZ2VkIHdpdGggdGhlIG1hdGVyaWFsIGF0IHNvbWUgcG9pbnQuCiAgICAtIENvbnRyaWJ1dGluZyB0byB0aGUgZGlzY3Vzc2lvbiBib2FyZHMgaXMgYWxzbyBwYXJ0IG9mIHBhcnRpY2lwYXRpb24uCgojIyBBZ2VuZGEKCk1ha2luZyBzZW5zZSBvZiBzdHJpbmdzOiBob3cgdG8gZGVhbCB3aXRoIGRhdGEgb2YgY2xhc3MgYGNoYXJhY3RlcmAuCgpXZSdsbCBiZSB1c2luZyB0aGUgZm9sbG93aW5nIGRhdGEgdGhhdCBzaGlwcyB3aXRoIGBzdHJpbmdyYCwgdG9kYXkncyBSIHBhY2thZ2UgdGhhdCBjb21lcyBzaGlwcGVkIHdpdGggYHRpZHl2ZXJzZWA6CgpgYGB7cn0Kc3RyKHN0cmluZ3I6OmZydWl0KQpgYGAKCmBgYHtyfQpzdHIoc3RyaW5ncjo6d29yZHMpCmBgYAoKYGBge3J9CnN0cihzdHJpbmdyOjpzZW50ZW5jZXMpCmBgYAoKIyMgV29ya3NoZWV0CgpUbyBnZXQgcGFydGljaXBhdGlvbiBwb2ludHMgZm9yIHRvZGF5LCB3ZSdsbCBiZSBmaWxsaW5nIG91dCB0aGUgY20xMDItZXhlcmNpc2UuUm1kIGZpbGUuCgotIFtSbWRdKGh0dHBzOi8vZ2l0aHViLmNvbS9TVEFUNTQ1LVVCQy9DbGFzc3Jvb20vYmxvYi9tYXN0ZXIvbm90ZXMvY20xMDItZXhlcmNpc2UuUm1kKQotIFtodG1sXShodHRwOi8vc3RhdDU0NS5jb20vQ2xhc3Nyb29tL25vdGVzL2NtMTAyLWV4ZXJjaXNlLm5iLmh0bWwpLgoKQWRkIHRoaXMgdG8geW91ciBwYXJ0aWNpcGF0aW9uIHJlcG8uIAo=</div>
 
 
 

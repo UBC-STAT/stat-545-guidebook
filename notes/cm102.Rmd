@@ -23,10 +23,15 @@ Making sense of strings: how to deal with data of class `character`.
 We'll be using the following data that ships with `stringr`, today's R package that comes shipped with `tidyverse`:
 
 ```{r}
+str(stringr::fruit)
+```
 
-str(fruit)
-str(words)
-str(sentences)
+```{r}
+str(stringr::words)
+```
+
+```{r}
+str(stringr::sentences)
 ```
 
 ## Worksheet
