@@ -1,8 +1,17 @@
 # Participation Assessment
 
-Your participation will be evaluated by:
+The intent of the participation assessment is to give students practice addressing many questions that each have narrow scope. This is as opposed to the homework, where you work on fewer questions with larger scope. 
 
-- Participation in class discussions
+There are two goals:
+
+1. Help students grasp smaller concepts as they are encountered in lecture.
+2. Give students a foundation for approaching the assignments.
+
+## Evaluation
+
+Your participation component will be evaluated by:
+
+- ~~Participation in class discussions~~
 - Submitting work on in-class activities to your ~~STAT 545 home~~ participation GitHub repository (see below for setup).
     - Be sure to submit activities in class, not at some other time!
 - Activity in the Issues of the two `Discussion` repositories -- with preference given to [`Discussion`](https://github.com/STAT545-UBC/Discussion)  (public) over [`Discussion-Internal`](https://github.com/STAT545-UBC/Discussion-Internal) (private).
