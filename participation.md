@@ -9,6 +9,9 @@ Your participation will be evaluated by:
 
 For participation, we __never__ evaluate _correctness_! Only whether or not the _attempt_ was there. 
 
+Will you be missing any classes for some legitimate reason (such as academic, health, or other)? It's okay! Just let me know ahead of time. We won't be looking for a commit timestamp for that day, but we do expect you to show at least some engagement with the material (for example, trying exercises in the worksheet -- as much as you feel is appropriate).
+
+
 ## Your participation repository
 
 Now that STAT 545 uses GitHub Classroom, STAT 545 will no longer be using one repository to hold all the work of a student. To evaluate your participation through work on in-class activities, I think it's most appropriate that we use a repository _that you create under your own account_. 
