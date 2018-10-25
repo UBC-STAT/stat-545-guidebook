@@ -387,3 +387,52 @@ Find all countries that have either "oo" or "cc" in them.
 ```{r}
 str_view_all_match(countries, "YOUR_REGEX_HERE")
 ```
+
+## Final Exercises: Solutions
+
+Convert `words` to pig latin, which involves:
+
+1. Make the first letter the last letter
+    - Get the first letter with `str_sub(string, start, end)`.
+2. Remove the first letter from `words`.
+    - Hint: leave the `end` argument blank.
+3. Add "ay" to the end of the word.
+    - Use `str_c()`.
+    
+```{r}
+first <- str_sub(words, 1, 1)
+ords <- str_sub(words, 2)
+str_c(ords, first, "ay") %>% head(10)
+```
+
+Find all countries that end in "y"
+
+```{r}
+str_view_all_match(countries, "y$")
+```
+
+Find all countries that have the same letter repeated twice (like "Greece", which has "ee").
+
+```{r}
+str_view_all_match(countries, "(.)\\1")
+```
+
+Find all countries that end in two vowels. 
+
+```{r}
+str_view_all_match(countries, "[aeiou]{2}$")
+```
+
+Find all countries that start with two non-vowels. How is this different from finding all countries that end in _at least_ two non-vowels? Hint: Syria.
+
+```{r}
+countries %>% 
+    str_to_lower() %>% 
+    str_view_all_match("^[^aeiou]{2,}")
+```
+
+Find all countries that have either "oo" or "cc" in them.
+
+```{r}
+str_view_all_match(countries, "(oo|cc)")
+```
