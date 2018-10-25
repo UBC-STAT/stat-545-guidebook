@@ -343,6 +343,8 @@ str_view_all(c("bananas", "Who can? Bananas can."), "(.)(.)\\1\\2.*\\1\\2")
 
 ## Final Exercises
 
+(Solutions are indicated below.)
+
 Convert `words` to pig latin, which involves:
 
 1. Make the first letter the last letter
