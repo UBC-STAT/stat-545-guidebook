@@ -24,7 +24,7 @@ Here are the deadlines for assignments, with links (to appear after assignments 
 
 | Assignment  | Assignment Due Date |
 |-------------|---------------------|
-| Homework 06 | November 09, 2018   |
+| [Homework 06](http://stat545.com/Classroom/assignments/hw06/hw06.html) | November 09, 2018   |
 | Homework 07 | November 13, 2018   |
 | Homework 08 | November 20, 2018   |
 | Homework 09 | November 27, 2018   |
