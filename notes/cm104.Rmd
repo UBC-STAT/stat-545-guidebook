@@ -9,5 +9,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Learning Objectives
+- List columns in data frames; nesting: https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html
+- parallel mapping: https://jennybc.github.io/purrr-tutorial/ls03_map-function-syntax.html#parallel_map
+
+Application: https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html
 
