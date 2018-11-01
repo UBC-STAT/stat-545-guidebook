@@ -1,5 +1,5 @@
 ---
-title: "Class Meeting 4, Worksheet 1: List Columns"
+title: "Class Meeting 4 Worksheet"
 output:
     html_notebook:
         toc: true
