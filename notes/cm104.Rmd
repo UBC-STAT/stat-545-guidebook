@@ -82,4 +82,11 @@ Trick: Use `{}` to "absorb" the placement of LHS as first argument:
 ```
 
 
+## Worksheet
 
+To get participation points for today, we'll be filling out the `cm104-exercise.Rmd` file.
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm104-exercise.Rmd)
+- [html](http://stat545.com/Classroom/notes/cm104-exercise.nb.html).
+
+Add this to your participation repo. 
