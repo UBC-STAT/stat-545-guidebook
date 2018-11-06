@@ -46,8 +46,13 @@ Other resources you might find useful:
 
 - Hadley's ["R Packages"](http://r-pkgs.had.co.nz/) book.
     - Concise. Works with `devtools` and friends.
+- [Package development cheatsheet](https://rawgit.com/rstudio/cheatsheets/master/package-development.pdf)
 - ["Writing R Extensions"](http://cran.r-project.org/doc/manuals/r-release/R-exts.html), the official guide to writing R packages.
     - Comprehensive. Doesn't refer to `devtools` and friends. 
+
+Others on specific topics:
+
+- [Karl Broman on choosing a license](http://kbroman.org/pkg_primer/pages/licenses.html)
 
 During exercise periods, in case you're ahead of the class and have time, you should work on [Homework 7](http://stat545.com/Classroom/assignments/hw07/hw07.html).
 
@@ -83,9 +88,13 @@ Follow along as we make an R package called `powers` that contains a function `s
 
 - RStudio —> New project —> R Package
     - Initiate git (optional, but recommended).
+- Under the "Build" menu, click "Install and Restart"
 - Check out the files that have been created
+    - Rd
+    - NAMESPACE
+    - DESCRIPTION
 
-Now, delete the `man` folder and R scripts (if present), and start a new R script in the `R` directory, called `square.R`. Write a function called `square` that squares its input.
+Now, start a new R script in the `R` directory, called `square.R`. Write a function called `square` that squares its input.
 
 Build the package:
 
@@ -95,7 +104,7 @@ Build the package:
 
 ## Documentation 
 
-Comment package functions with `#'` above the function, and use tags starting with `@`. Let's document the `square` function.
+The `roxygen2` package makes documentation easy(er). Comment package functions with `#'` above the function, and use tags starting with `@`. Let's document the `square` function.
 
 Key tags:
 
@@ -105,11 +114,16 @@ Key tags:
 
 Type `document()` into the console (a function from the `devtools` package). Then `Install and Restart` the package.
 
-Notable things that have happened:
+Your function is now documented. Check it out with `?square`! This happens due to the creation of an `Rd` file in the `man` folder.
 
-* Your function is now documented. Check it out with `?square`!
-    * This happens due to the creation of an `Rd` file in the `man` folder.
-* Your NAMESPACE is populated. Contains all things you want the user to see.
+## Taking control of your NAMESPACE
+
+Let's start being intentional as to what appears in our NAMESPACE.
+
+1. Delete your NAMESPACE file.
+2. Add the `@export` tag to your `square` function to write it to the NAMESPACE.
+
+Things that do not get `@export`ed can still be referred to "internally" by functions in your NAMESPACE, as we'll see soon.
 
 ## Checking 
 
@@ -148,8 +162,34 @@ Finished early? Do more -- work on Assignment 7, and/or try out more documentati
 
 - `\code{}` for code font
 - `\link{}` to link to other function docs
-- `\enumerate{}`
+- Combine: `\code{\link{function_name}}`
 
+Enumeration:
+
+```
+#' \enumerate{
+#'      \item first item
+#'      \item second item
+#' }
+```
+
+Itemization:
+
+```
+#' \itemize{
+#'      \item first item
+#'      \item second item
+#' }
+```
+
+Manually labelled list:
+
+```
+#' \describe{
+#'      \item{bullet label 1}{first item}
+#'      \item{bullet label 2}{second item}
+#' }
+```
 
 ## DESCRIPTION file
 
@@ -158,16 +198,22 @@ Every R package has this. It contains the package's metadata. Let's edit it:
 - Add a title and brief description. 
     - R is picky about these! Check out [the rules](http://r-pkgs.had.co.nz/description.html#pkg-description).
 - Add your name.
-    - Use the [`Authors@R` field](http://r-pkgs.had.co.nz/description.html#author) instead of the default `Author` and `Maintainer` fields. 
-- Pick a [license](http://r-pkgs.had.co.nz/description.html#license).
+    - Use the [`Authors@R` field](http://r-pkgs.had.co.nz/description.html#author) instead of the default `Author` and `Maintainer` fields.
+- Pick a license: next!
+
+## Pick a license
+
+[Karl Broman's post](http://kbroman.org/pkg_primer/pages/licenses.html) is brief and informative.
+
+Let's add an MIT licence. 
 
 ## Testing with `testthat`
 
 We've already seen package `Check`s -- this checks that the pieces of your R package are in place, and that even your examples don't throw errors. We should not only check that our functions are _working_, but that they give us results that we'd _expect_.
 
-The `testthat` package is useful for this. Initialize it in your R package by running `devtools::use_testthat()`.
+The `testthat` package is useful for this. Initialize it in your R package by running `use_testthat()`.
 
-As a template, save the following script in a file called `test_square`, filling in the blanks with an `expect` statement:
+As a template, save and edit the following script in a file called `test_square` in the `tests/testthat` folder, filling in the blanks with an `expect` statement:
 
 ```
 context("Squaring non-numerics")
@@ -199,7 +245,7 @@ Just like we do for functions, we can make a manual (`.Rd`) page for our entire 
 package?ggplot2  # Always works.
 ```
 
-To do so, just execute `devtools::use_package_doc()`. You'll see a new R script come up with `roxygen2`-style documentation to `NULL`. Document as you'd do functions, and run `devtools::document()` to generate the `.Rd` file. 
+To do so, just execute `use_package_doc()`. You'll see a new R script come up with `roxygen2`-style documentation to `NULL`. Document as you'd do functions, and run `document()` to generate the `.Rd` file. 
 
 Here's sample documentation:
 
@@ -211,7 +257,7 @@ Here's sample documentation:
 #' to your vectors.
 #'
 #' @name powers
-#' @author Vincenzo Coia
+#' @author Me
 #' @note This package isn't actually meant to be serious. It's just for
 #' teaching purposes.
 #' @docType package
@@ -224,7 +270,7 @@ It's a good idea to write a vignette (or several) for your R package to show how
 To write a vignette called `"my_vignette"`, just run
 
 ```
-devtools::use_vignette("my_vignette")
+use_vignette("my_vignette")
 ```
 
 Some things happen automatically, but it's up to you to modify the `.Rmd` document to provide adequate instruction. Change the template to suit your package. The only real "catch" to doing this is _making sure the title is replaced in both instances_.
@@ -250,7 +296,7 @@ __How to do it__:
 You could just make and edit a `README.md` file like normal. But you'll probably want to briefly demonstrate some code, so you'll need an `.Rmd`. Let `devtools` set that up for you:
 
 ```
-devtools::use_readme_rmd()
+use_readme_rmd()
 ```
 
 `knit` and you're done!
