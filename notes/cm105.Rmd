@@ -32,6 +32,12 @@ We'll be going over the following topics:
 * create a `README.md` that comes from rendering `README.Rmd` containing actual usage, via `use_readme_rmd()`
 * create a vignette via `use_vignette()` and build it via `build_vignettes()`
 
+# Participation
+
+We'll be developing the `powers` R package in class. Please follow along with this, developing in your participation repo.
+
+At least, _some_ of the development. Sometimes it might be better to just sit back and watch. I'll try to inform you when to do what.
+
 # Resources
 
 This tutorial is adapted from [Jenny Bryan's STAT 547 tutorial](http://stat545.com/packages06_foofactors-package.html), where she develops the [`foofactors`](https://github.com/jennybc/foofactors) package.
