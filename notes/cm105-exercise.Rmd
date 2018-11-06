@@ -1,77 +1,34 @@
 ---
-title: "STAT 547M Class Meetings 5 and 6: R Packages"
-output:
-    html_notebook:
+title: "cm105 and cm106 Notes and Exercises"
+subtitle: "Write your own R package -- Lecture Version"
+date: 'November 6 and 8, 2017'
+output: 
+    html_document:
         toc: true
-        toc_float: true
-        theme: cerulean
-        number_sections: true
-editor_options: 
-  chunk_output_type: inline
 ---
 
-# Learning Objectives
-
-This tutorial aims to get you started with package development in R. By the end of this tutorial, you'll have the beginnings of an R package called `powers` ([complete version](https://github.com/vincenzocoia/powers)). You'll learn about key components of an R package, and how to modify them. 
-
-We'll be going over the following topics:
-
-* set up the directory structure for a package and put it under version control with `File` -> `New Project`
-* define functions in R scripts located in the `R` directory of the package
-* use `load_all` and `Build & Reload` to simulate loading the package
-* use `Check` to check the package for coherence
-* use `Build & Reload` to properly build and install the package
-* edit the `DESCRIPTION` file of package metadata
-* specify a LICENSE
-* document and export the functions via `roxygen2` comments
-* document the package itself via `use_package_doc()`
-* create documentation and manage the `NAMESPACE` file via `document()`
-* use `testthat` to implement unit testing
-* use a function from another package via `use_package()` and syntax like `otherpkg::foofunction()`
-* connect your local Git repo to a new remote on GitHub via `use_github()`
-* create a `README.md` that comes from rendering `README.Rmd` containing actual usage, via `use_readme_rmd()`
-* create a vignette via `use_vignette()` and build it via `build_vignettes()`
-
-# Resources
-
-This tutorial is adapted from [Jenny Bryan's STAT 547 tutorial](http://stat545.com/packages06_foofactors-package.html), where she develops the [`foofactors`](https://github.com/jennybc/foofactors) package.
-
-Other resources you might find useful:
-
-- Hadley's ["R Packages"](http://r-pkgs.had.co.nz/) book.
-    - Concise. Works with `devtools` and friends.
-- ["Writing R Extensions"](http://cran.r-project.org/doc/manuals/r-release/R-exts.html), the official guide to writing R packages.
-    - Comprehensive. Doesn't refer to `devtools` and friends. 
-
-During exercise periods, in case you're ahead of the class and have time, you should work on [Homework 7](http://stat545.com/Classroom/assignments/hw07/hw07.html).
-
-
-# Motivation
+This tutorial aims to get you started with package development in R. It draws on [Jenny Bryan's STAT 547 tutorial](http://stat545.com/packages06_foofactors-package.html), focussing more exclusively on the RStudio workflow to building packages. Instead of building her [`foofactors`](https://github.com/jennybc/foofactors) package, we'll be building the [`powers`](https://github.com/vincenzocoia/powers) package.
 
 Why make a package in R? Here are just a few big reasons:
 
 - Built-in checks that your functions are working and are sensible.
-- Easy way to store and load your data -- [data packages](http://www.davekleinschmidt.com/r-packages/) like `gapminder` are awesome!
+- Easy way to store and load your data.
 - Allows for documentation of functions that you've written. 
-- Companion for a journal article you're writing.
 
 Think _aid for a type of analysis_, not an analysis itself. 
 
-And an R package _does not_ need to be big!
+## Getting Started
 
-# Getting Started
-
-Install/update the `devtools` package, used as an aid in package development:
+Install the following packages to aid in package development:
 
 ```
 install.packages("devtools")
+install.packages("roxygen2")
 ```
 
-This will do for now -- for development beyond the basics, you might need to [further configure your computer](http://stat545.com/packages01_system-prep.html).
+## Wave 1: The bare minimum, plus bare minimum best practices
 
-# Let's start with a single function
-
-## Function creation
+### 1.1 Bare minimum 
 
 Follow along as we make an R package called `powers` that contains a function `square` that squares its input. Let's initiate it:
 
@@ -87,7 +44,7 @@ Build the package:
     * This compiles the package, and loads it.
     * Try leaving the project, do `library(powers)`, and use the function! Pretty cool, eh?
 
-## Documentation 
+### 1.2 Documentation 
 
 Comment package functions with `#'` above the function, and use tags starting with `@`. Let's document the `square` function.
 
@@ -105,13 +62,13 @@ Notable things that have happened:
     * This happens due to the creation of an `Rd` file in the `man` folder.
 * Your NAMESPACE is populated. Contains all things you want the user to see.
 
-## Checking 
+### 1.3 Checking 
 
 It's a good idea to `check` your package early and often to see that everything is working. 
 
 Click `Check` under the `Build` menu. It checks lots of things for you! We'll see more examples of this. 
 
-## Function Dependencies
+### 1.4 Function Dependencies
 
 Make another, more general function to compute any power:
 
@@ -132,20 +89,14 @@ If you want to be able to use internal functions as a developer, but don't want 
 
 ## Your Turn
 
-Make and document another function, say `cube`, that raises a vector to the power of 3. Be sure to `@export` it to the NAMESPACE. Use our internal `pow` function to make `cube`, if you have it. 
+Make and document another function, say `cube`, that raises a vector to the power of 3. Be sure to `@export` it to the NAMESPACE.
 
-Finished early? Do more -- work on Assignment 7, and/or try out more documentation features that comes with `roxygen2` (the `@` tags).
+Finished early? Do more -- work on Assignment 9, and/or try out more documentation features that comes with `roxygen2` (the `@` tags).
 
-# Documentation and Testing
-
-## More Roxygen2 Documentation
-
-- `\code{}` for code font
-- `\link{}` to link to other function docs
-- `\enumerate{}`
+## Wave 2: More documentation, and testing
 
 
-## DESCRIPTION file
+### 2.1 DESCRIPTION file
 
 Every R package has this. It contains the package's metadata. Let's edit it:
 
@@ -155,7 +106,7 @@ Every R package has this. It contains the package's metadata. Let's edit it:
     - Use the [`Authors@R` field](http://r-pkgs.had.co.nz/description.html#author) instead of the default `Author` and `Maintainer` fields. 
 - Pick a [license](http://r-pkgs.had.co.nz/description.html#license).
 
-## Testing with `testthat`
+### 2.2 Testing with `testthat`
 
 We've already seen package `Check`s -- this checks that the pieces of your R package are in place, and that even your examples don't throw errors. We should not only check that our functions are _working_, but that they give us results that we'd _expect_.
 
@@ -182,9 +133,17 @@ Then, you can execute those tests by running `devtools::test()`, or clicking `Bu
 
 These sanity checks are very important as your R package becomes more complex! 
 
-# Higher-level User Documentation
+## Exercise
 
-## Package Documentation
+- Edit your DESCRIPTION file. Make sure things run smoothly when you `Check` the R package. 
+- Move the `numeric(0)` test to a new file, under a new context.
+- Extend the tests to include your `cube` function.
+
+Done early? Work on your Homework 9 R package. 
+
+## Wave 3: Higher-level User Documentation
+
+### 3.1 Package Documentation
 
 Just like we do for functions, we can make a manual (`.Rd`) page for our entire R package, too. For example, check out the documentation for `ggplot2`:
 
@@ -193,7 +152,7 @@ Just like we do for functions, we can make a manual (`.Rd`) page for our entire 
 package?ggplot2  # Always works.
 ```
 
-To do so, just execute `devtools::use_package_doc()`. You'll see a new R script come up with `roxygen2`-style documentation to `NULL`. Document as you'd do functions, and run `devtools::document()` to generate the `.Rd` file. 
+To do so, just execute `devtools::use_package_doc()`. You'll see a new R script come up with `roxygen2`-style documentation to `NULL`. Document as you'd do functions, and run `roxygen2::roxygenise()` or `devtools::document()` to generate the `.Rd` file. 
 
 Here's sample documentation:
 
@@ -211,7 +170,7 @@ Here's sample documentation:
 #' @docType package
 ```
 
-## Vignettes
+### 3.2 Vignettes
 
 It's a good idea to write a vignette (or several) for your R package to show how the package is useful as a whole. Documentation for individual functions don't suffice for this purpose!
 
@@ -227,7 +186,7 @@ Then just `Knit`, and then run `devtools::build_vignettes()` to build the vignet
 
 __Note__: You'll have to remove `inst/doc` from your `.gitignore` file that gets created, if you want to push it to github. 
 
-## README
+### 3.3 README
 
 Just as most projects should have a `README` file in the main directory, so should an R package. 
 
@@ -253,9 +212,31 @@ devtools::use_readme_rmd()
 
 Create the above three types of documentation, without looking at [my version](https://github.com/vincenzocoia/powers). Then compare. 
 
-Ideally, you'll have more to document because you've been working on expanding this (or another) R package for Homework 07 already.
+Ideally, you'll have more to document because you've been working on expanding this (or another) R package for Homework 9 already.
 
-# Adding data to your R package
+## Wave 4
+
+### 4.1 Dependencies
+
+We can use functions from other R packages within our homemade R package, too. We need to do two things:
+
+- Use the syntax `package_name::function_name()` whenever you want to use `function_name` from `package_name`. 
+- Indicate that your R package depends on `package_name` in the DESCRIPTION file by executing the command `devtools::use_package("package_name")`.
+
+There are other methods, but this is the easiest. 
+
+__Example__: Add `ggplot2` dependency to plot the resulting computations. Do so by adding a plot to `pow` -- change `pow`'s guts to the following:
+
+```
+res <- x^a
+p <- ggplot2::qplot(x, res)
+print(p)
+return(res)
+```
+
+__Note__: Here's an example of the benefits of not having your functions do too much -- I only needed to change `pow` alone to get the changes to work for `square` and `cube`. 
+
+### 4.2 Adding data to your R package
 
 You can store _and document_ datasets within R packages. Here's one useful way.
 
@@ -291,29 +272,7 @@ Then make a new R script in the `/R` folder containing:
 "tenvec"
 ```
 
-# Dependencies
-
-We can use functions from other R packages within our homemade R package, too. We need to do two things:
-
-- Use the syntax `package_name::function_name()` whenever you want to use `function_name` from `package_name`. 
-- Indicate that your R package depends on `package_name` in the DESCRIPTION file by executing the command `devtools::use_package("package_name")`.
-
-There are other methods, but this is the easiest. 
-
-__Example__: Add `ggplot2` dependency to plot the resulting computations. Do so by adding a plot to `pow` -- change `pow`'s guts to the following:
-
-```
-res <- x^a
-p <- ggplot2::qplot(x, res)
-print(p)
-return(res)
-```
-
-__Note__: Here's an example of the benefits of not having your functions do too much -- I only needed to change `pow` alone to get the changes to work for `square` and `cube`. 
-
-
-
-# Launching your Package to GitHub
+### 4.3 Launching your Package to GitHub
 
 If I want to put an R package on GitHub, I typically just:
 
@@ -322,3 +281,12 @@ If I want to put an R package on GitHub, I typically just:
     - Those two lines can be found [here](http://happygitwithr.com/existing-github-last.html#connect-to-github) in Jenny's Happy git book.
     
 There is also the [`devtools::use_github()` way](http://stat545.com/packages06_foofactors-package.html#use_github()) -- although, to me, it seems overly complicated (perhaps there's an advantage I don't know about). It's just a matter of following the instructions, which are not worth demonstrating here. 
+
+## Exercise
+
+Some things you might find value in trying:
+
+- Make, store, and document more data -- perhaps `negtenvec`, the negative of `tenvec`. 
+- Give the user an option as to whether they want to display the plot or not (hint: do so via function arguments).
+- Try launching your package on github. 
+    - Please do make it public. R packages are meant to be viewed by the world! If it makes you feel more comfortable, put a disclaimer at the top of the README if you don't want people to take it seriously. 
