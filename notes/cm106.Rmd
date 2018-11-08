@@ -9,5 +9,4 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Learning Objectives
-
+Continuation of [cm105](cm105.nb.html) starting at 7.4: Testing with `testthat`.
