@@ -22,7 +22,7 @@ Here are the deadlines for peer reviews, with links (to appear after assignments
 
 | Peer Review    | Peer Review Due Date  |
 |----------------|-----------------------|
-| Peer Review 06 | November 12, 2018 |    
+| [Peer Review 06](hw06/pr06.html) | November 12, 2018 |    
 | Peer Review 07 | November 16, 2018 |    
 | Peer Review 08 | November 23, 2018 |    
 | Peer Review 09 | December 05, 2018 |    
