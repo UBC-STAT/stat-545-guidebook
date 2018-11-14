@@ -9,5 +9,9 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Review existing code for BCL app
+Agenda:
+
+1. Comments between pipes
+2. Review code for BCL app that we developed last time
+3. Continuation of the [tutorial from last time](cm107.html). 
 
