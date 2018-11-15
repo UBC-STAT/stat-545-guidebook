@@ -235,4 +235,55 @@ Modify the plot so that it only shows the filtered data.
 
 # Reactivity
 
-Use `reactive()` to prevent duplicated code! Catch: treat the output like it's a function by putting `()` next to it.
+## The Concept of Reactivity
+
+Will the following code output `15` or `25`?
+
+```
+x <- 10
+y <- x + 5
+x <- 20
+print(y)
+```
+
+This is _non-reactive_ programming. Shiny is an exception! Where is the reactivity in Shiny?
+
+## Defining reactive variables: Together
+
+Can you spot the duplicate code in our app thus far? Use `reactive()` to prevent duplicated code:
+
+1. Save wrangled data to a variable after passing through `reactive()`
+2. Use this object instead of the duplicated code. Catch: treat the output like it's a function by putting `()` next to it.
+
+# More shiny features
+
+This concludes the "foundation of shiny". Let's take a look at other things we can do with shiny.
+
+## `uiOutput()` and `renderUI()`
+
+You can conditionally have UI appear as output. See an example in [Section 11.1 of Dean's tutorial](http://stat545.com/shiny01_activity.html#basic-example-of-uioutput).
+
+## Hosting your shiny app: shinyapps.io
+
+You can host your app as a website for free at `www.shinyapps.io` (or on your own server) -- just follow the instructions. Or, see [Section 13.1 in Dean's tutorial](http://stat545.com/shiny01_activity.html#host-on-shinyapps.io) for elaboration.
+
+## Interactive Rmd
+
+Just pop `runtime: shiny` in the YAML header of an Rmd file, and your ready to generate interactive HTML-based documents.
+
+See an example in [Section 14.1 of Dean's tutorial](http://stat545.com/shiny01_activity.html#shiny-in-rmarkdown). For an elaboration, see [Chapter 19 of Yihui's R Markdown book](https://bookdown.org/yihui/rmarkdown/shiny-documents.html).
+
+## Interacting with plots
+
+We can allow users to click on a graph to indicate input.
+
+See [this RStudio page](https://shiny.rstudio.com/articles/plot-interaction.html) for a description.
+
+## DT tables
+
+Display your tables in a nicer / less static way with [DT tables](https://rstudio.github.io/DT/).
+
+## Shiny looks
+
+- You can change the look of your shiny app with [shinythemes](http://rstudio.github.io/shinythemes/).
+- You can use the [`shinydashboard` package](https://rstudio.github.io/shinydashboard/) for a more "website-like functionality".
