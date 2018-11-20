@@ -1,5 +1,5 @@
 ---
-title: "STAT 547M Class Meeting 10: R packages, Part II"
+title: "STAT 547M Class Meeting 10: Automation, Part II"
 output:
     html_notebook:
         toc: true
