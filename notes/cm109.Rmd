@@ -82,12 +82,5 @@ We'll test out the functionality of each pipeline, guided by suggestions from th
 
 Overall goal: run the pipeline for each activity.
 
-# Break
-
-(Now's a good time to take a break before we start our `make` activity. If you don't have `make` installed, I recommend taking at least some break before trying to install it. You can always continue with our activity next class). 
-
-# `make` activity
-
-I think [Shaun and Jenny's `make` tutorial](http://stat545.com/automation04_make-activity.html) is followable in lecture. Let's try!
 
 
