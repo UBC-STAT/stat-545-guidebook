@@ -19,10 +19,10 @@ This can be a pain if you have multiple files and scripts!
 
 > Automate a pipeline
 > 
-> ... to reproduce previous results.
-> ... to recreate results deleted by fat fingers.
-> ... to rerun the pipeline with updated software.
-> ... to run the same pipeline on a new data set.
+> ... to reproduce previous results.   
+> ... to recreate results deleted by fat fingers.   
+> ... to rerun the pipeline with updated software.   
+> ... to run the same pipeline on a new data set.   
 
 # Non-interactive programming
 
