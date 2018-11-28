@@ -2,6 +2,8 @@
 
 As part of this course you will be reviewing, commenting on, and marking other students' assignments. This is a mandatory part of the course and you will be marked on your peer reviews (15% of overall course mark).
 
+**For STAT 547: We will take the top four peer review grades when calculating your final grade, so you don't have to do one of them**.
+
 ## Schedule
 
 Peer Reviews will be posted here as they are made available.
@@ -19,6 +21,8 @@ Here are the deadlines for peer reviews, with links (to appear after assignments
 | [Peer Review 05](hw05/pr05.html) | October 24, 2018 |
 
 ### STAT 547
+
+**For STAT 547: We will take the top four peer review grades when calculating your final grade, so you don't have to do one of them**.
 
 | Peer Review    | Peer Review Due Date  |
 |----------------|-----------------------|

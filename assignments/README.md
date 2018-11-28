@@ -22,13 +22,15 @@ Here are the deadlines for assignments, with links (to appear after assignments 
 
 ### STAT 547
 
+**UPDATE Nov 28, 2018: We will take the top four homework grades when calculating your final grade, which means you don't have to do homework 10**.
+
 | Assignment  | Assignment Due Date |
 |-------------|---------------------|
 | [Homework 06](hw06/hw06.html) | November 09, 2018   |
 | [Homework 07](hw07/hw07.html) | November ~~13~~ 15, 2018   |
 | [Homework 08](hw08/hw08.html) | November ~~20~~ 21, 2018   |
 | [Homework 09](hw09/hw09.html) | November 27, 2018   |
-| Homework 10 | December 06, 2018   |
+| Homework 10 **Optional** | December 06, 2018   |
 
 Logistics
 ---------
@@ -105,12 +107,10 @@ The grade mapping is as follows:
 |-------|------------|
 | 0     | 0%         |
 | 1     | 50%        |
-| 2     | 80%        |
+| 2     | ~~80%~~ 90%        |
 | 3     | 100%       |
 
-Intermediate points are allowed, and follow a linear scale in between each point, so that the full mapping is depicted in the following chart:
-
-<img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+Intermediate points are allowed, and follow a linear scale in between each point.
 
 Peer Review
 -----------

@@ -178,7 +178,7 @@ STAT 547:
 | Vincenzo | Wed, Nov  21 | 11:00 - 12:00 | ESB 1043 |
 | Sherrie      | Mon, Nov  26 | 11:00 - 12:00 | ESB 3174 |
 | Hossam      | Tue, Nov  27 | 11:00 - 12:00 | ESB 3174 |
-| Vincenzo | Wed, Nov  28 | 11:00 - 12:00 | ESB 1043 |
+| Vincenzo | ~~Wed, Nov  28~~ Thurs., Nov. 29 | 10:50 - 11:20; 12:30-13:00 | ESB 1043; ESB 3174 |
 | Sherrie      | Mon, Dec  03 | 11:00 - 12:00 | ESB 3174 |
 | Rashedul      | Tue, Dec  04 | 11:00 - 12:00 | ESB 3174 |
 | Vincenzo | Wed, Dec  05 | 11:00 - 12:00 | ESB 1043 |
