@@ -38,6 +38,10 @@ We'll wrap up with:
 
 5. Instructor/course evaluations
 
+## Participation
+
+Download the `.Rmd` version of this very document.
+
 ## Overall Resources
 
 - The [2016 ROpenSci tutorial](https://github.com/ropensci-training/user2016-tutorial).
@@ -101,6 +105,16 @@ Let's request info about Jurassic Park from OMDb. We'll also start writing reque
 1. Go to http://www.omdbapi.com/
 2. Request info about Jurassic Park
 	- The syntax is specific to OMDb
+	
+__OMDb Exercise__:
+
+1. Register for an API key at http://www.omdbapi.com/
+2. Form a request!
+
+```{r}
+s
+```
+
 
 __Google API's__
 
