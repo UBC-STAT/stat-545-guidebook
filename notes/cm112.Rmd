@@ -240,7 +240,7 @@ jsonlite::fromJSON("https://api.github.com/users/hadley/orgs")
 ```
 
 
-## API wrappers
+## API wrappers and examples
 
 Many R packages are wrappers to an API. Examples:
 
@@ -256,10 +256,13 @@ In addition, here are other API's to be aware of (some of which have an R packag
 
 - [Facebook API](https://developers.facebook.com/)
 - [Twitter API](https://developer.twitter.com/)
-- [IBM Watson API](https://www.ibm.com/watson/products-services/)
+- [Star Wars API](https://swapi.co)
+- [API of Ice and Fire](https://anapioficeandfire.com)
+- [OpenWeatherMap](https://openweathermap.org/api)
+- [Open Movie Database](https://www.omdbapi.com)
 - [Quandl API](https://www.quandl.com/)
 
-Thanks to [Analytics Vidhya](https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-apis-application-programming-interfaces-5-apis-a-data-scientist-must-know/) for inspiring this second list.
+And a huge list of API's can be found [here](http://www.programmableweb.com/category/all/apis).
 
 # Course/Instructor Evaluations
 

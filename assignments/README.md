@@ -30,7 +30,7 @@ Here are the deadlines for assignments, with links (to appear after assignments 
 | [Homework 07](hw07/hw07.html) | November ~~13~~ 15, 2018   |
 | [Homework 08](hw08/hw08.html) | November ~~20~~ 21, 2018   |
 | [Homework 09](hw09/hw09.html) | November 27, 2018   |
-| Homework 10 **Optional** | December 06, 2018   |
+| [Homework 10](hw10/hw10.html) **Optional** | December 06, 2018   |
 
 Logistics
 ---------
