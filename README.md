@@ -13,8 +13,8 @@ Both STAT 545 and STAT 547 make use of the following tools:
 |-------------|-------------|
 | <http://stat545.com/Classroom> (here) | Think of this as the course "home" -- and this syllabus as your launch pad to other destinations. Contains lecture notes, assignments, and course information. |
 | [assignments](http://stat545.com/Classroom/assignments), [peer review](http://stat545.com/Classroom/assignments/peer-review.html), and [participation](participation.html) information | Info for Assignments, Peer Review, and Participation assessments can be found here. |
-| [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) GitHub repository | For internal discussion. ~~The world cannot see this.~~ |
-| [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository. | For public discussion. The world can see this. |
+| [Announcements](https://github.com/STAT545-UBC/announcements) GitHub repository | For course announcements and internal discussion. |
+| [Discussion](https://github.com/STAT545-UBC/Discussion) GitHub repository. | For public discussion about course content. |
 | [STAT545-UBC-students](https://github.com/STAT545-UBC-students) GitHub Organization | This will contain one GitHub repository per student, for you to submit homework to and give peer reviews. |
 | [UBC canvas](http://canvas.ubc.ca/) | This is for grade management. You'll be interacting with it by submitting a link to your homework. |
 | <http://stat545.com> | This holds course content, such as tutorials. Think of this as a textbook. We'll point you there when needed. This previously contained the information contained in `Classroom`, but that eventually became confusing. Some headers there are becoming deprecated.  |
