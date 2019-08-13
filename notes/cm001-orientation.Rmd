@@ -51,3 +51,5 @@ Let's get oriented with the course through the [course syllabus](http://stat545.
 
 - How to get help, in this course and outside of this course.
 - A preview of GitHub
+
+example of an analysis??? Flood forecasting one?? Would help to motivate the course, and demonstrate course mantras. 

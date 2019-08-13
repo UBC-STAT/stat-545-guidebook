@@ -1,5 +1,5 @@
 ---
-title: "STAT 545 Class Meeting 01: Intro to Data Analytic Work"
+title: "STAT 545 Class Meeting 01: GitHub"
 output:
     html_notebook:
         toc: true
@@ -15,7 +15,28 @@ By the end of today's class, students are expected to be able to:
 
 - List 4 ways to get help in this course
 - Create and comment on GitHub Issues
-- Write markdown to produce simple documents as GitHub Issues.
+
+## Learning Objectives: Version Control with GitHub
+
+The concepts we'll be looking at are:
+
+- Commits
+- Diffs
+- Commit History
+- Branches
+- Merging
+- Merge Conflicts
+
+Specifically, by the end of today's class, students are expected to be able to:
+
+- Describe the difference between git and GitHub, and name similar software
+- Edit plain text files on different branches on GitHub
+- Navigate the commit history of various repository branches on GitHub
+- Visualize a tree diagram of commits across branches
+- Merge repository branches via pull requests on GitHub, resolving merge conflicts if necessary
+
+GitHub offers [a nice tutorial](https://guides.github.com/activities/hello-world/) on getting started with GitHub that you might find useful.
+
 
 # Activities
 
@@ -32,6 +53,67 @@ By the end of today's class, students are expected to be able to:
 5. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username using `@username`. 
 6. Please put up a profile photo -- it makes the STAT 545 community more personable. You can do this from your profile homepage. 
 7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub for a bunch of free perks for students!
+
+# Version Control with GitHub
+
+
+## About Version Control
+
+What is version control?
+
+Why bother with version control?
+
+- Don't fret removing stuff
+- Leave a breadcrumb trail for troubleshooting
+- "Undo" to a previous state
+- Helps you define your work
+- ...
+
+What software is associated with version control?
+
+- git, subversion, GitHub, GitLab, Bitbucket, ...
+
+## Live-Coding: Making a new repo
+
+To demonstrate version control concepts, we'll create a new GitHub repository, which will showcase our markdown exploration. 
+
+
+1. Create a new repository called `stat545_md_explorer`.
+    - Counts towards participation, so please keep this repo until the course is complete.
+2. Say YES to initializing with a README.
+3. Edit the README with something descriptive, like:
+    - > This repo is part of a STAT 545 exercise to explore GitHub and markdown.
+4. _Commit_ the changes, adding a _commit message_.
+5. Drag and drop the `.md`, `.html`, and `.pdf` files that you made earlier in class onto the main repo page.
+6. Explore the files in your repo. What's viewable? What's not?
+    - Food for thought: Jenny Bryan on repo browsability: [happygitwithr repo-browsability](http://happygitwithr.com/repo-browsability.html).
+
+You should now have a repo called `stat545_md_explorer` with a README file, and your `.md`, `.pdf`, and `.html` files from before. 
+
+## Commits
+
+Commits, diffs, and commit history.
+
+## Live-Coding: Branching and Merging
+
+The notion of _branching_ and _merging_ shows up seemingly everywhere in version control. You'll encounter _merge conflicts_, too.
+
+To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see. For more info on this, see [the GitHub documentation](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/). 
+
+NOTE: I'm deferring the motivation for repo branching until later. 
+
+1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
+2. To the README on the `test1` branch, add a relative link to the other `.md` file in the repo (using markdown syntax).
+3. Explore: 
+    - switch between branches to see that the repo structure is different.
+    - Diagram of commit history for both branches.
+4. Merge the branch to "master".
+
+Part 2: 
+
+1. Make a new branch called `test2`.
+2. Edit line 1 of the README _on both branches_ to something different in both cases.
+3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
 
 # Quiz
 

@@ -48,6 +48,19 @@ STAT 545:
 * How to write functions and work with R in a functional style
 * Version control with Git; collaboration via [GitHub](https://github.com)
 
+The general outline is as follows:
+
+1. Tools for Data Analysis (2 weeks)
+    - GitHub
+    - Markdown
+    - R
+    - git
+2. Exploratory Data Analysis
+    - Data wrangling
+    - Data computations
+    - Plotting
+
+
 STAT 547:
 
 * Be the boss of non-numeric data, esp. character and factor
@@ -219,9 +232,9 @@ Do you need my permission to enroll or audit in this course? I'm happy to sign t
 
 Here are some philosophies that will get you far in data analytic work. We will be revisiting these over and over again. 
 
-- Embrace plain text (as opposed to rich text) when authoring. (What is plain text?)
-- Think in terms of source and output, and remember that source is real. 
-- Your stuff should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
+- Embrace plain text.
+- Source is real. Think in terms of source and output. 
+- Your analysis should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
 
 ## Conversation, and Getting Help
 
