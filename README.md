@@ -288,6 +288,8 @@ Overarching resources:
 2. [R for Data Science](http://r4ds.had.co.nz/) (aka "r4ds"), by Garrett Grolemund and Hadley Wickham.
     - STAT 545/547 closely mirrors the topics of this book, making this book more of a true "textbook" for the course.
 
+https://whattheyforgot.org/
+
 Resources for more specific topics:
 
 1. [Happy git with R](http://happygitwithr.com/), by Jenny Bryan and the STAT 545 TA's

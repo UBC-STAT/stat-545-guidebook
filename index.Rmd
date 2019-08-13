@@ -1,0 +1,17 @@
+---
+title: "STAT 545 @ UBC: Class Meeting Guide 2019/20"
+author: "Vincenzo Coia and Firas Moosvi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+#github-repo: org/repo
+---
+
+# About This Guide {-}
+
+Welcome to the class meeting (or "lecture") guide for STAT 545A and STAT 547M at UBC for the 2019/20 academic year! This guide organizes what we will be doing in each class meeting. So you can expect it to be updated regularly -- in fact, the date listed above is the last time this guide was updated. 
+
+If you're looking for the list of tutorials written by Jenny Bryan, you can find those in the bookdown book found at stat545.com.

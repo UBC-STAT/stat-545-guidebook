@@ -1,0 +1,15 @@
+# Class Meeting 12: Factors
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Recap
+
+- Vectors: a sequence of "entries" of the same data type.
+  - Character vectors: an "entry" can contain any amount of characters.
+- Lists: a sequences of "entries" of any type.
+
+## Today:
+
+Factors. Dates with lubridate if we get to it (making the lecture on special vectors in general). 
+
+Worksheet: [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm012-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm012-exercise.nb.html)

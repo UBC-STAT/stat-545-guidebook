@@ -1,0 +1,170 @@
+# Class Meeting 14
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+# Today
+
+1. Worksheet: the model-fitting paradigm in R.
+    - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm014-exercise.Rmd), 
+    - [from html](http://stat545.com/Classroom/notes/cm014-exercise.nb.html)
+2. Break to fill out instructor evaluations.
+3. "Deep thoughts" on data analytic work
+
+# Resources
+
+- [Jenny's Deep Thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
+- [`broom` vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
+
+If you're interested in learning more about the actual statistical / machine learning methods for fitting models, I highly recommend the book ["An Introduction to Statistical Learning"](https://www-bcf.usc.edu/~gareth/ISL/) (freely available online). It uses R, too.
+
+# Break
+
+You should have received an email asking to fill out instructor evaluations. Let's take some time to fill that out.
+
+# Deep Thoughts about Data Analytic Work
+
+("Deep Thoughts" refers to Jack Handley's skit on Saturday Night Live)
+
+## Coding Practices: Naming
+
+- some people use camelCase, snake_case, or.periods.
+- Functions should be verbs (based on the one thing that it achieves). Objects should be nouns. Functions that return functions should be adverbs. 
+- Don't over-create. The more objects in your global environment there are, the more confusing it will be -- especially if you don't have a consistent rule.
+- Don't under-create: avoid magic numbers!
+    - Bad: 
+        ```
+        x <- rnorm(100)
+        y <- x + rnorm(100)
+        ```
+    - Good:
+        ```
+        n <- 100
+        x <- rnorm(n)
+        y <- x + rnorm(n)
+        ```
+- Disambiguate from left-to-right, not right-to-left. Think tab completion.
+    - Bad: `canada_gdp` and `china_gdp`. 
+    - Good: `gdp_canada` and `gdp_china`.
+
+## Coding Practices: Documenting code 
+
+Self-documenting code = code that speaks for itself. 
+
+- Write self-documenting code with meaningful variable names, and ideally using the tidyverse. Metaprogramming shines here, too.
+    - Base R: 
+        ```
+        mtcars[mtcars$cyl < 8, c("cyl", "mpg")]
+        ```
+    - tidyverse: 
+        ```
+        mtcars %>% 
+            filter(cyl < 8) %>% 
+            select(cyl, mpg)
+        ```
+
+Think before you comment your code! It's easy for comments and code to misalign at original writing OR as things shift around. 
+
+- Use comments to describe high-level decisions on the analysis.
+    - Bad: 
+        ```
+        # Lag the river discharge twice.
+        ```
+    - Good: 
+        ```
+        # create predictors.
+        ```
+- Don't use comments to describe what your code is doing on a low-level.
+    - Bad: 
+        ```
+        # make data frame of cylinders less than 8, with variables 'cyl' and 'mpg'
+        ```
+    - Good: No comment at all.
+    - Better: Use the tidyverse.
+
+## Coding Practices: The DRY principle
+
+DRY = don't repeat yourself. Instead,
+
+- Write functions
+- Write functions that do a very specific thing
+
+Example of function that does too much: normalize a vector AND possibly compute the location and scale.
+
+Some other best practices with functions:
+
+- Functions should be self-contained, not drawing on global
+    - For readability
+    - For function (can't easily export that to it's own package or other analyses, for example)
+- Write unit tests for the functions (we'll see `testthat`)
+
+## Coding Practices: Style Guides
+
+When writing code, at the very least, it's important to be consistent with your style. We highly recommend:
+
+- The [pep8 style guide](https://www.python.org/dev/peps/pep-0008/?) for Python.
+- The [tidyverse style guide](http://style.tidyverse.org/) for R. 
+    - Sections 4+ are not so relevant yet.
+
+__Activity__: In five minutes:
+
+1. On your own, read over some style rules: a few small ones, or one bigger one.  
+2. Form groups of 2-4.
+3. With your group members, share the following:
+    - what you read.
+    - your opinion about what you read.
+    - if applicable, style that you especially like to follow.
+4. Address some in class. 
+
+## Reproducibility
+
+This practice is so important, I'm giving it it's own section. 
+
+- Jenny Bryan: "If the thought of re-running your analysis makes you ill... you're not doing it right"
+- Progress is not about stacking bricks. Don't ever be afraid to re-visiting "earlier" points in the analysis.
+
+The concept goes beyond programming, and many argue as to its meaning, but we're taking it to mean two things as relevant to data analytic work:
+
+__1\. How easily someone can reproduce output.__
+
+Example: generating a plot; or a report.
+
+- Worst case scenario: no source code is available; regenerate from scratch. 
+- Best case scenario: output is regenerated with the click of a button.
+
+Concepts to live by:
+
+- Source is real. Output is transient. 
+    - Source >> Output.
+- Working interactively? Frequently nuke your session and run from the top. It should still work. 
+- Don't save workspace upon closing.
+
+Who is this "someone" I speak of?
+
+- Future you
+- Collaborators
+- Critics
+- Successors (your capstone partners)
+
+__2\. How easily someone can reproduce _your_ frame of mind / conceptual framework at some point in time.__
+
+Example: All the code files relating to your thesis.
+
+- Worst case scenario: No explanations.
+- Best case scneario: README's concisely summarize what's present; comments or markdown in reproducible reports outline big-picture logic. 
+
+Broader examples: 
+
+- Conclusions drawn from an analysis. 
+- Understanding of a concept in class. 
+- Even taking photos to capture moments in time.
+
+Concepts to live by:
+
+- Avoid technical debt, and document the big-picture structure both _within_ files (comments) and _between_ files (README's).
+    - An unsuspecting data scientist stumbles upon your work. Can they figure out what's going on?
+
+
+Scenario: how could the following practice be made better?
+
+> You're writing code directly to the console, and end up with a plot from your machine learning model, so you click save and use the plot in a report.
+

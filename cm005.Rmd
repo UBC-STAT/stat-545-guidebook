@@ -1,0 +1,190 @@
+# Class Meeting 05: Intro to data wrangling
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Announcements
+
+- Assignment 01 is due tonight!
+- Assignment 02 released today.
+- GitHub Issues:
+    - All are excellent discussions!
+    - You can "Close" an Issue if you consider it "resolved". 
+- Update on getting help in class: let's take this approach:
+    - TA’s more mobile during lecture
+    - Students: 
+        - Question for the class: hands up fully. 
+        - Question for TA's: something different of your choice. Maybe a wave, holding up a pen/object, hand not fully extended, ...
+    - I'll aim to take a brief break in class, but with a challenge exercise for those not needing the break.
+- We'll be more strict on your participation as of this week. This means your commit timestamp matters! Your commit(s) shouldn't be made too long after lecture. I'll aim to include this in our demonstrations.
+
+## Review, and Looking Ahead
+
+We've done a lot so far! Let's recap/review. Here are the main concepts we've covered:
+
+- git and GitHub concepts and how-to
+- Basics of R
+- Basics of authoring in markdown (with various flavours)
+- RStudio features:
+    - as a text editor (.md, .R, .Rmd, etc...)
+    - as containing the R machinery (running code in the console)
+    - as a command line tool
+    - as a git client
+
+In short, we've covered the foundation of key _tools_ for data analysis. For the next few weeks, we're going to focus more on the data itself, for the purpose of _exploratory data analysis_. Specifically, and not in this particular order, 
+
+- Data wrangling
+- Data computations
+- Plotting
+
+## Today's Lessons
+
+Today we'll introduce the `dplyr` package. Specifically, we'll look at these three lessons:
+
+- Intro to `dplyr` syntax
+- The `dplyr` advantage
+- Relational/comparison and logical operators in R
+
+## Resources
+
+All three of today's lessons are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
+
+More detail can be found in the [r4ds: transform](http://r4ds.had.co.nz/transform.html) chapter, up until and including the `select()` section. Section 5.2 also elaborates on relational/comparison and logical operators in R
+
+Here are some supplementary resources:
+
+- A similar resource to the r4ds one above is the [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html), up until and including the `select()` section.
+- Want to read more about piping? See [r4ds: pipes](http://r4ds.had.co.nz/pipes.html).
+
+## Participation
+
+To get participation points for today, we'll be filling out the [cm005-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm005-exercise.Rmd) file, and adding it to your participation repo.
+
+Let's get set up:
+
+1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.nb.html).
+2. Download the `.Rmd` version to your local participation repo.
+    - You should have it cloned to your local machine (aka your computer) from last time.
+3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
+    - You can still get participation marks by uploading the final files to GitHub.
+
+# Intro to `dplyr` syntax
+
+## Learning Objectives
+
+Here are the concepts we'll be exploring in this lesson:
+
+- tidyverse
+- `dplyr` functions:
+    - select
+    - arrange
+    - filter
+- piping
+
+By the end of this lesson, students are expected to be able to:
+
+- subset and rearrange data with `dplyr`
+- use piping (`%>%`) when implementing function chains
+
+## Preamble
+
+Let's talk about:
+
+- The history of `dplyr`: `plyr`
+- tibbles are a special type of data frame
+- the tidyverse
+
+## Demonstration
+
+Let's get started with the exercise:
+
+1. Open RStudio, and download the `tidyverse` meta-package by executing `install.packages("tidyverse")` into the R console.
+2. _Optional_: open the `STAT545_participation` RStudio project in RStudio.
+3. With RStudio, open the `cm005-exercise.Rmd` file you downloaded and committed earlier.
+4. Follow the instructions in the `.Rmd` file.
+5. Knit, commit, push.
+
+# The `dplyr` advantage
+
+## Learning Objectives
+
+By the end of this lesson, students are expected to be able to:
+
+- Have a sense of why `dplyr` is advantageous compared to the "base R" way with respect to good coding practice.
+
+Why?
+
+- Having this in the back of your mind will help you identify qualities of and produce a readable analysis.
+
+## Compare base R to `dplyr`
+
+Let's talk about these concepts:
+
+__Metaprogramming__.
+
+Hadley Wickham says it best in [adv-r: meta](https://adv-r.hadley.nz/meta.html): you trade precision for concision. Here's the example he gives:
+
+- `subset(diamonds, x == 0 & y == 0 & z == 0)`, vs.
+- `diamonds[diamonds$x == 0 & diamonds$y == 0 & diamonds$z == 0, ]`
+
+__Pure functions__.
+
+I=O, and does not impact workspace.
+
+__Self-documenting code__. 
+
+This is where the tidyverse shines.
+
+Example of `dplyr` vs base R:
+
+```
+gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp)
+```
+
+vs.
+
+```
+gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
+```
+
+__No need to take excerpts__.
+
+Wrangle with `dplyr` first, then pipe into a plot/analysis.
+
+OR, use the `subset` argument that's often offered by R functions like `lm()`.
+
+Especially don't use magic numbers to subset!
+
+Note that you need to use the assignment operator to store changes!
+
+# Small break
+
+Here are some things you might choose to do on this break:
+
+- Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
+- Fill out the challenge on the `cm005-exercise.Rmd` file.
+- Work on an assignment.
+
+# Relational/Comparison and Logical Operators in R
+
+## Learning Objectives
+
+Here are the concepts we'll be exploring in this lesson:
+
+- Relational/Comparison operators
+- Logical operators
+
+By the end of this lesson, students are expected to be able to:
+
+- Predict the output of R code containing the above operators.
+- Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
+
+## Demonstration
+
+Continue along with the `cm005-exercise.Rmd` file. 
+
+# If there's time remaining
+
+1. Let's do the bonus exercises together, in the `cm05-exercise.Rmd` file.
+2. Another "break"

@@ -1,0 +1,6 @@
+book_filename: "main"
+language:
+  ui:
+    chapter_name: "Class Meeting "
+delete_merged_file: true
+output_dir: "docs"
