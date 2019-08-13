@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/STAT545-UBC/Classroom.svg?branch=2019)](https://travis-ci.com/STAT545-UBC/Classroom)
+
 # STAT 545A/547M: Exploratory Data Analysis
 
 This is the course syllabus for the Fall 2018 edition of STAT 545 and STAT 547. You should use this syllabus to:
