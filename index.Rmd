@@ -8,6 +8,7 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 #github-repo: org/repo
+cover-image: "stat-545.png"
 ---
 
 # About This Guide {-}
