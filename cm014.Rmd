@@ -1,13 +1,11 @@
-# Class Meeting 14
-
---- LAST YEAR'S CONTENT BELOW ---
+# The Model-Fitting Paradigm in R
 
 # Today
 
 1. Worksheet: the model-fitting paradigm in R.
     - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm014-exercise.Rmd), 
     - [from html](http://stat545.com/Classroom/notes/cm014-exercise.nb.html)
-2. Break to fill out instructor evaluations.
+2. Break to fill out instructor and TA evaluations.
 3. "Deep thoughts" on data analytic work
 
 # Resources

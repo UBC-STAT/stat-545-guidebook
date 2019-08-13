@@ -1,6 +1,5 @@
-# Class Meeting 09: Tidy Data
+# Tidy Data and Pivoting
 
---- LAST YEAR'S CONTENT BELOW ---
 
 ## Review, and Looking Ahead
 
@@ -41,13 +40,13 @@ Concepts from today's class are closely mirrored by Jenny Bryan's [LOTR tidy dat
 
 To get participation points for today, fill out the cm009-exercise.Rmd file with the class (get it from [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm009-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm009-exercise.nb.html)), and add it to your participation repo.
 
-# Reading and Writing data
+## Reading and Writing data
 
-## Working Directory 
+### Working Directory 
 
 R has a notion of "working directory". You can get with `getwd()`, set (with caution) with `setwd()`.
 
-## The functions
+### The functions
 
 Let's see an example of how tabular data are stored:
 
@@ -78,7 +77,7 @@ Reading and writing delimited files in general
 
 With Base R: beware the factors with `read.csv()`!
 
-## Making tibbles within R
+### Making tibbles within R
 
 Base R: `data.frame()` function.
 
@@ -86,9 +85,9 @@ Tidyverse version: `tibble()` function from `tibble` package.
 
 Truly manual construction of tibbles: `tribble()` from the `tibble` package. 
 
-# Tidy Data
+## Tidy Data
 
-## Learning Objectives
+### Learning Objectives
 
 Here are the concepts we'll be exploring in this lesson:
 
@@ -102,11 +101,11 @@ By the end of this lesson, students are expected to be able to:
 - when either form is useful.
 - use the `tidy::gather()` and `tidyr::spread()` functions to convert between tidy and untidy data
 
-## Tidy Data
+### Tidy Data
 
 We'll look at Jenny's [intro](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md) page for an example of tidy/untidy data. 
 
-## gather and spread
+### gather and spread
 
 History: Data reshaping has not been the most natural thing to program. First came the `reshape` package. Then the `reshape2` package. Now the `tidyr` package makes it easy(er).
 

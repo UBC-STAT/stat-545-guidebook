@@ -1,8 +1,4 @@
-# Class Meeting 13
-
---- LAST YEAR'S CONTENT BELOW ---
-
-Today: various plotting topics.
+# Effective Plotting
 
 Worksheet: 
 

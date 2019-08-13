@@ -1,8 +1,6 @@
 # STAT 547M {-}
 
-# Class Meeting 01
-
---- LAST YEAR'S CONTENT BELOW ---
+# (1) Functions
 
 ## Today's Agenda
 

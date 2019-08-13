@@ -1,121 +1,149 @@
-# Class Meeting 02: Authoring
+# Introduction to R
 
---- LAST YEAR'S CONTENT BELOW ---
+Today's topics are:
 
-Today, we'll be looking at three things:
-
-1. Basic exposure to the wonderful world of plain text
-    - With a focus on authoring with markdown
-2. Version control with GitHub
-    - Fundamental concepts in version control through GitHub
-3. ~~Collaboration with GitHub~~ Moved to cm004. 
-    - ~~Workflows to optimize collaboration~~
+1. Getting familiar with R
 
 To participate in today's lecture, you should have:
 
-- A GitHub account
-- RStudio installed
+- R and RStudio installed
+- Optionally, LaTeX installed for outputting to pdf.
+- A participation repo to put in-class work
 
-# The Wonderful World of Plain Text
-
-## Learning Objectives: Plain Text
+## Learning Objectives
 
 By the end of today's class, students are expected to be able to:
 
-- Name three key uses of plain text, and some types of plain text for each
-- Author basic documents in ordinary markdown (easier than you think!) with RStudio
-- Render a markdown document to html and pdf using RStudio
-- Choose whether html or pdf is an appropriate output
+- Have a sense of the capabilities, and pros and cons, of R
+- Write an R script to perform simple calculations
+- Describe the main idea of vectorization
+- Access the R documentation on an as-needed basis
 
-## Orientation to Plain Text
+## Resources:
 
-Three uses of plain text relevant to data analytic work:
+- We'll be roughly following the [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R.
+- [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects. 
+    - For those already experience with R: I recommend you look this chapter over. You'll probably learn something new.   
+    - For those new to R, who want the depth, read until the end of the "Vectors" section.
 
-- authoring
-- data storage
-- scripts
+Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
 
-Motivation for plain text:
+## About R
 
-- authoring: 
-    - Delegating the formatting saves time and is distraction-free
-    - Automate numbering
-    - Automate changes to the formatting
-    - Less error-prone (eg. matching font sizes)
-    - ...
-- data storage and scripts:
-    - always machine readable
+Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction.html):
 
-Types of plain text for each, with typical file extensions. STAT 545 focusses on those in __bold__:
+- Free, platform-wide
+- Open source
+- Comprehensive set of "add on" packages for analysis
+- Huge community
+- ...
 
-- authoring
-    - __markdown__ (`.md`) (and family!)
-    - LaTeX (`.tex`)
-    - You could say HTML, too...
-- data storage
-    - __csv/comma-separated values__ (`.csv`)
-    - tsv/tab-separated values (`.tsv`)
-    - JSON (`.json`)
-    - XML (`.xml`) (although not its only use)
-- scripts
-    - __R__ (`.r`) -- _Next week_
-    - python (`.py`)
-    - javascript (`.js`)
+Strengths that tend to be specific to R: 
 
-Some noteworthy things:
+- Naturally handles data (and therefore its analysis)
+- Vectorization
+- ..
 
-- Rich text is different from syntax highlighting
-- The _file viewer_ is independent from the _file_
-    - Less so with proprietary software such as Word. 
-- With plain text, the file extension doesn't really matter. 
+Its downfalls?
 
-## Markdown Crash Course
+- Slow
+- To learners, seems "quirky" (due to reliance on "metaprogramming")
+- S3 OO objects & methods not always transparent
+- ...
 
-Live coding activity:
+Alternatives for data analysis?
 
-1. Open RStudio, and open a new text file. 
-2. Save the file, and call it `md_explorer.md`
-3. Add content to the document, using some markdown syntax such as:
-    - Headers
-    - Bold, Italics
-    - Code font
-    - Hyperlinks
-4. Click `Preview` to convert the md file to HTML. Try pdf, too!
-    - Which to use? In general: printing to the page, pdf. Viewing on the screen, HTML.
+- python is becoming more prominent in the data science community.
+    - faster, more "all-purpose"
+    - tends to handle text better
+    - jupyter notebooks instead of RStudio and R Markdown
 
-Notable "flavours"/extensions to the basic markdown:
+Methods for interacting with R (I'll demo basic calculations)
 
-- GitHub-flavoured Markdown (Assignment 1)
-- R Markdown (A future lesson)
+- Rstudio. __NOTE__: R is not RStudio! RStudio is an _IDE_. 
+    - The STAT 545 (and largely the world's) choice!
+- "R console"
+- Terminal/ESS
+- ...
 
-Resources:
+## Demonstration
 
-- [Original Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
-- [Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) for md and gh-flavoured md. 
-- [Tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
+Set up shop to follow along:
+
+1. Open RStudio.
+2. Either:
+    - Ideally, download and open the [template R script](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise.R) (if you're online); OR
+    - Start a new R Script. (File -> New File -> R Script)
+
+To get participation marks for this activity:
+
+1. Work with me as we fill in the worksheet.
+    - Remember, you're not graded on correctness, just on the attempt!
+2. Upload your worksheet to your STAT 545 participation repo.
+
+The completed worksheet can be found [here](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise-complete.R).
+
+## R Markdown
+
+## Learning Objectives
+
+- Create an R Markdown (Rmd) document and render it to md/html/pdf
+- Write basic equations in Rmd using LaTeX
+- Style an Rmd document by editing the YAML header
+- Demonstrate at least two Rmd code chunk options
+- Informatively choose between writing an R script/Rmd/R Notebook.
+
+## Resources
+
+Here are some resources that are well-aligned with today's goals:
+
+- The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). Read this if you missed something from today's class.
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. The following lessons parallel today's content:
+    - Lessons 1-4 (Intro - Inline Code)
+    - Lessons 9-10 (Output Formats - Notebooks)
+
+Here are resources that are great to reference:
+
+- The official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) has seemingly everything bundled together in a concise way.
+- An updated list of options for the YAML header can be found in the [rmd book: html-document](https://bookdown.org/yihui/rmarkdown/html-document.html)
+
+To dig deeper into any (?) aspect of R Markdown, check out the free [R Markdown book](https://bookdown.org/yihui/rmarkdown/) (also listed on the course syllabus).
+
+## Getting Started
+
+You'll need to install R Markdown. To do so, in any R console, run the following:
+
+```
+install.packages('rmarkdown')
+```
+
+## Demonstration
+
+Let's play with Rmd. No need to submit anything for participation marks! We'll do that next time when we explore data frames.
+
+1. Create a new Rmd document: File -> New File -> R Markdown...
+2. Title: "Data Frame Exploration".
+
+- Notice the differences from regular markdown: YAML header, code chunks!
+
+3. Save it -- I'll call it `cm003-exercise-df`.
+4. Click `Knit`.
+5. Try other outputs.
+6. Try LaTeX equations.
+7. Try inserting new chunks of code.
+8. Try changing the theme with YAML.
+9. Try changing chunk options.
+10. Try making an R _Notebook_. 
+    - R script/Rmd/R Notebook -- which to use?
 
 
+## To do before next class
 
-# If we finish early
+To participate in tomorrow's lecture, you should:
 
-## csv files
+- Ensure you [follow the steps](http://stat545.com/Classroom/participation.html) to set up your "participation" repository.
+- Complete the [course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), if you haven't already.
+    - You MUST do this in order to do your first assignment!
+- You might want to try installing LaTeX, _if_ you want to be able to output to pdf and are not able to.
 
-- Their use for tabular data
-- Their structure
-- Editing them by hand
-
-## More Markdown
-
-Let's learn more about markdown, with a think-pair-share activity.
-
-1. Form groups of size `n` (determined in-class)
-2. "Think"-iteration: Each person is responsible for learning about a different type of markdown formatting, for 3 minutes:
-    - Inserting images
-    - Lists
-    - Blockquotes
-    - Code blocks
-3. "Pair"-iteration: For max 1 minute per person, each person either:
-    - teaches the other group members how to use the formatting they learned, OR
-    - if you're lost, ask your group members for help on the basics. 
-        - Don't feel bad! This happens and is normal, and is also useful for your team members. 
-4. "Share"-iteration: Volunteer to share something that you learned!
+    

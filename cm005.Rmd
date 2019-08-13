@@ -1,21 +1,4 @@
-# Class Meeting 05: Intro to data wrangling
-
---- LAST YEAR'S CONTENT BELOW ---
-
-## Announcements
-
-- Assignment 01 is due tonight!
-- Assignment 02 released today.
-- GitHub Issues:
-    - All are excellent discussions!
-    - You can "Close" an Issue if you consider it "resolved". 
-- Update on getting help in class: let's take this approach:
-    - TA’s more mobile during lecture
-    - Students: 
-        - Question for the class: hands up fully. 
-        - Question for TA's: something different of your choice. Maybe a wave, holding up a pen/object, hand not fully extended, ...
-    - I'll aim to take a brief break in class, but with a challenge exercise for those not needing the break.
-- We'll be more strict on your participation as of this week. This means your commit timestamp matters! Your commit(s) shouldn't be made too long after lecture. I'll aim to include this in our demonstrations.
+# Intro to data wrangling, Part I
 
 ## Review, and Looking Ahead
 
@@ -67,9 +50,9 @@ Let's get set up:
 3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
     - You can still get participation marks by uploading the final files to GitHub.
 
-# Intro to `dplyr` syntax
+## Intro to `dplyr` syntax
 
-## Learning Objectives
+### Learning Objectives
 
 Here are the concepts we'll be exploring in this lesson:
 
@@ -85,7 +68,7 @@ By the end of this lesson, students are expected to be able to:
 - subset and rearrange data with `dplyr`
 - use piping (`%>%`) when implementing function chains
 
-## Preamble
+### Preamble
 
 Let's talk about:
 
@@ -93,7 +76,7 @@ Let's talk about:
 - tibbles are a special type of data frame
 - the tidyverse
 
-## Demonstration
+### Demonstration
 
 Let's get started with the exercise:
 
@@ -103,9 +86,9 @@ Let's get started with the exercise:
 4. Follow the instructions in the `.Rmd` file.
 5. Knit, commit, push.
 
-# The `dplyr` advantage
+## The `dplyr` advantage
 
-## Learning Objectives
+### Learning Objectives
 
 By the end of this lesson, students are expected to be able to:
 
@@ -115,7 +98,7 @@ Why?
 
 - Having this in the back of your mind will help you identify qualities of and produce a readable analysis.
 
-## Compare base R to `dplyr`
+### Compare base R to `dplyr`
 
 Let's talk about these concepts:
 
@@ -158,7 +141,7 @@ Especially don't use magic numbers to subset!
 
 Note that you need to use the assignment operator to store changes!
 
-# Small break
+## Small break
 
 Here are some things you might choose to do on this break:
 
@@ -166,9 +149,9 @@ Here are some things you might choose to do on this break:
 - Fill out the challenge on the `cm005-exercise.Rmd` file.
 - Work on an assignment.
 
-# Relational/Comparison and Logical Operators in R
+## Relational/Comparison and Logical Operators in R
 
-## Learning Objectives
+### Learning Objectives
 
 Here are the concepts we'll be exploring in this lesson:
 
@@ -180,11 +163,11 @@ By the end of this lesson, students are expected to be able to:
 - Predict the output of R code containing the above operators.
 - Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
 
-## Demonstration
+### Demonstration
 
 Continue along with the `cm005-exercise.Rmd` file. 
 
-# If there's time remaining
+## If there's time remaining
 
 1. Let's do the bonus exercises together, in the `cm05-exercise.Rmd` file.
 2. Another "break"

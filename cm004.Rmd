@@ -1,22 +1,10 @@
-# Class Meeting 04: The version control workflow
+# The version control workflow
 
---- LAST YEAR'S CONTENT BELOW ---
-
-Announcements
-
-- Getting help during office hours:
-    - Feel free to use this as a "STAT545-dedicated workspace".
-- Getting help during class, me vs. your TA's:
-    - Feel free to ask TA's for help liberally!
-    - Still brainstorming ideas for distinguishing.
 
 Today's topics are:
 
 1. Exploring data frames (in Rmd!)
-    - (originally from cm003)
 2. Working locally with git
-3. Collaboration with GitHub
-    - (originally from cm002)
 
 To participate in today's class, you'll need:
 
@@ -25,7 +13,7 @@ To participate in today's class, you'll need:
 - RStudio installed
 - Access to the command line (can do through RStudio)
 
-# Exploring data frames (in Rmd!)
+## Exploring data frames (in Rmd!)
 
 ## Learning Objectives
 
@@ -60,7 +48,7 @@ Now, I've started a "cleaned up" version of the Rmd file we were exploring last 
 
 Let's build this up, and submit the result to your [participation repository](http://stat545.com/Classroom/participation.html) for your participation assessment. 
 
-# Working locally with git
+## Working locally with git
 
 ## Learning Objectives
 
@@ -135,50 +123,8 @@ If you're encountering problems, try:
 
 The git documentation is not friendly. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it.
 
-# Collaboration with GitHub
 
-## Learning Objectives: Collaboration with GitHub
-
-The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
-
-- GitHub Pages
-- Forking
-- Pull Request
-
-Specifically, by the end of today's class, students are expected to:
-
-- Be able to make a basic website out of your participation repository using GitHub Pages
-- Know roughly what the above concepts are about
-
-## Resources
-
-The GitHub documentation is perhaps the best place to learn about these outside of class:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Forking](https://help.github.com/articles/fork-a-repo/)
-    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
-- [Pull Request](https://help.github.com/articles/about-pull-requests/)
-
-PS: You might want to sign up for a free [GitHub Student Developer Pack](https://education.github.com/pack). Amongst other perks, you get to make private repositories for free!
-
-## Demonstration
-
-For participation marks, by the end of this demonstration: 
-
-- you'll have a GitHub pages website set up for your participation repo
-- you __don't need to have__ anything for the forking exercise!
-
-Checklist:
-
-1. Set up a basic "GitHub pages" website with your participation repo:
-    1. Go to "settings" on your repo.
-    2. Scroll down to "GitHub Pages"
-    3. Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
-2. Forking a repo: 
-    1. Let's try forking the `Classroom` repo.
-    2. We'll make a change, and will submit a pull request.
-
-# If there's time remaining
+## If there's time remaining
 
 - Concepts related to [getting help](http://stat545.com/help-general.html) in R (or with other computational problems):
     - Google the error message (works most of the time)

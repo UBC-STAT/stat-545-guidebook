@@ -1,10 +1,4 @@
-# Class Meeting 11
-
---- LAST YEAR'S CONTENT BELOW ---
-
-## Announcements
-
-- Assignment 5 due later than usual: October 19, 2018
+# Advanced R programming
 
 ## Review, and Looking Ahead
 

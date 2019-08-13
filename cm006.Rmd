@@ -1,131 +1,40 @@
-# Class Meeting 06: Introduction to plotting with `ggplot2`
-
---- LAST YEAR'S CONTENT BELOW ---
+# Intro to data wrangling, Part II
 
 
-## Announcements
-
-- No break today.
 
 ## Today's Lessons
 
-Today's lessons are:
+Today's topic is _one-table verbs with `dplyr`_. We've already seen `select`, `filter`, and `arrange`. 
 
-- Orientation to statistical graphics
-- The grammar of graphics
-- Plotting with `x` and `y` aesthetics
+- mutate
+- grouped summarize
+- grouped mutate
+
+...and their corresponding theoretical function types. 
 
 ## Resources
 
-Concepts from today's class (and next class) are closely mirrored by the following resources, which introduce `ggplot2`, although are organized in different ways for each.
+Concepts from today's class are closely mirrored by the following resources.
 
-The following are good walk-throughs that introduce `ggplot2`:
+- Jenny's tutorial on [all the one-table verbs](http://stat545.com/block010_dplyr-end-single-table.html)
 
-- [r4ds: data-vis](http://r4ds.had.co.nz/data-visualisation.html) chapter.
-    - Perhaps the most compact "walk-through" style resource.
-- The [ggplot2 book](http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511), Chapter 2.
-    - A bit more comprehensive "walk-through" style resource.
-    - Section 1.2 introduces the actual grammar components. 
+Other resources:
 
-Here are some other resources you might find useful:
+- Like learning from a textbook? Check out all of [r4ds: transform](http://r4ds.had.co.nz/transform.html).
+- The [intro to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) is also a great resource. 
 
-- [Jenny's ggplot2 tutorial](https://github.com/jennybc/ggplot2-tutorial).
-    - Has a lot of examples, but less dialogue.
-- [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/)
-    - Good as a reference if you want to learn how to make a specific type of plot.
-- [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+Resources for specific concepts:
+
+- To learn more about window functions and how dplyr handles them, see the [window-functions](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html) vignette for the `dplyr` package. 
 
 ## Participation
 
-To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm006-exercise.Rmd) file, and adding it to your participation repo. 
+To get participation points for today, we'll be filling out the cm008-exercise.Rmd file ([Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm008-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm008-exercise.nb.html)), and adding it to your participation repo. 
 
-Let's get set up:
+Let's take time to get set up:
 
-1. To download the file the easy way, just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm006-exercise.nb.html) of the file.
-2. Download the `.Rmd` version to your local participation repo.
-3. Open the `.Rmd` file, and change the output type to `html_document`, keeping the `.md` file, too.
+1. Download the file as `.Rmd`. 
+2. Move the file to your local participation repo.
+3. Open the `.Rmd` file, and change the output type to `github_document`.
 4. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
-    - You can still get participation marks by uploading the final files to GitHub.
-
-# Orientation to statistical graphics
-
-## Learning Objectives
-
-By the end of this lesson, students are expected to be able to:
-
-- Identify the plotting framework available in R
-- Have a sense of why we're learning the `ggplot2` tool
-- Have a sense of the importance of statistical graphics in communicating information
-
-## Discussion
-
-There are three main ways you can produce graphics in R. In order of inception, they are
-
-- base R
-- `lattice` (an R package)
-- `ggplot2` (an R package)
-    - Part of the `tidyverse`
-
-Why `ggplot2`?
-
-- once fluent, can make most plots up to publication quality standard very quickly.
-- has theoretical underpinning in the "layered grammar of graphics", which is described in [the book by Leland Wilkinson](http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=5507286 ).
-
-Stackoverflow was my main source of learning. Google what you're trying to do, and persevere. You can do it.
-
-[Jenny Bryan on statistical graphics](https://speakerdeck.com/jennybc/ggplot2-tutorial?slide=7):
-
-- A picture is worth 1000 words
-- More philosophy on graphics
-- Comparing base R/lattice/ggplot2
-- The learning curve
-
-# The grammar of graphics
-
-## Learning Objectives
-
-By the end of this lesson, students are expected to be able to:
-
-- Identify the seven components of the grammar of graphics underlying `ggplot2`
-- Have a sense of what the seven components are
-
-## Discussion
-
-Leland Wilkinson lays out the grammar of graphics [in his book](http://www.springer.com/gp/book/9780387245447).
-
-They define the "space of statistical graphics".
-
-The grammar components, adapted to `ggplot2` (gg = grammar of graphics), where the __bold__ ones are necessary to specify for every plot:
-
-- __Data__
-- __Aesthetic mappings__
-- __Geometric objects__
-- Scales
-- Statistical transformations
-- Coordinate system
-- Facet specification
-
-
-# Plotting with `x` and `y` aesthetics
-
-## Learning Objectives
-
-This live-coding-based lesson focusses on: 
-
-- using the `x` and `y` aesthetic mappings, while
-- using different geometric objects to explore various plot "types".
-
-By the end of this lesson, students are expected to be able to:
-
-- Create a variety of "plot types" using `ggplot2` under the following situations:
-    - two numeric variables
-    - one numeric variable
-    - one numeric, one categorical variable
-
-## Demonstration
-
-Note: We'll be jumping straight into the `ggplot()` function, instead of the more limited `qplot()` function.
-
-Follow along with the [`cm006-exercise.Rmd`](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm006-exercise.Rmd) file we downloaded earlier.
-
-
+    - You can still get participation marks by uploading the final files to GitHub.
