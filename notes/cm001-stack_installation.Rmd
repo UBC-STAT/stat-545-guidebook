@@ -1,0 +1,19 @@
+---
+title: "Software Stack Installation"
+output:
+    html_notebook:
+        toc: true
+        theme: cerulean
+        number_sections: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+1. Sign up for a GitHub account on github.com
+2. Install R and RStudio.
+    - R here: <https://cloud.r-project.org>
+    - RStudio here: <https://www.rstudio.com/products/rstudio/download/preview/>
+    - Commentary on installing this stuff can be found at [stat545.com: r-rstudio-install](http://stat545.com/block000_r-rstudio-install.html)
+3. Install git. See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
+    - You'll need to work with the command line. 
+4. LaTeX?

@@ -1,0 +1,53 @@
+---
+title: "STAT 545 Class Meeting 01: Intro to Data Analytic Work"
+output:
+    html_notebook:
+        toc: true
+        theme: cerulean
+        number_sections: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+Welcome to STAT 545A!
+
+# Teaching Team
+
+## Who am I?
+
+![](cm001_files/vincenzo.jpg)
+
+Dr. Vincenzo Coia   
+Core teaching team of MDS   
+Department of Statistics   
+UBC   
+
+My Background:
+
+- PhD in Statistics at UBC
+- MSc in Mathematical Statistics at Brock U
+- BSc in Math + Stats at Brock U
+- BSc in Biology w/ Earth Science at Brock U
+
+## Meet your TA's!
+
+STAT 545 has four TA's.
+
+# Your classmates
+
+This class is made up of students in a variety of programs. Get to know your neighbour! Choose someone to go first. In [2 minutes](https://www.youtube.com/watch?v=48z7nQaehWI), share:
+
+- Your name
+- Your program
+- Something notable you did over the summer
+
+Then switch for another two minutes.
+
+Afterwards: let's here from a few of you!
+
+# Syllabus
+
+Let's get oriented with the course through the [course syllabus](http://stat545.com/Classroom). In doing so, you'll learn about:
+
+- How to get help, in this course and outside of this course.
+- A preview of GitHub

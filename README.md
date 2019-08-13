@@ -22,6 +22,8 @@ Both STAT 545 and STAT 547 make use of the following tools:
 
 This framework of tools is under construction, as we move to a solution that's more scalable in terms of future iterations and multiple collaborators. We appreciate your patience and welcome your feedback!
 
+Course content lives on GitHub. If you'd like to gain more famliarity with GitHub, check out [GitHub's introduction](https://guides.github.com/activities/hello-world/).
+
 ## About STAT 545/547M
 
 STAT 545 is "Part I" of learning how to
@@ -212,6 +214,14 @@ STAT 545:
 | Vincenzo | Wed, Oct  24 | 11:00 - 12:00 | ESB 1043 |
 
 Do you need my permission to enroll or audit in this course? I'm happy to sign the [Change of Registration](https://www.grad.ubc.ca/sites/default/files/forms/change_of_registration.pdf) form if there's still room -- come see me.
+
+## Course Mantras
+
+Here are some philosophies that will get you far in data analytic work. We will be revisiting these over and over again. 
+
+- Embrace plain text (as opposed to rich text) when authoring. (What is plain text?)
+- Think in terms of source and output, and remember that source is real. 
+- Your stuff should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
 
 ## Conversation, and Getting Help
 

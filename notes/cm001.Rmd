@@ -9,121 +9,13 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Welcome to STAT 545A!
-
-# Teaching Team
-
-## Who am I?
-
-![](cm001_files/vincenzo.jpg)
-
-Dr. Vincenzo Coia   
-Core teaching team of MDS   
-Department of Statistics   
-UBC   
-
-My Background:
-
-- PhD in Statistics at UBC
-- MSc in Mathematical Statistics at Brock U
-- BSc in Math + Stats at Brock U
-- BSc in Biology w/ Earth Science at Brock U
-
-## Meet your TA's!
-
-STAT 545 has four TA's.
-
-Sherrie
-
-(photo missing)
-
-![Chad](cm001_files/chad.jpeg)
-
-
-![Hossam](cm001_files/hossam.jpeg)
-
-
-![Rashedul](cm001_files/rashedul.jpeg)
-
-## Meet your classmates
-
-Get to know your neighbour! Choose someone to go first. In [2 minutes](https://www.youtube.com/watch?v=48z7nQaehWI), share:
-
-- Your name
-- Your program
-- Something notable you did over the summer
-
-Then switch for another two minutes.
-
-Afterwards: let's here from a few of you!
-
 # Today's Outline
-
-Here's our agenda for today. 
-
-1. Go over the [course syllabus](http://stat545.com/Classroom).
-2. Light exposure to some course tools: GitHub, the command line, markdown: [20 minute](https://www.youtube.com/watch?v=kxGWsHYITAw) periods. Lids down, please!
-3. Do an activity.
-    - Didn't bring a device? Ask your neighbour if you can follow along!
 
 By the end of today's class, students are expected to be able to:
 
-- Understand what is expected of them in the course
-- List four ways to get help/converse about the course
-- Navigate the STAT 545 GitHub framework, and their own profile
+- List 4 ways to get help in this course
 - Create and comment on GitHub Issues
-- Explain how the course mantras apply in the case of this webpage
-- Navigate the files of your computer using the command line
-
-# The syllabus
-
-Let's go over the [syllabus](http://stat545.com/Classroom) and the course assignments. 
-
-Other course destinations: defer until after we're familiar with GitHub.
-
-# GitHub as a file-sharing and storage solution
-
-Checklist:
-
-- What are: Repositories (aka. "repo"s)
-- Why: README's
-- What are: Issues
-- What are: Organizations
-- What are: Teams
-- What is: GitHub pages
-
-Next time: GitHub as a version-control system. 
-
-# Course Destinations: revisited
-
-Checklist:
-
-- Org/repo/website diagram of STAT 545 destinations.
-- Let's spend time on:
-    - Discussion repositories. 
-    - Students Org
-
-# Course Mantras
-
-Here are some philosophies that will get you far in data analytic work. We will be revisiting these over and over again. 
-
-- Embrace plain text (as opposed to rich text) when authoring. (What is plain text?)
-- Think in terms of source and output, and remember that source is real. 
-- Your stuff should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
-
-__Example__: markdown -> HTML. This webpage was generated from [this markdown source file](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/notes/cm001.Rmd) on GitHub.
-
-# The Shell
-
-We will avoid this when we can, but we'll at least need it to install _git_ later. Here is the minimum need-to-know about the __shell__:
-
-- Way to control your computer.
-- OS-specific language!
-    - Mac/linux/unix are about the same.
-    - Windows has its own
-- Navigate with `cd`, `pwd`, and `ls`. `.` and `..`.
-
-A great introduction to this stuff is in [happygitwithr: Appendix A](http://happygitwithr.com/shell.html).
+- Write markdown to produce simple documents as GitHub Issues.
 
 # Activities
 
@@ -131,32 +23,29 @@ A great introduction to this stuff is in [happygitwithr: Appendix A](http://happ
 
 [5 minute timer](https://www.youtube.com/watch?v=MxQWLbdGLfE).
 
-1. Register for a GitHub.com account. Don't pay!
-    - Want detailed instructions? See  [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
-2. Navigate to the [Discussion-Internal](https://github.com/STAT545-UBC/Discussion-Internal) repository.
-3. Click `Watch` on the upper-right corner of the repo, so that you get email notifications. 
-4. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username!
-    - NOTE: The `Discussion-Internal` repo will be made private soon (you'll have access).
-5. Complete [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2).
+1. Register for a free account on github.com. You'll be using this account for the duration of the course.
+    - Want detailed instructions? See [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
+2. Complete [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
+3. Navigate to the [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
+4. Click `Watch` on the upper-right corner of the repo
+    - This is so that you get email notifications whenever an announcement is posted (under the "Issues" tab).
+5. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username using `@username`. 
 6. Please put up a profile photo -- it makes the STAT 545 community more personable. You can do this from your profile homepage. 
-7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub. It's free!
+7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub for a bunch of free perks for students!
 
-## Install your stuff
+# Quiz
 
-1. Install R and RStudio.
-    - R here: <https://cloud.r-project.org>
-    - RStudio here: <https://www.rstudio.com/products/rstudio/download/preview/>
-    - Commentary on installing this stuff can be found at [stat545.com: r-rstudio-install](http://stat545.com/block000_r-rstudio-install.html)
-2. Install git. See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
-    - You'll need to work with the command line. 
+(to make??)
 
-# To do
+- Rank? What are four ways to ask for help in this course? In real life?
+- What is a github repository? Org? Issue?
 
-If you haven't already, please do the following before next class:
 
-- Complete activities under "Activities" section.
-- Please fill out [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), so that I can give you a repo under the students Org.
+# To do before next time
 
+- Please fill out [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), so that we can match you to your GitHub account.
+- Install the software stack -- go to office hours if you are having trouble.
+- Remember to bring your laptop to every class, as we will have live-coding activities. 
 
 
 

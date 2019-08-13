@@ -23,10 +23,6 @@ To participate in today's lecture, you should have:
 - A GitHub account
 - RStudio installed
 
-Reflections on the Shell from last time:
-
-- Windows has its own language for the Shell. Thanks to those students contributing their Windows knowledge in [Discussion-Internal Issue #5](https://github.com/STAT545-UBC/Discussion-Internal/issues/5)!
-
 # The Wonderful World of Plain Text
 
 ## Learning Objectives: Plain Text
