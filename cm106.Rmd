@@ -1,0 +1,5 @@
+# Class Meeting 06
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+Continuation of [cm105](cm105.nb.html) starting at 7.4: Testing with `testthat`.

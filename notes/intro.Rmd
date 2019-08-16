@@ -1,0 +1,65 @@
+---
+title: "Welcome to STAT 545A!"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Instructor: Dr. Vincenzo Coia
+
+![](cm001_files/vincenzo.jpg)
+
+Core teaching team of MDS   
+Department of Statistics   
+UBC
+
+Going on leave October 8 (perhaps sooner).
+
+---
+
+# Instructor: Dr. Firas Moosvi
+
+Core teaching team of MDS   
+Department of Statistics   
+UBC
+
+---
+
+# Meet your TA's!
+
+STAT 545 has four TA's.
+
+---
+
+# Questions in class
+
+For the instructor, vs. for the TA's.
+
+---
+
+# Meet your classmates!
+
+This class is made up of students in a variety of programs. Get to know your neighbour! Choose someone to go first. In [2 minutes](https://www.youtube.com/watch?v=48z7nQaehWI), share:
+
+- Your name
+- Your program
+- Something notable you did over the summer
+
+Then switch for another two minutes.
+
+Afterwards: let's here from a few of you!
+
+---
+
+# Syllabus
+
+Let's get oriented with the course through the [course syllabus](http://stat545.com/Classroom). In doing so, you'll learn about:
+
+- How to get help, in this course and outside of this course.
+- A preview of GitHub
+
+example of an analysis??? Flood forecasting one?? Would help to motivate the course, and demonstrate course mantras. 

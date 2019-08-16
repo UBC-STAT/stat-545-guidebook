@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/STAT545-UBC/Classroom.svg?branch=2019)](https://travis-ci.com/STAT545-UBC/Classroom) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 # STAT 545A/547M: Exploratory Data Analysis
 
 This is the course syllabus for the Fall 2018 edition of STAT 545 and STAT 547. You should use this syllabus to:
@@ -47,6 +49,19 @@ STAT 545:
 * Data visualization with [`ggplot2`](http://ggplot2.org)
 * How to write functions and work with R in a functional style
 * Version control with Git; collaboration via [GitHub](https://github.com)
+
+The general outline is as follows:
+
+1. Tools for Data Analysis (2 weeks)
+    - GitHub
+    - Markdown
+    - R
+    - git
+2. Exploratory Data Analysis
+    - Data wrangling
+    - Data computations
+    - Plotting
+
 
 STAT 547:
 
@@ -219,9 +234,9 @@ Do you need my permission to enroll or audit in this course? I'm happy to sign t
 
 Here are some philosophies that will get you far in data analytic work. We will be revisiting these over and over again. 
 
-- Embrace plain text (as opposed to rich text) when authoring. (What is plain text?)
-- Think in terms of source and output, and remember that source is real. 
-- Your stuff should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
+- Embrace plain text.
+- Source is real. Think in terms of source and output. 
+- Your analysis should be reproducible. Document, test, and leave a breadcrumb trail (version control), even when you are the only collaborator. 
 
 ## Conversation, and Getting Help
 
@@ -274,6 +289,8 @@ Overarching resources:
     - As mentioned earlier, this website can be thought of as a textbook for STAT 545/547.
 2. [R for Data Science](http://r4ds.had.co.nz/) (aka "r4ds"), by Garrett Grolemund and Hadley Wickham.
     - STAT 545/547 closely mirrors the topics of this book, making this book more of a true "textbook" for the course.
+
+https://whattheyforgot.org/
 
 Resources for more specific topics:
 

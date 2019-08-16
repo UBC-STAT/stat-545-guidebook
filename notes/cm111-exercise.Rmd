@@ -1,0 +1,184 @@
+
+# Motivation
+
+Today's topic: scraping the web.
+
+This means reading webpages like [this wikipedia page](https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings) and putting relevant info into R.
+
+# Getting Started
+
+1. Install [`rvest`](https://github.com/hadley/rvest): `install.packages("rvest")`.
+
+2. Load it:
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+3. Download [cm111-simple_script.html](cm111-simple_script.html) to your participation repo.
+
+4. Explore the html script, and the structure of html.
+
+
+# Scraping with `rvest`: Overview
+
+Overall workflow with `rvest`:
+
+1. Read in a webpage with `read_html()`.
+2. Select parts of the page with `html_nodes()`.
+	- Optional, especially when reading tables.
+3. Convert parts of the selected html to R objects:
+	- text: `html_text()` for the actual text between the tags, but also relevant are:
+		- `html_name()` for the name of the (highest level) tag itself,
+		- `html_attrs()`/`html_attr()` for the attributes.
+	- tibbles: `html_table()`
+
+## Together:
+
+We'll use `rvest` to read in parts of `cm111-simple_script.html` into R.
+
+1. Apply `read_html()` to the file: reads in the page, outputs a special R object.
+
+```{r}
+simple_page <- FILL_THIS_IN
+```
+
+2. Pipe the output into `html_structure()`: will print the html to screen.
+
+```{r}
+simple_page %>% html_structure()
+```
+
+3. Apply `html_text()` to `simple_page`: gives me all the text (not the tags).
+
+```{r}
+
+```
+
+4. `html_nodes()`: selects only relevant parts of the html, constructing a (special) list of all relevant pieces. 
+	- Example: select all text between paragraph tags.
+	- Example: select all hyperlink text.
+	- Example: select all tags with the "wiki" id (Hint: `#wiki`)
+5. Then, pipe into `html_text()`.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+```
+
+
+## Your Turn, Round 1
+
+Practice with CSS selection! Partner up, and see how many levels you can complete in the [CSS selector game](http://flukeout.github.io/).
+
+## Your Turn, Round 2
+
+Return the text in `simple_page` contained within:
+
+1. all `<a>` tags within `<p>` tags.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN) %>% 
+	FILL_THIS_IN
+```
+
+2. any tag.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN) %>% 
+	FILL_THIS_IN
+```
+
+
+## Reading the tags
+
+We can extract other things besides the text between the tags:
+
+- `html_name()` gives the name of the tags. Try it with `html_nodes(*)`.
+
+```{r}
+simple_page %>% 
+	html_nodes("*")
+```
+
+- `html_attrs()` gives all attributes of the tags. Try it with `html_nodes("a")`:
+
+```{r}
+simple_page %>% 
+	html_nodes("a")
+```
+
+- `html_attr()` (not plural) extracts a vector of the attribute contents by the `name` argument. Try `name="href"` with `html_nodes("a")`:
+
+```{r}
+simple_page %>% 
+	html_nodes("a")
+```
+
+
+- Make a tibble of hyperlink text and their associated url's:
+
+```{r}
+tibble(
+	text = FILL_THIS_IN,
+	url  = FILL_THIS_IN
+)
+```
+
+## When CSS selection gets harder
+
+Let's extract the songs that appear on [Kane Brown's page on musixmatch](https://www.musixmatch.com/search/kane%20brown).
+
+Viewing the source to find the CSS is horrendous. In comes [`SelectorGadget`](https://selectorgadget.com/)! Visit the page to install the gadget.
+
+1. Use the gadget to select the songs. 
+2. Put the CSS selection in the `html_nodes()`.
+
+```{r}
+
+```
+
+## Reading a table
+
+Goal: extract the Wikipedia table of the [tallest steel roller coasters](https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings#Tallest_steel_roller_coasters) in the world with `html_table()`.
+
+```{r}
+read_html("https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings") %>% 
+	FILL_THIS_IN
+```
+
+
+# Data structures and Importing
+
+We've already seen `readr`, but what about importing other data types?
+
+- JSON, with the `jsonlite` package. Examples from the `fromJSON()` documentation:
+
+```{r}
+fromJSON('{"city" : "Z\\u00FCrich"}') # A list
+fromJSON("https://api.github.com/users/hadley/orgs") %>% 
+	glimpse() # A data frame
+toJSON(mtcars, pretty=TRUE)
+```
+
+
+- XML, with the `xml2` package (similar to reading webpages).
+	- [Example from w3cshools](https://www.w3schools.com/xml/simple.xml)
+
+```{r}
+read_xml("https://www.w3schools.com/xml/simple.xml") %>% 
+	as_list()
+```
+
+
+Others:
+
+- [`googledrive`](https://googledrive.tidyverse.org/)
+- See the [tidyverse listing of import packages](https://www.tidyverse.org/packages/#import).

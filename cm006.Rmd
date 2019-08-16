@@ -1,0 +1,40 @@
+# Intro to data wrangling, Part II
+
+
+
+## Today's Lessons
+
+Today's topic is _one-table verbs with `dplyr`_. We've already seen `select`, `filter`, and `arrange`. 
+
+- mutate
+- grouped summarize
+- grouped mutate
+
+...and their corresponding theoretical function types. 
+
+## Resources
+
+Concepts from today's class are closely mirrored by the following resources.
+
+- Jenny's tutorial on [all the one-table verbs](http://stat545.com/block010_dplyr-end-single-table.html)
+
+Other resources:
+
+- Like learning from a textbook? Check out all of [r4ds: transform](http://r4ds.had.co.nz/transform.html).
+- The [intro to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) is also a great resource. 
+
+Resources for specific concepts:
+
+- To learn more about window functions and how dplyr handles them, see the [window-functions](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html) vignette for the `dplyr` package. 
+
+## Participation
+
+To get participation points for today, we'll be filling out the cm008-exercise.Rmd file ([Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm008-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm008-exercise.nb.html)), and adding it to your participation repo. 
+
+Let's take time to get set up:
+
+1. Download the file as `.Rmd`. 
+2. Move the file to your local participation repo.
+3. Open the `.Rmd` file, and change the output type to `github_document`.
+4. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
+    - You can still get participation marks by uploading the final files to GitHub.

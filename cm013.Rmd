@@ -1,0 +1,23 @@
+# Effective Plotting
+
+Worksheet: 
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm013-exercise.Rmd), 
+- [from html](http://stat545.com/Classroom/notes/cm013-exercise.nb.html)
+
+If we finish the worksheet before the end of class:
+
+1. What makes a plot "publication quality"? Give examples.
+2. What is plotting _effectiveness_?
+    - How well the plot conveys the info contained in the data. 
+    - Impossible to perfect! Hence figure captions.
+    - Mantra from Gelman et al: facilitate comparisons, reveal trends.
+        - "Let's Practice What We Preach: Turning Tables into Graphs" by Gelman A, Pasarica C, Dodhia R. The American Statistician, Volume 56, Number 2, 1 May 2002 , pp. 121-130(10).
+    - Effectiveness -> theme + grammar -> plot/tooling -> EDA
+3. Let's look at some about what makes a plot _effective_ and _ineffective_.
+    - We've seen "show me the data": Pinhead plot vs. jitter+violin.
+    - Beware of overplotting.
+    - [Three reasons why pie charts suck](https://www.richardhollins.com/blog/why-pie-charts-suck/)
+    - [Declutter](http://stat545.com/block015_graph-dos-donts.html#do-make-the-data-stand-out)
+    - To include 0 or not?
+    - [Jenny Bryan's discussion](http://stat545.com/block015_graph-dos-donts.html)

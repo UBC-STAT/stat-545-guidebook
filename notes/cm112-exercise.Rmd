@@ -1,0 +1,273 @@
+
+## Announcements
+
+- Homework 10 is now optional. Also, one pair of peer reviews.
+- My office hour this week is after class today.
+
+## Objective
+
+Objectives of today's lesson:
+
+- Form a web API request to retrieve data
+- Make an API request from within R, esp. with the `httr`.
+- Familiarize yourself with the context of forming these requests: API's in general, and HTTP.
+
+## Lesson Overview
+
+Starting from the bottom objective, let's set the context:
+
+1. What is an API? Plus requests.
+2. What is HTTP? Requests and Responses.
+
+Then, let's focus on the data retrieval task:
+
+3. Using the `httr` package to form requests, and specialized packages.
+4. Other relevant examples of API's
+
+We'll wrap up with: 
+
+5. Instructor/course evaluations
+
+## Participation
+
+Download the `.Rmd` version of this very document.
+
+## Overall Resources
+
+- The [2016 ROpenSci tutorial](https://github.com/ropensci-training/user2016-tutorial).
+	- Parts 1 and 2 provide a good overview of today's topic.
+	- Part 3 covers scraping (we covered that last class).
+- ["An Introduction to APIs"](https://zapier.com/learn/apis/), a brief book by Brian Cooksey. 	
+	- Concise yet complete look at today's concepts.
+
+I'll post more specific resources at the start of each topic.
+
+# What is an API?
+
+API = Application Programming Interface
+
+API's deliver information from a server by request.
+
+## Resources
+
+I suggest these resources to get oriented:
+
+- ["What is an API? In English, please."](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82), by Petr Gazarov
+	- Fantastic explanation and orientation of what API's are.
+- [What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY), by MuleSoft Videos
+	- Brief, high-level YouTube video
+- The [ROpenSci 2016 tutorial](https://github.com/ropensci-training/user2016-tutorial/blob/master/slides.pdf), Part 1, linked near the top of the page. 
+	- Nice walk-through. You might find it useful to first get a higher-level overview from the above two resources.
+
+## Demonstrations of API's
+
+__Visiting a website__
+
+1. You enter a url (the _request_), say <https://twitter.com/>, into your web browser (the _client_).
+2. The Twitter server delivers the requested page in the form of html (the _response_).
+	- The _transfer_ is via `https`: `h`yper`t`ext `t`ransfer `p`rotocol (`s`ecure).
+3. Your browser displays the html.
+
+__Google Flights__
+
+1. Pick a flight from https://www.google.com/flights
+2. Google sends your browser information about relevant flights.
+
+Notice:
+
+- Notice the _query_ at the end of the url!
+- Many API's, like google flights, use _third-party API's_ -- it uses WestJet, AirCanada, etc.
+
+__GitHub API__
+
+Can request "data"; usually comes in json or xml, not html!
+
+1. Request, say, information about the GitHub Orgs that Hadley belongs to:
+	- `https://api.github.com/users/hadley/orgs`
+2. The GitHub API returns not html, but JSON.
+
+__OMDb__
+
+API's are not always open, and require an _API key_.
+
+Let's request info about Jurassic Park from OMDb. We'll also start writing requests with this one. (You'll need to register for an API key if you want to follow)
+
+1. Go to http://www.omdbapi.com/
+2. Request info about Jurassic Park
+	- The syntax is specific to OMDb
+	
+__OMDb Exercise__:
+
+1. Register for an API key at http://www.omdbapi.com/
+2. Form a request!
+
+```{r}
+s
+```
+
+
+__Google API's__
+
+Some services offer _many_ API's. 
+
+1. Check out the API's available [from Google](https://developers.google.com/).
+	- Example: [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start)
+	- `maps.googleapis.com`, "the other side" of `maps.google.ca`.
+
+__Local API's__
+
+API's are not always on another server. Local examples:
+
+- Your operating system
+- An R package
+- Shiny apps (not local if you release them to the web).
+
+# What is HTTP?
+
+HTTP = hypertext transfer protocol. A standardized format for communicating between servers.
+
+## Resources
+
+I suggest ["What is HTTP?"](https://www.webnots.com/what-is-http/) by webnots. Gets right to it, in an uncomplicated way.
+
+And, for info on HTTP verbs/methods, the [REST API tutorial](https://www.restapitutorial.com/lessons/httpmethods.html)
+
+## Getting Oriented
+
+What really happens when you type a url into your browser?
+
+1. You type a url in the address bar of your browser.
+2. An http _request_ is formed, and sent to the website's server.
+	- Components are formed using defaults and using components of the url.
+3. The server sends an http _response_.
+
+The _request_ and _response_ are plain text, and each have a specific structure and components.
+
+## Revealing the request and response
+
+Let's view uncover this "behind the scenes" messaging that's going on. 
+
+- __Using the terminal__: Use `curl -v`. 
+	- Example `curl -v https://github.com/STAT545-UBC/Classroom`. The request starts with `>`, and the response starts with `<`.
+- __Using your Browser__: You can at least do this with Google Chrome. See the [webnots article](https://www.webnots.com/what-is-http/) I link to above.
+
+## Request and response: components
+
+Here are some noteworthy components to look out for:
+
+__Response__ 
+
+- _Status_: "404" and others 
+	- See this [Wikipedia description](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) of status codes; also described in the [webnots article](https://www.webnots.com/what-is-http/) referenced earlier.
+- _Headers_: info about the page itself.
+- _Content_: The actual content of the page. 
+
+__Request__
+
+- _url_
+- _method_, aka _HTTP verb_ (more on this in the next section)
+	- Default verb: `GET`.
+- _headers_ allow you to modify the request.
+
+## HTTP verbs/methods
+
+By default, your browser uses `GET`. You can interact (and actually _modify_) the server using other verbs. Common ones are
+
+- `GET` -- retrieve info from the server.
+	- Most useful for us -- gets data!
+- `POST` -- create content on the server.
+- `PUT` -- update content on the server.
+- `DELETE` -- delete content from the server.
+
+# Using R to make requests
+
+The [`httr` R package](https://github.com/r-lib/httr) provides an interface for HTTP verbs. We'll primarily look at this.
+
+```{r}
+library(httr)
+```
+
+__Acronym check-in__: Note that these acronyms look similar, but are not the same: html != http != httr.
+
+## Resources
+
+Suggested resources (which also briefly explain what API's are):
+
+- Tyler Clavelle's [Using R to extract data from web APIs](https://tclavelle.github.io/blog/r_and_apis/)
+- The [ROpenSci 2016 tutorial](https://github.com/ropensci-training/user2016-tutorial/blob/master/slides.pdf), Part 2, linked near the top of the page. 
+- The [`httr` quickstart vignette](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
+	- Quick and dirty "how to use" guide. Good if you're comfortable enough with API's and HTTP, and want to adapt to the `httr` package.
+
+
+## HTTP verbs/methods: Through `httr`
+
+Those same HTTP verbs are `httr` functions. We'll be focussing on `GET()`!
+
+__Together__:
+
+1. `GET()` a website, any website.
+2. Inspect its `str()`ucture, `class()`, and `names()`.
+
+```{r}
+site <- GET("PUT_URL_HERE")
+```
+
+3. What's the `$status_code`? How about the `$content`?
+
+```{r}
+
+```
+
+4. Try the function versions: `status_code()` and `content()`. 
+	- Is the output of `content()` html? You can scrape with `rvest`.
+	- Try again from the top, this time with Hadley's GitHub Orgs: `https://api.github.com/users/hadley/orgs`
+
+```{r}
+status_code(site)
+content(site)
+```
+
+5. The GitHub API (Hadley's GitHub Orgs) returns JSON. Why not just use `jsonlite::fromJSON()`?
+	- Sometimes data come in XML format, and can't do this.
+
+```{r}
+jsonlite::fromJSON("https://api.github.com/users/hadley/orgs")
+```
+
+## Exercise
+
+1. Collect the information about a movie of your choice from [the OMDb](http://www.omdbapi.com/). You'll have to sign up for an API key (it's free).
+2. Extract the `Plot`.
+
+```{r}
+
+```
+
+
+## API wrappers and examples
+
+Many R packages are wrappers to an API. Examples:
+
+- `ggmap` accesses [Google Maps API](https://developers.google.com/maps/documentation/).
+- `rebird` accesses the [ebird](https://ebird.org/home) database.
+- `geonames` accesses the [geonames.org](geonames.org) API.
+- `plotly` accesses the [plotly API](https://plot.ly/graphing-libraries/).
+- `rplos` accesses the [Public Library of Science](https://www.plos.org/) API.
+
+Andrew MacDonald wrote an overview of a few of these in the [2015 STAT 547 cm111 notes, "Install and Play" section](http://stat545.com/webdata02_activity.html#install-and-play).
+
+In addition, here are other API's to be aware of (some of which have an R package, I believe):
+
+- [Facebook API](https://developers.facebook.com/)
+- [Twitter API](https://developer.twitter.com/)
+- [Star Wars API](https://swapi.co)
+- [API of Ice and Fire](https://anapioficeandfire.com)
+- [OpenWeatherMap](https://openweathermap.org/api)
+- [Open Movie Database](https://www.omdbapi.com)
+- [Quandl API](https://www.quandl.com/)
+
+And a huge list of API's can be found [here](http://www.programmableweb.com/category/all/apis).
+
+# Course/Instructor Evaluations
+
+Please take 5 minutes to fill out the course/instructor evaluations!
