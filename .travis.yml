@@ -1,13 +1,20 @@
 language: r
+sudo: false
 cache: packages
+
+before_install:
+- npm install netlify-cli -g
 
 script:
   - Rscript -e 'bookdown::render_book("index.Rmd")'
 
 deploy:
-  provider: pages
+  provider: script
+  script: netlify deploy --dir cm --prod --message "$DEPLOY_MSG"
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
+  github_token: $GITHUB_TOKEN
   on:
-    branch: 2019
+    branch: master
+
+after_success:
+- netlify deploy --prod --dir cm
