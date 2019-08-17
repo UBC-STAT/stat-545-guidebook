@@ -1,0 +1,45 @@
+---
+title: "Smoothing time series data using Functional Programming"
+output: html_document
+---
+
+Enter the `slide()`, `tile()`, and `stretch()` families. Best explained by the [tsibble demo](https://tsibble.tidyverts.org/), specifically [this rolling window animation](https://tsibble.tidyverts.org/reference/figures/animate-1.gif).
+
+```{r}
+mauna <- co2 %>% 
+	as_tsibble() %>% 
+	rename(yearmonth = index,
+		   co2 = value) %>% 
+	fill_gaps()
+ggplot(mauna, aes(yearmonth, co2)) +
+	geom_line() +
+	theme_bw()
+```
+
+To "wash out" the seasonal component (for use in some downstream analysis, such as estimating a trend), we could average-out the data within each year. The `tile()` family makes this easy:
+
+```{r}
+(mauna_tiled <- mauna %>% 
+ 	index_by(year = year(yearmonth)) %>% 
+ 	summarise(tiled_co2 = tile_dbl(
+ 		co2, mean,
+ 		na.rm = TRUE,
+ 		.size = 12
+ 	)))
+```
+
+But, why just average in chunks defined by January - December? Why not February to the following January? Or March - February? `slide` does all of these.
+
+```{r}
+(mauna_washed <- mauna %>% 
+	mutate(washed_co2 = slide_dbl(
+		co2, mean, 
+		na.rm  = TRUE, 
+		.size  = 12, 
+		.align = "center-left"
+	)))
+ggplot(mauna_washed, aes(yearmonth)) + 
+	geom_line(aes(y = co2), alpha = 0.5) +
+	geom_line(aes(y = washed_co2), colour = "blue")
+```
+
