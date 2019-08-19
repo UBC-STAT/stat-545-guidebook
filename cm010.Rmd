@@ -1,4 +1,3 @@
 # Joining Two Tables
 
-
-
+(last year, delivered by Rashedul, resources at https://github.com/Rashedul/stat545_guest_lecture)
