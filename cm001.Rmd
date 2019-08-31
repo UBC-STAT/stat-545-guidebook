@@ -1,51 +1,105 @@
 # Introduction to STAT 545 and GitHub
 
-By the end of today's class, students are expected to be able to:
+## Outline
 
-- List 4 ways to get help in this course
-- Create and comment on GitHub Issues
+We'll cover three topics today:
+
+- Syllabus. (~20 min)
+- GitHub. (~20 min)
+- Getting help (~20 min)
+
+We'll end class with:
+
+- a "quiz",
+- a to-do list before next class.
+
 
 ## Learning Objectives
 
-The concepts we'll be looking at are:
 
-- Commits
-- Diffs
-- Commit History
-- Branches
-- Merging
-- Merge Conflicts
+By the end of today's class, students are expected to be able to:
 
-Specifically, by the end of today's class, students are expected to be able to:
 
-- Describe the difference between git and GitHub, and name similar software
-- Edit plain text files on different branches on GitHub
+- Find a repo, Org, or user page.
+- Edit plain text files on GitHub
 - Navigate the commit history of various repository branches on GitHub
-- Visualize a tree diagram of commits across branches
-- Merge repository branches via pull requests on GitHub, resolving merge conflicts if necessary
-
-GitHub offers [a nice tutorial](https://guides.github.com/activities/hello-world/) on getting started with GitHub that you might find useful.
 
 
-## Your Turn: GitHub activity
+## Resources
 
-[5 minute timer](https://www.youtube.com/watch?v=MxQWLbdGLfE).
+Today's section in the guidebook should contain everything you need to know about today's topics.
 
-1. Register for a free account on github.com. You'll be using this account for the duration of the course.
-    - Want detailed instructions? See [happygitwithr: Section 5](http://happygitwithr.com/github-acct.html)
-2. Complete [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
+If you want to learn more:
+
+- Check out the [GitHub guide](https://guides.github.com/) for lots of info about GitHub. If you do go here, I recommend you start with ["Hello, World!"](https://guides.github.com/activities/hello-world/). You'll see stuff about branching there -- we'll get there next Thursday.
+
+
+## Topic 1: Syllabus (20 min)
+
+- Guidebook (2 min)
+- Learning Objectives and Course Structure (8 min)
+  - Example of an analysis: `Interpreting-Regression` book.
+- Teaching Team and Contact (5 min)
+- Resources, especially what's going on with stat545.com (5 min)
+
+## Topic 2: GitHub (20 min)
+
+We will be using [GitHub](https://github.com) a lot in this course. It's being used for:
+
+- All course-related work will go here.
+- Discussion will happen here.
+- Even this guidebook and the STAT 545 website files are on GitHub.
+
+But why GitHub? You'll see that it's very effective for developing a project. Examples:
+
+- [Apple](https://github.com/apple) uses it.
+- [Uber](https://github.com/uber) uses it.
+- [Netflix](https://github.com/Netflix) uses it.
+- [This Guidebook](https://github.com/STAT545-UBC/Classroom) and [the STAT545 @ UBC website](https://github.com/STAT545-UBC/STAT545-home) use it.
+- Prominent R packages like [`ggplot2`](https://github.com/tidyverse/ggplot2) use it. 
+
+#### Your turn: register a GitHub account (3 min)
+
+1. Register for a free account on [github.com](https://github.com). You'll be using this account for the duration of the course.
+    - Give your username [some thought](https://happygitwithr.com/github-acct.html#username-advice) -- ideally, should include your name.
+2. Tell us what your username is by filling out [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
+
+### GitHub as cloud storage
+
+Distinguish between an Organization, user, and repository
+
+### GitHub as cloud storage - Activity 
+
+__Make a participation repo__.
+
+- Together: make a participation repo. Submit it to canvas right away. Say YES to initializing with a README. Make a new file for the next activity.
+
+__navigating GitHub__
+
+- Together: find ... and put the URL on the new file.
+- Your turn: find your user page; STAT 545 hw Org; the Announcements repo. Put on participation repo.
+
+### GitHub for collaboration
+
+- hosts the "official" current state of a project -- no more confusing this.
+- Create and comment on GitHub Issues; `Watch`ing a repo; goodbye emails.
+
+### GitHub for collaboration - Activity 
+
+Together: `Watch`ing a repo
+
 3. Navigate to the [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
 4. Click `Watch` on the upper-right corner of the repo
     - This is so that you get email notifications whenever an announcement is posted (under the "Issues" tab).
-5. Go to the Issues section of the repository, and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username using `@username`. 
-6. Please put up a profile photo -- it makes the STAT 545 community more personable. You can do this from your profile homepage. 
-7. OPTIONAL: Register for the [Student Developer Pack](https://education.github.com/pack) with GitHub for a bunch of free perks for students!
 
-## About Version Control
+### GitHub for version control with git
 
-What is version control?
+GitHub uses a program called `git` to keep track of the project's history (more about `git` next Thursday).
 
-Why bother with version control?
+- Users make "commits" to form a commit history.
+- `git` only tracks the _changes_, so it doesn't need to take a full snapshot each time.
+
+Why?
 
 - Don't fret removing stuff
 - Leave a breadcrumb trail for troubleshooting
@@ -53,116 +107,51 @@ Why bother with version control?
 - Helps you define your work
 - ...
 
-What software is associated with version control?
+### GitHub for version control with git - Activity 
 
-- git, subversion, GitHub, GitLab, Bitbucket, ...
+commit history
 
-## Live-Coding: Making a new repo
-
-To demonstrate version control concepts, we'll create a new GitHub repository, which will showcase our markdown exploration. 
+- View the commit history of a repository. Paste the URL into an md file in your participation repo.
 
 
-1. Create a new repository for your homework.
-    - Counts towards participation, so please keep this repo until the course is complete.
-2. Say YES to initializing with a README.
-3. Edit the README with something descriptive, like:
-    - > This repo is part of a STAT 545 exercise to explore GitHub and markdown.
-4. _Commit_ the changes, adding a _commit message_.
-5. Drag and drop the `.md`, `.html`, and `.pdf` files that you made earlier in class onto the main repo page.
-6. Explore the files in your repo. What's viewable? What's not?
-    - Food for thought: Jenny Bryan on repo browsability: [happygitwithr repo-browsability](http://happygitwithr.com/repo-browsability.html).
+## Topic 3: Getting Help
 
-You should now have a repo with a README file, and your `.md`, `.pdf`, and `.html` files from before. 
-
-## Commits
-
-Commits, diffs, and commit history.
-
-## Live-Coding: Branching and Merging
-
-The notion of _branching_ and _merging_ shows up seemingly everywhere in version control. You'll encounter _merge conflicts_, too.
-
-To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see. For more info on this, see [the GitHub documentation](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/). 
-
-NOTE: I'm deferring the motivation for repo branching until later. 
-
-1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
-2. To the README on the `test1` branch, add a relative link to the other `.md` file in the repo (using markdown syntax).
-3. Explore: 
-    - switch between branches to see that the repo structure is different.
-    - Diagram of commit history for both branches.
-4. Merge the branch to "master".
-
-Part 2: 
-
-1. Make a new branch called `test2`.
-2. Edit line 1 of the README _on both branches_ to something different in both cases.
-3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
-
-## Collaboration with GitHub
-
-## Learning Objectives: Collaboration with GitHub
-
-The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
-
-- GitHub Pages
-- Forking
-- Pull Request
-
-Specifically, by the end of today's class, students are expected to:
-
-- Be able to make a basic website out of your participation repository using GitHub Pages
-- Know roughly what the above concepts are about
-
-## Resources
-
-The GitHub documentation is perhaps the best place to learn about these outside of class:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Forking](https://help.github.com/articles/fork-a-repo/)
-    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
-- [Pull Request](https://help.github.com/articles/about-pull-requests/)
-
-## Demonstration
-
-For participation marks, by the end of this demonstration: 
-
-- you'll have a GitHub pages website set up for your participation repo
-- you __don't need to have__ anything for the forking exercise!
-
-Checklist:
-
-1. Set up a basic "GitHub pages" website with your participation repo:
-    1. Go to "settings" on your repo.
-    2. Scroll down to "GitHub Pages"
-    3. Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
-2. Forking a repo: 
-    1. Let's try forking the `Classroom` repo.
-    2. We'll make a change, and will submit a pull request.
+- List 4 ways to get help in this course
+- Activity: search stack exchange or other gh issues for examples. Reply to Issue in Announcements.
 
 
-## Quiz
+### Your turn: commenting on an Issue
 
-(to make??)
-
-- Rank? What are four ways to ask for help in this course? In real life?
-- What is a github repository? Org? Issue?
+Go to the Issues section of the [Announcements repository](https://github.com/STAT545-UBC-hw-2019-20), and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username using `@username`. 
 
 
-## To do before next time
+## Wrap-up
+
+Quiz:
+
+- Examples of good and bad help questions
+- Examples of approaches to get unstuck.
+- Where to post a question/comment in STAT 545.
+
+## To do before next class
 
 - Please fill out [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), so that we can match you to your GitHub account.
-- Remember to bring your laptop to every class, as we will have live-coding activities. 
+- Be sure to complete the in-class activities listed in today's section of the guidebook.
+- Please put up a profile photo on GitHub -- it makes the STAT 545 community more personable.
 - Install the software stack for this course, as indicated below. Having trouble? Our wonderful TA's are here to help you during office hours.
 
-1. Sign up for a GitHub account on github.com
-2. Install R and RStudio.
+Optionally, register for the [Student Developer Pack](https://education.github.com/pack) with GitHub for a bunch of free perks for students!
+
+And remember: bring your laptop to every class, as we will always have live-coding activities. 
+
+### Software Stack Installation
+
+1. Install R and RStudio.
     - R here: <https://cloud.r-project.org>
     - RStudio here: <https://www.rstudio.com/products/rstudio/download/preview/>
     - Commentary on installing this stuff can be found at [stat545.com: r-rstudio-install](http://stat545.com/block000_r-rstudio-install.html)
-3. Install git. See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
+2. Install git (this is different from GitHub!). See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
     - You'll need to work with the command line. 
-4. LaTeX?
 
 
 

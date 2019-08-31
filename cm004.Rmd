@@ -1,5 +1,6 @@
 # The version control workflow
 
+:caution: Under development :caution:
 
 Today's topics are:
 
@@ -16,6 +17,9 @@ To participate in today's class, you'll need:
 ## Exploring data frames (in Rmd!)
 
 ## Learning Objectives
+
+- Describe the difference between git and GitHub, and name similar software
+- Merge repository branches via pull requests on GitHub, resolving merge conflicts if necessary
 
 In our R exploration last time, we saw one way to bundle together multiple pieces of information: _vectors_. Now, we'll turn to _data frames_.
 
@@ -131,3 +135,67 @@ The git documentation is not friendly. There's even a [parody](https://git-man-p
     - Write a question using a MWE. You'll solve it yourself most of the time.
     - Post question to thread such as SO.
 - "Lab"
+
+
+### Live-Coding: Branching and Merging
+
+The notion of _branching_ and _merging_ shows up seemingly everywhere in version control. You'll encounter _merge conflicts_, too.
+
+To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see. For more info on this, see [the GitHub documentation](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/). 
+
+NOTE: I'm deferring the motivation for repo branching until later. 
+
+1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
+2. To the README on the `test1` branch, add a relative link to the other `.md` file in the repo (using markdown syntax).
+3. Explore: 
+    - switch between branches to see that the repo structure is different.
+    - Diagram of commit history for both branches.
+4. Merge the branch to "master".
+
+Part 2: 
+
+1. Make a new branch called `test2`.
+2. Edit line 1 of the README _on both branches_ to something different in both cases.
+3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
+
+
+#### Learning Objectives: Collaboration with GitHub
+
+The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
+
+- GitHub Pages
+- Forking
+- Pull Request
+
+Specifically, by the end of today's class, students are expected to:
+
+- Be able to make a basic website out of your participation repository using GitHub Pages
+- Know roughly what the above concepts are about
+
+#### Demonstration
+
+For participation marks, by the end of this demonstration: 
+
+- you'll have a GitHub pages website set up for your participation repo
+- you __don't need to have__ anything for the forking exercise!
+
+Checklist:
+
+1. Set up a basic "GitHub pages" website with your participation repo:
+    1. Go to "settings" on your repo.
+    2. Scroll down to "GitHub Pages"
+    3. Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
+2. Forking a repo: 
+    1. Let's try forking the `Classroom` repo.
+    2. We'll make a change, and will submit a pull request.
+
+
+
+#### Resources
+
+The GitHub documentation is perhaps the best place to learn about these outside of class:
+
+- [GitHub Pages](https://pages.github.com/)
+- [Forking](https://help.github.com/articles/fork-a-repo/)
+    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
+- [Pull Request](https://help.github.com/articles/about-pull-requests/)
