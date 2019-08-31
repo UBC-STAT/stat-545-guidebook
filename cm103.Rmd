@@ -1,4 +1,4 @@
-# Class Meeting 03: Repetition with `purrr`
+# (3) Functional Programming
 
 --- LAST YEAR'S CONTENT BELOW ---
 

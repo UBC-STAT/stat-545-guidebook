@@ -2,20 +2,20 @@
 
 # (1) Functions
 
-## Today's Agenda
+### Today's Agenda
 
 1. Rubric
 2. Writing your own functions
 
 Your analysis is unique! You will likely need your own functions. Use case: `purrr`.
 
-## Resources
+### Resources
 
 Concepts from today's class are closely mirrored by the following resources.
 
 - stat545.com functions [part1](http://stat545.com/block011_write-your-own-function-01.html), [part2](http://stat545.com/block011_write-your-own-function-02.html), and [part3](http://stat545.com/block011_write-your-own-function-03.html).
 
-## Participation
+### Participation
 
 To get participation points for today, we'll be filling out the cm101-exercise.Rmd file.
 

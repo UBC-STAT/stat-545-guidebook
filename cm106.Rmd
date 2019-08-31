@@ -1,4 +1,4 @@
-# Class Meeting 06
+# (6) R Packages, Part II
 
 --- LAST YEAR'S CONTENT BELOW ---
 

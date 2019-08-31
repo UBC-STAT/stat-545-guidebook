@@ -1,4 +1,4 @@
-# Class Meeting 04: `purrr` and List Columns
+# (4) List Columns
 
 --- LAST YEAR'S CONTENT BELOW ---
 
@@ -7,7 +7,7 @@ suppressPackageStartupMessages(library(tidyverse))
 ```
 
 
-# Today's Agenda
+## Today's Agenda
 
 Today's lessons are:
 
@@ -16,7 +16,7 @@ Today's lessons are:
 3. List columns
 4. An analysis using both
 
-# Resources
+## Resources
 
 All are from [Jenny's `purrr` tutorial](https://jennybc.github.io/purrr-tutorial/). Specifically:
  
@@ -26,9 +26,9 @@ All are from [Jenny's `purrr` tutorial](https://jennybc.github.io/purrr-tutorial
 The all-encompassing application near the bottom of the worksheet is from [Jenny's "Sample from groups, n varies by group"](https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html)
 
 
-# Review
+## Review
 
-## `purrr`
+### `purrr`
 
 `map(x, f, ...)` returns a list with elements:
 
@@ -44,7 +44,7 @@ We can specify a pre-defined `f`, or write it on-the-fly, or another way that we
 - `map(x, function(t) t^2)`; or
 - `map(x, ~ (.x)^2)` (function variable is `.x` by convention).
 
-## piping: `.`
+### piping: `.`
 
 We know that `a %>% b()` is the same as `b(a)`.
 
@@ -75,7 +75,7 @@ Trick: Use `{}` to "absorb" the placement of LHS as first argument:
 ```
 
 
-## Worksheet
+### Worksheet
 
 To get participation points for today, we'll be filling out the `cm104-exercise.Rmd` file.
 

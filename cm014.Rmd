@@ -1,6 +1,6 @@
 # The Model-Fitting Paradigm in R
 
-# Today
+## Today
 
 1. Worksheet: the model-fitting paradigm in R.
     - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm014-exercise.Rmd), 
@@ -8,22 +8,22 @@
 2. Break to fill out instructor and TA evaluations.
 3. "Deep thoughts" on data analytic work
 
-# Resources
+## Resources
 
 - [Jenny's Deep Thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
 - [`broom` vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
 
 If you're interested in learning more about the actual statistical / machine learning methods for fitting models, I highly recommend the book ["An Introduction to Statistical Learning"](https://www-bcf.usc.edu/~gareth/ISL/) (freely available online). It uses R, too.
 
-# Break
+## Break
 
 You should have received an email asking to fill out instructor evaluations. Let's take some time to fill that out.
 
-# Deep Thoughts about Data Analytic Work
+## Deep Thoughts about Data Analytic Work
 
 ("Deep Thoughts" refers to Jack Handley's skit on Saturday Night Live)
 
-## Coding Practices: Naming
+### Coding Practices: Naming
 
 - some people use camelCase, snake_case, or.periods.
 - Functions should be verbs (based on the one thing that it achieves). Objects should be nouns. Functions that return functions should be adverbs. 
@@ -44,7 +44,7 @@ You should have received an email asking to fill out instructor evaluations. Let
     - Bad: `canada_gdp` and `china_gdp`. 
     - Good: `gdp_canada` and `gdp_china`.
 
-## Coding Practices: Documenting code 
+### Coding Practices: Documenting code 
 
 Self-documenting code = code that speaks for itself. 
 
@@ -79,7 +79,7 @@ Think before you comment your code! It's easy for comments and code to misalign 
     - Good: No comment at all.
     - Better: Use the tidyverse.
 
-## Coding Practices: The DRY principle
+### Coding Practices: The DRY principle
 
 DRY = don't repeat yourself. Instead,
 
@@ -95,7 +95,7 @@ Some other best practices with functions:
     - For function (can't easily export that to it's own package or other analyses, for example)
 - Write unit tests for the functions (we'll see `testthat`)
 
-## Coding Practices: Style Guides
+### Coding Practices: Style Guides
 
 When writing code, at the very least, it's important to be consistent with your style. We highly recommend:
 
@@ -113,7 +113,7 @@ __Activity__: In five minutes:
     - if applicable, style that you especially like to follow.
 4. Address some in class. 
 
-## Reproducibility
+### Reproducibility
 
 This practice is so important, I'm giving it it's own section. 
 

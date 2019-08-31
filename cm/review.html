@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Class Meeting 25 Review | STAT 545 @ UBC: Class Meeting Guide 2019/20</title>
+  <meta name="description" content="Class Meeting 25 Review | STAT 545 @ UBC: Class Meeting Guide 2019/20" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Class Meeting 25 Review | STAT 545 @ UBC: Class Meeting Guide 2019/20" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="stat-545.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Class Meeting 25 Review | STAT 545 @ UBC: Class Meeting Guide 2019/20" />
+  
+  
+  <meta name="twitter:image" content="stat-545.png" />
+
+<meta name="author" content="Vincenzo Coia and Firas Moosvi" />
+
+
+<meta name="date" content="2019-08-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="resources-12.html">
+<link rel="next" href="class-meetings-5-and-6-r-packages.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 545 @ UBC 2019-20</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About This Guide</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-stat-545-and-github.html"><a href="introduction-to-stat-545-and-github.html"><i class="fa fa-check"></i><b>1</b> Introduction to STAT 545 and GitHub</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a></li>
+<li class="chapter" data-level="3" data-path="authoring.html"><a href="authoring.html"><i class="fa fa-check"></i><b>3</b> Authoring</a></li>
+<li class="chapter" data-level="4" data-path="the-version-control-workflow.html"><a href="the-version-control-workflow.html"><i class="fa fa-check"></i><b>4</b> The version control workflow</a></li>
+<li class="chapter" data-level="5" data-path="intro-to-data-wrangling-part-i.html"><a href="intro-to-data-wrangling-part-i.html"><i class="fa fa-check"></i><b>5</b> Intro to data wrangling, Part I</a></li>
+<li class="chapter" data-level="6" data-path="intro-to-data-wrangling-part-ii.html"><a href="intro-to-data-wrangling-part-ii.html"><i class="fa fa-check"></i><b>6</b> Intro to data wrangling, Part II</a></li>
+<li class="chapter" data-level="7" data-path="introduction-to-plotting-with-ggplot2-part-i.html"><a href="introduction-to-plotting-with-ggplot2-part-i.html"><i class="fa fa-check"></i><b>7</b> Introduction to plotting with <code>ggplot2</code>, Part I</a></li>
+<li class="chapter" data-level="8" data-path="introduction-to-plotting-with-ggplot2-part-ii.html"><a href="introduction-to-plotting-with-ggplot2-part-ii.html"><i class="fa fa-check"></i><b>8</b> Introduction to plotting with <code>ggplot2</code>, Part II</a></li>
+<li class="chapter" data-level="9" data-path="tidy-data-and-pivoting.html"><a href="tidy-data-and-pivoting.html"><i class="fa fa-check"></i><b>9</b> Tidy Data and Pivoting</a></li>
+<li class="chapter" data-level="10" data-path="joining-two-tables.html"><a href="joining-two-tables.html"><i class="fa fa-check"></i><b>10</b> Joining Two Tables</a></li>
+<li class="chapter" data-level="11" data-path="advanced-r-programming.html"><a href="advanced-r-programming.html"><i class="fa fa-check"></i><b>11</b> Advanced R programming</a></li>
+<li class="chapter" data-level="12" data-path="be-the-boss-of-your-factors.html"><a href="be-the-boss-of-your-factors.html"><i class="fa fa-check"></i><b>12</b> Be the Boss of your Factors</a></li>
+<li class="chapter" data-level="13" data-path="effective-plotting.html"><a href="effective-plotting.html"><i class="fa fa-check"></i><b>13</b> Effective Plotting</a></li>
+<li class="chapter" data-level="14" data-path="the-model-fitting-paradigm-in-r.html"><a href="the-model-fitting-paradigm-in-r.html"><i class="fa fa-check"></i><b>14</b> The Model-Fitting Paradigm in R</a></li>
+<li class="chapter" data-level="15" data-path="today-2.html"><a href="today-2.html"><i class="fa fa-check"></i><b>15</b> Today</a></li>
+<li class="chapter" data-level="16" data-path="resources-10.html"><a href="resources-10.html"><i class="fa fa-check"></i><b>16</b> Resources</a></li>
+<li class="chapter" data-level="17" data-path="break.html"><a href="break.html"><i class="fa fa-check"></i><b>17</b> Break</a></li>
+<li class="chapter" data-level="18" data-path="deep-thoughts-about-data-analytic-work.html"><a href="deep-thoughts-about-data-analytic-work.html"><i class="fa fa-check"></i><b>18</b> Deep Thoughts about Data Analytic Work</a></li>
+<li class="chapter" data-level="" data-path="stat-547m.html"><a href="stat-547m.html"><i class="fa fa-check"></i>STAT 547M</a></li>
+<li class="chapter" data-level="19" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>19</b> (1) Functions</a></li>
+<li class="chapter" data-level="20" data-path="be-the-boss-of-your-character-data.html"><a href="be-the-boss-of-your-character-data.html"><i class="fa fa-check"></i><b>20</b> (2) Be the boss of your character data</a></li>
+<li class="chapter" data-level="21" data-path="class-meeting-03-repetition-with-purrr.html"><a href="class-meeting-03-repetition-with-purrr.html"><i class="fa fa-check"></i><b>21</b> Class Meeting 03: Repetition with <code>purrr</code></a></li>
+<li class="chapter" data-level="22" data-path="class-meeting-04-purrr-and-list-columns.html"><a href="class-meeting-04-purrr-and-list-columns.html"><i class="fa fa-check"></i><b>22</b> Class Meeting 04: <code>purrr</code> and List Columns</a></li>
+<li class="chapter" data-level="23" data-path="todays-agenda-1.html"><a href="todays-agenda-1.html"><i class="fa fa-check"></i><b>23</b> Today’s Agenda</a></li>
+<li class="chapter" data-level="24" data-path="resources-12.html"><a href="resources-12.html"><i class="fa fa-check"></i><b>24</b> Resources</a></li>
+<li class="chapter" data-level="25" data-path="review.html"><a href="review.html"><i class="fa fa-check"></i><b>25</b> Review</a></li>
+<li class="chapter" data-level="26" data-path="class-meetings-5-and-6-r-packages.html"><a href="class-meetings-5-and-6-r-packages.html"><i class="fa fa-check"></i><b>26</b> Class Meetings 5 and 6: R Packages</a></li>
+<li class="chapter" data-level="27" data-path="learning-objectives-12.html"><a href="learning-objectives-12.html"><i class="fa fa-check"></i><b>27</b> Learning Objectives</a></li>
+<li class="chapter" data-level="28" data-path="participation-6.html"><a href="participation-6.html"><i class="fa fa-check"></i><b>28</b> Participation</a></li>
+<li class="chapter" data-level="29" data-path="resources-13.html"><a href="resources-13.html"><i class="fa fa-check"></i><b>29</b> Resources</a></li>
+<li class="chapter" data-level="30" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>30</b> Motivation</a></li>
+<li class="chapter" data-level="31" data-path="getting-started-3.html"><a href="getting-started-3.html"><i class="fa fa-check"></i><b>31</b> Getting Started</a></li>
+<li class="chapter" data-level="32" data-path="lets-start-with-a-single-function.html"><a href="lets-start-with-a-single-function.html"><i class="fa fa-check"></i><b>32</b> Let’s start with a single function</a></li>
+<li class="chapter" data-level="33" data-path="documentation-and-testing.html"><a href="documentation-and-testing.html"><i class="fa fa-check"></i><b>33</b> Documentation and Testing</a></li>
+<li class="chapter" data-level="34" data-path="higher-level-user-documentation.html"><a href="higher-level-user-documentation.html"><i class="fa fa-check"></i><b>34</b> Higher-level User Documentation</a></li>
+<li class="chapter" data-level="35" data-path="adding-data-to-your-r-package.html"><a href="adding-data-to-your-r-package.html"><i class="fa fa-check"></i><b>35</b> Adding data to your R package</a></li>
+<li class="chapter" data-level="36" data-path="dependencies.html"><a href="dependencies.html"><i class="fa fa-check"></i><b>36</b> Dependencies</a></li>
+<li class="chapter" data-level="37" data-path="launching-your-package-to-github.html"><a href="launching-your-package-to-github.html"><i class="fa fa-check"></i><b>37</b> Launching your Package to GitHub</a></li>
+<li class="chapter" data-level="38" data-path="time-remaining.html"><a href="time-remaining.html"><i class="fa fa-check"></i><b>38</b> Time remaining?</a></li>
+<li class="chapter" data-level="39" data-path="class-meeting-06.html"><a href="class-meeting-06.html"><i class="fa fa-check"></i><b>39</b> Class Meeting 06</a></li>
+<li class="chapter" data-level="40" data-path="class-meeting-07.html"><a href="class-meeting-07.html"><i class="fa fa-check"></i><b>40</b> Class Meeting 07</a></li>
+<li class="chapter" data-level="41" data-path="orientation.html"><a href="orientation.html"><i class="fa fa-check"></i><b>41</b> Orientation</a></li>
+<li class="chapter" data-level="42" data-path="why-use-shiny.html"><a href="why-use-shiny.html"><i class="fa fa-check"></i><b>42</b> Why use <code>shiny</code>?</a></li>
+<li class="chapter" data-level="43" data-path="getting-started-with-shiny.html"><a href="getting-started-with-shiny.html"><i class="fa fa-check"></i><b>43</b> Getting Started with <code>shiny</code></a></li>
+<li class="chapter" data-level="44" data-path="intro-to-the-ui.html"><a href="intro-to-the-ui.html"><i class="fa fa-check"></i><b>44</b> Intro to the UI</a></li>
+<li class="chapter" data-level="45" data-path="intro-to-the-server.html"><a href="intro-to-the-server.html"><i class="fa fa-check"></i><b>45</b> Intro to the server</a></li>
+<li class="chapter" data-level="46" data-path="inputs-control-widgets.html"><a href="inputs-control-widgets.html"><i class="fa fa-check"></i><b>46</b> Inputs / Control Widgets</a></li>
+<li class="chapter" data-level="47" data-path="linking-inputs-to-outputs.html"><a href="linking-inputs-to-outputs.html"><i class="fa fa-check"></i><b>47</b> Linking Inputs to Outputs</a></li>
+<li class="chapter" data-level="48" data-path="reactivity.html"><a href="reactivity.html"><i class="fa fa-check"></i><b>48</b> Reactivity</a></li>
+<li class="chapter" data-level="49" data-path="more-shiny-features.html"><a href="more-shiny-features.html"><i class="fa fa-check"></i><b>49</b> More shiny features</a></li>
+<li class="chapter" data-level="50" data-path="class-meeting-09-automation.html"><a href="class-meeting-09-automation.html"><i class="fa fa-check"></i><b>50</b> Class Meeting 09: Automation</a></li>
+<li class="chapter" data-level="51" data-path="why-automate.html"><a href="why-automate.html"><i class="fa fa-check"></i><b>51</b> Why Automate?</a></li>
+<li class="chapter" data-level="52" data-path="non-interactive-programming.html"><a href="non-interactive-programming.html"><i class="fa fa-check"></i><b>52</b> Non-interactive programming</a></li>
+<li class="chapter" data-level="53" data-path="pipelines.html"><a href="pipelines.html"><i class="fa fa-check"></i><b>53</b> Pipelines</a></li>
+<li class="chapter" data-level="54" data-path="test-drive-make.html"><a href="test-drive-make.html"><i class="fa fa-check"></i><b>54</b> Test Drive Make</a></li>
+<li class="chapter" data-level="55" data-path="makefile-structure.html"><a href="makefile-structure.html"><i class="fa fa-check"></i><b>55</b> Makefile Structure</a></li>
+<li class="chapter" data-level="56" data-path="lotr-pipeline-examples.html"><a href="lotr-pipeline-examples.html"><i class="fa fa-check"></i><b>56</b> LOTR Pipeline Examples</a></li>
+<li class="chapter" data-level="57" data-path="class-meeting-10-automation-part-ii.html"><a href="class-meeting-10-automation-part-ii.html"><i class="fa fa-check"></i><b>57</b> Class Meeting 10: Automation, Part II</a></li>
+<li class="chapter" data-level="58" data-path="review-1.html"><a href="review-1.html"><i class="fa fa-check"></i><b>58</b> Review</a></li>
+<li class="chapter" data-level="59" data-path="make-pipeline-activity.html"><a href="make-pipeline-activity.html"><i class="fa fa-check"></i><b>59</b> <code>make</code> pipeline activity</a></li>
+<li class="chapter" data-level="60" data-path="class-meeting-11-getting-data-from-the-web-part-1.html"><a href="class-meeting-11-getting-data-from-the-web-part-1.html"><i class="fa fa-check"></i><b>60</b> Class Meeting 11: Getting Data from the Web, Part 1</a></li>
+<li class="chapter" data-level="61" data-path="class-meeting-12-getting-data-from-the-web-part-2-apis.html"><a href="class-meeting-12-getting-data-from-the-web-part-2-apis.html"><i class="fa fa-check"></i><b>61</b> Class Meeting 12: Getting Data from the Web, Part 2: API’s</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 545 @ UBC: Class Meeting Guide 2019/20</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="review" class="section level1">
+<h1><span class="header-section-number">Class Meeting 25</span> Review</h1>
+<div id="purrr" class="section level2">
+<h2><span class="header-section-number">25.1</span> <code>purrr</code></h2>
+<p><code>map(x, f, ...)</code> returns a list with elements:</p>
+<ul>
+<li><code>f(x[[1]], ...)</code></li>
+<li><code>f(x[[2]], ...)</code></li>
+<li>…</li>
+</ul>
+<p><code>map_dbl</code>, <code>map_lgl</code>, etc to return a vector.</p>
+<p>We can specify a pre-defined <code>f</code>, or write it on-the-fly, or another way that we didn’t touch on last time. Example with “squaring” function:</p>
+<ul>
+<li><code>map(x, square)</code> where <code>square &lt;- function(t) t^2</code>;</li>
+<li><code>map(x, function(t) t^2)</code>; or</li>
+<li><code>map(x, ~ (.x)^2)</code> (function variable is <code>.x</code> by convention).</li>
+</ul>
+</div>
+<div id="piping-." class="section level2">
+<h2><span class="header-section-number">25.2</span> piping: <code>.</code></h2>
+<p>We know that <code>a %&gt;% b()</code> is the same as <code>b(a)</code>.</p>
+<p>Want to refer to <code>a</code> <em>in addition</em> to the first argument? Specify it as a <code>.</code>. Example:</p>
+<p>Gotcha:</p>
+<p>Case 1: LHS (= left-hand side) <strong>not</strong> put as first argument when <code>.</code> appears in RHS:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">8</span>, <span class="dt">base=</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## is identical to...
+<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">8</span>, <span class="dt">base=</span>.)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Case 2: LHS <strong>is still</strong> put as first argument, even when <code>.</code> appears in RHS:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">ncol</span>(mtcars), <span class="kw">nrow</span>(mtcars))</code></pre></div>
+<pre><code>## [1] 11 32</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## is NOT identical to...
+<span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">c</span>(<span class="kw">min</span>(.), <span class="kw">max</span>(.))</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10  1 10</code></pre>
+<p>Trick: Use <code>{}</code> to “absorb” the placement of LHS as first argument:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">%&gt;%</span><span class="st"> </span>{<span class="kw">c</span>(<span class="kw">min</span>(.), <span class="kw">max</span>(.))}</code></pre></div>
+<pre><code>## [1]  1 10</code></pre>
+</div>
+<div id="worksheet-2" class="section level2">
+<h2><span class="header-section-number">25.3</span> Worksheet</h2>
+<p>To get participation points for today, we’ll be filling out the <code>cm104-exercise.Rmd</code> file.</p>
+<ul>
+<li><a href="https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm104-exercise.Rmd">Rmd</a></li>
+<li><a href="http://stat545.com/Classroom/notes/cm104-exercise.nb.html">html</a>.</li>
+</ul>
+<p>Add this to your participation repo.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="resources-12.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="class-meetings-5-and-6-r-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/STAT545-UBC/Classroom/edit/master/cm104.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["main.pdf", "main.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,8 +1,8 @@
-# Class Meeting 10: Automation, Part II
+# (10) Automation, Part II
 
 --- LAST YEAR'S CONTENT BELOW ---
 
-# Review
+## Review
 
 Last time, we saw:
 
@@ -15,6 +15,6 @@ The three LOTR pipelines acted as a proof of concept.
 
 Today, we'll make our own Makefile and pipeline.
 
-# `make` pipeline activity
+## `make` pipeline activity
 
 We'll follow along with [Shaun and Jenny's `make` tutorial](http://stat545.com/automation04_make-activity.html).
