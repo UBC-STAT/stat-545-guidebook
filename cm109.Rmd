@@ -17,7 +17,7 @@ This can be a pain if you have multiple files and scripts!
 > ... to rerun the pipeline with updated software.   
 > ... to run the same pipeline on a new data set.   
 
-# Non-interactive programming
+## Non-interactive programming
 
 Run an R script from top to bottom:
 
