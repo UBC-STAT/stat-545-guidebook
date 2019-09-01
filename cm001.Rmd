@@ -13,12 +13,9 @@ We'll end class with:
 - a "quiz",
 - a to-do list before next class.
 
-
 ## Learning Objectives
 
-
 By the end of today's class, students are expected to be able to:
-
 
 - Find a repo, Org, or user page.
 - Edit plain text files on GitHub
@@ -36,6 +33,8 @@ If you want to learn more:
 
 ## Topic 1: Syllabus (20 min)
 
+The course syllabus can be found on the STAT 545 @ UBC homepage, [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca). We'll cover:
+
 - Guidebook (2 min)
 - Learning Objectives and Course Structure (8 min)
   - Example of an analysis: `Interpreting-Regression` book.
@@ -44,13 +43,13 @@ If you want to learn more:
 
 ## Topic 2: GitHub (20 min)
 
-We will be using [GitHub](https://github.com) a lot in this course. It's being used for:
+We will be using [GitHub](https://github.com) a lot in this course:
 
-- All course-related work will go here.
-- Discussion will happen here.
+- All course-related work will go on GitHub.
+- Discussion will happen on GitHub.
 - Even this guidebook and the STAT 545 website files are on GitHub.
 
-But why GitHub? You'll see that it's very effective for developing a project. Examples:
+But why GitHub? Because it's tremendously effective for developing a project. Examples:
 
 - [Apple](https://github.com/apple) uses it.
 - [Uber](https://github.com/uber) uses it.
@@ -58,61 +57,120 @@ But why GitHub? You'll see that it's very effective for developing a project. Ex
 - [This Guidebook](https://github.com/STAT545-UBC/Classroom) and [the STAT545 @ UBC website](https://github.com/STAT545-UBC/STAT545-home) use it.
 - Prominent R packages like [`ggplot2`](https://github.com/tidyverse/ggplot2) use it. 
 
-#### Your turn: register a GitHub account (3 min)
+Today, we'll check out:
 
-1. Register for a free account on [github.com](https://github.com). You'll be using this account for the duration of the course.
+1. GitHub as cloud storage;
+2. GitHub for collaboration; and
+3. GitHub for version control with git.
+
+### Register a GitHub account - Activity (3 min)
+
+1. Register for a free account on [github.com](https://github.com). 
+    - You'll be using this account for the duration of the course.
     - Give your username [some thought](https://happygitwithr.com/github-acct.html#username-advice) -- ideally, should include your name.
 2. Tell us what your username is by filling out [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
 
 ### GitHub as cloud storage
 
-Distinguish between an Organization, user, and repository
+At the very least, GitHub allows for cloud storage, like Google Drive and Dropbox do. There's a bit more structure than just storing files under your account:
+
+- __User Accounts__ vs. __Organization Accounts (aka "Org")__: You can store files with your own GitHub _user account_ (that you just made); or, you can store files with a separate _Organization_ account that multiple people can own. User accounts typically contain files relevant to an individual, whereas Orgs typically contain files relevant to (you guessed it) organizations.
+- __Repositories (aka "repo")__: In any account, your files must be organized into different _repositories_. Think of these as self-contained projects. These can either be _public_ or _private_.
+
+Examples: 
+
+- The [`ggplot2`](https://github.com/tidyverse/ggplot2) repo, within its corresponding `tidyverse` Org. 
+- My [website](https://github.com/vincenzocoia/website) repo, within my own user account.
+
+Want to read more about GitHub accounts? [Check out this help page on GitHub](https://help.github.com/en/articles/types-of-github-accounts).
 
 ### GitHub as cloud storage - Activity 
 
-__Make a participation repo__.
+__Together: Make a participation repo__
 
-- Together: make a participation repo. Submit it to canvas right away. Say YES to initializing with a README. Make a new file for the next activity.
+1. Make a new repository:
+    - On GitHub, click the "+" in the top-right corner -> "New repository"
+    - Call it `STAT545-participation`
+    - Say YES to initializing with a README. 
+2. Link your repo to canvas by submitting a URL to your repo in the participation assessment. 
+    - Don't worry, we won't grade it until it's finished. 
+3. Make a new file for the next activity:
+    - Click on the "Create New File" button on your repository's home page.
+    - Call it `navigating_github.md`
+    - Leave it blank, and commit ("save") the file by clicking on green "commit new file" button at the bottom of the page.
 
-__navigating GitHub__
+__Navigating GitHub__
 
-- Together: find ... and put the URL on the new file.
-- Your turn: find your user page; STAT 545 hw Org; the Announcements repo. Put on participation repo.
+- Together: Add the following URL's to your `navigating_github.md` file (click on the pen button to edit), together with some commentary:
+    - The repository for the `broom` R package.
+    - The account its under.
+    - Whether the account is a _user account_ or an _Org_.
+- Together: Commit the changes.
+- Your turn: Continue the exercise, and add more URL's:
+    - The URL to your participation repo
+    - The URL to your user page
+- Together: Commit the changes.
 
 ### GitHub for collaboration
 
-- hosts the "official" current state of a project -- no more confusing this.
-- Create and comment on GitHub Issues; `Watch`ing a repo; goodbye emails.
+The "traditional" way to collaborate involves sending files over email. Problems:
+
+- Easily lose track of who has the most recent version.
+- Emails get buried.
+
+Addressed by GitHub:
+
+- GitHub repository treated as the "master version".
+- Use [_GitHub Issues_](https://guides.github.com/features/issues/) instead of email.
+
+_Issues_ are a discussion board corresponding to a particular repository. One "thread" is called an Issue. Some features:
+
+- Tag other GitHub users using `@username`.
+- Get email notifications if you are tagged, or are `Watch`ing a repository.
+
+As an example, check out the Issues in the [`ggplot2`](https://github.com/tidyverse/ggplot2) repository.
+
+More on collaboration next Thursday.
 
 ### GitHub for collaboration - Activity 
 
-Together: `Watch`ing a repo
+__Together: `Watch`ing the `Announcements` repo__
 
-3. Navigate to the [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
-4. Click `Watch` on the upper-right corner of the repo
-    - This is so that you get email notifications whenever an announcement is posted (under the "Issues" tab).
+- Navigate to the [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
+- Click `Watch` on the upper-right corner of the repo
+
+You should now get an email notification whenever an Issue is posted.
 
 ### GitHub for version control with git
 
 GitHub uses a program called `git` to keep track of the project's history (more about `git` next Thursday).
 
-- Users make "commits" to form a commit history.
-- `git` only tracks the _changes_, so it doesn't need to take a full snapshot each time.
+- Users make "commits" to form a _commit history_.
+- `git` only tracks the _changes_ associated with a commit, so it doesn't need to take a snapshot of all your files each time.
+- The actual changes are called a _diff_.
 
-Why?
+Demostration:
+
+- View commit history of the [STAT545-home](https://github.com/STAT545-UBC/STAT545-home) repository by clicking on the "commits" button on the repo home page.
+- View a recent diff by clicking on the button with the _SHA_ or _hash_ code (something like `6c0a5f1`).
+    - This is also useful for collaborators to see exactly what you changed.
+- View the repository from a while back with the `<>` button.
+- View the history of a file by clicking on the file, then clicking "History".
+
+Why version control?
 
 - Don't fret removing stuff
 - Leave a breadcrumb trail for troubleshooting
-- "Undo" to a previous state
+- "Undo" and navigate a previous state
 - Helps you define your work
 - ...
 
 ### GitHub for version control with git - Activity 
 
-commit history
+__Your turn: History of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository.__
 
-- View the commit history of a repository. Paste the URL into an md file in your participation repo.
-
+- Use the commit history of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository to find Assignment 01 that was delivered last year in STAT 545A (Note: the course ended in mid October 2018, and the assignments were held in a folder called `assignments`). 
+- Add the URL of this assignment to your `navigating_github.md` file in your participation repository. Keep up with the commentary within the file, too. When was the assignment due? 
 
 ## Topic 3: Getting Help
 
