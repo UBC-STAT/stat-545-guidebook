@@ -5,31 +5,27 @@
 We'll cover three topics today:
 
 - Syllabus. (~20 min)
-- GitHub. (~20 min)
-- Getting help (~20 min)
+- GitHub. (~35 min)
+- Getting help (~10 min)
 
-We'll end class with:
-
-- a "quiz",
-- a to-do list before next class.
+We'll end class with a to-do list before next class.
 
 ## Learning Objectives
 
 By the end of today's class, students are expected to be able to:
 
-- Find a repo, Org, or user page.
-- Edit plain text files on GitHub
-- Navigate the commit history of various repository branches on GitHub
-
+- Distinguish and navigate between GitHub repositories, Organization accounts, and user accounts.
+- Edit plain text files on GitHub.
+- Navigate the commit history of a repository and a file on GitHub.
+- Contribute to GitHub Issues, especially for STAT 545.
+- Identify whether a software-related question has a reproducible example.
 
 ## Resources
 
-Today's section in the guidebook should contain everything you need to know about today's topics.
+If you want to learn more about today's topics, check out:
 
-If you want to learn more:
-
-- Check out the [GitHub guide](https://guides.github.com/) for lots of info about GitHub. If you do go here, I recommend you start with ["Hello, World!"](https://guides.github.com/activities/hello-world/). You'll see stuff about branching there -- we'll get there next Thursday.
-
+- The [GitHub guide](https://guides.github.com/) has lots of info about GitHub. If you do go here, I recommend you start with ["Hello, World!"](https://guides.github.com/activities/hello-world/). You'll see stuff about branching there -- we'll be discussing that next Thursday.
+- Jenny's ["How to get unstuck"](http://stat545.com/help-general.html) page is useful for getting help online (even outside of STAT 545).
 
 ## Topic 1: Syllabus (20 min)
 
@@ -41,7 +37,9 @@ The course syllabus can be found on the STAT 545 @ UBC homepage, [stat545.stat.u
 - Teaching Team and Contact (5 min)
 - Resources, especially what's going on with stat545.com (5 min)
 
-## Topic 2: GitHub (20 min)
+## Topic 2: GitHub (35 min)
+
+(2 min)
 
 We will be using [GitHub](https://github.com) a lot in this course:
 
@@ -63,19 +61,23 @@ Today, we'll check out:
 2. GitHub for collaboration; and
 3. GitHub for version control with git.
 
-### Register a GitHub account - Activity (3 min)
+### Register a GitHub account - Activity (4 min)
+
+Your turn:
 
 1. Register for a free account on [github.com](https://github.com). 
     - You'll be using this account for the duration of the course.
     - Give your username [some thought](https://happygitwithr.com/github-acct.html#username-advice) -- ideally, should include your name.
 2. Tell us what your username is by filling out [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
 
-### GitHub as cloud storage
+### GitHub as cloud storage (4 min)
 
 At the very least, GitHub allows for cloud storage, like Google Drive and Dropbox do. There's a bit more structure than just storing files under your account:
 
-- __User Accounts__ vs. __Organization Accounts (aka "Org")__: You can store files with your own GitHub _user account_ (that you just made); or, you can store files with a separate _Organization_ account that multiple people can own. User accounts typically contain files relevant to an individual, whereas Orgs typically contain files relevant to (you guessed it) organizations.
-- __Repositories (aka "repo")__: In any account, your files must be organized into different _repositories_. Think of these as self-contained projects. These can either be _public_ or _private_.
+- __Repositories (aka "repo")__: All files must be organized into _repositories_. Think of these as self-contained projects. These can either be _public_ or _private_.
+- __User Accounts__ vs. __Organization Accounts (aka "Org")__: All repositories belong to an account:
+    - A _user account_ is the account you just made, and typically holds repositories related to your own work. 
+    - An _Organization_ account can be owned by multiple people, and typically holds repositories relevant to a group (like STAT 545).
 
 Examples: 
 
@@ -84,30 +86,29 @@ Examples:
 
 Want to read more about GitHub accounts? [Check out this help page on GitHub](https://help.github.com/en/articles/types-of-github-accounts).
 
-### GitHub as cloud storage - Activity 
+### GitHub as cloud storage - Activity (10 min)
 
 __Together: Make a participation repo__
 
-Follow the instructions on the participation page. 
-
+- Follow the [setup instructions](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on the participation page. 
 
 __Navigating GitHub__
 
-1. Make a new file on your participation repository:
+1. Together: Make a new file on your participation repository:
     - Click on the "Create New File" button on your repository's home page.
     - Call it `navigating_github.md`
     - Leave it blank, and commit ("save") the file by clicking on green "commit new file" button at the bottom of the page.
 2. Together: Add the following URL's to your `navigating_github.md` file (click on the pen button to edit), together with some commentary:
     - The repository for the STAT 545 home page, called `STAT545-home` (use this if the site ever goes down!)
-    - The account its under.
+    - The account it's under.
     - Whether the account is a _user account_ or an _Org_.
 3. Together: Commit the changes.
-4. Your turn: Continue the exercise, and add more URL's:
+4. Your turn: Continue the exercise, and add more URL's (with more commentary):
     - The URL to your participation repo
-    - The URL to your user page
-5. Together: Commit the changes.
+    - The URL to your user account page
+5. Your turn: Commit the changes.
 
-### GitHub for collaboration
+### GitHub for collaboration (4 min)
 
 The "traditional" way to collaborate involves sending files over email. Problems:
 
@@ -128,16 +129,16 @@ As an example, check out the Issues in the [`ggplot2`](https://github.com/tidyve
 
 More on collaboration next Thursday.
 
-### GitHub for collaboration - Activity 
+### GitHub for collaboration - Activity (1 min)
 
 __Together: `Watch`ing the `Announcements` repo__
 
-- Navigate to the [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
-- Click `Watch` on the upper-right corner of the repo
+1. Navigate to the STAT 545 [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
+2. Click `Watch` on the upper-right corner of the repo
 
 You should now get an email notification whenever an Issue is posted.
 
-### GitHub for version control with git
+### GitHub for version control with git (5 min)
 
 GitHub uses a program called `git` to keep track of the project's history (more about `git` next Thursday).
 
@@ -161,50 +162,41 @@ Why version control?
 - Helps you define your work
 - ...
 
-### GitHub for version control with git - Activity 
+### GitHub for version control with git - Activity (5 min)
 
 __Your turn: History of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository.__
 
-- Use the commit history of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository to find Assignment 01 that was delivered last year in STAT 545A (Note: the course ended in mid October 2018, and the assignments were held in a folder called `assignments`). 
-- Add the URL of this assignment to your `navigating_github.md` file in your participation repository. Keep up with the commentary within the file, too. When was the assignment due? 
+1. Use the commit history of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository to find Assignment 01 that was delivered last year in STAT 545A (Note: the course ended in mid October 2018, and the assignments were held in a folder called `assignments`). 
+2. Add the URL of this assignment to your `navigating_github.md` file in your participation repository. Keep up with the commentary within the file, too. When was the assignment due? 
 
-## Topic 3: Asking effective questions online
+Note: the layout and content of the assignments are changing this year.
 
-It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
+## Topic 3: Asking effective questions online (10 min)
 
-- Provide relevant links (for example, to the relevant assignment or course notes).
-- Make a reproducible example (in the case that it's a question involving code).
-	- Sometimes called a [Minimal Working Example](https://en.wikipedia.org/wiki/Minimal_working_example) (MWE).
-- Be detailed.
+(5 min)
 
-You'll probably find that the act of writing an effective question causes you to answer your own question! In this case, post your question anyway, with the corresponding solution. 
+We all get stuck sometimes. If you try taking [preliminary measures](http://stat545.com/help-general.html) such as googling, you may have to turn to writing a question on a discussion board. Making your question _effective_ is an art. 
 
-I recommend checking out the [STAT545 "how to get unstuck" page](http://stat545.com/help-general.html) for resources on how to get your questions answered. 
+To make your question effective, the idea is to make things as easy as possible for someone to answer. 
 
-### Asking questions - Activity
+- Will they have to dig to find a resource you're talking about, or do you provide links?
+- If your code isn't doing what you expect, or you don't know how to obtain an output, do you provide a [__reproducible example__](https://stackoverflow.com/help/minimal-reproducible-example) (aka "reprex")?
+  - Ideally, someone should be able to copy and paste a chunk of code to reproduce the problem you are talking about.
+- Is your reproducible example _minimal_, meaning you've removed all the unnecessary parts to reproduce the problem?
+
+You'll probably find that the act of writing an effective question causes you to answer your own question!
+
+### Asking questions - Activity (5 min)
 
 __Commenting on some online questions__
 
-1. My turn: Start an Issue on the Announcements repo called `Asking effective questions`.
+1. My turn: Start an Issue on the [Announcements repo](https://github.com/STAT545-UBC-hw-2019-20/Announcements/issues) called `Asking effective questions`.
 2. Your turn: Find a question/issue or two that someone has posed online. Check out [Stack Overflow](https://stackoverflow.com/) for inspiration.
-3. Your turn: Add a comment to the thread in canvas with the following:
+3. Your turn: Add a comment to the newly opened Issue with the following:
     - The URL to the thread/question
     - A few brief points on how the question is worded effectively or ineffectively. What would make it better, if anything?
 
-We'll talk about some examples after you're done. Here are some sites you might find useful:
-
-### Your turn: commenting on an Issue
-
-Go to the Issues section of the [Announcements repository](https://github.com/STAT545-UBC-hw-2019-20), and comment on the Issue I created called "Introduce yourself!". In the comment, say who you are, and greet the person above you -- be sure to tag them by their username using `@username`. 
-
-
-## Wrap-up
-
-Quiz:
-
-- Examples of good and bad help questions
-- Examples of approaches to get unstuck.
-- Where to post a question/comment in STAT 545.
+We'll talk about some examples after you're done. 
 
 ## To do before next class
 
