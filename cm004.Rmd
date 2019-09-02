@@ -189,6 +189,7 @@ Checklist:
     1. Let's try forking the `Classroom` repo.
     2. We'll make a change, and will submit a pull request.
 
+## Tagging a Release
 
 
 #### Resources

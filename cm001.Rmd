@@ -88,28 +88,24 @@ Want to read more about GitHub accounts? [Check out this help page on GitHub](ht
 
 __Together: Make a participation repo__
 
-1. Make a new repository:
-    - On GitHub, click the "+" in the top-right corner -> "New repository"
-    - Call it `STAT545-participation`
-    - Say YES to initializing with a README. 
-2. Link your repo to canvas by submitting a URL to your repo in the participation assessment. 
-    - Don't worry, we won't grade it until it's finished. 
-3. Make a new file for the next activity:
-    - Click on the "Create New File" button on your repository's home page.
-    - Call it `navigating_github.md`
-    - Leave it blank, and commit ("save") the file by clicking on green "commit new file" button at the bottom of the page.
+Follow the instructions on the participation page. 
+
 
 __Navigating GitHub__
 
-- Together: Add the following URL's to your `navigating_github.md` file (click on the pen button to edit), together with some commentary:
-    - The repository for the `broom` R package.
+1. Make a new file on your participation repository:
+    - Click on the "Create New File" button on your repository's home page.
+    - Call it `navigating_github.md`
+    - Leave it blank, and commit ("save") the file by clicking on green "commit new file" button at the bottom of the page.
+2. Together: Add the following URL's to your `navigating_github.md` file (click on the pen button to edit), together with some commentary:
+    - The repository for the STAT 545 home page, called `STAT545-home` (use this if the site ever goes down!)
     - The account its under.
     - Whether the account is a _user account_ or an _Org_.
-- Together: Commit the changes.
-- Your turn: Continue the exercise, and add more URL's:
+3. Together: Commit the changes.
+4. Your turn: Continue the exercise, and add more URL's:
     - The URL to your participation repo
     - The URL to your user page
-- Together: Commit the changes.
+5. Together: Commit the changes.
 
 ### GitHub for collaboration
 
@@ -172,11 +168,30 @@ __Your turn: History of the [`STAT545-UBC/Classroom`](https://github.com/STAT545
 - Use the commit history of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository to find Assignment 01 that was delivered last year in STAT 545A (Note: the course ended in mid October 2018, and the assignments were held in a folder called `assignments`). 
 - Add the URL of this assignment to your `navigating_github.md` file in your participation repository. Keep up with the commentary within the file, too. When was the assignment due? 
 
-## Topic 3: Getting Help
+## Topic 3: Asking effective questions online
 
-- List 4 ways to get help in this course
-- Activity: search stack exchange or other gh issues for examples. Reply to Issue in Announcements.
+It's an art to ask a question online _effectively_. The idea is to make things as easy as possible for someone to answer. Make it self-contained; don't make someone have to do unnecessary digging to answer the question:
 
+- Provide relevant links (for example, to the relevant assignment or course notes).
+- Make a reproducible example (in the case that it's a question involving code).
+	- Sometimes called a [Minimal Working Example](https://en.wikipedia.org/wiki/Minimal_working_example) (MWE).
+- Be detailed.
+
+You'll probably find that the act of writing an effective question causes you to answer your own question! In this case, post your question anyway, with the corresponding solution. 
+
+I recommend checking out the [STAT545 "how to get unstuck" page](http://stat545.com/help-general.html) for resources on how to get your questions answered. 
+
+### Asking questions - Activity
+
+__Commenting on some online questions__
+
+1. My turn: Start an Issue on the Announcements repo called `Asking effective questions`.
+2. Your turn: Find a question/issue or two that someone has posed online. Check out [Stack Overflow](https://stackoverflow.com/) for inspiration.
+3. Your turn: Add a comment to the thread in canvas with the following:
+    - The URL to the thread/question
+    - A few brief points on how the question is worded effectively or ineffectively. What would make it better, if anything?
+
+We'll talk about some examples after you're done. Here are some sites you might find useful:
 
 ### Your turn: commenting on an Issue
 
