@@ -68,7 +68,7 @@ Your turn:
 1. Register for a free account on [github.com](https://github.com). 
     - You'll be using this account for the duration of the course.
     - Give your username [some thought](https://happygitwithr.com/github-acct.html#username-advice) -- ideally, should include your name.
-2. Tell us what your username is by filling out [this survey](https://forms.gle/VWYLQpyt7eNXdvZu6).
+2. Tell us what your username is by filling out [this survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_8jKz3FaT7w5EHfT).
 
 ### GitHub as cloud storage (4 min)
 
@@ -200,7 +200,7 @@ We'll talk about some examples after you're done.
 
 ## To do before next class
 
-- Please fill out [this survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), so that we can match you to your GitHub account.
+- Please fill out [this survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_8jKz3FaT7w5EHfT), so that we can match you to your GitHub account.
 - Be sure to complete the in-class activities listed in today's section of the guidebook.
 - Please put up a profile photo on GitHub -- it makes the STAT 545 community more personable.
 - Install the software stack for this course, as indicated below. Having trouble? Our wonderful TA's are here to help you during office hours.
