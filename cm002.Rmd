@@ -9,7 +9,10 @@ To participate in today's lecture, you should have:
 - R and RStudio installed
 - A [participation repo](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on GitHub to put in-class work.
 
-__Announcement__: Assignment 1 is launched! (10 min)
+__Announcements__: (10 min) 
+
+- Assignment 1 is launched!
+- Class meeting schedule is fixed
 
 ## Learning Objectives
 
