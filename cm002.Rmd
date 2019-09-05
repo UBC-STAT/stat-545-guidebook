@@ -1,66 +1,43 @@
 # Introduction to R
 
-Today's topic: getting familiar with R.
+Today, we'll get you up to speed with a minimum "need to know" about using R and RStudio. We're going to assume you know nothing, but aren't covering the breadth of the R/RStudio landscape.
 
-1. Orientation to R and RStudio
-2. Vectors
-3. Data frames
+The format of today's notes aim to teach R by exploration, so is essentially an activity guide with prompts for exploration. These are mostly all exercises we'll be doing together in class. 
+
+__Note__: I don't anticipate getting through everything listed here. 
 
 To participate in today's lecture, you should have:
 
 - R and RStudio installed
 - A [participation repo](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on GitHub to put in-class work.
 
+__Announcement__: Assignment 1 is launched! (10 min)
+
 ## Learning Objectives
 
 By the end of today's class, students are expected to be able to:
 
-- Have a sense of the capabilities, and pros and cons, of R
 - Write an R script to perform simple calculations
-- Describe the main idea of vectorization
 - Access the R documentation on an as-needed basis
-
-1. Use standard operators in R: mathematical, comparison, and boolean.
-2. Use the `is.*` family of functions to find out what an object is.
-3. Use the `as.*` family of functions to coerce objects to different types.
-4. Create vectors, and subset them in a variety of ways.
-5. Demonstrate concepts of vectorization and recycling through computations and subsetting.
-6. Differentiate between a list and a vector.
-7. Create and subset lists.
+- Use functions and operators in R
+- Subset vectors in R
+- Explore a data frame in R
+- Load packages in R
 
 ## Participation
 
-We'll be making an R script exploring some R code. What you write on this script doesn't have to be exactly the same as what I write -- we're just looking for some exploration of coding in R. 
+Start a new R script in RStudio, and add your exploratory code to the script as we work through the exercises. What you write on this script doesn't have to be exactly the same as what I write -- we're just looking for some exploration of coding in R. 
 
 ## Resources
 
-- We'll be roughly following the [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R.
-- [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects. 
-    - For those already experience with R: I recommend you look this chapter over. You'll probably learn something new.   
-    - For those new to R, who want the depth, read until the end of the "Vectors" section.
+Here are some useful resources for getting oriented with R.
 
-Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
-
-See [Quick-R](https://www.statmethods.net/management/operators.html) for a list of operators in R.
-
-Much of R is about becoming familiar with R's "vocabulary". A nice list can be found in [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html).
-
-## About R
-
-Why R? It's a fantastic and prominent tool for analyzing data. Vectorization! Data frames!
-
-R isn't best for everything.
-
-- R isn't a fast language. 
-- Doesn't really shine outside of doing data analysis / working with tabular data.
-- Advanced machine learning techniques aren't as well-developed as they are in python.
-    - Probably owing to the slowness of R in the curve-fitting algorithms.
-- Text analytics aren't as well-developed as they are in python. 
-    - Perhaps owing to how R treats strings?
-
-These are elaborated on in [adv-r: intro](http://adv-r.had.co.nz/Introduction.html).
+- Jenny's [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R roughly follows today's outline.
+- Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
+- For a list of R "vocabulary", see [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html); for a list of R operators, see [Quick-R](https://www.statmethods.net/management/operators.html).
 
 
+## Why R?
 
 Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction.html):
 
@@ -70,19 +47,13 @@ Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction
 - Huge community
 - ...
 
-Alternatives for data analysis?
+Alternatives exist for data analysis, python being another excellent tool, especially these days as it seems like more and more R-like functionality is added to it. The good thing about python is that it's faster and has better support for machine learning models. For the sake of streamlining, both STAT 545A and STAT 547M only focus on R.
 
-- python is another prominent tool in the data science community.
-    - faster, more "all-purpose"
-    - tends to handle text better
-    - has more support for machine learning models
-    - jupyter notebooks instead of RStudio and R Markdown
+## Orientation to R
 
-## R
+### Using R and RStudio (5 min)
 
-### Using R and RStudio
-
-Experiments:
+Let's try these exercises as our first steps.
 
 1. Try some arithmetic from a script vs. the console. 
     - Notice that your commands appear in the "History" tab. Do not rely on this! What do you think is better than relying on the history?
@@ -92,8 +63,7 @@ Experiments:
 4. Try some arithmetic on an undefined variable.
 5. Try some arithmetic on the variable on a line of code above the variable definition (do you think we'll get an error?)
 
-
-### Vectors
+### Vectors (3 min)
 
 _Vectors_ store multiple entries of a data type, like numbers. You'll discover that they show up just about everywhere in R.
 
@@ -105,21 +75,20 @@ times <- c()
 
 Operations happen component-wise. Let's calculate those times in hours. How can we "save" the results?
 
-### Functions, Part I
+### Functions, Part I (3 min)
 
 What's the average travel time? Instead of computing this manually, let's use a _function_ called `mean`. Notice the syntax of using a function: the _input_ goes inside brackets, which is followed by the function name to the left.
 
 We _input_ `times`, and got some _output_. Did this function change the input? Aside from some bizarre functions, this is always the case. 
-
 Functions don't always return a single value. Try the `range()` function, for example. What's the output? What about the `sqrt()` function?
 
 Much of R is about becoming familiar with R's "vocabulary". A nice list can be found in [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html).
 
-### Comparisons
+### Comparisons (7 min)
 
 We'll now introduce _logicals_.
 
-Which of our travel times are less than (say) 30 minutes?
+Which of our travel times are less than (say) 30 minutes? Use `<`.
 
 Which of our travel times are equal to ... (pick something)? What about _not_ equal to it? Notice the use of `==` as opposed to `=` -- why do you think that is?
 
@@ -129,14 +98,14 @@ Some functions expect logical inputs. Try using the `which()` function on one of
 
 Logicals can be explicitly specified in R with `TRUE` and `FALSE`.
 
-### Subsetting
+### Subsetting (10 min)
 
 Use `[]` to subset the vector of times:
 
 1. Extract the third entry.
 2. Extract everything except the third entry.
 3. Extract the second and fourth entry. The fourth and second entry.
-4. Extract the second through fifth entry -- make use of `:`. 
+4. Extract the second through fifth entry -- make use of `:` to construct sequential vectors.
 4. Extract all entries that are less than 30 minutes. Why does this work? Logical subsetting!
 
 After all of that, did our `times` object change at all?
@@ -147,6 +116,8 @@ We can use `[]` in conjunction with `<-` to change the `times` object:
 2. "Cap" entries that are "too large" at some set value. If this is more than one value, why don't we need to match the number of values? Recycling!
 3. Remove an entry, by overwriting `times`.
 
+### NA (2 min)
+
 Sometimes we have missing data. Those entries are replaced with `NA` in R. Be careful with these!
 
 1. Add `NA` to the vector of times.
@@ -154,7 +125,7 @@ Sometimes we have missing data. Those entries are replaced with `NA` in R. Be ca
 
 Let's expand our view of functions in order to solve this problem.
 
-### Functions, Part II
+### Functions, Part II (10 min)
 
 Functions often take more than one _arguments_ as input, separated by commas. You can find out what these arguments are by accessing the function's _documentation_:
 
@@ -175,34 +146,35 @@ We can specify an argument in one of two ways:
 
 Input `TRUE` for the `na.rm` argument in both ways.
 
-### Data frames
+### Data frames (12 min)
 
 Living in a vector-only world would be nice if all data analyses involved one variable. When we have more than one variable, _data frames_ come to the rescue. Basically, a data frame holds data in tabular format.
 
 R has some data frames "built in". For example, motor car data is attached to the variable name `mtcars`. 
 
-1. Print `mtcars` to screen.
+Print `mtcars` to screen. Notice the tabular format. 
 
-Notice the table of data. 
+__Your turn__ (5 min): Finish the exercises of this section:
 
-2. Your turn: use built-in R functions to explore `mtcars`, without printing the whole thing to screen:
+1. Use some of these built-in R functions to explore `mtcars`, without printing the whole thing to screen:
     - `head()`, `tail()`, `str()`, `nrow()`, `ncol()`, `summary()`, `row.names()` (yuck), `names()`.
-
-Each column is its own vector. Extract a vector using `$`. What's the mean mpg of all cars in the dataset?
-
-We'll hold off on manipulating a data frame when we discuss data wrangling with `dplyr`. 
 
 Notice that `names` and `row.names()` outputs a _character vector_ (we've already seen numeric and logical vectors). These are useful for characterizing categorical data in R. 
 
-What's the first column name in the `mtcars` dataset?
+2. What's the first column name in the `mtcars` dataset? 
+3. Which column number is named `"wt"`?
 
-### R packages
+Each column is its own vector that can be extracted using `$`. For example, we can extract the `cyl` column with `mtcars$cyl`.
+
+4. Extract the vector of `mpg` values. What's the mean `mpg` of all cars in the dataset?
+
+### R packages (13 min)
 
 Usually, the suite of functions that "come with" R are just not enough to do an analysis. 
 
 Usually, the suite of functions that "come with" R are just not very convenient.
 
-In come R _packages_. These are "add ons", each coming with their own suite of functions and objects, usually designed to do one type of task. [CRAN](https://cran.r-project.org/) stores packages that, for all intents and purposes, can be considered "official" R packages. It's easy to install packages from CRAN! Just use the `install.packages()` function. 
+In come R _packages_ to the rescue. These are "add ons", each coming with their own suite of functions and objects, usually designed to do one type of task. [CRAN](https://cran.r-project.org/) stores packages that, for all intents and purposes, can be considered "official" R packages. It's easy to install packages from CRAN! Just use the `install.packages()` function. 
 
 Run the following lines of code to install the `tibble` and `gapminder` packages. (But don't include this in your scripts -- it's not very nice to others!)
 
@@ -214,16 +186,16 @@ install.packages("gapminder")
 - `tibble`: a data frame with some useful "bells and whistles"
 - `gapminder`: a package that makes the gapminder dataset available (as a `tibble`!)
 
-Installing a package is not enough! To access its functions, you have to _load_ it. Use the `library()` function to load a package. 
+Installing a package is not enough! To access its functions, you have to _load_ it. Use the `library()` function to load a package. (Note: ironically, it's not libraries we load with the `library()` function, but a package).
 
-Run the following lines of code to load the packages. (__Do__ put these in your scripts, and near the top)
+Run the following lines of code to load the packages. (Do put these in your scripts, and near the top)
 
 ```
 library(tibble)
 library(gapminder)
 ```
 
-Take a look at the packages under the "Global Environment" tab to see the new objects that have just been made available to us. PS: where does `mtcars` live?
+Take a look at the packages under the "Global Environment" tab to see the new objects that have just been made available to us. PS: you'll notice `mtcars` is not in our workspace/environment, yet we can still access it -- where does `mtcars` live?
 
 Try the following two approaches to access information about the `tibble` package. Run the lines one-at-a-time. Vignettes are your friend, but do not always exist. 
 
@@ -232,14 +204,13 @@ Try the following two approaches to access information about the `tibble` packag
 browseVignettes(package = "tibble")
 ```
 
-Your turn:
+Print out the `gapminder` object to screen. It's a tibble -- how does it differ from a data frame in terms of how it's printed?
 
-1. Print out the `gapminder` object to screen. It's a tibble -- how does it differ from a data frame in terms of how it's printed?
-2. Because a tibble is a data frame, our exploration functions still work on it. Use some of them.
-    - Remember, they are `head()`, `tail()`, `str()`, `nrow()`, `ncol()`, `summary()`, `row.names()` (yuck), `names()`.
+Because a tibble is a data frame, our exploration functions still work on it. Try some.
 
+### Two slogans to understand computations in R (6 min)
 
-### Two slogans to understand computations in R
+(We probably won't have time to cover this, and that's OK -- I'm leaving it here for you to peruse if you are interested).
 
 John Chambers eloquently sums up using R:
 
@@ -298,7 +269,7 @@ as.character(foo)
 
 2. Everything that happens is a function call.
 
-Did you know that operators like `+` are actually functions? The "plus" function is literally `` `+` ``, and accepts two arguments.
+Did you know that operators like `+` are actually functions? The "plus" function is literally `` `+`() ``, and accepts two arguments.
 
 Here is what's actually happening when we call `5 + 2`:
 
@@ -307,66 +278,15 @@ Here is what's actually happening when we call `5 + 2`:
 #> [1] 7
 ```
 
-#### Bonus exercise
-
-What's the difference between the `` `(` `` function and the `` `{` `` function? Hint check the documentation with `` ?`{` ``.
+Want a challenge? What's the difference between the `` `(`() `` function and the `` `{`() `` function? Hint check the documentation with `` ?`{` ``.
 
 
-### Lists
+## Finishing up (5 min)
 
-Unlike vectors, which are atomic/homogeneous, a _list_ in R is heterogeneous. Construct lists with the `list()` function.
+1. Highly recommended: [Don't save your workspace](https://www.r-bloggers.com/using-r-dont-save-your-workspace/) when you quit RStudio. Make this a default:
+    - Go to "RStudio" -> "Preferences..." -> "General"
+    - Uncheck "restore .RData into workspace on startup"
+    - Select: "Save workspace to RData on exit:" Never
+2. Push your final script to GitHub (you can do this in a simple way by dragging the file onto your respository homepage).
 
-Try storing a character (`"DSCI"`) and numeric (`511`) in a list called `course`:
-
-```{r}
-
-```
-
-
-Lists can hold pretty much anything, and can also be named. Let's use the following list:
-
-```{r}
-(my_list <- list(year=2018, instructor=c("Vincenzo", "Coia"), fav_fun=typeof))
-```
-
-
-Explore its structure with `str()`. (Different from python!)
-
-```{r}
-
-```
-
-
-Subsetting a list works similarly to vectors. Try subsetting the first (year) element of `my_list` via name and via index:
-
-```{r}
-
-```
-
-
-Note that there's a difference between a list of one object, and that object itself! Compare the above with `2018`:
-
-```{r}
-
-```
-
-
-We can access the contents of the list using `[[`. Try via name and via index:
-
-```{r}
-
-```
-
-
-For lists (not vectors), you can also access the contents using `$` followed by the entry name. This is typically more popular when programming in R! Try extracting the year again: 
-
-```{r}
-
-```
-
-
-## Finishing up
-
-Set RStudio so that it does not save your workspace. 
-
-To get participation marks for this activity, push your final script to GitHub (you can do this in a simple way by dragging the file onto your respository homepage).
+Don't forget! There's an office hour after every class, held upstairs in ESB 3174.
