@@ -1,6 +1,6 @@
 # The version control workflow
 
-:caution: Under development :caution:
+**UNDER REVISION**
 
 Today's topics are:
 

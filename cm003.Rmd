@@ -1,5 +1,6 @@
 # Authoring
 
+**UNDER REVISION**
 
 Today, we'll be looking at writing documents. md, Rmd, presentations. bookdown? blogdown?
 
