@@ -4,8 +4,6 @@ Today, we'll get you up to speed with a minimum "need to know" about using R and
 
 The format of today's notes aim to teach R by exploration, so is essentially an activity guide with prompts for exploration. These are mostly all exercises we'll be doing together in class. 
 
-__Note__: I don't anticipate getting through everything listed here. 
-
 To participate in today's lecture, you should have:
 
 - R and RStudio installed
