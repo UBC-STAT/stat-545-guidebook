@@ -1,14 +1,15 @@
 # Introduction to R
 
-Today's topics are:
+Today's topic: getting familiar with R.
 
-1. Getting familiar with R
+1. Orientation to R and RStudio
+2. Vectors
+3. Data frames
 
 To participate in today's lecture, you should have:
 
 - R and RStudio installed
-- Optionally, LaTeX installed for outputting to pdf.
-- A participation repo to put in-class work
+- A [participation repo](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on GitHub to put in-class work.
 
 ## Learning Objectives
 
@@ -19,7 +20,19 @@ By the end of today's class, students are expected to be able to:
 - Describe the main idea of vectorization
 - Access the R documentation on an as-needed basis
 
-## Resources:
+1. Use standard operators in R: mathematical, comparison, and boolean.
+2. Use the `is.*` family of functions to find out what an object is.
+3. Use the `as.*` family of functions to coerce objects to different types.
+4. Create vectors, and subset them in a variety of ways.
+5. Demonstrate concepts of vectorization and recycling through computations and subsetting.
+6. Differentiate between a list and a vector.
+7. Create and subset lists.
+
+## Participation
+
+We'll be making an R script exploring some R code. What you write on this script doesn't have to be exactly the same as what I write -- we're just looking for some exploration of coding in R. 
+
+## Resources
 
 - We'll be roughly following the [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R.
 - [adv-r: data structures](http://adv-r.had.co.nz/Data-structures.html) is a more comprehensive version of exploring R objects. 
@@ -28,7 +41,26 @@ By the end of today's class, students are expected to be able to:
 
 Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons. 
 
+See [Quick-R](https://www.statmethods.net/management/operators.html) for a list of operators in R.
+
+Much of R is about becoming familiar with R's "vocabulary". A nice list can be found in [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html).
+
 ## About R
+
+Why R? It's a fantastic and prominent tool for analyzing data. Vectorization! Data frames!
+
+R isn't best for everything.
+
+- R isn't a fast language. 
+- Doesn't really shine outside of doing data analysis / working with tabular data.
+- Advanced machine learning techniques aren't as well-developed as they are in python.
+    - Probably owing to the slowness of R in the curve-fitting algorithms.
+- Text analytics aren't as well-developed as they are in python. 
+    - Perhaps owing to how R treats strings?
+
+These are elaborated on in [adv-r: intro](http://adv-r.had.co.nz/Introduction.html).
+
+
 
 Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction.html):
 
@@ -38,112 +70,303 @@ Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction
 - Huge community
 - ...
 
-Strengths that tend to be specific to R: 
-
-- Naturally handles data (and therefore its analysis)
-- Vectorization
-- ..
-
-Its downfalls?
-
-- Slow
-- To learners, seems "quirky" (due to reliance on "metaprogramming")
-- S3 OO objects & methods not always transparent
-- ...
-
 Alternatives for data analysis?
 
-- python is becoming more prominent in the data science community.
+- python is another prominent tool in the data science community.
     - faster, more "all-purpose"
     - tends to handle text better
+    - has more support for machine learning models
     - jupyter notebooks instead of RStudio and R Markdown
 
-Methods for interacting with R (I'll demo basic calculations)
+## R
 
-- Rstudio. __NOTE__: R is not RStudio! RStudio is an _IDE_. 
-    - The STAT 545 (and largely the world's) choice!
-- "R console"
-- Terminal/ESS
-- ...
+### Using R and RStudio
 
-## Demonstration
+Experiments:
 
-Set up shop to follow along:
+1. Try some arithmetic from a script vs. the console. 
+    - Notice that your commands appear in the "History" tab. Do not rely on this! What do you think is better than relying on the history?
+2. Store a number in a variable called `number` using `<-` (read this arrow as "gets").
+    - Notice that the object appears in the "Environment" tab in the top-right of RStudio.
+3. Try some arithmetic on the variable.
+4. Try some arithmetic on an undefined variable.
+5. Try some arithmetic on the variable on a line of code above the variable definition (do you think we'll get an error?)
 
-1. Open RStudio.
-2. Either:
-    - Ideally, download and open the [template R script](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise.R) (if you're online); OR
-    - Start a new R Script. (File -> New File -> R Script)
 
-To get participation marks for this activity:
+### Vectors
 
-1. Work with me as we fill in the worksheet.
-    - Remember, you're not graded on correctness, just on the attempt!
-2. Upload your worksheet to your STAT 545 participation repo.
+_Vectors_ store multiple entries of a data type, like numbers. You'll discover that they show up just about everywhere in R.
 
-The completed worksheet can be found [here](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm003-exercise-complete.R).
-
-## R Markdown
-
-## Learning Objectives
-
-- Create an R Markdown (Rmd) document and render it to md/html/pdf
-- Write basic equations in Rmd using LaTeX
-- Style an Rmd document by editing the YAML header
-- Demonstrate at least two Rmd code chunk options
-- Informatively choose between writing an R script/Rmd/R Notebook.
-
-## Resources
-
-Here are some resources that are well-aligned with today's goals:
-
-- The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). Read this if you missed something from today's class.
-- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. The following lessons parallel today's content:
-    - Lessons 1-4 (Intro - Inline Code)
-    - Lessons 9-10 (Output Formats - Notebooks)
-
-Here are resources that are great to reference:
-
-- The official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) has seemingly everything bundled together in a concise way.
-- An updated list of options for the YAML header can be found in the [rmd book: html-document](https://bookdown.org/yihui/rmarkdown/html-document.html)
-
-To dig deeper into any (?) aspect of R Markdown, check out the free [R Markdown book](https://bookdown.org/yihui/rmarkdown/) (also listed on the course syllabus).
-
-## Getting Started
-
-You'll need to install R Markdown. To do so, in any R console, run the following:
+Let's collect some data and store this in a vector called `times`. How long was your commute this morning, in minutes? Here's starter code:
 
 ```
-install.packages('rmarkdown')
+times <- c()
 ```
 
-## Demonstration
+Operations happen component-wise. Let's calculate those times in hours. How can we "save" the results?
 
-Let's play with Rmd. No need to submit anything for participation marks! We'll do that next time when we explore data frames.
+### Functions, Part I
 
-1. Create a new Rmd document: File -> New File -> R Markdown...
-2. Title: "Data Frame Exploration".
+What's the average travel time? Instead of computing this manually, let's use a _function_ called `mean`. Notice the syntax of using a function: the _input_ goes inside brackets, which is followed by the function name to the left.
 
-- Notice the differences from regular markdown: YAML header, code chunks!
+We _input_ `times`, and got some _output_. Did this function change the input? Aside from some bizarre functions, this is always the case. 
 
-3. Save it -- I'll call it `cm003-exercise-df`.
-4. Click `Knit`.
-5. Try other outputs.
-6. Try LaTeX equations.
-7. Try inserting new chunks of code.
-8. Try changing the theme with YAML.
-9. Try changing chunk options.
-10. Try making an R _Notebook_. 
-    - R script/Rmd/R Notebook -- which to use?
+Functions don't always return a single value. Try the `range()` function, for example. What's the output? What about the `sqrt()` function?
+
+Much of R is about becoming familiar with R's "vocabulary". A nice list can be found in [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html).
+
+### Comparisons
+
+We'll now introduce _logicals_.
+
+Which of our travel times are less than (say) 30 minutes?
+
+Which of our travel times are equal to ... (pick something)? What about _not_ equal to it? Notice the use of `==` as opposed to `=` -- why do you think that is?
+
+Which of our travel times are greater than ...(lower)... _and_ less than ...(upper)...? What about less than ...(lower)... _or_ greater than ...(upper)...?
+
+Some functions expect logical inputs. Try using the `which()` function on one of the above. What about `any()`? `all()`?
+
+Logicals can be explicitly specified in R with `TRUE` and `FALSE`.
+
+### Subsetting
+
+Use `[]` to subset the vector of times:
+
+1. Extract the third entry.
+2. Extract everything except the third entry.
+3. Extract the second and fourth entry. The fourth and second entry.
+4. Extract the second through fifth entry -- make use of `:`. 
+4. Extract all entries that are less than 30 minutes. Why does this work? Logical subsetting!
+
+After all of that, did our `times` object change at all?
+
+We can use `[]` in conjunction with `<-` to change the `times` object:
+
+1. Replace two entries with new travel times.
+2. "Cap" entries that are "too large" at some set value. If this is more than one value, why don't we need to match the number of values? Recycling!
+3. Remove an entry, by overwriting `times`.
+
+Sometimes we have missing data. Those entries are replaced with `NA` in R. Be careful with these!
+
+1. Add `NA` to the vector of times.
+2. What's the mean of this new vector of times?
+
+Let's expand our view of functions in order to solve this problem.
+
+### Functions, Part II
+
+Functions often take more than one _arguments_ as input, separated by commas. You can find out what these arguments are by accessing the function's _documentation_:
+
+Access the documentation of the `mean()` function by executing `?mean`. 
+
+- There are four arguments.
+- All the arguments have names, except for the `...` argument (more on `...` later). This is always the case. 
+- Under "Usage", some of the arguments are of the form `name = value`.
+    - These are default values, in case you don't specify these arguments.
+    - This is a sure sign that these arguments are _optional_. 
+- `x` is "on its own". This typically means that it has no default, and often (but not always) means that the argument is _required_. 
+
+We can specify an argument in one of two ways:
+
+- specifying `argument name = value` in the function parentheses; or
+- matching the ordering of the input with the ordering of the arguments.
+    - For readability, this is not recommended beyond the first or sometimes second argument! 
+
+Input `TRUE` for the `na.rm` argument in both ways.
+
+### Data frames
+
+Living in a vector-only world would be nice if all data analyses involved one variable. When we have more than one variable, _data frames_ come to the rescue. Basically, a data frame holds data in tabular format.
+
+R has some data frames "built in". For example, motor car data is attached to the variable name `mtcars`. 
+
+1. Print `mtcars` to screen.
+
+Notice the table of data. 
+
+2. Your turn: use built-in R functions to explore `mtcars`, without printing the whole thing to screen:
+    - `head()`, `tail()`, `str()`, `nrow()`, `ncol()`, `summary()`, `row.names()` (yuck), `names()`.
+
+Each column is its own vector. Extract a vector using `$`. What's the mean mpg of all cars in the dataset?
+
+We'll hold off on manipulating a data frame when we discuss data wrangling with `dplyr`. 
+
+Notice that `names` and `row.names()` outputs a _character vector_ (we've already seen numeric and logical vectors). These are useful for characterizing categorical data in R. 
+
+What's the first column name in the `mtcars` dataset?
+
+### R packages
+
+Usually, the suite of functions that "come with" R are just not enough to do an analysis. 
+
+Usually, the suite of functions that "come with" R are just not very convenient.
+
+In come R _packages_. These are "add ons", each coming with their own suite of functions and objects, usually designed to do one type of task. [CRAN](https://cran.r-project.org/) stores packages that, for all intents and purposes, can be considered "official" R packages. It's easy to install packages from CRAN! Just use the `install.packages()` function. 
+
+Run the following lines of code to install the `tibble` and `gapminder` packages. (But don't include this in your scripts -- it's not very nice to others!)
+
+```
+install.packages("tibble")
+install.packages("gapminder")
+```
+
+- `tibble`: a data frame with some useful "bells and whistles"
+- `gapminder`: a package that makes the gapminder dataset available (as a `tibble`!)
+
+Installing a package is not enough! To access its functions, you have to _load_ it. Use the `library()` function to load a package. 
+
+Run the following lines of code to load the packages. (__Do__ put these in your scripts, and near the top)
+
+```
+library(tibble)
+library(gapminder)
+```
+
+Take a look at the packages under the "Global Environment" tab to see the new objects that have just been made available to us. PS: where does `mtcars` live?
+
+Try the following two approaches to access information about the `tibble` package. Run the lines one-at-a-time. Vignettes are your friend, but do not always exist. 
+
+```
+?tibble
+browseVignettes(package = "tibble")
+```
+
+Your turn:
+
+1. Print out the `gapminder` object to screen. It's a tibble -- how does it differ from a data frame in terms of how it's printed?
+2. Because a tibble is a data frame, our exploration functions still work on it. Use some of them.
+    - Remember, they are `head()`, `tail()`, `str()`, `nrow()`, `ncol()`, `summary()`, `row.names()` (yuck), `names()`.
 
 
-## To do before next class
+### Two slogans to understand computations in R
 
-To participate in tomorrow's lecture, you should:
+John Chambers eloquently sums up using R:
 
-- Ensure you [follow the steps](http://stat545.com/Classroom/participation.html) to set up your "participation" repository.
-- Complete the [course survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2), if you haven't already.
-    - You MUST do this in order to do your first assignment!
-- You might want to try installing LaTeX, _if_ you want to be able to output to pdf and are not able to.
+> To understand computations in R, two slogans are helpful:
+> 
+> - Everything that exists is an object.
+> - Everything that happens is a function call.
 
-    
+These are useful to remember to prevent us from getting confused. 
+
+1. Everything that exists is an object.
+
+This is not obvious when we look at the output of, say, `str()`:
+
+``` r
+str(mtcars)
+#> 'data.frame':    32 obs. of  11 variables:
+#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+#>  $ disp: num  160 160 108 258 360 ...
+#>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+#>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+#>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+#>  $ qsec: num  16.5 17 18.6 19.4 17 ...
+#>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+#>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+#>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+#>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+```
+
+The stuff you see is simply printed to screen, not an object! The actual object is `NULL`:
+
+``` r
+foo <- str(mtcars)
+#> 'data.frame':    32 obs. of  11 variables:
+#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+# ...(snip)...
+foo
+#> NULL
+```
+
+The output of `summary()` is actually a "table" object (something not often used in R). Let's coerce it to character data:
+
+``` r
+foo <- summary(mtcars)
+as.character(foo)
+#>  [1] "Min.   :10.40  "  "1st Qu.:15.43  "  "Median :19.20  " 
+#>  [4] "Mean   :20.09  "  "3rd Qu.:22.80  "  "Max.   :33.90  " 
+#>  [7] "Min.   :4.000  "  "1st Qu.:4.000  "  "Median :6.000  " 
+#> [10] "Mean   :6.188  "  "3rd Qu.:8.000  "  "Max.   :8.000  " 
+#> [13] "Min.   : 71.1  "  "1st Qu.:120.8  "  "Median :196.3  " 
+#> [16] "Mean   :230.7  "  "3rd Qu.:326.0  "  "Max.   :472.0  " 
+# ...(snip)...
+```
+
+2. Everything that happens is a function call.
+
+Did you know that operators like `+` are actually functions? The "plus" function is literally `` `+` ``, and accepts two arguments.
+
+Here is what's actually happening when we call `5 + 2`:
+
+``` r
+`+`(5, 2)
+#> [1] 7
+```
+
+#### Bonus exercise
+
+What's the difference between the `` `(` `` function and the `` `{` `` function? Hint check the documentation with `` ?`{` ``.
+
+
+### Lists
+
+Unlike vectors, which are atomic/homogeneous, a _list_ in R is heterogeneous. Construct lists with the `list()` function.
+
+Try storing a character (`"DSCI"`) and numeric (`511`) in a list called `course`:
+
+```{r}
+
+```
+
+
+Lists can hold pretty much anything, and can also be named. Let's use the following list:
+
+```{r}
+(my_list <- list(year=2018, instructor=c("Vincenzo", "Coia"), fav_fun=typeof))
+```
+
+
+Explore its structure with `str()`. (Different from python!)
+
+```{r}
+
+```
+
+
+Subsetting a list works similarly to vectors. Try subsetting the first (year) element of `my_list` via name and via index:
+
+```{r}
+
+```
+
+
+Note that there's a difference between a list of one object, and that object itself! Compare the above with `2018`:
+
+```{r}
+
+```
+
+
+We can access the contents of the list using `[[`. Try via name and via index:
+
+```{r}
+
+```
+
+
+For lists (not vectors), you can also access the contents using `$` followed by the entry name. This is typically more popular when programming in R! Try extracting the year again: 
+
+```{r}
+
+```
+
+
+## Finishing up
+
+Set RStudio so that it does not save your workspace. 
+
+To get participation marks for this activity, push your final script to GitHub (you can do this in a simple way by dragging the file onto your respository homepage).

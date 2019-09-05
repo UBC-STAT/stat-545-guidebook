@@ -86,6 +86,60 @@ Resources:
 - [Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) for md and gh-flavoured md. 
 - [Tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
 
+## R Markdown
+
+## Learning Objectives
+
+- Create an R Markdown (Rmd) document and render it to md/html/pdf
+- Write basic equations in Rmd using LaTeX
+- Style an Rmd document by editing the YAML header
+- Demonstrate at least two Rmd code chunk options
+- Informatively choose between writing an R script/Rmd/R Notebook.
+
+## Resources
+
+Here are some resources that are well-aligned with today's goals:
+
+- The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html). Read this if you missed something from today's class.
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. The following lessons parallel today's content:
+    - Lessons 1-4 (Intro - Inline Code)
+    - Lessons 9-10 (Output Formats - Notebooks)
+
+Here are resources that are great to reference:
+
+- The official [Rmd cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) has seemingly everything bundled together in a concise way.
+- An updated list of options for the YAML header can be found in the [rmd book: html-document](https://bookdown.org/yihui/rmarkdown/html-document.html)
+
+To dig deeper into any (?) aspect of R Markdown, check out the free [R Markdown book](https://bookdown.org/yihui/rmarkdown/) (also listed on the course syllabus).
+
+## Getting Started
+
+You'll need to install R Markdown. To do so, in any R console, run the following:
+
+```
+install.packages('rmarkdown')
+```
+
+## Demonstration
+
+Let's play with Rmd. No need to submit anything for participation marks! We'll do that next time when we explore data frames.
+
+1. Create a new Rmd document: File -> New File -> R Markdown...
+2. Title: "Data Frame Exploration".
+
+- Notice the differences from regular markdown: YAML header, code chunks!
+
+3. Save it -- I'll call it `cm003-exercise-df`.
+4. Click `Knit`.
+5. Try other outputs.
+6. Try LaTeX equations.
+7. Try inserting new chunks of code.
+8. Try changing the theme with YAML.
+9. Try changing chunk options.
+10. Try making an R _Notebook_. 
+    - R script/Rmd/R Notebook -- which to use?
+
+
 ## Presentations
 
 ioslides, xaringan, etc.
