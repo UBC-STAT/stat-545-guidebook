@@ -9,7 +9,11 @@ To participate in today's lecture, you should have:
 - A GitHub account
 - RStudio installed
 
-## Learning Objectives: Plain Text
+__Announcements__:
+
+- The add/drop deadline for Stat 545A is on Wednesday Sep. 11
+
+## Learning Objectives
 
 By the end of today's class, students are expected to be able to:
 
@@ -18,78 +22,7 @@ By the end of today's class, students are expected to be able to:
 - Render a markdown document to html and pdf using RStudio
 - Choose whether html or pdf is an appropriate output
 
-## Orientation to Plain Text
-
-Three uses of plain text relevant to data analytic work:
-
-- authoring
-- data storage
-- scripts
-
-Motivation for plain text:
-
-- authoring: 
-    - Delegating the formatting saves time and is distraction-free
-    - Automate numbering
-    - Automate changes to the formatting
-    - Less error-prone (eg. matching font sizes)
-    - ...
-- data storage and scripts:
-    - always machine readable
-
-Types of plain text for each, with typical file extensions. STAT 545 focusses on those in __bold__:
-
-- authoring
-    - __markdown__ (`.md`) (and family!)
-    - LaTeX (`.tex`)
-    - You could say HTML, too...
-- data storage
-    - __csv/comma-separated values__ (`.csv`)
-    - tsv/tab-separated values (`.tsv`)
-    - JSON (`.json`)
-    - XML (`.xml`) (although not its only use)
-- scripts
-    - __R__ (`.r`) -- _Next week_
-    - python (`.py`)
-    - javascript (`.js`)
-
-Some noteworthy things:
-
-- Rich text is different from syntax highlighting
-- The _file viewer_ is independent from the _file_
-    - Less so with proprietary software such as Word. 
-- With plain text, the file extension doesn't really matter. 
-
-## Markdown Crash Course
-
-Cheatsheet: https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
-
-Live coding activity:
-
-1. Open RStudio, and open a new text file. 
-2. Save the file, and call it `md_explorer.md`
-3. Add content to the document, using some markdown syntax such as:
-    - Headers
-    - Bold, Italics
-    - Code font
-    - Hyperlinks
-4. Click `Preview` to convert the md file to HTML. Try pdf, too!
-    - Which to use? In general: printing to the page, pdf. Viewing on the screen, HTML.
-
-Notable "flavours"/extensions to the basic markdown:
-
-- GitHub-flavoured Markdown (Assignment 1)
-- R Markdown (A future lesson)
-
-Resources:
-
-- [Original Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
-- [Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) for md and gh-flavoured md. 
-- [Tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
-
-## R Markdown
-
-## Learning Objectives
+Rmd
 
 - Create an R Markdown (Rmd) document and render it to md/html/pdf
 - Write basic equations in Rmd using LaTeX
@@ -113,7 +46,80 @@ Here are resources that are great to reference:
 
 To dig deeper into any (?) aspect of R Markdown, check out the free [R Markdown book](https://bookdown.org/yihui/rmarkdown/) (also listed on the course syllabus).
 
-## Getting Started
+Cheatsheet: https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
+
+## Topic 1: Output Formats
+
+There are generally two accepted non-proprietary file types for manuscripts of various types:
+
+1. __pdf__: This is useful if you intend to print your work onto a physical sheet of paper. If this is not the primary purpose, then avoid at all costs, because formatting things so that it fits to the page is way more effort than its worth. 
+2. __html__: This is what you see when you visit a webpage. Content does not need to be partitioned to pages. 
+
+We won't be using proprietary file types, like MS Word. Amongst [many reasons](http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html), it just doesn't make sense to integrate reproducible code into the document.
+
+We'll be treating pdf and html files as output that should not be edited. In fact, pdf documents are not even easy to edit, and even if you do pay for the Adobe add-on to edit the files, it's not a reproducible workflow.
+
+What's the source, then? (R) __Markdown__!
+
+
+
+
+Motivation for plain text:
+
+- authoring: 
+    - Delegating the formatting saves time and is distraction-free
+    - Word documents may get formatted differently across versions
+    - Automate numbering
+    - Automate changes to the formatting
+    - Less error-prone (eg. matching font sizes)
+    - ...
+
+- authoring
+    - __markdown__ (`.md`) (and family!)
+    - LaTeX (`.tex`)
+    - You could say HTML, too...
+
+
+Some noteworthy things:
+
+- Rich text is different from syntax highlighting
+- The _file viewer_ is independent from the _file_
+    - Less so with proprietary software such as Word. 
+- With plain text, the file extension doesn't really matter. 
+
+## Topic 2: Markdown
+
+### Output formats
+
+HTML vs pdf
+
+### Live coding activity:
+
+1. Open RStudio, and open a new text file. 
+2. Save the file, and call it `md_explorer.md`
+3. Add content to the document, using some markdown syntax such as:
+    - Headers
+    - Bold, Italics
+    - Code font
+    - Hyperlinks
+4. Click `Preview` to convert the md file to HTML. Try pdf, too!
+    - Which to use? In general: printing to the page, pdf. Viewing on the screen, HTML.
+
+Notable "flavours"/extensions to the basic markdown:
+
+- GitHub-flavoured Markdown (Assignment 1)
+- R Markdown (A future lesson)
+
+Resources:
+
+- [Original Markdown syntax](https://daringfireball.net/projects/markdown/syntax).
+- [Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) for md and gh-flavoured md. 
+- [Tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
+
+## Topic 3: R Markdown
+
+
+### Getting Started
 
 You'll need to install R Markdown. To do so, in any R console, run the following:
 
@@ -121,7 +127,17 @@ You'll need to install R Markdown. To do so, in any R console, run the following
 install.packages('rmarkdown')
 ```
 
-## Demonstration
+### Cross-referencing
+
+Figures, sections, tables
+
+### Code chunks
+
+### YAML
+
+### Bib References?
+
+### Demonstration
 
 Let's play with Rmd. No need to submit anything for participation marks! We'll do that next time when we explore data frames.
 
@@ -141,30 +157,6 @@ Let's play with Rmd. No need to submit anything for participation marks! We'll d
     - R script/Rmd/R Notebook -- which to use?
 
 
-## Presentations
+## Topic 4: Presentations
 
 ioslides, xaringan, etc.
-
-## If we finish early
-
-### csv files
-
-- Their use for tabular data
-- Their structure
-- Editing them by hand
-
-### More Markdown
-
-Let's learn more about markdown, with a think-pair-share activity.
-
-1. Form groups of size `n` (determined in-class)
-2. "Think"-iteration: Each person is responsible for learning about a different type of markdown formatting, for 3 minutes:
-    - Inserting images
-    - Lists
-    - Blockquotes
-    - Code blocks
-3. "Pair"-iteration: For max 1 minute per person, each person either:
-    - teaches the other group members how to use the formatting they learned, OR
-    - if you're lost, ask your group members for help on the basics. 
-        - Don't feel bad! This happens and is normal, and is also useful for your team members. 
-4. "Share"-iteration: Volunteer to share something that you learned!
