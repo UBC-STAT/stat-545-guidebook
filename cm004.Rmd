@@ -1,41 +1,19 @@
 # The version control workflow
 
-**UNDER REVISION**
-
 Today's topic is version control.
 
 ## Learning Objectives
 
-From this lesson, students are expected to be able to:
+From this lesson, students are expected to be able to demonstrate each of the git/GitHub functionality listed here.
 
-- Demonstrate the above concepts using RStudio's git client with your participation GitHub repository.
-- Be able to make a basic website out of your participation repository using GitHub Pages
-- Know roughly what the above concepts are about
+## Working with git and GitHub
 
-## Resources
+Before we dive into concepts, it's important to distinguish between a __local__ repo and __remote__ repo.
 
-Want to try a similar lesson to today's, but on your own? Follow along with [happygitwithr: rstudio-git-github](http://happygitwithr.com/rstudio-git-github.html), which is closely aligned with the goals of this lesson.
+- __Local__ refers to things on your own computer. A local repo is a repo found on your hard drive.
+- __Remote__ refers to things on the internet. A remote repo lives on GitHub (and possibly other places). 
 
-Want to learn more, above and beyond what's done in class? Take a look at these:
-
-- Excellent [resource by GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) on how to "undo" almost anything (including "going back" to a previous state).
-
-The GitHub documentation is perhaps the best place to learn about these outside of class:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Forking](https://help.github.com/articles/fork-a-repo/)
-    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
-- [Pull Request](https://help.github.com/articles/about-pull-requests/)
-
-
-[Branching on GitHub](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/)
-
-RESOURCES FOR INSTALLING PDFLATEX
-
-## Working locally with git
-
-
-Concept: local vs. remote.
+Note that you can have more than one remote repo! Because of this, git names the remote repos. We will only ever be using one remote in STAT 545, and by default, this remote is named __origin__. 
 
 ### Preliminary: configuring git (3 min)
 
@@ -48,11 +26,11 @@ __Optional__ (but recommended): After class, you might want to [cache](http://ha
 
 ### The typical workflow (8 min)
 
-The majority of your interaction with version control will be this workflow. 
+The majority of your interaction with version control will be a pull/stage/commit/push workflow, explained here. For another resource on this, check out [happygitwithr: rstudio-git-github](http://happygitwithr.com/rstudio-git-github.html).
 
 0. __Clone__ your repository if you don't have a local copy.
 
-Once you have a local copy of the repository.
+Once you have a local copy of the repository, then working on a project involves frequent use of these three steps:
 
 1. __Pull__ the remote repo.
 2. Make changes to your files, __stage__ and __commit__ them.
@@ -65,6 +43,8 @@ Integrate version control as you do work!
 - Workflow without version control: save your files spontaneously.
 - Workflow with version control: save your files spontaneously, commit your changes after every "step" in your work, and push your changes [in case of fire](https://github.com/louim/in-case-of-fire). 
 
+Committing often ensures that you can trace back all the work you did. This results in transparency with the way your project has developed, which is a very effective workflow. But, from my experience at least, making half baked work viewable might face you with feelings of vulnerability. I encourage you to push past this.
+
 ### The typical workflow: Activity (5 min)
 
 Let's make a change to our repository from local.  
@@ -73,21 +53,27 @@ Let's make a change to our repository from local.
     - In RStudio, File -> New Project -> Version Control -> Git.
     - You should see a `Git` tab in RStudio, upper-right corner window. If not, see [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help.
     - Take a look at the files you just downloaded!
-- By the way:   
-    - What's an RStudio "project"?
-    - We don't need to edit a file _with RStudio_ to use its git client!
-    - File doesn't need to have anything to do with R, either.
-- Staging and committing:
-    1. Concept
-    2. Modify your Rmd exploration from earlier (just add a new line).
-    3. Stage and commit
-- Push/Pull:
-    1. Concept
-    2. Try pushing!
+2. Make your README a little nicer. Maybe fix up the title.
+3. Stage and commit the changes:
+    - In the Git tab in RStudio, click the checkboxes for the files that you want to commit. This is called "staging".
+    - Click the "Commit" button.
+    - Enter a commit message.
+    - Click "commit". 
+4. Push to your remote repository (which is named "origin")
+    - Click the up arrow in the Git panel in RStudio.
 
 ### Git Clients (3 min)
 
-We just saw that RStudio can "talk to" git. But there are other ways we can use git locally. 
+We just saw that RStudio can "talk to" git. But there are other ways we can use git locally. To "directly" interact with git, we type commands in the terminal (or bash) like `git clone`, `git commit`, etc. If you want to access the full functionality of git, you'll need to use the terminal.
+
+Alternatively, there are _git clients_ that provide a visual dashboard for interacting with git. RStudio is one example. Others:
+
+- GitHub Desktop
+- Source Tree
+- Gitkraken
+- ...
+
+In STAT 545, we'll be using the RStudio git client, but you can use whichever method you prefer. 
 
 ### Merge conflicts (5 min)
 
@@ -95,86 +81,89 @@ If you change a file locally, and that same file (_and_ the same lines) get chan
 
 ### Merge conflicts: Activity (5 min)
 
-2. Edit line 1 of the README _on both branches_ to something different in both cases.
-3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
+Let's make a merge conflict, and fix it. 
 
-### Branching (5 min)
+1. Edit a line of your README both locally and remotely to something different in both cases. Commit both changes.
+2. Try pulling your remote changes. You'll get a _merge conflict_. 
+3. Update the file that has the conflict, commit your changes, and push.
 
-Can either create a branch locally, or on GitHub. 
+### Branching (8 min)
 
-To make a new branch on GitHub:
+Branching is the idea of making commits somewhere other than your main repository on GitHub. Even cloning a repo is a type of branch. 
 
-To switch to the new branch locally:
+Git and GitHub allow us to make branches _within a repository_, and we can do this both locally and on GitHub (although it seems the RStudio git client doesn't provide functionality for local merging). Let's check out the [STAT545-UBC.github.io](https://github.com/STAT545-UBC/STAT545-UBC.github.io/) repo to see some branches (which is actually being phased out). 
 
-To make a new branch locally:
+Eventually, you may want to merge a branch back to its predecessor. This is called __merging__. A merge specifically on GitHub initiates a __pull request__ -- the idea here being that you'd like the predecessor branch to _pull_ the commits from the child branch, and you're _requesting_ it from the collaborators on your repository (which is sometimes just yourself). [Example from STAT545-UBC.github.io](https://github.com/STAT545-UBC/STAT545-UBC.github.io/pull/64) again. For more info on pull requests, see this [GitHub tutorial](https://help.github.com/articles/about-pull-requests/).
 
-To push that branch to github:
+There are many reasons you may want to branch. Here are some:
 
-- `git push` is actually `git push origin master`. 
+- A collaborator wants to make a change to the repo, but the end product of the change requires review from collaborators.
+- You want to make changes, but don't want to "deploy" the changes until later (such as if pushing to github triggers a website build).
+- If you want to try something "risky", it's just safer to work on a branch.
 
 ### Branching: Activity (5 min)
 
-Organizing the participation repo
+Let's organize our participation repo in a branch.
 
-1. Create a new branch locally, called "organizing":
+1. Create a new branch locally, called "organizing" (we could have also made this on GitHub):
     - Click the "Git" tab in the upper-right panel of RStudio
     - Within that window's option bar, click ![](./img/branch.png).
     - Name your branch and create!
-2. Stage and commit the new files:
-    - In the Git tab in RStudio, click the checkboxes for the files that you want to commit. This is called "staging".
-3. Restructure your repository in a more sensible way, using folders.
-4. Stage and commit the changes
-4. Explore: 
+2. Stage and commit the new files.
+3. Restructure your repository in a more sensible way, using folders (locally).
+4. Stage and commit the changes; push to GitHub.
+5. Explore: 
     - switch between branches to see that the repo structure is different.
-4. Push branch to GitHub.
-4. Merge the branch to "master".
+6. Merge the branch to "master" via GitHub by making a pull request. 
 
 ### Undoing Changes (5 min)
 
-https://www.atlassian.com/git/tutorials/undoing-changes
+There are many ways that work can be "undone" in git. We will only investigate two of the simpler methods. For more advanced methods, like reverting to a previous commit, check out these resources by [bitbucket](https://www.atlassian.com/git/tutorials/undoing-changes) and [GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) -- you'll need to use the command line. 
 
-### Undoing Changes: Activity (5 min)
+The two most useful "undo"s are:
 
+1. Undoing your (uncommited) work to the previous commit.
+2. Browsing the repo at previous states, and taking files from there. 
 
-### When all else fails (3 min)
+We'll demonstrate (1) in an activity.
 
-If you're encountering problems with git locally, try:
+### Undoing Changes: Activity (2 min)
 
-- As always, google search. 
-- [Burn it all down](http://happygitwithr.com/burn.html).
-    - There's even an [xkcd comic](https://xkcd.com/1597/) on this.
+Here's how to go back to the most recent commit.
 
-The git documentation is not friendly. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it.
+1. First, make and save a change to (say) a README file in your participation repo.
+2. In the Git panel of RStudio, stage the file that you want to return to the previous commit. Click "More" -> "Revert..." -> "Yes"
 
+That's it!
 
-## GitHub for Collaboration, Part II
+### Getting errors? (3 min)
 
-On Day 1, we saw GitHub Issues to facilitate collaboration. We'll look at other features useful for collaboration. 
+It's not unusual to experience some errors in git, especially if you're first learning how to use it. Try to get yourself unstuck with the concepts we've discussed here first. 
 
-- GitHub Pages
-- Forking
-- Tagging a Release
+But, you might find yourself stuck. The git documentation is full of jargon, making it difficult to read and therefore difficult to debug things. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it. If you are in this position, it's best to just [burn it all down](http://happygitwithr.com/burn.html). There's even an [xkcd comic](https://xkcd.com/1597/) on this.
 
-Alternatives to GitHub. Common ones are _bitbucket_ and _gitlab_. 
+### GitHub Pages (3 min)
 
-### Pull Requests (5 min)
+You can turn your GitHub repository into a website, by enabling __GitHub Pages__ on that repo. This is useful for something as small as being able to display HTML files without getting a local copy of the repository, to something as big as making a full fledged website like the [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca) website. 
 
-(Show an example of discussion with pull requests)
+- If you make a repo called `yourusername.github.io`, and enable GitHub Pages on that repo, then the URL of the website will be `https://yourusername.github.io/`.
+- If you enable GitHub pages on any other repo, the URL for that repo will be `https://yourusername.github.io/name_of_other_repo`.
 
-
-### GitHub Pages (5 min)
+Learn more with GitHub's [GitHub Pages](https://pages.github.com/) tutorial. 
 
 ### GitHub Pages: Activity (5 min)
 
-Let's make your HTML files readble 
+Let's use GitHub pages for making your HTML files readble.
 
 1. Set up a basic "GitHub pages" website with your participation repo:
-    1. Go to "settings" on your repo.
-    2. Scroll down to "GitHub Pages"
-    3. Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
-2. Forking a repo: 
-    1. Let's try forking the `Classroom` repo.
-    2. We'll make a change, and will submit a pull request.
+    - Go to "settings" on your repo, and stay on the "Options" tab.
+    - Scroll down to "GitHub Pages".
+    - Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
+2. Also under the "GitHub Pages" section, you'll find your website URL. Check it out!
+3. Navigate to an HTML file on your repo.
+    - Your URL acts as your root directory. You can access files in your repository by adding on the path to the file.
+4. Add a link to the HTML file somewhere in your repo, perhaps a README file. Commit your changes and (if working locally) push to GitHub. 
+
 
 ### Tagging a Release (5 min)
 
@@ -189,8 +178,8 @@ Examples:
 
 Congratulations! We finished the first two weeks of STAT 545A, which focussed on _tools_. To mark this milestone, let's tag a release on our participation repositories.
 
-1. 
-
-
-
-
+1. On your GitHub repo, click "releases"
+2. Click "Create a new release"
+3. Fill in the fields:
+    - It probably makes sense to use a versioning system like `cm004` here.
+4. "Publish Release".
