@@ -1,6 +1,6 @@
 # The version control workflow
 
-Today's topic is version control.
+Today's topic is version control..
 
 ## Learning Objectives
 
