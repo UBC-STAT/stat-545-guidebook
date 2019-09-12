@@ -116,9 +116,15 @@ To push that branch to github:
 
 Organizing the participation repo
 
-1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
-2. Restructure your repository in a more sensible way, using folders.
-3. Explore: 
+1. Create a new branch locally, called "organizing":
+    - Click the "Git" tab in the upper-right panel of RStudio
+    - Within that window's option bar, click ![](./img/branch.png).
+    - Name your branch and create!
+2. Stage and commit the new files:
+    - In the Git tab in RStudio, click the checkboxes for the files that you want to commit. This is called "staging".
+3. Restructure your repository in a more sensible way, using folders.
+4. Stage and commit the changes
+4. Explore: 
     - switch between branches to see that the repo structure is different.
 4. Push branch to GitHub.
 4. Merge the branch to "master".
