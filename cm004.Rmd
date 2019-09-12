@@ -2,70 +2,15 @@
 
 **UNDER REVISION**
 
-Today's topics are:
-
-1. Exploring data frames (in Rmd!)
-2. Working locally with git
-
-To participate in today's class, you'll need:
-
-- [git installed](http://happygitwithr.com/install-git.html)
-- A GitHub account
-- RStudio installed
-- Access to the command line (can do through RStudio)
-
-## Exploring data frames (in Rmd!)
+Today's topic is version control.
 
 ## Learning Objectives
 
-- Describe the difference between git and GitHub, and name similar software
-- Merge repository branches via pull requests on GitHub, resolving merge conflicts if necessary
-
-In our R exploration last time, we saw one way to bundle together multiple pieces of information: _vectors_. Now, we'll turn to _data frames_.
-
-By the end of this lesson, students are expected to be able to:
-
-- Describe common properties of "built-in" R data frames using R
-- Extract columns from a data frame
-
-## Resources
-
-This lesson closely mirrors the [stat545.com: care-feeding-data](http://stat545.com/block006_care-feeding-data.html) page for exploring data frames.
-
-## Getting Started
-
-We'll be working with the gapminder data set. To access it, in any R console, run the following:
-
-```
-install.packages('gapminder')
-```
-
-## Demonstration
-
-FIRST, let's ensure your [participation repo](http://stat545.com/Classroom/participation.html) is setup.
-
-1. Go to your github.com profile.
-2. If you have a participation repository, but it's not called `STAT545_participation`, I'll show you how to rename it. 
-3. If you DON'T have a participation repository set up, let's do that (I'll make one, too).
-
-Now, I've started a "cleaned up" version of the Rmd file we were exploring last time. Find it [on GitHub](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm004-exercise-df.Rmd)!
-
-Let's build this up, and submit the result to your [participation repository](http://stat545.com/Classroom/participation.html) for your participation assessment. 
-
-## Working locally with git
-
-## Learning Objectives
-
-The concepts we'll be touching on here are:
-
-- clone
-- stage
-- commit (again!)
-- pull/push
-
-By the end of the lesson, students are expected to be able to:
+From this lesson, students are expected to be able to:
 
 - Demonstrate the above concepts using RStudio's git client with your participation GitHub repository.
+- Be able to make a basic website out of your participation repository using GitHub Pages
+- Know roughly what the above concepts are about
 
 ## Resources
 
@@ -75,7 +20,24 @@ Want to learn more, above and beyond what's done in class? Take a look at these:
 
 - Excellent [resource by GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) on how to "undo" almost anything (including "going back" to a previous state).
 
-## Getting Started
+The GitHub documentation is perhaps the best place to learn about these outside of class:
+
+- [GitHub Pages](https://pages.github.com/)
+- [Forking](https://help.github.com/articles/fork-a-repo/)
+    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
+- [Pull Request](https://help.github.com/articles/about-pull-requests/)
+
+
+[Branching on GitHub](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/)
+
+RESOURCES FOR INSTALLING PDFLATEX
+
+## Working locally with git
+
+
+Concept: local vs. remote.
+
+### Preliminary: configuring git (3 min)
 
 You'll need to [config your git](http://happygitwithr.com/hello-git.html) using the command line.
 
@@ -83,18 +45,34 @@ Your RStudio will probably be able to "find" git. But if it can't, you'll encoun
 
 __Optional__ (but recommended): After class, you might want to [cache](http://happygitwithr.com/credential-caching.html) your credentials so that you don't have to keep inserting your password.
 
-## Demonstration
 
-The end product of this demonstration is a locally modified version of our data frame exploration, pushed to GitHub.
+### The typical workflow (8 min)
 
-- What are "git clients"? 
-    - We'll be using the git client built-in to RStudio.
-- Cloning: 
-    1. Concept (remember "branches"?)
-    2. Practice with your participation repo. I'll be using the [Classroom](https://github.com/STAT545-UBC/Classroom) repo. 
-        - In RStudio, File -> New Project -> Version Control -> Git.
-        - You should see a `Git` tab in RStudio, upper-right corner window. If not, see [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help.
-    3. Take a look at the files you just downloaded!
+The majority of your interaction with version control will be this workflow. 
+
+0. __Clone__ your repository if you don't have a local copy.
+
+Once you have a local copy of the repository.
+
+1. __Pull__ the remote repo.
+2. Make changes to your files, __stage__ and __commit__ them.
+3. __Push__ the changes (after perhaps pulling again).
+
+Git treats the remote repository as the "official" version of the repository. This means that your local copy is a second class citizen -- the repository you have locally must be up-to-date with the remote repository before you are allowed to push your work. If there are commits on the remote repository that are not present locally, git will throw an error if you try to push your changes. 
+
+Integrate version control as you do work!
+
+- Workflow without version control: save your files spontaneously.
+- Workflow with version control: save your files spontaneously, commit your changes after every "step" in your work, and push your changes [in case of fire](https://github.com/louim/in-case-of-fire). 
+
+### The typical workflow: Activity (5 min)
+
+Let's make a change to our repository from local.  
+
+1. Cloning your participation repo.
+    - In RStudio, File -> New Project -> Version Control -> Git.
+    - You should see a `Git` tab in RStudio, upper-right corner window. If not, see [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help.
+    - Take a look at the files you just downloaded!
 - By the way:   
     - What's an RStudio "project"?
     - We don't need to edit a file _with RStudio_ to use its git client!
@@ -107,19 +85,54 @@ The end product of this demonstration is a locally modified version of our data 
     1. Concept
     2. Try pushing!
 
-## Adopting git in your workflow
+### Git Clients (3 min)
 
-__Before the world of git:__
+We just saw that RStudio can "talk to" git. But there are other ways we can use git locally. 
 
-_Save_ perpetually.
+### Merge conflicts (5 min)
 
-__After embracing git:__
+If you change a file locally, and that same file (_and_ the same lines) get changed on the remote repository in a different way, you'll end up with a _merge conflict_ that you'll need to resolve. Remember that your local copy is a second class citizen compared to the remote version, so you'll have to resolve things locally before pushing to the remote. 
 
-_Save_ perpetually, _commit_ often, _push_ [in case of fire](https://github.com/louim/in-case-of-fire/blob/master/in_case_of_fire.pdf).
+### Merge conflicts: Activity (5 min)
 
-__Need help?__
+2. Edit line 1 of the README _on both branches_ to something different in both cases.
+3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
 
-If you're encountering problems, try:
+### Branching (5 min)
+
+Can either create a branch locally, or on GitHub. 
+
+To make a new branch on GitHub:
+
+To switch to the new branch locally:
+
+To make a new branch locally:
+
+To push that branch to github:
+
+- `git push` is actually `git push origin master`. 
+
+### Branching: Activity (5 min)
+
+Organizing the participation repo
+
+1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
+2. Restructure your repository in a more sensible way, using folders.
+3. Explore: 
+    - switch between branches to see that the repo structure is different.
+4. Push branch to GitHub.
+4. Merge the branch to "master".
+
+### Undoing Changes (5 min)
+
+https://www.atlassian.com/git/tutorials/undoing-changes
+
+### Undoing Changes: Activity (5 min)
+
+
+### When all else fails (3 min)
+
+If you're encountering problems with git locally, try:
 
 - As always, google search. 
 - [Burn it all down](http://happygitwithr.com/burn.html).
@@ -128,58 +141,26 @@ If you're encountering problems, try:
 The git documentation is not friendly. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it.
 
 
-## If there's time remaining
+## GitHub for Collaboration, Part II
 
-- Concepts related to [getting help](http://stat545.com/help-general.html) in R (or with other computational problems):
-    - Google the error message (works most of the time)
-    - Write a question using a MWE. You'll solve it yourself most of the time.
-    - Post question to thread such as SO.
-- "Lab"
-
-
-### Live-Coding: Branching and Merging
-
-The notion of _branching_ and _merging_ shows up seemingly everywhere in version control. You'll encounter _merge conflicts_, too.
-
-To demonstrate concepts, let's look at a _repository branch_. There are other types of branches, as we'll see. For more info on this, see [the GitHub documentation](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/). 
-
-NOTE: I'm deferring the motivation for repo branching until later. 
-
-1. Create a new branch via the home page of your repo (find the "branch" button). Call it `test1`.
-2. To the README on the `test1` branch, add a relative link to the other `.md` file in the repo (using markdown syntax).
-3. Explore: 
-    - switch between branches to see that the repo structure is different.
-    - Diagram of commit history for both branches.
-4. Merge the branch to "master".
-
-Part 2: 
-
-1. Make a new branch called `test2`.
-2. Edit line 1 of the README _on both branches_ to something different in both cases.
-3. Try merging. You'll get a _merge conflict_ -- go ahead and resolve it, then merge. 
-
-
-#### Learning Objectives: Collaboration with GitHub
-
-The primary focus here is learning about __leveraging GitHub's version control for collaboration__. The concepts are:
+On Day 1, we saw GitHub Issues to facilitate collaboration. We'll look at other features useful for collaboration. 
 
 - GitHub Pages
 - Forking
-- Pull Request
+- Tagging a Release
 
-Specifically, by the end of today's class, students are expected to:
+Alternatives to GitHub. Common ones are _bitbucket_ and _gitlab_. 
 
-- Be able to make a basic website out of your participation repository using GitHub Pages
-- Know roughly what the above concepts are about
+### Pull Requests (5 min)
 
-#### Demonstration
+(Show an example of discussion with pull requests)
 
-For participation marks, by the end of this demonstration: 
 
-- you'll have a GitHub pages website set up for your participation repo
-- you __don't need to have__ anything for the forking exercise!
+### GitHub Pages (5 min)
 
-Checklist:
+### GitHub Pages: Activity (5 min)
+
+Let's make your HTML files readble 
 
 1. Set up a basic "GitHub pages" website with your participation repo:
     1. Go to "settings" on your repo.
@@ -189,14 +170,21 @@ Checklist:
     1. Let's try forking the `Classroom` repo.
     2. We'll make a change, and will submit a pull request.
 
-## Tagging a Release
+### Tagging a Release (5 min)
+
+Tagging a release on GitHub is like putting a "star" next to a particular commit. It highlights a particular point in time of your repository that is noteworthy, typically after achieving some milestone. It's just easier than having to manually keep track of noteworthy points in your commit history.
+
+Examples:
+
+- After every year of finishing STAT 545A/547M, we tag a release so that we can easily navigate to earlier versions of the course.
+- After sufficient development of an R package like [ggplot2](https://github.com/tidyverse/ggplot2/releases), a new release is tagged corresponding to the version of the package. 
+
+### Tagging a Release: Activity (3 min)
+
+Congratulations! We finished the first two weeks of STAT 545A, which focussed on _tools_. To mark this milestone, let's tag a release on our participation repositories.
+
+1. 
 
 
-#### Resources
 
-The GitHub documentation is perhaps the best place to learn about these outside of class:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Forking](https://help.github.com/articles/fork-a-repo/)
-    - [happygitwithr: fork](http://happygitwithr.com/fork.html) is also a good resource.
-- [Pull Request](https://help.github.com/articles/about-pull-requests/)
