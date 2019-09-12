@@ -1,5 +1,9 @@
 # Intro to data wrangling, Part I
 
+__Announcements__:
+
+- Homework 1 is due tonight. Your work should be stored in your _homework_ repository, not your _partication_ repo!
+
 ## Review, and Looking Ahead
 
 We've done a lot so far! Let's recap/review. Here are the main concepts we've covered:
