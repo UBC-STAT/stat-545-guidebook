@@ -51,34 +51,6 @@ Note: think of `%>%` as the word "then"!
 
 Knit, commit, push!
 
-# Break/Challenge: metaprogramming
-
-Here's an activity for you to do during the break, in case you're all caught up. It should help you understand metaprogramming a bit more.
-
-Suppose you're the instructor of an R programming course. You write an assignment question to evaluate whether students can write an `if` statement, for which an answer to the question looks something like this:
-
-```
-my_commute <- 60
-if (my_commute > 30) {
-    print("That's a long commute!")
-} else {
-    print("That's a short commute.")
-}
-```
-
-Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these steps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
-
-1. Wrap the above block of code in the `expr()` function from the `rlang` package.
-2. Use the `eval()` function to execute the code, to see if the code runs.
-3. Use the `as.character()` function to check whether this response contains an `if` statement.
-
-# Relational/Comparison and Logical Operators in R
-
-1. Find all entries of Canada and Algeria occuring in the '60s. 
-
-2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
-3. Find all entries _not_ including Canada and Algeria.
-
 # Bonus Exercises
 
 If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
