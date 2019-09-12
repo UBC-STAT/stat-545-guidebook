@@ -1,229 +1,92 @@
 ---
-title: "cm006 Exercises: Exploring Geometric Objects"
+title: 'cm005: `dplyr` Exercise'
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
 
-In this worksheet, we'll be exploring various plot types (i.e., geometric objects), only using the `x` and `y` aesthetics (and `group`).
+**Optional, but recommended startup**:
 
-1. To get started, load the `tidyverse` and `gapminder` R packages. 
+Change the file output to both html and md _documents_ (not notebook).
 
+# Intro to `dplyr` syntax
 
-## Scatterplot
+1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
+    - This loads `dplyr`, too.
+2. `knit` the document. 
 
-Let's look at a _scatterplot_ of `gdpPercap` vs. `lifeExp`. 
+## `select()`
 
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-    - We'll ignore "coordinate system" and "facetting" after this.
+1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-| coordinate system     |  |
-| facetting             |  |
+2. Select all variables, from `country` to `lifeExp`. 
 
-2. Populate the data and aesthetic mapping in `ggplot`. What is returned? What's missing?
+3. Select all variables, except `lifeExp`.
 
+4. Put `continent` first. Hint: use the `everything()` function.
 
+5. Rename `continent` to `cont`.
 
-3. Add the missing component as a _layer_.
+## `arrange()`
 
+1. Order by year.
 
+2. Order by year, in descending order.
 
-Notice the "metaprogramming" again!
+3. Order by year, then by life expectancy.
 
-4. You _must_ remember to put the aesthetic mappings in the `aes` function! What happens if you forget?
+## Piping, `%>%`
 
+Note: think of `%>%` as the word "then"!
 
+1. Combine `select()` Task 1 with `arrange()` Task 3.
 
-5. Put the x-axis on a log scale, first by transforming the x variable. 
-    - Note: `ggplot2` does some data wrangling and computations itself! We don't always have to modify the data frame.
+## `filter()`
 
+1. Only take data with population greater than 100 million.
 
+2. Of those, only take data from Asia.
 
-6. Try again, this time by changing the _scale_ (this way is better).
+## git stuff (Optional)
 
+Knit, commit, push!
 
+# Break/Challenge: metaprogramming
 
-7. The aesthetic mappings can be specified on the geom layer if you want, instead of the main `ggplot` call. Give it a try:
+Here's an activity for you to do during the break, in case you're all caught up. It should help you understand metaprogramming a bit more.
 
+Suppose you're the instructor of an R programming course. You write an assignment question to evaluate whether students can write an `if` statement, for which an answer to the question looks something like this:
 
-8. Optional: git stage and commit
+```
+my_commute <- 60
+if (my_commute > 30) {
+    print("That's a long commute!")
+} else {
+    print("That's a short commute.")
+}
+```
 
-__Uses of a scatterplot__: 
+Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these steps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
 
-- Visualize 2-dimensional distributions; dependence.
-- 2 numeric variables
+1. Wrap the above block of code in the `expr()` function from the `rlang` package.
+2. Use the `eval()` function to execute the code, to see if the code runs.
+3. Use the `as.character()` function to check whether this response contains an `if` statement.
 
-## Histograms, and Kernel Density Plots
+# Relational/Comparison and Logical Operators in R
 
-Let's build a histogram of life expectancy.
+1. Find all entries of Canada and Algeria occuring in the '60s. 
 
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
+2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
+3. Find all entries _not_ including Canada and Algeria.
 
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
+# Bonus Exercises
 
-2. Build the histogram of life expectancy.
+If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
 
+1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
 
+2. Take the first three columns, and extract the names.
 
-3. Change the number of bins to 50.
-
-
-
-4. Instead of a histogram, let's create a kernel density plot.
-
-
-
-5. Optional: git stage and commit
-
-__Uses of a histogram__: Explore the distribution of a single numeric variable.
-
-
-## Box plots, and violin plots
-
-Let's make _box plots_ of population for each continent. Note: y-axis is much better on a log scale!
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. Initiate the `ggplot` call, with the log y scale, and store it in the variable `a`. Print out `a`.
-
-
-
-3. Add the boxplot geom to `a`.
-
-
-
-4. A violin plot is a kernel density on its side, made symmetric. Add that geom to `a`.
-    - What's better here, boxplots or violin plots? Why?
-
-5. Optional: git stage and commit
-
-__Use of boxplot__: Visualize 1-dimensional distributions (of a single numeric variable).
-
-## Jitter plots
-
-Let's work up to the concept of a _jitter plot_. As above, let's explore the population for each continent, but using points (again, with the y-axis on a log scale).
-
-Let's hold off on identifying the grammar. 
-
-1. Initiate the `ggplot` call to make a scatterplot of `continent` vs `pop`; initiate the log y scale. Store the call in the variable `b`.
-
-
-
-2. Add the point geom to `b`. Why is this an ineffective plot?
-
-
-
-3. A solution is to jitter the points. Add the jitter geom. Re-run the command a few times -- does the plot change? Why?
-
-
-
-4. How does the grammar differ from a box plot or violin plot?
-    - ANSWER: 
-
-5. We can add multiple geom _layers_ to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa. 
-
-
-
-6. Optional: git stage and commit
-
-__Uses of jitterplot__: Visualize 1-dimensional distributions, AND get a sense of the sample size.
-
-## Time/Line Plots
-
-Let's make some time/line plot, starting with Canada's life expectancy over time.
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. In one readable call, write code that:
-    1. Filters the data to Canada only
-    2. Pipes the filtered data into `ggplot`
-    3. Makes the time plot of `lifeExp` over time
-    4. Also displays the points
-
-
-
-3. Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
-
-
-
-4. Use the `group` aesthetic to fix the problem.
-
-
-
-5. Optional: git stage and commit
-
-__Uses of time/line plots__: Visualize trends of a numeric variable over time.
-
-## Path plots
-
-Let's see how Rwanda's life expectancy and GDP per capita have evolved over time, using a path plot.
-
-1. Make a scatterplot. Store it in the variable `c`. 
-
-
-
-2. We want to connect the dots from earliest point to latest. What happens if we add the "line" geom to `c`?
-
-
-
-3. Add the appropriate geom to `c`. In that geom, specify a property of the geom: `arrow=arrow()`. 
-
-
-4. Optional: git stage and commit
-
-__Uses of path plots__: The four "corners" of the plot usually indicate different qualities. This plot allows you to see how Rwanda (or some entity) evolves over these qualities.
-
-## Bar plots
-
-How many countries are in each continent? Use the year 2007.
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable `d`.
-
-
-
-3. Notice the y-axis. Oddly, `ggplot2` doesn't make it obvious how to change to proportion. Try adding a `y` aesthetic: `y=..count../sum(..count..)`.
-
-
-
-4. Optional: git stage, commit, and push!
-
-__Uses of bar plots__: Get a sense of relative quantities of categories, or see the probability mass function of a categorical random variable.
+3. Of the `iris` data frame, take all columns that start with the word "Petal". 
+    - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
+    - Exercise from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).

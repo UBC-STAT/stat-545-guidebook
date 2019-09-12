@@ -1,4 +1,4 @@
-# Introduction to plotting with `ggplot2`, Part II
+# Intro to plotting with `ggplot2`, Part II
 
 
 ## Today

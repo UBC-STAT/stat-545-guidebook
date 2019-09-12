@@ -6,44 +6,41 @@ output:
     theme: paper
 ---
 
-<!---The following chunk allows errors when knitting--->
+<!--- To execute code in chunks upon knitting, remove the following chunk --->
 
-```{r allow errors, echo = FALSE}
-knitr::opts_chunk$set(error = TRUE)
+
+
+
+
+1. To get started, load the `tidyverse` and `gapminder` R packages. 
+
+
+```r
+library(FILL_THIS_IN)
 ```
 
-
-```{r load packages, warning = FALSE}
-suppressPackageStartupMessages(library(FILL_THIS_IN))
-suppressPackageStartupMessages(library(gapminder))
+```
+## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
 ```
 
 
 
 ## Scatterplot
 
-In this section, a _scatterplot_ of `gdpPercap` vs. `lifeExp` is investigated.
+Let's look at a _scatterplot_ of `gdpPercap` vs. `lifeExp`. 
 
-Here are the grammar of graphics components for the simplest scatterplot, with the bold components being mandatory to specify in `ggplot2`:
-
+1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
+    - We'll ignore "coordinate system" and "facetting" after this.
 
 | Grammar Component     | Specification |
 |-----------------------|---------------|
-| __data__              | `gapminder`   |
-| __aesthetic mapping__ | FILL_THIS_IN  |
-| __geometric object__  | FILL_THIS_IN  |
-| scale                 | FILL_THIS_IN  |
-| statistical transform | FILL_THIS_IN  |
-| coordinate system     | FILL_THIS_IN  |
-| facetting             | FILL_THIS_IN  |
-
-Here is the corresponding plot:
-
-```{r}
-ggplot(FILL_THIS_IN, aes(FILL_THIS_IN, FILL_THIS_IN)) +
-  geom_point()
-```
-
+| __data__              | `gapminder` |
+| __aesthetic mapping__ |  |
+| __geometric object__  |  |
+| scale                 |  |
+| statistical transform |  |
+| coordinate system     |  |
+| facetting             |  |
 
 2. Populate the data and aesthetic mapping in `ggplot`. What is returned? What's missing?
 
