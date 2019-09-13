@@ -1,9 +1,17 @@
 ---
-title: 'cm005: `dplyr` Exercise'
+title: 'cm006: `dplyr` Exercise'
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r load packages for initial knit, warning = FALSE, include = F}
+```
 
 **Optional, but recommended startup**:
 
@@ -13,39 +21,101 @@ Change the file output to both html and md _documents_ (not notebook).
 
 1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
     - This loads `dplyr`, too.
+    
+```{r load packages, warning = F, message = F}
+# load your packages here:
+library(FILL_THIS_IN)
+library(FILL_THIS_IN)
+```
+    
 2. `knit` the document. 
 
 ## `select()`
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
-2. Select all variables, from `country` to `lifeExp`. 
+```{r}
+select(gapminder, FILL_THIS_IN)
+```
+
+
+2. Select all variables, from `country` to `lifeExp`.
+
+```{r}
+# This will work:
+select(gapminder, FILL_THIS_IN, FILL_THIS_IN, FILL_THIS_IN, FILL_THIS_IN)
+
+# Better way:
+
+```
+
 
 3. Select all variables, except `lifeExp`.
 
+```{r}
+select(gapminder, FILL_THIS_IN)
+```
+
 4. Put `continent` first. Hint: use the `everything()` function.
+
+```{r}
+select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
 
 5. Rename `continent` to `cont`.
 
-## `arrange()`
+```{r}
+rename(gapminder, FILL_THIS_IN)
+```
+
+
 
 1. Order by year.
 
+```{r}
+arrange(gapminder, FILL_THIS_IN)
+```
+
 2. Order by year, in descending order.
+
+```{r}
+arrange(gapminder, FILL_THIS_IN)
+```
 
 3. Order by year, then by life expectancy.
 
-## Piping, `%>%`
+```{r}
+arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+## Piping, `%>%` (8 min)
 
 Note: think of `%>%` as the word "then"!
 
 1. Combine `select()` Task 1 with `arrange()` Task 3.
 
-## `filter()`
+```{r}
+# Nesting function calls is hard to read
+
+# Pipe operators allow us to read operations line by line
+# Here the gapminder is the input for the first argument of the next function
+
+```
+
 
 1. Only take data with population greater than 100 million.
 
+```{r}
+gapminder %>%
+  filter(FILL_THIS_IN > 100000000)
+```
+
 2. Of those, only take data from Asia.
+
+```{r}
+
+```
 
 ## git stuff (Optional)
 
