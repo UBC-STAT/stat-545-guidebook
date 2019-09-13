@@ -22,7 +22,7 @@ Here are some supplementary resources:
 
 ## Participation
 
-To get participation points for today, we'll be filling out the [cm005-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm005-exercise.Rmd) file, and adding it to your participation repo.
+To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm006-exercise.Rmd) file, and adding it to your participation repo.
 
 Let's get set up:
 
@@ -137,11 +137,11 @@ By the end of this lesson, students are expected to be able to:
 
 ### Demonstration
 
-Continue along with the `cm005-exercise.Rmd` file. 
+Continue along with the `cm006-exercise.Rmd` file. 
 
 ## If there's time remaining
 
-1. Let's do the bonus exercises together, in the `cm05-exercise.Rmd` file.
+1. Let's do the bonus exercises together, in the `cm06-exercise.Rmd` file.
 2. Another "break"
 
 
