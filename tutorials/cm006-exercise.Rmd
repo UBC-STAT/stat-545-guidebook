@@ -30,7 +30,7 @@ library(FILL_THIS_IN)
     
 2. `knit` the document. 
 
-## `select()`
+## `select()` (8 min)
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
@@ -70,6 +70,7 @@ rename(gapminder, FILL_THIS_IN)
 ```
 
 
+## `arrange()` (8 min)
 
 1. Order by year.
 
@@ -103,6 +104,7 @@ Note: think of `%>%` as the word "then"!
 
 ```
 
+## `filter()` (8 min)
 
 1. Only take data with population greater than 100 million.
 
