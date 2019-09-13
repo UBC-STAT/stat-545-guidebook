@@ -42,7 +42,6 @@ Here are the concepts we'll be exploring in this lesson:
 - `dplyr` functions:
     - select
     - arrange
-    - filter
 - piping
 
 By the end of this lesson, students are expected to be able to:
@@ -81,19 +80,6 @@ Why?
 - Having this in the back of your mind will help you identify qualities of and produce a readable analysis.
 
 ### Compare base R to `dplyr`
-
-Let's talk about these concepts:
-
-__Metaprogramming__.
-
-Hadley Wickham says it best in [adv-r: meta](https://adv-r.hadley.nz/meta.html): you trade precision for concision. Here's the example he gives:
-
-- `subset(diamonds, x == 0 & y == 0 & z == 0)`, vs.
-- `diamonds[diamonds$x == 0 & diamonds$y == 0 & diamonds$z == 0, ]`
-
-__Pure functions__.
-
-I=O, and does not impact workspace.
 
 __Self-documenting code__. 
 
@@ -139,11 +125,15 @@ Here are the concepts we'll be exploring in this lesson:
 
 - Relational/Comparison operators
 - Logical operators
+- `dplyr` functions:
+    - filter
+    - mutate
 
 By the end of this lesson, students are expected to be able to:
 
 - Predict the output of R code containing the above operators.
 - Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
+- Subsetting and transforming data using filter and mutate
 
 ### Demonstration
 
