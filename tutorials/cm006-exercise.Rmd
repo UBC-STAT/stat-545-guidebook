@@ -30,7 +30,8 @@ library(FILL_THIS_IN)
     
 2. `knit` the document. 
 
-## `select()` (8 min)
+
+## `select()` (10 min)
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
@@ -43,10 +44,10 @@ select(gapminder, FILL_THIS_IN)
 
 ```{r}
 # This will work:
-select(gapminder, FILL_THIS_IN, FILL_THIS_IN, FILL_THIS_IN, FILL_THIS_IN)
+select(gapminder, country, continent, year, lifeExp)
 
 # Better way:
-
+select(gapminder, FILL_THIS_IN)
 ```
 
 
@@ -66,11 +67,11 @@ select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
 5. Rename `continent` to `cont`.
 
 ```{r}
-rename(gapminder, FILL_THIS_IN)
+select(gapminder, FILL_THIS_IN)
 ```
 
 
-## `arrange()` (8 min)
+## `arrange()` (10 min)
 
 1. Order by year.
 
@@ -90,34 +91,84 @@ arrange(gapminder, FILL_THIS_IN)
 arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
 ```
 
-## Piping, `%>%` (8 min)
+## Piping, `%>%` (10 min)
 
 Note: think of `%>%` as the word "then"!
 
 1. Combine `select()` Task 1 with `arrange()` Task 3.
 
-```{r}
-# Nesting function calls is hard to read
+```{r nesting functions example, eval = F}
+# Nesting function calls can be hard to read
+arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
+```
 
-# Pipe operators allow us to read operations line by line
-# Here the gapminder is the input for the first argument of the next function
+```{r}
 
 ```
 
-## `filter()` (8 min)
+# Break 
+
+Take a break and resume with section 6.7 in the guide.
+
+## `filter()` (10 min)
 
 1. Only take data with population greater than 100 million.
 
 ```{r}
 gapminder %>%
-  filter(FILL_THIS_IN > 100000000)
+  filter(FILL_THIS_IN)
 ```
 
-2. Of those, only take data from Asia.
+2. Your turn: of those rows filtered from step 1., only take data from Asia.
 
 ```{r}
-
+gapminder %>%
+  filter(FILL_THIS_IN)
 ```
+
+3. Repeat 2, but take data from countries Brazil, and China. 
+
+```{r}
+gapminder %>%
+  filter(FILL_THIS_IN)
+```
+
+## `mutate()` (10 min)
+
+Let's get: 
+
+- GDP by multiplying GPD per capita with population, and
+- GDP in billions, named (`gdpBill`), rounded to two decimals.
+
+```{r}
+gapminder %>%
+  mutate(FILL_THIS_IN)
+```
+
+Notice the backwards compatibility! No need for loops!
+
+Try the same thing, but with `transmute` (drops all other variables). 
+
+```{r}
+gapminder %>%
+  transmute(FILL_THIS_IN)
+```
+
+The `if_else` function is useful for changing certain elements in a data frame.
+
+Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in the data frame, but is actually 70. Fix it using `if_else` and `mutate`. 
+
+```{r}
+gapminder %>%
+  mutate(FILL_THIS_IN)
+```
+
+Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
+
+```{r}
+```
+
+These functions we've seen are called __vectorized functions__.
 
 ## git stuff (Optional)
 
@@ -133,4 +184,9 @@ If there's time remaining, we'll practice with these three exercises. I'll give 
 
 3. Of the `iris` data frame, take all columns that start with the word "Petal". 
     - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
-    - Exercise from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).
+    
+4. Convert the population to a number in billions.
+
+5. Filter the rows of the iris dataset for Sepal.Length >= 4.6 and Petal.Width >= 0.5.
+
+Exercises 3. and 5. are from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).
