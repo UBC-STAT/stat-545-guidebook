@@ -10,9 +10,6 @@ editor_options:
 knitr::opts_chunk$set(error = TRUE)
 ```
 
-```{r load packages for initial knit, warning = FALSE, include = F}
-```
-
 **Optional, but recommended startup**:
 
 Change the file output to both html and md _documents_ (not notebook).
@@ -106,9 +103,9 @@ arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
 
 ```
 
-# Break 
+# Resume lecture 
 
-Take a break and resume with section 6.7 in the guide.
+Return to guide at section 6.7.
 
 ## `filter()` (10 min)
 
