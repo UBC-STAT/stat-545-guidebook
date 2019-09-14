@@ -3,7 +3,7 @@
 
 ## Today's Lessons
 
-Today we'll introduce the `dplyr` package. Specifically, we'll look at these three lessons:
+Today we'll introduce the [`dplyr`](https://dplyr.tidyverse.org/) package. Specifically, we'll look at these three lessons:
 
 - Intro to `dplyr` syntax
 - The `dplyr` advantage
@@ -26,7 +26,7 @@ To get participation points for today, we'll be filling out the [cm006-exercise.
 
 Let's get set up:
 
-1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm005-exercise.nb.html).
+1. I made it easier to download this time: just click the upper-right drop-down menu [of the html version](http://stat545.com/Classroom/notes/cm006-exercise.nb.html).
 2. Download the `.Rmd` version to your local participation repo.
     - You should have it cloned to your local machine (aka your computer) from last time.
 3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
@@ -55,7 +55,7 @@ Let's talk about:
 
 - The history of `dplyr`: `plyr`
 - tibbles are a special type of data frame
-- the tidyverse
+- the [tidyverse](https://www.tidyverse.org/)
 
 ### Demonstration
 
@@ -63,9 +63,8 @@ Let's get started with the exercise:
 
 1. Open RStudio, and download the `tidyverse` meta-package by executing `install.packages("tidyverse")` into the R console.
 2. _Optional_: open the `STAT545_participation` RStudio project in RStudio.
-3. With RStudio, open the `cm005-exercise.Rmd` file you downloaded and committed earlier.
-4. Follow the instructions in the `.Rmd` file.
-5. Knit, commit, push.
+3. With RStudio, open the `cm006-exercise.Rmd` file you downloaded and committed earlier.
+4. Follow the instructions in the `.Rmd` file until the *resume lecture* section.
 
 ## The `dplyr` advantage
 
@@ -114,7 +113,7 @@ Note that you need to use the assignment operator to store changes!
 Here are some things you might choose to do on this break:
 
 - Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
-- Fill out the challenge on the `cm005-exercise.Rmd` file.
+- Fill out the challenge on the `cm006-exercise.Rmd` file.
 - Work on an assignment.
 
 ## Relational/Comparison and Logical Operators in R
@@ -141,7 +140,7 @@ Continue along with the `cm006-exercise.Rmd` file.
 
 ## If there's time remaining
 
-1. Let's do the bonus exercises together, in the `cm06-exercise.Rmd` file.
+1. Let's do the bonus exercises together, in the `cm006-exercise.Rmd` file.
 2. Another "break"
 
 
