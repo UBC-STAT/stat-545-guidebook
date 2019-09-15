@@ -26,7 +26,7 @@ Cheat sheets for "quick reference":
 
 Further reading:
 
-- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown.
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. There's also a nice [overview video](https://rmarkdown.rstudio.com/authoring_quick_tour.html) on the site, too.
 - Yihui's [Rmd book](https://bookdown.org/yihui/rmarkdown/) for lots more on R Markdown.
 
 Other explorations of this content:
