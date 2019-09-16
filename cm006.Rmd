@@ -134,6 +134,44 @@ By the end of this lesson, students are expected to be able to:
 - Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
 - Subsetting and transforming data using filter and mutate
 
+### R Operators
+
+**Arithmetic** operators allow us to carry out mathematical operations:
+
+| Operator | Description |
+|------|---------|
+| + | Add |
+| - | Subtract |
+| * | Multiply |
+| / | Divide |
+| ^ | Exponent |
+| %% | Modulus (remainder from division) |
+
+**Relational** operators allow us to compare values:
+
+| Operator | Description |
+|------|---------|
+| < | Less than |
+| > | Greater than |
+| <= | Less than or equal to |
+| >= | Greater than or equal to |
+| == | Equal to |
+| != | Not equal to |
+
+* Arithmetic and relational operators work on vectors.
+
+**Logical** operators allow us to carry out boolean operations:
+
+| Operator | Description |
+|------|---------|
+| ! | Not |
+| | | Or (element_wise) |
+| & | And (element-wise) |
+| || | Or |
+| && | And |
+
+* The difference between `|` and `||` is that the former evaluates only the first element of the two vectors, whereas the latter evaluates element-wise. 
+
 ### Demonstration
 
 Continue along with the `cm006-exercise.Rmd` file. 
