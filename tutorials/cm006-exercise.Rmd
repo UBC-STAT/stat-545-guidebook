@@ -19,7 +19,7 @@ Change the file output to both html and md _documents_ (not notebook).
 1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
     - This loads `dplyr`, too.
     
-```{r load packages, warning = F, message = F}
+```{r load packages, warning = FALSE, message = FALSE}
 # load your packages here:
 library(FILL_THIS_IN)
 library(FILL_THIS_IN)
