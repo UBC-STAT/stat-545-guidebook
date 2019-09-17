@@ -1,244 +1,259 @@
 ---
-title: "cm005 Exercises: Exploring Geometric Objects"
+title: "cm005 Worksheet: Exploring Geometric Objects"
 output: 
   html_document:
     keep_md: true
     theme: paper
 ---
 
-<!--- To execute code in chunks upon knitting, remove the following chunk --->
+## Preliminary
 
+Begin by loading the required packages. If you don't have these installed (or don't know whether you have them installed), you can install them by executing the following code in your console:
 
+```
+install.packages("tidyverse")
+install.packages("scales")
+install.packages("tsibble")
+```
 
-
-
-1. To get started, load the `tidyverse` and `gapminder` R packages. 
+Now run this code chunk to load the packages:
 
 
 ```r
-library(FILL_THIS_IN)
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(tsibble))
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+<!---The following chunk allows errors when knitting--->
+
+
+
+## Exercise 1: Bar Chart Grammar (Together)
+
+Consider the following plot. Don't concern yourself with the code at this point.
+
+
+```r
+gapminder %>% 
+  filter(year == 2007) %>% 
+  mutate(continent = fct_infreq(continent)) %>% 
+  ggplot(aes(continent)) +
+  geom_bar() +
+  theme_bw()
+```
+
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+
+Fill in the seven grammar components for this plot.
+
+| Grammar Component     | Specification |
+|-----------------------|---------------|
+| __data__              | `gapminder` |
+| __aesthetic mapping__ | FILL_THIS_IN |
+| __geometric object__  | FILL_THIS_IN |
+| scale                 | FILL_THIS_IN |
+| statistical transform | FILL_THIS_IN |
+| coordinate system     | FILL_THIS_IN |
+| facetting             | FILL_THIS_IN |
+
+## Exercise 2: `ggplot2` Syntax (Your Turn)
+
+The following is a tsibble (a special type of tibble containing time series data, which we'll see more of later), stored in the variable `mauna`, of CO$_2$ concentrations collected monthly at the Mauna Loa station.
+
+Execute this code to store the data in `mauna`:
+
+
+```r
+(mauna <- tsibble::as_tsibble(co2) %>% 
+   rename(month = index, conc = value))
 ```
 
 ```
-## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
+## # A tsibble: 468 x 2 [1M]
+##       month  conc
+##       <mth> <dbl>
+##  1 1959 Jan  315.
+##  2 1959 Feb  316.
+##  3 1959 Mar  316.
+##  4 1959 Apr  318.
+##  5 1959 May  318.
+##  6 1959 Jun  318 
+##  7 1959 Jul  316.
+##  8 1959 Aug  315.
+##  9 1959 Sep  314.
+## 10 1959 Oct  313.
+## # … with 458 more rows
+```
+
+### 2(a)
+
+Produce a line chart showing the concentration over time. Specifically, the plot should have the following grammar components:
+
+| Grammar Component     | Specification |
+|-----------------------|---------------|
+| __data__              | `mauna` |
+| __aesthetic mapping__ | x: month, y: conc |
+| __geometric object__  | lines |
+| scale                 | linear |
+| statistical transform | none |
+| coordinate system     | rectangular |
+| facetting             | none |
+
+Fill in the blanks to obtain the plot:
+
+
+```r
+ggplot(FILL_THIS_IN, aes(FILL_THIS_IN, FILL_THIS_IN)) +
+  FILL_THIS_IN()
+```
+
+```
+## Error in ggplot(FILL_THIS_IN, aes(FILL_THIS_IN, FILL_THIS_IN)): object 'FILL_THIS_IN' not found
+```
+
+### 2(b)
+
+It turns out that you're allowed to specify the aesthetic mappings in a `geom` layer instead of, or in addition to, in the `ggplot()` function, with the following rules:
+
+- Aesthetics appearing in a `geom` layer apply only to that layer.
+- If there are conflicting aesthetics in both the `ggplot()` function and the `geom` layer, the `geom` layer takes precedence.
+
+The following code mistakenly puts the month variable on the y-axis. Fill in the `FILL_THIS_IN` so that you still obtain the same result as above.
+
+
+```r
+ggplot(mauna, aes(y = month)) +
+  geom_point(aes(FILL_THIS_IN))
+```
+
+```
+## Error in FUN(X[[i]], ...): object 'FILL_THIS_IN' not found
+```
+
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+### 2(c)
+
+You can store the output of the plot in a variable, too. Store the plot from 2(a) in the variable named `p`, then add a layer to `p` that adds green points to the plot.
+
+
+```r
+p +
+  FILL_THIS_IN(colour = FILL_THIS_IN)
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p' not found
+```
+
+### 2(d)
+
+What's wrong with the following code? Fix it.
+
+
+```r
+ggplot(gapminder) +
+  geom_point(x = gdpPercap, y = lifeExp, alpha = 0.1)
+```
+
+```
+## Error in layer(data = data, mapping = mapping, stat = stat, geom = GeomPoint, : object 'gdpPercap' not found
 ```
 
 
+### 2(e) BONUS
 
-## Scatterplot
+So you're a ggplot2 pro? Then, let's see this plot adapted to polar coordinates. Specifically:
 
-Let's look at a _scatterplot_ of `gdpPercap` vs. `lifeExp`. 
+- angle is month (January through December)
+- radius is CO$_2$ concentration
 
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-    - We'll ignore "coordinate system" and "facetting" after this.
+The plot should look like a spiral, or concentric circles. 
 
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-| coordinate system     |  |
-| facetting             |  |
 
-2. Populate the data and aesthetic mapping in `ggplot`. What is returned? What's missing?
+```r
+FILL_THIS_IN
+```
 
+```
+## Error in eval(expr, envir, enclos): object 'FILL_THIS_IN' not found
+```
 
 
-3. Add the missing component as a _layer_.
+## Exercise 3: Fix the plots (Together)
 
+### 3(a)
 
+Fix the following plot (attribution: ["R for data science"](https://r4ds.had.co.nz/data-visualisation.html)).
 
-Notice the "metaprogramming" again!
 
-4. You _must_ remember to put the aesthetic mappings in the `aes` function! What happens if you forget?
+```r
+ggplot(mpg, aes(cty, hwy)) + 
+  geom_point()
+```
 
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 
-5. Put the x-axis on a log scale, first by transforming the x variable. 
-    - Note: `ggplot2` does some data wrangling and computations itself! We don't always have to modify the data frame.
+### 3(b)
 
+Fix this plot so that it shows life expectancy over time _for each country_.
 
 
-6. Try again, this time by changing the _scale_ (this way is better).
+```r
+ggplot(gapminder, aes(year, lifeExp)) +
+    geom_line()
+```
 
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 
-7. The aesthetic mappings can be specified on the geom layer if you want, instead of the main `ggplot` call. Give it a try:
 
 
-8. Optional: git stage and commit
+### 3(c)
 
-__Uses of a scatterplot__: 
+The following mock data set marks the (x,y) position of a caribou at four time points. Fix the plot below so that it shows the path of the caribou. Add an arrow with `arrow = arrow()`.
 
-- Visualize 2-dimensional distributions; dependence.
-- 2 numeric variables
 
-## Histograms, and Kernel Density Plots
+```r
+motion <- tribble(
+  ~time, ~x, ~y,
+  1, 0.3, 0.3,
+  2, 0.8, 0.7,
+  3, 0.5, 0.9,
+  4, 0.4, 0.5
+)
+ggplot(motion, aes(x, y)) + 
+  geom_line()
+```
 
-Let's build a histogram of life expectancy.
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
+### 3(d)
 
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
+The following plot attempts to put both the raw data and boxplots together, but it's hard to see the raw data. Fix the plot.
 
-2. Build the histogram of life expectancy.
 
+```r
+ggplot(gapminder, aes(continent, lifeExp)) +
+  geom_point() +
+  geom_boxplot()
+```
 
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
-3. Change the number of bins to 50.
+### 3(e)
 
+Change the following plot so that it shows _proportion_ on the y-axis, not count.
 
 
-4. Instead of a histogram, let's create a kernel density plot.
+```r
+ggplot(mtcars, aes(cyl)) +
+  geom_bar()
+```
 
+<img src="cm005-exercise_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
-
-5. Optional: git stage and commit
-
-__Uses of a histogram__: Explore the distribution of a single numeric variable.
-
-
-## Box plots, and violin plots
-
-Let's make _box plots_ of population for each continent. Note: y-axis is much better on a log scale!
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. Initiate the `ggplot` call, with the log y scale, and store it in the variable `a`. Print out `a`.
-
-
-
-3. Add the boxplot geom to `a`.
-
-
-
-4. A violin plot is a kernel density on its side, made symmetric. Add that geom to `a`.
-    - What's better here, boxplots or violin plots? Why?
-
-5. Optional: git stage and commit
-
-__Use of boxplot__: Visualize 1-dimensional distributions (of a single numeric variable).
-
-## Jitter plots
-
-Let's work up to the concept of a _jitter plot_. As above, let's explore the population for each continent, but using points (again, with the y-axis on a log scale).
-
-Let's hold off on identifying the grammar. 
-
-1. Initiate the `ggplot` call to make a scatterplot of `continent` vs `pop`; initiate the log y scale. Store the call in the variable `b`.
-
-
-
-2. Add the point geom to `b`. Why is this an ineffective plot?
-
-
-
-3. A solution is to jitter the points. Add the jitter geom. Re-run the command a few times -- does the plot change? Why?
-
-
-
-4. How does the grammar differ from a box plot or violin plot?
-    - ANSWER: 
-
-5. We can add multiple geom _layers_ to our plot. Put a jitterplot overtop of the violin plot, starting with our base `b`. Try vice-versa. 
-
-
-
-6. Optional: git stage and commit
-
-__Uses of jitterplot__: Visualize 1-dimensional distributions, AND get a sense of the sample size.
-
-## Time/Line Plots
-
-Let's make some time/line plot, starting with Canada's life expectancy over time.
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. In one readable call, write code that:
-    1. Filters the data to Canada only
-    2. Pipes the filtered data into `ggplot`
-    3. Makes the time plot of `lifeExp` over time
-    4. Also displays the points
-
-
-
-3. Attempt to overlay line plots for all countries. That is, repeat the above code, but don't filter. What's wrong here?
-
-
-
-4. Use the `group` aesthetic to fix the problem.
-
-
-
-5. Optional: git stage and commit
-
-__Uses of time/line plots__: Visualize trends of a numeric variable over time.
-
-## Path plots
-
-Let's see how Rwanda's life expectancy and GDP per capita have evolved over time, using a path plot.
-
-1. Make a scatterplot. Store it in the variable `c`. 
-
-
-
-2. We want to connect the dots from earliest point to latest. What happens if we add the "line" geom to `c`?
-
-
-
-3. Add the appropriate geom to `c`. In that geom, specify a property of the geom: `arrow=arrow()`. 
-
-
-4. Optional: git stage and commit
-
-__Uses of path plots__: The four "corners" of the plot usually indicate different qualities. This plot allows you to see how Rwanda (or some entity) evolves over these qualities.
-
-## Bar plots
-
-How many countries are in each continent? Use the year 2007.
-
-1. Fill out the grammar components below. Again, bold _must_ be specified to make a `ggplot2` plot.
-
-| Grammar Component     | Specification |
-|-----------------------|---------------|
-| __data__              | `gapminder` |
-| __aesthetic mapping__ |  |
-| __geometric object__  |  |
-| scale                 |  |
-| statistical transform |  |
-
-2. After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable `d`.
-
-
-
-3. Notice the y-axis. Oddly, `ggplot2` doesn't make it obvious how to change to proportion. Try adding a `y` aesthetic: `y=..count../sum(..count..)`.
-
-
-
-4. Optional: git stage, commit, and push!
-
-__Uses of bar plots__: Get a sense of relative quantities of categories, or see the probability mass function of a categorical random variable.
