@@ -4,4 +4,10 @@ Title: Does not matter.
 Version: 0.0.1
 Imports: 
     bookdown,
-    tidyverse
+    tidyverse,
+    tsibble,
+    gapminder,
+    scales,
+    ggridges,
+    DT,
+    lubridate
