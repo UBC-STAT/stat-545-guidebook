@@ -12,6 +12,8 @@ __Recap__:
 
 __Today__: Introduction to plotting with `ggplot2` (to be continued next Thursday). 
 
+__Worksheet__: You can find a worksheet template for today <a download="https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd">here</a>.
+
 Set up the workspace:
 
 ```{r, warning = FALSE}
@@ -28,23 +30,8 @@ By the end of this lesson, students are expected to be able to:
 - Identify the plotting framework available in R
 - Have a sense of why we're learning the `ggplot2` tool
 - Have a sense of the importance of statistical graphics in communicating information
-
-
-
 - Identify the seven components of the grammar of graphics underlying `ggplot2`
-- Have a sense of what the seven components are
-
-
-
-- using the `x` and `y` aesthetic mappings, while
-- using different geometric objects to explore various plot "types".
-
-
-
-- Create a variety of "plot types" using `ggplot2` under the following situations:
-    - two numeric variables
-    - one numeric variable
-    - one numeric, one categorical variable
+- Use different geometric objects and aesthetics to explore various plot types.
 
 ## Resources (2 min)
 
@@ -138,9 +125,9 @@ Note that `x` and `y` aesthetics are required for scatterplots (or "point" geome
 
 ### Activity: Bar chart grammar
 
-Download the worksheet accompanying today's lecture.
-
 Fill out __Exercise 1: Bar Chart Grammar (Together)__ in your worksheet.
+
+Click <a download="https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd">here</a> if you don't have it yet.
 
 ## Working with `ggplot2` (20 min)
 
@@ -199,7 +186,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 
 _Bus stop_: Did you lose track of where we are? You can still do the exercise!
 
-- Click here to obtain the worksheet if you don't have it.
+- Click <a download="https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd">here</a> to obtain the worksheet if you don't have it.
 - You're all set! Hint for completing the exercise: use the information from this section ("Working with `ggplot2`") to complete the exercise.
 
 ## Plot types / `geom`s (25 min)
@@ -344,7 +331,7 @@ Fill out __Exercise 3: Fix the plots (Together)__ in your worksheet.
 
 _Bus stop_: Did you lose track of where we are? You can still do the exercise!
 
-1. Click here to obtain the worksheet if you don't have it.
+1. Click <a download="https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd">here</a> to obtain the worksheet if you don't have it.
 2. Set up the workspace by following the instructions in the "Preliminary" section.
 3. You're all set! Hint for completing the exercise: use the information from this section ("Plot types / `geom`s") to complete the exercise.
 
