@@ -5,6 +5,68 @@ editor_options:
   chunk_output_type: inline
 ---
 
+## Exercise 3: Fix the plots (Together)
+
+### 3(a)
+
+Fix the following plot (attribution: ["R for data science"](https://r4ds.had.co.nz/data-visualisation.html)).
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(mpg, aes(cty, hwy)) + 
+  geom_point()
+```
+
+
+### 3(b)
+
+Fix this plot so that it shows life expectancy over time _for each country_.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder, aes(year, lifeExp)) +
+    geom_line()
+```
+
+
+
+
+### 3(c)
+
+The following mock data set marks the (x,y) position of a caribou at four time points. Fix the plot below so that it shows the path of the caribou. Add an arrow with `arrow = arrow()`.
+
+```{r, fig.width = 5, fig.height = 2}
+motion <- tribble(
+  ~time, ~x, ~y,
+  1, 0.3, 0.3,
+  2, 0.8, 0.7,
+  3, 0.5, 0.9,
+  4, 0.4, 0.5
+)
+ggplot(motion, aes(x, y)) + 
+  geom_line()
+```
+
+### 3(d)
+
+The following plot attempts to put both the raw data and boxplots together, but it's hard to see the raw data. Fix the plot.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder, aes(continent, lifeExp)) +
+  geom_point() +
+  geom_boxplot()
+```
+
+### 3(e)
+
+Change the following plot so that it shows _proportion_ on the y-axis, not count.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(mtcars, aes(cyl)) +
+  geom_bar()
+```
+
+
+
+--- OLD ----
 
 
 # Beyond the x and y aesthetics
