@@ -66,6 +66,14 @@ Let's get started with the exercise:
 3. With RStudio, open the `cm006-exercise.Rmd` file you downloaded and committed earlier.
 4. Follow the instructions in the `.Rmd` file until the *resume lecture* section.
 
+## Small break
+
+Here are some things you might choose to do on this break:
+
+- Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
+- Attempt the bonus exercises on the `cm006-exercise.Rmd` file.
+- Work on an assignment.
+
 ## The `dplyr` advantage
 
 ### Learning Objectives
@@ -108,14 +116,6 @@ Especially don't use magic numbers to subset!
 
 Note that you need to use the assignment operator to store changes!
 
-## Small break
-
-Here are some things you might choose to do on this break:
-
-- Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
-- Fill out the challenge on the `cm006-exercise.Rmd` file.
-- Work on an assignment.
-
 ## Relational/Comparison and Logical Operators in R
 
 ### Learning Objectives
@@ -139,7 +139,7 @@ By the end of this lesson, students are expected to be able to:
 **Arithmetic** operators allow us to carry out mathematical operations:
 
 | Operator | Description |
-|------|---------|
+|------|:---------|
 | + | Add |
 | - | Subtract |
 | * | Multiply |
@@ -150,7 +150,7 @@ By the end of this lesson, students are expected to be able to:
 **Relational** operators allow us to compare values:
 
 | Operator | Description |
-|------|---------|
+|------|:---------|
 | < | Less than |
 | > | Greater than |
 | <= | Less than or equal to |
@@ -163,11 +163,11 @@ By the end of this lesson, students are expected to be able to:
 **Logical** operators allow us to carry out boolean operations:
 
 | Operator | Description |
-|------|---------|
+|---|:---|
 | ! | Not |
-| | | Or (element_wise) |
+| \| | Or (element_wise) |
 | & | And (element-wise) |
-| || | Or |
+| \|\| | Or |
 | && | And |
 
 * The difference between `|` and `||` is that the former evaluates only the first element of the two vectors, whereas the latter evaluates element-wise. 
