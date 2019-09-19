@@ -12,11 +12,15 @@ knitr::opts_chunk$set(error = TRUE)
 
 **Optional, but recommended startup**:
 
-Change the file output to both html and md _documents_ (not notebook).
+1. Change the file output to both html and md _documents_ (not notebook).
+
+2. `knit` the document. 
+
+3. Stage and commit the rmd, and knitted documents.
 
 # Intro to `dplyr` syntax
 
-1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
+Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
     - This loads `dplyr`, too.
     
 ```{r load packages, warning = FALSE, message = FALSE}
@@ -25,10 +29,8 @@ library(FILL_THIS_IN)
 library(FILL_THIS_IN)
 ```
     
-2. `knit` the document. 
 
-
-## `select()` (10 min)
+## `select()` (8 min)
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
@@ -64,11 +66,14 @@ select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
 5. Rename `continent` to `cont`.
 
 ```{r}
+# compare
 select(gapminder, FILL_THIS_IN)
+
+rename(gapminder, FILL_THIS_IN)
 ```
 
 
-## `arrange()` (10 min)
+## `arrange()` (8 min)
 
 1. Order by year.
 
@@ -88,19 +93,26 @@ arrange(gapminder, FILL_THIS_IN)
 arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
 ```
 
-## Piping, `%>%` (10 min)
+## Piping, `%>%` (8 min)
 
 Note: think of `%>%` as the word "then"!
 
-1. Combine `select()` Task 1 with `arrange()` Task 3.
+Demonstration:
+
+Here I want to combine `select()` Task 1 with `arrange()` Task 3.
+
+This is how I could do it by *nesting* the two function calls:
 
 ```{r nesting functions example, eval = F}
 # Nesting function calls can be hard to read
 arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
 ```
 
-```{r}
+Now using with pipes:
 
+```{r}
+# alter the below to include 2 "pipes"
+arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
 ```
 
 # Resume lecture 
