@@ -37,6 +37,8 @@ Today's topic is _one-table verbs with `dplyr`_. We've already seen `select`, `f
 
 ...and their corresponding theoretical function types. 
 
+tsibbles
+
 ## Resources
 
 Concepts from today's class are closely mirrored by the following resources.
