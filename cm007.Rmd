@@ -9,6 +9,7 @@ __Announcements__:
 
 - Peer review 1 due tonight.
 - Homework 2 due tonight.
+- stat545.com
 
 __Follow-up__: 
 
