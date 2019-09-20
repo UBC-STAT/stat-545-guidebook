@@ -37,7 +37,7 @@ Here are some useful resources for getting oriented with R.
 - Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons.
 - For a list of R "vocabulary", see [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html); for a list of R operators, see [Quick-R](https://www.statmethods.net/management/operators.html).
 
-Today, we'll be learning just enough base R so that we can dive in to the tidyverse side of R. If you want to learn even more about base R, take a look at [Mike Marin's R playlist on YouTube](https://www.youtube.com/playlist?list=PLqzoL9-eJTNBlVXxWvJkq0dtVut2sICUW)
+Today, we'll be learning just enough base R so that we can dive in to the tidyverse side of R. If you want to learn even more about base R, take a look at [Mike Marin's R playlist on YouTube](https://www.youtube.com/playlist?list=PLqzoL9-eJTNBlVXxWvJkq0dtVut2sICUW).
 
 
 ## Why R?

@@ -10,7 +10,10 @@ __Announcements__:
 - Peer review 1 due tonight.
 - Homework 2 due tonight.
 
-__Follow-up__: `if` statement on its own won't work within `mutate()` because it's not vectorized. Would need to vectorize it with `sapply()` or, better, the `purrr::map` family:
+__Follow-up__: 
+
+- By the way, STAT 545 jumps into the tidyverse way of doing things in R, instead of the base R way of doing things. Lecture 2 was about "just enough" base R to get you started.
+- `if` statement on its own won't work within `mutate()` because it's not vectorized. Would need to vectorize it with `sapply()` or, better, the `purrr::map` family:
 
 ```{r}
 tibble(a = 1:4) %>% 
