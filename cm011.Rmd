@@ -1,4 +1,4 @@
-# Advanced R programming
+# Advanced R
 
 __WARNING: content subject to change__
 
@@ -6,24 +6,21 @@ __WARNING: content subject to change__
 
 We're done with the "core concepts" of data wrangling and data vis, both of which are fundamental to exploratory data analysis (EDA). 
 
-Now, we're starting more "specialized" topics for EDA.
+Now, we're starting more "specialized" topics for EDA, which will continue into STAT 547M.
 
 ## Today's Lessons
 
-Today's class is on R programming. 
+New for 2019:
 
-When we first saw R:
+here::here(); readxl? googlesheets? Maybe even list-columns and the `rsample` package. Maybe bookdown, or blogdown.
 
-- we made a script to compute the variance of commute times.
-- we saw that R can handle more than just numbers -- it can also handle things like characters and logicals.
-
-Today, we'll aim to cover the following topics (which we'll call Part I):
+Old (perhaps deprecated, since lightly covered in cm002):
 
 - "Flavours" of R objects
 - Vectors, vectorization, and recycling.
 - Lists
 
-If time remains, we'll move on to Part II:
+If time remains:
 
 - Environments and Scoping
 

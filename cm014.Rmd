@@ -10,6 +10,8 @@ __WARNING: content subject to change__
 2. Break to fill out instructor and TA evaluations.
 3. "Deep thoughts" on data analytic work
 
+Possible addition for 2020: `parsnip` package. Maybe `rsample` if it didn't make it into cm011.
+
 ## Resources
 
 - [Jenny's Deep Thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
