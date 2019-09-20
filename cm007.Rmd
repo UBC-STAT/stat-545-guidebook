@@ -1,9 +1,24 @@
 # Intro to data wrangling, Part II
 
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+
 __Announcements__:
 
 - Peer review 1 due tonight.
 - Homework 2 due tonight.
+
+__Follow-up__: `if` statement on its own won't work within `mutate()` because it's not vectorized. Would need to vectorize it with `sapply()` or, better, the `purrr::map` family:
+
+```{r}
+tibble(a = 1:4) %>% 
+  mutate(b = if (a < 3) "small" else "big",
+         c = sapply(a, function(x) if (x < 3) "small" else "big"),
+         d = map_chr(a, ~ if(.x < 3) "small" else "big"))
+```
+
 
 
 ## Today's Lessons
