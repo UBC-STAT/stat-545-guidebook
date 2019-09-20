@@ -1,5 +1,7 @@
 # Effective Plotting
 
+__WARNING: content subject to change__
+
 Worksheet: 
 
 - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm013-exercise.Rmd), 

@@ -2,6 +2,8 @@
 
 # (1) Functions
 
+--- LAST YEAR'S CONTENT BELOW ---
+
 ### Today's Agenda
 
 1. Rubric

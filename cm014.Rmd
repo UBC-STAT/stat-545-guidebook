@@ -1,5 +1,7 @@
 # The Model-Fitting Paradigm in R
 
+__WARNING: content subject to change__
+
 ## Today
 
 1. Worksheet: the model-fitting paradigm in R.

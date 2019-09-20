@@ -1,5 +1,7 @@
 # Intro to data wrangling, Part II
 
+__WARNING: Content subject to change__
+
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 ```

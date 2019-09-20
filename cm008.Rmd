@@ -1,5 +1,7 @@
 # Intro to plotting with `ggplot2`, Part II
 
+__WARNING: Content subject to change__
+
 __Today__: Continue with `ggplot2`.
     - This time, exploration of aesthetics (and facetting). 
     - Continue with geom exploration if time permits. 

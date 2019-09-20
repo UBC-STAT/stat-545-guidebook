@@ -1,5 +1,7 @@
 # Advanced R programming
 
+__WARNING: content subject to change__
+
 ## Review, and Looking Ahead
 
 We're done with the "core concepts" of data wrangling and data vis, both of which are fundamental to exploratory data analysis (EDA). 

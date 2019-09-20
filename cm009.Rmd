@@ -1,5 +1,7 @@
 # Tidy Data and Pivoting
 
+__WARNING: content subject to change__
+
 
 ## Review, and Looking Ahead
 
