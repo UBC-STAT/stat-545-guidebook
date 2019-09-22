@@ -2,6 +2,8 @@
 
 __WARNING: content subject to change__
 
+To add: Claus Wilke's [book](https://serialmentor.com/dataviz/) on effective vis.
+
 Worksheet: 
 
 - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm013-exercise.Rmd), 
