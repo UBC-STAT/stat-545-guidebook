@@ -11,4 +11,5 @@ Imports:
     ggridges,
     DT,
     lubridate,
-    here
+    here,
+    cowplot
