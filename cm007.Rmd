@@ -2,8 +2,12 @@
 
 __WARNING: Content subject to change__
 
+__Worksheet__: You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm007-exercise.Rmd).
+
+
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
 ```
 
 
@@ -11,8 +15,9 @@ __Announcements__:
 
 - Peer review 1 due tonight.
 - Homework 2 due tonight.
-- stat545.com
 - Reminder about setting up your own hw repo.
+- stat545.com
+
 
 __Follow-up__: 
 
@@ -38,13 +43,15 @@ Today's topic is _one-table verbs with `dplyr`_. We've already seen `select`, `f
 
 ...and their corresponding theoretical function types. 
 
-tsibbles
+Also:
+
+- tsibbles
 
 ## Resources
 
 Concepts from today's class are closely mirrored by the following resources.
 
-- Jenny's tutorial on [all the one-table verbs](http://stat545.com/block010_dplyr-end-single-table.html)
+- Jenny's tutorial on [Single table dplyr functions](https://stat545.com/dplyr-single.html)
 
 Other resources:
 
@@ -55,14 +62,304 @@ Resources for specific concepts:
 
 - To learn more about window functions and how dplyr handles them, see the [window-functions](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html) vignette for the `dplyr` package. 
 
-## Participation
+## `mutate()`
 
-To get participation points for today, we'll be filling out the cm008-exercise.Rmd file ([Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm008-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm008-exercise.nb.html)), and adding it to your participation repo. 
+The `mutate()` function _creates_ new columns in the tibble by transforming other variables. Like `select()`, `filter()`, and `arrange()`, the `mutate()` function also takes a tibble as its first argument, and returns a tibble. 
 
-Let's take time to get set up:
+The general syntax is:
 
-1. Download the file as `.Rmd`. 
-2. Move the file to your local participation repo.
-3. Open the `.Rmd` file, and change the output type to `github_document`.
-4. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
-    - You can still get participation marks by uploading the final files to GitHub.
+```
+mutate(tibble, NEW_COLUMN_NAME = CALCULATION)
+```
+
+Note that you can refer to other column names in your calculations.
+
+For example, for the gapminder data set, make a new column for the following two variables:
+
+1. Raw GDP, named (`gdp`), by multiplying GPD per capita with population, and
+2. GDP in billions, named (`gdpBill`), rounded to two decimals.
+
+```{r}
+gapminder %>% 
+  mutate(gdp = gdpPercap * pop,
+         gdpBill = round(gdp / 1e9, 2)) %>% 
+  DT::datatable()
+```
+
+Notice a neat feature here? The calculation of `gdpBill` can rely on the `gdp` column, even though the `gdp` column has not even been created yet (since the `mutate()` function has not finished executing)! 
+
+Try the same thing, but with `transmute` (drops all other variables). 
+
+```{r}
+
+```
+
+The `if_else` function is useful for changing certain elements in a data frame.
+
+Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in the data frame, but is actually 70. Fix it using `if_else` and `mutate`. 
+
+```{r}
+
+```
+
+
+Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
+
+```{r}
+
+```
+
+These functions we've seen are called __vectorized functions__. 
+
+## `summarize()` and `group_by()`
+
+Use `summarize()` to compute the mean and median life expectancy using all entries:
+
+```{r}
+
+```
+
+Do the same thing, but try:
+
+1. grouping by country
+2. grouping by continent and country
+
+```{r}
+
+```
+
+- Notice the columns that are kept. 
+- Notice the grouping listed above the tibble, especially without a call after grouping.
+- Notice the peeling of groups for each summarize. 
+
+Question: What if I wanted to keep the other numeric columns (gdpPercap, pop)? Can I? Would this even make sense?
+
+For each continent: What is the smallest country-wide median GDP per capita?
+
+```{r}
+
+```
+
+Note that ggplot2's grouping is different from dplyr's! Try making a spaghetti plot of lifeExp over time for each coutry, by piping in a grouped data frame -- it won't work:
+
+```{r}
+
+```
+
+
+Your turn! For each continent, what is the median GDP per capita of countries with high (>60) life expectancy vs countries with low (<=60)? Sort this data frame by median GDP per capita.
+
+```{r}
+
+```
+
+There are special functions to summarize by. Let's see some of them:
+
+- `n()`: Number of rows in the group.
+- `n_distinct()`
+
+Convenience functions:
+
+- `tally()` (= `summarize(n = n())`)
+- `count(...)` (= `group_by(...) %>% tally()`)
+
+n_distinct: How many years of record does each country have?
+
+```{r}
+
+```
+
+count
+
+## Function types
+
+Let's stop to identify some theory of function types, and the `dplyr` approach to them.
+
+| Function type | Explanation | Examples | In `dplyr` |
+|------|-----|----|----|
+| Vectorized functions | These take a vector, and operate on each component independently to return a vector of the same length. In other words, they work element-wise. | `cos`, `sin`, `log`, `exp`, `round` | `mutate` |
+| Aggregate functions | These take a vector, and return a vector of length 1 | `mean`, `sd`, `length`, `typeof` | `summarize`, esp with `group_by`. |
+| Window Functions | these take a vector, and return a vector of the same length that depends on the vector as a whole. | `lag`, `rank`, `cumsum` | `mutate`, esp with `group_by` |
+
+For any generic output, we can use dplyr's `do()` function -- but that's a topic for STAT 547. 
+
+## Grouped `mutate()`
+
+Calculate the growth in population since the first year on record _for each country_. `first()` is useful.
+
+```{r}
+
+```
+
+Notice that `dplyr` has retained the original grouping.
+
+How about growth compared to `1972`?
+
+```{r}
+
+```
+
+Make a new variable `pop_last_time`, as the "lag-1" population -- that is, the population from the previous entry of that country. Use the `lag` function.
+
+```{r}
+
+```
+
+Similar: `lead` function.
+
+Notice the NA's. 
+
+## Putting it all together
+
+Your turn: Use what we learned to answer the following questions.
+
+1. Determine the country that experienced the sharpest 5-year drop in life expectancy, in each continent.
+
+```{r}
+
+```
+
+2. Compute the relative gdp (NOT per capita!) of each country compared to Canada (= GDP of a country / GDP of Canada).
+
+```{r}
+
+```
+
+Sanity check: are Canada's numbers = 1? What is the spread of numbers like (should be small)?
+
+## Summary of major one-table functions
+
+- `select()`
+- `filter()`
+- `arrange()`
+- `mutate()`
+- `summarize()`
+
+Together with `group_by()` and "twists" of the above. 
+
+
+## Practice Exercises
+
+Practice these concepts in the following exercises. It might help you to first identify the type of function you are applying.
+
+1. Convert the population to a number in billions.
+
+2. Compute the change in population from 1962 to 1972 for each country.
+
+3. Rank the continents by GDP per capita. You should have two columns: one with continent, and another with the ranking (1 through 5). __Hint__: use the `rank()` or `min_rank()` function.
+
+
+[tsibble demo](https://tsibble.tidyverts.org/)
+
+## Tsibbles
+
+Take a look at these daily records of a household's electricity usage. 
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(tsibble)
+energy <- here::here("data", "daily_consumption.csv") %>% 
+  read_csv()
+energy
+```
+
+Let's make this a `tsibble` in the same way we'd convert a data frame to a `tibble`, with one minor difference: we need to specify which column holds the time variable. This is the _index_.
+
+```{r}
+(energy <- as_tsibble(energy, index = date))
+```
+
+We already see an improvement in the sorted dates!
+
+This is an example of _time series_ data, because the time interval has a regular spacing. A `tsibble` cleverly determines and stores this interval. With the energy consumption data, the interval is one day:
+
+```{r}
+interval(energy)
+```
+
+But notice that there is no record for December 21, 2006, in what would be Row 5. Such records are called _implicit NA's_, and if you don't draw these out explicitly, you could mess up your analysis if it's anticipating your data to be equally spaced in time. Just `full_gaps()` to bring them out of hiding:
+
+
+```{r}
+(energy <- fill_gaps(energy))
+```
+
+Better to plot the data now that these gaps are filled in. Let's check out 2010. See how the plot without NA's can be a little misleading? Always be as honest as possible with your data.
+
+```{r}
+small_energy <- filter(energy, year(date) == 2010)
+cowplot::plot_grid(
+  ggplot(small_energy, aes(date, intensity)) +
+    geom_line() +
+    theme_bw() +
+    xlab("date (2010)") +
+    ggtitle("NA's made explicit"),
+  ggplot(drop_na(small_energy), aes(date, intensity)) +
+    geom_line() +
+    theme_bw() +
+    xlab("date (2010)") +
+    ggtitle("NA's in hiding (implicit)"),
+  nrow = 2
+)
+```
+
+
+## Dates
+
+Extract time keys out of dates using handy functions from `lubridate`, and new friends from the `tsibble` package. Here's a demo of some of these functions:
+
+```{r}
+(energy_many <- energy %>% 
+  mutate(
+    weekday     = lubridate::wday(date, label = TRUE),
+    day         = lubridate::day(date),
+    month       = lubridate::month(date),
+    year        = lubridate::year(date),
+    day_of_year = lubridate::yday(date),
+    year_month  = tsibble::yearmonth(date),
+    year_week   = tsibble::yearweek(date)
+  ))
+```
+
+
+Is there a weekly pattern in voltage? How about across the year?
+
+```{r}
+cowplot::plot_grid(
+  ggplot(energy_many, aes(weekday, intensity)) +
+    geom_jitter(alpha = 0.25) +
+    geom_boxplot(alpha = 0.25) +
+    theme_bw(),
+  ggplot(energy_many, aes(day_of_year, intensity)) +
+    geom_line(aes(group = year), alpha = 0.25) +
+    theme_bw()
+)
+```
+
+There's seasonality across the year. Let's get a mean estimate on each day of the year. But, since we're grouping by chunks of time, we use `index_by()` instead of `group_by()`. This is so that the `tsibble` can be re-indexed by the grouping variable.
+
+```{r}
+energy %>% 
+  index_by(day_of_year = yday(date)) %>% 
+  summarise_all(mean, na.rm = TRUE)
+```
+
+What if we wanted to make the time series less granular? Instead of total daily consumption, how about total weekly consumption?
+
+```{r}
+energy %>% 
+  index_by(yearweek = yearweek(date)) %>% 
+  summarise_all(sum)
+```
+
+By the way, there's no need to worry about "truncated weeks" at the beginning and end of the year. For example, December 31, 2019 is a Tuesday, and is Week 53, but its "yearmonth" is Week 1 in 2020:
+
+```{r}
+dec31 <- "2019-12-31"
+wday(dec31, label = TRUE)
+week(dec31)
+yearweek(dec31)
+```
+
+

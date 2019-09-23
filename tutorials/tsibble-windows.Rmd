@@ -3,6 +3,7 @@ title: "Smoothing time series data using Functional Programming"
 output: html_document
 ---
 
+
 Enter the `slide()`, `tile()`, and `stretch()` families. Best explained by the [tsibble demo](https://tsibble.tidyverts.org/), specifically [this rolling window animation](https://tsibble.tidyverts.org/reference/figures/animate-1.gif).
 
 ```{r}
