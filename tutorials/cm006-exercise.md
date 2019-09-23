@@ -5,12 +5,9 @@ output:
     keep_md: true
     theme: paper
 ---
-
 <!---The following chunk allows errors when knitting--->
 
-```{r allow errors, echo = FALSE}
-knitr::opts_chunk$set(error = TRUE)
-```
+
 
 **Optional, but recommended startup**:
 
@@ -25,10 +22,22 @@ knitr::opts_chunk$set(error = TRUE)
 Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
     - This loads `dplyr`, too.
     
-```{r load packages, warning = FALSE, message = FALSE}
+
+```r
 # load your packages here:
 library(FILL_THIS_IN)
+```
+
+```
+## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
+```
+
+```r
 library(FILL_THIS_IN)
+```
+
+```
+## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
 ```
     
 
@@ -36,42 +45,79 @@ library(FILL_THIS_IN)
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
-```{r}
+
+```r
 select(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
 ```
 
 
 2. Select all variables, from `country` to `lifeExp`.
 
-```{r}
+
+```r
 # This will work:
 select(gapminder, country, continent, year, lifeExp)
+```
 
+```
+## Error in select(gapminder, country, continent, year, lifeExp): could not find function "select"
+```
+
+```r
 # Better way:
 select(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
 ```
 
 
 3. Select all variables, except `lifeExp`.
 
-```{r}
+
+```r
 select(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
 ```
 
 4. Put `continent` first. Hint: use the `everything()` function.
 
-```{r}
+
+```r
 select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+```
+## Error in select(gapminder, FILL_THIS_IN, FILL_THIS_IN): could not find function "select"
 ```
 
 
 5. Rename `continent` to `cont`.
 
-```{r}
+
+```r
 # compare
 select(gapminder, FILL_THIS_IN)
+```
 
+```
+## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
+```
+
+```r
 rename(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in rename(gapminder, FILL_THIS_IN): could not find function "rename"
 ```
 
 
@@ -79,20 +125,35 @@ rename(gapminder, FILL_THIS_IN)
 
 1. Order by year.
 
-```{r}
+
+```r
 arrange(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in arrange(gapminder, FILL_THIS_IN): could not find function "arrange"
 ```
 
 2. Order by year, in descending order.
 
-```{r}
+
+```r
 arrange(gapminder, FILL_THIS_IN)
+```
+
+```
+## Error in arrange(gapminder, FILL_THIS_IN): could not find function "arrange"
 ```
 
 3. Order by year, then by life expectancy.
 
-```{r}
+
+```r
 arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+```
+## Error in arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN): could not find function "arrange"
 ```
 
 ## Piping, `%>%` (8 min)
@@ -105,16 +166,22 @@ Here I want to combine `select()` Task 1 with `arrange()` Task 3.
 
 This is how I could do it by *nesting* the two function calls:
 
-```{r nesting functions example, eval = F}
+
+```r
 # Nesting function calls can be hard to read
 arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
 ```
 
 Now using with pipes:
 
-```{r}
+
+```r
 # alter the below to include 2 "pipes"
 arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
+```
+
+```
+## Error in arrange(select(gapminder, year, lifeExp, country), year, lifeExp): could not find function "arrange"
 ```
 
 # Resume lecture 
@@ -125,23 +192,38 @@ Return to guide at section 6.7.
 
 1. Only take data with population greater than 100 million.
 
-```{r}
+
+```r
 gapminder %>%
   filter(FILL_THIS_IN)
+```
+
+```
+## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
 ```
 
 2. Your turn: of those rows filtered from step 1., only take data from Asia.
 
-```{r}
+
+```r
 gapminder %>%
   filter(FILL_THIS_IN)
 ```
 
+```
+## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
+```
+
 3. Repeat 2, but take data from countries Brazil, and China. 
 
-```{r}
+
+```r
 gapminder %>%
   filter(FILL_THIS_IN)
+```
+
+```
+## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
 ```
 
 ## `mutate()` (10 min)
@@ -151,33 +233,47 @@ Let's get:
 - GDP by multiplying GPD per capita with population, and
 - GDP in billions, named (`gdpBill`), rounded to two decimals.
 
-```{r}
+
+```r
 gapminder %>%
   mutate(FILL_THIS_IN)
+```
+
+```
+## Error in gapminder %>% mutate(FILL_THIS_IN): could not find function "%>%"
 ```
 
 Notice the backwards compatibility! No need for loops!
 
 Try the same thing, but with `transmute` (drops all other variables). 
 
-```{r}
+
+```r
 gapminder %>%
   transmute(FILL_THIS_IN)
+```
+
+```
+## Error in gapminder %>% transmute(FILL_THIS_IN): could not find function "%>%"
 ```
 
 The `if_else` function is useful for changing certain elements in a data frame.
 
 Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in the data frame, but is actually 70. Fix it using `if_else` and `mutate`. 
 
-```{r}
+
+```r
 gapminder %>%
   mutate(FILL_THIS_IN)
 ```
 
+```
+## Error in gapminder %>% mutate(FILL_THIS_IN): could not find function "%>%"
+```
+
 Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
 
-```{r}
-```
+
 
 These functions we've seen are called __vectorized functions__.
 

@@ -1,5 +1,7 @@
 # Intro to data wrangling, Part I
 
+__Worksheet__: You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm006-exercise.Rmd).
+
 
 ## Today's Lessons
 
@@ -8,6 +10,7 @@ Today we'll introduce the [`dplyr`](https://dplyr.tidyverse.org/) package. Speci
 - Intro to `dplyr` syntax
 - The `dplyr` advantage
 - Relational/comparison and logical operators in R
+
 
 ## Resources
 
@@ -22,15 +25,7 @@ Here are some supplementary resources:
 
 ## Participation
 
-To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm006-exercise.Rmd) file, and adding it to your participation repo.
-
-Let's get set up:
-
-1. Click the upper-right drop-down menu [of the html version](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm006-exercise.nb.html).
-2. Download the `.Rmd` version to your local participation repo.
-    - You should have it cloned to your local machine (aka your computer) from last time.
-3. _Optional, but recommended_: Stage and commit the Rmd file (you can do this through RStudio).
-    - You can still get participation marks by uploading the final files to GitHub.
+To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm006-exercise.Rmd) file, and adding it to your participation repo.
 
 ## Intro to `dplyr` syntax
 
