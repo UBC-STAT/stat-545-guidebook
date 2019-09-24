@@ -180,11 +180,11 @@ DT::datatable(gap_inc)
 
 You can't see it here (because of the `datatable()` output), but the tibble is still grouped by country.
 
-Drop the `NA`s with another convenience function supplied by `dplyr`:
+Drop the `NA`s with another convenience function, this time supplied by the `tidyr` package (another tidyverse package that we'll see soon):
 
 ```{r}
 gap_inc %>% 
-  dplyr::drop_na()
+  tidyr::drop_na()
 ```
 
 ## Function types (5 min)
