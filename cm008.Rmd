@@ -6,6 +6,13 @@ __Today__: Continue with `ggplot2`.
     - This time, exploration of aesthetics (and facetting). 
     - Continue with geom exploration if time permits. 
 
+
+Note that ggplot2's grouping is different from dplyr's! Try making a spaghetti plot of lifeExp over time for each coutry, by piping in a grouped data frame -- it won't work:
+
+```{r}
+
+```
+
 ## Plot types / `geom`s
 
 Here, we'll explore some common plot types, and how to produce them with `ggplot2`.

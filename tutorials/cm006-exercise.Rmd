@@ -146,6 +146,14 @@ gapminder %>%
 
 ## `mutate()` (10 min)
 
+The `mutate()` function _creates_ new columns in the tibble by transforming other variables. Like `select()`, `filter()`, and `arrange()`, the `mutate()` function also takes a tibble as its first argument, and returns a tibble. 
+
+The general syntax is:
+
+```
+mutate(tibble, NEW_COLUMN_NAME = CALCULATION)
+```
+
 Let's get: 
 
 - GDP by multiplying GPD per capita with population, and

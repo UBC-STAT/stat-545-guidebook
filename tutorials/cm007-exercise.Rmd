@@ -1,19 +1,68 @@
 ---
-title: "cm007 Exercises: More single-table wrangling"
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
+title: "cm007 Exercises: Practice with `dplyr`"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
 ---
 
 <!---The following chunk allows errors when knitting--->
 
 ```{r allow errors, echo = FALSE}
-knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
 ```
-
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tsibble))
 ```
+
+
+This worksheet contains exercises aimed for practice with `dplyr`. 
+
+
+1. (a) What's the minimum life expectancy for each continent and each year? (b) Add the corresponding country to the tibble, too. (c) Arrange by min life expectancy.
+
+```{r}
+gapminder %>% 
+  group_by(FILL_THIS_IN) %>% 
+  FILL_THIS_IN(min_life = min(lifeExp))
+```
+
+2. Calculate the growth in population since the first year on record _for each country_ by rearranging the following lines, and filling in the `FILL_THIS_IN`. Here's another convenience function for you: `dplyr::first()`. 
+
+```
+mutate(rel_growth = FILL_THIS_IN) %>% 
+arrange(FILL_THIS_IN) %>% 
+gapminder %>% 
+DT::datatable()
+group_by(country) %>% 
+```
+
+```{r}
+
+```
+
+
+3. Determine the country that experienced the sharpest 5-year drop in life expectancy, in each continent, sorted by the drop, by rearranging the following lines of code. Ensure there are no `NA`'s. Instead of using `lag()`, use the convenience function provided by the `tsibble` package, `tsibble::difference()`:
+
+```
+drop_na() %>% 
+ungroup() %>% 
+arrange(year) %>% 
+filter(inc_life_exp == min(inc_life_exp)) %>% 
+gapminder %>% 
+mutate(inc_life_exp = FILL_THIS_IN) %>% 
+arrange(inc_life_exp) %>% 
+group_by(country) %>% 
+group_by(continent) %>% 
+knitr::kable()
+```
+
+```{r}
+
+```
+
+
 
