@@ -142,27 +142,6 @@ It's not unusual to experience some errors in git, especially if you're first le
 
 But, you might find yourself stuck. The git documentation is full of jargon, making it difficult to read and therefore difficult to debug things. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it. If you are in this position, it's best to just [burn it all down](http://happygitwithr.com/burn.html). There's even an [xkcd comic](https://xkcd.com/1597/) on this.
 
-### GitHub Pages (3 min)
-
-You can turn your GitHub repository into a website, by enabling __GitHub Pages__ on that repo. This is useful for something as small as being able to display HTML files without getting a local copy of the repository, to something as big as making a full fledged website like the [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca) website. 
-
-- If you make a repo called `yourusername.github.io`, and enable GitHub Pages on that repo, then the URL of the website will be `https://yourusername.github.io/`.
-- If you enable GitHub pages on any other repo, the URL for that repo will be `https://yourusername.github.io/name_of_other_repo`.
-
-Learn more with GitHub's [GitHub Pages](https://pages.github.com/) tutorial. 
-
-### GitHub Pages: Activity (5 min)
-
-Let's use GitHub pages for making your HTML files readble.
-
-1. Set up a basic "GitHub pages" website with your participation repo:
-    - Go to "settings" on your repo, and stay on the "Options" tab.
-    - Scroll down to "GitHub Pages".
-    - Under "Source", click the "None" drop-down button, and select the branch you want to turn into a website.
-2. Also under the "GitHub Pages" section, you'll find your website URL. Check it out!
-3. Navigate to an HTML file on your repo.
-    - Your URL acts as your root directory. You can access files in your repository by adding on the path to the file.
-4. Add a link to the HTML file somewhere in your repo, perhaps a README file. Commit your changes and (if working locally) push to GitHub. 
 
 
 ### Tagging a Release (5 min)

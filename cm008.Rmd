@@ -1,19 +1,38 @@
 # Intro to plotting with `ggplot2`, Part II
 
-__WARNING: Content subject to change__
+## Orientation
 
-__Today__: Continue with `ggplot2`.
-    - This time, exploration of aesthetics (and facetting). 
-    - Continue with geom exploration if time permits. 
+### Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm008-exercise.Rmd).
+
+### Announcements
+
+From Assignment 3 onwards, whenever you produce an HTML file, you must link to a rendered version of the file. We'll cover this today.
+
+### Today 
+
+- GitHub Pages (15 min)
+- Continue with `ggplot2`: a tour of some important `geom`s (20 min)
+- `ggplot2` exercises from the worksheet (40 min)
 
 
-Note that ggplot2's grouping is different from dplyr's! Try making a spaghetti plot of lifeExp over time for each coutry, by piping in a grouped data frame -- it won't work:
+## Participation repository and GitHub Pages (15 min)
 
-```{r}
+### GitHub Pages
 
-```
+You can turn your GitHub repository into a website, by enabling __GitHub Pages__ on that repo. This is useful for something as small as being able to display HTML files without getting a local copy of the repository, to something as big as making a full fledged website like the [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca) website. 
 
-## Plot types / `geom`s
+- If you make a repo called `yourusername.github.io`, and enable GitHub Pages on that repo, then the URL of the website will be `https://yourusername.github.io/`.
+- If you enable GitHub pages on any other repo, the URL for that repo will be `https://yourusername.github.io/name_of_other_repo`.
+
+Learn more with GitHub's [GitHub Pages](https://pages.github.com/) tutorial. 
+
+### Practice with HTML file linking
+
+We'll practice linking to an HTML file for today's exercise, by following the instructions on the (new!) ["Viewing and Linking to HTML Files"](https://stat545.stat.ubc.ca/evaluation/assignments/#viewing-and-linking-to-html-files) on the assignments home page.
+
+## A tour of some important `geom`s (20 min)
 
 Here, we'll explore some common plot types, and how to produce them with `ggplot2`.
 
@@ -107,7 +126,7 @@ Example:
 
 ```{r}
 ggplot(gapminder, aes(lifeExp, continent)) +
-  ggridges::geom_density_ridges(bins = 50)
+  ggridges::geom_density_ridges()
 ```
 
 ### Bar plots: `geom_bar()` or `geom_col()`
@@ -142,18 +161,32 @@ Required aesthetics:
 
 Although not required, the `group` aesthetic will come in handy here. This aesthetic produces a plot independently for each group, and overlays the results.
 
+```{r}
+tsibble::as_tsibble(co2) %>% 
+  rename(yearmonth = index,
+         conc = value) %>% 
+  mutate(month = lubridate::month(yearmonth, label = TRUE),
+         year  = lubridate::year(yearmonth)) %>% 
+  ggplot(aes(month, conc)) +
+  geom_line(aes(group = year), alpha = 0.5) +
+  ylab("CO2 Concentration")
+```
+
+
 
 ### Path plots: `geom_path()`
 
 Like `geom_line()`, except connects points in the order that they appear in the dataset.
 
-### Activity: Fix the Plots
 
-Fill out __Exercise 3: Fix the plots (Together)__ in your worksheet.
 
-_Bus stop_: Did you lose track of where we are? You can still do the exercise!
+## Activity: Fix the Plots (40 min)
 
-1. Click [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd) to obtain the worksheet if you don't have it.
-2. Set up the workspace by following the instructions in the "Preliminary" section.
-3. You're all set! Hint for completing the exercise: use the information from this section ("Plot types / `geom`s") to complete the exercise.
+Fill out the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm008-exercise.Rmd) together.
+
+
+## Time remaining?
+
+If so, let's make tibbles with `tibble()`, and make a list column while we're at it. Maybe even `nest()` and `unnest()`.
+
 
