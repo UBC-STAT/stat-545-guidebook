@@ -3,3 +3,5 @@
 __WARNING: content subject to change__
 
 (last year, delivered by Rashedul, resources at https://github.com/Rashedul/stat545_guest_lecture)
+
+https://htmlpreview.github.io/?https://github.com/JoeyBernhardt/singer/blob/master/vignettes/joins.html
