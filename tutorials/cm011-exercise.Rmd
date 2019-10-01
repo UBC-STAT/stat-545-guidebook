@@ -3,6 +3,51 @@ title: "cm011 Exercises: R as a programming language"
 output: html_notebook
 ---
 
+
+## Reading and Writing Data: Exercises
+
+Make a tibble of letters, their order in the alphabet, and then a pasting of the two columns together.
+
+```{r}
+
+```
+
+Make a tibble of three names and commute times.
+
+```{r}
+
+```
+
+
+Write the `iris` data frame as a `csv`. 
+
+```{r}
+
+```
+
+Write the `iris` data frame to a file delimited by a dollar sign. 
+
+```{r}
+
+```
+
+Read the dollar-delimited `iris` data to a tibble.
+
+```{r}
+
+```
+
+Read these three LOTR csv's, saving them to `lotr1`, `lotr2`, and `lotr3`:
+
+- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv
+- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv
+- https://github.com/jennybc/lotr-tidy/blob/master/data/The_Return_Of_The_King.csv
+
+```{r}
+
+```
+
+
 # Part I
 
 ## Types and Modes and Classes, Oh My!

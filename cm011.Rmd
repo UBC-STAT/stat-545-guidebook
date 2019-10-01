@@ -40,3 +40,41 @@ Part II:
 ## Participation
 
 Fill out the cm011-exercise.Rmd file, and push it to your participation repo. Links: [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm011-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm011-exercise.nb.html).
+
+
+## Reading and Writing data
+
+### Working Directory 
+
+R has a notion of "working directory". You can get with `getwd()`, set (with caution) with `setwd()`.
+
+### The functions
+
+Let's see an example of how tabular data are stored:
+
+- csv example: [gapminder](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/gapminder.csv)
+- tsv example: [LOTR](https://raw.githubusercontent.com/jennybc/lotr/master/lotr_clean.tsv)
+
+Reading and writing csv's
+
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.csv()` | `write.csv()` |
+| tidyverse (`readr`) | `read_csv()` | `write_csv()` |
+
+Reading and writing tsv's
+
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.delim()` | `write.table(sep="\t")` |
+| tidyverse (`readr`) | `read_tsv()` | `write_tsv()` |
+
+
+Reading and writing delimited files in general
+
+| Tool | Reading | Writing |
+|------|---------|---------|
+| Base R | `read.delim()` | `write.table()` |
+| tidyverse (`readr`) | `read_delim()` | `write_delim()` |
+
+With Base R: beware the factors with `read.csv()`!

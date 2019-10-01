@@ -141,3 +141,15 @@ and then spread
 hfd_y_unique_long %>%
   spread(measure, Value)
 ```
+
+## From cm009
+
+(Exercises largely based off of Jenny Bryan's [gather tutorial](https://github.com/jennybc/lotr-tidy/blob/master/02-gather.md))
+
+This function is useful for making untidy data tidy (so that computers can more easily crunch the numbers).
+
+1. Combine the three LOTR untidy tables (`lotr1`, `lotr2`, `lotr3`) to a single untidy table by stacking them.  
+
+```{r}
+
+```

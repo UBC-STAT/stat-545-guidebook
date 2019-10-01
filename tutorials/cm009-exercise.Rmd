@@ -5,151 +5,147 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r}
-suppressPackageStartupMessages(library(tidyverse))
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+lotr  <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/lotr_tidy.csv")
+guest <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/attend.csv")
+email <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/emails.csv")
 ```
 
-## Reading and Writing Data: Exercises
+<!---The following chunk allows errors when knitting--->
 
-Make a tibble of letters, their order in the alphabet, and then a pasting of the two columns together.
-
-```{r}
-
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
 ```
 
-Make a tibble of three names and commute times.
+## Exercise 1: Univariate Pivoting
+
+Consider the Lord of the Rings data:
 
 ```{r}
-
+lotr
 ```
 
+1. Would you say this data is in tidy format?
 
-Write the `iris` data frame as a `csv`. 
+2. Widen the data so that we see the words spoken by each race, by putting race as its own column.
 
 ```{r}
-
+(lotr_wide <- lotr %>% 
+  pivot_wider(FILL_THIS_IN = c(-Race, -Words), 
+              FILL_THIS_IN = Race, 
+              FILL_THIS_IN = Words))
 ```
 
-Write the `iris` data frame to a file delimited by a dollar sign. 
+3. Re-lengthen the wide LOTR data from Question 2 above.
 
 ```{r}
-
+lotr_wide %>% 
+  pivot_longer(FILL_THIS_IN = FILL_THIS_IN, 
+               names_to  = FILL_THIS_IN, 
+               values_to = FILL_THIS_IN)
 ```
 
-Read the dollar-delimited `iris` data to a tibble.
+## Exercise 2: Multivariate Pivoting
+
+Congratulations, you're getting married! In addition to the wedding, you've decided to hold two other events: a day-of brunch and a day-before round of golf.  You've made a guestlist of attendance so far, along with food preference for the food events (wedding and brunch).
 
 ```{r}
-
+guest %>% 
+  DT::datatable(rownames = FALSE)
 ```
 
-Read these three LOTR csv's, saving them to `lotr1`, `lotr2`, and `lotr3`:
-
-- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv
-- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv
-- https://github.com/jennybc/lotr-tidy/blob/master/data/The_Return_Of_The_King.csv
+1. Put "meal" and "attendance" as their own columns, with the events living in a new column.
 
 ```{r}
-
+(guest_long <- guest %>% 
+  pivot_longer(cols      = FILL_THIS_IN, 
+               names_to  = FILL_THIS_IN,
+               FILL_THIS_IN))
 ```
 
-## `gather()`
-
-(Exercises largely based off of Jenny Bryan's [gather tutorial](https://github.com/jennybc/lotr-tidy/blob/master/02-gather.md))
-
-This function is useful for making untidy data tidy (so that computers can more easily crunch the numbers).
-
-1. Combine the three LOTR untidy tables (`lotr1`, `lotr2`, `lotr3`) to a single untidy table by stacking them.  
+2. Use `tidyr::separate()` to split the name into two columns: "first" and "last". Then, re-unite them with `tidyr::unite()`.
 
 ```{r}
-
+guest_long %>% 
+  separate(FILL_THIS_IN, into = FILL_THIS_IN)
+  # unite(col = "name", FILL_THIS_IN, sep = FILL_THIS_IN)
 ```
 
-2. Convert to tidy. Also try this by specifying columns as a range, and with the `contains()` function.
+3. Which parties still have a "PENDING" status for all members and all events?
 
 ```{r}
-
+FILL_THIS_IN %>% 
+  group_by(party) %>% 
+  summarize(all_pending = all(attendance == "PENDING"))
 ```
 
-3. Try again (bind and tidy the three untidy data frames), but without knowing how many tables there are originally. 
-    - The additional work here does not require any additional tools from the tidyverse, but instead uses a `do.call` from base R -- a useful tool in data analysis when the number of "items" is variable/unknown, or quite large. 
+4. Which parties still have a "PENDING" status for all members for the wedding?
 
 ```{r}
-
-```
-
-## `spread()`
-
-(Exercises largely based off of Jenny Bryan's [spread tutorial](https://github.com/jennybc/lotr-tidy/blob/master/03-spread.md))
-
-This function is useful for making tidy data untidy (to be more pleasing to the eye).
-
-Read in the tidy LOTR data (despite having just made it):
-
-```{r}
-lotr_tidy <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/lotr_tidy.csv")
-```
-
-Get word counts across "Race". Then try "Gender". 
-
-```{r}
-
-```
-
-Now try combining race and gender. Use `unite()` from `tidyr` instead of `paste()`. 
-
-```{r}
-
-```
-
-## Other `tidyr` goodies
-
-Check out the Examples in the documentation to explore the following.
-
-`expand` vs `complete` (trim vs keep everything). Together with `nesting`. Check out the Examples in the `expand` documentation.
-
-```{r}
-
-```
-
-`separate_rows`: useful when you have a variable number of entries in a "cell".
-
-```{r}
-
-```
-
-`unite` and `separate`.
-
-```{r}
-
-```
-
-`uncount` (as the opposite of `dplyr::count()`)
-
-```{r}
-
+FILL_THIS_IN %>% 
+  group_by(party) %>% 
+  summarize(pending_wedding = all(FILL_THIS_IN == "PENDING"))
 ```
 
 
-`drop_na` and `replace_na`
+5. Put the data back to the way it was.
 
 ```{r}
-
+guest_long %>% 
+  pivot_wider(id_cols     = FILL_THIS_IN, 
+              names_from  = FILL_THIS_IN, 
+              names_sep   = "_", 
+              values_from = FILL_THIS_IN)
 ```
 
-`fill`
+6. You also have a list of emails for each party, in this worksheet under the variable `email`. Change this so that each person gets their own row. Use `tidyr::separate_rows()`
 
 ```{r}
-
+email %>% 
+  separate_rows(FILL_THIS_IN, sep = FILL_THIS_IN)
 ```
 
 
-`full_seq`
+## Exercise 3: Making tibbles
+
+1. Create a tibble that has the following columns:
+
+- A `label` column with `"Sample A"` in its entries.
+- 100 random observations drawn from the N(0,1) distribution in the column `x`
+- `y` calculated as the `x` values + N(0,1) error. 
 
 ```{r}
-
+n <- 100
+FILL_THIS_IN(label = FILL_THIS_IN,
+             FILL_THIS_IN = rnorm(n),
+             FILL_THIS_IN)
 ```
 
 
-## Time remaining?
+2. Generate a Gaussian sample of size 100 for each combination of the following means (`mu`) and standard deviations (`sd`).
 
-Time permitting, do [this exercise](https://github.com/jennybc/lotr-tidy/blob/master/02-gather.md#exercises) to practice tidying data. 
+```{r}
+n <- 100
+mu <- c(-5, 0, 5)
+sd <- c(1, 3, 10)
+FILL_THIS_IN(mu = mu, sd = sd) %>% 
+  group_by_all() %>% 
+  mutate(z = list(rnorm(n, mu, sd))) %>% 
+  FILL_THIS_IN
+```
+
+3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person. The code is given, but needs one adjustment. What is it?
+
+```{r}
+experiment <- tibble(
+  name = rep(c("Alex", "Robert", "Sam"), c(3, 2, 1)),
+  trt  = rep(c("a", "b", "a"), c(3, 2, 1)),
+  rep = c(1, 2, 3, 1, 2, 1),
+  measurement_1 = runif(6),
+  measurement_2 = runif(6)
+)
+experiment %>% complete(name, trt, rep)
+```
+
+
