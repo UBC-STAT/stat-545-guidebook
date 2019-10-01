@@ -135,7 +135,7 @@ FILL_THIS_IN(mu = mu, sd = sd) %>%
   FILL_THIS_IN
 ```
 
-3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person. The code is given, but needs one adjustment. What is it?
+3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person, and the measurements are kept. The code is given, but needs one adjustment. What is it?
 
 ```{r}
 experiment <- tibble(
@@ -145,7 +145,7 @@ experiment <- tibble(
   measurement_1 = runif(6),
   measurement_2 = runif(6)
 )
-experiment %>% complete(name, trt, rep)
+experiment %>% expand(name, trt, rep)
 ```
 
 

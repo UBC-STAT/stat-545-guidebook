@@ -1,6 +1,5 @@
 # Tidy Data and Pivoting
 
-__WARNING: content subject to change__
 
 ```{r, warning = FALSE, message = FALSE}
 library(tidyverse)
@@ -354,20 +353,100 @@ iris2_longer %>%
 
 Fill out __Exercise 2: Multivariate Pivoting__ in the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
 
-## Making tibbles
+## Making tibbles (5 min)
 
-In base R, we can make data frames using the `data.frame()` function.
+In base R, we can make data frames using the `data.frame()` function. The tidyverse version is `tibble::tibble()`, which also has backwards referencing to variables you make on the fly. It's also stricter by not allowing recycling unless the vector is of length 1:
 
-Tidyverse version: `tibble::tibble()`
+Good:
 
-Truly manual construction of tibbles: `tibble::tribble()`
+```{r}
+tibble(x = 1:6,
+       y = min(x))
+```
 
-List columns; nest; unnest
+Bad:
 
-crossing
+```{r, error = TRUE}
+tibble(x = 1:6,
+       y = 1:2)
+```
 
-complete, nesting
+Truly manual construction of tibbles is easy with `tibble::tribble()`:
 
-### Activity
+```{r}
+tribble(
+  ~Day, ~Breakfast,
+  1, "Apple",
+  2, "Yogurt",
+  3, "Yogurt"
+)
+```
+
+List columns are easy with tibbles!
+
+```{r}
+(list_col <- tibble(n = 1:2,
+                    y = list(iris, mtcars)))
+```
+
+Often obtained with `nest()` and `unnest()`:
+
+```{r}
+(iris_nest <- iris %>% 
+  group_by(Species) %>% 
+  nest())
+```
+
+```{r}
+iris_nest %>% 
+  unnest(data)
+```
+
+`expand_grid()` to obtain all combinations:
+
+```{r}
+expand_grid(x = 1:2, y = 1:2, z = 1:2)
+```
+
+In conjunction with `nesting()`:
+
+```{r}
+expand_grid(nesting(x = 1:2, y = 1:2), z = 1:2)
+```
+
+
+## Implicit `NA`'s (5 min)
+
+Sometimes there's "hidden" missing data in a tibble. Here's an example straight from the documentation of `tidyr::expand()`:
+
+```{r}
+(df <- tibble(
+  year   = c(2010, 2010, 2010, 2010, 2012, 2012, 2012),
+  qtr    = c(   1,    2,    3,    4,    1,    2,    3),
+  return = rnorm(7)
+))
+```
+
+We can consider all existing combinations by invoking the column names in `expand()` or `complete()` (which either _drops_ or _keeps_ all other columns):
+
+```{r}
+df %>% 
+  expand(year, qtr)
+df %>% 
+  complete(year, qtr)
+```
+
+We can consider new combinations by specifying an expectation of possible values:
+
+```{r}
+df %>% 
+  expand(year = 2010:2012, qtr)
+df %>% 
+  complete(year = 2010:2012, qtr)
+```
+
+Want to link two or more columns when looking for combinations? Use `nesting()`.
+
+## Activity (10 min)
 
 Fill out __Exercise 3: Making tibbles__ in the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
