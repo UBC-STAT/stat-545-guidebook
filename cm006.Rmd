@@ -165,7 +165,7 @@ By the end of this lesson, students are expected to be able to:
 | \|\| | Or |
 | && | And |
 
-* The difference between `|` and `||` is that the former evaluates only the first element of the two vectors, whereas the latter evaluates element-wise. 
+* The difference between `|` and `||` is that `||` evaluates only the first element of the two vectors, whereas `|` evaluates element-wise. 
 
 ### Demonstration
 
