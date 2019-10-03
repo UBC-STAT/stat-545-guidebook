@@ -16,3 +16,14 @@ cover-image: "stat-545.png"
 Welcome to the class meeting (or "lecture") guide for STAT 545A and STAT 547M at UBC for the 2019/20 academic year! This guide organizes what we will be doing in each class meeting. So you can expect it to be updated regularly -- in fact, the date listed above is the last time this guide was updated. 
 
 If you're looking for the list of tutorials written by Jenny Bryan, you can find those in the bookdown book found at stat545.com.
+
+
+## Other Contributors
+
+Various people have contributed to the current state of this guidebook in various ways.
+
+- [Jenny Bryan](https://jennybryan.org/) founded the course, and the big-picture organization of material in this guidebook originated from her work.
+- [Victor Yuan](https://twitter.com/victor2wy) delivered and contributed to the [Intro to data wrangling, Part I] lecture (cm006) in 2019.
+- [Rashedul Islam](https://www.linkedin.com/in/rashedul-islam-12170432/) delivered and contributed to the [Tibble Joins] lecture (cm010) in 2018.
+- [Giulio Valentino Dalla Riva](https://www.gvdallariva.net/) contributed in the 2017 version of the course.
+- [Joey Bernhardt](https://www.zoology.ubc.ca/~jbernhar/home/) made a [singer R package](https://github.com/JoeyBernhardt/singer/) that's being used in the [Tibble Joins] lecture (cm010).

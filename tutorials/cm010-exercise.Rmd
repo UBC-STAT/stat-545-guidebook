@@ -1,27 +1,26 @@
-# cm101 worksheet
+# Tibble Joins
 
 
-```{r setup, include=FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
 suppressPackageStartupMessages(library(tidyverse))
-knitr::opts_chunk$set(fig.width=4, fig.height=3)
+knitr::opts_chunk$set(fig.width=4, fig.height=3, warning = FALSE, fig.align = "center")
 ```
 
-#### Resources
+<!---The following chunk allows errors when knitting--->
 
-Some useful resources for data frame joins:
-- Jenny's [Cheatsheet](bit001_dplyr-cheatsheet.html) for `dplyr` join functions.
-- Possibly look at Jenny's [Tidy data using Lord of the Rings](https://github.com/jennybc/lotr-tidy)
-- "two-table verbs"'s [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) on
-For data reshaping:
--  The `tidyr`'s [vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+
+
+
+
 
 
 We are going to use a set of datasets that Joey put together for us. You can install them from github.
 
-```{r}
-# if you have not installed devtools, time to do it (uncomment following line)
-# install.packages("devtools")
-# uncomment and run the following line to get the `singer` package
+```
 devtools::install_github("JoeyBernhardt/singer")
 ```
 
@@ -33,12 +32,10 @@ The package `singer` comes with two smallish dataframe about songs and artists. 
 
 ```{r}
 library(singer)
-data("songs")
 songs
 ```
 
 ```{r}
-data("locations")
 locations
 ```
 

@@ -1,4 +1,4 @@
-# Joining Two Tables
+# Tibble Joins
 
 __WARNING: content subject to change__
 
@@ -7,3 +7,21 @@ __WARNING: content subject to change__
 https://htmlpreview.github.io/?https://github.com/JoeyBernhardt/singer/blob/master/vignettes/joins.html
 
 https://stat545.com/join-cheatsheet.html
+
+
+## Orientation (5 min)
+
+### Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
+
+### Today
+
+### Resources
+
+Some useful resources for data frame joins:
+- Jenny's [Cheatsheet](bit001_dplyr-cheatsheet.html) for `dplyr` join functions.
+- Possibly look at Jenny's [Tidy data using Lord of the Rings](https://github.com/jennybc/lotr-tidy)
+- "two-table verbs"'s [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) on
+For data reshaping:
+-  The `tidyr`'s [vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
