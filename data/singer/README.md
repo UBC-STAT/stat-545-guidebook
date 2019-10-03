@@ -1,0 +1,1 @@
+Data from Joey's [`singer` R package](https://github.com/JoeyBernhardt/singer), made available to those who are having trouble installing the R package.
