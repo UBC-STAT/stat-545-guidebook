@@ -1,27 +1,43 @@
 # Tibble Joins
 
-__WARNING: content subject to change__
+Today's topic is on operations with two or more tibbles. 
 
-(last year, delivered by Rashedul, resources at https://github.com/Rashedul/stat545_guest_lecture)
-
-https://htmlpreview.github.io/?https://github.com/JoeyBernhardt/singer/blob/master/vignettes/joins.html
-
-https://stat545.com/join-cheatsheet.html
-
-
-## Orientation (5 min)
-
-### Worksheet
+## Worksheet
 
 You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
 
-### Today
+## Resources
 
-### Resources
+- [Jenny's join cheatsheet](https://stat545.com/join-cheatsheet.html)
+- "two-table verbs"'s [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)
+- [Relational Data chapter](https://r4ds.had.co.nz/relational-data.html) in "R for Data Science".
+- [dplyr cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
-Some useful resources for data frame joins:
-- Jenny's [Cheatsheet](bit001_dplyr-cheatsheet.html) for `dplyr` join functions.
-- Possibly look at Jenny's [Tidy data using Lord of the Rings](https://github.com/jennybc/lotr-tidy)
-- "two-table verbs"'s [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html) on
-For data reshaping:
--  The `tidyr`'s [vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+For an overview of operations involving multiple tibbles, check out Jenny's [Chapter 14](https://stat545.com/multiple-tibbles.html) in stat545.com.
+
+For more activities, check out [Rashedul's guest lecture material from 2018](https://github.com/Rashedul/stat545_guest_lecture).
+
+## Join Functions (25 min)
+
+Often, we need to work with data living in more than one table. There are three main types of operations that can be done with two tables (as elaborated in [r4ds Chapter 13 Introduction](https://r4ds.had.co.nz/relational-data.html#introduction-7)):
+
+- [__Mutating joins__](https://r4ds.had.co.nz/relational-data.html#mutating-joins) add new columns to the "original" tibble.
+- [__Filtering joins__](https://r4ds.had.co.nz/relational-data.html#filtering-joins) filter the "original" tibble's rows.
+- [__Set operations__](https://r4ds.had.co.nz/relational-data.html#set-operations) work as if each row is an element in a set. 
+- __Binding__ stacks tables on top of or beside each other, with `bind_rows()` and `bind_cols()`.
+
+Let's navigate to each of these three links, which lead to the relevant r4ds chapters, and go through the concepts there. These have excellent visuals to explain what's going on.
+
+Then, let's go through [Jenny's join cheatsheet](https://stat545.com/join-cheatsheet.html) for examples. 
+
+## Activity (25 min)
+
+Let's complete [today's worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
+
+
+## Time remaining?
+
+Let's return to the exercises from either:
+
+- tidyr last class
+- ggplot2 the class before

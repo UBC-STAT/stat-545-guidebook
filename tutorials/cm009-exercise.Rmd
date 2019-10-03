@@ -1,8 +1,9 @@
 ---
 title: "cm009 Exercises: tidy data"
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
 ---
 
 ```{r, warning = FALSE, message = FALSE}

@@ -18,7 +18,7 @@ Welcome to the class meeting (or "lecture") guide for STAT 545A and STAT 547M at
 If you're looking for the list of tutorials written by Jenny Bryan, you can find those in the bookdown book found at stat545.com.
 
 
-## Other Contributors
+## Other Contributors {-}
 
 Various people have contributed to the current state of this guidebook in various ways.
 

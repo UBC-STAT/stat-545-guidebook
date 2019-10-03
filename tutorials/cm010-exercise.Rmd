@@ -1,8 +1,25 @@
-# Tibble Joins
+---
+title: "cm010 Exercises: Tibble Joins"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
 
+## Requirements
+
+You will need Joey's `singer` R package for this exercise. And to install that, you'll need to install `devtools`. Running this code in your console should do the trick:
+
+```
+install.packages("devtools")
+devtools::install_github("JoeyBernhardt/singer")
+```
+
+Load required packages:
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE}
-suppressPackageStartupMessages(library(tidyverse))
+library(tidyverse)
+library(singer)
 knitr::opts_chunk$set(fig.width=4, fig.height=3, warning = FALSE, fig.align = "center")
 ```
 
@@ -12,141 +29,115 @@ knitr::opts_chunk$set(fig.width=4, fig.height=3, warning = FALSE, fig.align = "c
 knitr::opts_chunk$set(error = TRUE)
 ```
 
+## Exercise 1: `singer`
 
-
-
-
-
-
-We are going to use a set of datasets that Joey put together for us. You can install them from github.
-
-```
-devtools::install_github("JoeyBernhardt/singer")
-```
-
-## Join together
-
-For the first part of the lecture, we are going to work a tad on some more joining operation.
-
-The package `singer` comes with two smallish dataframe about songs and artists. Let's take a look at them
+The package `singer` comes with two smallish data frames about songs. Let's take a look at them (after minor modifications by renaming and shuffling):
 
 ```{r}
-library(singer)
-songs
+(time <- as_tibble(songs) %>% 
+   rename(song = title))
 ```
 
 ```{r}
-locations
-```
-
-### Challenge 1
-
-What flow would you use to get a dataframe with all the rows from `songs` where there is matching information the in `locations` dataframe?
-
-```{r}
-
-```
-
-### Challenge 2
-
-What flow would you use to get a dataframe with all the rows from `songs` where there is matching information the in `locations` dataframe, getting back a dataframe with `title`, `artist_name` and `year`?
-
-```{r}
-
-```
-
-### Challenge 2
-
-What command(s) would you use to get a dataframe with all the rows from `songs` where there is matching information the in `locations` dataframe, getting back a dataframe with `title`, `artist_name` and `year`?
-
-```{r}
-
-```
-
-### Challenge 3
-
-What flow would you use to get the number of releases (albums) present in this two small datasets per year?
-
-```{r}
-
+(album <- as_tibble(locations) %>% 
+   select(title, everything()) %>% 
+   rename(album = release,
+          song  = title))
 ```
 
 
-## Reshaping
-
-Let's consider the bigger datagrame `artist_locations`
+1. We really care about the songs in `time`. But, which of those songs do we know its corresponding album?
 
 ```{r}
-data("singer_locations")
-singer_locations
+time %>% 
+  FILL_THIS_IN(album, by = FILL_THIS_IN)
+```
+
+2. Go ahead and add the corresponding albums to the `time` tibble, being sure to preserve rows even if album info is not readily available.
+
+```{r}
+time %>% 
+  FILL_THIS_IN(album, by = FILL_THIS_IN)
+```
+
+3. Which songs do we have "year", but not album info?
+
+```{r}
+time %>% 
+  FILL_THIS_IN(album, by = "song")
+```
+
+4. Which artists are in `time`, but not in `album`?
+
+```{r}
+time %>% 
+  anti_join(album, by = "FILL_THIS_IN")
 ```
 
 
-Let's suppose that we would like to do some plotting, showing the mean of `artist_hotttnesss`, `artist_familiarity` and `duration` for `year`. Let's select the appropriate part of the dataframe.
+5. You've come across these two tibbles, and just wish all the info was available in one tibble. What would you do?
 
 ```{r}
-hfd_y <- singer_locations %>%
-  select(year, artist_hotttnesss, artist_familiarity, duration)
+FILL_THIS_IN %>% 
+  FILL_THIS_IN(FILL_THIS_IN, by = "song")
 ```
 
 
-You may have heard that ggplot prefers long dataframes, what does that mean? Let's see with an example. The dataframe we have is **wide**: that means that the observation presents the values of interest on different columns.
+## Exercise 2: LOTR
+
+Load in the three Lord of the Rings tibbles that we saw last time:
 
 ```{r}
-hfd_y
+fell <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv")
+ttow <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv")
+retk <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv")
 ```
 
-To have in on a long format, we can use `tidyr`'s function `gather()`. Let's see:
+1. Combine these into a single tibble.
 
 ```{r}
-hfd_y_long <- hfd_y %>%
-  gather(key = "measure", value = "Value", artist_hotttnesss:duration)
+FILL_THIS_IN(fell, FILL_THIS_IN)
 ```
 
-### micro challenge
-
-Observe the number of rows and the first entries: what do you think it happened?
-
-
----
-
-We can go back to the wide format using `tidyr`'s function `spread()`. Yet, be braced for a problem:
+2. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
 
 ```{r}
-hfd_y_long %>%
-  spread(measure, Value)
+fell %>% 
+  anti_join(ttow, by = "Race") %>% 
+  FILL_THIS_IN(FILL_THIS_IN, by = "Race")
 ```
 
-What did go wrong here? As we had more than one song per year, when we made it long we lost some information: we don't know how to reassemble the wide table. Let's try again, but with additional wizardry: remember that if you want to gather and then spread, you need to have in the dataframe some column(s) uniquely identifying each row. In this case `song_id` does the magic.
 
+
+## Exercise 3: Set Operations
+
+Let's use three set functions: `intersect`, `union` and `setdiff`. We'll work with two toy tibbles named `y` and `z`, similar to Data Wrangling Cheatsheet
 
 ```{r}
-hfd_y_unique <- singer_locations %>%
-  select(song_id, year, artist_hotttnesss, artist_familiarity, duration)
+(y <-  tibble(x1 = LETTERS[1:3], x2 = 1:3))
 ```
 
-Gather:
-
 ```{r}
-hfd_y_unique_long <- hfd_y_unique %>%
-  gather(key = "measure", value = "Value", artist_hotttnesss:duration)
+(z <- tibble(x1 = c("B", "C", "D"), x2 = 2:4))
 ```
 
-and then spread
+1. Rows that appear in both `y` and `z`
 
 ```{r}
-hfd_y_unique_long %>%
-  spread(measure, Value)
+FILL_THIS_IN(y, z)
 ```
 
-## From cm009
-
-(Exercises largely based off of Jenny Bryan's [gather tutorial](https://github.com/jennybc/lotr-tidy/blob/master/02-gather.md))
-
-This function is useful for making untidy data tidy (so that computers can more easily crunch the numbers).
-
-1. Combine the three LOTR untidy tables (`lotr1`, `lotr2`, `lotr3`) to a single untidy table by stacking them.  
+2. You collected the data in `y` on Day 1, and `z` in Day 2. Make a data set to reflect that.
 
 ```{r}
+FILL_THIS_IN(
+  mutate(y, day = "Day 1"),
+  mutate(z, day = "Day 2")
+)
+```
 
+3. The rows contained in `z` are bad! Remove those rows from `y`.
+
+```{r}
+FILL_THIS_IN(FILL_THIS_IN, FILL_THIS_IN)
 ```
