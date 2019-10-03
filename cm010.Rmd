@@ -34,6 +34,10 @@ Then, let's go through [Jenny's join cheatsheet](https://stat545.com/join-cheats
 
 Let's complete [today's worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
 
+```
+read_csv("https://raw.githubusercontent.com/STAT545-UBC/STAT545-home/master/content/loc.csv")
+read_csv("https://raw.githubusercontent.com/STAT545-UBC/STAT545-home/master/content/singer.csv")
+```
 
 ## Time remaining?
 
