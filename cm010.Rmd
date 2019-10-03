@@ -34,9 +34,11 @@ Then, let's go through [Jenny's join cheatsheet](https://stat545.com/join-cheats
 
 Let's complete [today's worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
 
+In case you can't download the `singer` package, just load the data by running these two lines
+
 ```
-read_csv("https://raw.githubusercontent.com/STAT545-UBC/STAT545-home/master/content/loc.csv")
-read_csv("https://raw.githubusercontent.com/STAT545-UBC/STAT545-home/master/content/singer.csv")
+songs <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/songs.csv")
+locations <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/loc.csv")
 ```
 
 ## Time remaining?

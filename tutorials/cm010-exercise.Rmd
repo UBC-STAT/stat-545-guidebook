@@ -15,6 +15,13 @@ install.packages("devtools")
 devtools::install_github("JoeyBernhardt/singer")
 ```
 
+If you can't install the `singer` package, we've put the singer data on the `STAT545-UBC/Classroom` repo, and you can load those in instead by running the following lines of code:
+
+```
+songs <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/songs.csv")
+locations <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/loc.csv")
+```
+
 Load required packages:
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE}
