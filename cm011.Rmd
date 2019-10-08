@@ -1,6 +1,9 @@
 # Advanced R
 
 __WARNING: content subject to change__
+__Lecture slides will be posted after class!__
+
+<!--
 
 ## Review, and Looking Ahead
 
@@ -78,3 +81,5 @@ Reading and writing delimited files in general
 | tidyverse (`readr`) | `read_delim()` | `write_delim()` |
 
 With Base R: beware the factors with `read.csv()`!
+
+-->
