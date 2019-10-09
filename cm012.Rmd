@@ -4,18 +4,18 @@ Worksheet for today exercise can be found [here]()
 
 ## what are factors?
 
-A **factor** variable (commonly known as a categorical variable outside of R) is a variable that takes on a limited set of values. For example, a vector that stores days of the week {Sunday, Monday, etc.} should be encoded as a factor.
+A **factor** variable, commonly known as a categorical variable outside of R, is a variable that takes on a limited set of values. For example, a vector that stores days of the week should be encoded as a factor.
 
-To illustrate this, lets first we create a vector of days of the week.
+To illustrate this, let's first we create a vector containing days of the week.
 
 ```{r}
-day_week <- c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”)
+day_week <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 class(day_week)
 ```
 By default, R creates a character vector. We can use the `factor()` function to explicitly create a vector of factors.
 
 ```{r}
-day_week <- factor(c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”))
+day_week <- factor(c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
 class(day_week)
 ```
 Notice the output when we print the `day_week` vector.
@@ -23,48 +23,58 @@ Notice the output when we print the `day_week` vector.
 ```{r}
 day_week 
 ```
-R displays our vector of days of teh week with something additional output, *Levels*. The *levels* of a factor are all the possible values that the variable can take. 
+R displays our vector of days of the week with something additional output, *Levels*. The *levels* of a factor are all the possible values that the variable can take. 
 
   - By default, when you create a factor vector, R sets the levels of the factor to be **the unique set of values inside the vector**,
-  - R orders the levels alphabetically.
+  - R orders the levels alphabetically by default.
   
 ## when to use characters and when to use vectors?
--	 **Factors vs character vectors when doing stats:** In terms of doing statistics, there's no difference in how R treats factors and character vectors. In fact, its often easier to leave factor variables as character vectors. For instance, if you do a regression or ANOVA with lm() with a character vector as a categorical variable you'll get normal model output but with the message ` variable 'character_x' converted to a factor`
 
--	**Factors vs character vectors when manipulating dataframes:** When manipulating dataframes, however, character vectors and factors are treated very differently. Some information on the annoyances of R & factors can be found on the Quantum Forest blog, R pitfall #3: friggin’ factors.
+**Factors vs character vectors when doing stats:** In terms of doing statistics, there's no difference in how R treats factors and character vectors. In fact, its often easier to leave factor variables as character vectors. For instance, if you do a regression or ANOVA with lm() with a character vector as a categorical variable you'll get normal model output but with the message ` variable 'character_x' converted to a factor`
 
-Its useful to use `stringsAsFactors = FALSE` when reading data in from a .csv or .txt using `read.table` or `read.csv` or – even better – use the tidyverse! For data import, use readr::read_csv(), readr::read_tsv(), etc. For data frame creation, use tibble::tibble(). And so on.
+**Factors vs character vectors when manipulating dataframes:** When manipulating dataframes, however, character vectors and factors are treated very differently. Some information on the annoyances of R & factors can be found on the [Quantum Forest blog, R pitfall #3: friggin’ factors](https://www.quantumforest.com/2011/12/15/r-pitfall-3-friggin-factors/).
+
+  - when using base R, use `stringsAsFactors = FALSE` when reading data in from a .csv or .txt using `read.table` or `read.csv` OR better use the tidyverse! For data import, use `readr::read_csv()`. For data frame creation, use `tibble::tibble()`. 
+  
 Good articles about how the factor fiasco came to be:
-•	stringsAsFactors: An unauthorized biography by Roger Peng
-•	stringsAsFactors = <sigh> by Thomas Lumley
-You also have to make sure that everything in your character vector is consistent, or else every typo will be designated as a different factor. You can use the function `gsub()` to fix typos. Explore this [link]( http://www.endmemo.com/program/R/gsub.php) if you want to see several examples.
+
+•	[stringsAsFactors: An unauthorized biography by Roger Peng](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)
+
+•	[stringsAsFactors = <sigh> by Thomas Lumley](https://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh)
+
+when creating a foctor from charactor vector, you have to make sure that everything in your character vector is consistent, or else every typo will be designated as a different factor. You can use the function `gsub()` to fix typos. Explore this [link]( http://www.endmemo.com/program/R/gsub.php) if you want to see several examples.
+
 ## How the factors are stored? 
-Factors are stored as a numeric compared to R
+Factors are stored as an integers. This can be easily seen with `str()` function that compactly displays the internal structure of an R object.
+
+```{r}
 str(day_week)
- Factor w/ 7 levels "Friday","Monday",..: 2 6 7 5 1 3 4
-you see that `str(day_week)`   has 7 levels ( 7 unique days of the week) and starts listing the first few values as they are stored, i.e. 2 6 7...
+```
+You see that `day_week` has 7 levels (7 unique days of the week) followed by first few values as they are stored, i.e. 2 6 7... . Thus, Friday was the first factor (remmebr that factors are stored alphabetically) and were assigned integer 1, and etc.
+
 Such action does not seem to make a big difference to the storage volume now, but as your list gets longer, "Monday" (6 characters) and  other days will start take up much more storage than just plain integers. 
+
 ## Two types of factors
+
 There are two types of factors. For example, days of the week have an inherent order: Monday followed by Tuesday and etc. To see whether a factor is ordered, use the `is.ordered()` function.
-day_week <- factor(c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”))
- 
+
+```{r}
+day_week <- factor(c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”), 
+                   levels= c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”))
 is.ordered(day_week)
-[1] FALSE
-day_week <- factor(c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”), levels= c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”))
+```
+
+Factors are not “ordered” by default. We can use the *ordered *parameter of the `factor()` function to tell R that a factor has inherent order.
+
+```{r}
+day_week <- factor(c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”), 
+                    levels= c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”),
+                    ordered = TRUE)
 is.ordered(day_week)
-[1] FALSE
+```
 
-Factors are not “ordered” by default. We can use the *ordered *parameter of the factor() function to tell R that a factor has inherent order.
+## Resources
 
-day_week <- factor(
-c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”), 
-levels= c("Monday", "Tuesday", "Wednesday", “Thursday”, “Friday”, “Saturday”, “Sunday”),
- ordered = TRUE)
-is.ordered(day_week)
-## [1] TRUE
+For concepts of vectors: 
 
-### Resources
-
-For concepts of tidy data: 
-
-- [Jenny's intro to tidy data](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md) is short and sweet.
+- [Jenny's intro to tidy data](https://stat545.com/factors-boss.html) is short and sweet.
