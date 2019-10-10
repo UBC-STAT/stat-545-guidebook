@@ -6,6 +6,10 @@ output:
     theme: paper
 ---
 
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
 ## Motivating the need for factors in R
 
 ### Activity 1: Using Factors for plotting 
