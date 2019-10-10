@@ -18,7 +18,7 @@ Link to cm012 [worksheet file](https://raw.githubusercontent.com/STAT545-UBC/Cla
 
 <!---The following chunk allows errors when knitting--->
 
-```{r allow errors, echo = FALSE}
+```{r allow errors2, echo = FALSE}
 knitr::opts_chunk$set(error = TRUE)
 ```
 
