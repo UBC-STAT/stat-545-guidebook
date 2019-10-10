@@ -1,85 +1,156 @@
-# Advanced R
+# File input/output (I/O)
 
-__WARNING: content subject to change__
-__Lecture slides will be posted after class!__
+Today's class is all about reading in and writing out data files into and out of R.
 
-<!--
+## Worksheet
 
-## Review, and Looking Ahead
-
-We're done with the "core concepts" of data wrangling and data vis, both of which are fundamental to exploratory data analysis (EDA). 
-
-Now, we're starting more "specialized" topics for EDA, which will continue into STAT 547M.
-
-## Today's Lessons
-
-New for 2019:
-
-here::here(); readxl? googlesheets? Maybe even list-columns and the `rsample` package. Maybe bookdown, or blogdown.
-
-Old (perhaps deprecated, since lightly covered in cm002):
-
-- "Flavours" of R objects
-- Vectors, vectorization, and recycling.
-- Lists
-
-If time remains:
-
-- Environments and Scoping
+Normally there would be a separate worksheet file, but we'll do everything in-line for this class
 
 ## Resources
 
-Part I:
+### References and tutorials
 
-- Jenny's [Basic R Objects](http://stat545.com/block004_basic-r-objects.html) tutorial covers Part I. 
-- A more thorough treatment of the topic can be found in [adv-r: Data Structures](http://adv-r.had.co.nz/Data-structures.html) and [adv-r: Subsetting](http://adv-r.had.co.nz/Subsetting.html).
+* Jenny Bryan's [notes](https://stat545.com/import-export.html) on file I/O
+* [Tutorial](https://beanumber.github.io/sds192/lab-import.html#data_from_an_excel_file) on importing excel file
+* [Tutorial](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) on relative paths and how RStudio treats .R script files and .Rmd files
 
-Part II:
+### Package documentation
 
-- [adv-r: Functions: Lexical Scoping section](http://adv-r.had.co.nz/Functions.html#lexical-scoping) 
-- [adv-r: Environments](http://adv-r.had.co.nz/Environments.html): "Environment Basics" section, and "Function Environments" section (but don't worry about "binding environments" and "calling environments").
+* [read_csv package](https://readr.tidyverse.org/reference/read_delim.html)
+* [read_excel(https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel) package](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel)
+* [download.file](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/download.file.html)
+* [here::here()](https://here.r-lib.org) package
 
+<!---The following chunk allows errors when knitting--->
 
-## Participation
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
 
-Fill out the cm011-exercise.Rmd file, and push it to your participation repo. Links: [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm011-exercise.Rmd), or [from html](http://stat545.com/Classroom/notes/cm011-exercise.nb.html).
+## Writing data to disk (10 mins)
 
+Let's first load the built-in gapminder dataset and the tidyverse:
 
-## Reading and Writing data
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library("gapminder")
+library("tidyverse")
+library("tidyr")
+```
 
-### Working Directory 
+Next, let's filter the data only from 2007 and only in the Asia continent and save it to a variable.
 
-R has a notion of "working directory". You can get with `getwd()`, set (with caution) with `setwd()`.
+```{r}
+gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia")
+gap_asia_2007
+```
 
-### The functions
+We can write this to a comma-separated value (csv) file with just one command:
 
-Let's see an example of how tabular data are stored:
+```
+write_csv(gap_asia_2007,"exported_file.csv")
+```
+But let's not just write the csv file anywhere, we should download hte file in a sensible location. The next section talks about the `here` package
 
-- csv example: [gapminder](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/gapminder.csv)
-- tsv example: [LOTR](https://raw.githubusercontent.com/jennybc/lotr/master/lotr_clean.tsv)
+## Making the case for here::here()
 
-Reading and writing csv's
+If you wanted to make your Rproj more portable and accessible to more users in a cross-platform (between Mac, Unix, Windows users), rather than specifying every path explicitly, here::here() allows you to set relative paths much more easily.
 
-| Tool | Reading | Writing |
-|------|---------|---------|
-| Base R | `read.csv()` | `write.csv()` |
-| tidyverse (`readr`) | `read_csv()` | `write_csv()` |
+For example, create a new folder "data" and within it a subfolder called "cm011_data", specify here() and then save a file to that location with these commands:
 
-Reading and writing tsv's
+###
+```{r}
+write_csv(gap_asia_2007,here::here("data","cm011_data","exported_file.csv"))
+```
 
-| Tool | Reading | Writing |
-|------|---------|---------|
-| Base R | `read.delim()` | `write.table(sep="\t")` |
-| tidyverse (`readr`) | `read_tsv()` | `write_tsv()` |
+More thorough notes to come...
 
+In the meantime, read this [short article](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) for an excellent explanation of why we use the here::here() package in R.
 
-Reading and writing delimited files in general
+## Reading data from disk (5 mins)
 
-| Tool | Reading | Writing |
-|------|---------|---------|
-| Base R | `read.delim()` | `write.table()` |
-| tidyverse (`readr`) | `read_delim()` | `write_delim()` |
+The same csv file that we just saved to disk can be imported into R again by specifying the path where it exists:
 
-With Base R: beware the factors with `read.csv()`!
+```{r}
+read_csv(here::here("data","cm011_data","exported_file.csv"))
+```
 
--->
+Normally we would store the imported data into a new variable and you can use that by assigning the output to a variable. Notice that the output of the imported file is the same as the original tibble, and read_csv was intelligent enough to detect the types of the columns. This won't always be true so it's worth checking! The [read_csv package](https://readr.tidyverse.org/reference/read_delim.html) has many additional options including the ability to skip columns, skip rows, rename columns on import, trim whitespace, and more...
+
+## Import a file from the web/cloud
+
+### Import a csv file from the internet
+
+To import a csv file from a web, assign the URL to a variable
+```{r}
+url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/magazines.csv"
+```
+and then apply read_csv file to the `url`.
+
+```{r}
+read_csv(url)
+```
+
+### Import an excel file (.xls) from the internet
+
+First, we'll need the package to load in excel files:
+
+```{r}
+library("readxl") 
+```
+'Datafiles from this tutorial were obtained from: https://beanumber.github.io/sds192/lab-import.html#data_from_an_excel_file
+
+To import an .xls or .xlsx file from the internet, you first need to download it locally. The read_excel function from the readxl package can help us read it after we download it. To download it, create a new variable called xls_url, as well the name of the destination file you would like to download the data into. 
+
+```{r}
+xls_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
+download.file(xls_url,here::here("data","cm011_data","some_file.xls"))
+```
+
+Naming a file "some_file" is extremely bad practice (hard to keep track of the files) and I would strongly encourage you to name the file similar (or the same) to the original file. Let me show you a handy trick to extract the filename from the URL:
+
+```{r}
+file_name <- basename(xls_url)
+download.file(xls_url,here::here("data","cm011_data",file_name))
+```
+Now we can import the file:
+
+```{r}
+read_excel(file_name)
+```
+
+## Read in a sample Excel file. (Optional)
+
+Let's load in the MRI data file first, specifying the range A1:K12 since the rest of the data contains either footer rows or repeated data.
+
+```{r}
+mri_file = here::here("data","cm011_data","Firas-MRI.xlsx")
+mri <- read_excel(mri_file, range = "A1:K12")
+```
+Viewing the data using the `View()` function will allow you to investigate how the imported data looks in R. It looks like we have to do one preliminary data-processing steps before we can get all the information we need:
+
+- Group information is missing.
+
+Notice that below row 12, two subsets of the data from the first 12 rows is duplicated into two groups: "Avastin" and "Herceptin" treated. Indeed, the person who did the analysis copied the raw data and split it into the two groups. While it is possible to do this processing in R, in this case it is better that we do this directly in the excel file. Let's do this and save a new file called `Firas-MRI_minor_cleaning.xlsx`
+
+Note also that column J is a calculated column of weighted averages. Rather than bring this column in a-is, we want to remove this column and then later calculate it if we need to. 
+
+We are now ready to import in the newly processed file:
+
+```{r}
+mri_file = here::here("data","cm011_data","Firas-MRI.xlsx")
+mri <- read_excel(mri_file, range = "A1:L12")
+# We can remove the "weighted averages" column like so:
+mri <- mri[,-10]
+```
+
+Finally, let's make our data tidy using `pivot_longer`:
+
+```{r}
+mri <- mri %>% 
+  tidyr::pivot_longer(cols = `Slice 1`:`Slice 8`,
+               names_to = 'slice_no',
+               values_to = 'value')
+mri
+```
+
+And we are done! Ready to explore trends in this dataset.
