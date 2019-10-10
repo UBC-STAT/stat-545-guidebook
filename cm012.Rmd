@@ -8,11 +8,11 @@ Link to cm012 [worksheet file](https://raw.githubusercontent.com/STAT545-UBC/Cla
 
 ## Resources
 
-### References and tutorials{-}
+### References and tutorials
 
 * Jenny Bryan's notes on [factors](https://stat545.com/factors-boss.html)
 
-### Package documentation{-}
+### Package documentation
 
 * [forcats](https://forcats.tidyverse.org) package
 
