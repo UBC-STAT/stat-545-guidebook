@@ -126,7 +126,7 @@ We should first produce a frequency table as a tibble using `dplyr::count()`:
 
 The table is nice, but it would be better to visualize the data.
 Factors are most useful/helpful when plotting data.
-So let's first plot how life the expectancy changes over time for 5 countries of your choice:
+So let's first plot this:
 
 ```{r}
 FILL_IN_THIS %>%
