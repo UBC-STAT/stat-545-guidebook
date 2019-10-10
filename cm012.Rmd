@@ -1,4 +1,4 @@
-## Working with factors in R
+# Working with factors in R
 
 Today's class is working with a very important component of R - factors.
 
