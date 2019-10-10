@@ -1,360 +1,229 @@
 ---
 title: "cm012 Exercises: Factors"
-output: html_notebook
-editor_options:
-  chunk_output_type: inline
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
 ---
 
-`forcats` package comes loaded with `tiyverse`:
+## Motivating the need for factors in R
+
+### Activity 1: Using Factors for plotting 
+
+**1.1** Let's look again into `gapminder` dataset and create a new cloumn, `life_level`, that contains five categories ("very high", "high","moderate", "low" and "very low") based on life expectancy in 1997. Assign categories accoring to the table below:
+
+| Criteria | life_level| 
+|-------------|-----------|
+| less than 23 | very low |
+| between 23 and 48 | low |
+| between 48 and 59 | moderate |
+| between 59 and 70 | high |
+| more than 70 | very high |
+
+Function `case_when()` is a tidier way to vectorise multiple `if_else()` statements. you can read more about this function [here](https://dplyr.tidyverse.org/reference/case_when.html).
 
 ```{r}
-suppressPackageStartupMessages(library(tidyverse))
-library(gapminder)
+gapminder %>% 
+  filter(year == FILL_IN_THIS) %>% 
+  mutate(life_level = case_when(lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                TRUE ~ FILL_IN_THIS)) %>% 
+  ggplot() + geom_boxplot(aes(x = FILL_IN_THIS, y = FILL_IN_THIS)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() 
 ```
 
-# Factors
+Do you notice anything odd/wrong about the graph?
 
-## Resources
+We can make a few observations:
 
-- Exercises are based on http://stat545.com/block029_factors.html and http://r4ds.had.co.nz/factors.html. Some content was taken from the former.
+- It seems that none of the countries had a "very low" life-expectancy in 1997. 
 
-## Intro to Factors
+- However, since it was an option in our analysis it should be included in our plot. Right?
 
-What is a factor? A "truly categorical" variable. You can think of it as a vector that:
+- Notice also how levels on x-axis are placed in the "wrong" order.
 
-- has character entries on the surface
-- are integers underneath
-- has __levels__
-
-Examples of Base R's obsession with coercing to factors:
-
+**1.2** You can correct these issues by explicitly setting the levels parameter in the call to `factor()`. Use, `drop = FALSE` to tell the plot not to drop unused levels 
 ```{r}
-data.frame(x=c("A", "B")) %>% 
-  str()
+gapminder %>% 
+  filter(year == FILL_IN_THIS) %>% 
+  mutate(life_level = case_when(lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                TRUE ~ FILL_IN_THIS) ,
+                      levels = FILL_IN_THIS)) %>% %>% 
+  ggplot() + geom_boxplot(aes(x = FILL_IN_THIS, y = FILL_IN_THIS)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() 
 ```
 
+## Inspecting factors (activity 2)
 
-```{r}
-lotr1 <- "https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv" %>% 
-  read.csv()
-lotr2 <- "https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv" %>% 
-  read.csv()
-str(lotr1)
-str(lotr2)
-```
+In Activity 1, we created our own factors, so now let's explore what categorical variables that we have in the `gapminder` dataset.
 
+### Exploring `gapminder$continent` (activity 2.1)
 
-Examples of problems encountered with factors. (ideas came from [R Bloggers](https://www.r-bloggers.com/factors-are-not-first-class-citizens-in-r/))
+Use functions such as `str()`, `levels()`, `nlevels()` and `class()` to answer the following questions:
 
-```{r}
-iris %>% 
-  mutate(Species = ifelse(Species == "versicolor", "vers", Species))
-```
-
-```{r}
-c(iris$Species, "setosa")
-```
-
-
-- Base R way of interacting with factors:
-    - `factor()`, or `forcats::parse_factor()`.
-    - `levels()`
-    - `nlevels()`
-    - `forcats::fct_count()`
-
-Here is a sample of 10 letters drawn from the possibilities "a", "b", and "c":
-
-```{r}
-set.seed(10)
-(draw <- sample(letters[1:3], size = 10, replace = TRUE))
-```
-
-Convert `draw` to a factor. What are the levels? How many are there? How many of each category was drawn?
-
-```{r}
-
-```
-
-
-## Concatenating Factors
-
-We saw that `c()` doesn't work for concatenating. Modify the following code to use `fct_c()` from the `forcats` package:
-
-```{r}
-c(lotr1$Film, lotr2$Film)
-```
-
-Try binding by row `lotr1` and `lotr2`:
-
-- with `rbind()`
-- with `bind_rows()`
-
-Which one is more lenient? Which would you prefer?
+- what class is  `continent`(a factor or charecter)?
+- How many levels? What are they?
+- What integer is used to represent factor "Asia"?
 
 ```{r}
 
+
+
+
 ```
 
+### Exploring `gapminder$country` (activity 2.2)
 
-## Unused Levels
+Let's explore what else we can do with factors:
 
-Levels don't always have to be present ("observed") in the factor. Example of what this means:
+Answer the following questions: 
 
-```{r}
-gap_gs <- gapminder %>% filter(country %in% c("Germany", "Sweden"))
-nlevels(gap_gs$country)
-```
-
-
-Sometimes keeping the levels is good. Other times, not.
-
-__Example of when it's good__: 
-
-Here's the gapminder data down to rows where population is less than a quarter of a million, i.e. 250,000:
-
-```{r}
-gap_small <- gapminder %>% 
-  filter(pop < 250000)
-```
-
-Exercise: Make a bar chart of the number of times a continent has a country with population < 250,000 in the `gapminder` data set. Try with and without `scale_x_discrete(drop=FALSE)`.
+- How many levels are there in `country`?
+- Filter `gapminder` dataset by 5 countries of your choice. How many levels are in your filtered dataset?
 
 ```{r}
 
+
+
+
 ```
 
-__Example of when it's bad__: If you ever use the `levels()` function.
+## Dropping unused levels
 
-How to fix by dropping levels:
+What if we want to get rid of some levels that are "unused" - how do we do that? 
 
-- Base R: `droplevels()` operates on either an entire data frame or a factor.
-- `forcats::fct_drop()` only operates on a factor.
-    
-Exercise: get rid of the unused factor levels for country and continent in different ways:
-
-- `droplevels()`
-- `fct_drop()` inside `mutate()`
-- Re-defining the variable as a factor
+The function `droplevels()` operates on all the factors in a data frame or on a single factor. The function `forcats::fct_drop()` operates on a factor.
 
 ```{r}
-
-```
-
-
-## Ordering
-
-Ordering of levels is alphabetical, by default. Usually not useful!
-
-```{r}
-cont <- gapminder$continent
-levels(cont)
-```
-
-Plotting happens in the order of the factor levels:
-
-```{r, fig.width=2, fig.height=1}
-qplot(cont)
-```
-
-Much more effective to always consider a meaningful order when plotting a categorical variable. We'll look at three ways to re-order a factor. 
-
-### Ordering with the factor itself
-
-Reorder by frequency:
-
-- Rearrange by frequency: `fct_infreq()`.
-- Reverse: `fct_rev()` 
-
-```{r, fig.width=2, fig.height=1}
-cont %>% 
-  fct_infreq() %>% 
-  qplot()
-```
-
-Could also arrange by the order they appear in the factor with `fct_inorder()`.
-
-### Ordering by Another Variable
-
-Here are the 2007 life expectancies of Asian countries:
-
-```{r}
-gap_asia_2007 <- gapminder %>% 
-  filter(year == 2007, continent == "Asia")
-ggplot(gap_asia_2007, aes(lifeExp, country)) + geom_point()
-```
-
-Let's use `fct_reorder()` to reorder the countries of `gap_asia_2007` by life Expectancy, and produce the same plot:
-
-```{r, fig.width=2, fig.height=1}
-
-```
-
-What about when life Expectancy is not unique? Example: life expectancy of each continent:
-
-```{r, fig.width=2, fig.height=1}
-ggplot(gapminder, aes(continent, lifeExp)) +
-  geom_violin()
-ggplot(gapminder, aes(continent, lifeExp)) +
-  geom_boxplot()
-```
-
-`fct_reorder(f, x)` still works, but does some internal wrangling: a summary statistic (default: median) is computed on `x` for each category in the factor `f`.
-
-Exercise: Try making the above box plot and violin plots, ordered by median lifeExp. Try other functions to order by by modifying the `.fun` argument.
-
-```{r, fig.width=2, fig.height=1}
-
-```
-
-
-What if we have two variables plus a non-positional categorical variable? Example: Life expectancy for some select countries. Want legend "ordered by life expectancy" -- but what does that mean?
-
-```{r}
-select_countries <- c("Sweden", "Denmark", "Norway", "Germany", "Austria")
-gap_select <- gapminder %>% 
-  filter(country %in% select_countries) %>% 
+h_gap_dropped <- FILL_IN_THIS %>% 
   droplevels()
-ggplot(gap_select, aes(year, lifeExp)) +
-  geom_line(aes(group=country, colour=country))
-```
 
-Use `fct_reorder2(f, x, y)` to reorder factor `f`:
-
-- `.fun` is a function of `x` and `y`. Should return a single value, and is applied to each category.
-- Default is `.fun = last2`, which looks at x-y plot for each category; uses the y-value furthest to the right.
-
-Exercise: Reorder the above line graph so that the legend is in order of last life expectancy. Useful for black-and-white printing!
-
-```{r, fig.width=2, fig.height=1}
 
 ```
 
-### Ordering "because I said so"
+## Changing the order of levels
 
-Remember the plot of Asian life expectancies in 2007? What if you're preparing a report for the Syrian government? You'd want to put Syria first (for reasons external to the data).
+Let's say we wanted to re-order the levels of a factor using a new metric - say, count().
 
-Here's how to use `fct_relevel()` to do that. Exercise: modify the code so that:
-
-- in addition, Sweden goes second.
-- instead of first, Syria goes after the third level. Hint: use `after=`.
-
-```{r}
-gap_asia_2007$country %>% 
-  fct_relevel("Syria") %>% 
-  levels() %>% 
-  head()
-```
-
-## Re-coding a Factor
-
-Want "United States" to read "USA" instead? Just use `fct_recode()`. (Sadly, no metaprogramming happens here).
-
-Exercise: modify the following code to also change "Canada" to read "Can". Hint: use a comma.
-
-```{r}
-gap_big_north <- gapminder %>% 
-  filter(country %in% c("Canada", "United States", "Mexico")) %>% 
-  droplevels()
-gap_big_north$country %>% 
-  fct_recode("USA" = "United States") %>% 
-  levels()
-```
-
-## Condensing a Factor
-
-We can specify levels to combine. Let's look at the world in 2007:
-
-```{r}
-gap_2007 <- gapminder %>% 
-  filter(year == 2007)
-```
-
-We can arbitrarily combine levels using `fct_collapse()`. For example, combine Europe and Asia into one factor called "combo":
-
-```{r, fig.width=2, fig.height=1}
-cont %>% 
-  fct_collapse("combo" = c("Europe", "Asia")) %>% 
-  qplot()
-```
-
-More practically, we can lump the least frequent levels together as "Other". Modify the above code to use `fct_lump()` instead of `fct_collapse()` so that:
-
-- The bar chart shows the two most frequently observed continents, 
-- The bar chart shows the two least frequently observed continents (Hint: use negative `n`).
-- You let `fct_lump()` decide on the number of non-other continents. How is this chosen?
-- Note: you can manually specify non-other levels using `fct_other()`.
-
-```{r, fig.width=2, fig.height=1}
-
-```
-
-We can use the `w` argument to lump by another variable.
-
-Exercise: Modify the following violin plot of life expectancies of African countries, so that:
-
-1. There are 4 "violins" corresponding to countries with the highest lifeExp.
-2. There are 4 "violins" corresponding to countries with the highest gdpPercap
-
-```{r, fig.width=2, fig.height=1}
-gap_africa <- gapminder %>% 
-    filter(continent == "Africa")
-gap_africa %>% 
-    mutate(country = fct_lump(country)) %>% 
-    ggplot(aes(country, lifeExp)) +
-    geom_violin()
-```
-
-
-## Exercises
-
-Use the `gss_cat` data to answer the following questions (from http://r4ds.had.co.nz/factors.html).
-
-1. (15.3.1 Ex. 1) Explore the distribution of rincome (reported income). What makes the default bar chart hard to understand? How could you improve the plot?
+We should first produce a frequency table as a tibble using `dplyr::count()`:
 
 ```{r}
 
+
+
 ```
 
-2. (15.3.2 Ex. 2) What is the most common relig in this survey? What’s the most common partyid?
+The table is nice, but it would be better to visualize the data.
+Factors are most useful/helpful when plotting data.
+So let's first plot how life the expectancy changes over time for 5 countries of your choice:
+
+```{r}
+FILL_IN_THIS %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip() +
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Think about how levels are normally ordered. 
+It turns out that by default, R always sorts levels in alphabetical order. 
+However, it is preferable to order the levels according to some principle:
+
+  1. Frequency/count. 
+  
+- Make the most common level the first and so on. Function `fct_infreq()` might be useful.
+- The function `fct_rev()` will sort them in the opposite order.
+
+For instance ,
+    `  
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reorder-factors) has some helpful examples.
+
+  2. Another variable. 
+  
+  - For example, if we wanted to bring back our example of ordering `gapminder` countries by life expectancy, we can visualize the results using `fct_reorder()`. 
+
+```{r}
+##  default summarizing function is median()
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() +
+  xlab("Continent") + ylab("Number of entries") 
+```
+
+Use `fct_reorder2()` when you have a line chart of a quantitative x against another quantitative y and your factor provides the color. 
+
+```{r}
+## order by life expectancy 
+ggplot(h_gap, aes(x = year, y = lifeExp,
+                  color = FILL_IN_THIS)) +
+  geom_line() +
+  labs(color = "country")
+```
+
+## Change order of the levels manually
+
+This might be useful if you are preparing a report for say, the state of affairs in Africa.
+
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() 
+```
+More details on reordering factor levels by hand can be found [here] https://forcats.tidyverse.org/reference/fct_relevel.html
+
+### Recoding factors
+
+Sometimes you want to specify what the levels of a factor should be.
+For instance, if you had levels called "blk" and "brwn", you would rather they be called "Black" and "Brown" - this is called recoding.
+Lets recode `Oceania` and the `Americas` in the graph above as abbreviations `OCN` and `AME` respectively using the function `fct_recode()`.
 
 ```{r}
 
+
+
 ```
 
-3. (15.5.1 Ex. 1) How have the proportions of people identifying as Democrat, Republican, and Independent changed over time? Modify the following plot to a friendlier legend order.
+## Grow a factor (OPTIONAL)
 
-```{r, fig.width=4, fig.height=2}
-gss_cat %>%
-  mutate(partyid = fct_collapse(partyid,
-    other = c("No answer", "Don't know", "Other party"),
-    rep = c("Strong republican", "Not str republican"),
-    ind = c("Ind,near rep", "Independent", "Ind,near dem"),
-    dem = c("Not str democrat", "Strong democrat")
-  )) %>% 
-  count(year, partyid) %>% 
-  ggplot(aes(year, n)) +
-  geom_line(aes(group=partyid, colour=partyid))
-```
-
-# Dates and Times with Lubridate
-
-Goal here: some exposure to `lubridate`; know it exists.
-
-1. Use different combinations of y, m, d to make a date time object.
-
+Let’s create two data frames,`df1` and `df2` each with data from two countries, dropping unused factor levels.
 ```{r}
 
 ```
 
-2. Get `year`, `month`, `yday`, `wday`, `day`.
-
+The country factors in df1 and df2 have different levels.
+Can we just combine them?
 ```{r}
 
 ```
 
-3. Add durations (exact time spans) with `ddays`, `dweeks`, ... and periods (human-interpretable time spans) with `days`, `weeks`, and especially `months`.
-
+The country factors in `df1` and `df2` have different levels.
+Can you just combine them using `c()`?
 ```{r}
 
 ```
 
+Explore how different forms of row binding work behave here, in terms of the country variable in the result.
+```{r}
+
+```
