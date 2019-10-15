@@ -86,6 +86,17 @@ We will be filling these principles in together as a class
 
 Instructions: Below is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
 
+```{r}
+library("tidyverse")
+library("datasets") # might have to install datasets package
+ggplot(airquality, aes(`Month`, `Temp`, group = `Month`)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(alpha = 0.2) +
+    xlab("Month of year") + 
+    ylab("Maximum Temperature") + 
+    theme_bw()
+```
+
 How many of the principles did you manage to break?
 
 ## Plotly demo [10 mins]
