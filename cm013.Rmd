@@ -105,6 +105,63 @@ Did you know that you can make interactive graphs and plots in R using the plotl
 
 This is a preview of what we'll be doing in STAT 547 - making dynamic and interactive dashboards using R!
 
+### Plotly interactive plots
+
+Basic syntax to:
+
+1. Convert a pre-existing ggplot2 graph into an interactive plotly graph.
+2. Create an interactive graph using plotly 
+
+```{r}
+library(tidyverse)
+library(gapminder)
+library(plotly) 
+
+# make ggplot interactive with plotly::ggplotly()
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point() %>%
+    ggplotly()
+
+# create plot using plotly::plot_ly() directly
+p <- gapminder %>%
+    plot_ly(x = ~gdpPercap,
+            y = ~lifeExp,
+            color = ~continent,
+            
+            # mode specifies the geometric object e.g. "markers" for points, "line" for lines
+            mode = 'markers',
+            
+            # type controls the "type" of graph e.g. 'bar', 'scatter'
+            type = 'scatter'
+            )
+
+p
+```
+
+
+### Share with others
+
+To share with others:
+
+1. Create a plotly account @ [plot.ly](plot.ly)
+2. Navigate to settings, and take in the following information:
+- your user name
+- api key 
+
+Now, we will tell R your account information so that we can upload these plots to the web.
+
+Note that once we run "api_create()", the browser will open to a webpage displaying your interactive plot. You can share this page with others, but they will only be able to view. If you want others to be able to edit the graph, you can invite others to "collaborate" in the "Sharing link" option. 
+
+
+```{r}
+# fill in the below
+Sys.setenv("plotly_username"="your_plotly_username")
+Sys.setenv("plotly_api_key"="your_api_key")
+
+# now we can upload our plots to the website
+api_create(p, filename = 'name-of-your-plot')
+```
+
 ## Supplemental worksheet (Optional)
 
 You are highly encouraged to the cm013 supplemental exercises worksheet. It is a great guide that will take you through Scales, Colours, and Themes in ggplot. There is also a short guided activity showing you how to make a ggplot interactive using plotly.
