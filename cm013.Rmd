@@ -6,6 +6,8 @@ Now that you know how to create graphics and visualizations in R, you are armed 
 
 **The worksheet questions for today are embedded into the class notes.**
 
+You can download this Rmd file [here](https://github.com/STAT545-UBC/Classroom/blob/master/cm013.Rmd)
+
 Note, there will be very little coding in-class today, but I've given you plenty of exercises in the form of a supplemental worksheet (linked at the bottom of this page) to practice with after class is over.
 
 ## Resources
@@ -96,4 +98,4 @@ This is a preview of what we'll be doing in STAT 547 - making dynamic and intera
 
 You are highly encouraged to the cm013 supplemental exercises worksheet. It is a great guide that will take you through Scales, Colours, and Themes in ggplot. There is also a short guided activity showing you how to make a ggplot interactive using plotly.
 
-- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm013-supplemental.Rmd)
+- [Supplemental Rmd file here](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm013-supplemental.Rmd)
