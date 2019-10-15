@@ -6,7 +6,7 @@ Now that you know how to create graphics and visualizations in R, you are armed 
 
 **The worksheet questions for today are embedded into the class notes.**
 
-You can download this Rmd file [here](https://github.com/STAT545-UBC/Classroom/blob/master/cm013.Rmd)
+You can download this Rmd file [here](https://github.com/STAT545-UBC/Classroom/raw/master/cm013.Rmd)
 
 Note, there will be very little coding in-class today, but I've given you plenty of exercises in the form of a supplemental worksheet (linked at the bottom of this page) to practice with after class is over.
 
@@ -84,7 +84,7 @@ We will be filling these principles in together as a class
 
 ### Make a great plot worse
 
-Instructions: Here is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
+Instructions: Below is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
 
 How many of the principles did you manage to break?
 
@@ -98,4 +98,4 @@ This is a preview of what we'll be doing in STAT 547 - making dynamic and intera
 
 You are highly encouraged to the cm013 supplemental exercises worksheet. It is a great guide that will take you through Scales, Colours, and Themes in ggplot. There is also a short guided activity showing you how to make a ggplot interactive using plotly.
 
-- [Supplemental Rmd file here](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm013-supplemental.Rmd)
+- [Supplemental Rmd file here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm013-supplemental.Rmd)
