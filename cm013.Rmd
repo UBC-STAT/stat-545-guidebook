@@ -10,11 +10,15 @@ Note, there will be very little coding in-class today, but I've given you plenty
 
 ## Resources
 
-1. [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/introduction.html) by Claus Wilke
+1. [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/introduction.html) by Claus Wilke.
 
-1. [Visualization Analysis and Design](https://www-taylorfrancis-com.ezproxy.library.ubc.ca/books/9780429088902) by Tamara Munzner
+1. [Visualization Analysis and Design](https://www-taylorfrancis-com.ezproxy.library.ubc.ca/books/9780429088902) by Tamara Munzner.
 
-1. [ggplot2 book](https://ggplot2-book.org) by Hadley Wickam
+1. [STAT545.com - Effective Graphics](https://stat545.com/effective-graphs.html) by Jenny Bryan.
+
+1. [ggplot2 book](https://ggplot2-book.org) by Hadley Wickam.
+
+1. [Callingbull.org](https://callingbull.org/tools.html) by Carl T. Bergstrom and Jevin West.
 
 ## Part 1: Warm-up and pre-test [20 mins]
 
@@ -28,19 +32,39 @@ Write some notes here about what "effective visualizations" means to you. Think 
 1. 
 1.
 
-### CQ01: 
+### CQ01: Weekly hours for full-time employees
+
+> Question: Evaluate the strength of the claim based on the data: "German workers are more motivated and work more hours than workers in other EU nations."
+>
+> Very strong, strong, weak, very week, do not know
 
 - <<Your answer here (and make sure to explain why you chose this answer)>>
 
-### CQ02: 
+- Main takeaway: Summarize the main takeaway from this question/discussion here
+
+### CQ02: Average Global Temperature by year
+
+> Question: For the years this temperature data is displayed, is there an appreciable increase in temperature?
+> 
+> Yes, No, Do not know
 
 - <<Your answer here (and make sure to explain why you chose this answer)>>
 
-### CQ03: 
+- Main takeaway: Summarize the main takeaway from this question/discussion here
+
+### CQ03: Gun deaths in Florida
+
+> Question: Evaluate the strength of the claim based on the data: “Soon after this legislation was passed, gun deaths sharply declined."
+>
+> Very strong, strong, weak, very week, do not know
 
 - <<Your answer here (and make sure to explain why you chose this answer)>>
+
+- Main takeaway: Summarize the main takeaway from this question/discussion here
 
 ## Part 2: Extracting insight from visualizations  [20 mins]
+
+Great resource for selecting the right plot: https://www.data-to-viz.com/ ; encourage you all to consult it when choosing to visualize data.
 
 ### Case Study 1: Context matters
 
@@ -48,13 +72,7 @@ Write some notes here about what "effective visualizations" means to you. Think 
 
 ## Part 3: Principles of effective visualizations [20 mins]
 
-### CQ03: 
-
-### CQ04: 
-
-### CQ05: 
-
-We will be filling these principles in together as a class after the clicker questions
+We will be filling these principles in together as a class
 
 1. 
 1. 
