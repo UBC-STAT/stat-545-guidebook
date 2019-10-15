@@ -49,7 +49,7 @@ We can write this to a comma-separated value (csv) file with just one command:
 ```
 write_csv(gap_asia_2007,"exported_file.csv")
 ```
-But let's not just write the csv file anywhere, we should download hte file in a sensible location. The next section talks about the `here` package
+But let's not just write the csv file anywhere, we should download the file in a sensible location. The next section talks about the `here` package
 
 ## Making the case for here::here()
 
@@ -105,6 +105,7 @@ To import an .xls or .xlsx file from the internet, you first need to download it
 xls_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
 download.file(xls_url,here::here("data","cm011_data","some_file.xls"))
 ```
+**NOTE: If you are on windows and end up downloading a corrupt file, you need to add an extra argument: download.file(..., mode="wb"). More details about this behaviour can be found [here](https://github.com/HenrikBengtsson/Wishlist-for-R/issues/30).**
 
 Naming a file "some_file" is extremely bad practice (hard to keep track of the files) and I would strongly encourage you to name the file similar (or the same) to the original file. Let me show you a handy trick to extract the filename from the URL:
 
