@@ -86,7 +86,7 @@ We will be filling these principles in together as a class
 
 Instructions: Below is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library("tidyverse")
 library("datasets") # might have to install datasets package
 ggplot(airquality, aes(`Month`, `Temp`, group = `Month`)) +
@@ -105,24 +105,39 @@ Did you know that you can make interactive graphs and plots in R using the plotl
 
 This is a preview of what we'll be doing in STAT 547 - making dynamic and interactive dashboards using R!
 
-### Plotly interactive plots
+*For this demo, make sure you have the following packages installed and loaded:*
 
-Basic syntax to:
-
-1. Convert a pre-existing ggplot2 graph into an interactive plotly graph.
-2. Create an interactive graph using plotly 
-
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(gapminder)
 library(plotly) 
+```
 
-# make ggplot interactive with plotly::ggplotly()
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-    geom_point() %>%
+### Make `ggplot2` graphs interactive
+
+It's very easy to convert an existing ggplot2 graph into an interactive graph with `plotly::ggplotly`
+
+On the below graph, explore the interactive options:
+
+- *Hover* your cursor over individual points
+- *Zoom* in and out by dragging across / using the zoom tool
+- *Single-* and *double-click* items on the legend to isolate groups of points
+- While zoomed-in, use the *pan* tool to "move" around the plot, google maps style!
+
+```{r}
+p <- gapminder %>%
+    ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point() 
+
+p %>%
     ggplotly()
+```
 
-# create plot using plotly::plot_ly() directly
+### Make interactive plots with `plotly::plot_ly`
+
+We can also make interactive graphs using the the `plotly::plot_ly` function:
+
+```{r}
 p <- gapminder %>%
     plot_ly(x = ~gdpPercap,
             y = ~lifeExp,
@@ -138,7 +153,6 @@ p <- gapminder %>%
 p
 ```
 
-
 ### Share with others
 
 To share with others:
@@ -150,15 +164,14 @@ To share with others:
 
 Now, we will tell R your account information so that we can upload these plots to the web.
 
-Note that once we run "api_create()", the browser will open to a webpage displaying your interactive plot. You can share this page with others, but they will only be able to view. If you want others to be able to edit the graph, you can invite others to "collaborate" in the "Sharing link" option. 
+Note that once we run `api_create()`, the browser will open to a webpage displaying your interactive plot. You can share this page with others, but they will only be able to **view**. If you want others to be able to **edit** the graph, you can invite others to "*collaborate*" in the "*Sharing link*" option. 
 
-
-```{r}
-# fill in the below
+```{r eval = FALSE}
+# fill in the below with your information
 Sys.setenv("plotly_username"="your_plotly_username")
 Sys.setenv("plotly_api_key"="your_api_key")
 
-# now we can upload our plots to the website
+# upload our plots to the website
 api_create(p, filename = 'name-of-your-plot')
 ```
 
