@@ -16,8 +16,8 @@ Normally there would be a separate worksheet file, but we'll do everything in-li
 
 ### Package documentation
 
-* [read_csv package](https://readr.tidyverse.org/reference/read_delim.html)
-* [read_excel(https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel) package](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel)
+* [read_csv](https://readr.tidyverse.org/reference/read_delim.html) package
+* [read_excel](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel) package (https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel)
 * [download.file](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/download.file.html)
 * [here::here()](https://here.r-lib.org) package
 
@@ -115,24 +115,30 @@ download.file(xls_url,here::here("data","cm011_data",file_name))
 Now we can import the file:
 
 ```{r}
-read_excel(file_name)
+read_excel(here::here("data","cm011_data",file_name))
 ```
 
 ## Read in a sample Excel file. (Optional)
 
-Let's load in the MRI data file first, specifying the range A1:K12 since the rest of the data contains either footer rows or repeated data.
+Let's load in a sample dataset from a PhD research project in MRI (magnetic resonance imaging). In MRI, subjects are imaged and the data collected can be visualized in "slices". If a human head was being imaged, the first slice might be a cross-section of the neck. The next slice would be an image in the same plane as the first slice, but a few mm above the first slice, and so on and so forth. The exact details of the dataset aren't important, but here are key details we can extract from the dataset:
+
+- the first column contains the subject ID (e.g., "HerS18Bs01.BS1/8")
+- Each row contains 8 measurements, each from a different slice in the image
+- The next column is a weighted average, and the final column is the volume measurement of all 8 slices
+- The data is **not** in tidy format
+- The subjects are divided into two treatment groups: "Avastin" and "Herceptin", but unfortunately, this information is not captured in the table
+- The relevant data can be found in the range A1:K12 since the rest of the data contains either footer rows or repeated data.
 
 ```{r}
 mri_file = here::here("data","cm011_data","Firas-MRI.xlsx")
 mri <- read_excel(mri_file, range = "A1:K12")
 ```
-Viewing the data using the `View()` function will allow you to investigate how the imported data looks in R. It looks like we have to do one preliminary data-processing steps before we can get all the information we need:
 
-- Group information is missing.
+Viewing the data using the `View()` function will allow you to investigate how the imported data looks in R. As hinted above, it looks like we have to do one preliminary data-processing steps before we can import all the data.
 
 Notice that below row 12, two subsets of the data from the first 12 rows is duplicated into two groups: "Avastin" and "Herceptin" treated. Indeed, the person who did the analysis copied the raw data and split it into the two groups. While it is possible to do this processing in R, in this case it is better that we do this directly in the excel file. Let's do this and save a new file called `Firas-MRI_minor_cleaning.xlsx`
 
-Note also that column J is a calculated column of weighted averages. Rather than bring this column in a-is, we want to remove this column and then later calculate it if we need to. 
+Note also that column J is a calculated column of weighted averages. Rather than bring this column in a-is, we want to remove this column and then later calculate it in R if we need to. 
 
 We are now ready to import in the newly processed file:
 
