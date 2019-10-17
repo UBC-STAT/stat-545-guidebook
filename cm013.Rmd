@@ -1,3 +1,7 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.height = 5)
+```
+
 # Effective Visualizations
 
 Now that you know how to create graphics and visualizations in R, you are armed with powerful tools for scientific computing and analysis. With this power also comes great responsibility. Effective visualizations is an incredibly important aspect of scientific research and communication. There have been several books (see references) written about these principles. In class today we will be going through several case-studies trying to develop some expertise into making effective visualizations. 
