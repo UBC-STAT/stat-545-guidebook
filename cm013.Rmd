@@ -68,34 +68,49 @@ Write some notes here about what "effective visualizations" means to you. Think 
 
 Great resource for selecting the right plot: https://www.data-to-viz.com/ ; encourage you all to consult it when choosing to visualize data.
 
-### Case Study 1: Context matters
-
-### Case Study 2: A case for pie charts
-
 ## Part 3: Principles of effective visualizations [20 mins]
 
-We will be filling these principles in together as a class
+We will be filling these principles in together as a class (unfortunately we didn't get to do this in class, but here are the notes)
 
-1. 
-1. 
-1. 
-1. 
-1. 
+1. Apply [Principle of proportional ink](https://callingbullshit.org/tools/tools_proportional_ink.html)
+    - Definition: "The amount of ink used to indicate a value should be proportional to the value itself."
+    - Example: Truncating the y-axis on a bar chart to exaggerate the difference between bars violates the principle of proportional ink
+1. Maintain a high data-to-ink ratio: [less is more](https://speakerdeck.com/cherdarchuk/remove-to-improve-the-data-ink-ratio)
+    - Definition: remove distracting visual elements to focus attention on the data
+    - Examples: Lighten line weights, remove backgrounds, never use 3D or special effects, remove unnecessary/redundant labels, etc...
+1. Always update axes labels and titles on your plots
+    - In STAT545/547 we take principles of effective visualizations very seriously and you will lose marks if this isn't followed
+1. Choose your scale-type carefully
+    - Whether you choose a linear, logarithm, sqrt scale depends on your data, context, and purpose
+1. Choose your graph-type carefully
+    - Examples: [here](https://serialmentor.com/dataviz/directory-of-visualizations.html) is a great directory of plots
+1. Choose colours with accessibility and readability in mind
+    - Examples: [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) is a great set of colour schemes that are colour-blind friendly and perceptually uniform
 
 ### Make a great plot worse
 
 Instructions: Below is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
 
 ```{r, message = FALSE, warning = FALSE}
-install.packages('plotly')
+library("plotly")
 library("tidyverse")
-library("datasets") # might have to install datasets package
 ggplot(airquality, aes(`Month`, `Temp`, group = `Month`)) +
     geom_boxplot(outlier.shape = NA) +
-    geom_jitter(alpha = 0.2) +
-    xlab("Month of year") + 
-    ylab("Maximum Temperature") + 
-    theme_bw()
+    geom_jitter(alpha = 0.3) +
+    labs(x = "",
+         y = "",
+         title="Maximum temperature by month")+
+    theme_bw() + 
+    scale_x_continuous(breaks=c(5,6,7,8,9),labels=c("May","June","July","August","September")) +
+    annotate("text", x = 4.08, y = 95,label="°F",size=8) +
+    coord_cartesian(xlim = c(4.5, 9.5),
+                      clip = 'off')+
+    theme(panel.grid.minor = element_blank(),
+          panel.background = element_blank(), 
+          axis.line = element_line(colour = "gray"),
+          panel.border = element_blank(),
+          text = element_text(size=18)
+          )
 ```
 
 How many of the principles did you manage to break?
