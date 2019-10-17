@@ -9,7 +9,7 @@
 1. Deep thoughts on data analytic work (go through material at home)
 
 Worksheet: the model-fitting paradigm in R.
-    - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm014-exercise.Rmd), 
+    - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm014-exercise.Rmd), 
     - [from html](http://stat545.com/Classroom/notes/cm014-exercise.nb.html)
     
 <!-- Note: not able to add parsnip or rsample this year, did briefly mention it though
