@@ -1,0 +1,3937 @@
+---
+title: "cm005 Worksheet: Exploring Geometric Objects"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+## Preliminary
+
+Begin by loading the required packages. If you don't have these installed (or don't know whether you have them installed), you can install them by executing the following code in your console:
+
+```
+install.packages("tidyverse")
+install.packages("scales")
+install.packages("tsibble")
+```
+
+Now run this code chunk to load the packages:
+
+```{r load packages, warning = FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(tsibble))
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Exercise 1: Bar Chart Grammar (Together)
+
+Consider the following plot. Don't concern yourself with the code at this point.
+
+```{r, fig.width = 5, fig.height = 2}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  mutate(continent = fct_infreq(continent)) %>% 
+  ggplot(aes(continent)) +
+  geom_bar() +
+  theme_bw()
+```
+
+Fill in the seven grammar components for this plot.
+
+| Grammar Component     | Specification |
+|-----------------------|---------------|
+| __data__              | `gapminder` |
+| __aesthetic mapping__ | FILL_THIS_IN |
+| __geometric object__  | FILL_THIS_IN |
+| scale                 | FILL_THIS_IN |
+| statistical transform | FILL_THIS_IN |
+| coordinate system     | FILL_THIS_IN |
+| facetting             | FILL_THIS_IN |
+
+## Exercise 2: `ggplot2` Syntax (Your Turn)
+
+The following is a tsibble (a special type of tibble containing time series data, which we'll see more of later), stored in the variable `mauna`, of CO$_2$ concentrations collected monthly at the Mauna Loa station.
+
+Execute this code to store the data in `mauna`:
+
+```{r}
+(mauna <- tsibble::as_tsibble(co2) %>% 
+   rename(month = index, conc = value))
+```
+
+### 2(a)
+
+Produce a line chart showing the concentration over time. Specifically, the plot should have the following grammar components:
+
+| Grammar Component     | Specification |
+|-----------------------|---------------|
+| __data__              | `mauna` |
+| __aesthetic mapping__ | x: month, y: conc |
+| __geometric object__  | lines |
+| scale                 | linear |
+| statistical transform | none |
+| coordinate system     | rectangular |
+| facetting             | none |
+
+Fill in the blanks to obtain the plot:
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(FILL_THIS_IN, aes(FILL_THIS_IN, FILL_THIS_IN)) +
+  FILL_THIS_IN()
+```
+
+### 2(b)
+
+It turns out that you're allowed to specify the aesthetic mappings in a `geom` layer instead of, or in addition to, in the `ggplot()` function, with the following rules:
+
+- Aesthetics appearing in a `geom` layer apply only to that layer.
+- If there are conflicting aesthetics in both the `ggplot()` function and the `geom` layer, the `geom` layer takes precedence.
+
+The following code mistakenly puts the month variable on the y-axis. Fill in the `FILL_THIS_IN` so that you still obtain the same result as above.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(mauna, aes(y = month)) +
+  geom_point(aes(FILL_THIS_IN))
+```
+
+### 2(c)
+
+You can store the output of the plot in a variable, too. Store the plot from 2(a) in the variable named `p`, then add a layer to `p` that adds green points to the plot.
+
+```{r, fig.width = 5, fig.height = 2}
+p +
+  FILL_THIS_IN(colour = FILL_THIS_IN)
+```
+
+### 2(d)
+
+What's wrong with the following code? Fix it.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder) +
+  geom_point(x = gdpPercap, y = lifeExp, alpha = 0.1)
+```
+
+
+### 2(e) BONUS
+
+So you're a ggplot2 pro? Then, let's see this plot adapted to polar coordinates. Specifically:
+
+- angle is month (January through December)
+- radius is CO$_2$ concentration
+
+The plot should look like a spiral, or concentric circles. 
+
+```{r, fig.width = 5, fig.height = 2}
+FILL_THIS_IN
+```
+
+
+<!--chapter:end:cm005-exercise.Rmd-->
+
+---
+title: 'cm006: `dplyr` Exercise'
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+**Optional, but recommended startup**:
+
+1. Change the file output to both html and md _documents_ (not notebook).
+
+2. `knit` the document. 
+
+3. Stage and commit the rmd, and knitted documents.
+
+# Intro to `dplyr` syntax
+
+Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
+    - This loads `dplyr`, too.
+    
+```{r load packages, warning = FALSE, message = FALSE}
+# load your packages here:
+library(FILL_THIS_IN)
+library(FILL_THIS_IN)
+```
+    
+
+## `select()` (8 min)
+
+1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
+
+```{r}
+select(gapminder, FILL_THIS_IN)
+```
+
+
+2. Select all variables, from `country` to `lifeExp`.
+
+```{r}
+# This will work:
+select(gapminder, country, continent, year, lifeExp)
+
+# Better way:
+select(gapminder, FILL_THIS_IN)
+```
+
+
+3. Select all variables, except `lifeExp`.
+
+```{r}
+select(gapminder, FILL_THIS_IN)
+```
+
+4. Put `continent` first. Hint: use the `everything()` function.
+
+```{r}
+select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+
+5. Rename `continent` to `cont`.
+
+```{r}
+# compare
+select(gapminder, FILL_THIS_IN)
+
+rename(gapminder, FILL_THIS_IN)
+```
+
+
+## `arrange()` (8 min)
+
+1. Order by year.
+
+```{r}
+arrange(gapminder, FILL_THIS_IN)
+```
+
+2. Order by year, in descending order.
+
+```{r}
+arrange(gapminder, FILL_THIS_IN)
+```
+
+3. Order by year, then by life expectancy.
+
+```{r}
+arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+## Piping, `%>%` (8 min)
+
+Note: think of `%>%` as the word "then"!
+
+Demonstration:
+
+Here I want to combine `select()` Task 1 with `arrange()` Task 3.
+
+This is how I could do it by *nesting* the two function calls:
+
+```{r nesting functions example, eval = F}
+# Nesting function calls can be hard to read
+arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
+```
+
+Now using with pipes:
+
+```{r}
+# alter the below to include 2 "pipes"
+arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
+```
+
+# Resume lecture 
+
+Return to guide at section 6.7.
+
+## `filter()` (10 min)
+
+1. Only take data with population greater than 100 million.
+
+```{r}
+gapminder %>%
+  filter(FILL_THIS_IN)
+```
+
+2. Your turn: of those rows filtered from step 1., only take data from Asia.
+
+```{r}
+gapminder %>%
+  filter(FILL_THIS_IN)
+```
+
+3. Repeat 2, but take data from countries Brazil, and China. 
+
+```{r}
+gapminder %>%
+  filter(FILL_THIS_IN)
+```
+
+## `mutate()` (10 min)
+
+The `mutate()` function _creates_ new columns in the tibble by transforming other variables. Like `select()`, `filter()`, and `arrange()`, the `mutate()` function also takes a tibble as its first argument, and returns a tibble. 
+
+The general syntax is:
+
+```
+mutate(tibble, NEW_COLUMN_NAME = CALCULATION)
+```
+
+Let's get: 
+
+- GDP by multiplying GPD per capita with population, and
+- GDP in billions, named (`gdpBill`), rounded to two decimals.
+
+```{r}
+gapminder %>%
+  mutate(FILL_THIS_IN)
+```
+
+Notice the backwards compatibility! No need for loops!
+
+Try the same thing, but with `transmute` (drops all other variables). 
+
+```{r}
+gapminder %>%
+  transmute(FILL_THIS_IN)
+```
+
+The `if_else` function is useful for changing certain elements in a data frame.
+
+Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in the data frame, but is actually 70. Fix it using `if_else` and `mutate`. 
+
+```{r}
+gapminder %>%
+  mutate(FILL_THIS_IN)
+```
+
+Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
+
+```{r}
+```
+
+These functions we've seen are called __vectorized functions__.
+
+## git stuff (Optional)
+
+Knit, commit, push!
+
+# Bonus Exercises
+
+If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
+
+1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+
+2. Take the first three columns, and extract the names.
+
+3. Of the `iris` data frame, take all columns that start with the word "Petal". 
+    - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
+    
+4. Convert the population to a number in billions.
+
+5. Filter the rows of the iris dataset for Sepal.Length >= 4.6 and Petal.Width >= 0.5.
+
+Exercises 3. and 5. are from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).
+
+<!--chapter:end:cm006-exercise.Rmd-->
+
+---
+title: "cm007 Exercises: Practice with `dplyr`"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
+```
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tsibble))
+```
+
+
+This worksheet contains exercises aimed for practice with `dplyr`. 
+
+
+1. (a) What's the minimum life expectancy for each continent and each year? (b) Add the corresponding country to the tibble, too. (c) Arrange by min life expectancy.
+
+```{r}
+gapminder %>% 
+  group_by(FILL_THIS_IN) %>% 
+  FILL_THIS_IN(min_life = min(lifeExp))
+```
+
+2. Calculate the growth in population since the first year on record _for each country_ by rearranging the following lines, and filling in the `FILL_THIS_IN`. Here's another convenience function for you: `dplyr::first()`. 
+
+```
+mutate(rel_growth = FILL_THIS_IN) %>% 
+arrange(FILL_THIS_IN) %>% 
+gapminder %>% 
+DT::datatable()
+group_by(country) %>% 
+```
+
+```{r}
+
+```
+
+
+3. Determine the country that experienced the sharpest 5-year drop in life expectancy, in each continent, sorted by the drop, by rearranging the following lines of code. Ensure there are no `NA`'s. Instead of using `lag()`, use the convenience function provided by the `tsibble` package, `tsibble::difference()`:
+
+```
+drop_na() %>% 
+ungroup() %>% 
+arrange(year) %>% 
+filter(inc_life_exp == min(inc_life_exp)) %>% 
+gapminder %>% 
+mutate(inc_life_exp = FILL_THIS_IN) %>% 
+arrange(inc_life_exp) %>% 
+group_by(country) %>% 
+group_by(continent) %>% 
+knitr::kable()
+```
+
+```{r}
+
+```
+
+
+
+
+<!--chapter:end:cm007-exercise.Rmd-->
+
+---
+title: "cm008 Exercises: Fix the Plots"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+In this worksheet, we'll be looking at some erroneous plots and fixing them. 
+
+I think you might not have these two packages installed:
+
+```
+install.packages("ggridges")
+install.packages("scales")
+```
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(gapminder)
+library(ggridges)
+library(scales)
+```
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
+```
+
+
+## Exercise 1: Overlapping Points
+
+After fixing the error, fix the overlapping problem in the following plot (attribution: ["R for data science"](https://r4ds.had.co.nz/data-visualisation.html)).
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(mpg, aes(cty, hwy)) %>% 
+  geom_point()
+```
+
+
+## Exercise 2: Line for each Country
+
+Fix this plot so that it shows life expectancy over time _for each country_. Notice that `ggplot2` ignores the grouping of a tibble!
+
+```{r, fig.width = 5, fig.height = 2}
+gapminder %>% 
+  group_by(country) %>% 
+  ggplot(aes(year, lifeExp)) +
+  geom_line()
+```
+
+
+## Exercise 3: More gdpPercap vs lifeExp
+
+### 3(a) Facets
+
+- Change the x-axis text to be in "comma format" with `scales::comma_format()`.
+- Separate each continent into sub-panels.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.2) +
+  scale_x_log10()
+```
+
+### 3(b) Bubble Plot
+
+- Put the plots in one row, and free up the axes.
+- Make a bubble plot by making the size of the points proportional to population. 
+  - Try adding a `scale_size_area()` layer too (could also try `scale_radius()`).
+- Use `shape=21` to distinguish between `fill` (interior) and `colour` (exterior). 
+
+```{r, fig.width = 5, fig.height = 2}
+gapminder %>% 
+  filter(continent != "Oceania") %>% 
+  ggplot(aes(gdpPercap, lifeExp)) +
+  facet_wrap(~ continent) +
+  geom_point(alpha = 0.2) +
+  scale_x_log10(labels = scales::comma_format())
+```
+
+A list of shapes can be found [at the bottom of the `scale_shape` documentation](https://ggplot2.tidyverse.org/reference/scale_shape.html).
+
+### 3(c) Size "not working"
+
+Instead of alpha transparency, suppose you're wanting to fix the overplotting issue by plotting small points. Why is this not working? Fix it.
+
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder) +
+  geom_point(aes(gdpPercap, lifeExp, size = 0.1)) +
+  scale_x_log10(labels = scales::dollar_format())
+```
+
+
+
+## Exercise 4: Walking caribou
+
+The following mock data set marks the (x,y) position of a caribou at four time points. 
+
+- Fix the plot below so that it shows the path of the caribou. 
+- Add an arrow with `arrow = arrow()`.
+- Add the `time` label with `geom_text()`.
+
+```{r, fig.width = 5, fig.height = 2}
+tribble(
+  ~time, ~x, ~y,
+  1, 0.3, 0.3,
+  2, 0.8, 0.7,
+  3, 0.5, 0.9,
+  4, 0.4, 0.5
+) %>% 
+  ggplot(aes(x, y)) + 
+  geom_line()
+```
+
+## Exercise 5: Life expectancies in Africa
+
+### 5(a) Unhiding the data
+
+Fix the plot so that you can actually see the data points. Be sure to solve the problem of overlapping text, without rotating the text.
+
+```{r, fig.width = 5, fig.height = 2}
+gapminder %>% 
+  filter(continent == "Americas") %>% 
+  ggplot(aes(country, lifeExp)) + 
+  geom_point() +
+  geom_boxplot()
+```
+
+### 5(b) Ridgeplots
+
+We're starting with the same plot as above, but instead of the points + boxplot, try a ridge plot instead using `ggridges::geom_density_ridges()`, and adjust the `bandwidth`.
+
+```{r, fig.width = 5, fig.height = 2}
+gapminder %>% 
+  filter(continent == "Americas") %>% 
+  ggplot(aes(country, lifeExp)) + 
+  geom_point() +
+  geom_boxplot()
+```
+
+## Exercise 6: Bar plot madness
+
+### 6(a) Colour and stacking madness
+
+- Change the following plot so that it shows _proportion_ on the y-axis, not count.
+- Change the x-axis so that it doesn't appear to be continuous.
+- Put the bars for transmission side-by-side with their own colour.
+- Capitalize the legend title.
+
+```{r, fig.width = 5, fig.height = 2}
+mtcars %>% 
+  mutate(transmission = if_else(am == 0, "automatic", "manual")) %>% 
+  ggplot(aes(cyl)) +
+  geom_bar(aes(colour = transmission))
+```
+
+### 6(b) Bar heights already calculated
+
+Here's the number of people having a certain hair colour from a sample of 592 people:
+
+```{r}
+(hair <- as_tibble(HairEyeColor) %>% 
+  count(Hair, wt = n))
+```
+
+Fix the following bar plot so that it shows these counts.
+
+```{r}
+ggplot(hair, aes(Hair, n)) +
+  geom_bar()
+```
+
+## Exercise 7: Tiling
+
+Here's the number of people having a certain hair and eye colour from a sample of 592 people:
+
+```{r}
+(hair_eye <- as_tibble(HairEyeColor) %>% 
+  count(Hair, Eye, wt = n))
+```
+
+Fix the following plot so that it shows a filled-in square for each combination. 
+
+```{r}
+ggplot(hair_eye, aes(Hair, Eye)) +
+  geom_point(aes(colour = n))
+```
+
+By the way, `geom_count()` is like `geom_bar()`: it counts the number of overlapping points.
+
+
+## Additional take-home practice
+
+If you'd like some practice, give these exercises a try
+
+__Exercise 1__: Make a plot of `year` (x) vs `lifeExp` (y), with points coloured by continent. Then, to that same plot, fit a straight regression line to each continent, without the error bars. If you can, try piping the data frame into the `ggplot()` function.
+
+__Exercise 2__: Repeat Exercise 1, but switch the _regression line_ and _geom\_point_ layers. How is this plot different from that of Exercise 1?
+
+__Exercise 3__: Omit the `geom_point()` layer from either of the above two plots (it doesn't matter which). Does the line still show up, even though the data aren't shown? Why or why not?
+
+__Exercise 4__: Make a plot of `year` (x) vs `lifeExp` (y), facetted by continent. Then, fit a smoother through the data for each continent, without the error bars. Choose a span that you feel is appropriate.
+
+__Exercise 5__: Plot the population over time (year) using lines, so that each country has its own line. Colour by `gdpPercap`. Add alpha transparency to your liking. 
+
+__Exercise 6__: Add points to the plot in Exercise 5.
+
+<!--chapter:end:cm008-exercise.Rmd-->
+
+---
+title: "cm009 Exercises: tidy data"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+lotr  <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/lotr_tidy.csv")
+guest <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/attend.csv")
+email <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/emails.csv")
+```
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
+```
+
+## Exercise 1: Univariate Pivoting
+
+Consider the Lord of the Rings data:
+
+```{r}
+lotr
+```
+
+1. Would you say this data is in tidy format?
+
+2. Widen the data so that we see the words spoken by each race, by putting race as its own column.
+
+```{r}
+(lotr_wide <- lotr %>% 
+  pivot_wider(FILL_THIS_IN = c(-Race, -Words), 
+              FILL_THIS_IN = Race, 
+              FILL_THIS_IN = Words))
+```
+
+3. Re-lengthen the wide LOTR data from Question 2 above.
+
+```{r}
+lotr_wide %>% 
+  pivot_longer(FILL_THIS_IN = FILL_THIS_IN, 
+               names_to  = FILL_THIS_IN, 
+               values_to = FILL_THIS_IN)
+```
+
+## Exercise 2: Multivariate Pivoting
+
+Congratulations, you're getting married! In addition to the wedding, you've decided to hold two other events: a day-of brunch and a day-before round of golf.  You've made a guestlist of attendance so far, along with food preference for the food events (wedding and brunch).
+
+```{r}
+guest %>% 
+  DT::datatable(rownames = FALSE)
+```
+
+1. Put "meal" and "attendance" as their own columns, with the events living in a new column.
+
+```{r}
+(guest_long <- guest %>% 
+  pivot_longer(cols      = FILL_THIS_IN, 
+               names_to  = FILL_THIS_IN,
+               FILL_THIS_IN))
+```
+
+2. Use `tidyr::separate()` to split the name into two columns: "first" and "last". Then, re-unite them with `tidyr::unite()`.
+
+```{r}
+guest_long %>% 
+  separate(FILL_THIS_IN, into = FILL_THIS_IN)
+  # unite(col = "name", FILL_THIS_IN, sep = FILL_THIS_IN)
+```
+
+3. Which parties still have a "PENDING" status for all members and all events?
+
+```{r}
+FILL_THIS_IN %>% 
+  group_by(party) %>% 
+  summarize(all_pending = all(attendance == "PENDING"))
+```
+
+4. Which parties still have a "PENDING" status for all members for the wedding?
+
+```{r}
+FILL_THIS_IN %>% 
+  group_by(party) %>% 
+  summarize(pending_wedding = all(FILL_THIS_IN == "PENDING"))
+```
+
+
+5. Put the data back to the way it was.
+
+```{r}
+guest_long %>% 
+  pivot_wider(id_cols     = FILL_THIS_IN, 
+              names_from  = FILL_THIS_IN, 
+              names_sep   = "_", 
+              values_from = FILL_THIS_IN)
+```
+
+6. You also have a list of emails for each party, in this worksheet under the variable `email`. Change this so that each person gets their own row. Use `tidyr::separate_rows()`
+
+```{r}
+email %>% 
+  separate_rows(FILL_THIS_IN, sep = FILL_THIS_IN)
+```
+
+
+## Exercise 3: Making tibbles
+
+1. Create a tibble that has the following columns:
+
+- A `label` column with `"Sample A"` in its entries.
+- 100 random observations drawn from the N(0,1) distribution in the column `x`
+- `y` calculated as the `x` values + N(0,1) error. 
+
+```{r}
+n <- 100
+FILL_THIS_IN(label = FILL_THIS_IN,
+             FILL_THIS_IN = rnorm(n),
+             FILL_THIS_IN)
+```
+
+
+2. Generate a Gaussian sample of size 100 for each combination of the following means (`mu`) and standard deviations (`sd`).
+
+```{r}
+n <- 100
+mu <- c(-5, 0, 5)
+sd <- c(1, 3, 10)
+FILL_THIS_IN(mu = mu, sd = sd) %>% 
+  group_by_all() %>% 
+  mutate(z = list(rnorm(n, mu, sd))) %>% 
+  FILL_THIS_IN
+```
+
+3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person, and the measurements are kept. The code is given, but needs one adjustment. What is it?
+
+```{r}
+experiment <- tibble(
+  name = rep(c("Alex", "Robert", "Sam"), c(3, 2, 1)),
+  trt  = rep(c("a", "b", "a"), c(3, 2, 1)),
+  rep = c(1, 2, 3, 1, 2, 1),
+  measurement_1 = runif(6),
+  measurement_2 = runif(6)
+)
+experiment %>% expand(name, trt, rep)
+```
+
+
+
+<!--chapter:end:cm009-exercise.Rmd-->
+
+---
+title: "cm010 Exercises: Tibble Joins"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+## Requirements
+
+You will need Joey's `singer` R package for this exercise. And to install that, you'll need to install `devtools`. Running this code in your console should do the trick:
+
+```
+install.packages("devtools")
+devtools::install_github("JoeyBernhardt/singer")
+```
+
+If you can't install the `singer` package, we've put the singer data on the `STAT545-UBC/Classroom` repo, and you can load those in instead by running the following lines of code:
+
+```
+songs <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/songs.csv")
+locations <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/loc.csv")
+```
+
+Load required packages:
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(tidyverse)
+library(singer)
+knitr::opts_chunk$set(fig.width=4, fig.height=3, warning = FALSE, fig.align = "center")
+```
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Exercise 1: `singer`
+
+The package `singer` comes with two smallish data frames about songs. Let's take a look at them (after minor modifications by renaming and shuffling):
+
+```{r}
+(time <- as_tibble(songs) %>% 
+   rename(song = title))
+```
+
+```{r}
+(album <- as_tibble(locations) %>% 
+   select(title, everything()) %>% 
+   rename(album = release,
+          song  = title))
+```
+
+
+1. We really care about the songs in `time`. But, which of those songs do we know its corresponding album?
+
+```{r}
+time %>% 
+  FILL_THIS_IN(album, by = FILL_THIS_IN)
+```
+
+2. Go ahead and add the corresponding albums to the `time` tibble, being sure to preserve rows even if album info is not readily available.
+
+```{r}
+time %>% 
+  FILL_THIS_IN(album, by = FILL_THIS_IN)
+```
+
+3. Which songs do we have "year", but not album info?
+
+```{r}
+time %>% 
+  FILL_THIS_IN(album, by = "song")
+```
+
+4. Which artists are in `time`, but not in `album`?
+
+```{r}
+time %>% 
+  anti_join(album, by = "FILL_THIS_IN")
+```
+
+
+5. You've come across these two tibbles, and just wish all the info was available in one tibble. What would you do?
+
+```{r}
+FILL_THIS_IN %>% 
+  FILL_THIS_IN(FILL_THIS_IN, by = "song")
+```
+
+
+## Exercise 2: LOTR
+
+Load in the three Lord of the Rings tibbles that we saw last time:
+
+```{r}
+fell <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv")
+ttow <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv")
+retk <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv")
+```
+
+1. Combine these into a single tibble.
+
+```{r}
+FILL_THIS_IN(fell, FILL_THIS_IN)
+```
+
+2. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
+
+```{r}
+fell %>% 
+  anti_join(ttow, by = "Race") %>% 
+  FILL_THIS_IN(FILL_THIS_IN, by = "Race")
+```
+
+
+
+## Exercise 3: Set Operations
+
+Let's use three set functions: `intersect`, `union` and `setdiff`. We'll work with two toy tibbles named `y` and `z`, similar to Data Wrangling Cheatsheet
+
+```{r}
+(y <-  tibble(x1 = LETTERS[1:3], x2 = 1:3))
+```
+
+```{r}
+(z <- tibble(x1 = c("B", "C", "D"), x2 = 2:4))
+```
+
+1. Rows that appear in both `y` and `z`
+
+```{r}
+FILL_THIS_IN(y, z)
+```
+
+2. You collected the data in `y` on Day 1, and `z` in Day 2. Make a data set to reflect that.
+
+```{r}
+FILL_THIS_IN(
+  mutate(y, day = "Day 1"),
+  mutate(z, day = "Day 2")
+)
+```
+
+3. The rows contained in `z` are bad! Remove those rows from `y`.
+
+```{r}
+FILL_THIS_IN(FILL_THIS_IN, FILL_THIS_IN)
+```
+
+<!--chapter:end:cm010-exercise.Rmd-->
+
+---
+title: "cm011 Exercises: R as a programming language"
+output: html_notebook
+---
+
+
+## Reading and Writing Data: Exercises
+
+Make a tibble of letters, their order in the alphabet, and then a pasting of the two columns together.
+
+```{r}
+
+```
+
+Make a tibble of three names and commute times.
+
+```{r}
+
+```
+
+
+Write the `iris` data frame as a `csv`. 
+
+```{r}
+
+```
+
+Write the `iris` data frame to a file delimited by a dollar sign. 
+
+```{r}
+
+```
+
+Read the dollar-delimited `iris` data to a tibble.
+
+```{r}
+
+```
+
+Read these three LOTR csv's, saving them to `lotr1`, `lotr2`, and `lotr3`:
+
+- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv
+- https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv
+- https://github.com/jennybc/lotr-tidy/blob/master/data/The_Return_Of_The_King.csv
+
+```{r}
+
+```
+
+
+# Part I
+
+## Types and Modes and Classes, Oh My!
+
+R objects have a _type_, a _mode_, and a _class_. This can be confusing:
+
+```{r}
+a <- 3
+print(typeof(a))
+print(mode(a))
+print(class(a))
+```
+
+
+```{r}
+print(typeof(iris))
+print(mode(iris))
+print(class(iris))
+```
+
+
+```{r}
+print(typeof(sum))
+print(mode(sum))
+print(class(sum))
+```
+
+Usually, there's no need to fuss about these differences: just use the `is.*()` family of functions. Give it a try:
+
+```{r}
+
+```
+
+We can also coerce objects to take on a different form, typically using the `as.*()` family of functions. We can't always coerce! You'll get a sense of this over time, but try:
+
+- Coercing a number to a character.
+- Coercing a character to a number.
+- Coercing a number to a data.frame. `letters` to a data.frame.
+
+```{r}
+
+```
+
+There is also a slight difference between coercion and conversion, but this is usually not important.
+
+## Vectors
+
+Vectors store multiple entries of a data type. You'll discover that they show up just about everywhere in R, so they're fundamental and extremely important.
+
+### Vector Construction and Basic Subsetting
+
+We've seen vectors as columns of data frames:
+
+```{r}
+mtcars$hp
+```
+
+Use the `c()` function to make a vector consisting of the course code (`"STAT"` and `545`). Notice the coercion. Vectors must be homogeneous.
+
+```{r}
+
+```
+
+
+Subset the first entry. Remove the first entry. Note the base-1 system.
+
+```{r}
+
+```
+
+Use `<-` to change the second entry to "545A". Using the same approach, add a third entry, "S01".
+
+```{r}
+
+```
+
+Subset the first and third entry. Order matters! Subset the third and first entry.
+
+```{r}
+
+```
+
+Explore integer sequences, especially negatives and directions. Especially `1:0` that might show up in loops!
+
+```{r}
+
+```
+
+Singletons are also vectors. Check using `is.vector`.
+
+```{r}
+
+```
+
+
+### Vectorization and Recycling
+
+A key aspect of R is its vectorization. Let's work with the vector following vector:
+
+```{r}
+(a <- 7:-2)
+(n <- length(a))
+```
+
+Square each component:
+
+```{r}
+
+```
+
+Multiply each component by 1 through its length:
+
+```{r}
+
+```
+
+It's important to know that R will silently recycle! Unless the length of one vector is not divisible by the other. Let's see:
+
+```{r}
+
+```
+
+
+This is true of comparison operators, too. Make a vector of logicals using a comparison operator.
+
+```{r}
+
+```
+
+
+Now try a boolean operator. Note that && and || are NOT vectorized!
+
+```{r}
+
+```
+
+
+Recycling works with assignment, too. Replace the entire vector a with 1:2 repeated:
+
+```{r}
+
+```
+
+
+### Special Subsetting
+
+We can subset vectors by names and logicals, too.
+
+Recall the course vector:
+
+```{r}
+course <- c("STAT", "545A", "S01")
+```
+
+Let's give the components some names ("subject", "code", and "section") using three methods:
+
+1. Using the setNames function.
+- Notice that the vector does not change!!
+
+```{r}
+
+```
+
+
+2. Using the names function with `<-`. Also, just explore the names function.
+
+```{r}
+
+```
+
+3. Re-constructing the vector, specifying names within `c()`.
+
+```{r}
+
+```
+
+
+Subset the entry labelled "section" and "subject". 
+
+```{r}
+
+```
+
+Amazingly, we can also subset by a vector of logicals (which will be recycled!). Let's work with our integer sequence vector again:
+
+```{r}
+(a <- 7:-2)
+(n <- length(a))
+```
+
+## Lists
+
+Unlike vectors, which are atomic/homogeneous, a list in R is heterogeneous. 
+
+Try storing the course code (`"STAT"` and `545`) again, but this time in a list. Use the `list()` function.
+
+```{r}
+
+```
+
+
+Lists can hold pretty much anything, and can also be named. Let's use the following list:
+
+```{r}
+(my_list <- list(year=2018, instructor=c("Vincenzo", "Coia"), fav_fun=typeof))
+```
+
+
+Subsetting a list works similarly to vectors. Try subsetting the first element of `my_list`; try subsettig the first _component_ of the list. Notice the difference!
+
+```{r}
+
+```
+
+Try also subsetting by name:
+
+```{r}
+
+```
+
+Smells a little like `data.frame`s. It turns out a `data.frame` is a special type of list:
+
+```{r}
+(small_df <- tibble::tibble(x=1:5, y=letters[1:5]))
+```
+
+```{r}
+is.list(small_df)
+```
+
+```{r}
+as.list(small_df)
+```
+
+Note that there's a difference between a list of one object, and that object itself! This is different from vectors.
+
+```{r}
+identical(list(4), 4)
+identical(c(4), 4)
+```
+
+# Part II
+
+## Global Environment
+
+When you assign variables in R, the variable name and contents are stored in an R environment called a global environment.
+
+See what's in the Global Environment by:
+
+- Executing `ls()`.
+- Looking in RStudio, in the "Environments" pane.
+
+```{r}
+
+```
+
+
+Making an assignment "binds" an object to a name within an environment. For example, writing `a <- 5` assigns the object `5` to the name `a` in the global environment.
+
+The act of "searching for the right object to return" is called scoping.
+
+By the way: the global environment is an object, too! It's the output of `globalenv()`, and is also stored in the variable `.GlobalEnv`:
+
+```{r}
+globalenv()
+.GlobalEnv
+```
+
+## The Search Path
+
+How does R know what `iris` is, yet `iris` does not appear in the global environment? What about functions like `length`, `sum`, and `print` (which are all objects, too)?
+
+Let's explore.
+
+1. Each package has its own environment.
+    - Install and load the `pryr` package, and use `ls()` to list its bindings (its name is "package:pryr").
+
+```{r}
+
+```
+
+2. There's a difference between an _environment_ and its _name_. Get the environment with name "package:pryr" using the `as.environment()` function.
+
+```{r}
+
+```
+
+
+3. Each environment has a parent. Use `parent.env()` to find the parent of the global environment.
+
+```{r}
+
+```
+
+
+4. There are packages that come pre-loaded with R, and they're loaded in a sequence called the search path. Use `search()` to identify that path; then see it in RStudio.
+
+```{r}
+
+```
+
+First scoping rule: R looks to the parent environment if it can't find an object where it is.
+
+5. Use `pryr::where()` to determine where the first binding to the name `iris` is located.
+
+```{r}
+
+```
+
+
+6. Override `iris` with, say, a numeric. Now `where()` is it? Can you extract the original?
+
+```{r}
+
+```
+
+
+7. Override `sum` with, say, a numeric. `where()` is `sum` now? Can you still use the original `sum()` function?
+
+```{r}
+
+```
+
+Special scoping rule for functions! R knows whether or not to look for a function.
+
+8. Look at the source code of the `pryr:where()` function. It contains a line that creates a binding for "env". Why, then, is `env` nowhere to be found? Answer: execution environments. 
+
+```{r}
+pryr::where
+```
+
+
+
+
+<!--chapter:end:cm011-exercise.Rmd-->
+
+---
+title: "cm012 Exercises: Factors"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Motivating the need for factors in R
+
+### Activity 1: Using Factors for plotting 
+
+**1.1** Let's look again into `gapminder` dataset and create a new cloumn, `life_level`, that contains five categories ("very high", "high","moderate", "low" and "very low") based on life expectancy in 1997. Assign categories accoring to the table below:
+
+| Criteria | life_level| 
+|-------------|-----------|
+| less than 23 | very low |
+| between 23 and 48 | low |
+| between 48 and 59 | moderate |
+| between 59 and 70 | high |
+| more than 70 | very high |
+
+Function `case_when()` is a tidier way to vectorise multiple `if_else()` statements. you can read more about this function [here](https://dplyr.tidyverse.org/reference/case_when.html).
+
+```{r}
+gapminder %>% 
+  filter(year == FILL_IN_THIS) %>% 
+  mutate(life_level = case_when(lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                TRUE ~ FILL_IN_THIS)) %>% 
+  ggplot() + geom_boxplot(aes(x = FILL_IN_THIS, y = FILL_IN_THIS)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() 
+```
+
+Do you notice anything odd/wrong about the graph?
+
+We can make a few observations:
+
+- It seems that none of the countries had a "very low" life-expectancy in 1997. 
+
+- However, since it was an option in our analysis it should be included in our plot. Right?
+
+- Notice also how levels on x-axis are placed in the "wrong" order.
+
+**1.2** You can correct these issues by explicitly setting the levels parameter in the call to `factor()`. Use, `drop = FALSE` to tell the plot not to drop unused levels 
+```{r}
+gapminder %>% 
+  filter(year == FILL_IN_THIS) %>% 
+  mutate(life_level = case_when(lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                lifeExp < FILL_IN_THIS ~ FILL_IN_THIS,
+                                TRUE ~ FILL_IN_THIS) ,
+                      levels = FILL_IN_THIS)) %>% %>% 
+  ggplot() + geom_boxplot(aes(x = FILL_IN_THIS, y = FILL_IN_THIS)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() 
+```
+
+## Inspecting factors (activity 2)
+
+In Activity 1, we created our own factors, so now let's explore what categorical variables that we have in the `gapminder` dataset.
+
+### Exploring `gapminder$continent` (activity 2.1)
+
+Use functions such as `str()`, `levels()`, `nlevels()` and `class()` to answer the following questions:
+
+- what class is  `continent`(a factor or charecter)?
+- How many levels? What are they?
+- What integer is used to represent factor "Asia"?
+
+```{r}
+
+
+
+
+```
+
+### Exploring `gapminder$country` (activity 2.2)
+
+Let's explore what else we can do with factors:
+
+Answer the following questions: 
+
+- How many levels are there in `country`?
+- Filter `gapminder` dataset by 5 countries of your choice. How many levels are in your filtered dataset?
+
+```{r}
+
+
+
+
+```
+
+## Dropping unused levels
+
+What if we want to get rid of some levels that are "unused" - how do we do that? 
+
+The function `droplevels()` operates on all the factors in a data frame or on a single factor. The function `forcats::fct_drop()` operates on a factor.
+
+```{r}
+h_gap_dropped <- FILL_IN_THIS %>% 
+  droplevels()
+
+
+```
+
+## Changing the order of levels
+
+Let's say we wanted to re-order the levels of a factor using a new metric - say, count().
+
+We should first produce a frequency table as a tibble using `dplyr::count()`:
+
+```{r}
+
+
+
+```
+
+The table is nice, but it would be better to visualize the data.
+Factors are most useful/helpful when plotting data.
+So let's first plot this:
+
+```{r}
+FILL_IN_THIS %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip() +
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Think about how levels are normally ordered. 
+It turns out that by default, R always sorts levels in alphabetical order. 
+However, it is preferable to order the levels according to some principle:
+
+  1. Frequency/count. 
+  
+- Make the most common level the first and so on. Function `fct_infreq()` might be useful.
+- The function `fct_rev()` will sort them in the opposite order.
+
+For instance ,
+    `  
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reorder-factors) has some helpful examples.
+
+  2. Another variable. 
+  
+  - For example, if we wanted to bring back our example of ordering `gapminder` countries by life expectancy, we can visualize the results using `fct_reorder()`. 
+
+```{r}
+##  default summarizing function is median()
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() +
+  xlab("Continent") + ylab("Number of entries") 
+```
+
+Use `fct_reorder2()` when you have a line chart of a quantitative x against another quantitative y and your factor provides the color. 
+
+```{r}
+## order by life expectancy 
+ggplot(h_gap, aes(x = year, y = lifeExp,
+                  color = FILL_IN_THIS)) +
+  geom_line() +
+  labs(color = "country")
+```
+
+## Change order of the levels manually
+
+This might be useful if you are preparing a report for say, the state of affairs in Africa.
+
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(FILL_IN_THIS)) +
+  coord_flip()+
+  theme_bw() 
+```
+More details on reordering factor levels by hand can be found [here] https://forcats.tidyverse.org/reference/fct_relevel.html
+
+### Recoding factors
+
+Sometimes you want to specify what the levels of a factor should be.
+For instance, if you had levels called "blk" and "brwn", you would rather they be called "Black" and "Brown" - this is called recoding.
+Lets recode `Oceania` and the `Americas` in the graph above as abbreviations `OCN` and `AME` respectively using the function `fct_recode()`.
+
+```{r}
+
+
+
+```
+
+## Grow a factor (OPTIONAL)
+
+Let’s create two data frames,`df1` and `df2` each with data from two countries, dropping unused factor levels.
+```{r}
+
+```
+
+The country factors in df1 and df2 have different levels.
+Can we just combine them?
+```{r}
+
+```
+
+The country factors in `df1` and `df2` have different levels.
+Can you just combine them using `c()`?
+```{r}
+
+```
+
+Explore how different forms of row binding work behave here, in terms of the country variable in the result.
+```{r}
+
+```
+
+<!--chapter:end:cm012-exercise.Rmd-->
+
+---
+title: "cm013 Exercise"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(gapminder)
+```
+
+
+# Saving Graphs to File
+
+- Don't use the mouse
+- Use `ggsave` for ggplot
+    - Practice by saving the following plot to file: 
+
+```{r}
+ggplot(mtcars, aes(hp, wt)) + 
+    geom_point()
+ggsave(FILENAME_HERE, PLOT_OBJECT_HERE)
+```
+
+- Base R way: print plots "to screen", sandwiched between `pdf()`/`jpeg()`/`png()`... and `dev.off()`. 
+- Vector vs. raster: Images are stored on your computer as either _vector_ or _raster_.
+    - __Raster__: an `n` by `m` grid of pixels, each with its own colour. `jpeg`, `png`, `gif`, `bmp`.
+    - __Vector__: represented as shapes and lines. `pdf`, [`svg`](https://www.w3schools.com/graphics/svg_intro.asp).
+    - For tips: ["10 tips for making your R graphics look their best""](http://blog.revolutionanalytics.com/2009/01/10-tips-for-making-your-r-graphics-look-their-best.html).
+    
+# Scales; Colour
+
+Scale functions in `ggplot2` take the form `scale_[aesthetic]_[mapping]()`.
+
+Let's first focus on the following plot:
+
+```{r}
+p_scales <- ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+     geom_point(aes(colour=pop), alpha=0.2)
+p_scales + 
+    scale_x_log10() +
+    scale_colour_continuous(trans="log10")
+```
+
+1. Change the y-axis tick mark spacing to 10; change the colour spacing to include all powers of 10.
+
+```{r}
+p_scales +
+    scale_x_log10() +
+    scale_colour_continuous(
+        trans  = "log10", 
+        breaks = FILL_IN_BREAKS
+    ) +
+    FILL_IN_SCALE_FUNCTION(breaks=FILL_IN_BREAKS)
+```
+
+2. Specify `scales::*_format` in the `labels` argument of a scale function to do the following:
+    - Change the x-axis labels to dollar format (use `scales::dollar_format()`)
+    - Change the colour labels to comma format (use `scales::comma_format()`)
+
+```{r}
+library(scales)
+p_scales +
+    scale_x_log10(labels=FILL_THIS_IN) +
+    scale_colour_continuous(
+        trans  = "log10", 
+        breaks = 10^(1:10),
+        labels = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+3. Use `RColorBrewer` to change the colour scheme.
+    - Notice the three different types of scales: sequential, diverging, and continuous.
+
+```{r}
+## All palettes the come with RColorBrewer:
+RColorBrewer::display.brewer.all()
+p_scales +
+    scale_x_log10(labels=dollar_format()) +
+    FILL_IN_WITH_RCOLORBREWER(
+        trans   = "log10",
+        breaks  = 10^(1:10),
+        labels  = comma_format(),
+        palette = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+4. Use `viridis` to change the colour to a colour-blind friendly scheme
+    - Hint: add `scale_colour_viridis_c` (`c` stands for continuous; `d` discrete).
+    - You can choose a palette with `option`.
+
+```{r}
+p_scales +
+    scale_x_log10(labels=dollar_format()) +
+    FILL_IN_WITH_RCOLORBREWER(
+        trans   = "log10",
+        breaks  = 10^(1:10),
+        labels  = comma_format(),
+        palette = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+# Theming
+
+Changing the look of a graphic can be achieved through the `theme()` layer.
+
+There are ["complete themes"](http://ggplot2.tidyverse.org/reference/ggtheme.html) that come with `ggplot2`, my favourite being `theme_bw` (I've grown tired of the default gray background, so `theme_bw` is refreshing).
+
+1. Change the theme of the following plot to `theme_bw()`:
+
+```{r}
+ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
+     facet_wrap(~ Species) +
+     geom_point() +
+     labs(x = "Sepal Width",
+          y = "Sepal Length",
+          title = "Sepal sizes of three plant species")
+```
+
+2. Then, change font size of axis labels, and the strip background colour. Others?
+
+```{r}
+ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
+     facet_wrap(~ Species) +
+     geom_point() +
+     labs(x = "Sepal Width",
+          y = "Sepal Length",
+          title = "Sepal sizes of three plant species") +
+    theme_bw() +
+    theme(FILL_IN_ARG_FOR_AXIS_TITLE = FILL_THIS_IN,
+          strip.background = FILL_THIS_IN)
+```
+
+
+# Plotly
+
+Consider the following plot:
+
+```{r}
+(p <- gapminder %>% 
+     filter(continent != "Oceania") %>% 
+     ggplot(aes(gdpPercap, lifeExp)) +
+     geom_point(aes(colour=pop), alpha=0.2) +
+     scale_x_log10(labels=dollar_format()) +
+     scale_colour_distiller(
+         trans   = "log10",
+         breaks  = 10^(1:10),
+         labels  = comma_format(),
+         palette = "Greens"
+     ) +
+     facet_wrap(~ continent) +
+     scale_y_continuous(breaks=10*(1:10)) +
+     theme_bw())
+```
+
+1. Convert it to a `plotly` object by applying the `ggplotly()` function:
+
+```{r}
+FILL_THIS_IN
+```
+
+2. You can save a plotly graph locally as an html file. Try saving the above:
+    - NOTE: plotly graphs don't seem to show up in Rmd _notebooks_, but they do with Rmd _documents_.
+
+```{r}
+p %>% 
+    ggplotly() %>% 
+    htmlwidgets::saveWidget("LOCATION_GOES_HERE")
+```
+
+
+3. Run this code to see the json format underneath:
+
+```{r}
+p %>% 
+    ggplotly() %>% 
+    plotly_json()
+```
+
+
+4. Check out code to make a plotly object from scratch using `plot_ly()` -- scatterplot of gdpPercap vs lifeExp.
+    - Check out the [cheat sheet](https://images.plot.ly/plotly-documentation/images/r_cheat_sheet.pdf).
+
+```{r}
+plot_ly(gapminder, 
+        x = ~gdpPercap, 
+        y = ~lifeExp, 
+        type = "scatter",
+        mode = "markers",
+        opacity = 0.2) %>% 
+    layout(xaxis = list(type = "log"))
+```
+
+5. Add population to form a z-axis for a 3D plot:
+
+```{r}
+plot_ly(gapminder, 
+        x = ~gdpPercap, 
+        y = ~lifeExp, 
+        z = FILL_THIS_IN,
+        type = "scatter3d",
+        mode = "markers",
+        opacity = 0.2)
+```
+
+
+
+
+<!--chapter:end:cm013-exercise.Rmd-->
+
+---
+title: "cm013 Supplemental"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(gapminder)
+```
+
+
+# Saving Graphs to File
+
+- Don't use the mouse
+- Use `ggsave` for ggplot
+    - Practice by saving the following plot to file: 
+
+```{r}
+ggplot(mtcars, aes(hp, wt)) + 
+    geom_point()
+ggsave(FILENAME_HERE, PLOT_OBJECT_HERE)
+```
+
+- Base R way: print plots "to screen", sandwiched between `pdf()`/`jpeg()`/`png()`... and `dev.off()`. 
+- Vector vs. raster: Images are stored on your computer as either _vector_ or _raster_.
+    - __Raster__: an `n` by `m` grid of pixels, each with its own colour. `jpeg`, `png`, `gif`, `bmp`.
+    - __Vector__: represented as shapes and lines. `pdf`, [`svg`](https://www.w3schools.com/graphics/svg_intro.asp).
+    - For tips: ["10 tips for making your R graphics look their best""](http://blog.revolutionanalytics.com/2009/01/10-tips-for-making-your-r-graphics-look-their-best.html).
+    
+# Scales; Colour
+
+Scale functions in `ggplot2` take the form `scale_[aesthetic]_[mapping]()`.
+
+Let's first focus on the following plot:
+
+```{r}
+p_scales <- ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+     geom_point(aes(colour=pop), alpha=0.2)
+p_scales + 
+    scale_x_log10() +
+    scale_colour_continuous(trans="log10")
+```
+
+1. Change the y-axis tick mark spacing to 10; change the colour spacing to include all powers of 10.
+
+```{r}
+p_scales +
+    scale_x_log10() +
+    scale_colour_continuous(
+        trans  = "log10", 
+        breaks = FILL_IN_BREAKS
+    ) +
+    FILL_IN_SCALE_FUNCTION(breaks=FILL_IN_BREAKS)
+```
+
+2. Specify `scales::*_format` in the `labels` argument of a scale function to do the following:
+    - Change the x-axis labels to dollar format (use `scales::dollar_format()`)
+    - Change the colour labels to comma format (use `scales::comma_format()`)
+
+```{r}
+library(scales)
+p_scales +
+    scale_x_log10(labels=FILL_THIS_IN) +
+    scale_colour_continuous(
+        trans  = "log10", 
+        breaks = 10^(1:10),
+        labels = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+3. Use `RColorBrewer` to change the colour scheme.
+    - Notice the three different types of scales: sequential, diverging, and continuous.
+
+```{r}
+## All palettes the come with RColorBrewer:
+RColorBrewer::display.brewer.all()
+p_scales +
+    scale_x_log10(labels=dollar_format()) +
+    FILL_IN_WITH_RCOLORBREWER(
+        trans   = "log10",
+        breaks  = 10^(1:10),
+        labels  = comma_format(),
+        palette = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+4. Use `viridis` to change the colour to a colour-blind friendly scheme
+    - Hint: add `scale_colour_viridis_c` (`c` stands for continuous; `d` discrete).
+    - You can choose a palette with `option`.
+
+```{r}
+p_scales +
+    scale_x_log10(labels=dollar_format()) +
+    FILL_IN_WITH_RCOLORBREWER(
+        trans   = "log10",
+        breaks  = 10^(1:10),
+        labels  = comma_format(),
+        palette = FILL_THIS_IN
+    ) +
+    scale_y_continuous(breaks=10*(1:10))
+```
+
+# Theming
+
+Changing the look of a graphic can be achieved through the `theme()` layer.
+
+There are ["complete themes"](http://ggplot2.tidyverse.org/reference/ggtheme.html) that come with `ggplot2`, my favourite being `theme_bw` (I've grown tired of the default gray background, so `theme_bw` is refreshing).
+
+1. Change the theme of the following plot to `theme_bw()`:
+
+```{r}
+ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
+     facet_wrap(~ Species) +
+     geom_point() +
+     labs(x = "Sepal Width",
+          y = "Sepal Length",
+          title = "Sepal sizes of three plant species")
+```
+
+2. Then, change font size of axis labels, and the strip background colour. Others?
+
+```{r}
+ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
+     facet_wrap(~ Species) +
+     geom_point() +
+     labs(x = "Sepal Width",
+          y = "Sepal Length",
+          title = "Sepal sizes of three plant species") +
+    theme_bw() +
+    theme(FILL_IN_ARG_FOR_AXIS_TITLE = FILL_THIS_IN,
+          strip.background = FILL_THIS_IN)
+```
+
+
+# Plotly
+
+Consider the following plot:
+
+```{r}
+(p <- gapminder %>% 
+     filter(continent != "Oceania") %>% 
+     ggplot(aes(gdpPercap, lifeExp)) +
+     geom_point(aes(colour=pop), alpha=0.2) +
+     scale_x_log10(labels=dollar_format()) +
+     scale_colour_distiller(
+         trans   = "log10",
+         breaks  = 10^(1:10),
+         labels  = comma_format(),
+         palette = "Greens"
+     ) +
+     facet_wrap(~ continent) +
+     scale_y_continuous(breaks=10*(1:10)) +
+     theme_bw())
+```
+
+1. Convert it to a `plotly` object by applying the `ggplotly()` function:
+
+```{r}
+FILL_THIS_IN
+```
+
+2. You can save a plotly graph locally as an html file. Try saving the above:
+    - NOTE: plotly graphs don't seem to show up in Rmd _notebooks_, but they do with Rmd _documents_.
+
+```{r}
+p %>% 
+    ggplotly() %>% 
+    htmlwidgets::saveWidget("LOCATION_GOES_HERE")
+```
+
+
+3. Run this code to see the json format underneath:
+
+```{r}
+p %>% 
+    ggplotly() %>% 
+    plotly_json()
+```
+
+
+4. Check out code to make a plotly object from scratch using `plot_ly()` -- scatterplot of gdpPercap vs lifeExp.
+    - Check out the [cheat sheet](https://images.plot.ly/plotly-documentation/images/r_cheat_sheet.pdf).
+
+```{r}
+plot_ly(gapminder, 
+        x = ~gdpPercap, 
+        y = ~lifeExp, 
+        type = "scatter",
+        mode = "markers",
+        opacity = 0.2) %>% 
+    layout(xaxis = list(type = "log"))
+```
+
+5. Add population to form a z-axis for a 3D plot:
+
+```{r}
+plot_ly(gapminder, 
+        x = ~gdpPercap, 
+        y = ~lifeExp, 
+        z = FILL_THIS_IN,
+        type = "scatter3d",
+        mode = "markers",
+        opacity = 0.2)
+```
+
+
+
+
+<!--chapter:end:cm013-supplemental.Rmd-->
+
+---
+title: 'cm014 Worksheet: The Model-Fitting Paradigm in R'
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: inline
+---
+  
+  ```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(gapminder)
+library(broom)
+```
+
+So you want to fit a model to your data. How can you achieve this with R?
+  
+  Topics:
+  
+  1. What _is_ model-fitting?
+  2. How do we fit a model in R?
+  3. How can we obtain tidy results from the model output?
+  
+  ## What is Model-Fitting?
+  
+  When variables are not independent, then we can gain information about one variable if we know something about the other.
+
+Examples: Use the scatterplot below:
+  
+  1. A car weighs 4000 lbs. What can we say about its mpg?
+  2. A car weights less than 3000 lbs. What can we say about its mpg?
+  
+  ```{r, fig.width=5, fig.height=3}
+library(tidyverse)
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  labs(x = "Weight (1000's of lbs)")
+```
+
+Example: What can we say about rear axle ratio if we know something about quarter mile time?
+  
+  ```{r, fig.width=5, fig.height=3}
+ggplot(mtcars, aes(qsec, drat)) + 
+  geom_point() +
+  labs(x = "Quarter mile time",
+       y = "Rear axle ratio")
+```
+
+
+If EDA isn't enough, we can answer these questions by fitting a model: a curve that predicts Y given X. Aka, a __regression curve__ or a __machine learning model__. 
+
+(There are more comprehensive models too, such as modelling entire distributions, but that's not what we're doing here)
+
+There are typically two goals of fitting a model:
+
+1. Make predictions.
+2. Interpret variable relationships.
+
+## Fitting a model in R
+
+Model fitting methods tend to use a common format in R:
+
+```
+method(formula, data, options)
+```
+
+They also tend to have a common output: a special _list_. 
+
+__Method__:
+
+A function such as:
+
+- Linear Regression: `lm`
+- Generalized Linear Regression: `glm`
+- Local regression: `loess`
+- Quantile regression: `quantreg::rq`
+- ...
+
+__Formula__:
+
+In R, takes the form `y ~ x1 + x2 + ... + xp` (use column names in your data frame).
+
+__Data__: The data frame.
+
+__Options__: Specific to the method.
+
+Exercise:
+
+1. Fit a linear regression model to life expectancy ("Y") from year ("X") by filling in the formula. Notice what appears as the output.
+2. On a new line, use the `unclass` function to uncover the object's true nature: a list. Note: it might be easier to use the `names` function to see what components are included in the list. 
+
+First, create a subset of the `gapminder` dataset containing only the country of `France
+```{r}
+(gapminder_France <- gapminder %>% filter(country == "France"))
+```
+
+Now, using the `lm()` function we will create the linear model
+```{r}
+(my_lm <- lm(lifeExp~year, data = gapminder_France))
+```
+Does that mean that the life expectency at "year 0" was equal to -397.7646?!
+  We are interested in the modeling results around the modeling period which starts at year 1952. To get a meaniningful "interpretable" intercept we can use the `I()` function.
+```{r}
+(my_lm <- lm(lifeExp~I(year-1952), data = gapminder_France))
+
+```
+
+Use the `unclass()` function to take a look at how the `lm()` object actually looks like.
+```{r}
+unclass(my_lm)
+```
+
+To complicate things further, some info is stored in _another_ list after applying the `summary` function:
+  
+  ```{r}
+summary(my_lm)
+```
+
+We can use the `predict()` function to make predictions from the model (default is to use fitting/training data). Here are the predictions:
+  
+  ```{r}
+predict(my_lm) %>% 
+  head()
+```
+Or we can predict on a new dataset:
+  ```{r}
+years1 = data.frame(year = seq(2000,2005))
+predict(my_lm,years1)
+
+```
+
+
+
+We can plot models (with one predictor/ X variable) using `ggplot2` through the `geom_smooth()` layer. Specifying `method="lm"` gives us the linear regression fit (but only visually!):
+  
+  ```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  scale_x_log10()
+```
+Lets consider another country "Zimbabwe", which has a unique behavior in the `lifeExp` and `year` relationship.
+```{r}
+gapminder_Zimbabwe <- gapminder %>% filter(country == "Zimbabwe")
+gapminder_Zimbabwe %>% ggplot(aes(year, lifeExp)) + geom_point()
+```
+Let's try fitting a linear model to this relationship
+```{r}
+ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method = "lm", se = F)
+```
+Now we will try to fit a second degree polynomial and see what would that look like.
+```{r}
+ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method = "lm",formula = y~poly(x,2), se = F)
+
+```
+
+```{r}
+lm_linear <- lm(data = gapminder,formula = lifeExp~I(year-1952))
+lm_poly <- lm(data = gapminder,formula = lifeExp~poly(I(year-1952),2))
+```
+```{r}
+anova(lm_linear,lm_poly)
+```
+
+## Regression with categorical variables
+
+```{r}
+(lm_cat <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder))
+
+```
+How did R know that continent was a categorical variable?
+```{r}
+class(gapminder$continent)
+levels(gapminder$continent)
+contrasts(gapminder$continent)
+```
+How can we change the reference level?
+```{r}
+gapminder$continent <- relevel(gapminder$continent, ref = "Oceania")
+```
+Let's build a new model
+```{r}
+lm_cat2 <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder)
+
+```
+
+
+## Broom
+
+Let's make it easier to extract info, using the `broom` package. There are three crown functions in this package, all of which input a fitted model, and outputs a tidy data frame.
+
+1. `tidy`: extract statistical summaries about each component of the model.
+    - Useful for _interpretation_ task.
+2. `augment`: add columns to the original data frame, giving information corresponding to each row.
+    - Useful for _prediction_ task.
+3. `glance`: extract statistical summaries about the model as a whole (1-row tibble).
+    - Useful for checking goodness of fit.
+
+Exercise: apply all three functions to our fitted model, `my_lm`. What do you see?
+
+```{r}
+
+```
+
+<!--chapter:end:cm014-exercise.Rmd-->
+
+---
+title: "STAT 547 Class Meeting 01: Writing your own Functions"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(testthat)
+```
+
+This worksheet is a condensed version of Jenny's stat545.com functions [part1](http://stat545.com/block011_write-your-own-function-01.html), [part2](http://stat545.com/block011_write-your-own-function-02.html), and [part3](http://stat545.com/block011_write-your-own-function-03.html).
+
+## Syntax Demo
+
+Let's demo the syntax of function-making.
+
+```{r}
+
+```
+
+## Motivating example: max minus min.
+
+Find the max minus min of the gapminder life expectancy:
+
+```{r}
+?min
+?max
+max(gapminder$lifeExp) - min(gapminder$lifeExp)
+```
+
+Exercise: turn this into a function! i.e., write a function that returns the max minus min of a vector. Try it out on the gapminder variables.
+
+```{r}
+max_minus_min <- FILL_THIS_IN
+```
+
+We'll be building on this. Development philosophy [widely attributed to the Spotify development team](http://blog.fastmonkeys.com/?utm_content=bufferc2d6e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer):
+
+![](http://stat545.com/img/spotify-howtobuildmvp.gif)
+
+## Testing
+
+Check your function using your own eyeballs:
+
+- Apply to the vector 1:10. Do you get the intended result?
+- Apply to a random uniform vector. Do you get meaningful results?
+
+```{r}
+
+```
+
+Let's formalize this testing with the `testthat` package. `expect_*()` functions:
+
+```{r}
+expect_equal(0.1 + 0.2, 0.3)
+expect_identical(0.1 + 0.2, 0.3)
+```
+
+Add another check to the following unit test, based on the uniform random numbers:
+
+```{r}
+test_that("Simple cases work", {
+    expect_equal(max_minus_min(1:10), 9)
+    FILL_THIS_IN
+})
+```
+
+## Try and break your function
+
+Because you will eventually forget the function specifics.
+
+```{r}
+max_minus_min(numeric(0))
+max_minus_min(gapminder)
+max_minus_min(gapminder$country)
+```
+
+These don't break!
+
+```{r}
+max_minus_min(gapminder[c('lifeExp', 'gdpPercap', 'pop')])
+max_minus_min(c(TRUE, TRUE, FALSE, TRUE, TRUE))
+```
+
+We want:
+
+1. Prevent the latter cases from happening, and
+2. Make a more informative error message in the former.
+
+Check out `stopifnot` and `stop`:
+
+```{r}
+stopifnot(FALSE)
+stop("Here's my little error message.")
+```
+
+Your turn:  Use two methods:
+
+1. Using `stopifnot`, modify the max-min function to throw an error if an input is not numeric (the `is.numeric` function is useful).
+
+```{r}
+mmm1 <- function(x) {
+    FILL_THIS_IN
+    max(x) - min(x)
+}
+```
+
+2. Using `stop` and an `if` statement, Modify the max-min function to:
+    - throw an error if an input is not numeric. In the error message, indicate what's expected as an argument, and what was recieved. 
+    - return `NULL` if the input is length-0, with a warning using the `warning` function.
+
+```{r}
+mmm2 <- function(x) {
+    if (!is.numeric(x)) {
+        FILL_THIS_IN
+    }
+    max(x) - min(x)
+}
+```
+
+Try breaking the function now:
+
+```{r}
+mmm1((numeric(0)))
+mmm1(gapminder)
+mmm1(gapminder$country)
+mmm1(gapminder[c('lifeExp', 'gdpPercap', 'pop')])
+mmm1(c(TRUE, TRUE, FALSE, TRUE, TRUE))
+
+mm2((numeric(0)))
+mmm2(gapminder)
+mmm2(gapminder$country)
+mmm2(gapminder[c('lifeExp', 'gdpPercap', 'pop')])
+mmm2(c(TRUE, TRUE, FALSE, TRUE, TRUE))
+```
+
+## Naming, and generalizing to quantile difference
+
+Let's generalize the function to take the difference in two quantiles:
+
+```{r}
+qd <- function(x, probs) {
+    stopifnot(is.numeric(x))
+    if (length(x) == 0) {
+        warning("You inputted a length-0 x. Expecting length >=1. Returning NULL.")
+        return(NULL)
+    } 
+    qvec <- quantile(x, probs)
+    max(qvec) - min(qvec)
+}
+```
+
+Try it out:
+
+```{r}
+x <- runif(100)
+qd(x, c(0.25, 0.75))
+IQR(x)
+qd(x, c(0,1))
+mmm2(x)
+```
+
+Why did I call the arguments `x` and `probs`? Check out `?quantile`. 
+
+If we input a vector stored in some variable, need that variable be named `x`?
+
+## Defaults
+
+Would be nice to have defaults for `probs`, right? Add them to the below code (which is copied and pasted from above):
+
+```{r}
+qd2 <- function(x, probs) {
+    stopifnot(is.numeric(x))
+    if (length(x) == 0) {
+        warning("You inputted a length-0 x. Expecting length >=1. Returning NULL.")
+        return(NULL)
+    } 
+    qvec <- quantile(x, probs)
+    max(qvec) - min(qvec)
+}
+```
+
+## NA handling
+
+Does this return what we were expecting?
+
+```{r}
+v <- c(1:10, NA)
+qd(v)
+```
+
+Notice that `quantile()` has a `na.rm` option. Let's use it in our `qd` function. Modify the code below:
+
+```{r}
+qd2 <- function(x, probs=c(0,1)) {
+    stopifnot(is.numeric(x))
+    if (length(x) == 0) {
+        warning("You inputted a length-0 x. Expecting length >=1. Returning NULL.")
+        return(NULL)
+    } 
+    qvec <- quantile(x, probs)
+    max(qvec) - min(qvec)
+}
+```
+
+## Ellipses
+
+There are other arguments to `quantile`, like `type`, that are not used all that much. Put them in as ellipses:
+
+```{r}
+qd2 <- function(x, probs=c(0,1), na.rm=FALSE, FILL_THIS_IN) {
+    stopifnot(is.numeric(x))
+    if (length(x) == 0) {
+        warning("You inputted a length-0 x. Expecting length >=1. Returning NULL.")
+        return(NULL)
+    } 
+    qvec <- quantile(x, probs, na.rm = na.rm, FILL_THIS_IN)
+    max(qvec) - min(qvec)
+}
+```
+
+<!--chapter:end:cm101-exercise.Rmd-->
+
+---
+title: "STAT 547 Class Meeting 02 Worksheet"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(gapminder)
+library(testthat)
+```
+
+## Resources
+
+Today's lesson has been drawn from the following resources:
+
+1. Mostly [stat545.com: character data](http://stat545.com/block028_character-data.html)
+    - See the ["Resources" section](http://stat545.com/block028_character-data.html#resources) for a more comprehensive listing of resources based on the character problem you're facing. 
+2. [Older stat545 notes](http://stat545.com/block022_regular-expression.html)
+3. [r4ds: strings](https://r4ds.had.co.nz/strings.html).
+3. [`stringr` vignette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
+
+## Basic String Manipulation
+
+__Goal__: Go over some basic functionality of `stringr`. 
+
+There's that famous sentence about the quick brown fox that contains all letters of the alphabet, although I don't quite remember the sentence. Demo: Check to see if it's in the `sentences` data. Try:
+
+`str_detect(string, pattern)`   
+`str_subset(string, pattern)`
+
+```{r}
+fox <- str_subset(FILL_THIS_IN, FILL_THIS_IN)
+```
+
+Not quite the sentence I was thinking of. How many words does it contain? Use `str_split(string, pattern)`, noting its output (list).
+
+```{r}
+str_split(FILL_THIS_IN, FILL_THIS_IN)
+```
+
+Exercise: does this sentence contain all letters of the alphabet? Hints: 
+
+- Split by `""`. 
+- Consider putting all in lowercase with `str_to_lower()`.
+- Use the base R `table()` function.
+
+```{r}
+fox %>% 
+  str_split(FILL_THIS_IN) %>% 
+  FILL_THIS_IN
+```
+
+
+Working in a data frame? `tidyr` has its own version of this. Here's an example from Resource 1, with the fruit data:
+
+```{r}
+tibble(fruit)
+tibble(fruit) %>%
+  separate(fruit, into = c("pre", "post"), sep = " ")
+```
+
+Demo: we can substitute, too. Replace the word "fox" with "giraffe" using `str_replace(string, pattern, replacement)`:
+
+```{r}
+fox %>% 
+    str_replace(FILL_THIS_IN)
+```
+
+Know the position you want to extract/replace? Try `str_sub()`.
+
+`str_pad()` extends each string to a minimum length:
+
+```{r}
+fruit %>% head
+fruit %>% 
+    str_pad(width=7, side="right", pad="$") %>% 
+    head()
+```
+
+`str_length()` (Not the same as `length()`!)
+
+```{r}
+str_length(fruit)
+length(fruit)
+```
+
+
+`str_c()` for concatenating strings. Check the docs for an excellent explanation using a matrix.
+
+```{r}
+str_c(words[1:4], words[5:8], sep=" & ")
+str_c(words[3:4], words[5:8], sep=" & ")
+str_c(words[3:4], words[5:8], sep=" & ", collapse=", ")
+```
+
+There's a (more limited) `tidyr` version. Straight from Resource 1:
+
+```{r}
+fruit_df <- tibble(
+  fruit1 = fruit[1:4],
+  fruit2 = fruit[5:8]
+)
+fruit_df %>% 
+  unite("flavor_combo", fruit1, fruit2, sep = " & ")
+```
+
+
+## Exercise: Populate your Participation Repo
+
+So, you don't want to manually make 12 folders for your participation repo. I hear you. Let's do that by making a character vector with entries `"cm101"`, `"cm102"`, ..., `"cm112"`.
+
+(If you've already done this, it's still a useful exercise!)
+
+### Make Folders
+
+Let's make those folders!
+
+1. Make a character vector with entries `"01"`, `"02"`, ..., `12` with `str_pad()`.
+
+```{r}
+(num <- str_pad(FILL_THIS_IN))
+```
+
+2. Use `str_c()` to combine `"cm1"` with the numbers:
+    - If your system uses "\" instead of "/", you might need two backslashes.
+
+```{r}
+(folders <- str_c(FILL_THIS_IN))
+```
+
+3. Use `testthat` to check that each entry of `folders` has 5 characters. You might find the base R `all()` function useful.
+
+```{r}
+test_that("folder names are length 5.", {
+    expect_FILL_THIS_IN()
+})
+```
+
+4. BONUS: If applicable, make the folders using `dir.create()`.
+    - Note: `dir.create()` requires the full path to be specified. You might find the `here::here()` function useful.
+    - This code might work (depending on your directory): `for (folder in folders) dir.create(here::here(folder))`
+    - We'll learn how to use `purrr` instead of loops next week.
+
+### Make README's
+
+Now, let's seed the folders with README's.
+
+1. Add `/README.md` to the end of the folder names stored in `folders`:
+
+```{r}
+files <- FILL_THIS_IN
+```
+
+2. Make a vector of contents to put in each README. Put a title and body. 
+    - Hint: Use `\n` to indicate a new line! This works in graphs, too.
+    
+```{r}
+contents <- FILL_THIS_IN
+```
+
+3. BONUS: Write the README's to file using base R's `write(x, file)`:
+    - `for (i in 1:length(files)) write(contents[i], files[i])`
+    - There's a better alternative to a loop using `purrr`. Next week's topic!
+    - This code might not work, depending on your workind directory and system.
+
+## Regular Expressions (aka regex)
+
+Great resource is [r4ds](https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions)!
+
+Premable:
+
+- Useful for identifying _patterns_, not exact character specifications.
+- Hard to read and write!
+- We'll focus on finding _matches_ (the hardest part). You can also use regex to manipulate strings -- but we'll delegate that to [r4ds: strings: tools](https://r4ds.had.co.nz/strings.html#tools).
+
+Staying true to Resource 1, let's work with the gapminder countries:
+
+```{r}
+library(gapminder)
+countries <- levels(gapminder$country)
+```
+
+### The "any character"
+
+Find all countries in the gapminder data set with the following pattern: "i", followed by any single character, followed by "a":
+
+```{r}
+str_subset(countries, pattern = "i.a")
+```
+
+Here, `.` stands for "any single character".
+
+But, where's Italy? Case-sensitive!
+
+Let's use `str_view_all()` to see the matches:
+
+```{r}
+str_view_all(countries, pattern = "i.a")
+str_view_all(countries, pattern = "i.a", match=TRUE)
+```
+
+Exercise: Canada isn't the only country with three interspersed "a"'s. Find the others. Try both `str_view_all()` and `str_subset()`.
+
+```{r}
+str_view_all(FILL_THIS_IN)
+str_subset(FILL_THIS_IN)
+```
+
+
+Let's define a handy function:
+
+```{r}
+str_view_all_match <- function(countries, pattern) {
+    str_view_all(countries, pattern, match=TRUE)
+}
+str_view_all_match(countries, pattern = "i.a")
+```
+
+
+### The escape
+
+What if I wanted to literally search for countries with a period in the name? Escape with `\`, although R requires a double escape.
+
+```{r}
+str_view_all_match(countries, pattern = "\\.")
+```
+
+Why does R require a double escape? It does one level of escaping before "executing" the regex. 
+
+- See `?Quotes`
+- Try searching for "s\. " (without quotes) in this document (don't forget to select "Regex")
+
+### Character Classes
+
+- `[letters]` matches a single character that's either l, e, t, ..., or s.
+- `[^letters]`: anything _but_ these letters. 
+
+See more at: https://r4ds.had.co.nz/strings.html#character-classes-and-alternatives
+
+Note that not all special characters "work" within `[]`, but some do, and do not always carry the same meaning (like `^`)! From said resource, they are:
+
+>  `$` `.` `|` `?` `*` `+` `(` `)` `[` `{`. Unfortunately, a few characters have special meaning even inside a character class and must be handled with backslash escapes: `]` `\` `^` and `-`.
+
+Exercise: Find all countries with three non-vowels next to each other.
+
+```{r}
+str_view_all_match(countries, pattern = "YOUR_REGEX_HERE")
+```
+
+
+### Or
+
+- Use `|` to denote "or". 
+- "And" is implied otherwise, and has precedence.
+- Use parentheses to indicate precedence.
+
+Beer or bear?
+
+```{r}
+c("bear", "beer", "bar") %>% 
+    str_view_all_match(pattern = "be(e|a)r")
+```
+
+
+### Quantifiers/Repetition
+
+The handy ones are:
+
+- `*` for 0 or more
+- `+` for 1 or more
+- `?` for 0 or 1
+
+See list at https://r4ds.had.co.nz/strings.html#repetition
+
+Find all countries that have any number of o's (but at least 1) following r:
+
+```{r}
+str_view_all_match(countries, "re+")
+```
+
+
+Find all countries that have exactly two e's next two each other:
+
+```{r}
+str_view_all_match(countries, "e{2}")
+```
+
+
+Exercise: Find all countries that have either "a" or "e", twice in a row (with a changeover allowed, such as "ae" or "ea"):
+
+```{r}
+str_view_all_match(countries, pattern="YOUR_REGEX_HERE")
+```
+
+
+### Position indicators
+
+- `^` corresponds to the __beginning__ of the line.
+- `$` corresponds to the __end__ of the line.
+
+Countries that end in "land":
+
+```{r}
+str_view_all_match(countries, pattern = "land$")
+str_view_all_match(countries, pattern = "$")
+```
+
+Countries that start with "Ca":
+
+```{r}
+str_view_all_match(countries, pattern = "^Ca")
+```
+
+Countries without a vowel? The word should start with a non-vowel, continue as a non-vowel, and end:
+
+```{r}
+str_view_all_match(countries, "^[^aeiouAEIOU]*$")
+```
+
+### Groups
+
+We can refer to parentheses groups:
+
+```{r}
+str_view_all(c("abad", "abbd"), pattern="(a)(b)\\1")
+str_view_all(c("abad", "abbd"), pattern="(a)(b)\\2")
+```
+
+Note that the parentheses are first resolved, THEN referred to. NOT re-executed.
+
+```{r}
+str_view_all(c("bananas"), "(.)(.)\\1\\2.*\\1\\2")
+```
+
+We can refer to them later in the search, too:
+
+```{r}
+str_view_all(c("bananas", "Who can? Bananas can."), "(.)(.)\\1\\2.*\\1\\2")
+```
+
+
+## Final Exercises
+
+(Solutions are indicated below.)
+
+Convert `words` to pig latin, which involves:
+
+1. Make the first letter the last letter
+    - Get the first letter with `str_sub(string, start, end)`.
+2. Remove the first letter from `words`.
+    - Hint: leave the `end` argument blank.
+3. Add "ay" to the end of the word.
+    - Use `str_c()`.
+    
+```{r}
+YOUR_CODE_HERE
+```
+
+Find all countries that end in "y"
+
+```{r}
+str_view_all_match(countries, "YOUR_REGEX_HERE")
+```
+
+Find all countries that have the same letter repeated twice (like "Greece", which has "ee").
+
+```{r}
+str_view_all_match(countries, "YOUR_REGEX_HERE")
+```
+
+Find all countries that end in two vowels. 
+
+```{r}
+str_view_all_match(countries, "YOUR_REGEX_HERE")
+```
+
+Find all countries that start with two non-vowels. How is this different from finding all countries that end in _at least_ two non-vowels? Hint: Syria.
+
+```{r}
+countries %>% 
+    str_to_lower() %>% 
+    str_view_all_match("YOUR_REGEX_HERE")
+```
+
+Find all countries that have either "oo" or "cc" in them.
+
+```{r}
+str_view_all_match(countries, "YOUR_REGEX_HERE")
+```
+
+## Final Exercises: Solutions
+
+Convert `words` to pig latin, which involves:
+
+1. Make the first letter the last letter
+    - Get the first letter with `str_sub(string, start, end)`.
+2. Remove the first letter from `words`.
+    - Hint: leave the `end` argument blank.
+3. Add "ay" to the end of the word.
+    - Use `str_c()`.
+    
+```{r}
+first <- str_sub(words, 1, 1)
+ords <- str_sub(words, 2)
+str_c(ords, first, "ay") %>% head(10)
+```
+
+Find all countries that end in "y"
+
+```{r}
+str_view_all_match(countries, "y$")
+```
+
+Find all countries that have the same letter repeated twice (like "Greece", which has "ee").
+
+```{r}
+str_view_all_match(countries, "(.)\\1")
+```
+
+Find all countries that end in two vowels. 
+
+```{r}
+str_view_all_match(countries, "[aeiou]{2}$")
+```
+
+Find all countries that start with two non-vowels. How is this different from finding all countries that end in _at least_ two non-vowels? Hint: Syria.
+
+```{r}
+countries %>% 
+    str_to_lower() %>% 
+    str_view_all_match("^[^aeiou]{2,}")
+```
+
+Find all countries that have either "oo" or "cc" in them.
+
+```{r}
+str_view_all_match(countries, "(oo|cc)")
+```
+
+<!--chapter:end:cm102-exercise.Rmd-->
+
+---
+title: "cm103 Worksheet"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse)) # Loads purrr, too
+library(repurrrsive) # Contains data examples
+library(listviewer) # For viewing JSON/lists interactively
+```
+
+## Resources
+
+This week, we'll be drawing from [Jenny Bryan's `purrr` tutorial](https://jennybc.github.io/purrr-tutorial/). Specifically:
+
+- The [`map` tutorial](https://jennybc.github.io/purrr-tutorial/ls01_map-name-position-shortcuts.html)
+- The [GitHub users tutorial](https://jennybc.github.io/purrr-tutorial/ls02_map-extraction-advanced.html) is similar.
+
+In addition:
+
+- Do you feel that you need a refresher on lists and vectors in R? Check out the [Vectors and Lists](https://jennybc.github.io/purrr-tutorial/bk00_vectors-and-lists.html) part of the tutorial.
+- Are you familiar with the `apply` family of functions in Base R? You might find Jenny's ["Relationship to base and plyr functions"](https://jennybc.github.io/purrr-tutorial/bk01_base-functions.html) great for bridging the gap to `purrr`.
+
+
+## Review Vectors and Lists
+
+Vectors: 
+
+- hold multiple entries of the same type.
+- coerced to the least-informative data type in the vector.
+- subset with single square brackets
+
+Lists:
+
+- hold multiple entries of anything.
+- no entries are coerced (as a result of being able to hold anything)
+- subset with `[`, `[[`, or `$`. 
+
+## Review Vectorization
+
+= element-wise application of a function.
+
+Examples:
+
+```{r}
+(1:10) ^ 2
+```
+
+```{r}
+(1:10) * (1:2)
+```
+
+```{r}
+commute <- c(40, 20, 35, 15)
+person <- c("Parveen", "Leo", "Shawn", "Emmotions")
+str_c(person, " takes ", commute, " minutes to commute to work.")
+```
+
+## `purrr`
+
+`purrr` is great when vectorization does not apply! 
+
+Particularly useful if your data is in JSON format. 
+
+Example: 
+
+1. Explore the `wesanderson` list (comes with `repurrrsive` package). Hint: `str()` might help. It's a list of vectors. 
+2. Use what you know about R to write code that extracts a vector of the first elements of each vector contained in `wesanderson`.
+
+```{r}
+YOUR_CODE_HERE
+```
+
+`str()` is not always useful! Try checking the structure of `got_chars` (= Game of Thrones characters):
+
+```{r}
+str(got_chars)
+```
+
+
+## Exploring lists
+
+1. `str()`: embrace `list.len` and `max.level`
+
+```{r}
+str(got_chars)
+```
+
+2. Interactive exploration: `View()` and `listviewer::jsonedit(..., mode = "view")`
+
+```{r}
+View(got_chars)
+jsonedit(got_chars, mode="view")
+```
+
+3. Don't be afraid to check out a subset! `names()` comes in handy, too.
+
+```{r}
+str(got_chars[[1]])
+names(got_chars[[1]])
+```
+
+
+## Exploring `purrr` fundamentals
+
+Apply a function to each element in a list/vector with `map`.
+
+General usage: `purrr::map(VECTOR_OR_LIST, YOUR_FUNCTION)`
+
+Note:
+
+- `map` always returns a list.
+- `YOUR_FUNCTION` can return anything!
+
+Toy example 1: without using vectorization, take the square root of the following vector:
+
+```{r}
+x <- 1:10
+map(FILL_THIS_IN, FILL_THIS_IN)
+```
+
+Toy example 2 (functions on-the-fly): without using vectorization, square each component of `x`:
+
+```{r}
+map(FILL_THIS_IN, FILL_THIS_IN)
+```
+
+Want a vector to be returned? Must specify the `typeof()` of the vector. Use `map_dbl()` to specify an output vector of type "double" for the above (check out the documentation `?map` for the acceptable vector types):
+
+```{r}
+map_dbl(x, sqrt)
+```
+
+Does your function have other arguments? You can specify them afterwards in the ellipses (`...`).
+
+```{r}
+map_chr(x, str_c, "potato.", sep="-")
+```
+
+## Your Turn: `purrr` fundamentals
+
+1. Let's retry the `wesanderson` example: use `purrr` to write code that extracts a vector of the first elements of each vector contained in `wesanderson`. Play around with the following, too:
+    - Use `head` instead of writing your own function.
+    - Try different `map` functions, even the "wrong" types.
+    - Use the ` ``[`` ` function if you're feeling daring.
+
+```{r}
+YOUR_CODE_HERE
+```
+
+2. Check that each character's list entry in `got_chars` has the same names as everyone else (that is, list component names, not character names). Here's one way to do it:
+    1. Use the `names` function.
+    2. Then, bind the names together in a single character.
+    3. Then, apply the `table()` function.
+
+```{r}
+YOUR_CODE_HERE
+```
+
+
+## Shortcut functions
+
+We can do the subsetting much easier with these shortcuts: just replace function with either:
+
+- index you'd like to subset by, or
+- name you'd like to subset by.
+
+```{r}
+map_chr(wesanderson, 1) # %>% unname()
+```
+
+
+## Your turn: shortcut functions
+
+1. For the `got_chars` data:
+
+- What are the titles of each character? 
+- Is a vector output appropriate here?
+- Use a pipe.
+
+Note: each character's list entry has a component named `titles` as the 9th entry.
+
+```{r}
+YOUR_CODE_HERE
+```
+
+2. For the `got_chars` data:
+
+- Extract a list of the "name" and "born" data for each person.
+    - Use the function ` ``[`` ` or `extract()` (from the `magrittr` package, does the same thing) function to do the subsetting
+- What happens when we switch to `map_dfr` instead of `map`? How about `map_dfc`?
+
+```{r}
+desired_info <- c("name", "born")
+```
+
+Note: as Jenny says, it's always safer (from a programming perspective) to work with output that's more predictable. The following would be safer, and is still readable:
+
+```{r}
+got_chars %>% {
+    tibble(
+        name = map_chr(., "name"),
+        born = map_chr(., "born")
+    )
+}
+```
+
+Note the curly braces "tricks" the object prior to the pipe from entering as the first argument to `tibble`, because ` ``{`` ` only returns the last line evaluated. In this case there are two: the above code is equivalent to
+
+```{r}
+got_chars %>% {
+    .
+    tibble(
+        name = map_chr(., "name"),
+        born = map_chr(., "born")
+    )
+}
+```
+
+
+<!--chapter:end:cm103-exercise.Rmd-->
+
+---
+title: "Class Meeting 4 Worksheet"
+output:
+    html_notebook:
+        toc: true
+        theme: cerulean
+        number_sections: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(repurrrsive)
+```
+
+# Resources
+
+All are from [Jenny's `purrr` tutorial](https://jennybc.github.io/purrr-tutorial/). Specifically:
+ 
+- Parallel mapping: [Jenny's "Specifying the function in map() + parallel mapping"](https://jennybc.github.io/purrr-tutorial/ls03_map-function-syntax.html#parallel_map)
+- List columns in data frames; nesting: [Jenny's "List Columns"](https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html).
+
+The all-encompassing application near the bottom of this worksheet is from [Jenny's "Sample from groups, n varies by group"](https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html)
+
+
+
+# Parallel Mapping
+
+We're going to work with toy cases first before the more realistic data analytic tasks, because they are easier to learn.
+
+Want to vectorize over two iterables? Use the `map2` family:
+
+```{r}
+a <- c(1,2,3)
+b <- c(4,5,6)
+map2(a, b, function(x, y) x*y)
+```
+```{r}
+map2(a, b, ~ .x * .y)
+```
+```{r}
+map2(a, b, `*`)
+```
+```{r}
+map2_dbl(a, b, `*`)
+```
+
+More than 2? Use the `pmap` family:
+
+```{r}
+a <- c(1,2,3)
+b <- c(4,5,6)
+c <- c(7,8,9)
+pmap(list(a, b, c), function(x, y, z) x*y*z)
+```
+```{r}
+pmap(list(a, b, c), ~ ..1 * ..2 * ..3)
+```
+```{r}
+pmap_dbl(list(a, b, c), ~ ..1 * ..2 * ..3)
+```
+
+## Your Turn
+
+Using the following two vectors...
+
+```{r}
+commute <- c(10, 50, 35)
+name <- c("Parveen", "Kayden", "Shawn")
+```
+
+use `map2_chr()` to come up with the following output in three ways:
+
+```{r}
+str_c(name, " takes ", commute, " minutes to get to work.")
+```
+
+1. By defining a function before feeding it into `map2()` -- call it `comm_fun`.
+
+```{r}
+comm_fun <- FILL_THIS_IN
+map2(FILL_THIS_IN, FILL_THIS_IN, FILL_THIS_IN)
+```
+
+2. By defining a function "on the fly" within the `map2()` function.
+
+```{r}
+map2(name, commute, function(t, s) FILL_THIS_IN)
+```
+
+3. By defining a formula.
+
+```{r}
+map2(name, commute, ~ FILL_THIS_IN)
+```
+
+
+# List columns
+
+## What are they?
+
+A tibble can hold a list as a column, too:
+
+```{r}
+(listcol_tib <- tibble(
+  a = c(1,2,3),
+  b = list(1,2,3),
+  c = list(sum, sqrt, str_c),
+  d = list(x=1, y=sum, z=iris)
+))
+```
+
+Printing to screen doesn't reveal the contents! `str()` helps here:
+
+```{r}
+str(listcol_tib)
+```
+
+Extract a list column in the same way as a vector column:
+
+```{r}
+print(listcol_tib$a)  # Vector
+```
+```{r}
+print(listcol_tib$b)  # List
+```
+
+This is where `map()` comes in handy! Let's make a tibble using the `got_chars` data, with two columns: "name" and "aliases", where "aliases" is a list-column (remember that each character can have a number of aliases different than 1):
+
+1. Pipe `got_chars` into `{` with `tibble()`.
+2. Specify the columns with `purrr` mappings.
+
+```{r}
+got_alias <- got_chars %>% FILL_THIS_IN
+```
+
+Write the solution down carefully -- we'll be referring to `got_alias` later. 
+
+## Making: Your Turn
+
+Extract the aliases of Melisandre (a character from Game of Thrones) from the `got_alias` data frame we just made. Try two approaches:
+
+Approach 1: Without piping
+
+1. Make a list of aliases by extracting the list column in `got_alias`.
+2. Set the names of this new list as the character names (from the other column of `got_chars`).
+3. Subset the newly-named list to Melisandre.
+
+```{r}
+(alias_list <- FILL_THIS_IN)
+names(alias_list) <- FILL_THIS_IN
+SUBSET_HERE
+```
+
+Approach 2: With piping
+
+1. Pipe `got_alias` into the `setNames()` function, to make a list of aliases, named after the person. Do you need `{` here?
+2. Then, pipe that into a subsetting function to subset Melisandre.
+
+```{r}
+got_alias %>% FILL_THIS_IN
+```
+
+## Nesting/Unnesting; Operating
+
+__Question__: What would tidy data of `got_alias` look like? Remember what `got_alias` holds:
+
+```{r}
+got_alias
+```
+
+Let's make a tidy data frame! First, let's take a closer look at `tidyr::unnest()` after making a tibble of preferred ice cream flavours:
+
+```{r}
+(icecream <- tibble(
+    name = c("Jacob", "Elena", "Mitchell"),
+    flav = list(c("strawberry", "chocolate", "lemon"),
+                c("straciatella", "strawberry"),
+                c("garlic", "tiger tail"))
+))
+```
+
+I can make a tidy data frame _without_ list columns using `tidyr::unnest()`:
+
+```{r}
+icecream %>% 
+    unnest(flav)
+```
+
+How would I subset all people that like strawberry ice cream? We can either use the tidy data, or the list data directly:
+
+From "normal" tidy data:
+
+```{r}
+icecream %>% 
+    unnest(flav) %>% 
+    filter(flav == "strawberry")
+```
+
+From list-column data:
+
+```{r}
+icecream %>% 
+  filter(map_lgl(flav, ~ FILL_THIS_IN))
+```
+
+
+## Nesting/Unnesting: Your Turn
+
+`unnest()` the `got_alias` tibble. Hint: there should be a hiccup. Check out the `str()`ucture of `got_alias` -- are all elements of the list column vectors? Would using `tidyr::drop_na()` be a good idea here?
+
+```{r}
+FILL_THIS_IN
+```
+
+We can also do the opposite with `tidyr::nest()`. Try it with the `iris` data frame:
+
+1. Group by species.
+2. `nest()`!
+
+```{r}
+FILL_THIS_IN
+```
+
+Keep the nested `iris` data frame above going! Keep piping:
+
+- Fit a linear regression model with `lm()` to `Sepal.Length ~ Sepal.Width`, separately for each species. 
+    - Inspect, to see what's going on.
+- Get the slope and intercept information by applying `broom::tidy()` to the output of `lm()`.
+- `unnest` the outputted data frames from `broom::tidy()`.
+
+# Application: Time remaining?
+
+If time remains, here is a good exercise to put everything together. 
+
+[Hilary Parker tweet](https://twitter.com/hspter/status/739886244692295680): "How do you sample from groups, with a different sample size for each group?"
+
+[Solution by Jenny Bryan](https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html):
+
+1. Nest by species.
+2. Specify sample size for each group.
+3. Do the subsampling of each group.
+
+Let's give it a try:
+
+```{r}
+
+```
+
+
+# Summary:
+
+- tibbles can hold columns that are lists, too!
+    - Useful for holding variable-length data.
+    - Useful for holding unusual data (example: a probability density function)
+    - Whereas `dplyr` maps vectors of length `n` to `n`, or `n` to `1`...
+    - ...list columns allow us to map `n` to any general length `m` (example: regression on groups)
+- `purrr` is a useful tool for operating on list-columns.
+- `purrr` allows for parallel mapping of iterables (vectors/lists) with the `map2` and `pmap` families.
+
+<!--chapter:end:cm104-exercise.Rmd-->
+
+
+# Motivation
+
+Today's topic: scraping the web.
+
+This means reading webpages like [this wikipedia page](https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings) and putting relevant info into R.
+
+# Getting Started
+
+1. Install [`rvest`](https://github.com/hadley/rvest): `install.packages("rvest")`.
+
+2. Load it:
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+3. Download [cm111-simple_script.html](cm111-simple_script.html) to your participation repo.
+
+4. Explore the html script, and the structure of html.
+
+
+# Scraping with `rvest`: Overview
+
+Overall workflow with `rvest`:
+
+1. Read in a webpage with `read_html()`.
+2. Select parts of the page with `html_nodes()`.
+	- Optional, especially when reading tables.
+3. Convert parts of the selected html to R objects:
+	- text: `html_text()` for the actual text between the tags, but also relevant are:
+		- `html_name()` for the name of the (highest level) tag itself,
+		- `html_attrs()`/`html_attr()` for the attributes.
+	- tibbles: `html_table()`
+
+## Together:
+
+We'll use `rvest` to read in parts of `cm111-simple_script.html` into R.
+
+1. Apply `read_html()` to the file: reads in the page, outputs a special R object.
+
+```{r}
+simple_page <- FILL_THIS_IN
+```
+
+2. Pipe the output into `html_structure()`: will print the html to screen.
+
+```{r}
+simple_page %>% html_structure()
+```
+
+3. Apply `html_text()` to `simple_page`: gives me all the text (not the tags).
+
+```{r}
+
+```
+
+4. `html_nodes()`: selects only relevant parts of the html, constructing a (special) list of all relevant pieces. 
+	- Example: select all text between paragraph tags.
+	- Example: select all hyperlink text.
+	- Example: select all tags with the "wiki" id (Hint: `#wiki`)
+5. Then, pipe into `html_text()`.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+simple_page %>% 
+	html_nodes(FILL_THIS_IN)
+```
+
+
+## Your Turn, Round 1
+
+Practice with CSS selection! Partner up, and see how many levels you can complete in the [CSS selector game](http://flukeout.github.io/).
+
+## Your Turn, Round 2
+
+Return the text in `simple_page` contained within:
+
+1. all `<a>` tags within `<p>` tags.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN) %>% 
+	FILL_THIS_IN
+```
+
+2. any tag.
+
+```{r}
+simple_page %>% 
+	html_nodes(FILL_THIS_IN) %>% 
+	FILL_THIS_IN
+```
+
+
+## Reading the tags
+
+We can extract other things besides the text between the tags:
+
+- `html_name()` gives the name of the tags. Try it with `html_nodes(*)`.
+
+```{r}
+simple_page %>% 
+	html_nodes("*")
+```
+
+- `html_attrs()` gives all attributes of the tags. Try it with `html_nodes("a")`:
+
+```{r}
+simple_page %>% 
+	html_nodes("a")
+```
+
+- `html_attr()` (not plural) extracts a vector of the attribute contents by the `name` argument. Try `name="href"` with `html_nodes("a")`:
+
+```{r}
+simple_page %>% 
+	html_nodes("a")
+```
+
+
+- Make a tibble of hyperlink text and their associated url's:
+
+```{r}
+tibble(
+	text = FILL_THIS_IN,
+	url  = FILL_THIS_IN
+)
+```
+
+## When CSS selection gets harder
+
+Let's extract the songs that appear on [Kane Brown's page on musixmatch](https://www.musixmatch.com/search/kane%20brown).
+
+Viewing the source to find the CSS is horrendous. In comes [`SelectorGadget`](https://selectorgadget.com/)! Visit the page to install the gadget.
+
+1. Use the gadget to select the songs. 
+2. Put the CSS selection in the `html_nodes()`.
+
+```{r}
+
+```
+
+## Reading a table
+
+Goal: extract the Wikipedia table of the [tallest steel roller coasters](https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings#Tallest_steel_roller_coasters) in the world with `html_table()`.
+
+```{r}
+read_html("https://en.wikipedia.org/wiki/List_of_roller_coaster_rankings") %>% 
+	FILL_THIS_IN
+```
+
+
+# Data structures and Importing
+
+We've already seen `readr`, but what about importing other data types?
+
+- JSON, with the `jsonlite` package. Examples from the `fromJSON()` documentation:
+
+```{r}
+fromJSON('{"city" : "Z\\u00FCrich"}') # A list
+fromJSON("https://api.github.com/users/hadley/orgs") %>% 
+	glimpse() # A data frame
+toJSON(mtcars, pretty=TRUE)
+```
+
+
+- XML, with the `xml2` package (similar to reading webpages).
+	- [Example from w3cshools](https://www.w3schools.com/xml/simple.xml)
+
+```{r}
+read_xml("https://www.w3schools.com/xml/simple.xml") %>% 
+	as_list()
+```
+
+
+Others:
+
+- [`googledrive`](https://googledrive.tidyverse.org/)
+- See the [tidyverse listing of import packages](https://www.tidyverse.org/packages/#import).
+
+<!--chapter:end:cm111-exercise.Rmd-->
+
+
+## Announcements
+
+- Homework 10 is now optional. Also, one pair of peer reviews.
+- My office hour this week is after class today.
+
+## Objective
+
+Objectives of today's lesson:
+
+- Form a web API request to retrieve data
+- Make an API request from within R, esp. with the `httr`.
+- Familiarize yourself with the context of forming these requests: API's in general, and HTTP.
+
+## Lesson Overview
+
+Starting from the bottom objective, let's set the context:
+
+1. What is an API? Plus requests.
+2. What is HTTP? Requests and Responses.
+
+Then, let's focus on the data retrieval task:
+
+3. Using the `httr` package to form requests, and specialized packages.
+4. Other relevant examples of API's
+
+We'll wrap up with: 
+
+5. Instructor/course evaluations
+
+## Participation
+
+Download the `.Rmd` version of this very document.
+
+## Overall Resources
+
+- The [2016 ROpenSci tutorial](https://github.com/ropensci-training/user2016-tutorial).
+	- Parts 1 and 2 provide a good overview of today's topic.
+	- Part 3 covers scraping (we covered that last class).
+- ["An Introduction to APIs"](https://zapier.com/learn/apis/), a brief book by Brian Cooksey. 	
+	- Concise yet complete look at today's concepts.
+
+I'll post more specific resources at the start of each topic.
+
+# What is an API?
+
+API = Application Programming Interface
+
+API's deliver information from a server by request.
+
+## Resources
+
+I suggest these resources to get oriented:
+
+- ["What is an API? In English, please."](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82), by Petr Gazarov
+	- Fantastic explanation and orientation of what API's are.
+- [What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY), by MuleSoft Videos
+	- Brief, high-level YouTube video
+- The [ROpenSci 2016 tutorial](https://github.com/ropensci-training/user2016-tutorial/blob/master/slides.pdf), Part 1, linked near the top of the page. 
+	- Nice walk-through. You might find it useful to first get a higher-level overview from the above two resources.
+
+## Demonstrations of API's
+
+__Visiting a website__
+
+1. You enter a url (the _request_), say <https://twitter.com/>, into your web browser (the _client_).
+2. The Twitter server delivers the requested page in the form of html (the _response_).
+	- The _transfer_ is via `https`: `h`yper`t`ext `t`ransfer `p`rotocol (`s`ecure).
+3. Your browser displays the html.
+
+__Google Flights__
+
+1. Pick a flight from https://www.google.com/flights
+2. Google sends your browser information about relevant flights.
+
+Notice:
+
+- Notice the _query_ at the end of the url!
+- Many API's, like google flights, use _third-party API's_ -- it uses WestJet, AirCanada, etc.
+
+__GitHub API__
+
+Can request "data"; usually comes in json or xml, not html!
+
+1. Request, say, information about the GitHub Orgs that Hadley belongs to:
+	- `https://api.github.com/users/hadley/orgs`
+2. The GitHub API returns not html, but JSON.
+
+__OMDb__
+
+API's are not always open, and require an _API key_.
+
+Let's request info about Jurassic Park from OMDb. We'll also start writing requests with this one. (You'll need to register for an API key if you want to follow)
+
+1. Go to http://www.omdbapi.com/
+2. Request info about Jurassic Park
+	- The syntax is specific to OMDb
+	
+__OMDb Exercise__:
+
+1. Register for an API key at http://www.omdbapi.com/
+2. Form a request!
+
+```{r}
+s
+```
+
+
+__Google API's__
+
+Some services offer _many_ API's. 
+
+1. Check out the API's available [from Google](https://developers.google.com/).
+	- Example: [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start)
+	- `maps.googleapis.com`, "the other side" of `maps.google.ca`.
+
+__Local API's__
+
+API's are not always on another server. Local examples:
+
+- Your operating system
+- An R package
+- Shiny apps (not local if you release them to the web).
+
+# What is HTTP?
+
+HTTP = hypertext transfer protocol. A standardized format for communicating between servers.
+
+## Resources
+
+I suggest ["What is HTTP?"](https://www.webnots.com/what-is-http/) by webnots. Gets right to it, in an uncomplicated way.
+
+And, for info on HTTP verbs/methods, the [REST API tutorial](https://www.restapitutorial.com/lessons/httpmethods.html)
+
+## Getting Oriented
+
+What really happens when you type a url into your browser?
+
+1. You type a url in the address bar of your browser.
+2. An http _request_ is formed, and sent to the website's server.
+	- Components are formed using defaults and using components of the url.
+3. The server sends an http _response_.
+
+The _request_ and _response_ are plain text, and each have a specific structure and components.
+
+## Revealing the request and response
+
+Let's view uncover this "behind the scenes" messaging that's going on. 
+
+- __Using the terminal__: Use `curl -v`. 
+	- Example `curl -v https://github.com/STAT545-UBC/Classroom`. The request starts with `>`, and the response starts with `<`.
+- __Using your Browser__: You can at least do this with Google Chrome. See the [webnots article](https://www.webnots.com/what-is-http/) I link to above.
+
+## Request and response: components
+
+Here are some noteworthy components to look out for:
+
+__Response__ 
+
+- _Status_: "404" and others 
+	- See this [Wikipedia description](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) of status codes; also described in the [webnots article](https://www.webnots.com/what-is-http/) referenced earlier.
+- _Headers_: info about the page itself.
+- _Content_: The actual content of the page. 
+
+__Request__
+
+- _url_
+- _method_, aka _HTTP verb_ (more on this in the next section)
+	- Default verb: `GET`.
+- _headers_ allow you to modify the request.
+
+## HTTP verbs/methods
+
+By default, your browser uses `GET`. You can interact (and actually _modify_) the server using other verbs. Common ones are
+
+- `GET` -- retrieve info from the server.
+	- Most useful for us -- gets data!
+- `POST` -- create content on the server.
+- `PUT` -- update content on the server.
+- `DELETE` -- delete content from the server.
+
+# Using R to make requests
+
+The [`httr` R package](https://github.com/r-lib/httr) provides an interface for HTTP verbs. We'll primarily look at this.
+
+```{r}
+library(httr)
+```
+
+__Acronym check-in__: Note that these acronyms look similar, but are not the same: html != http != httr.
+
+## Resources
+
+Suggested resources (which also briefly explain what API's are):
+
+- Tyler Clavelle's [Using R to extract data from web APIs](https://tclavelle.github.io/blog/r_and_apis/)
+- The [ROpenSci 2016 tutorial](https://github.com/ropensci-training/user2016-tutorial/blob/master/slides.pdf), Part 2, linked near the top of the page. 
+- The [`httr` quickstart vignette](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
+	- Quick and dirty "how to use" guide. Good if you're comfortable enough with API's and HTTP, and want to adapt to the `httr` package.
+
+
+## HTTP verbs/methods: Through `httr`
+
+Those same HTTP verbs are `httr` functions. We'll be focussing on `GET()`!
+
+__Together__:
+
+1. `GET()` a website, any website.
+2. Inspect its `str()`ucture, `class()`, and `names()`.
+
+```{r}
+site <- GET("PUT_URL_HERE")
+```
+
+3. What's the `$status_code`? How about the `$content`?
+
+```{r}
+
+```
+
+4. Try the function versions: `status_code()` and `content()`. 
+	- Is the output of `content()` html? You can scrape with `rvest`.
+	- Try again from the top, this time with Hadley's GitHub Orgs: `https://api.github.com/users/hadley/orgs`
+
+```{r}
+status_code(site)
+content(site)
+```
+
+5. The GitHub API (Hadley's GitHub Orgs) returns JSON. Why not just use `jsonlite::fromJSON()`?
+	- Sometimes data come in XML format, and can't do this.
+
+```{r}
+jsonlite::fromJSON("https://api.github.com/users/hadley/orgs")
+```
+
+## Exercise
+
+1. Collect the information about a movie of your choice from [the OMDb](http://www.omdbapi.com/). You'll have to sign up for an API key (it's free).
+2. Extract the `Plot`.
+
+```{r}
+
+```
+
+
+## API wrappers and examples
+
+Many R packages are wrappers to an API. Examples:
+
+- `ggmap` accesses [Google Maps API](https://developers.google.com/maps/documentation/).
+- `rebird` accesses the [ebird](https://ebird.org/home) database.
+- `geonames` accesses the [geonames.org](geonames.org) API.
+- `plotly` accesses the [plotly API](https://plot.ly/graphing-libraries/).
+- `rplos` accesses the [Public Library of Science](https://www.plos.org/) API.
+
+Andrew MacDonald wrote an overview of a few of these in the [2015 STAT 547 cm111 notes, "Install and Play" section](http://stat545.com/webdata02_activity.html#install-and-play).
+
+In addition, here are other API's to be aware of (some of which have an R package, I believe):
+
+- [Facebook API](https://developers.facebook.com/)
+- [Twitter API](https://developer.twitter.com/)
+- [Star Wars API](https://swapi.co)
+- [API of Ice and Fire](https://anapioficeandfire.com)
+- [OpenWeatherMap](https://openweathermap.org/api)
+- [Open Movie Database](https://www.omdbapi.com)
+- [Quandl API](https://www.quandl.com/)
+
+And a huge list of API's can be found [here](http://www.programmableweb.com/category/all/apis).
+
+# Course/Instructor Evaluations
+
+Please take 5 minutes to fill out the course/instructor evaluations!
+
+<!--chapter:end:cm112-exercise.Rmd-->
+
+---
+title: "Welcome to STAT 545A!"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Instructor: Dr. Vincenzo Coia
+
+![](cm001_files/vincenzo.jpg)
+
+Core teaching team of MDS   
+Department of Statistics   
+UBC
+
+Going on leave October 8 (perhaps sooner).
+
+---
+
+# Instructor: Dr. Firas Moosvi
+
+Core teaching team of MDS   
+Department of Statistics   
+UBC
+
+---
+
+# Meet your TA's!
+
+STAT 545 has four TA's.
+
+---
+
+# Questions in class
+
+For the instructor, vs. for the TA's.
+
+---
+
+# Meet your classmates!
+
+This class is made up of students in a variety of programs. Get to know your neighbour! Choose someone to go first. In [2 minutes](https://www.youtube.com/watch?v=48z7nQaehWI), share:
+
+- Your name
+- Your program
+- Something notable you did over the summer
+
+Then switch for another two minutes.
+
+Afterwards: let's here from a few of you!
+
+---
+
+# Syllabus
+
+Let's get oriented with the course through the [course syllabus](http://stat545.com/Classroom). In doing so, you'll learn about:
+
+- How to get help, in this course and outside of this course.
+- A preview of GitHub
+
+example of an analysis??? Flood forecasting one?? Would help to motivate the course, and demonstrate course mantras. 
+
+<!--chapter:end:intro.Rmd-->
+
+---
+title: "Smoothing time series data using Functional Programming"
+output: html_document
+---
+
+
+Enter the `slide()`, `tile()`, and `stretch()` families. Best explained by the [tsibble demo](https://tsibble.tidyverts.org/), specifically [this rolling window animation](https://tsibble.tidyverts.org/reference/figures/animate-1.gif).
+
+```{r}
+mauna <- co2 %>% 
+	as_tsibble() %>% 
+	rename(yearmonth = index,
+		   co2 = value) %>% 
+	fill_gaps()
+ggplot(mauna, aes(yearmonth, co2)) +
+	geom_line() +
+	theme_bw()
+```
+
+To "wash out" the seasonal component (for use in some downstream analysis, such as estimating a trend), we could average-out the data within each year. The `tile()` family makes this easy:
+
+```{r}
+(mauna_tiled <- mauna %>% 
+ 	index_by(year = year(yearmonth)) %>% 
+ 	summarise(tiled_co2 = tile_dbl(
+ 		co2, mean,
+ 		na.rm = TRUE,
+ 		.size = 12
+ 	)))
+```
+
+But, why just average in chunks defined by January - December? Why not February to the following January? Or March - February? `slide` does all of these.
+
+```{r}
+(mauna_washed <- mauna %>% 
+	mutate(washed_co2 = slide_dbl(
+		co2, mean, 
+		na.rm  = TRUE, 
+		.size  = 12, 
+		.align = "center-left"
+	)))
+ggplot(mauna_washed, aes(yearmonth)) + 
+	geom_line(aes(y = co2), alpha = 0.5) +
+	geom_line(aes(y = washed_co2), colour = "blue")
+```
+
+
+<!--chapter:end:tsibble-windows.Rmd-->
+

@@ -1,34 +1,36 @@
 ---
-title: "cm014 Worksheet: The Model-Fitting Paradigm in R"
-output: html_notebook
-editor_options: 
+title: 'cm014 Worksheet: The Model-Fitting Paradigm in R'
+output:
+  html_document:
+    df_print: paged
+editor_options:
   chunk_output_type: inline
 ---
-
-```{r}
+  
+  ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 library(gapminder)
 library(broom)
 ```
 
 So you want to fit a model to your data. How can you achieve this with R?
-
-Topics:
-
-1. What _is_ model-fitting?
-2. How do we fit a model in R?
-3. How can we obtain tidy results from the model output?
-
-## What is Model-Fitting?
-
-When variables are not independent, then we can gain information about one variable if we know something about the other.
+  
+  Topics:
+  
+  1. What _is_ model-fitting?
+  2. How do we fit a model in R?
+  3. How can we obtain tidy results from the model output?
+  
+  ## What is Model-Fitting?
+  
+  When variables are not independent, then we can gain information about one variable if we know something about the other.
 
 Examples: Use the scatterplot below:
-
-1. A car weighs 4000 lbs. What can we say about its mpg?
-2. A car weights less than 3000 lbs. What can we say about its mpg?
-
-```{r, fig.width=5, fig.height=3}
+  
+  1. A car weighs 4000 lbs. What can we say about its mpg?
+  2. A car weights less than 3000 lbs. What can we say about its mpg?
+  
+  ```{r, fig.width=5, fig.height=3}
 library(tidyverse)
 ggplot(mtcars, aes(wt, mpg)) +
   geom_point() +
@@ -36,8 +38,8 @@ ggplot(mtcars, aes(wt, mpg)) +
 ```
 
 Example: What can we say about rear axle ratio if we know something about quarter mile time?
-
-```{r, fig.width=5, fig.height=3}
+  
+  ```{r, fig.width=5, fig.height=3}
 ggplot(mtcars, aes(qsec, drat)) + 
   geom_point() +
   labs(x = "Quarter mile time",
@@ -89,17 +91,17 @@ Exercise:
 
 First, create a subset of the `gapminder` dataset containing only the country of `France
 ```{r}
-(gapminder_France <- FILL_THIS_IN
+(gapminder_France <- gapminder %>% filter(country == "France"))
 ```
 
 Now, using the `lm()` function we will create the linear model
 ```{r}
-(my_lm <- lm(FILL_THIS_IN))
+(my_lm <- lm(lifeExp~year, data = gapminder_France))
 ```
 Does that mean that the life expectency at "year 0" was equal to -397.7646?!
-We are interested in the modeling results around the modeling period which starts at year 1952. To get a meaniningful "interpretable" intercept we can use the `I()` function.
+  We are interested in the modeling results around the modeling period which starts at year 1952. To get a meaniningful "interpretable" intercept we can use the `I()` function.
 ```{r}
-(my_lm <- lm(FILL_THIS_IN))
+(my_lm <- lm(lifeExp~I(year-1952), data = gapminder_France))
 
 ```
 
@@ -109,20 +111,20 @@ unclass(my_lm)
 ```
 
 To complicate things further, some info is stored in _another_ list after applying the `summary` function:
-
-```{r}
+  
+  ```{r}
 summary(my_lm)
 ```
 
 We can use the `predict()` function to make predictions from the model (default is to use fitting/training data). Here are the predictions:
-
-```{r}
+  
+  ```{r}
 predict(my_lm) %>% 
   head()
 ```
 Or we can predict on a new dataset:
-```{r}
-years1 = FILL_THIS_IN
+  ```{r}
+years1 = data.frame(year = seq(2000,2005))
 predict(my_lm,years1)
 
 ```
@@ -130,16 +132,16 @@ predict(my_lm,years1)
 
 
 We can plot models (with one predictor/ X variable) using `ggplot2` through the `geom_smooth()` layer. Specifying `method="lm"` gives us the linear regression fit (but only visually!):
-
-```{r}
+  
+  ```{r}
 ggplot(gapminder, aes(gdpPercap, lifeExp)) +
-    geom_point() +
-    geom_smooth(method="lm") +
-    scale_x_log10()
+  geom_point() +
+  geom_smooth(method="lm") +
+  scale_x_log10()
 ```
 Lets consider another country "Zimbabwe", which has a unique behavior in the `lifeExp` and `year` relationship.
 ```{r}
-gapminder_Zimbabwe <- FILL_THIS_IN
+gapminder_Zimbabwe <- gapminder %>% filter(country == "Zimbabwe")
 gapminder_Zimbabwe %>% ggplot(aes(year, lifeExp)) + geom_point()
 ```
 Let's try fitting a linear model to this relationship
@@ -148,18 +150,18 @@ ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method 
 ```
 Now we will try to fit a second degree polynomial and see what would that look like.
 ```{r}
-ggplot(FILL_THIS_IN) + geom_point()+geom_smooth(FILL_THIS_IN)
+ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method = "lm",formula = y~poly(x,2), se = F)
 
 ```
 
 ```{r}
-lm_linear <- lm(data = gapminder,formula = FILL_THIS_IN)
-lm_poly <- lm(data = gapminder,formula = FILL_THIS_IN))
+lm_linear <- lm(data = gapminder,formula = lifeExp~I(year-1952))
+lm_poly <- lm(data = gapminder,formula = lifeExp~poly(I(year-1952),2))
 ```
-`anova` lets you compare between different models.
 ```{r}
 anova(lm_linear,lm_poly)
 ```
+
 ## Regression with categorical variables
 
 ```{r}

@@ -1,0 +1,4256 @@
+---
+title: "STAT 545 @ UBC: Class Meeting Guide 2019/20"
+author: "Vincenzo Coia and Firas Moosvi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+#github-repo: org/repo
+cover-image: "stat-545.png"
+---
+
+# About This Guide {-}
+
+Welcome to the class meeting (or "lecture") guide for STAT 545A and STAT 547M at UBC for the 2019/20 academic year! This guide organizes what we will be doing in each class meeting. So you can expect it to be updated regularly -- in fact, the date listed above is the last time this guide was updated. 
+
+If you're looking for the list of tutorials written by Jenny Bryan, you can find those in the bookdown book found at stat545.com.
+
+
+## Other Contributors {-}
+
+Various people have contributed to the current state of this guidebook in various ways.
+
+- [Jenny Bryan](https://jennybryan.org/) founded the course, and the big-picture organization of material in this guidebook originated from her work.
+- [Victor Yuan](https://twitter.com/victor2wy) delivered and contributed to the [Intro to data wrangling, Part I] lecture (cm006) in 2019.
+- [Rashedul Islam](https://www.linkedin.com/in/rashedul-islam-12170432/) delivered and contributed to the [Tibble Joins] lecture (cm010) in 2018.
+- [Giulio Valentino Dalla Riva](https://www.gvdallariva.net/) contributed in the 2017 version of the course.
+- [Joey Bernhardt](https://www.zoology.ubc.ca/~jbernhar/home/) made a [singer R package](https://github.com/JoeyBernhardt/singer/) that's being used in the [Tibble Joins] lecture (cm010).
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction to STAT 545 and GitHub
+
+## Outline
+
+We'll cover three topics today:
+
+- Syllabus. (~20 min)
+- GitHub. (~35 min)
+- Getting help (~10 min)
+
+We'll end class with a to-do list before next class.
+
+## Learning Objectives
+
+By the end of today's class, students are expected to be able to:
+
+- Distinguish and navigate between GitHub repositories, Organization accounts, and user accounts.
+- Edit plain text files on GitHub.
+- Navigate the commit history of a repository and a file on GitHub.
+- Contribute to GitHub Issues, especially for STAT 545.
+- Identify whether a software-related question has a reproducible example.
+
+## Resources
+
+If you want to learn more about today's topics, check out:
+
+- The [GitHub guide](https://guides.github.com/) has lots of info about GitHub. If you do go here, I recommend you start with ["Hello, World!"](https://guides.github.com/activities/hello-world/). You'll see stuff about branching there -- we'll be discussing that next Thursday.
+- Jenny's ["How to get unstuck"](http://stat545.com/help-general.html) page is useful for getting help online (even outside of STAT 545).
+
+## Topic 1: Syllabus (20 min)
+
+The course syllabus can be found on the STAT 545 @ UBC homepage, [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca). We'll cover:
+
+- Guidebook (2 min)
+- Learning Objectives and Course Structure (8 min)
+  - Example of an analysis: `Interpreting-Regression` book.
+- Teaching Team and Contact (5 min)
+- Resources, especially what's going on with stat545.com (5 min)
+
+## Topic 2: GitHub (35 min)
+
+(2 min)
+
+We will be using [GitHub](https://github.com) a lot in this course:
+
+- All course-related work will go on GitHub.
+- Discussion will happen on GitHub.
+- Even this guidebook and the STAT 545 website files are on GitHub.
+
+But why GitHub? Because it's tremendously effective for developing a project. Examples:
+
+- [Apple](https://github.com/apple) uses it.
+- [Uber](https://github.com/uber) uses it.
+- [Netflix](https://github.com/Netflix) uses it.
+- [This Guidebook](https://github.com/STAT545-UBC/Classroom) and [the STAT545 @ UBC website](https://github.com/STAT545-UBC/STAT545-home) use it.
+- Prominent R packages like [`ggplot2`](https://github.com/tidyverse/ggplot2) use it. 
+
+Today, we'll check out:
+
+1. GitHub as cloud storage;
+2. GitHub for collaboration; and
+3. GitHub for version control with git.
+
+### Register a GitHub account - Activity (4 min)
+
+Your turn:
+
+1. Register for a free account on [github.com](https://github.com). 
+    - You'll be using this account for the duration of the course.
+    - Give your username [some thought](https://happygitwithr.com/github-acct.html#username-advice) -- ideally, should include your name.
+2. Tell us what your username is by filling out [this survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_8jKz3FaT7w5EHfT).
+
+### GitHub as cloud storage (4 min)
+
+At the very least, GitHub allows for cloud storage, like Google Drive and Dropbox do. There's a bit more structure than just storing files under your account:
+
+- __Repositories (aka "repo")__: All files must be organized into _repositories_. Think of these as self-contained projects. These can either be _public_ or _private_.
+- __User Accounts__ vs. __Organization Accounts (aka "Org")__: All repositories belong to an account:
+    - A _user account_ is the account you just made, and typically holds repositories related to your own work. 
+    - An _Organization_ account can be owned by multiple people, and typically holds repositories relevant to a group (like STAT 545).
+
+Examples: 
+
+- The [`ggplot2`](https://github.com/tidyverse/ggplot2) repo, within its corresponding `tidyverse` Org. 
+- My [website](https://github.com/vincenzocoia/website) repo, within my own user account.
+
+Want to read more about GitHub accounts? [Check out this help page on GitHub](https://help.github.com/en/articles/types-of-github-accounts).
+
+### GitHub as cloud storage - Activity (10 min)
+
+__Together: Make a participation repo__
+
+- Follow the [setup instructions](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on the participation page. 
+
+__Navigating GitHub__
+
+1. Together: Make a new file on your participation repository:
+    - Click on the "Create New File" button on your repository's home page.
+    - Call it `navigating_github.md`
+    - Leave it blank, and commit ("save") the file by clicking on green "commit new file" button at the bottom of the page.
+2. Together: Add the following URL's to your `navigating_github.md` file (click on the pen button to edit), together with some commentary:
+    - The repository for the STAT 545 home page, called `STAT545-home` (use this if the site ever goes down!)
+    - The account it's under.
+    - Whether the account is a _user account_ or an _Org_.
+3. Together: Commit the changes.
+4. Your turn: Continue the exercise, and add more URL's (with more commentary):
+    - The URL to your participation repo
+    - The URL to your user account page
+5. Your turn: Commit the changes.
+
+### GitHub for collaboration (4 min)
+
+The "traditional" way to collaborate involves sending files over email. Problems:
+
+- Easily lose track of who has the most recent version.
+- Emails get buried.
+
+Addressed by GitHub:
+
+- GitHub repository treated as the "master version".
+- Use [_GitHub Issues_](https://guides.github.com/features/issues/) instead of email.
+
+_Issues_ are a discussion board corresponding to a particular repository. One "thread" is called an Issue. Some features:
+
+- Tag other GitHub users using `@username`.
+- Get email notifications if you are tagged, or are `Watch`ing a repository.
+
+As an example, check out the Issues in the [`ggplot2`](https://github.com/tidyverse/ggplot2) repository.
+
+More on collaboration next Thursday.
+
+### GitHub for collaboration - Activity (1 min)
+
+__Together: `Watch`ing the `Announcements` repo__
+
+1. Navigate to the STAT 545 [Announcements](https://github.com/STAT545-UBC-hw-2019-20/Announcements) repository.
+2. Click `Watch` on the upper-right corner of the repo
+
+You should now get an email notification whenever an Issue is posted.
+
+### GitHub for version control with git (5 min)
+
+GitHub uses a program called `git` to keep track of the project's history (more about `git` next Thursday).
+
+- Users make "commits" to form a _commit history_.
+- `git` only tracks the _changes_ associated with a commit, so it doesn't need to take a snapshot of all your files each time.
+- The actual changes are called a _diff_.
+
+Demostration:
+
+- View commit history of the [STAT545-home](https://github.com/STAT545-UBC/STAT545-home) repository by clicking on the "commits" button on the repo home page.
+- View a recent diff by clicking on the button with the _SHA_ or _hash_ code (something like `6c0a5f1`).
+    - This is also useful for collaborators to see exactly what you changed.
+- View the repository from a while back with the `<>` button.
+- View the history of a file by clicking on the file, then clicking "History".
+
+Why version control?
+
+- Don't fret removing stuff
+- Leave a breadcrumb trail for troubleshooting
+- "Undo" and navigate a previous state
+- Helps you define your work
+- ...
+
+### GitHub for version control with git - Activity (5 min)
+
+__Your turn: History of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository.__
+
+1. Use the commit history of the [`STAT545-UBC/Classroom`](https://github.com/STAT545-UBC/Classroom) repository to find Assignment 01 that was delivered last year in STAT 545A (Note: the course ended in mid October 2018, and the assignments were held in a folder called `assignments`). 
+2. Add the URL of this assignment to your `navigating_github.md` file in your participation repository. Keep up with the commentary within the file, too. When was the assignment due? 
+
+Note: the layout and content of the assignments are changing this year.
+
+## Topic 3: Asking effective questions online (10 min)
+
+(5 min)
+
+We all get stuck sometimes. If you try taking [preliminary measures](http://stat545.com/help-general.html) such as googling, you may have to turn to writing a question on a discussion board. Making your question _effective_ is an art. 
+
+To make your question effective, the idea is to make things as easy as possible for someone to answer. 
+
+- Will they have to dig to find a resource you're talking about, or do you provide links?
+- If your code isn't doing what you expect, or you don't know how to obtain an output, do you provide a [__reproducible example__](https://stackoverflow.com/help/minimal-reproducible-example) (aka "reprex")?
+  - Ideally, someone should be able to copy and paste a chunk of code to reproduce the problem you are talking about.
+- Is your reproducible example _minimal_, meaning you've removed all the unnecessary parts to reproduce the problem?
+
+You'll probably find that the act of writing an effective question causes you to answer your own question!
+
+### Asking questions - Activity (5 min)
+
+__Commenting on some online questions__
+
+1. My turn: Start an Issue on the [Announcements repo](https://github.com/STAT545-UBC-hw-2019-20/Announcements/issues) called `Asking effective questions`.
+2. Your turn: Find a question/issue or two that someone has posed online. Check out [Stack Overflow](https://stackoverflow.com/) for inspiration.
+3. Your turn: Add a comment to the newly opened Issue with the following:
+    - The URL to the thread/question
+    - A few brief points on how the question is worded effectively or ineffectively. What would make it better, if anything?
+
+We'll talk about some examples after you're done. 
+
+## To do before next class
+
+- Please fill out [this survey](https://ubc.ca1.qualtrics.com/jfe/form/SV_8jKz3FaT7w5EHfT), so that we can match you to your GitHub account.
+- Be sure to complete the in-class activities listed in today's section of the guidebook.
+- Please put up a profile photo on GitHub -- it makes the STAT 545 community more personable.
+- Install the software stack for this course, as indicated below. Having trouble? Our wonderful TA's are here to help you during office hours.
+
+Optionally, register for the [Student Developer Pack](https://education.github.com/pack) with GitHub for a bunch of free perks for students!
+
+And remember: bring your laptop to every class, as we will always have live-coding activities. 
+
+### Software Stack Installation
+
+1. Install R and RStudio.
+    - R here: <https://cloud.r-project.org>
+    - RStudio here: <https://www.rstudio.com/products/rstudio/download/preview/>
+    - Commentary on installing this stuff can be found at [stat545.com: r-rstudio-install](http://stat545.com/block000_r-rstudio-install.html)
+2. Install git (this is different from GitHub!). See [happygitwithr: Section 7](http://happygitwithr.com/install-git.html)
+    - You'll need to work with the command line. 
+
+
+
+
+<!--chapter:end:cm001.Rmd-->
+
+# Introduction to R
+
+Today, we'll get you up to speed with a minimum "need to know" about using R and RStudio. We're going to assume you know nothing, but aren't covering the breadth of the R/RStudio landscape.
+
+The format of today's notes aim to teach R by exploration, so is essentially an activity guide with prompts for exploration. These are mostly all exercises we'll be doing together in class. 
+
+To participate in today's lecture, you should have:
+
+- R and RStudio installed
+- A [participation repo](https://stat545.stat.ubc.ca/evaluation/participation/#setup) on GitHub to put in-class work.
+
+__Announcements__: (10 min) 
+
+- Assignment 1 is launched!
+- Class meeting schedule is fixed
+
+## Learning Objectives
+
+By the end of today's class, students are expected to be able to:
+
+- Write an R script to perform simple calculations
+- Access the R documentation on an as-needed basis
+- Use functions and operators in R
+- Subset vectors in R
+- Explore a data frame in R
+- Load packages in R
+
+## Participation
+
+Start a new R script in RStudio, and add your exploratory code to the script as we work through the exercises. What you write on this script doesn't have to be exactly the same as what I write -- we're just looking for some exploration of coding in R. 
+
+## Resources
+
+Here are some useful resources for getting oriented with R.
+
+- Jenny's [stat545.com: hello r](http://stat545.com/block002_hello-r-workspace-wd-project.html) page for exploring R roughly follows today's outline.
+- Want to practice programming in R? Check out [R Swirl](https://swirlstats.com/) for interactive lessons.
+- For a list of R "vocabulary", see [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html); for a list of R operators, see [Quick-R](https://www.statmethods.net/management/operators.html).
+
+Today, we'll be learning just enough base R so that we can dive in to the tidyverse side of R. If you want to learn even more about base R, take a look at [Mike Marin's R playlist on YouTube](https://www.youtube.com/playlist?list=PLqzoL9-eJTNBlVXxWvJkq0dtVut2sICUW).
+
+
+## Why R?
+
+Why R? Some points taken from [adv-r: intro](http://adv-r.had.co.nz/Introduction.html):
+
+- Free, platform-wide
+- Open source
+- Comprehensive set of "add on" packages for analysis
+- Huge community
+- ...
+
+Alternatives exist for data analysis, python being another excellent tool, especially these days as it seems like more and more R-like functionality is added to it. The good thing about python is that it's faster and has better support for machine learning models. For the sake of streamlining, both STAT 545A and STAT 547M only focus on R.
+
+## Orientation to R
+
+### Using R and RStudio (5 min)
+
+Let's try these exercises as our first steps.
+
+1. Try some arithmetic from a script vs. the console. 
+    - Notice that your commands appear in the "History" tab. Do not rely on this! What do you think is better than relying on the history?
+2. Store a number in a variable called `number` using `<-` (read this arrow as "gets").
+    - Notice that the object appears in the "Environment" tab in the top-right of RStudio.
+3. Try some arithmetic on the variable.
+4. Try some arithmetic on an undefined variable.
+5. Try some arithmetic on the variable on a line of code above the variable definition (do you think we'll get an error?)
+
+### Vectors (3 min)
+
+_Vectors_ store multiple entries of a data type, like numbers. You'll discover that they show up just about everywhere in R.
+
+Let's collect some data and store this in a vector called `times`. How long was your commute this morning, in minutes? Here's starter code:
+
+```
+times <- c()
+```
+
+Operations happen component-wise. Let's calculate those times in hours. How can we "save" the results?
+
+### Functions, Part I (3 min)
+
+What's the average travel time? Instead of computing this manually, let's use a _function_ called `mean`. Notice the syntax of using a function: the _input_ goes inside brackets, which is followed by the function name to the left.
+
+We _input_ `times`, and got some _output_. Did this function change the input? Aside from some bizarre functions, this is always the case. 
+Functions don't always return a single value. Try the `range()` function, for example. What's the output? What about the `sqrt()` function?
+
+Much of R is about becoming familiar with R's "vocabulary". A nice list can be found in [Advanced R - Vocabulary](http://adv-r.had.co.nz/Vocabulary.html).
+
+### Comparisons (7 min)
+
+We'll now introduce _logicals_.
+
+Which of our travel times are less than (say) 30 minutes? Use `<`.
+
+Which of our travel times are equal to ... (pick something)? What about _not_ equal to it? Notice the use of `==` as opposed to `=` -- why do you think that is?
+
+Which of our travel times are greater than ...(lower)... _and_ less than ...(upper)...? What about less than ...(lower)... _or_ greater than ...(upper)...?
+
+Some functions expect logical inputs. Try using the `which()` function on one of the above. What about `any()`? `all()`?
+
+Logicals can be explicitly specified in R with `TRUE` and `FALSE`.
+
+### Subsetting (10 min)
+
+Use `[]` to subset the vector of times:
+
+1. Extract the third entry.
+2. Extract everything except the third entry.
+3. Extract the second and fourth entry. The fourth and second entry.
+4. Extract the second through fifth entry -- make use of `:` to construct sequential vectors.
+4. Extract all entries that are less than 30 minutes. Why does this work? Logical subsetting!
+
+After all of that, did our `times` object change at all?
+
+We can use `[]` in conjunction with `<-` to change the `times` object:
+
+1. Replace two entries with new travel times.
+2. "Cap" entries that are "too large" at some set value. If this is more than one value, why don't we need to match the number of values? Recycling!
+3. Remove an entry, by overwriting `times`.
+
+### NA (2 min)
+
+Sometimes we have missing data. Those entries are replaced with `NA` in R. Be careful with these!
+
+1. Add `NA` to the vector of times.
+2. What's the mean of this new vector of times?
+
+Let's expand our view of functions in order to solve this problem.
+
+### Functions, Part II (10 min)
+
+Functions often take more than one _arguments_ as input, separated by commas. You can find out what these arguments are by accessing the function's _documentation_:
+
+Access the documentation of the `mean()` function by executing `?mean`. 
+
+- There are four arguments.
+- All the arguments have names, except for the `...` argument (more on `...` later). This is always the case. 
+- Under "Usage", some of the arguments are of the form `name = value`.
+    - These are default values, in case you don't specify these arguments.
+    - This is a sure sign that these arguments are _optional_. 
+- `x` is "on its own". This typically means that it has no default, and often (but not always) means that the argument is _required_. 
+
+We can specify an argument in one of two ways:
+
+- specifying `argument name = value` in the function parentheses; or
+- matching the ordering of the input with the ordering of the arguments.
+    - For readability, this is not recommended beyond the first or sometimes second argument! 
+
+Input `TRUE` for the `na.rm` argument in both ways.
+
+### Data frames (12 min)
+
+Living in a vector-only world would be nice if all data analyses involved one variable. When we have more than one variable, _data frames_ come to the rescue. Basically, a data frame holds data in tabular format.
+
+R has some data frames "built in". For example, motor car data is attached to the variable name `mtcars`. 
+
+Print `mtcars` to screen. Notice the tabular format. 
+
+__Your turn__ (5 min): Finish the exercises of this section:
+
+1. Use some of these built-in R functions to explore `mtcars`, without printing the whole thing to screen:
+    - `head()`, `tail()`, `str()`, `nrow()`, `ncol()`, `summary()`, `row.names()` (yuck), `names()`.
+
+Notice that `names` and `row.names()` outputs a _character vector_ (we've already seen numeric and logical vectors). These are useful for characterizing categorical data in R. 
+
+2. What's the first column name in the `mtcars` dataset? 
+3. Which column number is named `"wt"`?
+
+Each column is its own vector that can be extracted using `$`. For example, we can extract the `cyl` column with `mtcars$cyl`.
+
+4. Extract the vector of `mpg` values. What's the mean `mpg` of all cars in the dataset?
+
+### R packages (13 min)
+
+Usually, the suite of functions that "come with" R are just not enough to do an analysis. 
+
+Usually, the suite of functions that "come with" R are just not very convenient.
+
+In come R _packages_ to the rescue. These are "add ons", each coming with their own suite of functions and objects, usually designed to do one type of task. [CRAN](https://cran.r-project.org/) stores packages that, for all intents and purposes, can be considered "official" R packages. It's easy to install packages from CRAN! Just use the `install.packages()` function. 
+
+Run the following lines of code to install the `tibble` and `gapminder` packages. (But don't include this in your scripts -- it's not very nice to others!)
+
+```
+install.packages("tibble")
+install.packages("gapminder")
+```
+
+- `tibble`: a data frame with some useful "bells and whistles"
+- `gapminder`: a package that makes the gapminder dataset available (as a `tibble`!)
+
+Installing a package is not enough! To access its functions, you have to _load_ it. Use the `library()` function to load a package. (Note: ironically, it's not libraries we load with the `library()` function, but a package).
+
+Run the following lines of code to load the packages. (Do put these in your scripts, and near the top)
+
+```
+library(tibble)
+library(gapminder)
+```
+
+Take a look at the packages under the "Global Environment" tab to see the new objects that have just been made available to us. PS: you'll notice `mtcars` is not in our workspace/environment, yet we can still access it -- where does `mtcars` live?
+
+Try the following two approaches to access information about the `tibble` package. Run the lines one-at-a-time. Vignettes are your friend, but do not always exist. 
+
+```
+?tibble
+browseVignettes(package = "tibble")
+```
+
+Print out the `gapminder` object to screen. It's a tibble -- how does it differ from a data frame in terms of how it's printed?
+
+Because a tibble is a data frame, our exploration functions still work on it. Try some.
+
+### Two slogans to understand computations in R (6 min)
+
+(We probably won't have time to cover this, and that's OK -- I'm leaving it here for you to peruse if you are interested).
+
+John Chambers eloquently sums up using R:
+
+> To understand computations in R, two slogans are helpful:
+> 
+> - Everything that exists is an object.
+> - Everything that happens is a function call.
+
+These are useful to remember to prevent us from getting confused. 
+
+1. Everything that exists is an object.
+
+This is not obvious when we look at the output of, say, `str()`:
+
+``` r
+str(mtcars)
+#> 'data.frame':    32 obs. of  11 variables:
+#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+#>  $ disp: num  160 160 108 258 360 ...
+#>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+#>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+#>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+#>  $ qsec: num  16.5 17 18.6 19.4 17 ...
+#>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+#>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+#>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+#>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+```
+
+The stuff you see is simply printed to screen, not an object! The actual object is `NULL`:
+
+``` r
+foo <- str(mtcars)
+#> 'data.frame':    32 obs. of  11 variables:
+#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+# ...(snip)...
+foo
+#> NULL
+```
+
+The output of `summary()` is actually a "table" object (something not often used in R). Let's coerce it to character data:
+
+``` r
+foo <- summary(mtcars)
+as.character(foo)
+#>  [1] "Min.   :10.40  "  "1st Qu.:15.43  "  "Median :19.20  " 
+#>  [4] "Mean   :20.09  "  "3rd Qu.:22.80  "  "Max.   :33.90  " 
+#>  [7] "Min.   :4.000  "  "1st Qu.:4.000  "  "Median :6.000  " 
+#> [10] "Mean   :6.188  "  "3rd Qu.:8.000  "  "Max.   :8.000  " 
+#> [13] "Min.   : 71.1  "  "1st Qu.:120.8  "  "Median :196.3  " 
+#> [16] "Mean   :230.7  "  "3rd Qu.:326.0  "  "Max.   :472.0  " 
+# ...(snip)...
+```
+
+2. Everything that happens is a function call.
+
+Did you know that operators like `+` are actually functions? The "plus" function is literally `` `+`() ``, and accepts two arguments.
+
+Here is what's actually happening when we call `5 + 2`:
+
+``` r
+`+`(5, 2)
+#> [1] 7
+```
+
+Want a challenge? What's the difference between the `` `(`() `` function and the `` `{`() `` function? Hint check the documentation with `` ?`{` ``.
+
+
+## Finishing up (5 min)
+
+1. Highly recommended: [Don't save your workspace](https://www.r-bloggers.com/using-r-dont-save-your-workspace/) when you quit RStudio. Make this a default:
+    - Go to "RStudio" -> "Preferences..." -> "General"
+    - Uncheck "restore .RData into workspace on startup"
+    - Select: "Save workspace to RData on exit:" Never
+2. Push your final script to GitHub (you can do this in a simple way by dragging the file onto your respository homepage).
+
+Don't forget! There's an office hour after every class, held upstairs in ESB 3174.
+
+<!--chapter:end:cm002.Rmd-->
+
+# Authoring
+
+Communication of a data analysis is just as important as the analysis itself. Today, we'll be looking at tools for _writing_ about your analysis.
+
+__Announcements__:
+
+- The add/drop deadline for Stat 545A is on Wednesday Sep. 11
+- Hang tight -- the canvas slot for Assignment 1 is coming shortly.
+
+## Learning Objectives
+
+By the end of today's class, students are expected to be able to:
+
+- Write documents in markdown on GitHub and RStudio, and render these documents to html and pdf with RStudio.
+- Choose whether html or pdf is an appropriate output
+- Style an Rmd document by editing the YAML header
+- Demonstrate at least two Rmd code chunk options
+- Make presentation slides using one of the R Markdown presentation formats.
+
+## Resources
+
+Cheat sheets for "quick reference":
+
+- [GitHub's markdown cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+- [RStudio's R markdown cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+
+Further reading:
+
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown. There's also a nice [overview video](https://rmarkdown.rstudio.com/authoring_quick_tour.html) on the site, too.
+- Yihui's [Rmd book](https://bookdown.org/yihui/rmarkdown/) for lots more on R Markdown.
+
+Other explorations of this content:
+
+- Interactive [tutorial](https://commonmark.org/help/tutorial/) for learning markdown.
+- The [stat545: Rmd test drive](http://stat545.com/block007_first-use-rmarkdown.html).
+
+## Topic 1: Output Formats (5 min)
+
+There are generally two prominent non-proprietary file types to display manuscripts of various types:
+
+1. __pdf__: This is useful if you intend to print your work onto a physical sheet of paper, or for presentation slides. If this is not the primary purpose, then avoid at all costs, because formatting things so that it fits to the page is way more effort than its worth (unless your making presentation slides). 
+    - Example: The [concession template](https://stat545.stat.ubc.ca/concession_template.pdf).
+2. __html__: This is what you see when you visit a webpage. Content does not need to be partitioned to pages. 
+    - Example: My [website main page](https://vincenzocoia.com), and its corresponding [html file](https://github.com/vincenzocoia/website/blob/hugo/public/index.html).
+    - Example: html [slides using ioslides](https://rpubs.com/cheyu/ioslideDemo).
+
+We won't be using proprietary file types, like MS Word. Amongst [many reasons](http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html), it just doesn't make sense for integrating reproducible code into the document and for a dynamic analysis. 
+
+Others that we won't be covering: 
+
+- Jupyter notebooks (actually a JSON file)
+- LaTeX
+
+We'll be treating pdf and html files as _output_ that should not be edited. In fact, pdf documents are not even easy to edit, and even if you do pay for the Adobe add-on to edit the files, this is not a reproducible workflow.
+
+What's the source, then? (R) __Markdown__! We'll be discussing this 
+
+## Topic 2: Markdown
+
+(3 min)
+
+Markdown is plain text with an easy, readable way of marking up your text. Let's see [GitHub's cheat sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf). Various software convert markdown to either pdf or html.
+
+File extension: `.md`
+
+### Activity: Modify `navigating_github.md` (5 min)
+
+Together:
+
+1. Open your `navigating_github.md` file that we made in the first class.
+2. Mark up the text with some markdown features.
+3. Commit your changes. 
+
+Notice that GitHub automatically displays markdown files nicely, but not HTML files.
+
+### Activity: Render `navigating_github.md` (5 min)
+
+N.B.: this exercise employs an effective _local_ workflow, which we will address next class.
+
+Together:
+
+1. Download the contents of your GitHub participation repository as a zip file.
+2. In RStudio, open the file `navigating_github.md`.
+    - Yes! RStudio also acts as a plain text editor!
+3. Convert the `.md` file to both pdf and html by clicking the appropriate button under the "Preview" tab.
+4. Push the two new files to GitHub (by dragging and dropping the files onto your participation repo).
+
+
+## Topic 3: R Markdown
+
+(2 min)
+
+R Markdown (Rmd) is a "beefed up" version of markdown -- it has many more features built in to it, two important ones being:
+
+- We can specify more features in a _YAML header_.
+    - This contains metadata about the document to guide how the Rmd document is rendered.
+- We can integrate code into a document.
+
+Here's [RStudio's cheat sheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf) on Rmd. You can see that it certainly has more features than "regular" markdown!
+
+### Activity: getting set up with R packages (5 min)
+
+(Includes what we missed from last class)
+
+To get started with using R Markdown, you'll need to install the `rmarkdown` R package. The activity we have also depends on the `gapminder`, `tibble`, and `DT` packages. 
+
+Together:
+
+1. To install these packages, in any R console, run the following:
+
+```
+install.packages('rmarkdown')
+install.packages('gapminder')
+install.packages('tibble')
+install.packages('DT')
+```
+
+"Official" R packages are stored an retrieved from [CRAN](https://cran.r-project.org/).
+
+2. Check out vignettes for the tibble package by running `browseVignettes(package = "rmarkdown")`.
+
+### Activity: exploring code chunks (15 min)
+
+Last class, we explored data frames. This time, we'll explore tibbles, but within code chunks in an R Markdown document.
+
+Together:
+
+1. Open RStudio's Rmd boilerplate by going to "File" -> "New File" -> "R Markdown" in RStudio. Explore!
+2. Scrap everything below the YAML header.
+3. Add a code chunk below the YAML header via "Insert" -> "R". Or, by:
+    - Mac: `Cmd + Option + I`
+    - Windows: `Ctrl + Alt + I`
+4. Load the `gapminder` and `tibble` packages using the `library()` function, by adding the following code to your code chunk:
+
+```
+library(gapminder)
+library(tibble)
+library(DT)
+```
+
+5. Print out the `gapminder` data frame to explore the output. Then, in a new code chunk, convert the `mtcars` data frame to a tibble using the `tibble::as_tibble()` function. Try out the `DT::datatable()` function on a data frame!
+6. Add some markdown commentary to this comparative analysis.
+7. Add an in-line code chunk specifying the number of rows of the `mtcars` dataset.
+8. "Knit" to html and pdf.
+
+Note: `knitr` integrates the code into the document. The actual conversion here is Rmd -> md -> pdf/html.
+
+### Activity: exploring the YAML header (10 min)
+
+(Note: If you've "fallen off the bus" from the last exercise, here's a "bus stop" for you to get back on -- just start a new Rmd file and use the boilerplate content while we work through this exercise.)
+
+Now, we'll modify the metadata via the YAML header. Check out a bunch of YAML options [from the R Markdown book](https://bookdown.org/yihui/rmarkdown/html-document.html).
+
+Together, in an Rmd file (ideally the one from the previous exercise):
+
+1. Change the output to `html_document`. We'll be specifying settings for the html document, so this needs to go on a new line after the `output:` field:
+```
+output:
+  html_document:
+    SETTINGS
+    GO
+    HERE
+```
+2. Add the following settings:
+    - Keep the `md` intermediate file with `keep_md: true`
+    - Add a theme. My favourite is cerulean: `theme: cerulean`
+    - Add a table of contents with `toc: true`
+    - Make the toc float: `toc_float: true`.
+3. Knit the results (you may have to delete the pdf, because it is no longer up to date!)
+
+### Activity: exploring chunk options (5 min)
+
+(Bus stop! Couldn't get previous exercises to work? No problem, just start a fresh R Markdown document with File -> New File -> R Markdown)
+
+Just like YAML is metadata for the Rmd document, _code chunk options_ are metadata for the code chunk. Specify them within the `{r}` at the top of a code chunk, separated by commas.
+
+Together, in an Rmd file (ideally the same one we've been working on):
+
+1. Hide the code from the output with `echo = FALSE`.
+2. Prevent warnings from the chunk that loads packages with `warning = FALSE`. 
+3. Knit the results.
+
+
+## Topic 4: Rmd Presentations
+
+(3 min)
+
+You can also make presentation slides using Rmd. A great resource is Yihui's [Rmd book, "Presentations" section](https://bookdown.org/yihui/rmarkdown/presentations.html).
+
+Some types of formats:
+
+- ioslides
+- [xaringan](https://slides.yihui.name/xaringan/#1)
+- [slidy](https://www.w3.org/Talks/Tools/Slidy2/#(1))
+- [reveal.js](https://revealjs.com/#/)
+- ...
+
+### Activity: exploring ioslides (10 min)
+
+Let's turn the file we've been working on into slides.
+
+Together:
+
+1. In RStudio, go to "File" -> "New File" -> "R Markdown" -> "Presentation" -> "ioslides". Explore!
+2. Clear everything below the YAML header.
+3. Copy and paste the tibble exploration we've been working on (without the YAML header), and turn them into slides.
+
+## Wrap-up (3 min)
+
+Push the following files to your GitHub repo:
+
+1. `navigating_github.md` and its output formats.
+2. The Rmd exploration and its output formats.
+3. The Rmd presentation slides exploration and its output formats. 
+
+<!--chapter:end:cm003.Rmd-->
+
+# The version control workflow
+
+Today's topic is version control..
+
+## Learning Objectives
+
+From this lesson, students are expected to be able to demonstrate each of the git/GitHub functionality listed here.
+
+## Working with git and GitHub
+
+Before we dive into concepts, it's important to distinguish between a __local__ repo and __remote__ repo.
+
+- __Local__ refers to things on your own computer. A local repo is a repo found on your hard drive.
+- __Remote__ refers to things on the internet. A remote repo lives on GitHub (and possibly other places). 
+
+Note that you can have more than one remote repo! Because of this, git names the remote repos. We will only ever be using one remote in STAT 545, and by default, this remote is named __origin__. 
+
+### Preliminary: configuring git (3 min)
+
+You'll need to [config your git](http://happygitwithr.com/hello-git.html) using the command line.
+
+Your RStudio will probably be able to "find" git. But if it can't, you'll encounter errors. See [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help. 
+
+__Optional__ (but recommended): After class, you might want to [cache](http://happygitwithr.com/credential-caching.html) your credentials so that you don't have to keep inserting your password.
+
+
+### The typical workflow (8 min)
+
+The majority of your interaction with version control will be a pull/stage/commit/push workflow, explained here. For another resource on this, check out [happygitwithr: rstudio-git-github](http://happygitwithr.com/rstudio-git-github.html).
+
+0. __Clone__ your repository if you don't have a local copy.
+
+Once you have a local copy of the repository, then working on a project involves frequent use of these three steps:
+
+1. __Pull__ the remote repo.
+2. Make changes to your files, __stage__ and __commit__ them.
+3. __Push__ the changes (after perhaps pulling again).
+
+Git treats the remote repository as the "official" version of the repository. This means that your local copy is a second class citizen -- the repository you have locally must be up-to-date with the remote repository before you are allowed to push your work. If there are commits on the remote repository that are not present locally, git will throw an error if you try to push your changes. 
+
+Integrate version control as you do work!
+
+- Workflow without version control: save your files spontaneously.
+- Workflow with version control: save your files spontaneously, commit your changes after every "step" in your work, and push your changes [in case of fire](https://github.com/louim/in-case-of-fire). 
+
+Committing often ensures that you can trace back all the work you did. This results in transparency with the way your project has developed, which is a very effective workflow. But, from my experience at least, making half baked work viewable might face you with feelings of vulnerability. I encourage you to push past this.
+
+### The typical workflow: Activity (5 min)
+
+Let's make a change to our repository from local.  
+
+1. Cloning your participation repo.
+    - In RStudio, File -> New Project -> Version Control -> Git.
+    - You should see a `Git` tab in RStudio, upper-right corner window. If not, see [happygitwithr: see-git](http://happygitwithr.com/rstudio-see-git.html) for help.
+    - Take a look at the files you just downloaded!
+2. Make your README a little nicer. Maybe fix up the title.
+3. Stage and commit the changes:
+    - In the Git tab in RStudio, click the checkboxes for the files that you want to commit. This is called "staging".
+    - Click the "Commit" button.
+    - Enter a commit message.
+    - Click "commit". 
+4. Push to your remote repository (which is named "origin")
+    - Click the up arrow in the Git panel in RStudio.
+
+### Git Clients (3 min)
+
+We just saw that RStudio can "talk to" git. But there are other ways we can use git locally. To "directly" interact with git, we type commands in the terminal (or bash) like `git clone`, `git commit`, etc. If you want to access the full functionality of git, you'll need to use the terminal.
+
+Alternatively, there are _git clients_ that provide a visual dashboard for interacting with git. RStudio is one example. Others:
+
+- GitHub Desktop
+- Source Tree
+- Gitkraken
+- ...
+
+In STAT 545, we'll be using the RStudio git client, but you can use whichever method you prefer. 
+
+### Merge conflicts (5 min)
+
+If you change a file locally, and that same file (_and_ the same lines) get changed on the remote repository in a different way, you'll end up with a _merge conflict_ that you'll need to resolve. Remember that your local copy is a second class citizen compared to the remote version, so you'll have to resolve things locally before pushing to the remote. 
+
+### Merge conflicts: Activity (5 min)
+
+Let's make a merge conflict, and fix it. 
+
+1. Edit a line of your README both locally and remotely to something different in both cases. Commit both changes.
+2. Try pulling your remote changes. You'll get a _merge conflict_. 
+3. Update the file that has the conflict, commit your changes, and push.
+
+### Branching (8 min)
+
+Branching is the idea of making commits somewhere other than your main repository on GitHub. Even cloning a repo is a type of branch. 
+
+Git and GitHub allow us to make branches _within a repository_, and we can do this both locally and on GitHub (although it seems the RStudio git client doesn't provide functionality for local merging). Let's check out the [STAT545-UBC.github.io](https://github.com/STAT545-UBC/STAT545-UBC.github.io/) repo to see some branches (which is actually being phased out). 
+
+Eventually, you may want to merge a branch back to its predecessor. This is called __merging__. A merge specifically on GitHub initiates a __pull request__ -- the idea here being that you'd like the predecessor branch to _pull_ the commits from the child branch, and you're _requesting_ it from the collaborators on your repository (which is sometimes just yourself). [Example from STAT545-UBC.github.io](https://github.com/STAT545-UBC/STAT545-UBC.github.io/pull/64) again. For more info on pull requests, see this [GitHub tutorial](https://help.github.com/articles/about-pull-requests/).
+
+There are many reasons you may want to branch. Here are some:
+
+- A collaborator wants to make a change to the repo, but the end product of the change requires review from collaborators.
+- You want to make changes, but don't want to "deploy" the changes until later (such as if pushing to github triggers a website build).
+- If you want to try something "risky", it's just safer to work on a branch.
+
+### Branching: Activity (5 min)
+
+Let's organize our participation repo in a branch.
+
+1. Create a new branch locally, called "organizing" (we could have also made this on GitHub):
+    - Click the "Git" tab in the upper-right panel of RStudio
+    - Within that window's option bar, click ![](./img/branch.png).
+    - Name your branch and create!
+2. Stage and commit the new files.
+3. Restructure your repository in a more sensible way, using folders (locally).
+4. Stage and commit the changes; push to GitHub.
+5. Explore: 
+    - switch between branches to see that the repo structure is different.
+6. Merge the branch to "master" via GitHub by making a pull request. 
+
+### Undoing Changes (5 min)
+
+There are many ways that work can be "undone" in git. We will only investigate two of the simpler methods. For more advanced methods, like reverting to a previous commit, check out these resources by [bitbucket](https://www.atlassian.com/git/tutorials/undoing-changes) and [GitHub](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/) -- you'll need to use the command line. 
+
+The two most useful "undo"s are:
+
+1. Undoing your (uncommited) work to the previous commit.
+2. Browsing the repo at previous states, and taking files from there. 
+
+We'll demonstrate (1) in an activity.
+
+### Undoing Changes: Activity (2 min)
+
+Here's how to go back to the most recent commit.
+
+1. First, make and save a change to (say) a README file in your participation repo.
+2. In the Git panel of RStudio, stage the file that you want to return to the previous commit. Click "More" -> "Revert..." -> "Yes"
+
+That's it!
+
+### Getting errors? (3 min)
+
+It's not unusual to experience some errors in git, especially if you're first learning how to use it. Try to get yourself unstuck with the concepts we've discussed here first. 
+
+But, you might find yourself stuck. The git documentation is full of jargon, making it difficult to read and therefore difficult to debug things. There's even a [parody](https://git-man-page-generator.lokaltog.net/) on it. If you are in this position, it's best to just [burn it all down](http://happygitwithr.com/burn.html). There's even an [xkcd comic](https://xkcd.com/1597/) on this.
+
+
+
+### Tagging a Release (5 min)
+
+Tagging a release on GitHub is like putting a "star" next to a particular commit. It highlights a particular point in time of your repository that is noteworthy, typically after achieving some milestone. It's just easier than having to manually keep track of noteworthy points in your commit history.
+
+Examples:
+
+- After every year of finishing STAT 545A/547M, we tag a release so that we can easily navigate to earlier versions of the course.
+- After sufficient development of an R package like [ggplot2](https://github.com/tidyverse/ggplot2/releases), a new release is tagged corresponding to the version of the package. 
+
+### Tagging a Release: Activity (3 min)
+
+Congratulations! We finished the first two weeks of STAT 545A, which focussed on _tools_. To mark this milestone, let's tag a release on our participation repositories.
+
+1. On your GitHub repo, click "releases"
+2. Click "Create a new release"
+3. Fill in the fields:
+    - It probably makes sense to use a versioning system like `cm004` here.
+4. "Publish Release".
+
+<!--chapter:end:cm004.Rmd-->
+
+# Intro to plotting with `ggplot2`, Part I
+
+
+__Announcements__:
+
+- Homework 1 is due tonight. Your work should be stored in your _homework_ repository, not your _partication_ repo! Also, please put your URL on canvas. 
+
+__Recap__:
+
+- Previous two weeks: software for data analytic work: git & GitHub, markdown, and R.
+- Next three weeks: fundamental methods in exploratory data analysis: R tidyverse.
+- Last two weeks (and STAT 547M): special topics in exploratory data analysis.
+
+__Today__: Introduction to plotting with `ggplot2` (to be continued next Thursday). 
+
+__Worksheet__: You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd).
+
+Set up the workspace:
+
+```{r, warning = FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(scales))
+knitr::opts_chunk$set(fig.width = 5, fig.height = 2, fig.align = "center")
+```
+
+## Learning Objectives
+
+By the end of this lesson, students are expected to be able to:
+
+- Identify the plotting framework available in R
+- Have a sense of why we're learning the `ggplot2` tool
+- Have a sense of the importance of statistical graphics in communicating information
+- Identify the seven components of the grammar of graphics underlying `ggplot2`
+- Use different geometric objects and aesthetics to explore various plot types.
+
+## Resources (2 min)
+
+For me, I learned `ggplot2` from Stack Overflow by googling error messages or "how to ... in ggplot2" queries, together with persistence. It might take you a bit longer to make a graph using `ggplot2` if you're unfamiliar with it, but persistence pays off. 
+
+Here are some good walk-throughs that introduce `ggplot2`, in a similar way to today's lesson:
+
+- [r4ds: data-vis](http://r4ds.had.co.nz/data-visualisation.html) chapter.
+    - Perhaps the most compact "walk-through" style resource.
+- The [ggplot2 book](http://webcat2.library.ubc.ca/vwebv/holdingsInfo?bibId=8489511), Chapter 2.
+    - A bit more comprehensive "walk-through" style resource.
+    - Section 1.2 introduces the actual grammar components. 
+- [Jenny's ggplot2 tutorial](https://github.com/jennybc/ggplot2-tutorial).
+    - Has a lot of examples, but less dialogue.
+
+Here are some good resource to use as a reference:
+
+- [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+- [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/)
+    - Good as a reference if you want to learn how to make a specific type of plot.
+
+## Orientation to plotting in R (7 min)
+
+TL;DR: We're using `ggplot2` in STAT 545, and a little bit of plotly.
+
+Traditionally, plots in R are produced using "base R" methods, the crown function here being `plot()`. This method tends to be quite involved, and requires a lot of "coding by hand".
+
+Then, an R package called `lattice` was created that aimed to make it easier to create multiple "panels" of plots. It seems to have gone to the wayside in the R community. Personally, I found that using this package often involved several lines of code to set up a plot, which then needed to get overriden by "special cases". 
+
+After `lattice` came `ggplot2`, which provides a very powerful and relatively simple framework for making plots. It has a theoretical underpinning, too, based on the Grammar of Graphics, first described by Leland Wilkinson in his ["Grammar of Graphics" book](http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=5507286). With `ggplot2`, you can make a great many type of plots with minimal code. It's been a hit in and outside of the R community.
+
+Check out [this comparison of the three](http://www.jvcasillas.com/base_lattice_ggplot/) by Joseph V. Casillas.
+
+A newer tool is called [plotly](https://plot.ly/), which was actually developed outside of R, but the `plotly` R package accesses the plotly functionality. Plotly graphs allow for interactive exploration of a plot. You can convert ggplot2 graphics to a plotly graph, too.
+
+## Just plot it (7 min)
+
+The human visual cortex is a powerful thing. If you're wanting to point someone's attention to a bunch of numbers, I can assure you that you won't elicit any "aha" moments by displaying a large table [like this](https://i.stack.imgur.com/2JdLt.png), either in a report or (especially!) a presentation. Make a plot to communicate your message.
+
+If you really feel the need to tell your audience exactly what every quantity evaluates to, consider putting your table in an appendix. Because chances are, the reader doesn't care about the exact numeric values. Or, perhaps you just want to point out one or a few numbers, in which case you can put that number directly on a plot.
+
+[Challenger example from Jenny Bryan](https://speakerdeck.com/jennybc/ggplot2-tutorial?slide=7).
+
+## The grammar of graphics (15 min)
+
+You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in `ggplot2`):
+
+- __Data__
+  - Exactly as it sounds: the data that you're feeding into a plot.
+- __Aesthetic mappings__
+  - This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called "aesthetics", and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.
+- __Geometric objects__
+  - This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc. 
+- Scales
+  - This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?
+- Statistical transformations
+  - This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
+- Coordinate system
+  - This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
+- Facet
+  - This is a specification of data variables that partition the data into smaller "sub plots", or panels. 
+
+These components are like parameters of statistical graphics, defining the "space" of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
+
+### Example: Scatterplot grammar
+
+For example, consider the following plot from the `gapminder` data set. For now, don't focus on the code, just the graph itself.
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.1) +
+  scale_x_log10("GDP per capita", labels = scales::dollar_format()) +
+  theme_bw() +
+  ylab("Life Expectancy")
+```
+
+This scatterplot has the following components of the grammar of graphics. 
+
+| Grammar Component     | Specification |
+|-----------------------|---------------|
+| __data__              | `gapminder`   |
+| __aesthetic mapping__ | __x__: `gdpPercap`, __y:__ `lifeExp` |
+| __geometric object__  | points  |
+| scale                 | x: log10, y: linear |
+| statistical transform | none  |
+| coordinate system     | rectangular  |
+| facetting             | none  |
+
+Note that `x` and `y` aesthetics are required for scatterplots (or "point" geometric objects). In general, each geometric object has its own required set of aesthetics. 
+
+
+### Activity: Bar chart grammar
+
+Fill out __Exercise 1: Bar Chart Grammar (Together)__ in your worksheet.
+
+Click [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd) if you don't have it yet.
+
+## Working with `ggplot2` (40 min)
+
+First, the `ggplot2` package comes with the `tidyverse` meta-package. So, loading that is enough.
+
+There are two main ways to interact with `ggplot2`:
+
+1. The `qplot()` or `quickplot()` functions (the two are identical): Useful for making a quick plot if you have vectors stored in your workspace that you'd like to plot. Usually not worthwhile using.
+2. The `ggplot()` function: use to access the full power of `ggplot2`.
+
+Let's use the above scatterplot as an example to see how to use the `ggplot()` function.
+
+First, the `ggplot()` function takes two arguments:
+  - `data`: the data frame containing your plotting data.
+  - `mapping`: aesthetic mappings applying to the entire plot. Expecting the output of the `aes()` function.
+
+Notice that the `aes()` function has `x` and `y` as its first two arguments, so we don't need to explicitly name these aesthetics. 
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp))
+```
+
+This just _initializes_ the plot. You'll notice that the aesthetic mappings are already in place. Now, we need to add components by adding layers, literally using the `+` sign. These layers are functions that have further specifications. 
+
+For our next layer, let's add a geometric object to the plot, which have the syntax `geom_SOMETHING()`. There's a bit of overplotting, so we can specify some alpha transparency using the `alpha` argument (you can interpret `alpha` as neeing `1/alpha` points overlaid to achieve an opaque point).
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.1)
+```
+
+That's the only `geom` that we're wanting to add. Now, let's specify a scale transformation, because the plot would really benefit if the x-axis is on a log scale. These functions take the form `scale_AESTHETIC_TRANSFORM()`. As usual, you can tweak this layer, too, using this function's arguments. In this example, we're re-naming the x-axis (the first argument), and changing the labels to have a dollar format (a handy function thanks to the `scales` package).
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.1) +
+  scale_x_log10("GDP per capita", labels = scales::dollar_format())
+```
+
+I'm tired of seeing the grey background, so I'll add a `theme()` layer. I like `theme_bw()`. Then, I'll re-label the y-axis using the `ylab()` function. Et voilà!
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.1) +
+  scale_x_log10("GDP per capita", labels = scales::dollar_format()) +
+  theme_bw() +
+  ylab("Life Expectancy")
+```
+
+
+### Activity: Plotting
+
+1. Go to your worksheet
+2. Set up the workspace by following the instructions in the "Preliminary" section.
+3. Fill out __Exercise 2: `ggplot2` Syntax (Your Turn)__ in your worksheet.
+
+_Bus stop_: Did you lose track of where we are? You can still do the exercise!
+
+- Click [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm005-exercise.Rmd) to obtain the worksheet if you don't have it.
+- You're all set! Hint for completing the exercise: use the information from this section ("Working with `ggplot2`") to complete the exercise.
+
+
+<!--chapter:end:cm005.Rmd-->
+
+# Intro to data wrangling, Part I
+
+__Worksheet__: You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm006-exercise.Rmd).
+
+
+## Today's Lessons
+
+Today we'll introduce the [`dplyr`](https://dplyr.tidyverse.org/) package. Specifically, we'll look at these three lessons:
+
+- Intro to `dplyr` syntax
+- The `dplyr` advantage
+- Relational/comparison and logical operators in R
+
+
+## Resources
+
+All three of today's lessons are closely aligned to the [stat545: dplyr-intro](http://stat545.com/block009_dplyr-intro.html).
+
+More detail can be found in the [r4ds: transform](http://r4ds.had.co.nz/transform.html) chapter, up until and including the `select()` section. Section 5.2 also elaborates on relational/comparison and logical operators in R
+
+Here are some supplementary resources:
+
+- A similar resource to the r4ds one above is the [intro to dplyr vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html), up until and including the `select()` section.
+- Want to read more about piping? See [r4ds: pipes](http://r4ds.had.co.nz/pipes.html).
+
+## Participation
+
+To get participation points for today, we'll be filling out the [cm006-exercise.Rmd](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm006-exercise.Rmd) file, and adding it to your participation repo.
+
+## Intro to `dplyr` syntax
+
+### Learning Objectives
+
+Here are the concepts we'll be exploring in this lesson:
+
+- tidyverse
+- `dplyr` functions:
+    - select
+    - arrange
+- piping
+
+By the end of this lesson, students are expected to be able to:
+
+- subset and rearrange data with `dplyr`
+- use piping (`%>%`) when implementing function chains
+
+### Preamble
+
+Let's talk about:
+
+- The history of `dplyr`: `plyr`
+- tibbles are a special type of data frame
+- the [tidyverse](https://www.tidyverse.org/)
+
+### Demonstration
+
+Let's get started with the exercise:
+
+1. Open RStudio, and download the `tidyverse` meta-package by executing `install.packages("tidyverse")` into the R console.
+2. _Optional_: open the `STAT545_participation` RStudio project in RStudio.
+3. With RStudio, open the `cm006-exercise.Rmd` file you downloaded and committed earlier.
+4. Follow the instructions in the `.Rmd` file until the *resume lecture* section.
+
+## Small break
+
+Here are some things you might choose to do on this break:
+
+- Talk with a TA, Vincenzo, or your neighbour(s) about the content so far.
+- Attempt the bonus exercises on the `cm006-exercise.Rmd` file.
+- Work on an assignment.
+
+## The `dplyr` advantage
+
+### Learning Objectives
+
+By the end of this lesson, students are expected to be able to:
+
+- Have a sense of why `dplyr` is advantageous compared to the "base R" way with respect to good coding practice.
+
+Why?
+
+- Having this in the back of your mind will help you identify qualities of and produce a readable analysis.
+
+### Compare base R to `dplyr`
+
+__Self-documenting code__. 
+
+This is where the tidyverse shines.
+
+Example of `dplyr` vs base R:
+
+```
+gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp)
+```
+
+vs.
+
+```
+gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
+```
+
+__No need to take excerpts__.
+
+Wrangle with `dplyr` first, then pipe into a plot/analysis.
+
+OR, use the `subset` argument that's often offered by R functions like `lm()`.
+
+Especially don't use magic numbers to subset!
+
+Note that you need to use the assignment operator to store changes!
+
+## Relational/Comparison and Logical Operators in R
+
+### Learning Objectives
+
+Here are the concepts we'll be exploring in this lesson:
+
+- Relational/Comparison operators
+- Logical operators
+- `dplyr` functions:
+    - filter
+    - mutate
+
+By the end of this lesson, students are expected to be able to:
+
+- Predict the output of R code containing the above operators.
+- Explain the difference between `&`/`&&` and `|`/`||`, and name a situation where one should be used over the other.
+- Subsetting and transforming data using filter and mutate
+
+### R Operators
+
+**Arithmetic** operators allow us to carry out mathematical operations:
+
+| Operator | Description |
+|------|:---------|
+| + | Add |
+| - | Subtract |
+| * | Multiply |
+| / | Divide |
+| ^ | Exponent |
+| %% | Modulus (remainder from division) |
+
+**Relational** operators allow us to compare values:
+
+| Operator | Description |
+|------|:---------|
+| < | Less than |
+| > | Greater than |
+| <= | Less than or equal to |
+| >= | Greater than or equal to |
+| == | Equal to |
+| != | Not equal to |
+
+* Arithmetic and relational operators work on vectors.
+
+**Logical** operators allow us to carry out boolean operations:
+
+| Operator | Description |
+|---|:---|
+| ! | Not |
+| \| | Or (element_wise) |
+| & | And (element-wise) |
+| \|\| | Or |
+| && | And |
+
+* The difference between `|` and `||` is that `||` evaluates only the first element of the two vectors, whereas `|` evaluates element-wise. 
+
+### Demonstration
+
+Continue along with the `cm006-exercise.Rmd` file. 
+
+## If there's time remaining
+
+1. Let's do the bonus exercises together, in the `cm006-exercise.Rmd` file.
+2. Another "break"
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--chapter:end:cm006.Rmd-->
+
+# Intro to data wrangling, Part II
+
+
+```{r, warning = FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(tsibble))
+suppressPackageStartupMessages(library(here))
+suppressPackageStartupMessages(library(DT))
+```
+
+## Orientation (5 min)
+
+### Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm007-exercise.Rmd).
+
+### Announcements
+
+- Due tonight:
+  - Peer review 1 due tonight.
+  - Homework 2 due tonight.
+- Reminder about setting up your own hw repo.
+- stat545.com
+
+### Follow-up
+
+- By the way, STAT 545 jumps into the tidyverse way of doing things in R, instead of the base R way of doing things. Lecture 2 was about "just enough" base R to get you started. If you feel that you want more practice here, take a look at [the R intro stat videos by MarinStatsLectures](https://www.youtube.com/playlist?list=PLqzoL9-eJTNARFXxgwbqGo56NtbJnB37A) (link is now in cm002 notes too).
+- `if` statement on its own won't work within `mutate()` because it's not vectorized. Would need to vectorize it with `sapply()` or, better, the `purrr::map` family:
+
+```{r}
+tibble(a = 1:4) %>% 
+  mutate(b = (if (a < 3) "small" else "big"),
+         c = sapply(a, function(x) if (x < 3) "small" else "big"),
+         d = purrr::map_chr(a, ~  (if(.x < 3) "small" else "big")))
+```
+
+### Today's Lessons
+
+Where we are with `dplyr`:
+
+- [x] `select()`
+- [x] `filter()`
+- [x] `arrange()`
+- [x] `mutate()`
+- [ ] `summarize()`
+- [ ] `group_by()`
+    - [ ] grouped `mutate()`
+    - [ ] grouped `summarize()`
+
+Today: the unchecked boxes. 
+
+We'll then look to a special type of tibble called a __tsibble__, useful for handling data with a time component. In doing so, we will touch on its older cousin, __lubridate__, which makes handling dates and times easier. 
+
+### Resources
+
+Concepts from today's class are closely mirrored by the following resources.
+
+- Jenny's tutorial on [Single table dplyr functions](https://stat545.com/dplyr-single.html)
+
+Other resources:
+
+- Like learning from a textbook? Check out all of [r4ds: transform](http://r4ds.had.co.nz/transform.html).
+- The [intro to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) is also a great resource. 
+
+Resources for specific concepts:
+
+- To learn more about window functions and how dplyr handles them, see the [window-functions](https://cran.r-project.org/web/packages/dplyr/vignettes/window-functions.html) vignette for the `dplyr` package. 
+
+[tsibble demo](https://tsibble.tidyverts.org/)
+
+## `summarize()` (3 min)
+
+Like `mutate()`, the `summarize()` function also creates new columns, but the calculations that make the new columns must reduce down to a single number. 
+
+For example, let's compute the mean and standard deviation of life expectancy in the gapminder data set:
+
+```{r}
+gapminder %>% 
+  summarize(mu    = mean(lifeExp),
+            sigma = sd(lifeExp))
+```
+
+Notice that all other columns were dropped. This is necessary, because there's no obvious way to compress the other columns down to a single row. This is unlike `mutate()`, which keeps all columns, and more like `transmute()`, which drops all other columns.
+
+As it is, this is hardly useful. But that's outside of the context of _grouping_, coming up next.
+
+## `group_by()` (20 min)
+
+The true power of `dplyr` lies in its ability to group a tibble, with the `group_by()` function. As usual, this function takes in a tibble and returns a (grouped) tibble. 
+
+Let's group the gapminder dataset by continent and year:
+
+```{r}
+gapminder %>% 
+  group_by(continent, year)
+```
+
+The only thing different from a regular tibble is the indication of grouping variables above the tibble. This means that the tibble is recognized as having "chunks" defined by unique combinations of continent and year:
+
+- Asia in 1952 is one chunk.
+- Asia in 1957 is another chunk.
+- Europe in 1952 is another chunk.
+- etc...
+
+Notice that the data frame isn't rearranged by chunk! 
+
+Now that the tibble is grouped, operations that you do on a grouped tibble _will be done independently within each chunk_, as if no other chunks exist. 
+
+You can also create new variables and group by that variable simultaneously. Try splitting life expectancy by "small" and "large" using 60 as a threshold:
+
+```{r}
+gapminder %>% 
+  group_by(smallLifeExp = lifeExp < 60)
+```
+
+
+### Grouped `summarize()` (10 min)
+
+Want to compute the mean and standard deviation for each year for every continent? No problem:
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>% 
+  summarize(mu    = mean(lifeExp),
+            sigma = sd(lifeExp))
+```
+
+Notice:
+
+- The grouping variables are kept in the tibble, because their values are unique within in chunk (by definition of the chunk!)
+- With each call to `summarize()`, the grouping variables are "peeled back" from last grouping variable to first.
+
+This means the above tibble is now only grouped by continent. What happens when we reverse the grouping?
+
+```{r}
+gapminder %>% 
+  group_by(year, continent) %>%    # Different order
+  summarize(mu    = mean(lifeExp),
+            sigma = sd(lifeExp))
+```
+
+The grouping columns are switched, and now the tibble is grouped by year instead of continent. 
+
+`dplyr` has a bunch of convenience functions that help us write code more eloquently. We could use `group_by()` and `summarize()` with `length()` to find the number of entries each country has:
+
+```{r}
+gapminder %>% 
+  group_by(country) %>% 
+  transmute(n = length(country))
+```
+
+Or, we can use `dplyr::n()` to count the number of rows in each group:
+
+```{r}
+gapminder %>% 
+  group_by(country) %>% 
+  summarize(n = n())
+```
+
+Or better yet, just use `dplyr::count()`:
+
+```{r}
+gapminder %>% 
+  count(country)
+```
+
+### Grouped `mutate()` (3 min)
+
+Want to get the increase in GDP per capita for each country? No problem:
+
+```{r}
+gap_inc <- gapminder %>% 
+  arrange(year) %>% 
+  group_by(country) %>%
+  mutate(gdpPercap_inc = gdpPercap - lag(gdpPercap))
+DT::datatable(gap_inc)
+```
+
+You can't see it here (because of the `datatable()` output), but the tibble is still grouped by country.
+
+Drop the `NA`s with another convenience function, this time supplied by the `tidyr` package (another tidyverse package that we'll see soon):
+
+```{r}
+gap_inc %>% 
+  tidyr::drop_na()
+```
+
+## Function types (5 min)
+
+We've seen cases of transforming variables using `mutate()` and `summarize()`, both with and without `group_by()`. How can you know what combination to use? Here's a summary based on one of three types of functions.
+
+
+| Function type | Explanation | Examples | In `dplyr` |
+|------|-----|----|----|
+| Vectorized functions | These take a vector, and operate on each component independently to return a vector of the same length. In other words, they work element-wise. | `cos()`, `sin()`, `log()`, `exp()`, `round()` | `mutate()` |
+| Aggregate functions | These take a vector, and return a vector of length 1 | `mean()`, `sd()`, `length()` | `summarize()`, esp with `group_by()`. |
+| Window Functions | these take a vector, and return a vector of the same length that depends on the vector as a whole. | `lag()`, `rank()`, `cumsum()` | `mutate()`, esp with `group_by()` |
+
+## `dplyr` Exercises (20 min)
+
+## Dates and Times (5 min)
+
+The `lubridate` package is great for identifying dates and times. You can also do arithmetic with dates and times with the package, but we won't be discussing that.
+
+Make an object of class `"Date"` using a function that's some permutation of `y`, `m`, and `d` (for year, month, and date, respectively). These functions are more flexible than your yoga instructor:
+
+```{r}
+lubridate::mdy("September 24, 2019")
+lubridate::mdy("Sep 24 2019")
+lubridate::mdy("9-24-19")
+lubridate::dym(c("24-2019, September", "25 2019 Sep"))
+```
+
+Notice that they display the dates all in `ymd` format, which is best for computing because the dates sort nicely this way.
+
+This is not just a character!
+
+```{r}
+lubridate::ymd("2019 September 24") %>% 
+  class()
+```
+
+You can tag on `hms`, too:
+
+```{r}
+lubridate::ymd_hms("2019 September 24, 23:59:59")
+```
+
+We can also extract information from these objects. Day of the week:
+
+```{r}
+today <- lubridate::ymd("2019 September 24")
+lubridate::wday(today, label = TRUE)
+```
+
+Day:
+
+```{r}
+lubridate::day(today)
+```
+
+Number of days into the year:
+
+```{r}
+lubridate::yday(today)
+```
+
+Is it a leap year this year?
+
+```{r}
+lubridate::leap_year(today)
+```
+
+The newer `tsibble` package gives these `lubridate` functions some friends. What's the year and month? Year and week?
+
+```{r}
+tsibble::yearmonth(today)
+tsibble::yearweek(today)
+```
+
+
+## Tsibbles (15 min)
+
+A `tsibble` (from the package of the same name) is a special type of `tibble`, useful for handling data where a column indicates a time variable.
+
+As an example, here are daily records of a household's electricity usage:
+
+```{r}
+energy <- here::here("data", "daily_consumption.csv") %>% 
+  read_csv()
+energy
+```
+
+Let's make this a `tsibble` in the same way we'd convert a data frame to a `tibble`: with the `as_tsibble()` function. The conversion requires you to specify which column contains the time index, using the `index` argument.
+
+```{r}
+(energy <- as_tsibble(energy, index = date))
+```
+
+We already see an improvement vis-a-vis the sorted dates!
+
+This is an example of _time series_ data, because the time interval has a regular spacing. A `tsibble` cleverly determines and stores this interval. With the energy consumption data, the interval is one day ("1D" means "1 day", not "1 dimension"!):
+
+```{r}
+interval(energy)
+```
+
+Notice that there is no record for December 21, 2006, in what would be Row 5. Such records are called _implicit NA's_, because they're actually missing, but aren't explicitly shown as missing in your data set. If you don't make these explicit, you could mess up your analysis if it's anticipating your data to be equally spaced in time. Just `full_gaps()` to bring them out of hiding:
+
+
+```{r}
+(energy <- fill_gaps(energy))
+```
+
+Already, it's better to plot the data now that these gaps are filled in. Let's check out 2010. See how the plot without NA's can be a little misleading? Moral: always be as honest as possible with your data.
+
+```{r}
+small_energy <- filter(energy, year(date) == 2010)
+cowplot::plot_grid(
+  ggplot(small_energy, aes(date, intensity)) +
+    geom_line() +
+    theme_bw() +
+    xlab("Date (in 2010)") +
+    ggtitle("NA's made explicit"),
+  ggplot(drop_na(small_energy), aes(date, intensity)) +
+    geom_line() +
+    theme_bw() +
+    xlab("Date (in 2010)") +
+    ggtitle("NA's in hiding (implicit)"),
+  nrow = 2
+)
+```
+
+How would we convert `gapminder` to a `tsibble`, since it has a time series per country? Use the `key` argument to specify the grouping:
+
+```{r}
+gapminder %>% 
+  as_tsibble(index = year, key = country)
+```
+
+
+
+### `index_by()` instead of `group_by()` (5 min)
+
+It looks like there's seasonality in intensity across the year:
+
+```{r}
+ggplot(energy, aes(yday(date), intensity)) +
+  geom_point() +
+  theme_bw() +
+  labs(x = "Day of the Year")
+```
+
+Let's get a mean estimate of intensity on each day of the year. We'd like to `group_by(yday(date))`, but because we're grouping on the index variable, we use `index_by()` instead. 
+
+```{r}
+energy %>% 
+  tsibble::index_by(day_of_year = yday(date)) %>% 
+  dplyr::summarize(mean_intensity = mean(intensity, na.rm = TRUE))
+```
+
+What if we wanted to make the time series less granular? Instead of total daily consumption, how about total weekly consumption? Note the convenience function `summarize_all()` given to us by `dplyr`!
+
+```{r}
+energy %>% 
+  tsibble::index_by(yearweek = yearweek(date)) %>% 
+  dplyr::summarize_all(sum)
+```
+
+By the way, there's no need to worry about "truncated weeks" at the beginning and end of the year. For example, December 31, 2019 is a Tuesday, and is Week 53, but its "yearmonth" is Week 1 in 2020:
+
+```{r}
+dec31 <- "2019-12-31"
+wday(dec31, label = TRUE)
+week(dec31)
+yearweek(dec31)
+```
+
+
+
+<!--chapter:end:cm007.Rmd-->
+
+# Intro to plotting with `ggplot2`, Part II
+
+## Orientation
+
+### Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm008-exercise.Rmd).
+
+### Announcements
+
+From Assignment 3 onwards, whenever you produce an HTML file, you must link to a rendered version of the file. We'll cover this today.
+
+### Today 
+
+- GitHub Pages (15 min)
+- Continue with `ggplot2`: a tour of some important `geom`s (20 min)
+- `ggplot2` exercises from the worksheet (40 min)
+
+
+## Participation repository and GitHub Pages (15 min)
+
+### GitHub Pages
+
+You can turn your GitHub repository into a website, by enabling __GitHub Pages__ on that repo. This is useful for something as small as being able to display HTML files without getting a local copy of the repository, to something as big as making a full fledged website like the [stat545.stat.ubc.ca](https://stat545.stat.ubc.ca) website. 
+
+- If you make a repo called `yourusername.github.io`, and enable GitHub Pages on that repo, then the URL of the website will be `https://yourusername.github.io/`.
+- If you enable GitHub pages on any other repo, the URL for that repo will be `https://yourusername.github.io/name_of_other_repo`.
+
+Learn more with GitHub's [GitHub Pages](https://pages.github.com/) tutorial. 
+
+### Practice with HTML file linking
+
+We'll practice linking to an HTML file for today's exercise, by following the instructions on the (new!) ["Viewing and Linking to HTML Files"](https://stat545.stat.ubc.ca/evaluation/assignments/#viewing-and-linking-to-html-files) on the assignments home page.
+
+## A tour of some important `geom`s (20 min)
+
+Here, we'll explore some common plot types, and how to produce them with `ggplot2`.
+
+### Histograms: `geom_histogram()`
+
+Useful for depicting the distribution of a continuous random variable. Partitions the number line into bins of certain width, counts the number of observations falling into each bin, and erects a bar of that height for each bin.
+
+Required aesthetics:
+
+- `x`: A numeric vector.
+
+By default, a histogram plots the _count_ on the y-axis. If you want to use proportion, specify the `y = ..prop..` aesthetic. 
+
+You can change the smoothness of the plot via two arguments (your choice):
+
+- `bins`: the number of bins/bars shown in the plot.
+- `binwidth`: the with of the bins shown on the plot.
+
+Example:
+
+```{r}
+ggplot(gapminder, aes(lifeExp)) +
+  geom_histogram(bins = 50)
+```
+
+
+### Density: `geom_density()`
+
+Essentially, a "smooth" version of a histogram. Uses [kernels](https://en.wikipedia.org/wiki/Kernel_density_estimation) to produce the curve.
+
+Required aesthetics:
+
+- `x`: A numeric vector.
+
+Good to know:
+
+- `bw` argument controls the smoothness: Smaller = rougher.
+
+Example:
+
+```{r}
+ggplot(gapminder, aes(lifeExp)) +
+  geom_density()
+```
+
+### Jitter plots: `geom_jitter()`
+
+A scatterplot, but with minor random perturbations of each point. Useful for scatterplots where points are overlaying, or when one variable is categorical.
+
+Required aesthetics:
+
+- `x`: any vector
+- `y`: any vector
+
+Example:
+
+```{r}
+ggplot(gapminder, aes(continent, lifeExp)) +
+  geom_jitter()
+```
+
+### Box plots: `geom_boxplot()`
+
+This geom makes a boxplot for a numeric variable in each of a category. Useful for visualizing probability distributions across different categories.
+
+Required aesthetics:
+
+- `x`: A factor (categorical variable)
+- `y`: A numeric variable
+
+Example:
+
+```{r}
+ggplot(gapminder, aes(continent, lifeExp)) +
+  geom_boxplot()
+```
+
+
+### Ridge plots: `ggridges::geom_density_ridges()`
+
+A (superior?) alternative to the boxplot, the ridge plot (also known as the joy plot) places a kernel density for each group, instead of the box. 
+
+You'll need to install the `ggridges` package. You can do lots more with ridges -- check out [the ggridges intro vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html).
+
+Required aesthetics (reversed from boxplots!)
+
+- `x`: A numeric variable
+- `y`: A factor (categorical variable) 
+
+Example:
+
+```{r}
+ggplot(gapminder, aes(lifeExp, continent)) +
+  ggridges::geom_density_ridges()
+```
+
+### Bar plots: `geom_bar()` or `geom_col()`
+
+These geom's erect a bar over each category.
+
+`geom_bar()` automatically determines the height of the bar according to the count of each category.
+
+`geom_col()` requires a manual specification of the bar heights.
+
+Required aesthetics:
+
+- `x`: A categorical variable
+- `y`: A numeric variable (only required for `geom_col()`!)
+  - To use proportion in `geom_bar()` instead of count, set `y = ..prop..`
+
+Example: number of 4-, 6-, and 8- cylinder cars in the `mtcars` dataset:
+
+```{r}
+ggplot(mtcars, aes(cyl)) +
+  geom_bar()
+```
+
+### Line charts: `geom_line()`
+
+A line plot connects points with straight lines, from left-to-right. Especially useful if time is on the x-axis.
+
+Required aesthetics:
+
+- `x`: a variable having some ordering to it.
+- `y`: a numeric variable.
+
+Although not required, the `group` aesthetic will come in handy here. This aesthetic produces a plot independently for each group, and overlays the results.
+
+```{r}
+tsibble::as_tsibble(co2) %>% 
+  rename(yearmonth = index,
+         conc = value) %>% 
+  mutate(month = lubridate::month(yearmonth, label = TRUE),
+         year  = lubridate::year(yearmonth)) %>% 
+  ggplot(aes(month, conc)) +
+  geom_line(aes(group = year), alpha = 0.5) +
+  ylab("CO2 Concentration")
+```
+
+
+
+### Path plots: `geom_path()`
+
+Like `geom_line()`, except connects points in the order that they appear in the dataset.
+
+
+
+## Activity: Fix the Plots (40 min)
+
+Fill out the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm008-exercise.Rmd) together.
+
+
+## Time remaining?
+
+If so, let's make tibbles with `tibble()`, and make a list column while we're at it. Maybe even `nest()` and `unnest()`.
+
+
+
+<!--chapter:end:cm008.Rmd-->
+
+# Tidy Data and Pivoting
+
+
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+```
+
+
+## Orientation (5 min)
+
+### Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
+
+### Announcements
+
+Sorry that we're late posting the "assignment box" on canvas for Assignment 3. It's up now. 
+
+### Today
+
+Today's concept is __tidy data__ and the `tidyr` package.
+
+In fact `tidyr` Version 1.0.0 _just came out_ 19 days ago with some great new additions that we'll be looking at. We'll focus on:
+
+- Reshaping data by pivoting with `tidyr::pivot_longer()` and `tidyr::pivot_wider()`.
+- Making tibbles using `tibble::tibble()` and `tidyr::expand_grid()`.
+
+### Resources
+
+For concepts of tidy data: 
+
+- [Jenny's intro to tidy data](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md) is short and sweet.
+  - the repo this links to has some useful exercises too, but uses the older `spread()` and `gather()` functions.
+- `tidyr` [vignette on tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+- [Hadley's paper on tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) provides a thorough investigation.
+
+For pivoting with `tidyr`, check out the [pivot vignette](https://tidyr.tidyverse.org/articles/pivot.html).
+
+I also recommend reading the new additions that come with the new `tidyr` Version 1.0.0 in [this tidyverse article](https://www.tidyverse.org/articles/2019/09/tidyr-1-0-0/). We won't be covering all of it in STAT 545A, but things like nesting and rectangling are covered in STAT 547M. 
+
+## Tidy Data (10 min)
+
+A data set is _tidy_ if:
+
+- Each row is an __observation__;
+- Each column is a __variable__;
+- Each cell is a __value__.
+
+This means that each value belongs to exactly one variable and one observation.
+
+Why bother? Because doing computations with untidy data can be a nightmare. Computations become simple with tidy data. 
+
+This also means that tidy data is relative, as it depends on how you define your observational unit and variables.
+
+```{r, echo = FALSE}
+haireye <- as_tibble(HairEyeColor) %>% 
+  count(Hair, Eye, wt = n) %>% 
+  rename(hair = Hair, eye = Eye)
+```
+
+As an example, consider this example derived from the `datasets::HairEyeColor` dataset, containing the number of people having a certain hair and eye colour.
+
+If one observation is identified by a _hair-eye colour combination_, then the tidy dataset is:
+
+```{r}
+haireye %>% 
+  DT::datatable(rownames = FALSE)
+```
+
+If one observation is identified by a _single person_, then the tidy dataset has one pair of values per person, and one row for each person. We can use the handy `tidyr::uncount()` function, the opposite of `dplyr::count()`:
+
+```{r}
+haireye %>% 
+  tidyr::uncount(n) %>% 
+  DT::datatable(rownames = FALSE)
+```
+
+### Untidy Examples
+
+The following are examples of untidy data. They're untidy for either of the cases considered above, but for discussion, let's take a hair-eye colour combination to be one observational unit. 
+
+Note that untidy does not always mean "bad", especially when the data set is too wide.
+
+__Untidy Example 1__: The following table is untidy because there are multiple observations per row. It's _too wide_.
+
+Imagine calculating the total number of people with each hair colour. You can't just `group_by()` and `summarize()`, here!
+
+```{r, echo = FALSE}
+haireye_untidy <- haireye %>% 
+  mutate(eye = str_c(eye, "_eyed")) %>% 
+  pivot_wider(id_cols = hair, names_from = eye, values_from = n)
+knitr::kable(haireye_untidy)
+```
+
+__Untidy Example 2__: The following table is untidy for the same reason as Example 1 -- multiple observations are contained per row. It's _too wide_.
+
+```{r, echo = FALSE}
+haireye %>% 
+  mutate(hair = str_c(hair, "_haired")) %>% 
+  pivot_wider(id_cols = eye, names_from = hair, values_from = n) %>% 
+  knitr::kable()
+```
+
+__Untidy Example 3__: This is untidy because each observational unit is spread across multiple columns. It's _too long_. In fact, we needed to add an identifier for each observation, otherwise we would have lost which row belongs to which observation! 
+
+Does red hair ever occur with blue eyes? Can't just `filter(hair == "red", eye == "blue")`!
+
+```{r, echo = FALSE}
+haireye %>% 
+  mutate(obs = 1:n()) %>% 
+  pivot_longer(cols = hair:eye, names_to = "body_part", values_to = "colour") %>% 
+  select(-n, n) %>% 
+  DT::datatable(rownames = FALSE)
+```
+
+__Untidy Example 4__: Just when you thought a data set couldn't get any longer! Now, each variable has its own row: hair colour, eye colour, and `n`. This demonstrates that there's no such thing as "long" and "wide" format, since these terms are relative. 
+
+```{r, echo = FALSE}
+haireye %>% 
+  mutate(obs = 1:n(),
+         n   = as.character(n)) %>% 
+  pivot_longer(cols = c(hair, eye, n), names_to = "variable", values_to = "value") %>% 
+  DT::datatable(rownames = FALSE)
+```
+
+### Pivoting tools
+
+The task of making tidy data is about making data either _longer_, by stacking two or more rows, or _wider_, by putting one or more columns alongside each other based on groups. This is called __pivoting__ (or, reshaping).
+
+Sometimes, tidy data is incorrectly referred to as data in _long format_ as opposed to _wide format_, where "length" refers to the number of rows, and "width" the number of columns. But Example 3 of untidy data (above) is in fact too long and needs to be made wider! However, usually the task of tidying data involves lengthening, and usually the task of widening is useful for turning data into something more friendly for human eyes.
+
+The (new!) easiest and most powerful way to widen or lengthen data are with the functions `tidyr::pivot_wider()` and `tidyr::pivot_longer()`.
+
+History: R has seen many attempts at reshaping, all that's progressively gotten better. First came the `reshape` package. Then the `reshape2` package. Both were finicky. Then, the `tidyr::spread()` and `tidyr::gather()` functions provided a simple interface (and are still part of the `tidyr` package!), but used awkward terminology and weren't as flexible as they ought to be.
+
+## Univariate Pivoting (20 min)
+
+Let's start with pivoting in the simplest case where only one variable is "out of place". We'll use the hair and eye colour example from before, using the untidy data version from Example 1:
+
+```{r}
+haireye_untidy
+```
+
+The _eye colour_ variable is spread out across columns. To fix this, we need to convert the eye colour columns to two columns:
+
+- one column to hold the eye colour (column names),
+- one column to hold the values.
+
+Doing this, we obtain:
+
+```{r, echo = FALSE}
+haireye_untidy %>% 
+  pivot_longer(contains("eyed"), names_to = "eye", values_to = "n")
+```
+
+For the reverse operation, we take the column `eye` and make each unique entry a new column, and the values of those columns take on `n`.
+
+
+### `pivot_longer()`
+
+`pivot_longer()` takes a data frame, and returns a data frame. The arguments after the data argument that we'll need are:
+
+- `cols` for the column names that we want to turn into a single column.
+- `names_to`: the old column names are going to a new column. What should this new column be named? (optional, but highly recommended)
+- `values_to`: the values underneath the old columns are going to a new column. What should this new column be named? (optional, but highly recommended)
+
+Possibly the trickiest bit is in identifying the column names. We could list all of them, but it's not robust to changes:
+
+```{r}
+haireye_untidy %>% 
+  pivot_longer(cols      = c(Blue_eyed, Brown_eyed, Green_eyed, Hazel_eyed),
+               names_to  = "eye",
+               values_to = "n")
+```
+
+We could identify a range. This is more robust, but still not very robust.
+
+```{r}
+haireye_untidy %>% 
+  pivot_longer(cols      = Blue_eyed:Hazel_eyed,
+               names_to  = "eye",
+               values_to = "n")
+```
+
+Better is to use helper functions from the `tidyselect` package. In this case, we know the columns contain the text "eyed", so let's use `tidyselect::contains()`:
+
+```{r}
+haireye_untidy %>% 
+  pivot_longer(cols      = contains("eyed"),
+               names_to  = "eye",
+               values_to = "n")
+```
+
+Yet another way is to indicate everything except the `hair` column:
+
+```{r}
+haireye_untidy %>% 
+  pivot_longer(cols      = -hair,
+               names_to  = "eye",
+               values_to = "n")
+```
+
+
+### `pivot_wider()`
+
+Like `pivot_longer()`, `pivot_wider()` takes a data frame and returns a data frame. The arguments after the data argument that we'll need are:
+
+- `id_cols`: The columns you would like to keep. If widening to make data tidy, then this is an identifier for an observation.
+- `names_from`: the new column names are coming from an old column. Which column is this?
+- `values_from`: the values under the new columns are coming from an old column. Which column is this?
+
+```{r}
+haireye %>% 
+  pivot_wider(id_cols     = hair, 
+              names_from  = eye, 
+              values_from = n)
+```
+
+### Activity
+
+Fill out __Exercise 1: Univariate Pivoting__ in the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
+
+## Multivariate Pivoting (20 min)
+
+Now let's consider the case when more than one variable are "out of place" -- perhaps there are multiple variables per row, and/or multiple observations per row.
+
+For example, consider the (lightly modified) `iris` data set that we'll call `iris2`:
+
+```{r, echo = FALSE}
+iris2 <- iris %>%
+  mutate(id = 1:n()) %>% 
+  rename(species = Species) %>% 
+  pivot_longer(c(-species, -id), 
+               names_to  = "variable", 
+               values_to = "measurement") %>% 
+  mutate(variable = variable %>% 
+           str_replace("\\.", "_") %>% 
+           tolower()) %>% 
+  pivot_wider(c(id, species), 
+              names_from  = variable, 
+              values_from = measurement)
+DT::datatable(iris2, rownames = FALSE)
+```
+
+Although we probably wouldn't, we could view this as having _two variables bundled into the column names_:
+
+- "Plant part", either `sepal` or `petal`.
+- "Dimension", either `length` or `width`.
+
+The resulting tidy data frame would then be:
+
+```{r, echo = FALSE}
+iris2_longest <- iris2 %>% 
+  pivot_longer(cols      = c(-species, -id), 
+               names_to  = c("part", "dimension"),
+               names_sep = "_",
+               values_to = "measurement")
+```
+
+```{r}
+iris2_longest
+```
+
+
+More realistic is the situation where there are _multiple observations per row_:
+
+- An observation of (length, width) of the sepal.
+- An observation of (length, width) of the petal.
+
+The resulting tidy data frame has a length that's in between the above two:
+
+```{r, echo = FALSE}
+iris2_longer <- iris2 %>% 
+  pivot_longer(cols      = c(-id, -species), 
+               names_to  = c("part", ".value"), 
+               names_sep = "_")
+```
+
+```{r}
+iris2_longer
+```
+
+
+### `pivot_longer()`
+
+To obtain the case where two (or more) variables are contained in column names, here's how we specify the arguments of `pivot_longer()`:
+
+- `cols`: As usual.
+- `names_sep`: What is separating the variables in the column names?
+- `names_to`: The old columns are going to be put into new columns, after being separated. What should those columns be named?
+- `values_to`: As usual. 
+
+Here is the code:
+
+```{r}
+iris2 %>% 
+  pivot_longer(cols      = c(-species, -id), 
+               names_to  = c("part", "dimension"),
+               names_sep = "_",
+               values_to = "measurement")
+```
+
+To obtain the case where multiple observations are contained in one row, here's how to specify the arguments of `pivot_longer()`:
+
+- `cols`: As usual.
+- `names_sep`: As above.
+- `names_to`: As above, except this time, one part of the old column names are going to stay as columns (in this case, "length" and "width"). Indicate `".value"` instead of a new column name.  
+- `values_to`: Not needed! You've already indicated that using the `".value"` placeholder. 
+ 
+```{r}
+iris2 %>% 
+  pivot_longer(cols      = c(-id, -species), 
+               names_to  = c("part", ".value"), 
+               names_sep = "_")
+```
+
+### `pivot_wider()`
+
+If two or more columns contain parts of a variable name (i.e., each unique combination of these columns gives rise to a new variable), here's how we can use `pivot_wider()`:
+
+- `id_cols`: as usual.
+- `names_from`: the new variable names are coming from old columns. Which old columns?
+- `names_sep`: What character should you separate the entries of the old columns by?
+- `values_from`: as usual.
+
+Here is the code to go from the longest form to the original:
+
+```{r}
+iris2_longest %>% 
+  pivot_wider(id_cols     = c(id, species),
+              names_from  = c(part, dimension), 
+              names_sep   = "_", 
+              values_from = measurement)
+```
+
+If variables are spread out amongst rows _and_ columns (for example, "sepal width" has "sepal" in a column, and "width" as a column name), here's how we can use `pivot_wider()`:
+
+- `id_cols`: as usual
+- `names_from`: Which column contains the part of the variable?
+- `names_sep`: As before, what character should you separate the entries of the old columns by?
+- `values_from`: Which column names contain the other part of the variable?
+
+Here is the code to go from the "semi-long" form to the original:
+
+```{r}
+iris2_longer %>% 
+  pivot_wider(id_cols     = c(id, species), 
+              names_from  = part, 
+              names_sep   = "_",
+              values_from = c(length, width))
+```
+
+### Activity
+
+Fill out __Exercise 2: Multivariate Pivoting__ in the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
+
+## Making tibbles (5 min)
+
+In base R, we can make data frames using the `data.frame()` function. The tidyverse version is `tibble::tibble()`, which also has backwards referencing to variables you make on the fly. It's also stricter by not allowing recycling unless the vector is of length 1:
+
+Good:
+
+```{r}
+tibble(x = 1:6,
+       y = min(x))
+```
+
+Bad:
+
+```{r, error = TRUE}
+tibble(x = 1:6,
+       y = 1:2)
+```
+
+Truly manual construction of tibbles is easy with `tibble::tribble()`:
+
+```{r}
+tribble(
+  ~Day, ~Breakfast,
+  1, "Apple",
+  2, "Yogurt",
+  3, "Yogurt"
+)
+```
+
+List columns are easy with tibbles!
+
+```{r}
+(list_col <- tibble(n = 1:2,
+                    y = list(iris, mtcars)))
+```
+
+Often obtained with `nest()` and `unnest()`:
+
+```{r}
+(iris_nest <- iris %>% 
+  group_by(Species) %>% 
+  nest())
+```
+
+```{r}
+iris_nest %>% 
+  unnest(data)
+```
+
+`expand_grid()` to obtain all combinations:
+
+```{r}
+expand_grid(x = 1:2, y = 1:2, z = 1:2)
+```
+
+In conjunction with `nesting()`:
+
+```{r}
+expand_grid(nesting(x = 1:2, y = 1:2), z = 1:2)
+```
+
+
+## Implicit `NA`'s (5 min)
+
+Sometimes there's "hidden" missing data in a tibble. Here's an example straight from the documentation of `tidyr::expand()`:
+
+```{r}
+(df <- tibble(
+  year   = c(2010, 2010, 2010, 2010, 2012, 2012, 2012),
+  qtr    = c(   1,    2,    3,    4,    1,    2,    3),
+  return = rnorm(7)
+))
+```
+
+We can consider all existing combinations by invoking the column names in `expand()` or `complete()` (which either _drops_ or _keeps_ all other columns):
+
+```{r}
+df %>% 
+  expand(year, qtr)
+df %>% 
+  complete(year, qtr)
+```
+
+We can consider new combinations by specifying an expectation of possible values:
+
+```{r}
+df %>% 
+  expand(year = 2010:2012, qtr)
+df %>% 
+  complete(year = 2010:2012, qtr)
+```
+
+Want to link two or more columns when looking for combinations? Use `nesting()`.
+
+## Activity (10 min)
+
+Fill out __Exercise 3: Making tibbles__ in the [worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm009-exercise.Rmd).
+
+<!--chapter:end:cm009.Rmd-->
+
+# Tibble Joins
+
+Today's topic is on operations with two or more tibbles. 
+
+## Worksheet
+
+You can find a worksheet template for today [here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
+
+## Resources
+
+- [Jenny's join cheatsheet](https://stat545.com/join-cheatsheet.html)
+- "two-table verbs"'s [vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)
+- [Relational Data chapter](https://r4ds.had.co.nz/relational-data.html) in "R for Data Science".
+- [dplyr cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+For an overview of operations involving multiple tibbles, check out Jenny's [Chapter 14](https://stat545.com/multiple-tibbles.html) in stat545.com.
+
+For more activities, check out [Rashedul's guest lecture material from 2018](https://github.com/Rashedul/stat545_guest_lecture).
+
+## Join Functions (25 min)
+
+Often, we need to work with data living in more than one table. There are three main types of operations that can be done with two tables (as elaborated in [r4ds Chapter 13 Introduction](https://r4ds.had.co.nz/relational-data.html#introduction-7)):
+
+- [__Mutating joins__](https://r4ds.had.co.nz/relational-data.html#mutating-joins) add new columns to the "original" tibble.
+- [__Filtering joins__](https://r4ds.had.co.nz/relational-data.html#filtering-joins) filter the "original" tibble's rows.
+- [__Set operations__](https://r4ds.had.co.nz/relational-data.html#set-operations) work as if each row is an element in a set. 
+- __Binding__ stacks tables on top of or beside each other, with `bind_rows()` and `bind_cols()`.
+
+Let's navigate to each of these three links, which lead to the relevant r4ds chapters, and go through the concepts there. These have excellent visuals to explain what's going on.
+
+Then, let's go through [Jenny's join cheatsheet](https://stat545.com/join-cheatsheet.html) for examples. 
+
+## Activity (25 min)
+
+Let's complete [today's worksheet](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm010-exercise.Rmd).
+
+In case you can't download the `singer` package, just load the data by running these two lines
+
+```
+songs <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/songs.csv")
+locations <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/singer/loc.csv")
+```
+
+## Time remaining?
+
+Let's return to the exercises from either:
+
+- tidyr last class
+- ggplot2 the class before
+
+<!--chapter:end:cm010.Rmd-->
+
+# File input/output (I/O)
+
+Today's class is all about reading in and writing out data files into and out of R.
+
+## Worksheet
+
+Normally there would be a separate worksheet file, but we'll do everything in-line for this class
+
+## Resources
+
+### References and tutorials
+
+* Jenny Bryan's [notes](https://stat545.com/import-export.html) on file I/O
+* [Tutorial](https://beanumber.github.io/sds192/lab-import.html#data_from_an_excel_file) on importing excel file
+* [Tutorial](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) on relative paths and how RStudio treats .R script files and .Rmd files
+
+### Package documentation
+
+* [read_csv](https://readr.tidyverse.org/reference/read_delim.html) package
+* [read_excel](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel) package (https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel)
+* [download.file](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/download.file.html)
+* [here::here()](https://here.r-lib.org) package
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Writing data to disk (10 mins)
+
+Let's first load the built-in gapminder dataset and the tidyverse:
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library("gapminder")
+library("tidyverse")
+library("tidyr")
+```
+
+Next, let's filter the data only from 2007 and only in the Asia continent and save it to a variable.
+
+```{r}
+gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia")
+gap_asia_2007
+```
+
+We can write this to a comma-separated value (csv) file with just one command:
+
+```
+write_csv(gap_asia_2007,"exported_file.csv")
+```
+But let's not just write the csv file anywhere, we should download the file in a sensible location. The next section talks about the `here` package
+
+## Making the case for here::here()
+
+If you wanted to make your Rproj more portable and accessible to more users in a cross-platform (between Mac, Unix, Windows users), rather than specifying every path explicitly, here::here() allows you to set relative paths much more easily.
+
+For example, create a new folder "data" and within it a subfolder called "cm011_data", specify here() and then save a file to that location with these commands:
+
+###
+```{r}
+write_csv(gap_asia_2007,here::here("data","cm011_data","exported_file.csv"))
+```
+
+More thorough notes to come...
+
+In the meantime, read this [short article](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) for an excellent explanation of why we use the here::here() package in R.
+
+## Reading data from disk (5 mins)
+
+The same csv file that we just saved to disk can be imported into R again by specifying the path where it exists:
+
+```{r}
+read_csv(here::here("data","cm011_data","exported_file.csv"))
+```
+
+Normally we would store the imported data into a new variable and you can use that by assigning the output to a variable. Notice that the output of the imported file is the same as the original tibble, and read_csv was intelligent enough to detect the types of the columns. This won't always be true so it's worth checking! The [read_csv package](https://readr.tidyverse.org/reference/read_delim.html) has many additional options including the ability to skip columns, skip rows, rename columns on import, trim whitespace, and more...
+
+## Import a file from the web/cloud
+
+### Import a csv file from the internet
+
+To import a csv file from a web, assign the URL to a variable
+```{r}
+url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/magazines.csv"
+```
+and then apply read_csv file to the `url`.
+
+```{r}
+read_csv(url)
+```
+
+### Import an excel file (.xls) from the internet
+
+First, we'll need the package to load in excel files:
+
+```{r}
+library("readxl") 
+```
+'Datafiles from this tutorial were obtained from: https://beanumber.github.io/sds192/lab-import.html#data_from_an_excel_file
+
+To import an .xls or .xlsx file from the internet, you first need to download it locally. The read_excel function from the readxl package can help us read it after we download it. To download it, create a new variable called xls_url, as well the name of the destination file you would like to download the data into. 
+
+```{r}
+xls_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
+download.file(xls_url,here::here("data","cm011_data","some_file.xls"))
+```
+**NOTE: If you are on windows and end up downloading a corrupt file, you need to add an extra argument: download.file(..., mode="wb"). More details about this behaviour can be found [here](https://github.com/HenrikBengtsson/Wishlist-for-R/issues/30).**
+
+Naming a file "some_file" is extremely bad practice (hard to keep track of the files) and I would strongly encourage you to name the file similar (or the same) to the original file. Let me show you a handy trick to extract the filename from the URL:
+
+```{r}
+file_name <- basename(xls_url)
+download.file(xls_url,here::here("data","cm011_data",file_name))
+```
+Now we can import the file:
+
+```{r}
+read_excel(here::here("data","cm011_data",file_name))
+```
+
+## Read in a sample Excel file. (Optional)
+
+Let's load in a sample dataset from a PhD research project in MRI (magnetic resonance imaging). In MRI, subjects are imaged and the data collected can be visualized in "slices". If a human head was being imaged, the first slice might be a cross-section of the neck. The next slice would be an image in the same plane as the first slice, but a few mm above the first slice, and so on and so forth. The exact details of the dataset aren't important, but here are key details we can extract from the dataset:
+
+- the first column contains the subject ID (e.g., "HerS18Bs01.BS1/8")
+- Each row contains 8 measurements, each from a different slice in the image
+- The next column is a weighted average, and the final column is the volume measurement of all 8 slices
+- The data is **not** in tidy format
+- The subjects are divided into two treatment groups: "Avastin" and "Herceptin", but unfortunately, this information is not captured in the table
+- The relevant data can be found in the range A1:K12 since the rest of the data contains either footer rows or repeated data.
+
+```{r}
+mri_file = here::here("data","cm011_data","Firas-MRI.xlsx")
+mri <- read_excel(mri_file, range = "A1:K12")
+```
+
+Viewing the data using the `View()` function will allow you to investigate how the imported data looks in R. As hinted above, it looks like we have to do one preliminary data-processing steps before we can import all the data.
+
+Notice that below row 12, two subsets of the data from the first 12 rows is duplicated into two groups: "Avastin" and "Herceptin" treated. Indeed, the person who did the analysis copied the raw data and split it into the two groups. While it is possible to do this processing in R, in this case it is better that we do this directly in the excel file. Let's do this and save a new file called `Firas-MRI_minor_cleaning.xlsx`
+
+Note also that column J is a calculated column of weighted averages. Rather than bring this column in a-is, we want to remove this column and then later calculate it in R if we need to. 
+
+We are now ready to import in the newly processed file:
+
+```{r}
+mri_file = here::here("data","cm011_data","Firas-MRI.xlsx")
+mri <- read_excel(mri_file, range = "A1:L12")
+# We can remove the "weighted averages" column like so:
+mri <- mri[,-10]
+```
+
+Finally, let's make our data tidy using `pivot_longer`:
+
+```{r}
+mri <- mri %>% 
+  tidyr::pivot_longer(cols = `Slice 1`:`Slice 8`,
+               names_to = 'slice_no',
+               values_to = 'value')
+mri
+```
+
+And we are done! Ready to explore trends in this dataset.
+
+<!--chapter:end:cm011.Rmd-->
+
+# Working with factors in R
+
+Today's class is working with a very important component of R - factors.
+
+## Worksheet
+
+Link to cm012 [worksheet file](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm012-exercise.Rmd).
+
+## Resources
+
+### References and tutorials
+
+* Jenny Bryan's notes on [factors](https://stat545.com/factors-boss.html)
+
+### Package documentation
+
+* [forcats](https://forcats.tidyverse.org) package
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors2, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Load the required libraries. You might need to install library `forcats` first (install.packages("forcats"))
+
+```{r, echo = TRUE}
+library(gapminder)
+library(tidyverse)
+library(dplyr)
+library(forcats)
+library(ggplot2)
+```
+
+## Recap of CM011
+
+Outline of last lecture lecture
+
+* here package
+* read/write_csv (and friends)
+* read_excel() function from readxl package
+* data processing and importing
+
+## Motivating the need for factors in R
+
+### Activity 1: Using Factors for plotting 
+
+**1.1** Let's look again into `gapminder` dataset and create a new cloumn, `life_level`, that contains five categories ("very high", "high","moderate", "low" and "very low") based on life expectancy in 1997. Assign categories accoring to the table below:
+
+| Criteria | life_level| 
+|-------------|-----------|
+| less than 23 | very low |
+| between 23 and 48 | low |
+| between 48 and 59 | moderate |
+| between 59 and 70 | high |
+| more than 70 | very high |
+
+Function `case_when()` is a tidier way to vectorise multiple `if_else()` statements. you can read more about this function [here](https://dplyr.tidyverse.org/reference/case_when.html).
+
+```{r}
+gapminder %>% 
+  filter(year == 1997) %>% 
+  mutate(life_level = case_when(lifeExp < 23 ~ 'very low',
+                                lifeExp < 48~ 'low',
+                                lifeExp < 59 ~ 'moderate',
+                                lifeExp < 70 ~ 'high',
+                                TRUE ~ 'very high')) %>% 
+  ggplot() + geom_boxplot(aes(x = life_level, y = gdpPercap)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() 
+```
+
+Do you notice anything odd/wrong about the graph?
+
+We can make a few observations:
+
+- It seems that none of the countries had a "very low" life-expectancy in 1997. 
+
+- However, since it was an option in our analysis it should be included in our plot. Right?
+
+- Notice also how levels on x-axis are placed in the "wrong" order.
+
+**1.2** You can correct these issues by explicitly setting the levels parameter in the call to `factor()`. Use, `drop = FALSE` to tell the plot not to drop unused levels 
+```{r}
+gapminder %>% 
+  filter(year == 1997) %>% 
+  mutate(life_level = factor(case_when(lifeExp < 23 ~ 'very low',
+                                lifeExp < 48~ 'low',
+                                lifeExp < 59 ~ 'moderate',
+                                lifeExp < 70 ~ 'high',
+                                TRUE ~ 'very high'),
+                levels = c("very low" , "low","moderate", "high","very high"))) %>%  
+  ggplot() + geom_boxplot(aes(x = life_level, y = gdpPercap)) +
+  labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
+  theme_bw() +
+  scale_x_discrete(drop = FALSE)
+```
+
+## Inspecting factors (activity 2)
+
+In Activity 1, we created our own factors, so now let's explore what categorical variables that we have in the `gapminder` dataset.
+
+### Exploring `gapminder$continent` (activity 2.1)
+
+Use functions such as `str()`, `levels()`, `nlevels()` and `class()` to answer the following questions:
+
+- what class is  `continent`(a factor or charecter)?
+- How many levels? What are they?
+- What integer is used to represent factor "Asia"?
+
+```{r}
+class(gapminder$continent)
+levels(gapminder$continent)
+nlevels(gapminder$continent)
+str(gapminder$continent)
+gapminder
+```
+
+### Exploring `gapminder$country` (activity 2.2)
+
+Let's explore what else we can do with factors:
+
+Answer the following questions: 
+
+- How many levels are there in `country`?
+- Filter `gapminder` dataset by 5 countries of your choice. How many levels are in your filtered dataset?
+
+```{r}
+nlevels(gapminder$country)
+
+h_countries <- c("Egypt", "Haiti", "Romania", "Thailand", "Venezuela")
+
+h_gap <- gapminder %>%
+  filter(country %in% h_countries)
+
+nlevels(h_gap$country)
+```
+
+## Dropping unused levels
+
+What if we want to get rid of some levels that are "unused" - how do we do that? 
+
+The function `droplevels()` operates on all the factors in a data frame or on a single factor. The function `forcats::fct_drop()` operates on a factor.
+
+```{r}
+h_gap_dropped <- h_gap %>% 
+  droplevels()
+
+h_gap_dropped$country  %>%
+  nlevels()
+```
+
+## Changing the order of levels
+
+Let's say we wanted to re-order the levels of a factor using a new metric - say, count().
+
+We should first produce a frequency table as a tibble using `dplyr::count()`:
+
+```{r}
+gapminder %>% 
+  count(continent)
+```
+
+The table is nice, but it would be better to visualize the data.
+Factors are most useful/helpful when plotting data.
+So let's first plot this:
+
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(continent)) +
+  coord_flip()+
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Think about how levels are normally ordered. 
+It turns out that by default, R always sorts levels in alphabetical order. 
+However, it is preferable to order the levels according to some principle:
+
+  1. Frequency/count. 
+  
+- Make the most common level the first and so on. Function `fct_infreq()` might be useful.
+- The function `fct_rev()` will sort them in the opposite order.
+
+For instance ,
+    `  
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(fct_infreq(continent))) +
+  coord_flip()+
+  theme_bw() +
+  ylab("Number of entries") + xlab("Continent")
+```
+
+Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reorder-factors) has some helpful examples.
+
+  2. Another variable. 
+  
+  - For example, if we wanted to bring back our example of ordering `gapminder` countries by life expectancy, we can visualize the results using `fct_reorder()`. 
+
+```{r}
+##  default summarizing function is median()
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(fct_reorder(continent, lifeExp, max))) +
+  coord_flip()+
+  theme_bw() +
+  xlab("Continent")+ylab("Number of entries") 
+```
+
+Use `fct_reorder2()` when you have a line chart of a quantitative x against another quantitative y and your factor provides the color. 
+
+```{r}
+## order by life expectancy 
+ggplot(h_gap, aes(x = year, y = lifeExp,
+                  color = fct_reorder2(country, year, lifeExp))) +
+  geom_line() +
+  labs(color = "country")
+```
+
+## Change order of the levels manually
+
+This might be useful if you are preparing a report for say, the state of affairs in Africa.
+
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(fct_relevel(continent,"Oceania"))) +
+  coord_flip()+
+  theme_bw() 
+```
+More details on reordering factor levels by hand can be found [here] https://forcats.tidyverse.org/reference/fct_relevel.html
+
+### Recoding factors
+
+Sometimes you want to specify what the levels of a factor should be.
+For instance, if you had levels called "blk" and "brwn", you would rather they be called "Black" and "Brown" - this is called recoding.
+Lets recode `Oceania` and the `Americas` in the graph above as abbreviations `OCN` and `AME` respectively using the function `fct_recode()`.
+
+```{r}
+gapminder %>%
+  ggplot() +
+  geom_bar(aes(fct_recode(continent,"OCN"="Oceania" , "AME" = "Americas"))) +
+  coord_flip()+
+  theme_bw()
+```
+
+## Grow a factor (OPTIONAL)
+
+Let’s create two data frames,`df1` and `df2` each with data from two countries, dropping unused factor levels.
+```{r}
+df1 <- gapminder %>%
+  filter(country %in% c("United States", "Mexico"), year > 2000) %>%
+  droplevels()
+df2 <- gapminder %>%
+  filter(country %in% c("France", "Germany"), year > 2000) %>%
+  droplevels()
+```
+
+The country factors in df1 and df2 have different levels.
+Can we just combine them?
+```{r}
+c(df1$country, df2$country)
+```
+
+The country factors in `df1` and `df2` have different levels.
+Can you just combine them using `c()`?
+```{r}
+fct_c(df1$country, df2$country)
+```
+
+Explore how different forms of row binding work behave here, in terms of the country variable in the result.
+```{r}
+bind_rows(df1, df2)
+rbind(df1, df2)
+```
+
+<!--chapter:end:cm012.Rmd-->
+
+# Effective Visualizations
+
+Now that you know how to create graphics and visualizations in R, you are armed with powerful tools for scientific computing and analysis. With this power also comes great responsibility. Effective visualizations is an incredibly important aspect of scientific research and communication. There have been several books (see references) written about these principles. In class today we will be going through several case-studies trying to develop some expertise into making effective visualizations. 
+
+## Worksheet
+
+**The worksheet questions for today are embedded into the class notes.**
+
+You can download this Rmd file [here](https://github.com/STAT545-UBC/Classroom/raw/master/cm013.Rmd)
+
+Note, there will be very little coding in-class today, but I've given you plenty of exercises in the form of a supplemental worksheet (linked at the bottom of this page) to practice with after class is over.
+
+## Resources
+
+1. [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/introduction.html) by Claus Wilke.
+
+1. [Visualization Analysis and Design](https://www-taylorfrancis-com.ezproxy.library.ubc.ca/books/9780429088902) by Tamara Munzner.
+
+1. [STAT545.com - Effective Graphics](https://stat545.com/effective-graphs.html) by Jenny Bryan.
+
+1. [ggplot2 book](https://ggplot2-book.org) by Hadley Wickam.
+
+1. [Callingbull.org](https://callingbull.org/tools.html) by Carl T. Bergstrom and Jevin West.
+
+## Part 1: Warm-up and pre-test [20 mins]
+
+### Warmup:
+
+Write some notes here about what "effective visualizations" means to you. Think of elements of good graphics and plots that you have seen - what makes them good or bad? Write 3-5 points.
+
+1. 
+1. 
+1. 
+1. 
+1.
+
+### CQ01: Weekly hours for full-time employees
+
+> Question: Evaluate the strength of the claim based on the data: "German workers are more motivated and work more hours than workers in other EU nations."
+>
+> Very strong, strong, weak, very week, do not know
+
+- <<Your answer here (and make sure to explain why you chose this answer)>>
+
+- Main takeaway: Summarize the main takeaway from this question/discussion here
+
+### CQ02: Average Global Temperature by year
+
+> Question: For the years this temperature data is displayed, is there an appreciable increase in temperature?
+> 
+> Yes, No, Do not know
+
+- <<Your answer here (and make sure to explain why you chose this answer)>>
+
+- Main takeaway: Summarize the main takeaway from this question/discussion here
+
+### CQ03: Gun deaths in Florida
+
+> Question: Evaluate the strength of the claim based on the data: “Soon after this legislation was passed, gun deaths sharply declined."
+>
+> Very strong, strong, weak, very week, do not know
+
+- <<Your answer here (and make sure to explain why you chose this answer)>>
+
+- Main takeaway: Summarize the main takeaway from this question/discussion here
+
+## Part 2: Extracting insight from visualizations  [20 mins]
+
+Great resource for selecting the right plot: https://www.data-to-viz.com/ ; encourage you all to consult it when choosing to visualize data.
+
+## Part 3: Principles of effective visualizations [20 mins]
+
+We will be filling these principles in together as a class (unfortunately we didn't get to do this in class, but here are the notes)
+
+1. Apply [Principle of proportional ink](https://callingbullshit.org/tools/tools_proportional_ink.html)
+    - Definition: "The amount of ink used to indicate a value should be proportional to the value itself."
+    - Example: Truncating the y-axis on a bar chart to exaggerate the difference between bars violates the principle of proportional ink
+1. Maintain a high data-to-ink ratio: [less is more](https://speakerdeck.com/cherdarchuk/remove-to-improve-the-data-ink-ratio)
+    - Definition: remove distracting visual elements to focus attention on the data
+    - Examples: Lighten line weights, remove backgrounds, never use 3D or special effects, remove unnecessary/redundant labels, etc...
+1. Always update axes labels and titles on your plots
+    - In STAT545/547 we take principles of effective visualizations very seriously and you will lose marks if this isn't followed
+1. Choose your scale-type carefully
+    - Whether you choose a linear, logarithm, sqrt scale depends on your data, context, and purpose
+1. Choose your graph-type carefully
+    - Examples: [here](https://serialmentor.com/dataviz/directory-of-visualizations.html) is a great directory of plots
+1. Choose colours with accessibility and readability in mind
+    - Examples: [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) is a great set of colour schemes that are colour-blind friendly and perceptually uniform
+
+### Make a great plot worse
+
+Instructions: Below is a code chunk that shows an effective visualization. First, copy this code chunk into a new cell. Then, modify it to purposely make this chart "bad" by breaking the principles of effective visualization above. Your final chart still needs to run/compile and it should still produce a plot. 
+
+```{r, message = FALSE, warning = FALSE}
+library("plotly")
+library("tidyverse")
+ggplot(airquality, aes(`Month`, `Temp`, group = `Month`)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(alpha = 0.3) +
+    labs(x = "",
+         y = "",
+         title="Maximum temperature by month")+
+    theme_bw() + 
+    scale_x_continuous(breaks=c(5,6,7,8,9),labels=c("May","June","July","August","September")) +
+    annotate("text", x = 4.08, y = 95,label="°F",size=8) +
+    coord_cartesian(xlim = c(4.5, 9.5),
+                      clip = 'off')+
+    theme(panel.grid.minor = element_blank(),
+          panel.background = element_blank(), 
+          axis.line = element_line(colour = "gray"),
+          panel.border = element_blank(),
+          text = element_text(size=18)
+          )
+```
+
+How many of the principles did you manage to break?
+
+## Plotly demo [10 mins]
+
+Did you know that you can make interactive graphs and plots in R using the plotly library? We will show you a demo of what plotly is and why it's useful, and then you can try converting a static ggplot graph into an interactive plotly graph.
+
+This is a preview of what we'll be doing in STAT 547 - making dynamic and interactive dashboards using R!
+
+*For this demo, make sure you have the following packages installed and loaded:*
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(gapminder)
+library(plotly) 
+```
+
+### Make `ggplot2` graphs interactive
+
+It's very easy to convert an existing ggplot2 graph into an interactive graph with `plotly::ggplotly`
+
+On the below graph, explore the interactive options:
+
+- *Hover* your cursor over individual points
+- *Zoom* in and out by dragging across / using the zoom tool
+- *Single-* and *double-click* items on the legend to isolate groups of points
+- While zoomed-in, use the *pan* tool to "move" around the plot, google maps style!
+
+```{r}
+p <- gapminder %>%
+    ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point() 
+
+p %>%
+    ggplotly()
+```
+
+### Make interactive plots with `plotly::plot_ly`
+
+We can also make interactive graphs using the the `plotly::plot_ly` function:
+
+```{r}
+p <- gapminder %>%
+    plot_ly(x = ~gdpPercap,
+            y = ~lifeExp,
+            color = ~continent,
+            
+            # mode specifies the geometric object e.g. "markers" for points, "line" for lines
+            mode = 'markers',
+            
+            # type controls the "type" of graph e.g. 'bar', 'scatter'
+            type = 'scatter'
+            )
+
+p
+```
+
+### Share with others
+
+To share with others:
+
+1. Create a plotly account @ [plot.ly](plot.ly)
+2. Navigate to settings, and take in the following information:
+- your user name
+- api key 
+
+Now, we will tell R your account information so that we can upload these plots to the web.
+
+Note that once we run `api_create()`, the browser will open to a webpage displaying your interactive plot. You can share this page with others, but they will only be able to **view**. If you want others to be able to **edit** the graph, you can invite others to "*collaborate*" in the "*Sharing link*" option. 
+
+```{r eval = FALSE}
+# fill in the below with your information
+Sys.setenv("plotly_username"="your_plotly_username")
+Sys.setenv("plotly_api_key"="your_api_key")
+
+# upload our plots to the website
+api_create(p, filename = 'name-of-your-plot')
+```
+
+## Supplemental worksheet (Optional)
+
+You are highly encouraged to the cm013 supplemental exercises worksheet. It is a great guide that will take you through Scales, Colours, and Themes in ggplot. There is also a short guided activity showing you how to make a ggplot interactive using plotly.
+
+- [Supplemental Rmd file here](https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/tutorials/cm013-supplemental.Rmd)
+
+<!--chapter:end:cm013.Rmd-->
+
+# The Model-Fitting Paradigm in R
+
+## Today
+
+1. Recap from last class on principles of effective visualizations
+1. Introduction and motivation for model-fitting in R.
+1. Instructor and TA evaluations
+1. Worksheet where we do a full model-fitting analysis together
+1. Deep thoughts on data analytic work (go through material at home)
+
+Worksheet: the model-fitting paradigm in R.
+    - [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm014-exercise.Rmd), 
+    - [from html](http://stat545.com/Classroom/notes/cm014-exercise.nb.html)
+    
+<!-- Note: not able to add parsnip or rsample this year, did briefly mention it though
+Possible addition for 2020: `parsnip` package. Maybe `rsample` if it didn't make it into cm011.
+-->
+
+## Recap: principles of effective visualizations
+
+Here are some general principles on effective figures
+
+1. Apply [Principle of proportional ink](https://callingbullshit.org/tools/tools_proportional_ink.html)
+    - Definition: "The amount of ink used to indicate a value should be proportional to the value itself."
+    - Example: Truncating the y-axis on a bar chart to exaggerate the difference between bars violates the principle of proportional ink
+1. Maintain a high data-to-ink ratio: [less is more](https://speakerdeck.com/cherdarchuk/remove-to-improve-the-data-ink-ratio)
+    - Definition: remove distracting visual elements to focus attention on the data
+    - Examples: Lighten line weights, remove backgrounds, never use 3D or special effects, remove unnecessary/redundant labels, etc...
+1. Always update axes labels and titles on your plots
+    - In STAT545/547 we take principles of effective visualizations very seriously and you will lose marks if this isn't followed
+1. Choose your scale-type carefully
+    - Whether you choose a linear, logarithm, sqrt scale depends on your data, context, and purpose
+1. Choose your graph-type carefully
+    - Examples: [here](https://serialmentor.com/dataviz/directory-of-visualizations.html) is a great directory of plots
+1. Choose colours with accessibility and readability in mind
+    - Examples: [here](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette) is a great set of colour schemes that are colour-blind friendly and perceptually uniform
+    
+## Resources
+
+- [Tutorial](https://cfss.uchicago.edu/notes/linear-models/) on model fitting in R.
+
+- [`broom` vignette](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
+
+If you're interested in learning more about the actual statistical / machine learning methods for fitting models, I highly recommend the book ["An Introduction to Statistical Learning"](https://www-bcf.usc.edu/~gareth/ISL/) (freely available online). It uses R, too.
+
+## Introduction and motivation for model-fitting in R.
+
+We will go through this [tutorial](https://cfss.uchicago.edu/notes/linear-models/) from Dr. Benjamin Soltoff.
+
+## Instructor and TA evaluations
+
+Since I was only your instructor for the last two weeks, I probably will not have a course evaluation on Canvas, but I'd still like your feedback. Please give it to me (anonymously) using [this brief survey](https://firasmoosvi.typeform.com/to/ihIYQe).
+
+To fill out an evaluation for *Dr. Coia** (cm001 to cm010), go to the STAT545 Canvas course, and in the left sidebar, click "Course Evaluation".
+
+TA evaluations are still done on paper so I will hand out the TA evaluation forms and a pencil if you need it. Your TAs for this course were: Alejandra, Victor, Hossam, and Yulia. 
+
+Let's take some time to fill these out, feedback is very important to all of us.
+
+## Break
+
+## Worksheet
+
+## Deep Thoughts about Data Analytic Work
+
+- [Jenny's Deep Thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
+
+("Deep Thoughts" refers to Jack Handley's skit on Saturday Night Live)
+
+### Reproducibility
+
+This practice is so important, I'm giving it it's own section. 
+
+- Jenny Bryan: "If the thought of re-running your analysis makes you ill... you're not doing it right"
+- Progress is not about stacking bricks. Don't ever be afraid to re-visiting "earlier" points in the analysis.
+
+The concept goes beyond programming, and many argue as to its meaning, but we're taking it to mean two things as relevant to data analytic work:
+
+__1\. How easily someone can reproduce output.__
+
+Example: generating a plot; or a report.
+
+- Worst case scenario: no source code is available; regenerate from scratch. 
+- Best case scenario: output is regenerated with the click of a button.
+
+Concepts to live by:
+
+- Source is real. Output is transient. 
+    - Source >> Output.
+- Working interactively? Frequently nuke your session and run from the top. It should still work. 
+- Don't save workspace upon closing.
+
+Who is this "someone" I speak of?
+
+- Future you
+- Collaborators
+- Critics
+- Successors (your capstone partners)
+
+__2\. How easily someone can reproduce _your_ frame of mind / conceptual framework at some point in time.__
+
+Example: All the code files relating to your thesis.
+
+- Worst case scenario: No explanations.
+- Best case scneario: README's concisely summarize what's present; comments or markdown in reproducible reports outline big-picture logic. 
+
+Broader examples: 
+
+- Conclusions drawn from an analysis. 
+- Understanding of a concept in class. 
+- Even taking photos to capture moments in time.
+
+Concepts to live by:
+
+- Avoid technical debt, and document the big-picture structure both _within_ files (comments) and _between_ files (README's).
+    - An unsuspecting data scientist stumbles upon your work. Can they figure out what's going on?
+
+### Coding Practices: Naming
+
+- some people use camelCase, snake_case, or.periods.
+- Functions should be verbs (based on the one thing that it achieves). Objects should be nouns. Functions that return functions should be adverbs. 
+- Don't over-create. The more objects in your global environment there are, the more confusing it will be -- especially if you don't have a consistent rule.
+- Don't under-create: avoid magic numbers!
+    - Bad: 
+        ```
+        x <- rnorm(100)
+        y <- x + rnorm(100)
+        ```
+    - Good:
+        ```
+        n <- 100
+        x <- rnorm(n)
+        y <- x + rnorm(n)
+        ```
+- Disambiguate from left-to-right, not right-to-left. Think tab completion.
+    - Bad: `canada_gdp` and `china_gdp`. 
+    - Good: `gdp_canada` and `gdp_china`.
+
+### Coding Practices: Documenting code 
+
+Self-documenting code = code that speaks for itself. 
+
+- Write self-documenting code with meaningful variable names, and ideally using the tidyverse. Metaprogramming shines here, too.
+    - Base R: 
+        ```
+        mtcars[mtcars$cyl < 8, c("cyl", "mpg")]
+        ```
+    - tidyverse: 
+        ```
+        mtcars %>% 
+            filter(cyl < 8) %>% 
+            select(cyl, mpg)
+        ```
+
+Think before you comment your code! It's easy for comments and code to misalign at original writing OR as things shift around. 
+
+- Use comments to describe high-level decisions on the analysis.
+    - Bad: 
+        ```
+        # Lag the river discharge twice.
+        ```
+    - Good: 
+        ```
+        # create predictors.
+        ```
+- Don't use comments to describe what your code is doing on a low-level.
+    - Bad: 
+        ```
+        # make data frame of cylinders less than 8, with variables 'cyl' and 'mpg'
+        ```
+    - Good: No comment at all.
+    - Better: Use the tidyverse.
+
+### Coding Practices: The DRY principle
+
+DRY = don't repeat yourself. Instead,
+
+- Write functions
+- Write functions that do a very specific thing
+
+Example of function that does too much: normalize a vector AND possibly compute the location and scale.
+
+Some other best practices with functions:
+
+- Functions should be self-contained, not drawing on global
+    - For readability
+    - For function (can't easily export that to it's own package or other analyses, for example)
+- Write unit tests for the functions (look at the `testthat` package)
+
+### Coding Practices: Style Guides
+
+When writing code, at the very least, it's important to be consistent with your style. We highly recommend:
+
+- The [pep8 style guide](https://www.python.org/dev/peps/pep-0008/?) for Python.
+- The [tidyverse style guide](http://style.tidyverse.org/) for R. 
+    - Sections 4+ are not so relevant yet.
+
+<!-- 
+__Activity__: In five minutes:
+
+1. On your own, read over some style rules: a few small ones, or one bigger one.  
+2. Form groups of 2-4.
+3. With your group members, share the following:
+    - what you read.
+    - your opinion about what you read.
+    - if applicable, style that you especially like to follow.
+4. Address some in class. 
+-->
+
+<!--
+Scenario: how could the following practice be made better?
+
+> You're writing code directly to the console, and end up with a plot from your machine learning model, so you click save and use the plot in a report.
+-->
+
+
+<!--chapter:end:cm014.Rmd-->
+
+# STAT 547M {-}
+
+# (1) Functions
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+### Today's Agenda
+
+1. Rubric
+2. Writing your own functions
+
+Your analysis is unique! You will likely need your own functions. Use case: `purrr`.
+
+### Resources
+
+Concepts from today's class are closely mirrored by the following resources.
+
+- stat545.com functions [part1](http://stat545.com/block011_write-your-own-function-01.html), [part2](http://stat545.com/block011_write-your-own-function-02.html), and [part3](http://stat545.com/block011_write-your-own-function-03.html).
+
+### Participation
+
+To get participation points for today, we'll be filling out the cm101-exercise.Rmd file.
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm101-exercise.Rmd)
+- [html](http://stat545.com/Classroom/notes/cm101-exercise.nb.html).
+
+Add this to your participation repo. 
+
+<!--chapter:end:cm101.Rmd-->
+
+# (2) Be the boss of your character data
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Announcements
+
+- Fill out [class survey](https://goo.gl/forms/UPvRA6a9WRod8JPb2) if you haven't already done so in STAT 545A. This allows us to link you to your github username. The link is also available on the course homepage, stat545.com/Classroom.
+- Participation:
+    - Can't attend lecture for some legitimate reason (besides not wanting to come)? Let me know. We won't look for your commit timestamp for that day, but will still expect you to show that you engaged with the material at some point.
+    - Contributing to the discussion boards is also part of participation.
+
+## Agenda
+
+Making sense of strings: how to deal with data of class `character`.
+
+We'll be using the following data that ships with `stringr`, today's R package that comes shipped with `tidyverse`:
+
+```{r}
+str(stringr::fruit)
+```
+
+```{r}
+str(stringr::words)
+```
+
+```{r}
+str(stringr::sentences)
+```
+
+## Worksheet
+
+To get participation points for today, we'll be filling out the cm102-exercise.Rmd file.
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm102-exercise.Rmd)
+- [html](http://stat545.com/Classroom/notes/cm102-exercise.nb.html).
+
+Add this to your participation repo. 
+
+<!--chapter:end:cm102.Rmd-->
+
+# (3) Functional Programming
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Announcements
+
+- Homework is posted.
+- Less strict with percentage grades.
+- `Watch` the `Discussion` and `Discussion-Internal` repos to get announcements such as homework releases. 
+
+## Worksheet
+
+To get participation points for today, we'll be filling out the cm103-exercise.Rmd file.
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm103-exercise.Rmd)
+- [html](http://stat545.com/Classroom/notes/cm103-exercise.nb.html).
+
+Add this to your participation repo. 
+
+<!--chapter:end:cm103.Rmd-->
+
+# (4) List Columns
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+
+## Today's Agenda
+
+Today's lessons are:
+
+1. Review of `purrr` and piping.
+2. Parallel mapping
+3. List columns
+4. An analysis using both
+
+## Resources
+
+All are from [Jenny's `purrr` tutorial](https://jennybc.github.io/purrr-tutorial/). Specifically:
+ 
+- Parallel mapping: [Jenny's "Specifying the function in map() + parallel mapping"](https://jennybc.github.io/purrr-tutorial/ls03_map-function-syntax.html#parallel_map)
+- List columns in data frames; nesting: [Jenny's "List Columns"](https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html).
+
+The all-encompassing application near the bottom of the worksheet is from [Jenny's "Sample from groups, n varies by group"](https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html)
+
+
+## Review
+
+### `purrr`
+
+`map(x, f, ...)` returns a list with elements:
+
+- `f(x[[1]], ...)`
+- `f(x[[2]], ...)`
+- ...
+
+`map_dbl`, `map_lgl`, etc to return a vector.
+
+We can specify a pre-defined `f`, or write it on-the-fly, or another way that we didn't touch on last time. Example with "squaring" function: 
+
+- `map(x, square)` where `square <- function(t) t^2`;
+- `map(x, function(t) t^2)`; or
+- `map(x, ~ (.x)^2)` (function variable is `.x` by convention).
+
+### piping: `.`
+
+We know that `a %>% b()` is the same as `b(a)`.
+
+Want to refer to `a` _in addition_ to the first argument? Specify it as a `.`. Example:
+
+Gotcha: 
+
+Case 1: LHS (= left-hand side) __not__ put as first argument when `.` appears in RHS:
+
+```{r}
+log(8, base=2)
+## is identical to...
+2 %>% log(8, base=.)
+```
+
+Case 2: LHS __is still__ put as first argument, even when `.` appears in RHS:
+
+```{r}
+c(ncol(mtcars), nrow(mtcars))
+## is NOT identical to...
+1:10 %>% c(min(.), max(.))
+```
+
+Trick: Use `{}` to "absorb" the placement of LHS as first argument:
+
+```{r}
+1:10 %>% {c(min(.), max(.))}
+```
+
+
+### Worksheet
+
+To get participation points for today, we'll be filling out the `cm104-exercise.Rmd` file.
+
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm104-exercise.Rmd)
+- [html](http://stat545.com/Classroom/notes/cm104-exercise.nb.html).
+
+Add this to your participation repo. 
+
+<!--chapter:end:cm104.Rmd-->
+
+# (5) R Packages, Part I
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Learning Objectives
+
+This tutorial aims to get you started with package development in R. By the end of this tutorial, you'll have the beginnings of an R package called `powers` ([complete version](https://github.com/vincenzocoia/powers)). You'll learn about key components of an R package, and how to modify them. 
+
+We'll be going over the following topics:
+
+* set up the directory structure for a package and put it under version control with `File` -> `New Project`
+* define functions in R scripts located in the `R` directory of the package
+* use `load_all` and `Build & Reload` to simulate loading the package
+* use `Check` to check the package for coherence
+* use `Build & Reload` to properly build and install the package
+* edit the `DESCRIPTION` file of package metadata
+* specify a LICENSE
+* document and export the functions via `roxygen2` comments
+* document the package itself via `use_package_doc()`
+* create documentation and manage the `NAMESPACE` file via `document()`
+* use `testthat` to implement unit testing
+* use a function from another package via `use_package()` and syntax like `otherpkg::foofunction()`
+* connect your local Git repo to a new remote on GitHub via `use_github()`
+* create a `README.md` that comes from rendering `README.Rmd` containing actual usage, via `use_readme_rmd()`
+* create a vignette via `use_vignette()` and build it via `build_vignettes()`
+
+## Participation
+
+We'll be developing the `powers` R package in class. Please follow along with this, developing in your participation repo.
+
+At least, _some_ of the development. Sometimes it might be better to just sit back and watch. I'll try to inform you when to do what.
+
+## Resources
+
+This tutorial is adapted from [Jenny Bryan's STAT 547 tutorial](http://stat545.com/packages06_foofactors-package.html), where she develops the [`foofactors`](https://github.com/jennybc/foofactors) package.
+
+Other resources you might find useful:
+
+- Hadley's ["R Packages"](http://r-pkgs.had.co.nz/) book.
+    - Concise. Works with `devtools` and friends.
+- [Package development cheatsheet](https://rawgit.com/rstudio/cheatsheets/master/package-development.pdf)
+- ["Writing R Extensions"](http://cran.r-project.org/doc/manuals/r-release/R-exts.html), the official guide to writing R packages.
+    - Comprehensive. Doesn't refer to `devtools` and friends. 
+
+Others on specific topics:
+
+- [Karl Broman on choosing a license](http://kbroman.org/pkg_primer/pages/licenses.html)
+
+During exercise periods, in case you're ahead of the class and have time, you should work on [Homework 7](http://stat545.com/Classroom/assignments/hw07/hw07.html).
+
+
+## Motivation
+
+Why make a package in R? Here are just a few big reasons:
+
+- Built-in checks that your functions are working and are sensible.
+- Easy way to store and load your data -- [data packages](http://www.davekleinschmidt.com/r-packages/) like `gapminder` are awesome!
+- Allows for documentation of functions that you've written. 
+- Companion for a journal article you're writing.
+
+Think _aid for a type of analysis_, not an analysis itself. 
+
+And an R package _does not_ need to be big!
+
+## Getting Started
+
+Install/update the `devtools` package, used as an aid in package development:
+
+```
+install.packages("devtools")
+```
+
+This will do for now -- for development beyond the basics, you might need to [further configure your computer](http://stat545.com/packages01_system-prep.html).
+
+## Let's start with a single function
+
+### Function creation
+
+Follow along as we make an R package called `powers` that contains a function `square` that squares its input. Let's initiate it:
+
+- RStudio —> New project —> R Package
+    - Initiate git (optional, but recommended).
+- Under the "Build" menu, click "Install and Restart"
+- Check out the files that have been created
+    - Rd
+    - NAMESPACE
+    - DESCRIPTION
+
+Now, start a new R script in the `R` directory, called `square.R`. Write a function called `square` that squares its input.
+
+Build the package:
+
+* `Build and Reload`, or in newer versions of RStudio, `Install and Restart`.
+    * This compiles the package, and loads it.
+    * Try leaving the project, do `library(powers)`, and use the function! Pretty cool, eh?
+
+### Documentation 
+
+The `roxygen2` package makes documentation easy(er). Comment package functions with `#'` above the function, and use tags starting with `@`. Let's document the `square` function.
+
+Key tags:
+
+- `@param` -- what's the input?
+- `@return` -- what's the output?
+- `@export` -- make the function available upon loading the package.
+
+Type `document()` into the console (a function from the `devtools` package). Then `Install and Restart` the package.
+
+Your function is now documented. Check it out with `?square`! This happens due to the creation of an `Rd` file in the `man` folder.
+
+### Taking control of your NAMESPACE
+
+Let's start being intentional as to what appears in our NAMESPACE.
+
+1. Delete your NAMESPACE file.
+2. Add the `@export` tag to your `square` function to write it to the NAMESPACE.
+
+Things that do not get `@export`ed can still be referred to "internally" by functions in your NAMESPACE, as we'll see soon.
+
+### Checking 
+
+It's a good idea to `check` your package early and often to see that everything is working. 
+
+Click `Check` under the `Build` menu. It checks lots of things for you! We'll see more examples of this. 
+
+### Function Dependencies
+
+Make another, more general function to compute any power:
+
+```{r}
+pow <- function(x, a=2) x^a
+```
+
+It can go in the same R script as `square`, or a different one -- your choice.
+
+We'll make `square` depend on `pow`. 
+
+Aftering `Install and Restart`ing, you'll notice that you can't use `pow` because it's not `export`ed. But, `square` still works! We call `pow` an _internal_ function. 
+
+__Note__: you should still document your internal function! But mention that the function is internal. Users will be able to access the documentation like normal, but still won't be able to (easily) use the function.
+
+If you want to be able to use internal functions as a developer, but don't want users to have (easy) access to the functions, then run `load_all` instead of `Install and Restart`. 
+
+
+### Your Turn
+
+Make and document another function, say `cube`, that raises a vector to the power of 3. Be sure to `@export` it to the NAMESPACE. Use our internal `pow` function to make `cube`, if you have it. 
+
+Finished early? Do more -- work on Assignment 7, and/or try out more documentation features that comes with `roxygen2` (the `@` tags).
+
+## Documentation and Testing
+
+### More Roxygen2 Documentation
+
+- `\code{}` for code font
+- `\link{}` to link to other function docs
+- Combine: `\code{\link{function_name}}`
+
+Enumeration:
+
+```
+#' \enumerate{
+#'      \item first item
+#'      \item second item
+#' }
+```
+
+Itemization:
+
+```
+#' \itemize{
+#'      \item first item
+#'      \item second item
+#' }
+```
+
+Manually labelled list:
+
+```
+#' \describe{
+#'      \item{bullet label 1}{first item}
+#'      \item{bullet label 2}{second item}
+#' }
+```
+
+### DESCRIPTION file
+
+Every R package has this. It contains the package's metadata. Let's edit it:
+
+- Add a title and brief description. 
+    - R is picky about these! Check out [the rules](http://r-pkgs.had.co.nz/description.html#pkg-description).
+- Add your name.
+    - Use the [`Authors@R` field](http://r-pkgs.had.co.nz/description.html#author) instead of the default `Author` and `Maintainer` fields.
+- Pick a license: next!
+
+### Pick a license
+
+[Karl Broman's post](http://kbroman.org/pkg_primer/pages/licenses.html) is brief and informative.
+
+Let's add an MIT licence. 
+
+### Testing with `testthat`
+
+We've already seen package `Check`s -- this checks that the pieces of your R package are in place, and that even your examples don't throw errors. We should not only check that our functions are _working_, but that they give us results that we'd _expect_.
+
+The `testthat` package is useful for this. Initialize it in your R package by running `use_testthat()`.
+
+As a template, save and edit the following script in a file called `test_square` in the `tests/testthat` folder, filling in the blanks with an `expect` statement:
+
+```
+context("Squaring non-numerics")
+
+test_that("At least numeric values work.", {
+    num_vec <- c(0, -4.6, 3.4)
+    expect_identical(square(numeric(0)), numeric(0))
+    FILL_THIS_IN
+})
+
+test_that("Logicals automatically convert to numeric.", {
+    logic_vec <- c(TRUE, TRUE, FALSE)
+    FILL_THIS_IN
+})
+```
+
+Then, you can execute those tests by running `devtools::test()`, or clicking `Build` -> `Test package`. 
+
+These sanity checks are very important as your R package becomes more complex! 
+
+## Higher-level User Documentation
+
+### Package Documentation
+
+Just like we do for functions, we can make a manual (`.Rd`) page for our entire R package, too. For example, check out the documentation for `ggplot2`:
+
+```
+?ggplot2         # Can execute only if `ggplot2` is loaded.
+package?ggplot2  # Always works.
+```
+
+To do so, just execute `use_package_doc()`. You'll see a new R script come up with `roxygen2`-style documentation to `NULL`. Document as you'd do functions, and run `document()` to generate the `.Rd` file. 
+
+Here's sample documentation:
+
+```
+#' Convenient Computation of Powers
+#'
+#' Are you tired of using the power operator, \code{^} or \code{**} in R?
+#' Use this package to call functions that apply common powers
+#' to your vectors.
+#'
+#' @name powers
+#' @author Me
+#' @note This package isn't actually meant to be serious. It's just for
+#' teaching purposes.
+#' @docType package
+```
+
+### Vignettes
+
+It's a good idea to write a vignette (or several) for your R package to show how the package is useful as a whole. Documentation for individual functions don't suffice for this purpose!
+
+To write a vignette called `"my_vignette"`, just run
+
+```
+use_vignette("my_vignette")
+```
+
+Some things happen automatically, but it's up to you to modify the `.Rmd` document to provide adequate instruction. Change the template to suit your package. The only real "catch" to doing this is _making sure the title is replaced in both instances_.
+
+Then just `Knit`, and then run `build_vignettes()` to build the vignettes. 
+
+__Vignette woes__: There seems to be resistance against building vignettes when installing. Try running `install(build_vignettes=TRUE)` to get it working.
+
+### README
+
+Just as most projects should have a `README` file in the main directory, so should an R package. 
+
+__Purposes__:
+
+- Inform someone stumbling across your project what they've stumbled across.
+    - At a high level (like "This is an R package"), but also
+    - somewhat at a lower level too, like your description file. This becomes a little redundant.
+- I like to use the README to inform _developers_ the main workflow and spirit behind _developing_ the package.
+    - There are some things that you'd want other potential developers to know about the package as a whole, yet are irrelevant to users!
+
+__How to do it__:
+
+You could just make and edit a `README.md` file like normal. But you'll probably want to briefly demonstrate some code, so you'll need an `.Rmd`. Let `devtools` set that up for you:
+
+```
+use_readme_rmd()
+```
+
+`knit` and you're done!
+
+### Exercises
+
+Create the above three types of documentation, without looking at [my version](https://github.com/vincenzocoia/powers). Then compare. 
+
+Ideally, you'll have more to document because you've been working on expanding this (or another) R package for Homework 07 already.
+
+## Adding data to your R package
+
+You can store _and document_ datasets within R packages. Here's one useful way.
+
+__Note__: This currently doesn't seem to be present in the companion tutorial from Jenny. Check out [the R Packages "data chapter"](http://r-pkgs.had.co.nz/data.html) for a resource.
+
+__Example__:
+
+Let's add `tenvec` and `tendf` to the package:
+
+```
+tenvec <- 1:10
+tendf <- data.frame(vec=1:10)
+```
+
+In the console:
+
+1. Store your data as R objects, as we've done above with `tenvec` and `tendf`.
+2. Execute `use_data(tenvec, tendf)` (one argument per object). 
+
+`tenvec` and `tendf` will be saved as `.Rdata` files in the new `/data` directory. These are available upon loading the package. 
+
+To document the data, for each object (i.e., for each of `tenvec` and `tendf`), put `roxygen2`-style documentation above _the character_ `"tenvec"` and `"tendf"` in an R script in the `/R` folder.
+
+Example for `tenvec`:
+
+```
+#' Integer vector from 1 to 10
+#'
+#' Self-explanatory! 
+#'
+#' @format What format does you data take? Integer vector.
+#' @source Where did the data come from? 
+"tenvec"
+```
+
+The `@format` and `@source` tags are unique to data documentation. Note that you shouldn't use the `@export` tag when documenting data!
+
+## Dependencies
+
+We can use functions from other R packages within our homemade R package, too. We need to do two things:
+
+- Use the syntax `package_name::function_name()` whenever you want to use `function_name` from `package_name`. 
+- Indicate that your R package depends on `package_name` in the DESCRIPTION file by executing the command `use_package("package_name")`.
+
+There are other methods, but this is the easiest. 
+
+__Example__: Add `ggplot2` dependency to plot the resulting computations. Do so by adding a plot to `pow` -- change `pow`'s guts to the following:
+
+```
+res <- x^p
+if (showplot) {
+    p <- ggplot2::qplot(x, res)
+    print(p)
+}
+res
+```
+
+__Note 1__: Here's an example of the benefits of not having your functions do too much -- I only needed to change `pow` alone to get the changes to work for `square` and `cube`. 
+
+__Note 2__: It's probably better to use Base R's plotting here, so that your package is as stand-alone as possible. We use `ggplot2` for expository purposes.
+
+## Launching your Package to GitHub
+
+If I want to put an R package on GitHub, I typically just:
+
+1. Click "New" in GitHub to make a new repo. Don't initialize with README.
+2. Follow the instructions github provides, which involves two lines to execute in the terminal.
+    - Those two lines can be found [here](http://happygitwithr.com/existing-github-last.html#connect-to-github) in Jenny's Happy git book.
+    
+There is also the [`use_github()` way](http://stat545.com/packages06_foofactors-package.html#use_github()) -- although, to me, it seems overly complicated (perhaps there's an advantage I don't know about). It's just a matter of following the instructions, which are not worth demonstrating here. 
+
+## Time remaining?
+
+If there's time remaining, we'll check out [S3 OO programming](http://adv-r.had.co.nz/OO-essentials.html#s3) in R.
+
+1. Add a "class" to the output of `pow`.
+2. Add some methods:
+
+```
+print.pow <- function(x) {
+    cat(paste("Object of class 'pow',", head(x)))
+    invisible()
+}
+
+#' @export
+bind.pow <- function(x) paste(x, collapse=".")
+
+bind <- function(x) UseMethod("bind")
+```
+
+<!--chapter:end:cm105.Rmd-->
+
+# (6) R Packages, Part II
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+Continuation of [cm105](cm105.nb.html) starting at 7.4: Testing with `testthat`.
+
+<!--chapter:end:cm106.Rmd-->
+
+# (7) Dashboarding, Part I
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Orientation
+
+### Objective
+
+This tutorial is intended to introduce `shiny` in a classroom setting. This tutorial is intended to provide students a foundation in shiny, with the expectation that students will be able to:
+
+- develop basic shiny apps from scratch,
+- deploy a shiny app,
+- create interactive Shiny R Markdown documents, and
+- research more advanced shiny techniques.
+
+### Resources
+
+This tutorial is an abridged version of the [stat545.com shiny tutorial](http://stat545.com/shiny01_activity.html) written by Dean Attali, with some minor differences/rearrangements. (I think) the stat545.com tutorial is identical to [the tutorial on Dean's website](https://deanattali.com/blog/building-shiny-apps-tutorial/).
+
+The [official `shiny` site](https://shiny.rstudio.com/) is also very useful. It has tutorials, a gallery, and other goodies.
+
+Specific topics:
+
+- For Shiny R Markdown documents, see [Chapter 19 of Yihui's R Markdown book](https://bookdown.org/yihui/rmarkdown/shiny-documents.html).
+- For deploying shiny apps, see [shinyapps.io](http://www.shinyapps.io/).
+
+### Participation
+
+We'll be making an external product, like last week. This week we'll be making a shiny app out of the BC liquor data (loaded in later).
+
+Complete version by Dean Attali [here](https://daattali.com/shiny/bcl/).
+
+## Why use `shiny`?
+
+- When presenting your analysis: respond to others' "what if"s.
+    - Both in-person meetings and written analyses.
+- "There's an app for that", and you can make it with shiny.
+- Could even provide a user interface to your R package.
+- Could even make a website out of shiny, like [this New Zealand Tourism website](https://mbienz.shinyapps.io/tourism_dashboard_prod/).
+
+## Getting Started with `shiny`
+
+### Together:
+
+Install shiny, and load it:
+
+```
+install.packages("shiny")
+library(shiny)
+```
+
+Start a new shiny app. "File -> New File -> shiny web app -> Single file". Notice:
+
+- `app.R` is made in a new folder.
+- Shiny app needs ui and server.
+- Run with `shinyApp(ui, server)` -- or, click "Run App" (appears if `server` and `shinyApp()` are present)
+
+Delete the "guts" of ui and server.
+
+## Intro to the UI
+
+### HTML: Aside
+
+Did you know webpages are made up of HTML? Find the "view source" button on your browser!
+
+### HTML: My Turn
+
+- Character entries in `ui` displayed as-is.
+- Can add HTML. I'll add a level-1 header in three ways:
+    1. `tags` object
+    2. Some of the `tags` are available as functions, too, like `h1()`.
+    3. `HTML()` function for generic HTML.
+- You can nest tags, too: `h1(em("This is my header."))`
+- Code before the `ui` gets run, too, and can be read by the ui. Let's see!
+
+### HTML: Your Turn
+
+Try using three `tags` in the `ui`, aside from `h1` and `em`. Find the documentation for them [here](https://shiny.rstudio.com/articles/tag-glossary.html) (links to official shiny site). 
+
+### Download the data: Together
+
+Dean Attali has prepared a tidy data set as a `.csv` [here](https://deanattali.com/files/bcl-data.csv). 
+
+1. Save this csv to your app's folder as `bcl-data.csv`.
+2. Read the file in by placing this code below the loading of `shiny`:
+
+```
+bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
+```
+
+Explore the data.
+
+We'll use this later.
+
+### Layouts: Together
+
+We usually place content in _panels_, arranged in _layouts_.
+
+Most common:
+
+- `sidebarLayout()`. Requires two arguments:
+    - `sidebarPanel()` (column, 1/6 of the page)
+    - `mainPanel()` (column, 5/6 of the page)
+- Grid layout with `fluidRow()` and `column()` (this is more generic; provides more control)
+
+To the `ui`, let's copy the below code, which
+
+1. gives the app a title with `titlePanel()`, and
+2. gives the app a sidebarlayout.
+
+```
+    titlePanel("BC Liquor price app", 
+               windowTitle = "BCL app"),
+    sidebarLayout(
+        sidebarPanel("This text is in the sidebar."),
+        mainPanel("This text is in the main panel.")
+    )
+```
+
+Want more info on layouts? See [shiny.rstudio.com's layouts page](https://shiny.rstudio.com/articles/layout-guide.html).
+
+### Overall look at the `ui`: My Turn
+
+Check out the `ui` object after running it. It's just HTML!
+
+
+## Intro to the server
+
+### Displaying output: My Turn
+
+Try to display a plot in the ui -- a histogram of price, with `ggplot2::qplot(bcl$Price)`. It won't work.
+
+Remove it!
+
+The shiny processing flow is as follows:
+
+1. Run code in `server`.
+2. Display output in `ui`.
+
+We'll do this backwards.
+
+### Displaying output, ui side: Together
+
+Let's create a placeholder for the output in the ui. The `*Output()` family of functions helps us with this; in this case, `plotOutput()`. Common required argument: a unique `outputId` for identification.
+
+1. Add `plotOutput()` with the ID `"price_hist"`, to the main panel in the ui.
+2. Run the app to see nothing has happened.
+
+### Displaying output, server side: Together
+
+About:
+
+- The `output` argument of our `server()` function (below `ui`) is a named list (actually, "list-like") _that we define_, with names corresponding to the ID's in the `*Output()` functions found in `ui`.
+- Each component must contain the output of a `render*()` function; in this case, `renderPlot()`. This is allowed to have R code.
+
+Let's put in the missing piece to making the histogram by adding a line to the `server()` function:
+
+1. Add an entry: `output$price_hist`.
+2. Make the entry the output of `renderPlot()`, whose input is the plotting code `ggplot2::qplot(bcl$Price)`.
+
+### Displaying output: Your Turn
+
+Use what you've learned about outputs to display a table of the BC Liquor data below the plot.
+
+Hints:
+
+- You'll need `renderTable()` and `tableOutput()` -- but where?
+- Don't forget to add a comma within the `mainPanel()` function when adding a new line, but NOT when defining the `server()` function! (Why?)
+
+
+## Inputs / Control Widgets
+
+### Inputs / Control Widgets: Together
+
+Inputs /control widgets allow the user to specify input. Example: `sliderInput()`. Full list available at the [shiny.rstudio.com control widgets tutorial](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/).
+
+Arguments for all widgets:
+
+- `inputId` -- unique identifier.
+- `label` -- "title" to the widget.
+- others specific to the widget.
+
+Add this slider to the sidebar panel so that the user can select a price range:
+
+```
+sliderInput("priceInput", "Select your desired price range.",
+            min = 0, max = 100, value = c(15, 30), pre="$")
+```
+
+View the app. Note that the widgets __aren't yet linked__ to the outputs (graph and table)!
+
+### Inputs / Control Widgets: Your Turn
+
+Add another widget to the sidebar panel:
+
+- Should be a radio button widget for users to select one type of beverage, with options given in the vector below:
+    - `c("BEER", "REFRESHMENT", "SPIRITS", "WINE")`
+- Give the widget an ID called `"typeInput"`.
+
+## Linking Inputs to Outputs
+
+### Table example: Together
+
+About:
+
+The `input` argument of our `server()` function is (like `output`) also a named list (actually, "list-like"). Its names are the widget ID's, and comes "pre-made" after having defined widgets. So: 
+
+Our widget ID's currently:
+
+- `"priceInput"`, a slider.
+- `"typeInput"`, a radio button.
+
+The corresponding `input`s:
+
+- `input$priceInput`: a numeric vector of length 2 with the lower and upper selected range.
+- `input$typeInput`: a character vector of length 1 with the drink type.
+
+Let's use `dplyr` to filter the table using columns `Price` and `Type`:
+
+1. Load `tidyverse` at the top of the script.
+2. Filter the data in the `renderTable()` function.
+3. Run the app. Notice the live-updating of the table after interacting with a widget.
+    - This is called __reactive__ programming.
+
+### Plot Example: Your Turn
+
+Modify the plot so that it only shows the filtered data.
+
+## Reactivity
+
+## The Concept of Reactivity
+
+Will the following code output `15` or `25`?
+
+```
+x <- 10
+y <- x + 5
+x <- 20
+print(y)
+```
+
+This is _non-reactive_ programming. Shiny is an exception! Where is the reactivity in Shiny?
+
+### Defining reactive variables: Together
+
+Can you spot the duplicate code in our app thus far? Use `reactive()` to prevent duplicated code:
+
+1. Save wrangled data to a variable after passing through `reactive()`
+2. Use this object instead of the duplicated code. Catch: treat the output like it's a function by putting `()` next to it.
+
+## More shiny features
+
+This concludes the "foundation of shiny". Let's take a look at other things we can do with shiny.
+
+### `uiOutput()` and `renderUI()`
+
+You can conditionally have UI appear as output. See an example in [Section 11.1 of Dean's tutorial](http://stat545.com/shiny01_activity.html#basic-example-of-uioutput).
+
+## Hosting your shiny app: shinyapps.io
+
+You can host your app as a website for free at `www.shinyapps.io` (or on your own server) -- just follow the instructions. Or, see [Section 13.1 in Dean's tutorial](http://stat545.com/shiny01_activity.html#host-on-shinyapps.io) for elaboration.
+
+### Interactive Rmd
+
+Just pop `runtime: shiny` in the YAML header of an Rmd file, and your ready to generate interactive HTML-based documents.
+
+See an example in [Section 14.1 of Dean's tutorial](http://stat545.com/shiny01_activity.html#shiny-in-rmarkdown). For an elaboration, see [Chapter 19 of Yihui's R Markdown book](https://bookdown.org/yihui/rmarkdown/shiny-documents.html).
+
+### Interacting with plots
+
+We can allow users to click on a graph to indicate input.
+
+See [this RStudio page](https://shiny.rstudio.com/articles/plot-interaction.html) for a description.
+
+### DT tables
+
+Display your tables in a nicer / less static way with [DT tables](https://rstudio.github.io/DT/).
+
+### Shiny looks
+
+- You can change the look of your shiny app with [shinythemes](http://rstudio.github.io/shinythemes/).
+- You can use the [`shinydashboard` package](https://rstudio.github.io/shinydashboard/) for a more "website-like functionality".
+
+<!--chapter:end:cm107.Rmd-->
+
+# (8) Dashboarding, Part I
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+Agenda:
+
+1. Comments between pipes
+2. Review code for BCL app that we developed last time
+3. Continuation of the [tutorial from last time](cm107.html). 
+
+
+<!--chapter:end:cm108.Rmd-->
+
+# (9) Automation, Part I
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Why Automate?
+
+Because you're going to have to rerun your analysis.
+
+This can be a pain if you have multiple files and scripts!
+
+[According to Shaun Jackman and Jenny Bryan](http://stat545.com/automation01_slides/index.html#/automate-a-pipeline):
+
+> Automate a pipeline
+> 
+> ... to reproduce previous results.   
+> ... to recreate results deleted by fat fingers.   
+> ... to rerun the pipeline with updated software.   
+> ... to run the same pipeline on a new data set.   
+
+## Non-interactive programming
+
+Run an R script from top to bottom:
+
+- `source()`/"source" button
+- `rmarkdown::render()`/"knit" button
+- `Rscript`, `Rscript -e`.
+
+## Pipelines
+
+Let's take a look at [Shaun Jackman's slides](http://stat545.com/automation01_slides/index.html#/pipelines) (scroll down).
+
+
+## Test Drive Make
+
+Complete the ["Test drive make"](http://stat545.com/automation03_make-test-drive.html) activity to see if you have `make` installed.
+
+__Windows machines__: Some options for installation.
+
+- If you installed Rtools when making R packages, you might have `make` installed already.
+	- Commentary is [here](http://stat545.com/packages01_system-prep.html#windows-system-prep); installation is found [here](https://cran.r-project.org/bin/windows/Rtools/).
+- If not, see this [special consideration for windows](http://stat545.com/automation02_windows.html).
+
+## Makefile Structure
+
+Each block of code in a Makefile is called a rule, it looks something like this:
+
+```
+file_to_create: files.it depends.on like_this.R
+	code to be run in the command line
+	that can have multiple lines of code
+	Rscript like_this.R
+```
+
+* `file_to_create` is a target, a file to be created, or built.
+* `files.it`, `depends.on`, and `like_this.R` are dependencies, files which are needed to build or update the target. Targets can have zero or more dependencies.
+* `:` separates targets from dependencies.
+* `code to be run in the command line`, ..., `Rscript like_this.R` are actions, commands to run to build or update the target using the dependencies. Targets can have zero or more actions. Actions are indented using the TAB character, not spaces.
+* Together, the target, dependencies, and actions form a rule.
+
+(Thanks to contributions from [Tiffany Timbers](https://github.com/ttimbers) here!)
+
+## LOTR Pipeline Examples
+
+We'll look at 3 pipelines that do the same thing in different ways: get data -> clean data -> extract relevant data.
+
+### Download
+
+Download the [cm109-automation_examples.zip](https://github.com/STAT545-UBC/Classroom/raw/master/notes/cm109-automation_examples.zip) file to your participation folder for today, and unzip it.
+
+Alternatively: get it unzipped [from github](https://github.com/STAT545-UBC/STAT545-UBC.github.io/tree/master/automation10_holding-area).
+
+### Test out the automation
+
+We'll test out the functionality of each pipeline, guided by suggestions from the README's of each activity.
+
+Overall goal: run the pipeline for each activity.
+
+
+
+
+<!--chapter:end:cm109.Rmd-->
+
+# (10) Automation, Part II
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+## Review
+
+Last time, we saw:
+
+- Running R scripts using R, vs using the terminal
+- Running Rmd scripts using R, vs using the terminal
+- Makefile "rule" structure
+- Running `make`
+
+The three LOTR pipelines acted as a proof of concept.
+
+Today, we'll make our own Makefile and pipeline.
+
+## `make` pipeline activity
+
+We'll follow along with [Shaun and Jenny's `make` tutorial](http://stat545.com/automation04_make-activity.html).
+
+<!--chapter:end:cm110.Rmd-->
+
+# (11) Getting Data from the Web: scraping
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+<!--chapter:end:cm111.Rmd-->
+
+# (12) Getting Data from the Web: API's
+
+
+--- LAST YEAR'S CONTENT BELOW ---
+
+<!--chapter:end:cm112.Rmd-->
+
