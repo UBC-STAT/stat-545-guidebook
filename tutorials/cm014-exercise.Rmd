@@ -1,9 +1,4 @@
----
-title: "cm014 Worksheet: The Model-Fitting Paradigm in R"
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
----
+
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
@@ -89,17 +84,17 @@ Exercise:
 
 First, create a subset of the `gapminder` dataset containing only the country of `France
 ```{r}
-(gapminder_France <- FILL_THIS_IN
+(gapminder_France <- gapminder %>% filter(country == "France"))
 ```
 
 Now, using the `lm()` function we will create the linear model
 ```{r}
-(my_lm <- lm(FILL_THIS_IN))
+(my_lm <- lm(lifeExp~year, data = gapminder_France))
 ```
 Does that mean that the life expectency at "year 0" was equal to -397.7646?!
 We are interested in the modeling results around the modeling period which starts at year 1952. To get a meaniningful "interpretable" intercept we can use the `I()` function.
 ```{r}
-(my_lm <- lm(FILL_THIS_IN))
+(my_lm <- lm(lifeExp~I(year-1952), data = gapminder_France))
 
 ```
 
@@ -122,7 +117,7 @@ predict(my_lm) %>%
 ```
 Or we can predict on a new dataset:
 ```{r}
-years1 = FILL_THIS_IN
+years1 = data.frame(year = seq(2000,2005))
 predict(my_lm,years1)
 
 ```
@@ -139,7 +134,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 ```
 Lets consider another country "Zimbabwe", which has a unique behavior in the `lifeExp` and `year` relationship.
 ```{r}
-gapminder_Zimbabwe <- FILL_THIS_IN
+gapminder_Zimbabwe <- gapminder %>% filter(country == "Zimbabwe")
 gapminder_Zimbabwe %>% ggplot(aes(year, lifeExp)) + geom_point()
 ```
 Let's try fitting a linear model to this relationship
@@ -148,40 +143,17 @@ ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method 
 ```
 Now we will try to fit a second degree polynomial and see what would that look like.
 ```{r}
-ggplot(FILL_THIS_IN) + geom_point()+geom_smooth(FILL_THIS_IN)
+ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method = "lm",formula = y~poly(x,2), se = F)
 
 ```
 
 ```{r}
-lm_linear <- lm(data = gapminder,formula = FILL_THIS_IN)
-lm_poly <- lm(data = gapminder,formula = FILL_THIS_IN))
+lm_linear <- lm(data = gapminder,formula = lifeExp~I(year-1952))
+lm_poly <- lm(data = gapminder,formula = lifeExp~poly(I(year-1952),2))
 ```
-`anova` lets you compare between different models.
 ```{r}
 anova(lm_linear,lm_poly)
 ```
-## Regression with categorical variables
-
-```{r}
-(lm_cat <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder))
-
-```
-How did R know that continent was a categorical variable?
-```{r}
-class(gapminder$continent)
-levels(gapminder$continent)
-contrasts(gapminder$continent)
-```
-How can we change the reference level?
-```{r}
-gapminder$continent <- relevel(gapminder$continent, ref = "Oceania")
-```
-Let's build a new model
-```{r}
-lm_cat2 <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder)
-
-```
-
 
 ## Broom
 
