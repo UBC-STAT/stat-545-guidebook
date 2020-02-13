@@ -1,6 +1,6 @@
 ---
-title: "STAT 545 @ UBC: Class Meeting Guide 2019/20"
-author: "Vincenzo Coia and Firas Moosvi"
+title: "STAT 547 @ UBC: Class Meeting Guide 2019/20"
+author: "Firas Moosvi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -8,7 +8,7 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 #github-repo: org/repo
-cover-image: "stat-545.png"
+cover-image: "stat-547.png"
 ---
 
 # About This Guide {-}

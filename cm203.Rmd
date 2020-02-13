@@ -12,7 +12,7 @@
 
 To get participation points for today, we'll be filling out the cm103-exercise.Rmd file.
 
-- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm103-exercise.Rmd)
-- [html](http://stat545.com/Classroom/notes/cm103-exercise.nb.html).
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm103-exercise.Rmd)
+<!-- - [html](http://stat545.com/Classroom/notes/cm103-exercise.nb.html). -->
 
 Add this to your participation repo. 

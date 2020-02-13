@@ -31,7 +31,7 @@ str(stringr::sentences)
 
 To get participation points for today, we'll be filling out the cm102-exercise.Rmd file.
 
-- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/notes/cm102-exercise.Rmd)
-- [html](http://stat545.com/Classroom/notes/cm102-exercise.nb.html).
+- [Rmd](https://github.com/STAT545-UBC/Classroom/blob/master/tutorials/cm102-exercise.Rmd)
+<!-- - [html](http://stat545.com/Classroom/notes/cm102-exercise.nb.html). -->
 
 Add this to your participation repo. 

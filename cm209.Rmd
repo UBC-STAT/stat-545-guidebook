@@ -65,9 +65,9 @@ We'll look at 3 pipelines that do the same thing in different ways: get data -> 
 
 ### Download
 
-Download the [cm109-automation_examples.zip](https://github.com/STAT545-UBC/Classroom/raw/master/notes/cm109-automation_examples.zip) file to your participation folder for today, and unzip it.
+Download the [cm109-automation_examples.zip](https://github.com/STAT545-UBC/Classroom/raw/master/tutorials/cm109-automation_examples.zip) file to your participation folder for today, and unzip it.
 
-Alternatively: get it unzipped [from github](https://github.com/STAT545-UBC/STAT545-UBC.github.io/tree/master/automation10_holding-area).
+<!-- Alternatively: get it unzipped [from github](https://github.com/STAT545-UBC/STAT545-UBC.github.io/tree/master/automation10_holding-area).-->
 
 ### Test out the automation
 
