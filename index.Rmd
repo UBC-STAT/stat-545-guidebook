@@ -22,6 +22,7 @@ If you're looking for the list of tutorials written by Jenny Bryan, you can find
 
 Various people have contributed to the current state of this guidebook in various ways.
 
+- [Vincenzo Coia](https://vincenzocoia.com) migrated the stat545 content to this bookdown format and was instrumental in creating most if not all of the stat545 and stat 547 content in the guidenbook.
 - [Jenny Bryan](https://jennybryan.org/) founded the course, and the big-picture organization of material in this guidebook originated from her work.
 - [Victor Yuan](https://twitter.com/victor2wy) delivered and contributed to the [Intro to data wrangling, Part I] lecture (cm006) in 2019.
 - [Rashedul Islam](https://www.linkedin.com/in/rashedul-islam-12170432/) delivered and contributed to the [Tibble Joins] lecture (cm010) in 2018.

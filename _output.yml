@@ -5,7 +5,7 @@ bookdown::gitbook:
       collapse: section
       scroll_highlight: yes
       before: |
-        <li><a href="./">STAT 545 @ UBC 2019-20</a></li>
+        <li><a href="./">STAT 547 @ UBC 2019-20</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/STAT545-UBC/Classroom/edit/master/%s
