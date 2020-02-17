@@ -1,6 +1,6 @@
-# STAT 547M {-}
+# (November 2018) STAT 547M {-}
 
-STAT 547 is under active development and last year’s content is shown. The materials will be updated evry week prior to the class.
+Below is the content from last year's iteration of STAT 547.
 
 # (1) Functions
 
