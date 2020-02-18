@@ -1,4 +1,4 @@
-# (3) Functional Programming
+# (3) Functional Programming {-}
 
 --- LAST YEAR'S CONTENT BELOW ---
 

@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (6) Advanced pipelines
 
 ## Today's Agenda
 

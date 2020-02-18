@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (5) Introduction to pipelines using Make
 
 ## Today's Agenda
 

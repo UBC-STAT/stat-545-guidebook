@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (11) Creating Packages in R
 
 ## Today's Agenda
 

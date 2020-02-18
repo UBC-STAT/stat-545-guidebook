@@ -2,7 +2,7 @@
 
 Below is the content from last year's iteration of STAT 547.
 
-# (1) Functions
+# (1) Functions {-}
 
 --- LAST YEAR'S CONTENT BELOW ---
 

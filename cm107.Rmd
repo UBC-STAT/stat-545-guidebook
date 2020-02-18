@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (7) Introduction to DashR
 
 ## Today's Agenda
 

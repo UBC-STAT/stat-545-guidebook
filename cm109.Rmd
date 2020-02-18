@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (9) Styling Dashboards
 
 ## Today's Agenda
 

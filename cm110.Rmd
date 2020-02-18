@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (10) Deploying Dashboards on Heroku
 
 ## Today's Agenda
 

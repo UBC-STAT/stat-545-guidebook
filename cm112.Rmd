@@ -1,4 +1,4 @@
-# (3) Vectorized functions
+# (12) TBD
 
 ## Today's Agenda
 
