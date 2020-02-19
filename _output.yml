@@ -11,6 +11,5 @@ bookdown::gitbook:
     edit: https://github.com/STAT545-UBC/Classroom/edit/master/%s
     download: ["pdf", "epub"]
   includes:
-    #in_header: [google_analytics.html]
     in_header: header.html
     

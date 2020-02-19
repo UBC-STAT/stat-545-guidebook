@@ -6,7 +6,7 @@ STAT 547 is under active development. The materials will be updated evry week pr
 
 ## Today's Agenda
 
-Part 1: Introductions and course overview (15 mins)
+- Part 1: Introductions and course overview (15 mins)
   - Two parts to the course: reproducible workflows and dashboards
   - Course grading elements
   - Group projects
@@ -14,14 +14,14 @@ Part 1: Introductions and course overview (15 mins)
   - Office hours
   - What to expect in STAT 547
   
-Part 2: Review of STAT545 (45 mins)
+- Part 2: Review of STAT545 (45 mins)
   - tidy data
   - factors in R
   - ggplot
   - dplyr
   - File I/O
 
-Part 3: Group projects in STAT 547 (10 mins)
+- Part 3: Group projects in STAT 547 (10 mins)
   - Partners
   - Choosing a research question
   - What's due this week
