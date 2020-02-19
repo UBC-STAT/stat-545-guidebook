@@ -1,5 +1,13 @@
 # (6) Advanced pipelines
 
+```{r global_options_fm, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+```{r packages_needed}
+library(tidyverse)
+```
+
 ## Today's Agenda
 
 Announcements:
@@ -27,3 +35,12 @@ Part 3:
 ## Part 2: 
 
 ## Part 3: 
+
+```{r}
+gg <- ggplot(economics,aes(x=date,y=unemploy / pop)) + 
+  geom_point() + theme_bw() + 
+  labs(title = "Unemployment rate over time",
+       x = "Time",
+       y = "Unemployment / population")
+ggplotly(gg)
+```

@@ -1,5 +1,13 @@
 # (9) Styling Dashboards
 
+```{r global_options_fm, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+```{r packages_needed}
+library(tidyverse)
+```
+
 ## Today's Agenda
 
 Announcements:

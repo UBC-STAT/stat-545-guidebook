@@ -4,6 +4,14 @@ STAT 547 is under active development. The materials will be updated evry week pr
 
 # (1) Review of STAT 545
 
+```{r global_options_fm, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+```{r packages_needed}
+library(tidyverse)
+```
+
 ## Today's Agenda
 
 - Part 1: Introductions and course overview (15 mins)
@@ -33,6 +41,14 @@ var <- c(1,2,3,5)
 ## Part 1: Introductions and course overview (15 mins)
 
 ### Two parts to the course: reproducible workflows and dashboards
+
+STAT 547 can roughly be divided into two main ideas or themes: reproducible workflows and interactive dashboards.
+In the first part of the course we will start working with writing functions in R scripts and think a little bit about functional programming.
+Then with some new tools at our disposal, we will create "analysis pipelines" to automate and streamline the process going from loading raw data, all the way to creating a final report with the results of a regression analysis.
+Next we'll switch gears and use our practiced functional programming to create a dashboard app with multiple interactive components and multi-page/tab layouts.
+
+
+
 ### Course grading elements
 ### Group projects
 ### Optional "lab"
