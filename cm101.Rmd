@@ -26,6 +26,10 @@ Part 3: Group projects in STAT 547 (10 mins)
   - Choosing a research question
   - What's due this week
   
+```{r test1}
+var <- c(1,2,3,5)
+```
+  
 ## Part 1: Introductions and course overview (15 mins)
 
 ### Two parts to the course: reproducible workflows and dashboards
