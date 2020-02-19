@@ -29,7 +29,7 @@ Various people have contributed to the current state of this guidebook in variou
 - [Giulio Valentino Dalla Riva](https://www.gvdallariva.net/) contributed in the 2017 version of the course.
 - [Joey Bernhardt](https://www.zoology.ubc.ca/~jbernhar/home/) made a [singer R package](https://github.com/JoeyBernhardt/singer/) that's being used in the [Tibble Joins] lecture (cm010).
 
-```{r headerhtml echo=FALSE}
+```{r echo = FALSE}
 codejs <- readr::read_lines("js/codefolding.js")
 collapsejs <- readr::read_lines("js/collapse.js")
 transitionjs <- readr::read_lines("js/transition.js")
