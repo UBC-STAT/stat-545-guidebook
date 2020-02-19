@@ -1,6 +1,6 @@
 # (4) Scripting in R
 
-```{r global_options_fm, include=FALSE}
+```{r  include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 ```
 
