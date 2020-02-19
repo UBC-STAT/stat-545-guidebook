@@ -4,11 +4,11 @@ STAT 547 is under active development. The materials will be updated evry week pr
 
 # (1) Review of STAT 545
 
-```{r  include=FALSE}
+```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 ```
 
-```{r packages_needed}
+```{r}
 library(tidyverse)
 ```
 
