@@ -34,8 +34,10 @@ codejs <- readr::read_lines("js/codefolding.js")
 collapsejs <- readr::read_lines("js/collapse.js")
 transitionjs <- readr::read_lines("js/transition.js")
 dropdownjs <- readr::read_lines("js/dropdown.js")
+googleanalytics <- readr::read_lines("google_analytics.html")
 
 htmlhead <- c(
+  paste(googleanalytics),
   paste('
 <script>',
 paste(transitionjs, collapse = "\n"),
