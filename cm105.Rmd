@@ -1,4 +1,4 @@
-# (5) Introduction to pipelines using Make
+# (5) Automate tasks and pipelines: Part II
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)

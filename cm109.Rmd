@@ -1,4 +1,4 @@
-# (9) Styling Dashboards
+# (9) DashR: styling dashboards
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)

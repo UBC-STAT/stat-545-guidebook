@@ -1,4 +1,4 @@
-# (7) Introduction to DashR
+# (7) DashR: Part I
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)

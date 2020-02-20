@@ -1,4 +1,4 @@
-# (6) Advanced pipelines
+# (6) Parameterized reports and GitHub Actions
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)

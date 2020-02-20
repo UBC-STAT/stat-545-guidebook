@@ -1,4 +1,4 @@
-# (2) Functions in R and scripting
+# (2) Functional programming in R: Part I
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)

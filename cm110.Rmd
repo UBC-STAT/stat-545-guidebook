@@ -1,4 +1,4 @@
-# (10) Deploying Dashboards on Heroku
+# (10) DashR: Deployment
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
