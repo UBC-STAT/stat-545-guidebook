@@ -40,11 +40,15 @@ To that end, if you ever have questions about these tools could be used in your 
 
 - (10%) Participation: Each week there will be two 90 minute classes closely following this guidebook. I hope to begin each meeting with a short introduction to provide some motivation for the topic of the day. We will then do coding exercises together. These will be due at the **end of the course* in your `participation` repository. Each file will be graded as complete (1), half-complete (0.5), or missing (0). Of the 12 class meetings, your 10 best will be used.
 
-- (20%) Assignments: These will be short assignments designed to help you practice material from the current week
+- (20%) Assignments: These will be short assignments designed to help you practice material from the current week. Your lowest assignment score will be dropped (so 5 of 6 assignments will count for your grade). Links to your `assignment_X` repo should be submitted on Canvas and will be due on **Saturdays at 6 PM**.
 
-- (60%) Team projects: There will be two team projects in this course (each equally weighted), one building an analysis pipeline and the second creating a dashboard using DashR. You will stay with the same groups for the duration of the course. Though the projects are separate, they will use the same dataset and should be considered as extensions of each other.
+- (60%) Team projects: There will be two team projects in this course (each equally weighted), one building an analysis pipeline and the second creating a dashboard using DashR. You will stay with the same groups for the duration of the course. Though the projects are separate, they will use the same dataset and should be considered as extensions of each other. Links to your team `project_X` repo should be submitted on Canvas and will be due on **Saturdays at 6 PM**.
 
 - (10%) Teamwork: The teamwork document will be due after the end of each project and is your opportunity to reflect on your group dynamics and share with the teaching team your successess and challenges. It will constitute a 4 point rating scale on a few categories as well as an area for written feedback. A template teamwork document will be provided to you. It is not intended for this to be a long written exercise (unless you choose to do so, we will read it all). 
+
+I have added a 48-hour grace period for all submissions - this means that should "life happen", you will still be able to submit your assignments for full credit up to 48 hours after the due date. 
+You do not need to inform the teaching team if you need to use the grace period. 
+After the 48 hour grace period, solutions will be released and no submissions will be accepted - no exceptions.
 
 ### Office hours and optional "lab"
 

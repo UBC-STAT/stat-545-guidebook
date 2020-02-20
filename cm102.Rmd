@@ -11,11 +11,11 @@ library(tidyverse)
 ## Today's Agenda
 
 - Announcements:
-  - 
+  - Reminder about Assignment 1 
   - 
   - 
 
-- Part 1: 
+- Part 1: RScript vs. RMarkdown vs. RNotebook
   - 
   -
   - 
@@ -32,21 +32,19 @@ library(tidyverse)
 
 ## Part 1: 
 
-# Write your own R functions, part 1 {#functions-part1}
+This section is adapted from Chapter 3 of the [tidynomicon textbook by Greg Wilson](https://gvwilson.github.io/tidynomicon/).
 
-```{r include = FALSE}
-source("common.R")
-```
+## Write your own R functions, part 1 {#functions-part1}
 
 <!--Original content: https://stat545.com/block011_write-your-own-function-01.html-->
 
-## What and why?
+### What and why?
 
-My goal here is to reveal the __process__ a long-time useR employs for writing functions. I also want to illustrate why the process is the way it is. Merely looking at the finished product, e.g. source code for R packages, can be extremely deceiving. Reality is generally much uglier ... but more interesting!
+My goal here is to reveal the __process__ a long-time user employs for writing functions. I also want to illustrate why the process is the way it is. Merely looking at the finished product, e.g. source code for R packages, can be extremely deceiving. Reality is generally much uglier ... but more interesting!
 
 Why are we covering this now, smack in the middle of data aggregation? Powerful machines like dplyr, purrr, and the built-in "apply" family of functions, are ready and waiting to apply your purpose-built functions to various bits of your data. If you can express your analytical wishes in a function, these tools will give you great power.
 
-## Load the Gapminder data
+### Load the Gapminder data
 
 As usual, load gapminder.
 
@@ -55,22 +53,22 @@ library(gapminder)
 str(gapminder)
 ```
 
-## Max - min
+### Max - min
 
 Say you've got a numeric vector, and you want to compute the difference between its max and min. `lifeExp` or `pop` or `gdpPercap` are great examples of a typical input. You can imagine wanting to get this statistic after we slice up the Gapminder data by year, country, continent, or combinations thereof.
 
-## Get something that works
+### Get something that works
 
 First, develop some working code for interactive use, using a representative input. I'll use Gapminder's life expectancy variable.
 
 R functions that will be useful: `min()`, `max()`, `range()`. (__Read their documentation:__ [here][rdocs-extremes] and [here][rdocs-range])
 
 ```{r}
-## get to know the functions mentioned above
+### get to know the functions mentioned above
 min(gapminder$lifeExp)
 max(gapminder$lifeExp)
 range(gapminder$lifeExp)
-## some natural solutions
+### some natural solutions
 max(gapminder$lifeExp) - min(gapminder$lifeExp)
 with(gapminder, max(lifeExp) - min(lifeExp))
 range(gapminder$lifeExp)[2] - range(gapminder$lifeExp)[1]
@@ -80,7 +78,7 @@ diff(range(gapminder$lifeExp))
 
 Internalize this "answer" because our informal testing relies on you noticing departures from this.
 
-### Skateboard >> perfectly formed rear-view mirror
+#### Skateboard >> perfectly formed rear-view mirror
 
 This image [widely attributed to the Spotify development team][min-viable-product] conveys an important point.
 
@@ -93,7 +91,7 @@ Build that skateboard before you build the car or some fancy car part. A limited
 This is related to the valuable [Telescope Rule][telescope-rule]:
 
 > It is faster to make a four-inch mirror then a six-inch mirror than to make a six-inch mirror.
-## Turn the working interactive code into a function
+### Turn the working interactive code into a function
 
 Add NO new functionality! Just write your very first R function.
 
@@ -104,9 +102,9 @@ max_minus_min(gapminder$lifeExp)
 
 Check that you're getting the same answer as you did with your interactive code. Test it eyeball-o-metrically at this point.
 
-## Test your function
+### Test your function
 
-### Test on new inputs
+#### Test on new inputs
 
 Pick some new artificial inputs where you know (at least approximately) what your function should return.
 
@@ -119,7 +117,7 @@ I know that 10 minus 1 is 9. I know that random uniform [0, 1] variates will be 
 
 It is intentional that I tested on integer input as well as floating point. Likewise, I like to use valid-but-random data for this sort of check.
 
-### Test on real data but *different* real data
+#### Test on real data but *different* real data
 
 Back to the real world now. Two other quantitative variables are lying around: `gdpPercap` and `pop`. Let's have a go.
 
@@ -130,19 +128,19 @@ max_minus_min(gapminder$pop)
 
 Either check these results "by hand" or apply the "does that even make sense?" test.
 
-### Test on weird stuff
+#### Test on weird stuff
 
 Now we try to break our function. Don't get truly diabolical (yet). Just make the kind of mistakes you can imagine making at 2am when, 3 years from now, you rediscover this useful function you wrote. Give your function inputs it's not expecting.
 
 ```{r error = TRUE}
-max_minus_min(gapminder) ## hey sometimes things "just work" on data.frames!
-max_minus_min(gapminder$country) ## factors are kind of like integer vectors, no?
-max_minus_min("eggplants are purple") ## i have no excuse for this one
+max_minus_min(gapminder) ### hey sometimes things "just work" on data.frames!
+max_minus_min(gapminder$country) ### factors are kind of like integer vectors, no?
+max_minus_min("eggplants are purple") ### i have no excuse for this one
 ```
 
 How happy are you with those error messages? You must imagine that some entire __script__ has failed and that you were hoping to just `source()` it without re-reading it. If a colleague or future you encountered these errors, do you run screaming from the room? How hard is it to pinpoint the usage problem?
 
-### I will scare you now
+#### I will scare you now
 
 Here are some great examples STAT545 students devised during class where the function __should break but it does not.__
 
@@ -153,12 +151,12 @@ max_minus_min(c(TRUE, TRUE, FALSE, TRUE, TRUE))
 
 In both cases, R's eagerness to make sense of our requests is unfortunately successful. In the first case, a data.frame containing just the quantitative variables is eventually coerced into numeric vector. We can compute max minus min, even though it makes absolutely no sense at all. In the second case, a logical vector is converted to zeroes and ones, which might merit an error or at least a warning.
 
-## Check the validity of arguments
+### Check the validity of arguments
 
 For functions that will be used again -- which is not all of them! -- it is good to check the validity of arguments. This implements a rule from [the Unix philosophy][unix-philosophy]:
 
 > Rule of Repair: When you must fail, fail noisily and as soon as possible.
-### stop if not
+#### stop if not
 
 `stopifnot()` is the entry level solution. I use it here to make sure the input `x` is a numeric vector.
 
@@ -176,7 +174,7 @@ mmm(c(TRUE, TRUE, FALSE, TRUE, TRUE))
 
 And we see that it catches all of the self-inflicted damage we would like to avoid.
 
-### if then stop
+#### if then stop
 
 `stopifnot()` doesn't provide a very good error message. The next approach is very widely used. Put your validity check inside an `if()` statement and call `stop()` yourself, with a custom error message, in the body.
 
@@ -200,11 +198,11 @@ If it is easy to do so, I highly recommend this template: "you gave me THIS, but
 
 The tidyverse style guide has a very useful [chapter on how to construct error messages](https://style.tidyverse.org/error-messages.html).
 
-### Sidebar: non-programming uses for assertions
+#### Sidebar: non-programming uses for assertions
 
 Another good use of this pattern is to leave checks behind in data analytical scripts. Consider our repetitive use of Gapminder in this course. Every time we load it, we inspect it, hoping to see the usual stuff. If we were loading from file (vs. a stable data package), we might want to formalize our expectations about the number of rows and columns, the names and flavors of the variables, etc. This would alert us if the data suddenly changed, which can be a useful wake-up call in scripts that you re-run *ad nauseam* on auto-pilot or non-interactively.
 
-## Wrap-up and what's next?
+### Wrap-up and what's next?
 
 Here's the function we've written so far:
 
@@ -220,7 +218,7 @@ What we've accomplished:
   
 Where to next? In [part 2](#functions-part2) we generalize this function to take differences in other quantiles and learn how to set default values for arguments.
 
-## Resources
+### Resources
 
 Packages for runtime assertions (the last 3 seem to be under more active development than `assertthat`):
 
@@ -233,27 +231,19 @@ Hadley Wickham's book [Advanced R][adv-r] [-@wickham2015a]:
 
 * Section on [defensive programming][adv-r-defensive-programming]
 
+### Part 2: 
 
-```{r links, child="links.md"}
-```
-
-## Part 2: 
-
-# Write your own R functions, part 2 {#functions-part2}
-
-```{r include = FALSE}
-source("common.R")
-```
+## Write your own R functions, part 2 {#functions-part2}
 
 <!--Original content: https://stat545.com/block011_write-your-own-function-02.html-->
 
-## Where were we? Where are we going?
+### Where were we? Where are we going?
 
 In [part 1](#functions-part1) we wrote our first R function to compute the difference between the max and min of a numeric vector. We checked the validity of the function's only argument and, informally, we verified that it worked pretty well.
 
 In this part, we generalize this function, learn more technical details about R functions, and set default values for some arguments.
 
-## Load the Gapminder data
+### Load the Gapminder data
 
 As usual, load gapminder.
 
@@ -261,7 +251,7 @@ As usual, load gapminder.
 library(gapminder)
 ```
 
-## Restore our max minus min function
+### Restore our max minus min function
 
 Let's keep our previous function around as a baseline.
 
@@ -272,7 +262,7 @@ mmm <- function(x) {
 }
 ```
 
-## Generalize our function to other quantiles
+### Generalize our function to other quantiles
 
 The max and the min are special cases of a __quantile__. Here are other special cases you may have heard of:
 
@@ -286,7 +276,7 @@ If $q$ is the $p$-th quantile of a set of $n$ observations, what does that mean?
 
 Let's generalize our function to take the difference between any two quantiles. We can still consider the max and min, if we like, but we're not limited to that.
 
-## Get something that works, again
+### Get something that works, again
 
 The eventual inputs to our new function will be the data `x` and two probabilities.
 
@@ -308,7 +298,7 @@ the_quantiles <- quantile(gapminder$lifeExp, probs = the_probs)
 max(the_quantiles) - min(the_quantiles)
 ```
 
-## Turn the working interactive code into a function, again
+### Turn the working interactive code into a function, again
 
 I'll use `qdiff` as the base of our function's name. I copy the overall structure from our previous "max minus min" work but replace the guts of the function with the more general code we just developed.
 
@@ -319,14 +309,14 @@ qdiff1 <- function(x, probs) {
   max(the_quantiles) - min(the_quantiles)
 }
 qdiff1(gapminder$lifeExp, probs = c(0.25, 0.75))
-IQR(gapminder$lifeExp) # hey, we've reinvented IQR
+IQR(gapminder$lifeExp) ## hey, we've reinvented IQR
 qdiff1(gapminder$lifeExp, probs = c(0, 1))
 mmm(gapminder$lifeExp)
 ```
 
 Again we do some informal tests against familiar results and external implementations.
 
-## Argument names: freedom and conventions
+### Argument names: freedom and conventions
 
 I want you to understand the importance of argument names.
 
@@ -351,7 +341,7 @@ qdiff1
 
 We took this detour so you could see there is no *structural* relationship between my arguments (`x` and `probs`) and those of `quantile()` (also `x` and `probs`). The similarity or equivalence of the names __accomplishes nothing__ as far as R is concerned; it is solely for the benefit of humans reading, writing, and using the code. Which is very important!
 
-## What a function returns
+### What a function returns
 
 By this point, I expect someone will have asked about the last line in my function's body. Look above for a reminder of the function's definition.
 
@@ -363,7 +353,7 @@ return(max(the_quantiles) - min(the_quantiles))
 
 You absolutely must use `return()` if you want to return early based on some condition, i.e. before execution gets to the last line of the body. Otherwise, you can decide your own conventions about when you use `return()` and when you don't.
 
-## Default values: freedom to NOT specify the arguments
+### Default values: freedom to NOT specify the arguments
 
 What happens if we call our function but neglect to specify the probabilities?
 
@@ -391,18 +381,18 @@ mmm(gapminder$lifeExp)
 qdiff3(gapminder$lifeExp, c(0.1, 0.9))
 ```
 
-## Check the validity of arguments, again
+### Check the validity of arguments, again
 
 __Exercise:__ upgrade our argument validity checks in light of the new argument `probs`.
 
 ```{r}
-## problems identified during class
-## we're not checking that probs is numeric
-## we're not checking that probs is length 2
-## we're not checking that probs are in [0,1]
+### problems identified during class
+### we're not checking that probs is numeric
+### we're not checking that probs is length 2
+### we're not checking that probs are in [0,1]
 ```
 
-## Wrap-up and what's next?
+### Wrap-up and what's next?
 
 Here's the function we've written so far:
 
@@ -417,35 +407,26 @@ What we've accomplished:
   
 Where to next? In [part 3](#functions-part3) we tackle `NA`s, the special `...` argument, and formal unit testing.
 
-## Resources
+### Resources
 
 Hadley Wickham's book [Advanced R][adv-r] [-@wickham2015a]:
 
 * Section on [function arguments][adv-r-fxn-args]
 * Section on [return values][adv-r-return-values]
   
+### Part 3: 
 
-
-```{r links, child="links.md"}
-```
-
-## Part 3: 
-
-# Write your own R functions, part 3 {#functions-part3}
-
-```{r include = FALSE}
-source("common.R")
-```
+## Write your own R functions, part 3 {#functions-part3}
 
 <!--Original content: https://stat545.com/block011_write-your-own-function-03.html-->
 
-## Where were we? Where are we going?
+### Where were we? Where are we going?
 
 In [part 2](#functions-part2) we generalized our first R function so it could take the difference between any two quantiles of a numeric vector. We also set default values for the underlying probabilities, so that, by default, we compute the max minus the min.
 
 In this part, we tackle `NA`s, the special argument `...` and formal testing.
 
-## Load the Gapminder data
+### Load the Gapminder data
 
 As usual, load gapminder.
 
@@ -453,7 +434,7 @@ As usual, load gapminder.
 library(gapminder)
 ```
 
-## Restore our max minus min function
+### Restore our max minus min function
 
 Let's keep our previous function around as a baseline.
 
@@ -465,7 +446,7 @@ qdiff3 <- function(x, probs = c(0, 1)) {
 }
 ```
 
-## Be proactive about `NA`s
+### Be proactive about `NA`s
 
 I am being gentle by letting you practice with the Gapminder data. In real life, missing data will make your life a living hell. If you are lucky, it will be properly indicated by the special value `NA`, but don't hold your breath. Many built-in R functions have an `na.rm =` argument through which you can specify how you want to handle `NA`s. Typically the default value is `na.rm = FALSE` and typical default behavior is to either let `NA`s propagate or to raise an error. Let's see how `quantile()` handles `NA`s:
 
@@ -506,7 +487,7 @@ qdiff5(z)
 qdiff5(z, na.rm = FALSE)
 ```
 
-## The useful but mysterious `...` argument
+### The useful but mysterious `...` argument
 
 You probably could have lived a long and happy life without knowing there are at least 9 different algorithms for computing quantiles. [Go read about the `type` argument][rdocs-quantile] of `quantile()`. TLDR: If a quantile is not unambiguously equal to an observed data point, you must somehow average two data points. You can weight this average different ways, depending on the rest of the data, and `type =` controls this.
 
@@ -546,7 +527,7 @@ There are also downsides to `...`, so use it with intention. In a package, you w
 
 The [ellipsis package](https://ellipsis.r-lib.org) provides tools that help package developers use `...` more safely. The in-progress tidyverse principles guide provides further guidance on the design of functions that take `...` in [Data, dots, details](https://principles.tidyverse.org/dots-position.html).
 
-## Use testthat for formal unit tests
+### Use testthat for formal unit tests
 
 Until now, we've relied on informal tests of our evolving function. If you are going to use a function a lot, especially if it is part of a package, it is wise to use formal unit tests.
 
@@ -581,12 +562,12 @@ test_that('NA handling works', {
 Similar to the advice to use assertions in data analytical scripts, I recommend you use unit tests to monitor the behavior of functions you (or others) will use often. If your tests cover the function's important behavior, then you can edit the internals freely. You'll rest easy in the knowledge that, if you broke anything important, the tests will fail and alert you to the problem. A function that is important enough for unit tests probably also belongs in a package, where there are obvious mechanisms for running the tests as part of overall package checks.
 
 <!--JB:
-## other content
+### other content
 match.arg()
 defaulting to NULL then checking is.null() and take it from there
 -->
 
-## Resources
+### Resources
 
 * Hadley Wickham's book [Advanced R][adv-r] [-@wickham2015a]
   + Section on [function arguments][adv-r-fxn-args]
@@ -597,5 +578,3 @@ defaulting to NULL then checking is.null() and take it from there
 * Wickham's [testthat: Get Started with Testing][testthat-article] article in The R Journal [-@wickham2011b]. Maybe this is completely superseded by the newer chapter above? Be aware that parts could be out of date, but I recall it was a helpful read.
 
 
-```{r links, child="links.md"}
-```
