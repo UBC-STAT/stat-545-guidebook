@@ -1,8 +1,4 @@
-# STAT 547M {-}
-
-STAT 547 is under active development. The materials will be updated evry week prior to the class.
-
-# (1) Review of STAT 545
+# (1) Review of STAT 545 
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -10,7 +6,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 
 ## Today's Agenda
 
-- Part 1: Introductions and course overview (15 mins)
+- Part 1: Introductions and course overview (10 mins)
   - Two parts to the course: reproducible workflows and dashboards
   - Course grading elements
   - Group projects
@@ -18,17 +14,17 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
   - Office hours
   - What to expect in STAT 547
   
-- Part 2: Review of STAT545 (45 mins)
-  - tidy data
-  - factors in R
-  - ggplot
-  - dplyr
-  - File I/O
-
-- Part 3: Group projects in STAT 547 (10 mins)
+- Part 2: Group projects in STAT 547 (10 mins)
   - Partners
   - Choosing a research question
   - What's due this week
+  
+- Part 3: Review of STAT545 (45 mins)
+  - tidy data
+  - ggplot
+  - dplyr
+  - File I/O
+  - Other stuff
   
 ## Part 1: Introductions and course overview (15 mins)
 
@@ -55,17 +51,45 @@ To that end, if you ever have questions about these tools could be used in your 
 Each week there will be about 3 office hours scheduled.
 Check the [course website](https://stat545.stat.ubc.ca/officehours/) for details on the office hour schedule.
 
+### Auditing students
+
+You're more than welcome to audit the course! 
+
+However, given the nature of this course, it will NOT mean any reduction in workload. 
+
+Auditing students will be: 
+
+1) Graded on a Pass/Fail basis for each assignment/course activity 
+2) Exempted from the peer review portion of the course
+3) Doing the team project as an individual project (with no other change in scope or requirements)
+
+If you would like to audit the course, you *must* submit the request by 11:59 PM on Thursday March 5th, 2020. After this - without exceptions - students will not be permitted to switch to (or from) audit status.
+
 ## Part 2: Group projects in STAT 547
 
 ### Partners
-### Choosing a research question
-### What's due this week
+
+Your partners for the group projects will be randomly assigned using an algorithm with no human intervention.
+There will be a "milestone" assignment due each week where you will be expected to work with your partner collaboratively in a single GitHub repository using the workflows you learned in STAT 545.
+The skills you learn in project courses working with git and GitHub will be essential for your future career - especially if it involves any amount of code.
+
+### Milestone 1
+
+In the first milestone, your task is to introduce yourself to your project partner, exchange contact information, choose a dataset, and do some preliminary EDA on the dataset.
+We will talk about formulating a research question later on in the course, but keep in mind you will be doing a linear regression analysis to answer a particular research question.
+Keep in mind that you will be working with the dataset you choose for the remainder of the course, so here are some guidelines for choosing a dataset:
+
+- Make sure you have some basic interest in the subject matter
+- Ensure there are over 5000 rows/observations in the dataset
+- Ensure there are at least 5 "columns of potential interest" in the dataset
+
+Best of luck - this project course will be tonnes of fun !
 
 ## Part 3: Review of STAT545 (45 mins)
 
 ### Introduction
 
-This section is adapted from Chapter 3 of the tidynomicon textbook by Greg Wilson.
+This section is adapted from Chapter 3 of the [tidynomicon textbook by Greg Wilson](https://gvwilson.github.io/tidynomicon/).
 
 ### The Tidyverse {#tidyverse}
 
@@ -146,18 +170,16 @@ people would habitually use the first *two* rows of their spreadsheets for name 
 but we do not live there.)
 
 We can now look at what `read_csv` has produced.
-
+<div class="fold s o">
 ```{r show-tibble}
 infant_hiv
 ```
+</div>
 
-This is a [tibble](glossary.html#tibble),
+This is a tibble,
 which is the tidyverse's enhanced version of R's `data.frame`.
-It organizes data into named columns,
-each having one value for each row.
-In statistical terms,
-the columns are the variables being observed
-and the rows are the actual observations.
+It organizes data into named columns, each having one value for each row.
+In statistical terms, the columns are the variables being observed and the rows are the actual observations.
 
 ### How do I inspect data?
 
@@ -271,7 +293,7 @@ infant_hiv[[1]][1][1]
 
 Thus, `data[1][[1]]` produces a tibble, then selects the first column vector from it, so it still gives us a vector. 
 *This is not madness.*
-It is merely…differently sane.
+It is merely...differently sane.
 
 > **Subsetting Data Frames**
 >
@@ -294,7 +316,7 @@ length(estimates)
 mean(estimates)
 ```
 
-The void is always there, waiting for us…
+The void is always there, waiting for us...
 Let's fix this in R first by telling `mean` to drop NAs:
 
 ```{r r-remove-na}
@@ -597,7 +619,7 @@ infant_hiv %>%
 
 But wait: why is this complaining about missing values?
 Some online searches lead to the discovery that `geom_smooth` adds virtual points to the data for plotting purposes, some of which lie outside the range of the actual data, and that setting `xlim` and `ylim` then truncates these.
-(Remember, R is differently sane…) 
+(Remember, R is differently sane...) 
 The safe way to control the range of the data is to add a call to `coord_cartesian`, which effectively zooms in on a region of interest:
 
 ```{r plot-cartesian}
