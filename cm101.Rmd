@@ -81,12 +81,7 @@ The skills you learn in project courses working with git and GitHub will be esse
 
 In the first milestone, your task is to introduce yourself to your project partner, exchange contact information, choose a dataset, and do some preliminary EDA on the dataset.
 We will talk about formulating a research question later on in the course, but keep in mind you will be doing a linear regression analysis to answer a particular research question.
-Keep in mind that you will be working with the dataset you choose for the remainder of the course, so here are some guidelines for choosing a dataset:
-
-- Make sure you have some basic interest in the subject matter
-- Ensure there are over 5000 rows/observations in the dataset
-- Ensure there are at least 5 "columns of potential interest" in the dataset
-
+Keep in mind that you will be working with the dataset you choose for the remainder of the course, so I've provided some [guidelines](/evaluation/projects) for choosing a dataset.
 Best of luck - this project course will be tonnes of fun !
 
 ## Part 3: Review of STAT545 (45 mins)
