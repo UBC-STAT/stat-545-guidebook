@@ -661,16 +661,18 @@ infant_hiv %>%
 
 Absolutely!
 
-1. First, clone your `participation` repo for STAT 547 and navigate to the `week01` folder. Create a new subfolder inside the `week01` folder called `data`.
+1. First, accept your [`participation` assignment using GitHub classroom](https://classroom.github.com/a/uYT4-Doe) 
 
-2. At the end of the `cm101_participation.Rmd` file, load the `here` package (recall it is used to construct paths without specifying user-specific paths).
+2. Navigate to the `cm101` folder. Create a new subfolder inside here called `data`.
+
+3. In the `cm101_participation.Rmd` file, load the `here` package (recall it is used to construct paths without specifying user-specific paths).
 
 ```{r fake-load-libraries, eval=FALSE}
 library(tidyverse)
 library(here)
 ```
 
-3. Download the [person.csv](https://github.com/gvwilson/tidynomicon/raw/master/data/person.csv) file into the `data` folder you created. 
+4. Download the [person.csv](https://github.com/gvwilson/tidynomicon/raw/master/data/person.csv) file into the `data` folder you created. 
 
 ```{r download_person}
 readr::write_csv(readr::read_csv("https://github.com/gvwilson/tidynomicon/raw/master/data/person.csv"),here::here("data", "person.csv"))
