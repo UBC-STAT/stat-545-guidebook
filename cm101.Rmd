@@ -36,6 +36,14 @@ Finally we will end with deploying our dashboard to a free cloud service so that
 It is my hope that you will use the things we learn in this course to inform your own data analysis pipelines in your PhD and Masters research projects.
 To that end, if you ever have questions about these tools could be used in your projects, feel free to drop by my office hours and I'd be happy to discuss it!
 
+### Important links
+
+- All course announcements, discussions, and participation worksheets will be posted: [https://github.com/STAT547-UBC-2019-20/Discussions](https://github.com/STAT547-UBC-2019-20/Discussions)
+
+- The STAT 547 GitHub organization can be accessed here: [https://github.com/STAT547-UBC-2019-20](https://github.com/STAT547-UBC-2019-20)
+
+- All assignment/milestone/participation submissions are to be done on Canvas (submit URL of tagged release in your repo)
+
 ### Course structure
 
 - (10%) Participation: Each week there will be two 90 minute classes closely following this guidebook. I hope to begin each meeting with a short introduction to provide some motivation for the topic of the day. We will then do coding exercises together. These will be due at the **end of the course* in your `participation` repository. Each file will be graded as complete (1), half-complete (0.5), or missing (0). Of the 12 class meetings, your 10 best will be used.
@@ -86,6 +94,12 @@ Keep in mind that you will be working with the dataset you choose for the remain
 Best of luck - this project course will be tonnes of fun !
 
 ## Part 3: Review of STAT545 (45 mins)
+
+## Participation worksheet
+
+- Download the participation worksheet from [here](https://github.com/STAT547-UBC-2019-20/Discussions/blob/master/participation/cm101/cm101_participation.Rmd)
+- Add it to your local clone of your participation repo (don't forget to ["accept"](https://classroom.github.com/a/uYT4-Doe) your participation repo first)
+- Today's participation activities are all at the end, in the section "Do I need more practice with the tidyverse?"
 
 ### Introduction
 
