@@ -42,9 +42,9 @@ To that end, if you ever have questions about these tools could be used in your 
 
 - (20%) Assignments: These will be short assignments designed to help you practice material from the current week. Your lowest assignment score will be dropped (so 5 of 6 assignments will count for your grade). Links to your `assignment_X` repo should be submitted on Canvas and will be due on **Saturdays at 6 PM**.
 
-- (60%) Team projects: There will be two team projects in this course (each equally weighted), one building an analysis pipeline and the second creating a dashboard using DashR. You will stay with the same groups for the duration of the course. Though the projects are separate, they will use the same dataset and should be considered as extensions of each other. Links to your team `project_X` repo should be submitted on Canvas and will be due on **Saturdays at 6 PM**.
+- (60%) Team projects: There will be two team projects in this course (each equally weighted), one building an analysis pipeline and the second creating a dashboard using DashR. You will stay with the same groups for the duration of the course and both partners will receive the same grade. Though the projects are separate, they will use the same dataset and should be considered as extensions of each other. Links to your tagged release in your group project rep (`group_##_SOME_RELATED_NAME`) repo should be submitted on Canvas and will be due on **Saturdays at 6 PM**.
 
-- (10%) Teamwork: The teamwork document will be due after the end of each project and is your opportunity to reflect on your group dynamics and share with the teaching team your successess and challenges. It will constitute a 4 point rating scale on a few categories as well as an area for written feedback. A template teamwork document will be provided to you. It is not intended for this to be a long written exercise (unless you choose to do so, we will read it all). 
+- (10%) Teamwork: The teamwork document will be due after the end of each project and is your opportunity to reflect on your group dynamics and share with the teaching team your successess and challenges. It will constitute a 4 point rating scale on a few categories as well as an area for written feedback. A template teamwork document will be provided to you. This is not intended to be a long written exercise (unless you choose to do so, we will read it all). 
 
 I have added a 48-hour grace period for all submissions - this means that should "life happen", you will still be able to submit your assignments for full credit up to 48 hours after the due date. 
 You do not need to inform the teaching team if you need to use the grace period. 
@@ -64,7 +64,7 @@ However, given the nature of this course, it will NOT mean any reduction in work
 Auditing students will be: 
 
 1) Graded on a Pass/Fail basis for each assignment/course activity 
-2) Exempted from the peer review portion of the course
+2) Exempted from the peer review portion (assignment) of the course
 3) Doing the team project as an individual project (with no other change in scope or requirements)
 
 If you would like to audit the course, you *must* submit the request by 11:59 PM on Thursday March 5th, 2020. After this - without exceptions - students will not be permitted to switch to (or from) audit status.
@@ -74,7 +74,8 @@ If you would like to audit the course, you *must* submit the request by 11:59 PM
 ### Partners
 
 Your partners for the group projects will be randomly assigned using an algorithm with no human intervention.
-There will be a "milestone" assignment due each week where you will be expected to work with your partner collaboratively in a single GitHub repository using the workflows you learned in STAT 545.
+Teams will be posted on Canvas.
+There will be a "milestone" assignment due each week where you will be expected to work with your partner collaboratively in a single GitHub repository using the workflows you started learning about in STAT 545.
 The skills you learn in project courses working with git and GitHub will be essential for your future career - especially if it involves any amount of code.
 
 ### Milestone 1
@@ -146,37 +147,33 @@ We will import this data first by installing (if necessary, using `install.packa
 library(tidyverse)
 ```
 
-Loading the tidyverse gives us eight packages.
+Loading the tidyverse gives us eight packages (ggplot2, tibble, `tidyr`, `readr`, `purr`, `dplyr`, `stringr`, `forcats`.
 One of those, `dplyr`, defines two functions that mask standard functions in R with the same names.
 If we need the originals, we can always get them with their fully-qualified names referring to the original package they belong to: `stats::filter` and `stats::lag`.
 Firas' note: I find these errors and messages quite irritating so I have made it so they do not appear unless I explicitly ask it to (which I did in this case for illustrative purposes).
 
-At any time, we can call `sessionInfo` to find out what versions of which packages we have loaded, along with the version of R we're using and some other useful information:
+At any time, we can call `sessionInfo()` to find out what versions of which packages we have loaded, along with the version of R we're using and some other useful information:
 
-
-
+```{r}
+sessionInfo()
+```
 Once we have the tidyverse loaded, reading the file looks remarkably like reading the file:
 
 ```{r r-read-csv}
 infant_hiv <- read_csv('https://github.com/gvwilson/tidynomicon/raw/master/results/infant_hiv.csv')
 ```
 
-R's `read_csv` tells us more about what it has done than Pandas does.
+R's `read_csv` tells us a little about what it has done.
 In particular, it guesses the data types of columns based on the first thousand values
 and then tells us what types it has inferred.
-(In a better universe,
-people would habitually use the first *two* rows of their spreadsheets for name *and units*,
-but we do not live there.)
+(In a better universe, people would habitually use the first *two* rows of their spreadsheets for name *and units*, but we do not live there.)
 
-We can now look at what `read_csv` has produced.
-<div class="fold s o">
+We can now look at what `read_csv` has produced:
 ```{r show-tibble}
 infant_hiv
 ```
-</div>
 
-This is a tibble,
-which is the tidyverse's enhanced version of R's `data.frame`.
+This is a tibble, which is the tidyverse's enhanced version of R's `data.frame`.
 It organizes data into named columns, each having one value for each row.
 In statistical terms, the columns are the variables being observed and the rows are the actual observations.
 
@@ -198,23 +195,14 @@ Let's have a closer look at that last command's output:
 tail(infant_hiv)
 ```
 
-Note that the row numbers printed by `tail` are [relative](glossary.html#relative-row-number) to the output,
-not [absolute](glossary.html#absolute-row-number) to the table.
-This is different from Pandas,
-which retains the original row numbers.
-
+Note that the row numbers printed by `tail` are relative to the output, not absolute to the table.
 What about overall information?
-
-<!-- ```{python data-info} -->
-<!-- print(infant_hiv.info()) -->
-<!-- ``` -->
 
 ```{r data-summary}
 summary(infant_hiv)
 ```
 
-Your display of R's summary may or may not wrap,
-depending on how large a screen the older acolytes have allowed you.
+Your display of R's summary may or may not wrap, depending on how large a screen the older acolytes have allowed you.
 
 ### How do I index rows and columns?
 
@@ -326,7 +314,14 @@ Many functions in R use `na.rm` to control whether `NA`s are removed or not.
 (Remember, the `.` character is just another part of the name)
 R's default behavior is to leave `NA`s in, and then to include them in aggregate computations.
 
-In R, there's a handy package called `glue`.
+A good use of aggregation is to check the quality of the data.
+For example, we can ask if there are any records where some of the estimate, the low value, or the high value are missing,
+```{r r-check-null}
+any(is.na(infant_hiv$hi) != is.na(infant_hiv$lo))
+```
+
+**Aside:** In R, there's a handy package called `glue`.
+The `glue` package is very useful for "gluing" strings to data in R.
 Let's load it to see how it works:
 
 ```{r r-min-max-std}
@@ -335,12 +330,6 @@ library(glue)
 print(glue("min {min(estimates, na.rm = TRUE)}"))
 print(glue("max {max(estimates, na.rm = TRUE)}"))
 print(glue("sd {sd(estimates, na.rm = TRUE)}"))
-```
-
-A good use of aggregation is to check the quality of the data.
-For example, we can ask if there are any records where some of the estimate, the low value, or the high value are missing,
-```{r r-check-null}
-any(is.na(infant_hiv$hi) != is.na(infant_hiv$lo))
 ```
 
 ### How do I filter data?
@@ -356,7 +345,7 @@ maximal
 ```
 
 It appears that R has kept the unknown values in order to highlight just how little we know.
-More precisely, wherever there was an `NA` in the original data there is an `NA` in the logical vector and hence an `NA` in the final vector.
+More precisely, wherever there was an `NA` in the original data, there is an `NA` in the logical vector and hence, an `NA` in the final vector.
 Let us then turn to `which` to get a vector of indices at which a vector contains `TRUE`.
 This function does not return indices for `FALSE` or `NA`:
 
@@ -426,12 +415,14 @@ and parsing the condition takes a human being at least a few seconds.
 Its pipelined equivalent is:
 
 ```{r filter-complex-pipe}
-infant_hiv %>% filter(estimate != 0.95) %>% filter(lo > 0.5) %>% filter(hi <= (lo + 0.1))
+infant_hiv %>% 
+  filter(estimate != 0.95) %>% 
+  filter(lo > 0.5) %>% 
+  filter(hi <= (lo + 0.1))
 ```
 
 Breaking the condition into stages like this often makes reading and testing much easier, and encourages incremental write-test-extend development.
-Let's increase the band from 10% to 20%,
-break the line the way the tidyverse style guide recommends to make the operations easier to spot, and order by `lo` in descending order:
+Let's increase the band from 10% to 20%, break the line the way the tidyverse style guide recommends to make the operations easier to spot, and order by `lo` in descending order:
 
 ```{r filter-arrange}
 infant_hiv %>%
@@ -441,7 +432,7 @@ infant_hiv %>%
   arrange(desc(lo))
 ```
 
-We can now [select](glossary.html#select) the three columns we care about:
+We can now `select` the three columns we care about:
 
 ```{r filter-arrange-select}
 infant_hiv %>%
@@ -500,39 +491,60 @@ Elegant, right?
 
 ### How do I model my data?
 
-Tidying up data can be as calming and rewarding in the same way as knitting
-or rearranging the specimen jars on the shelves in your dining room-stroke-laboratory.
-Eventually,
-though,
-people want to do some statistics.
+Tidying up data can be as calming and rewarding in the same way as knitting or rearranging the specimen jars on the shelves in your dining room-stroke-laboratory.
+Eventually, though, people want to do some statistics.
 The simplest tool for this in R is `lm`, which stands for "linear model".
-Given a formula and a data set,
-it calculates coefficients to fit that formula to that data:
+Given a formula and a data set, it calculates coefficients to fit that formula to that data:
 
 ```{r simple-formula}
-lm(estimate ~ lo, data = infant_hiv)
+model <- lm(estimate ~ lo, data = infant_hiv)
+model
 ```
 
 This is telling us that `estimate` is more-or-less equal to `0.0421 + 1.0707 * lo`.
-The `~` symbol is used to separate the left and right sides of the equation,
-and as with all things tidyverse,
-lazy evaluation allows us to use variable names directly.
-In fact,
-it lets us write much more complex formulas involving functions of multiple variables.
-For example,
-we can regress `estimate` against the square roots of `lo` and `hi`
-(though there is no sound statistical reason to do so):
+The `~` symbol is used to separate the left and right sides of the equation, and as with all things tidyverse, lazy evaluation allows us to use variable names directly.
 
-```{r complex-formula}
-lm(estimate ~ sqrt(lo) + sqrt(hi), data = infant_hiv)
+Recall another handy R package `broom` that helps us work with the output of `lm` in the tidyverse way:
+
+```{r}
+library(broom)
+tidy(model)
 ```
 
-One important thing to note here is the way that `+` is overloaded in formulas.
+You'll note that the same information is now presented to usin a more familiar form (a tibble).
+The row names have been moved into a column called term, and the column names are consistent and can be accessed using $.
+
+In case you are interested in the fitted values and residuals for each of the original points in the regression. 
+For this, use `augment`:
+
+```{r}
+augment(model)
+```
+
+Note that each of the new columns begins with a '.' to avoid overwriting any of the original columns.
+Finally, several summary statistics are computed for the entire regression, such as R^2 and the F-statistic. 
+These can be accessed with the `glance` function:
+
+```{r}
+glance(model)
+```
+
+
+In fact, it lets us write much more complex formulas involving functions of multiple variables.
+For example, we can regress `estimate` against the square roots of `lo` and `hi` (though there is no sound statistical reason to do so):
+
+```{r complex-formula}
+model2 <- lm(estimate ~ sqrt(lo) + sqrt(hi), data = infant_hiv)
+model2
+```
+
+Let's take amoment to describe how the `+` is overloaded in formulas.
 The formula `estimate ~ lo + hi` does *not* mean "regress `estimate` against the sum of `lo` and `hi`",
 but rather, "regress `estimate` against the two variables `lo` and `hi`":
 
 ```{r double-regression}
-lm(estimate ~ lo + hi, data = infant_hiv)
+model3 <- lm(estimate ~ lo + hi, data = infant_hiv)
+model3
 ```
 
 If we want to regress `estimate` against the average of `lo` and `hi`
@@ -550,12 +562,9 @@ Most of the functions in the tidyverse use this convention so that data can be p
 
 ### How do I create a plot?
 
-Human being always want to see the previously unseen,
-though they are not always glad to have done so.
-The most popular tool for doing this in R is `ggplot2`,
-which implements and extends the patterns for creating charts described in @Wilk2005.
-Every chart it creates has a geometry that controls how data is displayed
-and a mapping that controls how values are represented geometrically.
+Human being always want to see the previously unseen, though they are not always glad to have done so.
+The most popular tool for doing this in R is `ggplot2`, which implements and extends the patterns for creating charts described in @Wilk2005.
+Every chart it creates has a geometry that controls how data is displayed and a mapping that controls how values are represented geometrically.
 For example, these lines of code create a scatter plot showing the relationship between `lo` and `hi` values in the infant HIV data:
 
 ```{r basic-plot}
@@ -581,7 +590,11 @@ infant_hiv %>%
   drop_na() %>%
   ggplot(mapping = aes(x = lo, y = hi, color = estimate)) +
   geom_point(alpha = 0.5) +
-  xlim(0.0, 1.0) + ylim(0.0, 1.0)
+  xlim(0.0, 1.0) + ylim(0.0, 1.0) + 
+  theme_bw() + 
+  labs(x = 'Low estimate',
+       y = 'High estimate',
+       title = '% of infants born to women with HIV ... test themselves w/in two months of birth')
 ```
 
 We set the transparency `alpha` outside the aesthetic because its value is constant for all points.
@@ -600,7 +613,11 @@ infant_hiv %>%
   filter(!((lo < 0.10) & (hi > 0.25))) %>%
   ggplot(mapping = aes(x = lo, y = hi, color = estimate)) +
   geom_point(alpha = 0.5) +
-  xlim(0.0, 1.0) + ylim(0.0, 1.0)
+  xlim(0.0, 1.0) + ylim(0.0, 1.0) + 
+  theme_bw() + 
+  labs(x = 'Low estimate',
+       y = 'High estimate',
+       title = '% of infants born to women with HIV ... test themselves w/in two months of birth')
 ```
 
 We can add the fitted curve by including another geometry called `geom_smooth`:
@@ -613,7 +630,11 @@ infant_hiv %>%
   ggplot(mapping = aes(x = lo, y = hi)) +
   geom_point(mapping = aes(color = estimate), alpha = 0.5) +
   geom_smooth(method = lm, color = 'red') +
-  xlim(0.0, 1.0) + ylim(0.0, 1.0)
+  xlim(0.0, 1.0) + ylim(0.0, 1.0) + 
+  theme_bw() + 
+  labs(x = 'Low estimate',
+       y = 'High estimate',
+       title = '% of infants born to women with HIV ... test themselves w/in two months of birth')
 ```
 
 But wait: why is this complaining about missing values?
@@ -629,7 +650,11 @@ infant_hiv %>%
   ggplot(mapping = aes(x = lo, y = hi)) +
   geom_point(mapping = aes(color = estimate), alpha = 0.5) +
   geom_smooth(method = lm, color = 'red') +
-  coord_cartesian(xlim = c(0.0, 1.0), ylim = c(0.0, 1.0))
+  coord_cartesian(xlim = c(0.0, 1.0), ylim = c(0.0, 1.0)) + 
+  theme_bw() + 
+  labs(x = 'Low estimate',
+       y = 'High estimate',
+       title = '% of infants born to women with HIV ... test themselves w/in two months of birth')
 ```
 
 ### Do I need more practice with the tidyverse?
@@ -658,8 +683,7 @@ path = here::here("data", "person.csv")
 person <- readr::read_csv(path)
 ```
 
-We don't need to write out fully-qualified names—`here` and `read_csv` will do—but
-we will use them to make it easier to see what comes from where.
+We don't need to write out fully-qualified names—`here` and `read_csv` will do—but we will use them to make it easier to see what comes from where.
 
 5. Next, have a look at the tibble `person`, which contains some basic information about a group of foolhardy scientists who ventured into the Antarctic in the 1920s and 1930s in search of things best left undisturbed:
 
