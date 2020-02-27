@@ -42,6 +42,12 @@ library(glue)
     - If you are auditing the course, try to find another who is so you can do this part with someone else
 - Tips and tricks on how to handle merge conflicts.
 
+### Provide links for the various sections of the git activity:
+
+- Link for your fork of the repo: ## YOUR LINK HERE
+- Link to the Pull request you sent (PR): ## YOUR LINK HERE
+- Link to the commit after fixing the merge conflict: ## YOUR LINK HERE
+
 [Happy Git with R](https://happygitwithr.com) is the most relevant for new R users, it was written by Jenny Bryan and others.
 
 For more information on some tips of configuring RStudio to work with git, see [this support article](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5019&mode=desktop).
