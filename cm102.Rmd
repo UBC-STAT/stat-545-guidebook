@@ -137,7 +137,7 @@ For more information on some tips of configuring RStudio to work with git, see [
 
 ## Part 2: Introduction to functional programming (FP) (10 mins)
 
-- Motivation: Hadley Wickham's cupcake recipes
+- [Motivation: Hadley Wickham's cupcake recipes](https://speakerdeck.com/hadley/the-joy-of-functional-programming?slide=13)
 
 ## Part 3: Vectorization
 
