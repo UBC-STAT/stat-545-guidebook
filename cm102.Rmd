@@ -6,7 +6,8 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 
 ```{r,}
 library(tidyverse)
-library(tictoc) # you might need to install this new package: install.packages('tictoc')
+install.packages('tictoc') # you might need to install this new package: install.packages('tictoc')
+library(tictoc) 
 library(datasets)
 library(glue)
 ```
