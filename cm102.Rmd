@@ -42,11 +42,94 @@ library(glue)
     - If you are auditing the course, try to find another who is so you can do this part with someone else
 - Tips and tricks on how to handle merge conflicts.
 
-### Provide links for the various sections of the git activity:
+### Create your project repo and add your partner as admin
 
-- Link for your fork of the repo: ## YOUR LINK HERE
-- Link to the Pull request you sent (PR): ## YOUR LINK HERE
-- Link to the commit after fixing the merge conflict: ## YOUR LINK HERE
+1. Go to the [STAT547 - Spring 2020 organization](https://github.com/STAT547-UBC-2019-20/)
+2. On the right of the page, click the green "New" button
+3. For the repository name, set it to "group_xx_yy" where xx is your group number (from canvas) and yy is an optional name of your repo
+4. Keep this repo private (for now)
+5. Initialize the repo with a README, add a .gitignore file (for R) and a license (MIT is fine).
+6. Once at the home page of your repo, click "Settings", then "Manage Access"
+7. Add your team member, and give them Admin access.
+7. THERE IS NO NEED TO add any of the teaching team to your repo, we will have access as long as it's created inside the STAT547 organization.
+
+### Setup your local directories, and RStudio to work nicely with GitHub
+
+1. Locally on my machine, create a new folder called stat547 in a sensible place: <SENSIBLE_PATH>
+2. Create folders for each of your main areas: `Discussion`, `assignments`, `project`, `participation`
+3. On GitHub.com visit each of these repositories and copy the git repo URL into these spots
+	- `Discussion`: https://github.com/STAT547-UBC-2019-20/Discussions.git
+	- `assignment_01`: ## LINK TO THIS REPO
+	- `participation`: ## LINK TO THIS REPO
+4. Create a new RStudio project for each of the repos above
+	- Open RStudio then click File >> New Project >> Version Control >> Git
+	- In the "Repository URL" field, paste the URL for one of the repos above
+	- In the "Project directory name" field, you should leave this as the name of the repo to avoid confusion
+	- In the "Create project as subdirectory of:" field, use the <SENSIBLE_PATH> from Step 1.
+	- Click "Create Project" 
+	- You should repeat this step (Step 4) for every assignment that you accept in STAT547.
+5. Now you have correctly set up RStudio with Git so you can commit, pull, push, etc... right from RStudio!
+6. At the beginning of every lecture, open the "Discussion" RStudio project. Then click on the "Git" tab, and then pull the latest `cm1xx_participation.Rmd` file directly to your computer. Copy it to your participation repo, commit it, and then push.
+
+### Activity 1: Fork and clone workflow
+
+For your team project, you should be working in a "fork and clone" workflow (unless you consider yourself a git master). 
+More details about this workflow are described [here](https://happygitwithr.com/fork-and-clone.html) in happygitwithr.com
+
+Here is what you need to do:
+
+1. Go to your project repo, called `group_xx_yy`
+2. Click the "fork" button on the repo home page
+3. Make sure you fork the repo within the STAT547 organization
+4. Copy the URL of YOUR fork of the main project repo
+    - Git URL of YOUR fork: ## LINK TO THIS REPO
+5. Also grab the URL of the MAIN PROJECT REPO
+    - Git URL of MAIN PROJECT REPO: ## LINK TO THIS REPO 
+6. Create a new RStudio project and repeat Step 4 from the previous section for YOUR FORK of the main project repo
+7. Now, we need to "link" the main project repoto YOUR FORK so you can send your changes back to the main project repo, and also receive any changes your partner made. To do this:
+    - In RStudio, find the "console"button and click on it
+    - Now you're in a Terminal/Console (yes, *within* RStudio, weird - I know)
+    - Make sure you're in the correct directory (YOUR FORK cloned locally) by typing in `pwd`
+    - Type this command to link the MAIN PROJECT repo to your fork:
+      - `git remote add upstream <MAIN_PROJECT_REPO_URL>`
+      - Done!
+8. To check if it worked, type this in the RStudio console:
+    - `git fetch upstream`
+    - If there are changes it will let you know what they are
+    - Once you're ready to pull the changes into YOUR FORK of the MAIN PROJECT repo, use this command:
+    - `git merge upstream/master`
+    - This will merge all the changes from the upstream URL (<MAIN_PROJECT_REPO_URL>) into your fork
+    - Do this often!
+9. It is best practice to create a new branch in a forked repo so your work isn't committed to master:
+    - `git checkout -b name_of_your_new_branch`
+
+### Activity 2: Send a PR from YOUR FORK back to the MAIN PROJECT
+
+1. Will be demo'd
+
+### Activity 3: "Catching up"
+
+1. Accept a PR from your partner in the MAIN PROJECT repo
+2. Merge those changes into YOUR FORK using `git merge upstream/master`
+    - Deal with any merge conflicts that arise
+3. Send another PR now with even more changes, hopefully if everything was done correctly, the new changes should allow us to easily merge the PR in with the main code.
+
+### (Optional) Activity 4: Class wide
+
+You can do this all on GitHub.com - no need to clone locally.
+
+1. Fork this [git demos](https://github.com/STAT547-UBC-2019-20/git_demos) repo
+2. Create a branch called 'my_change'
+3. Make a change in the `introductions.md` file
+4. Create a PR and send it to the main `git_demos` repo
+5. Let's see if we can get all 30 PRs merged in!
+
+### Final: Provide links for the various sections of the git activity:
+
+- Link for your fork of the project repo: ## YOUR LINK HERE
+- Link to the Pull request (PR) you sent in the main repo: ## YOUR LINK HERE
+- Link to the commit after fixing the merge conflict in the main repo : ## YOUR LINK HERE
+- Link to the commit after you pulled changes from the upstream branch
 
 [Happy Git with R](https://happygitwithr.com) is the most relevant for new R users, it was written by Jenny Bryan and others.
 
