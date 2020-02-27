@@ -88,7 +88,7 @@ Here is what you need to do:
     - Git URL of MAIN PROJECT REPO: ## LINK TO THIS REPO 
 6. Create a new RStudio project and repeat Step 4 from the previous section for YOUR FORK of the main project repo
 7. Now, we need to "link" the main project repoto YOUR FORK so you can send your changes back to the main project repo, and also receive any changes your partner made. To do this:
-    - In RStudio, find the "console"button and click on it
+    - In RStudio, find the "Terminal" button and click on it
     - Now you're in a Terminal/Console (yes, *within* RStudio, weird - I know)
     - Make sure you're in the correct directory (YOUR FORK cloned locally) by typing in `pwd`
     - Type this command to link the MAIN PROJECT repo to your fork:
