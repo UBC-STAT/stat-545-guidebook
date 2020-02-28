@@ -24,16 +24,7 @@ library(glue)
   - Setting up your project repositories
   - Dealing with merge conflicts
   
-- Part 2: Introduction to functional programming (FP) (10 mins)
-  - What is FP?
-  - Why do we need it?
-  - How FP will help you.
-
-- Part 3: Vectorized operations
-  - What does it mean to "vectorize" an operation?
-  - Why do we use vectorization?
-  - Other vectorized operations
-  - FP with the `purrr` package
+- Part 2: More about fork and clone workflow
 
 ## Part 1: Git and GitHub for collaborative work
 
@@ -135,3 +126,267 @@ You can do this all on GitHub.com - no need to clone locally.
 [Happy Git with R](https://happygitwithr.com) is the most relevant for new R users, it was written by Jenny Bryan and others.
 
 For more information on some tips of configuring RStudio to work with git, see [this support article](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5019&mode=desktop).
+
+## Part 2: Fork and clone workflow
+
+This section of the lecture notes have been adapted from [Jenny Bryan's HappyGitWithR](https://happygitwithr.com/fork-and-clone.html)
+
+For the team projects in STAT547, we will be using the "Fork and clone" method to work collaboratively together and send changes back to the main repository (that each partner forked) via Pull Requests.
+In general, use "fork and clone" to get a copy of someone else's repo if there's any chance you will want to propose a change to the owner, i.e. send a "pull request".
+There are several other workflows for working collaboratively, and another popular one is called branch and PR - but that is not what we'll be doing in this course.
+
+### Initial workflow
+
+Sign in to [GitHub](https://github.com) navigate to the repo of interest. 
+Think of this as `OWNER/PROJECT`, where `OWNER` is the user or organization who owns the repository named `PROJECT`.
+
+In the upper right hand corner, click **Fork**.
+For each GitHub account, you can only fork the repo once. 
+Subsequent clicking on the FORK button will tell you that you've already forked this repo.
+
+This creates a copy of `PROJECT` in your GitHub account and takes you there in the browser. 
+Now we are looking at `YOU/PROJECT`.
+One way to tell whether you are in your fork (`YOU/PROJECT`), or the original `OWNER/PROJECT` is to check the name of the repo on the repo home page.
+See below for markers:
+
+<img src="img/git_fork.png" width=900>
+
+Here are the next steps:
+
+  1. Copy the "CLONE URL" of `YOU/PROJECT` (it should look something like https://github.com/YOU/PROJECT.git)
+  2. Open R Studio on your computer
+  3. Create a new "Version Control >> Git" project in the appropriate location
+  4. For the "repository URL" specify the CLONE URL from step 1
+
+We're doing this:
+
+![](img/fork-and-clone.png)
+### Don't mess with `master` {#dont-touch-master}
+
+If you make any commits in your local repository, you should work in a [new branch](https://happygitwithr.com/git-branches.html#git-branches), not `master`.
+
+You shouldn't make (code) commits to `master` of a repo you have forked.
+This will make your life much easier if you want to [pull upstream work](https://happygitwithr.com/upstream-changes.html) into your copy. The `OWNER` of `PROJECT` will also be happier to receive your pull request from a non-`master` branch.
+
+### The original repo as a remote
+
+Remember we are here:
+
+![](img/fork-and-clone.png)
+
+Here is the current situation in words:
+
+  * You have a fork `YOU/PROJECT`, which is a repo on GitHub.
+  * You have a local clone of your fork.
+  * Your fork `YOU/PROJECT` is the remote known as `origin` for your local repo.
+  * You are well positioned to make a pull request to `OWNER/PROJECT`.
+  
+But notice the lack of a direct connection between your local copy of this repo and the original `OWNER/PROJECT`. 
+This is a problem - how will you ever get changes made to the original project?
+
+![](img/fork-no-upstream-sad.png)
+
+As time goes on, the original repository `OWNER/PROJECT` will continue to evolve. 
+You probably want the ability to keep your copy up-to-date. 
+In Git lingo, you will need to get the "upstream changes".
+The next section deals with that.
+
+![](img/fork-triangle-happy.png)
+
+## Part 3: Getting changes from "upstream"
+
+This workflow is relevant if you have done fork and clone and now you need to pull subsequent changes from the original repo into your copy.
+
+You should set this up right away after you fork and clone, even though you don't need it yet. 
+
+Vocabulary: `OWNER/PROJECT` refers to the original GitHub repo, owned by `OWNER`, who is not you. 
+`YOU/PROJECT` refers to your copy on GitHub, i.e. your fork.
+
+### No, you can't do this via GitHub
+
+You might hope that GitHub could automatically keep your fork `YOU/PROJECT` synced up with the original `OWNER/PROJECT`. Or that you could do this in the browser interface. Then you could pull those upstream changes into your local repo.
+
+But you can't.
+
+There are some tantalizing, janky ways to sort of do parts of this. But they have fatal flaws that make them unsustainable. I believe you really do need to add `OWNER/PROJECT` as a second remote on your repo and pull from there.
+
+### Initial conditions
+
+Get into the repo of interest, i.e. your local copy. For many of you, this means launching it as an RStudio Project.
+You'll probably also want to open a terminal within RStudio for some Git work via *Tools > Terminal > New Terminal*.
+
+Make sure you are on the `master` branch and your "working tree is clean". `git status` should show something like:
+
+``` bash
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+```
+
+BTW I recommend that you never make your own commits to the `master` branch of a fork. 
+However, if you have already done so, your situation is addressed [here in section 29.8](https://happygitwithr.com/upstream-changes.html#touched-master).
+
+### List your remotes
+
+Let's inspect [the current remotes](#git-remotes) for your local repo. In the shell (Appendix \@ref(shell)):
+
+``` bash
+git remote -v
+```
+
+Most of you will see output along these lines (let's call this BEFORE):
+
+``` bash
+origin  https://github.com/YOU/PROJECT.git (fetch)
+origin  https://github.com/YOU/PROJECT.git (push)
+```
+
+There is only one remote, named `origin`, corresponding to your fork on GitHub. This figure depicts a BEFORE scenario:
+
+![](img/fork-no-upstream-sad.png)
+
+This is sad, because there is no direct connection between `OWNER/PROJECT` and your local copy of the repo.
+
+The state we want to see is like this (let's call this AFTER):
+
+``` bash
+origin    https://github.com/YOU/PROJECT.git (fetch)
+origin    https://github.com/YOU/PROJET.git (push)
+upstream  https://github.com/OWNER/PROJECT.git (fetch)
+upstream  https://github.com/OWNER/PROJECT.git (push)
+```
+
+Notice the second remote, named `upstream`, corresponding to the original repo on GitHub. This figure depicts AFTER, the scenario we want to achieve:
+
+![](img/fork-triangle-happy.png)
+
+### Add the `upstream` remote
+
+Let us add `OWNER/PROJECT` as the `upstream` remote.
+
+On [GitHub](https://github.com), make sure you are signed in and navigate to the original repo, `OWNER/PROJECT`. 
+It is easy to get to from your fork, `YOU/PROJECT`, via "forked from" links near the top.
+
+Use the big green "Clone or download" button to get the URL for `OWNER/PROJECT` on your clipboard. 
+Be intentional about whether you copy the HTTPS or SSH URL.
+
+#### Command line Git
+
+Use a command like this, but make an intentional choice about using an HTTPS vs SSH URL.
+
+``` bash
+git remote add upstream https://github.com/OWNER/REPO.git
+```
+
+The nickname `upstream` can technically be whatever you want but there is a strong convention/tradition of using `upstream` 
+
+#### RStudio
+
+This feels a bit odd, but humor me. Click on "New Branch" in the Git pane.
+
+![](img/rstudio-new-branch.png)]
+
+This will reveal a button to "Add Remote". Click it. Enter `upstream` as the remote name and paste the URL for `OWNER/PROJECT` that you got from GitHub. Click "Add". Decline the opportunity to add a new branch by clicking "Cancel".
+
+### Verify your `upstream` remote
+
+Let's inspect the [current remotes](https://happygitwithr.com/git-remotes.html#git-remotes) for your local repo AGAIN. In the shell:
+
+``` bash
+git remote -v
+```
+
+Now you should see something like
+
+``` bash
+origin    https://github.com/YOU/PROJECT.git (fetch)
+origin    https://github.com/YOU/PROJECT.git (push)
+upstream  https://github.com/OWNER/REPO.git (fetch)
+upstream  https://github.com/OWNER/REPO.git (push)
+```
+
+Notice the second remote, named `upstream`, corresponding to the original repo on GitHub. 
+We have gotten to this:
+
+![](img/fork-triangle-happy.png)
+
+### Pull changes from `upstream`
+
+Before we pull changes down, let's first do a quick peek to see what WOULD happen if we pulled upstream changes.
+
+``` bash
+git fetch upstream
+```
+
+Okay, now that we're satisfied there are some changes, let's pull the changes that we don't have from `OWNER/PROJECT` into our local copy.
+
+``` bash
+git pull upstream master
+```
+
+This says: "pull the changes from the remote known as `upstream` into the `master` branch of my local repo". 
+We are being explicit about the remote and the branch in this case, because (as our `git remote -v` commands reveal), `upstream/master` is **not** the default tracking branch for local `master`.
+
+See [Um, what if I did touch `master`?](https://happygitwithr.com/upstream-changes.html#touched-master) to get yourself back on the happy path.
+
+### Push these changes to `origin/master`
+
+Feel free to push the newly updated state of local `master` to your fork `YOU/PROJECT` and enjoy the satisfaction of being "caught up" with `OWNER/PROJECT`.
+
+In the shell:
+
+``` bash
+git push
+```
+
+Or use the green "Push" button in RStudio.
+
+### Um, what if I did touch `master`? {#touched-master}
+
+I told you not to!
+
+But OK here we are.
+
+Let's imagine this is the state of the original repo `OWNER/PROJECT`:
+
+``` bash
+... -- A -- B -- C -- D -- E -- F
+```
+
+and and this is the state of the `master` branch in your local copy:
+
+``` bash
+... -- A -- B -- C -- X -- Y -- Z
+```
+
+The two histories agree, up to commit or state `C`, then they diverge.
+
+If you want to preserve the work in commits `X`, `Y`, and `Z`, create a new branch right now, with tip at `Z`, via `git checkout -b my-great-innovations` (pick your own branch name!). Then checkout `master` via `git checkout master`.
+
+I now assume you have either preserved the work in `X`, `Y`, and `Z` (with a branch) or have decided to let it go.
+
+Do a hard reset of the `master` branch to `C`.
+
+``` bash
+git reset --hard C
+```
+
+You will have to figure out how to convey `C` in Git-speak. Specify it relative to `HEAD` or provide the SHA. See *future link about resets* for more support.
+
+The instructions above for pulling changes from upstream should now work. Your `master` branch should reflect the history of `OWNER/PROJECT`:
+
+``` bash
+... -- A -- B -- C -- D -- E -- F
+```
+
+If you chose to create a branch with your work, you will also have that locally:
+
+
+``` bash
+... -- A -- B -- C -- D -- E -- F (master)
+                   \
+                    -- X -- Y -- Z (my-great-innovations)
+```
+
+If you pushed your alternative history (with commits `X`, `Y`, and `Z`) to your fork `YOU/PROJECT` and you like keeping everything synced up, you will also need to force push `master` via `git push --force`, but we really really don't like discussing force pushes in Happy Git. We only do so here, because we are talking about a fork, which is fairly easy to replace if things so sideways.
