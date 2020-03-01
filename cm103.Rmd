@@ -6,6 +6,8 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 
 ```{r}
 library(tidyverse)
+library(glue)
+library(tictoc)
 ```
 
 ## Today's Agenda
@@ -29,6 +31,16 @@ library(tidyverse)
   -
   - 
   - 
+  
+  
+## Learning outcomes for this lecture
+
+1. Define the philosophy of functional programming in R.
+1. Describe the benefits of vectorizing R code.
+1. Apply vectorization to tasks in R. 
+1. List and describe the `map` functions from the `purrr` package.
+1. Apply functions from the `purrr` package to vectorize tasks in R.
+1. Describe anonymous functions, apply them, and use the shorthand notation in `purrr` functions.
 
 ## Part 1: Introduction to functional programming (FP) (10 mins)
 
