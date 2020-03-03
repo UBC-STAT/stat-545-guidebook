@@ -67,6 +67,9 @@ func_name(4)
 
 ### Rscript vs. RMarkdown vs. RNotebook
 
+[This site](http://uc-r.github.io/r_notebook) has some nice visuals that show you differences between an Rmarkdown document and an RNotebook.
+Rscripts are not interactive and designed to be run from the command line.
+
 ## Part 2: Vectorization
 
 Many thanks to one of our teaching assistants [Sirine Chahma](https://github.com/sirine-chahma) for the first draft of this lecture!
