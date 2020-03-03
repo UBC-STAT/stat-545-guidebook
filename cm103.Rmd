@@ -14,24 +14,26 @@ library(tictoc)
 
 - Announcements:
   - Reminder about Assignment 1
-  - 
-  - 
+  - Milestone 2 is now posted
+  - Office hours are on Tuesday & Thursday after class in this room, and on Fridays from 10-12 in ESB 1045.
+    - See [here for the schedule](https://stat545.stat.ubc.ca/officehours/)
 
 - Part 1: Introduction to functional programming (FP) (10 mins) 
-  - 
-  - 
-  - Notes on RScript vs. RMarkdown vs. RNotebook
+  - Motivation for functions and for vectorizing operations
+  - Anatomy of a function in R
+  - Comments on RScript vs. RMarkdown vs. RNotebook
   
 - Part 2: Vectorization
-  - 
-  - 
-  - 
+  - What is vectorization?
+  - Why do we use vectorization?
+  - Examples of vectorized operations in R
 
-- Part 3: 
-  -
-  - 
-  - 
-  
+- Part 3: Functional programming using the `purrr` package
+  - `purrr::map`
+  - Use the right `purrr::map*` function based on your desired output
+  - Specify some arguments of the function
+  - Mapping with two data objects
+  - Mapping with more than two data objects
   
 ## Learning outcomes for this lecture
 
@@ -44,7 +46,25 @@ library(tictoc)
 
 ## Part 1: Introduction to functional programming (FP) (10 mins)
 
-- [Motivation: Hadley Wickham's cupcake recipes](https://speakerdeck.com/hadley/the-joy-of-functional-programming?slide=13)  
+### Motivation for functions and for vectorizing operations
+  - [Hadley Wickham's cupcake recipes](https://speakerdeck.com/hadley/the-joy-of-functional-programming?slide=13)  
+  
+### Anatomy of a function in R
+
+![](img/anatomy_of_function.png)
+
+```{r}
+func_name <- function (arg1, arg2 = 5, arg3 = TRUE) {
+  
+  if (arg3 == TRUE) {
+    print(glue::glue(arg1," will be raised to the power of ", arg2))
+  }
+  arg1^arg2
+}
+func_name(4)
+```
+
+### Rscript vs. RMarkdown vs. RNotebook
 
 ## Part 2: Vectorization
 
@@ -204,7 +224,7 @@ toc()
 Wow! That is amazing - see how much faster the vectorized operation is compared to the `for` loop.
 It's usually recommended to use vectorized operation rather than regular loops for several reasons, including memory efficiency, speed, readability, "debugability", and easily being able to add tests (more on this next week).
 
-### Other vectorized operations
+### Examples of vectorized operations
 
 Here are a few examples of other operations that are vectorized.
 
@@ -257,7 +277,7 @@ y
 There are a lot of other operations that are vectorized! 
 Here is a list of vector operators : [R Operators cheat sheet](https://cran.r-project.org/doc/contrib/Baggott-refcard-v2.pdf)
 
-### Functional programming using the `purrr` package
+## Part 3: Functional programming using the `purrr` package
 
 Until now, we have just applied simple operations to vectors. 
 The functions were only applied to a single element of the vector, which were doubles. 
@@ -481,7 +501,7 @@ This could have some nasty side-effects, but is also quite useful!
 <img src="https://d33wubrfki0l68.cloudfront.net/55032525ec77409e381dcd200a47e1787e65b964/dcaef/diagrams/functionals/map2-recycle.png" width=400>
 Source: [Advanced R](https://adv-r.hadley.nz/index.html) by Hadley Wickham.
 
-### Mapping with more than two data object
+### Mapping with more than two data objects
 
 When we have more than two arguments, we should use the `purrr:pmap*` function.
 
@@ -521,4 +541,3 @@ pmap(iris_df, ~ mean(.x)) %>%
 1. Chapter 21 of [R for Data Science](https://r4ds.had.co.nz/iteration.html).
 2. [Learn to purr](http://www.rebeccabarter.com/blog/2019-08-19_purrr/) blog post.
 3. Chapter 9 of [Advanced R for Data Science](https://adv-r.hadley.nz/functionals.html).
-
