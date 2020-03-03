@@ -13,10 +13,11 @@ library(tictoc)
 ## Today's Agenda
 
 - Announcements:
-  - Reminder about Assignment 1
+  - Reminder about Assignment 1 and 2
   - Milestone 2 is now posted
   - Office hours are on Tuesday & Thursday after class in this room, and on Fridays from 10-12 in ESB 1045.
     - See [here for the schedule](https://stat545.stat.ubc.ca/officehours/)
+  - [Download today's participation file](https://github.com/STAT547-UBC-2019-20/Discussions/blob/master/participation/cm103/cm103_participation.Rmd) (and commit into your participation repo)
 
 - Part 1: Introduction to functional programming (FP) (10 mins) 
   - Motivation for functions and for vectorizing operations
