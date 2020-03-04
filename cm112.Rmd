@@ -35,19 +35,3 @@ Part 3:
 ## Part 2: 
 
 ## Part 3: 
-
-
-| Class | Date    | Topic           | Assignment            | Project Milestone |
-|----|------------|-----------------|-----------------------|-------------------|
-| 01 | feb-25 tues    | Review of STAT 545 | | |
-| 02 | feb-27 thurs   | Functional programming in R: Part I |  convert 3 for-loops into functions, convert 3 functions into for-loops | Choose dataset, proposal, research question, simple EDA in an Rmd file |
-| 03 | mar-03 tues    | Functional programming in R: Part II | | |
-| 04 | mar-05 thurs   | Automate tasks and pipelines: Part I | Write tests for 3 functions from last week. Use `testthat` to check if things work write tests for 3 functions | write scripts with functions to load, clean/process, wrangle data and do EDA |
-| 05 | mar-10 tues    | Automate tasks and pipelines: Part II | | |
-| 06 | mar-12 thurs   | Parameterized reports and GitHub Actions  | Peer review Assignment: Run analysis pipelines from two other groups | Add a script to do a linear regression, add tests to functions, finalize report |
-| 07 | mar-17 tues    | DashR: Part I | | |
-| 08 | mar-19 thurs   | DashR: Part II | Add two components (with callbacks) to an existing dashboard | Sketch of your project dashboard |
-| 09 | mar-24 tues    | DashR: styling dashboards | | |
-| 10 | mar-26 thurs   | DashR: Deployment| Deploy dashboard and  | First draft of Dashboard|
-| 11 | mar-31 tues    | Creating Packages in R | | |
-| 12 | apr-02 thurs   | TBD | Create a package in R | Final version of deployed dashboard |
