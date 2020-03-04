@@ -62,10 +62,13 @@ func_name <- function (arg1, arg2 = 5, arg3 = TRUE) {
   }
   arg1^arg2
 }
-func_name(4)
+func_name(arg1 = 4, arg2 = 3, arg3 = FALSE)
+
+func_name()
+
 ```
 
-### Rscript vs. RMarkdown vs. RNotebook
+### Rscript (.R) vs. RMarkdown (.Rmd) vs. RNotebook (Rmd + special YAML Header)
 
 [This site](http://uc-r.github.io/r_notebook) has some nice visuals that show you differences between an Rmarkdown document and an RNotebook.
 Rscripts are not interactive and designed to be run from the command line.
@@ -87,7 +90,9 @@ y <- c()
 y[1] = x[1]*2
 y[2] = x[2]*2
 y[3] = x[3]*2
-y[3] = x[4]*2
+y[4] = x[4]*2
+
+y
 ```
 
 But it's very easy to make mistakes when you're copy/pasting code like this so it's a good rule of thumb to think of better ways to do things when you have to copy and paste the same block of code more than about once.
@@ -100,7 +105,7 @@ y <- c()
 
 y[1] = x[1]*2
 y[2] = x[2]*2
-y[3] = x[2]*2
+y[3] = x[3]*2
 y[4] = x[4]*2
 
 y
@@ -112,6 +117,10 @@ Find and fix the mistake in the code above please!
 Okay, let's get to the better way of doing things.
 
 You can use a loop : 
+
+```{r}
+1:length(x)
+```
 
 ```{r, loop_multiplication}
 x <- c(1, 2, 3, 4)
@@ -242,7 +251,7 @@ x2 <- c(1, 2, 1, 2)
 y <- x1 == x2
 
 # Can you guess the values of `y`?
-print("YOUR GUESS HERE")
+print(c(TRUE, TRUE, FALSE, FALSE))
 ```
 
 And the answer is (run in RStudio):
@@ -535,13 +544,25 @@ pmap(iris_df, ~ mean(.x)) %>%
 
 ### Summary and key points
 
-- Let's fill these out together in class!
--
-- 
-- 
-- 
+- Cupcakes (vanilla and chocolate and espresso) as motivation for writing functions in R
+- The anatomy of an R function
+- Vectorize - Which R functions are vectorized? What vectorization means.
+- The benefits of vectorization (100M size vector takes 32s in a for loop, and <1 s in a vectorized function)
+- Use the `purrr` package to "map" over dataframes, vectors, etc...
+- There were more than 1 map_* ; choose the one that's appropriate for your use case
+- map2 and pmap! - as well as how to write anonymous functions in R
+
 ### Additional Resources
 
 1. Chapter 21 of [R for Data Science](https://r4ds.had.co.nz/iteration.html).
 2. [Learn to purr](http://www.rebeccabarter.com/blog/2019-08-19_purrr/) blog post.
 3. Chapter 9 of [Advanced R for Data Science](https://adv-r.hadley.nz/functionals.html).
+
+
+
+
+
+
+
+
+
