@@ -17,6 +17,7 @@ library(testthat) # you will need to install this using install.packages('testth
 ## Today's Agenda
 
 - Announcements:
+
   - If you need Git help, please come to our [office hours](https://stat545.stat.ubc.ca/officehours/)! This is a crucial concept and it's worth getting it right!
   - Your project repos should be *public*, assignment and participation repos are *private*
     - Apologies if I mis-spoke and for any confusion. See [GitHub issue](https://github.com/STAT547-UBC-2019-20/Discussions/issues/17) for more
@@ -51,6 +52,7 @@ library(testthat) # you will need to install this using install.packages('testth
 This section has been adapted from Tiffany Timbers' DSCI 522 lectures found [here](https://github.com/UBC-MDS/DSCI_522_dsci-workflows/blob/master/lectures/02_lecture-intro-to-scripts.ipynb).
 
 ### "REPL" vs. non-interactive scripts
+
 So far in STAT 545 and 547M, we have only been working on Rmd files and interactively working with code.
 We run and re-run specific code chunks, add bits of code, and re-run it to get updated results. 
 Of course, this works - but is it reproducible ?
@@ -59,10 +61,12 @@ Usually not.
 The above style of working actually has a name: REPL, or Read-Evaluate-Print-Loop.
 Despite the fact that it's usually not easily reproducible, it is actually VERY useful!
 It's good for:
+
   - solving smaller problems in projects limited in scope
   - explore and play around with unfamiliar and unknown datasets
   - developing code that will eventually make its way into a script or turned into a function
   - developing code that you will only use once
+  
 It is rare that data scientists would go directly towards creating scripts and functions without first developing them in a REPL environment. 
 
 At this point, you may be wondering what scripts *are* and *why* we should write them?.
@@ -70,6 +74,7 @@ Well, an R script is just a text file that contains R code that is run in a sequ
 Scripts are generally run from the Terminal, but can also be run from IDEs (interactive developer environment; RStudio is an IDE) and even the Rconsole using `source(script_name.R)`.
 
 As for why:
+
   - Scripts are generally more time efficient (especially for long term usage)
   - You can combine multiple scripts to create an analysis pipeline (next week!)
   - Scripts can be reused and adapted for different purposes; additional functionality can be added to scripts without removing the ability of it working for previous analyses
@@ -80,6 +85,7 @@ Alright now that we know how REPL, or interactive scripts differ from non-intera
 ### Converting interactive R code to a scripted, non-interactive version
 
 Let's just do a quick sanity check to make sure our script can run. 
+
 - Step 1: In the cm104 directory, create a new blank .R script and save it as `first_script.R`
   - In RStudio, File > New File > R Script.
 - Step 2: Write the following R code inside `first_script.R`:
@@ -99,6 +105,7 @@ Rscript cm104/first_script.R
 Okay, let's do something slightly more interesting: a quick demo using an interactive script that we're going to write together.
 
 #### Your Task 1: 
+
   - Start with the `mtcars` dataset
   - Use `dplyr::mutate` to create a new column for the fuel efficiency in L/100km rather than mpg
   - Create a plot of Horse power vs. fuel efficiency
@@ -197,6 +204,7 @@ add <- function(x, y) {
 }
 ```
 #### Your Task 3: Create a script and conform to the suggested structure
+
 Let's edit our script from the previous section (`first_script.R`) to conform to this structure. 
 When you're done, paste in the contents of your script here:
 
