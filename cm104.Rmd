@@ -441,6 +441,11 @@ Now that the arguments have names, if we had multiple arguments, the order doesn
 - Use parantheses `( )` for required arguments
 - Complex arguments can be set up using the `|` (pipe) indicating "OR" as well as `...` to indicate repeating elements
 
+## Quarter pole course check-in
+
+Now that we're roughly a quarter way through the course, I thought I'd check in to see how things are going. 
+
+Please fill out this very quick Stop-Start-Continue [here](https://firasmoosvi.typeform.com/to/KvvsII) so that I know what's going well, what needs to be improved, and what requires immediate intervention.
 
 ## Part 3: Writing tests for your functions
 
