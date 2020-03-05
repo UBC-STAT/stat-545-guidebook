@@ -531,7 +531,7 @@ tryCatch(
 ### What should I know about testing in general?
 
 In keeping with common programming practice, we have left testing until the last possible moment.
-The standard testing library for R is [testthat][testthat] and this is how tests are handled in R:
+The standard testing library for R is `testthat` and this is how tests are handled in R:
 
 1.  Each test consists of a single function that tests a single property or behavior of the system.
 2.  Tests are collected into files with prescribed names that can be found by a test runner (code that is automatically run once after each unit test).
