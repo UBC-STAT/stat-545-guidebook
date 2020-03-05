@@ -149,15 +149,297 @@ mtcars %>%
        y = 'Horse power (hp)',
        title = "Fuel efficiency by horse power") +
   ggsave('test_plot.png', width = 8, height = 5)
-
 ```
 
-Great! Looks like things are working!
+Great! 
+Looks like things are working!
+Let's organize our script in a slightly more useful way.
+
+### Structure of scripts
+
+It is very good practice to organize the code in your script into a main function and other functions. 
+This practice keeps your code readable and organized, this has some additional benefits we will discuss later.
+Here is a suggested script organization:
+
+```
+# documentation for how to use scripts and comments
+
+# Load libraries and packages
+
+# parse/define command line arguments here
+
+# define main function
+main <- function(){
+    # code for "guts" of script goes here
+}
+
+# Code for other functions & tests
+
+# call main function
+main()
+```
+
+For documentation, it is suggested to use `roxygen2` [style](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html).
+Here is an example of this style:
+
+```
+#' Add together two numbers
+#'
+#' @param x A number
+#' @param y A number
+#' @return The sum of \code{x} and \code{y}
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+  x + y
+}
+```
+#### Your Task 3: Create a script and conform to the suggested structure
+Let's edit our script from the previous section (`first_script.R`) to conform to this structure. 
+When you're done, paste in the contents of your script here:
+
+```
+## YOUR SOLUTION HERE (contents of first_script.R)
+
+# author: Firas Moosvi
+# date: 2020-03-05
+
+"This script adds a new column to the `mtcars` dataset converting fuel efficiency from miles per gallon to Litres per 100km. This script takes the gallon_type as the variable argument.
+
+Usage: first_script.R <gallon_type>
+"
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(glue)
+
+main <- function(gallon_type){
+  
+  mtcars %>%
+    fuel_conversion(gallon_type = 'Imperial') %>%
+    ggplot(aes(x = lkm, y = hp)) + geom_point() +
+    theme_bw(16) + # Set font size like this
+    labs(x = 'Fuel efficiency (L/100 km)',
+         y = 'Horse power (hp)',
+         title = "Fuel efficiency by horse power") +
+    ggsave('test_plot.png', width = 8, height = 5)
+    
+    print(glue("The gallon_type is ", gallon_type))
+}
+
+#' calculate fuel efficiency in L/100km
+#' 
+#' @param df is an input of the mtcars dataframe
+#' @param gallon_type is a string either `USA` or `Imperial`
+#' @examples
+#' fuel_conversion('USA')
+fuel_conversion <- function (df, gallon_type = 'USA') { 
+  
+  if (gallon_type == 'USA') {
+    conv = 235.2145
+  } else {
+    conv = 282.48
+  }
+  df %>% mutate(lkm = conv / mpg)
+  }
+  
+### tests
+
+main()
+```
+### Summary and key points of scripts
+
+- ## YOUR NOTES HERE
+- 
+- 
+
 What if we wanted to specify the arguments of assignment to the imperial definition of gallon rather than the US one?
 For that, we need to look at command line arguments!
 
 ## Part 2: Command-line arguments and docopt (30 mins)
 
+This section has been adapted from Tiffany Timbers' DSCI 522 lectures found [here](https://github.com/UBC-MDS/DSCI_522_dsci-workflows/blob/master/lectures/02_lecture-intro-to-scripts.ipynb). 
+
+### Introduction to docopt
+
+We will be following the documentation for docopt [here](https://docopt.org).
+
+Key points:
+
+- Arguments for your script can be specified by "position" or as "options"
+- Options is almost always better as it allows your code and scripts to be more readable
+- To allow your non-mandatory arguments use `[ ]`
+- Use parantheses `( )` for required arguments
+- Complex arguments can be set up using the `|` (pipe) indicating "OR" as well as `...` to indicate repeating elements
+
+### Adding command line arguments in R
+
+Let's make our script more flexible, and specify when we call the script, whether the `gallon_type` is `US` or `Imperial` variable.
+
+To do this, we use the `docopt` R package. This will allow us to collect the text we enter at the command line when we call the script, and make it available to us when we run the script. 
+
+When we run `docopt` it takes the text we entered at the command line and gives it to us as a named list of the text provided after the script name.
+The names of the items in the list come from the documentation.
+Whitespace at the command line is what is used to parse the text into separate items in the vector.
+
+```
+# author: Firas Moosvi
+# date: 2020-03-05
+
+"This script adds a new column to the `mtcars` dataset converting fuel efficiency from miles per gallon to Litres per 100km. This script takes the gallon_type as the variable argument.
+
+Usage: first_script.R <gallon_type>
+" -> doc # THIS IS NEW
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(docopt)  # THIS IS NEW
+library(glue)
+
+# THIS IS NEW
+opt <- docopt(doc) # This is where the "Usage" gets converted into code that allows you to use commandline arguments
+
+main <- function(gallon_type){
+  
+  mtcars %>%
+    fuel_conversion(gallon_type = 'Imperial') %>%
+    ggplot(aes(x = lkm, y = hp)) + geom_point() +
+    theme_bw(16) + # Set font size like this
+    labs(x = 'Fuel efficiency (L/100 km)',
+         y = 'Horse power (hp)',
+         title = "Fuel efficiency by horse power") +
+    ggsave('test_plot.png', width = 8, height = 5)
+    
+    print(glue("The gallon_type is ", gallon_type))
+}
+
+#' calculate fuel efficiency in L/100km
+#' 
+#' @param df is an input of the mtcars dataframe
+#' @param gallon_type is a string either `USA` or `Imperial`
+#' @examples
+#' fuel_conversion('USA')
+fuel_conversion <- function (df, gallon_type = 'USA') { 
+  
+  if (gallon_type == 'USA') {
+    conv = 235.2145
+  } else {
+    conv = 282.48
+  }
+  df %>% mutate(lkm = conv / mpg)
+  }
+  
+### tests
+
+main(opt$gallon_type)  # THIS IS NEW
+```
+
+To run this script from the commandline, we would open a Terminal, navigate to the directory containing the script, and run:
+
+```
+Rscript first_script.R 'Imperial'
+```
+
+And that's it! 
+You've just written your first R script with command line options! 
+This is a big deal!
+The power you now wield is enormous!
+![](https://vignette.wikia.nocookie.net/dragonball/images/5/53/Goku_DBZ_Ep_93_007.png/revision/latest?cb=20171021004959)
+
+Image obtained from Dragonball fandom [here](https://dragonball.fandom.com/wiki/Spirit_Bomb?file=Goku_DBZ_Ep_93_007.png).
+Original copyright belongs to Dragon Ball Z © 2003 Bird Studio / Shueisha, Toei Animation. Licensed by FUNimation® Productions, Ltd. All Rights Reserved. Dragon Ball Z and all logos, character names and distinctive likenesses thereof are trademarks of TOEI ANIMATION.
+
+### Positional vs. option arguments
+
+In the examples above, we used `docopt` to specify a positional argument (gallon_type).
+This means that the order matters! 
+If we added another argument the same way we added `gallon_type`, the order that we specify the arguments will matter.
+Our script will likely throw an error because it will try to perform the wrong operations using the wrong arguments. 
+
+Another downside to positional arguments, is that without good documentation, they can be less readable. 
+And certainly the call to the script to is less readable. 
+We should instead give the arguments names using `--ARGUMENT_NAME` syntax. 
+We call these "options". 
+Below is the same script but specified using options rather than to positional arguments:
+
+```
+# author: Firas Moosvi
+# date: 2020-03-05
+
+"This script adds a new column to the `mtcars` dataset converting fuel efficiency from miles per gallon to Litres per 100km. This script takes the gallon_type as the variable argument.
+
+Usage: first_script.R --gallon_type=<gallon_type>
+" -> doc
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(docopt)
+library(glue)
+
+opt <- docopt(doc) # This is where the "Usage" gets converted into code that allows you to use commandline arguments
+
+main <- function(gallon_type){
+  
+  mtcars %>%
+    fuel_conversion(gallon_type = 'Imperial') %>%
+    ggplot(aes(x = lkm, y = hp)) + geom_point() +
+    theme_bw(16) + # Set font size like this
+    labs(x = 'Fuel efficiency (L/100 km)',
+         y = 'Horse power (hp)',
+         title = "Fuel efficiency by horse power") +
+    ggsave('test_plot.png', width = 8, height = 5)
+    
+    print(glue("The gallon_type is ", gallon_type))
+}
+
+#' calculate fuel efficiency in L/100km
+#' 
+#' @param df is an input of the mtcars dataframe
+#' @param gallon_type is a string either `USA` or `Imperial`
+#' @examples
+#' fuel_conversion('USA')
+fuel_conversion <- function (df, gallon_type = 'USA') { 
+  
+  if (gallon_type == 'USA') {
+    conv = 235.2145
+  } else {
+    conv = 282.48
+  }
+  df %>% mutate(lkm = conv / mpg)
+  }
+  
+### tests
+
+main(opt$gallon_type)
+```
+
+Now we would call the script like this:
+
+```
+Rscript first_script.R --gallon_type='Imperial'
+```
+
+Now that the arguments have names, if we had multiple arguments, the order doesn't matter anymore!
+
+#### Your Task 4: Update the script above and add a second required argument and print it out using glue.
+
+```
+## YOUR SOLUTION HERE (contents of first_script.R)
+```
+
+### Summary and key points of options
+
+- `docopt` is a REALLY useful R package that allows us to easily add arguments and options to our scripts
+- You should always have named arguments, or options for scripts; makes your scripts much more readable
+- Arguments for your script can be specified by "position" or as "options"
+- Options is almost always better as it allows your code and scripts to be more readable
+- To allow your non-mandatory arguments use `[ ]`
+- Use parantheses `( )` for required arguments
+- Complex arguments can be set up using the `|` (pipe) indicating "OR" as well as `...` to indicate repeating elements
 
 
 ## Part 3: Writing tests for your functions
@@ -442,7 +724,7 @@ Some useful functions are:
 
 The [next two sub-sections](http://tidynomicon.tech/testerror.html#how-should-i-organize-my-tests) of the tidynomicon chapter on testing are likely beyond the scope of STAT547, but I highly encourage you to go through on your own time when you're about to embark on a project for your research!
 
-### Key Points of testing
+### Summary and key points of testing
 
 - The three built-in levels of conditions are messages, warnings, and errors.
 - Programs/scripts can signal these themselves using the functions `message`, `warning`, and `stop`.
