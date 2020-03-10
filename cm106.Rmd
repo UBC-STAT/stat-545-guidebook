@@ -20,18 +20,19 @@ library(tidyverse)
   - RMarkdown templated reports
   - RMarkdown analyses
   
-- Part 2: YAML Headers and code chunks (15 mins)
+- Part 2: Output options in RMarkdown (20 mins)
   - Review of YAML headers
-  - Global options
-  - Code chunk options (`include`, `echo`, `message`, `warning`)
+  - Table of contents & navigating between headings and images
   - Output options (html, md, pdf, word, github )
   
-- Part 3: Parameterized reporting (20 mins)
+- Break
+
+- Part 3: Parameterized Reporting (30 mins)
+  - Global options
+  - Code chunk options (`include`, `echo`, `message`, `warning`)
   - How to use R variables in-line with text
-  - Setting parameters in YAML
-  - Setting parameters in a script before knitting
-  
-- Part 4: References and citations in RMarkdown (15 mins)
+
+- Part 4: Citations in RMarkdown (Optional, if there's time; 10 mins)
   - Bibtex and RMarkdown
   - Citing scientific papers
   - Citing packages
