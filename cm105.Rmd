@@ -106,6 +106,47 @@ can say that those scripts implement a data analysis pipeline.
 
 ## Part 3: Building a data analysis pipeling using MAKE
 
+### Test to ensure you have make installed
+
+- Open a new Terminal window
+- Type in `make` and press enter
+- If you have make installed, it should show something like: `make: *** No targets specified and no makefile found.  Stop.`
+- If you do not have it installed, it will say something like "Command not found"
+
+**Notes for Windows Users**
+
+- If you do not have MAKE installed (should not be a problem on Windows or macOS), DO NOT spend class time trying to install it, it's better you try to work through the class and understand how it works. 
+We can try and help you during office hours to get it installed.
+
+These instructions do not apply to Mac or Linux machines!
+
+1. Go to the [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) web site.
+1. [Download](http://gnuwin32.sourceforge.net/downlinks/make.php) the Setup program.
+1. Install the file you just downloaded and copy to your clipboard the directory in which it is being installed.
+1. FYI: The default directory is C:\Program Files (x86)\GnuWin32\
+1. You now have make installed, but you need to tell Windows where to find the program. 1. This is called updating your PATH. You will want to update the PATH to include the bin directory of the newly installed program.
+
+Here is how to update your path:
+
+If you installed Make for Windows (as opposed to the make that comes with Git for Windows), you still need to update your PATH.
+
+These are the steps on Windows 7 (we don’t have such a write-up yet for Windows 8 – feel free to send one!):
+
+- Click on the Windows logo.
+- Right click on Computer.
+- Select Properties.
+- Select Advanced System Settings.
+- Select Environment variables.
+- Select the line that has the PATH variable. You may have to scroll down to find it.
+- Select Edit.
+- Go to the end of the line and add a semicolon ;, followed by the path where the program was installed, followed by \bin.
+- Typical example of what one might add: ;C:\Program Files (x86)\GnuWin32\bin
+- Click Okay and close all the windows that you opened.
+- Quit RStudio and open it again.
+- You should now be able to use make from RStudio and the command line.
+
+### Introduction to MAKE
+
 GNU `Make` is a tool that controls the execution of files. 
 In order to explain to `Make` how to run our data analysis pipeline, we need the create a new file called *Makefile* (no file extension).
 
@@ -338,3 +379,8 @@ Now, you just have to run `make all` on your Terminal, and it will run the whole
 And if you want to clear all the outputs of your different scripts, you just have to run `make clear`.
 
 This is it! Now you know how to build an efficient data analysis pipeline from beginning to end! 
+
+## Additional Resources
+
+- [Automating Pipelines](https://stat545.com/automating-pipeline.html) chapter by Jenny Bryan on stat545.com; [associated slides](https://github.com/STAT545-UBC/STAT545-UBC-original-website/blob/master/automation01_slides/slides.md)
+- Working demo of a Makefile in the [demo_project](http://github.com/STAT547-UBC-2019-20/demo_project)
