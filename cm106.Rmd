@@ -1,4 +1,4 @@
-# (6) Parameterized reports
+# (6) Parameterized reports and presentations
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -11,27 +11,35 @@ library(tidyverse)
 ## Today's Agenda
 
 Announcements:
-  - 
-  - 
-  - 
+  - Firas is away today, Yulia will cover my office hours after lecture in SWNG407
+  - Hayley Boyce is covering lecture 6 on Parameterized reports
+  - Next week we will switch gears to creating dashboards!
 
-Part 1: 
-  - 
-  -
-  - 
+Part 1: Short demos of RMarkdown documents (20 mins)
+  - RMarkdown presentations (with citations and references)
+  - RMarkdown templated reports
+  - RMarkdown analyses
   
-Part 2: 
-  - 
-  - 
-  - 
+Part 2: YAML Headers and code chunks (15 mins)
+  - Review of YAML headers
+  - Global options
+  - Code chunk options (`include`, `echo`, `message`, `warning`)
+  - Output options (html, md, pdf, word, github )
+  
+Part 3: Parameterized reporting (20 mins)
+  - How to use R variables in-line with text
+  - Setting parameters in YAML
+  - Setting parameters in a script before knitting
+  
+Part 4: References and citations in RMarkdown (15 mins)
+  - Bibtex and RMarkdown
+  - Citing scientific papers
+  - Citing packages
 
-Part 3: 
-  -
-  - 
-  - 
+## Part 1: Short demos of RMarkdown documents 
 
-## Part 1: 
+## Part 2: YAML Headers and code chunks (15 mins)
 
-## Part 2: 
+## Part 3: Parameterized reporting (20 mins)
 
-## Part 3: 
+## Part 4: References and citations in RMarkdown (15 mins)
