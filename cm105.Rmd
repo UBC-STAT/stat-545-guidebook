@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**THESE NOTES are about 95% done; Just need to add a few references at the end and some instructions for saving and loading RDS files.**
+**100% complete**
 
 ## Today's Agenda
 
