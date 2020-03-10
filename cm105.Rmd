@@ -247,11 +247,13 @@ Here is how to create that target :
 
 # download data
 autism.csv : src/load.R
-<tab>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
+<TAB>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
 
 clean :
-	rm -f data/autism.csv
-  rm -f images/*
+<TAB>rm -f data/*
+<TAB>rm -f images/*
+<TAB>rm -f docs/*.md
+<TAB>rm -f docs/*.html
 ```
 
 Note that you can even have multiple actions if you put one one each line!
