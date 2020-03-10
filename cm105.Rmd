@@ -8,34 +8,79 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**THESE NOTES are about 70% done; the content will stay the same but the example repo used below will change to the `demo_project` from STAT547.**
+**THESE NOTES are about 95% done; Just need to add a few references at the end and some instructions for saving and loading RDS files.**
 
 ## Today's Agenda
 
-- Announcements:
+- Announcements: (10 mins)
   - COVID-19 precautions
   - Assignment 1 & 2 solutions will be posted tonight
   - Assignment 3 is released (Peer review)
+  - Milestone 3 is released
+  - In the (currently very unlikely) event of UBC's closure
 
-- Part 1: Run an analysis from start to finish
-  - Clone a repo
-  - Run each script individually
-  - Delete files and run each script
-  
-- Part 2: Building a data analysis pipeline using MAKE
-  - MAKE targets
-  - Make clean
-  - Make all
-
-- Part 3: Odds and ends
+- Part 1: Odds and ends (5 mins)
   - Loading/Saving model objets in R
   - Running knitr from command line
 
-## Part 1: Run an analysis from start to finish
+- Part 2: Run an analysis from start to finish (15 mins)
+  - Clone the demo_project repo
+  - Run each script individually
+  - Delete files and run each script
+  
+- Part 3: Building a data analysis pipeline using MAKE (45 mins)
+  - `Make` targets
+  - `Make` clean
+  - `Make` all
+
+## Part 1: Odds and ends
+
+### Knitting files from the command line as a script
+
+You can knit an Rmd file by clicking th "Knit" button in RStudio or by running the following command in an R console:
+
+```
+rmarkdown::render('docs/finalreport.Rmd', 
+                   c("html_document", "pdf_document"))
+```
+
+Notice that the first argument is the file that should be knit, and the second argument is a vector of the output types: `html` and `pdf`.
+Though it seems silly to just have a single line of code as a script, there are many more options available when knitting an Rmd file.
+You'll see more of these options in Thursday's lecture (cm107)
+
+### Saving and loading R objects
+
+The `.rds` and `.rda` file formats are special files that permit you to save single (rds) or multiple R objects (rda). 
+
+```
+saveRDS(object, file = "filename.rds")
+```
+
+This file can be the output of a script (for instance, your analysis script). 
+To read the object back into R, simply use `readRDS`:
+
+```
+readRDS(file = "filename.rds")
+```
+
+To save multiple R objects, specify them with commas:
+
+```
+save(data1, data2, file = "data1and2.rda")
+```
+and then to load it again,
+
+```
+load("data1and2.rda")
+```
+
+The above material was from [this documentation](http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata).
+
+## Part 2: Run an analysis from start to finish
 
 Building a data analysis pipeline using the UNIX shell
 
-To illustrate how to make a data analysis pipeline, we are going to work through an example together. 
+To illustrate how to `Make` a data analysis pipeline, we are going to work through an example together. 
 First, you will have to [clone the demo project locally here](https://github.com/STAT547-UBC-2019-20/demo_project). 
 It contains several files, but the most relevant are the ones in the `docs` directory and the `src` (scripts) directory: 
 
@@ -47,9 +92,9 @@ It contains several files, but the most relevant are the ones in the `docs` dire
 
 - knit.R: Knits the .Rmd file into pdf and html files.
 
-- milestone2-547-example.Rmd : template of the final report (technically Rmd files are also scipt)
+- finalreport.Rmd : template of the final report (technically Rmd files are also scipt)
 
-All those scripts are linked, they use each others outputs as their inputs. 
+All those scripts are linked, they use each others' outputs as their inputs. 
 can say that those scripts implement a data analysis pipeline.
 
 1. Load the data from a URL and save it to a location on your computer
@@ -57,19 +102,19 @@ can say that those scripts implement a data analysis pipeline.
 3. Clean and re-save the data
 4. Create the EDA and generate the corresponding plots
 5. Do the modelling (to be done in milestone3!)
-6s. Generate the final report (to be done in milestone3!)
+6. Generate the final report (to be done in milestone3!)
 
-## Part 2: Building a data analysis pipeling using MAKE
+## Part 3: Building a data analysis pipeling using MAKE
 
-GNU Make is a tool that controls the execution of files. 
-In order to explain to Make how to run our data analysis pipeline, we need the create a new file called *Makefile* (no file extension).
+GNU `Make` is a tool that controls the execution of files. 
+In order to explain to `Make` how to run our data analysis pipeline, we need the create a new file called *Makefile* (no file extension).
 
 Each Makefile is made of blocks of code, called rules. 
 A rule follows the following structure : 
 
 ```{structure_rule}
 file_to_create.png : data_it_depends_on.csv script_it_depends_on.R
-  action
+      action
 ```
 
 - `file_to_create.png` is a "target": it is the file that we want to output/create. 
@@ -77,7 +122,7 @@ If there are multiple targets, you just have to seperate the different target na
 
 ```{structure_rule}
 file_to_create.png file2.png : data_it_depends_on.csv script_it_depends_on.R
-  action
+      action
 ```
 
 - `data_it_depends_on.csv` and `script_it_depends_on.R` are the dependencies : they are the scripts/files needed to build or update the target. 
@@ -90,7 +135,7 @@ You **MUST** use a TAB to indent an action.
 
 Let's create our first Makefile now!
 
-**Create a Makefile**
+### Create a Makefile
 
 Open RStudio. Select File > New File > Text File. Save this file with the name `Makefile` in your project directory. 
 This is very important as by default, `Make` looks for the file called `Makefile`. 
@@ -104,25 +149,35 @@ Try to add the following code to your file :
 # date: The date
 
 # download data
-data/original/medical_cost_data.csv : src/processing_data/get_data.py
-  python src/processing_data/get_data.py --url=https://gist.githubusercontent.com/meperezcuello/82a9f1c1c473d6585e750ad2e3c05a41/raw/d42d226d0dd64e7f5395a0eec1b9190a10edbc03/Medical_Cost.csv --file_location=data/original/medical_cost_data.csv
+autism.csv : src/load.R
+<TAB>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
 ```
 
-- `data/original/medical_cost_data.csv` is the files that we want to create.
+- `download_data` is the "name" of the target you want to create (this should be closely related to the action that gets triggered).
 
-- `src/processing_data/get_data.py` is the script that we want to execute.
+- `src/load.R` is the script that we want to execute.
 
-- `python src/processing_data/get_data.py --url=https://gist.githubusercontent.com/meperezcuello/82a9f1c1c473d6585e750ad2e3c05a41/raw/d42d226d0dd64e7f5395a0eec1b9190a10edbc03/Medical_Cost.csv --file_location=data/original/medical_cost_data.csv` is the action that we want to do : it is the command to run in order to build the target using the dependencies.
+- `Rscript src/load.R --data_filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"` is the action that we want to do : it is the command to run in order to build the target using the dependencies.
 
-Don't forget to use a TAB to indent the action!!
+#### Don't forget to use a TAB to indent the action!!
 
-Now, make sure that you saved this file. Once this is done, let's try to run Make. To do so, you have to run the following command in your Terminal :
+It's worth it for us to pause here and make sure that the usage of TAB is emphasized.
+By default, RStudio replaces the "TAB" character with two spaces. 
+Once you’ve saved the file with the name `Makefile`, RStudio *should* indent with tabs instead of spaces. 
+I recommend you display whitespace in order to visually confirm this: RStudio > Preferences > Code > Display > Display whitespace characters.
+
+#### Return to the Makefile
+
+Now, make sure that you save this file in the root directory of the repository. 
+Once this is done, let's try to run Make on the target that we created: "download_data".
+To do so, you have to run the following command in your Terminal :
 
 ```{ru_make}
-$ make
+make autism.csv
 ```
 
-Make then displays the actions that are running.
+`Make` then runs the script in the action you created. 
+Note that by default, the **first** target is run if you just type in `make` in a directory with a `Makefile`.
 
 If you see this kind of error: 
 
@@ -130,113 +185,117 @@ If you see this kind of error:
 Makefile:3: *** missing separator.  Stop.
 ```
  
-it may be because you didn't use a TAB to indent the action.
+check the syntax, make sure the colon is in the right place, script names and directories are correct, and finally check that you used the TAB key to indent the action.
 
-If you try to run Make again, without changing anything, Make will tell you that everything is up to date.
-This is one of the reasons why Make is more efficient than just creating a bash file : before running a script, Make checks the 'last modification time' of both the target and its dependencies. 
-If any of the dependencies has been updated after the target was generated for the last time, Make will run the action. 
-In other words, if the target already exists and the dependencies have not been modified since the creation of the target, Make will not run the script again!
-This is why Make is faster than running a script again and again.
+If you try to run `Make` again, without changing anything, `Make` will tell you that everything is up to date.
+This is one of the reasons why `Make` is more efficient than running individual scripts one by one : before running a script, `Make` checks the 'last modification time' of both the target and its dependencies. 
+If any of the dependencies has been updated after the target was generated for the last time, `Make` will run the action. 
+In other words, if the target already exists and the dependencies have not been modified since the creation of the target, `Make` will not run the script again!
+This is why `Make` is faster than running multiple scripts over and over again.
 
-Another advantage of Make is that it allows us to remove all the intermediate data files that have been created by our data analysis pipeline, with only one command.
+Another advantage of `Make` is that it allows us to remove all the intermediate data files that have been created by our data analysis pipeline, with only one command.
 This can be useful if we want to run our analysis from scratch. 
-To do so, we have to create a new target called `clean`, which has no dependencies (as it would make no sense to create new files if we just delete them after). 
-`clean` is a "phony target" in the sense that it does not specify an actual file to be made, rather it just makes it easy to trigger a certain action. Here is the way to do it : 
+To do so, we have to create a new target called `clean`,.
+As the actions for this target, it should deletes all files generated from our script.
+In this case, the `clean` target should not have any dependencies.
+Here is how to create that target : 
 
 ```{makefile_clean}
 # author: Your name
 # date: The date
 
 # download data
-data/original/medical_cost_data.csv : src/processing_data/get_data.py
-  python src/processing_data/get_data.py --url=https://gist.githubusercontent.com/meperezcuello/82a9f1c1c473d6585e750ad2e3c05a41/raw/d42d226d0dd64e7f5395a0eec1b9190a10edbc03/Medical_Cost.csv --file_location=data/original/medical_cost_data.csv
-  
+autism.csv : src/load.R
+<tab>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
+
 clean :
-	rm -f data/original/medical_cost_data.csv
+	rm -f data/autism.csv
+  rm -f images/*
 ```
 
-Try to delete the `medical_cost_data.csv` using Make by running the following line in your console:
+Note that you can even have multiple actions if you put one one each line!
+The `-f` flag in the `rm` command ignores nonexistent files and arguments, and does not prompt you to confirm (see the [manual](http://man7.org/linux/man-pages/man1/rm.1.html) for more flags)
+
+Now, try to delete the `data/autism.csv` file as well as all files (* character) in the images folder using `Make  - be careful using this!.
 
 ```{command_run_make_clean}
-$ make clean
+make clean
 ```
 
-If you take a look at your `data/original` file, you will see that the `medical_cost_data.csv` was removed! 
+If you take a look at your `data/autism.csv` file, you will see it is gone, and all files in the `images` folder will be gone. 
 
-**Now, it's your turn! **
+### Your turn to finish the Makefile for the demo_project
 
 Try to complete the `Makefile` that we created in order to execute the whole data analysis pipeline. 
-Don't forget to edit the `clean` rule as well to delete the intermediate files that will be generated by the scripts!
 
 ```{answer_makefile}
 # author: Your name
 # date: The date
 
 # download data
-#
-data/original/medical_cost_data.csv : src/processing_data/get_data.py
-	python src/processing_data/get_data.py --url=https://gist.githubusercontent.com/meperezcuello/82a9f1c1c473d6585e750ad2e3c05a41/raw/d42d226d0dd64e7f5395a0eec1b9190a10edbc03/Medical_Cost.csv --file_location=data/original/medical_cost_data.csv
-	
-# Split the data
-#
-data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv : src/processing_data/pre_processing_data.R data/original/medical_cost_data.csv
-	Rscript src/processing_data/pre_processing_data.R --input_file=data/original/medical_cost_data.csv --output_dir=data/processed
-	
-# EDA Script
-# 
-reports/figures/0.correlation.png reports/figures/1.Expenses_VS_Age.png reports/figures/2.Expenses_VS_BMI.png reports/figures/3.Expenses_VS_Gender.png reports/figures/4.Expenses_VS_Smoker.png reports/figures/6.EXP_VS_BMI.png : src/visualization/eda.py data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	python src/visualization/eda.py --input_data=data/processed/medical_cost_data_train.csv --output_location=reports/figures
+data/autism.csv : src/load.R
+<TAB>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
 
+# clean data
+## YOUR SOLUTION HERE
+data/autism_cleaned.csv : src/clean.R data/autism.csv
+<TAB>Rscript src/clean.R --filepath_raw="data/autism.csv" --filepath_cleaned="data/autism_cleaned.csv"
+
+# EDA
+## YOUR SOLUTION HERE
+images/barplot.png images/correlation.png images/propbarplot.png : src/eda.R data/autism_cleaned.csv
+<TAB>Rscript src/eda.R --filepath_cleaned="data/autism_cleaned.csv"
+
+# Knit report
+## YOUR SOLUTION HERE
+docs/finalreport.html docs/finalreport.pdf : images/barplot.png images/correlation.png images/propbarplot.png docs/finalreport.Rmd data/autism_cleaned.csv src/knit.R docs/asd_refs.bib
+<TAB>Rscript src/knit.R --finalreport="docs/finalreport.Rmd"
 	
-# Predictive Modelling
-#
-reports/tables/preprocessors.csv reports/tables/regression_models_base_errors.csv reports/tables/hyperparameters.csv reports/tables/regression_errors.csv reports/figures/predicted_vs_actual_plot.png reports/figures/residual_plot.png : src/models/train_predict_medical_expense.py data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	python src/models/train_predict_medical_expense.py --training_data_file_path="data/processed/medical_cost_data_train.csv" --test_data_file_path="data/processed/medical_cost_data_test.csv" --results_file_location="reports"
-
-# render report
-#
-# This script will create a project report and render it as
-# md and html.
-reports/medical_expense_analysis.md : reports/medical_expense_analysis.Rmd docs/medical_expense_refs.bib reports/tables/preprocessors.csv reports/tables/regression_models_base_errors.csv reports/tables/hyperparameters.csv reports/tables/regression_errors.csv reports/figures/predicted_vs_actual_plot.png reports/figures/residual_plot.png reports/tables/1.hypothesis_smokers.csv reports/tables/2.hypothesis_sex.csv reports/figures/0.correlation.png reports/figures/1.Expenses_VS_Age.png reports/figures/2.Expenses_VS_BMI.png reports/figures/3.Expenses_VS_Gender.png reports/figures/4.Expenses_VS_Smoker.png reports/figures/6.EXP_VS_BMI.png data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	Rscript -e "library(rmarkdown);render('reports/medical_expense_analysis.Rmd')"
-
-# cleaning everything
-clean:
-	rm -rf data/original/*
-	rm -rf data/processed/*
-	rm -rf reports/figures/*.png
-	rm -rf reports/tables/*
-	rm -rf reports/*.md
-	rm -rf reports/*.html
+clean :
+<TAB>rm -f data/*
+<TAB>rm -f images/*
+<TAB>rm -f docs/*.md
+<TAB>rm -f docs/*.html
 ```
 
-At this point, the major part of the `Makefile` is done! There is just one last thing we have to do. 
+At this point, the major part of the `Makefile` is done! 
+There is just one last thing we have to do.
 
-Now that we have several targets, if we want to run the `Makefile`, we have to specify to Make which target we are interrested in. 
-For instance, if I just want to update/create the figure `correlation.png`, I would run in my console : 
+Now that we have several targets, if we want to run the `Makefile`, we have to specify to `Make` which target we are interrested in. 
+For instance, if I just want to update/create the figure `images/correlation.png`, I would run in my console: 
 
 ```{command_run_make_1}
-$ make correlation.png
+$ make images/correlation.png
 ```
 
-But several times, the final output of you analysis is made of several files/figures, which do not always depend on each other... So we would have to call `make` on each one of those files/figures. For example, imagine we want to update the `medical_expense_analysis.md` and the `correlation.png` plot, but the `correlation.png` file is not part of the dependencies of the `medical_expense_analysis.md` file. We would have to run the following command : 
+But several times, the final output of you analysis is made of several files/figures, which do not always depend on each other... so we would have to call `make` on each one of those files/figures. 
+We would have to run multiple `make` command to make sure we capture everything and all the dependencies.
+This is prone to errors. 
 
-```{command_run_make_2}
-$ make correlation.png
-$ make medical_expense_analysis.md
-```
-
-This may cause some errors. 
-This is why we are going to use another phony target `all`. 
+This is why we are going to use another target `all`. 
 `all` is going to be a target, and its dependencies will be the final outputs of our data analysis pipeline. There will be no action associated to this target. 
 
 If we come back to our example, the `all` target would be the following : 
 
 ```{makefile_all}
-all : reports/medical_expense_analysis.md
+all: docs/finalreport.html docs/finalreport.pdf
 ```
 
-We can see that `all` has only one dependency because all the other plots/files are already dependencies of previous targets. 
+We can see that `all` has only one dependency because all the other plots/files are already dependencies of previous targets.
+
+### "Phony" targets
+
+The .PHONY line is where you declare which targets are "phony" i.e. are not actual files to be made in the literal sense.
+Both `all` and `clean` are phony targers.
+It’s a good idea to explicitly tell `make` which targets are phony, instead of letting it try to deduce this. 
+`make` can get confused if you create a file that has the same name as a phony target.
+If for example you create a directory named `clean` to hold your clean data and run `make clean`, then `make` will report `clean` is up to date, because a directory with that name already exists.
+
+To take care of this, we just need to tell our `Makefile` (at the top of the file) which of the targets are "phony":
+
+```{phony_targets}
+.PHONY: all clean
+```
 
 Then, the final `Makefile` is :
 
@@ -244,51 +303,38 @@ Then, the final `Makefile` is :
 # author: Your name
 # date: The date
 
-all : reports/medical_expense_analysis.md
+.PHONY: all clean
+
+## YOUR SOLUTION HERE FOR THE `all` target
+all: docs/finalreport.html docs/finalreport.pdf
 
 # download data
-#
-data/original/medical_cost_data.csv : src/processing_data/get_data.py
-	python src/processing_data/get_data.py --url=https://gist.githubusercontent.com/meperezcuello/82a9f1c1c473d6585e750ad2e3c05a41/raw/d42d226d0dd64e7f5395a0eec1b9190a10edbc03/Medical_Cost.csv --file_location=data/original/medical_cost_data.csv
+data/autism.csv : src/load.R
+<TAB>Rscript src/load.R --filepath="data/autism.csv" --url_to_read="https://github.com/STAT547-UBC-2019-20/data_sets/raw/master/Autism-Adult-Data.arff"
+
+# clean data
+## YOUR SOLUTION HERE
+data/autism_cleaned.csv : src/clean.R data/autism.csv
+<TAB>Rscript src/clean.R --filepath_raw="data/autism.csv" --filepath_cleaned="data/autism_cleaned.csv"
+
+# EDA
+## YOUR SOLUTION HERE
+images/barplot.png images/correlation.png images/propbarplot.png : src/eda.R data/autism_cleaned.csv
+<TAB>Rscript src/eda.R --filepath_cleaned="data/autism_cleaned.csv"
+
+# Knit report
+## YOUR SOLUTION HERE
+docs/finalreport.html docs/finalreport.pdf : images/barplot.png images/correlation.png images/propbarplot.png docs/finalreport.Rmd data/autism_cleaned.csv src/knit.R docs/asd_refs.bib
+<TAB>Rscript src/knit.R --finalreport="docs/finalreport.Rmd"
 	
-# Split the data
-#
-data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv : src/processing_data/pre_processing_data.R data/original/medical_cost_data.csv
-	Rscript src/processing_data/pre_processing_data.R --input_file=data/original/medical_cost_data.csv --output_dir=data/processed
-	
-# EDA Script
-# 
-reports/figures/0.correlation.png reports/figures/1.Expenses_VS_Age.png reports/figures/2.Expenses_VS_BMI.png reports/figures/3.Expenses_VS_Gender.png reports/figures/4.Expenses_VS_Smoker.png reports/figures/6.EXP_VS_BMI.png : src/visualization/eda.py data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	python src/visualization/eda.py --input_data=data/processed/medical_cost_data_train.csv --output_location=reports/figures
-
-# Predictive Modelling
-#
-reports/tables/preprocessors.csv reports/tables/regression_models_base_errors.csv reports/tables/hyperparameters.csv reports/tables/regression_errors.csv reports/figures/predicted_vs_actual_plot.png reports/figures/residual_plot.png : src/models/train_predict_medical_expense.py data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	python src/models/train_predict_medical_expense.py --training_data_file_path="data/processed/medical_cost_data_train.csv" --test_data_file_path="data/processed/medical_cost_data_test.csv" --results_file_location="reports"
-
-# render report
-#
-# This script will create a project report and render it as
-# md and html.
-reports/medical_expense_analysis.md : reports/medical_expense_analysis.Rmd docs/medical_expense_refs.bib reports/tables/preprocessors.csv reports/tables/regression_models_base_errors.csv reports/tables/hyperparameters.csv reports/tables/regression_errors.csv reports/figures/predicted_vs_actual_plot.png reports/figures/residual_plot.png reports/tables/1.hypothesis_smokers.csv reports/tables/2.hypothesis_sex.csv reports/figures/0.correlation.png reports/figures/1.Expenses_VS_Age.png reports/figures/2.Expenses_VS_BMI.png reports/figures/3.Expenses_VS_Gender.png reports/figures/4.Expenses_VS_Smoker.png reports/figures/6.EXP_VS_BMI.png data/processed/medical_cost_data_train.csv data/processed/medical_cost_data_test.csv data/original/medical_cost_data.csv
-	Rscript -e "library(rmarkdown);render('reports/medical_expense_analysis.Rmd')"
-
-# cleaning everything
-clean:
-	rm -rf data/original/*
-	rm -rf data/processed/*
-	rm -rf reports/figures/*.png
-	rm -rf reports/tables/*
-	rm -rf reports/*.md
-	rm -rf reports/*.html
+clean :
+<TAB>rm -f data/*
+<TAB>rm -f images/*
+<TAB>rm -f docs/*.md
+<TAB>rm -f docs/*.html
 ```
 
 Now, you just have to run `make all` on your Terminal, and it will run the whole data analysis pipeline from beginning to end! 
 And if you want to clear all the outputs of your different scripts, you just have to run `make clear`.
 
 This is it! Now you know how to build an efficient data analysis pipeline from beginning to end! 
-
-## Part 3: odds and ends
-
-- saveRDS and loadRDS
-- Knit file from the command line as a script
