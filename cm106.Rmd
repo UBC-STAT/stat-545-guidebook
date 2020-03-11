@@ -8,12 +8,15 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
+**60% complete** (Need to clean up the sections a bit and remove unnecessary narratives and information not relevant for STAT 547)
+
 ## Today's Agenda
 
 - Announcements:
   - Firas is away today, Yulia will cover my office hours after lecture in SWNG407
   - Hayley Boyce is covering lecture 6 on Parameterized reports
-  - Next week we will switch gears to creating dashboards!
+  - For cm106 - there is no participation worksheet as it is mostly demos and notes on how to improve your project final report (enjoy the freebie!)
+  - Next week we will switch gears and (finally) start creating some dashboards using [DashR](https://dashr.plot.ly)!
 
 - Part 1: Short demos of RMarkdown documents (20 mins)
   - RMarkdown presentations (with citations and references)
@@ -24,6 +27,7 @@ library(tidyverse)
   - Review of YAML headers
   - Table of contents & navigating between headings and images
   - Output options (html, md, pdf, word, github )
+  - Figures and Tables
   
 - Break
 
@@ -39,8 +43,264 @@ library(tidyverse)
 
 ## Part 1: Short demos of RMarkdown documents 
 
+### RMarkdown presentations (with citations and references)
+
+### RMarkdown templated reports
+
+### RMarkdown analyses
+
 ## Part 2: YAML Headers and code chunks (15 mins)
+
+First things first, you'll want the [RStudio RMarkdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf).
+
+### Attribution
+
+This section is adapted from [Chapter 2 of Yihui Xie's book on RMarkdown](https://bookdown.org/yihui/rmarkdown/basics.html) under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)). Though the sections have been re-arranged, the majority of the content is taken from the textbook directly.
+
+### Compile an R Markdown document {#compile}
+
+The usual way to compile an R Markdown document is to click the `Knit` button as shown in Figure \@ref(fig:hello-rmd), and the corresponding keyboard shortcut is `Ctrl + Shift + K` (`Cmd + Shift + K` on macOS). Under the hood, RStudio calls the function `rmarkdown::render()` to render the document _in a new R session_. Please note the emphasis here, which often confuses R Markdown users. Rendering an Rmd document in a new R session means that _none of the objects in your current R session (e.g., those you created in your R console) are available to that session_.^[This is not strictly true, but mostly true. You may save objects in your current R session to a file, e.g., `.RData`, and load it in a new R session.] Reproducibility is the main reason that RStudio uses a new R session to render your Rmd documents: in most cases, you may want your documents to continue to work the next time you open R, or in other people's computing environments. See [this StackOverflow answer](https://stackoverflow.com/a/48494678/559676) if you want to know more.
+
+If you want to render/knit an Rmd document in a script, you can also call `rmarkdown::render()` by yourself, and pass the path of the Rmd file to this function. The second argument of this function is the output format, which defaults to the first output format you specify in the YAML metadata (if it is missing, the default is `html_document`). When you have multiple output formats in the metadata, and do not want to use the first one, you can specify the one you want in the second argument, e.g., for an Rmd document `foo.Rmd` with the metadata:
+
+```yaml
+output:
+  html_document:
+    toc: true
+  pdf_document:
+    keep_tex: true
+```
+
+You can render it to PDF via:
+
+```r
+rmarkdown::render('foo.Rmd', 'pdf_document')
+```
+
+The function call gives you much more freedom (e.g., you can generate a series of reports in a loop), but you should bear reproducibility in mind when you render documents this way. Of course, you can start a new and clean R session by yourself, and call `rmarkdown::render()` in that session. As long as you do not manually interact with that session (e.g., manually creating variables in the R console), your reports should be reproducible.
+
+Another main way to work with Rmd documents is the R Markdown Notebooks, which will be introduced in Section \@ref(notebook). With notebooks, you can run code chunks individually and see results right inside the RStudio editor. This is a convenient way to interact or experiment with code in an Rmd document, because you do not have to compile the whole document. Without using the notebooks, you can still partially execute code chunks, but the execution only occurs in the R console, and the notebook interface presents results of code chunks right beneath the chunks in the editor, which can be a great advantage. Again, for the sake of reproducibility, you will need to compile the whole document eventually in a clean environment.
+
+Lastly, I want to mention an "unofficial" way to compile Rmd documents: the function `xaringan::inf_mr()`, or equivalently, the RStudio addin "Infinite Moon Reader". Obviously, this requires you to install the **xaringan** package [@R-xaringan], which is available on CRAN. The main advantage of this way is LiveReload: a technology that enables you to live preview the output as soon as you save the source document, and you do not need to hit the `Knit` button. The other advantage is that it compiles the Rmd document _in the current R session_, which may or may not be what you desire. Note that this method only works for Rmd documents that output to HTML, including HTML documents and presentations.
+
+A few R Markdown extension packages, such as **bookdown** and **blogdown**, have their own way of compiling documents, and we will introduce them later.
+
+Note that it is also possible to render a series of reports instead of single one from a single R Markdown source document. You can parameterize an R Markdown document, and generate different reports using different parameters. See Chapter \@ref(parameterized-reports) for details.
+
+### Output formats
+
+There are two types of output formats\index{output formats} in the **rmarkdown** package: documents, and presentations. All available formats are listed below:
+
+`r knitr::combine_words(grep('^[^_]+_(document|presentation)$', ls(asNamespace('rmarkdown')), value = TRUE), sep = '\n', and = '', before = '- \x60', after = '\x60')`
+
+We will document these output formats in detail in Chapters \@ref(documents) and \@ref(presentations). There are more output formats provided in other extension packages (starting from Chapter \@ref(dashboards)). For the output format names in the YAML metadata of an Rmd file, you need to include the package name if a format is from an extension package, e.g.,
+
+```yaml
+output: tufte::tufte_html
+```
+
+If the format is from the **rmarkdown** package, you do not need the `rmarkdown::` prefix (although it will not hurt).
+
+When there are multiple output formats in a document, there will be a dropdown menu behind the RStudio `Knit` button that lists the output format names (Figure \@ref(fig:format-dropdown)).
+
+```{r format-dropdown, echo=FALSE, fig.cap='The output formats listed in the dropdown menu on the RStudio toolbar.', out.width='50%', fig.align='center'}
+knitr::include_graphics('https://github.com/rstudio/rmarkdown-book/raw/master/images/format-dropdown.png', dpi = NA)
+```
+
+Each output format is often accompanied with several format options. All these options are documented on the R package help pages. For example, you can type `?rmarkdown::html_document` in R to open the help page of the `html_document` format. When you want to use certain options, you have to translate the values from R to YAML,\index{YAML} e.g.,
+
+```r
+html_document(toc = TRUE, toc_depth = 2, dev = 'svg')
+```
+
+can be written in YAML as:
+
+```yaml
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    dev: 'svg'
+```
+
+The translation is often straightforward. Remember that R's `TRUE`, `FALSE`, and `NULL` are `true`, `false`, and `null`, respectively, in YAML. Character strings in YAML often do not require the quotes (e.g., `dev: 'svg'` and `dev: svg` are the same), unless they contain special characters, such as the colon `:`. If you are not sure if a string should be quoted or not, test it with the **yaml** package, e.g.,
+
+```{r test-yaml, tidy=FALSE, comment='', class.output='yaml'}
+cat(yaml::as.yaml(list(
+  title = 'A Wonderful Day',
+  subtitle = 'hygge: a quality of coziness'
+)))
+```
+
+Note that the subtitle in the above example is quoted because of the colon.
+
+If you have options that need to be the result of an evaluated R expression, you can use `!expr`, which tells the 
+**yaml** package that it needs to parse and evaluate that option. Below is an example that uses a random theme for the HTML output:
+
+```yaml
+output:
+  html_document:
+    theme: !expr sample(c("yeti", "united", "lumen"), 1)
+```
+
+If a certain option has sub-options (which means the value of this option is a list in R), the sub-options need to be further indented, e.g.,
+
+```yaml
+output:
+  html_document:
+    toc: true
+    includes:
+      in_header: header.html
+      before_body: before.html
+```
+
+Some options are passed to **knitr**, such as `dev`, `fig_width`, and `fig_height`. Detailed documentation of these options can be found on the **knitr** documentation page: https://yihui.name/knitr/options/. Note that the actual **knitr** option names can be different. In particular, **knitr** uses `.` in names, but **rmarkdown** uses `_`, e.g., `fig_width` in **rmarkdown** corresponds to `fig.width` in **knitr**. We apologize for the inconsistencies---programmers often strive for consistencies in their own world, yet one standard plus one standard [often equals three standards.](https://xkcd.com/927/) If I were to design the **knitr** package again, I would definitely use `_`.
+
+### Markdown syntax
+
+The text in an R Markdown document is written with the Markdown syntax\index{Markdown syntax}. Precisely speaking, it is Pandoc's Markdown. There are many flavors of Markdown invented by different people, and Pandoc's flavor is the most comprehensive one to our knowledge. You can find the full documentation of Pandoc's Markdown at https://pandoc.org/MANUAL.html. We strongly recommend that you read this page at least once to know all the possibilities with Pandoc's Markdown, even if you will not use all of them. This section is adapted from [Section 2.1](https://bookdown.org/yihui/bookdown/markdown-syntax.html) of @xie2016, and only covers a small subset of Pandoc's Markdown syntax.
+
+Section headers can be written after a number of pound signs, e.g.,
+
+```markdown
+# First-level header
+
+## Second-level header
+
+### Third-level header
+```
+
+If you do not want a certain heading to be numbered, you can add `{-}` or `{.unnumbered}` after the heading, e.g.,
+
+```markdown
+## Preface {-}
+```
+
+### Figures and Tables
+
+Here are some notes on how to control figure captions, width, height etc...
+
+- `fig.width` and `fig.height`: The (graphical device) size of R plots in inches. R plots in code chunks are first recorded via a graphical device in **knitr**, and then written out to files. You can also specify the two options together in a single chunk option `fig.dim`, e.g., `fig.dim = c(6, 4)` means `fig.width = 6` and `fig.height = 4`.
+
+- `out.width` and `out.height`: The output size of R plots in the output document. These options may scale images. You can use percentages, e.g., `out.width = '80%'` means 80% of the page width.
+
+- `fig.align`: The alignment of plots. It can be `'left'`, `'center'`, or `'right'`.
+
+By default, figures\index{figures} produced by R code will be placed immediately after the code chunk they were generated from. For example:
+
+````markdown
+`r ''````{r}
+plot(cars, pch = 18)
+```
+````
+
+You can provide a figure caption using `fig.cap` in the chunk options. If the document output format supports the option `fig_caption: true` (e.g., the output format `rmarkdown::html_document`), the R plots will be placed into figure environments. In the case of PDF output, such figures will be automatically numbered. If you also want to number figures in other formats (such as HTML), please see the **bookdown** package in Chapter \@ref(books) (in particular, see Section \@ref(a-single-document)).
+
+PDF documents are generated through the LaTeX files generated from R Markdown. A highly surprising fact to LaTeX beginners is that figures float by default: even if you generate a plot in a code chunk on the first page, the whole figure environment may float to the next page. This is just how LaTeX works by default. It has a tendency to float figures to the top or bottom of pages. Although it can be annoying and distracting, we recommend that you refrain from playing the "Whac-A-Mole" game in the beginning of your writing, i.e., desparately trying to position figures "correctly" while they seem to be always dodging you. You may wish to fine-tune the positions once the content is complete using the `fig.pos` chunk option (e.g., `fig.pos = 'h')`. See https://www.overleaf.com/learn/latex/Positioning_images_and_tables for possible values of `fig.pos` and more general tips about this behavior in LaTeX. In short, this can be a difficult problem for PDF output.
+
+To place multiple figures side-by-side from the same code chunk, you can use the `fig.show='hold'` option along with the `out.width` option. Figure \@ref(fig:hold-position) shows an example with two plots, each with a width of `50%`.
+
+```{r hold-position, fig.cap='Two plots side-by-side.', fig.show='hold', out.width='50%', fig.width=5, fig.height=4}
+par(mar = c(4, 4, .2, .1))
+plot(cars, pch = 19)
+plot(pressure, pch = 17)
+```
+
+If you want to include a graphic that is not generated from R code, you may use the `knitr::include_graphics()` function, which gives you more control over the attributes of the image than the Markdown syntax of `![alt text or image title](path/to/image)` (e.g., you can specify the image width via `out.width`). Figure \@ref(fig:include-graphics) provides an example of this.
+
+````markdown
+`r ''````{r, out.width='25%', fig.align='center', fig.cap='...'}
+knitr::include_graphics('https://github.com/rstudio/rmarkdown-book/raw/master/images/hex-rmarkdown.png')
+```
+````
+```{r include-graphics, echo=FALSE, fig.cap='The R Markdown hex logo.', out.width='25%', fig.align='center'}
+knitr::include_graphics('https://github.com/rstudio/rmarkdown-book/raw/master/images/hex-rmarkdown.png')
+```
 
 ## Part 3: Parameterized reporting (20 mins)
 
+### Code chunk options (`include`, `echo`, `message`, `warning`)
+
+You can insert an R code chunk\index{code chunk} either using the RStudio toolbar (the `Insert` button) or the keyboard shortcut `Ctrl + Alt + I` (`Cmd + Option + I` on macOS).
+
+There are a lot of things you can do in a code chunk: you can produce text output, tables, or graphics. You have fine control over all these output via chunk options, which can be provided inside the curly braces (between ```` ```{r```` and `}`). For example, you can choose hide text output via the chunk option `results = 'hide'`, or set the figure height to 4 inches via `fig.height = 4`. Chunk options are separated by commas, e.g.,
+
+````markdown
+`r ''````{r, chunk-label, results='hide', fig.height=4}
+````
+
+The value of a chunk option can be an arbitrary R expression, which makes chunk options extremely flexible. For example, the chunk option `eval` controls whether to evaluate (execute) a code chunk, and you may conditionally evaluate a chunk via a variable defined previously, e.g.,
+
+````markdown
+`r ''````{r}
+# execute code if the date is later than a specified day
+do_it = Sys.Date() > '2018-02-14'
+```
+
+`r ''````{r, eval=do_it}
+x = rnorm(100)
+```
+````
+
+There are a large number of chunk options\index{chunk options} in **knitr** documented at https://yihui.name/knitr/options. We list a subset of them below:
+
+- `eval`: Whether to evaluate a code chunk.
+
+- `echo`: Whether to echo the source code in the output document. This is useful if you want to show just your results and hide your source code.
+
+- `results`: When set to `'hide'`, text output will be hidden; when set to `'asis'`, text output is written "as-is", e.g., you can write out raw Markdown text from R code (like `cat('**Markdown** is cool.\n')`). By default, text output will be wrapped in verbatim elements (typically plain code blocks).
+
+- `collapse`: Whether to merge text output and source code into a single code block in the output. This is mostly cosmetic: `collapse = TRUE` makes the output more compact, since the R source code and its text output are displayed in a single output block. The default `collapse = FALSE` means R expressions and their text output are separated into different blocks.
+
+- `warning`, `message`, and `error`: Whether to show warnings, messages, and errors in the output document. Note that if you set `error = FALSE`, `rmarkdown::render()` will halt on error in a code chunk, and the error will be displayed in the R console. Similarly, when `warning = FALSE` or `message = FALSE`, these messages will be shown in the R console.
+
+- `include`: Whether to include anything from a code chunk in the output document. When `include = FALSE`, this whole code chunk is excluded in the output, but note that it will still be evaluated if `eval = TRUE`. When you are trying to set `echo = FALSE`, `results = 'hide'`, `warning = FALSE`, and `message = FALSE`, chances are you simply mean a single option `include = FALSE` instead of suppressing different types of text output individually.
+
+- `fig.cap`: The figure caption.
+
+There is an optional chunk option that does not take any value, which is the chunk label. It should be the first option in the chunk header. Chunk labels are mainly used in filenames of plots and cache. If the label of a chunk is missing, a default one of the form `unnamed-chunk-i` will be generated, where `i` is incremental. I strongly recommend that you only use alphanumeric characters (`a-z`, `A-Z` and `0-9`) and dashes (`-`) in labels, because they are not special characters and will surely work for all output formats. Other characters may cause trouble in certain packages, such as **bookdown**.
+
+### Global options
+
+If a certain option needs to be frequently set to a value in multiple code chunks, you can consider setting it globally in the first code chunk of your document, e.g.,
+
+````markdown
+`r ''````{r, setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
+```
+````
+
+### How to use R variables in-line with text
+
+Besides code chunks, you can also insert values of R objects inline in text. For example:
+
+```{r}
+x = 5  # radius of a circle
+```
+
+For a circle with the radius `r x`,
+its area is `r pi * x^2`.
+
+When you knit this file, the above should do a calculation that computes the Area of a circle with radius r=5.
+
+This is perhaps one of the coolest features of RMarkdown! You should **definitely** use this feature in your STAT 547 project!
+There are many ways this can be useful, including reporting of summary statistics, or reporting on your linear regression, etc...
+
 ## Part 4: References and citations in RMarkdown (15 mins)
+
+There are multiple ways to insert citations,\index{citation} and we recommend that you use BibTeX databases, because they work better when the output format is LaTeX/PDF. [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) of @xie2016 has explained the details. The key idea is that when you have a BibTeX database (a plain-text file with the conventional filename extension `.bib`) that contains entries like:
+
+
+```bibtex
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2017},
+  url = {https://www.R-project.org/},
+}
+```
+
+You may add a field named `bibliography` to the YAML metadata, and set its value to the path of the BibTeX file. Then in Markdown, you may use `@R-base` (which generates "@R-base") or `[@R-base]` (which generates "[@R-base]") to reference the BibTeX entry. Pandoc will automatically generated a list of references in the end of the document.
