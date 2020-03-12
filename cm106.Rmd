@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**60% complete** (Need to clean up the sections a bit and remove unnecessary narratives and information not relevant for STAT 547)
+**90% complete** (Need to clean up the sections a bit and remove unnecessary narratives and information not relevant for STAT 547)
 
 ## Today's Agenda
 
@@ -18,20 +18,19 @@ library(tidyverse)
   - For cm106 - there is no participation worksheet as it is mostly demos and notes on how to improve your project final report (enjoy the freebie!)
   - Next week we will switch gears and (finally) start creating some dashboards using [DashR](https://dashr.plot.ly)!
 
-- Part 1: Short demos of RMarkdown documents (20 mins)
-  - RMarkdown presentations (with citations and references)
-  - RMarkdown templated reports
-  - RMarkdown analyses
-  
-- Part 2: Output options in RMarkdown (20 mins)
+- Part 1: Short demos of RMarkdown documents (10 mins)
+  - RMarkdown presentations
+  - RMarkdown reports
+
+- Part 2: Output options in RMarkdown (25 mins)
   - Review of YAML headers
   - Table of contents & navigating between headings and images
-  - Output options (html, md, pdf, word, github )
+  - Output options (html, md, pdf, word, github)
   - Figures and Tables
   
 - Break
 
-- Part 3: Parameterized Reporting (30 mins)
+- Part 3: Parameterized Reports (25 mins)
   - Global options
   - Code chunk options (`include`, `echo`, `message`, `warning`)
   - How to use R variables in-line with text
@@ -45,11 +44,9 @@ library(tidyverse)
 
 ### RMarkdown presentations (with citations and references)
 
-### RMarkdown templated reports
+### RMarkdown reports
 
-### RMarkdown analyses
-
-## Part 2: YAML Headers and code chunks (15 mins)
+## Part 2: YAML Headers and code chunks (25 mins)
 
 First things first, you'll want the [RStudio RMarkdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf).
 
@@ -200,11 +197,15 @@ PDF documents are generated through the LaTeX files generated from R Markdown. A
 
 To place multiple figures side-by-side from the same code chunk, you can use the `fig.show='hold'` option along with the `out.width` option. Figure \@ref(fig:hold-position) shows an example with two plots, each with a width of `50%`.
 
-```{r hold-position, fig.cap='Two plots side-by-side.', fig.show='hold', out.width='50%', fig.width=5, fig.height=4}
-par(mar = c(4, 4, .2, .1))
-plot(cars, pch = 19)
-plot(pressure, pch = 17)
+```{r dodgehold-position, fig.show = "hold", fig.cap='Two plots side-by-side.', out.width = "50%"}
+ggplot(mtcars, aes(factor(cyl), fill = factor(vs))) +
+  geom_bar(position = position_dodge2(preserve = "single")) + theme_bw()
+
+ggplot(mtcars, aes(factor(cyl), fill = factor(vs))) +
+  geom_bar(position = position_dodge2(preserve = "total")) + theme_bw()
 ```
+
+Of course, you could also just use the `plot_grid` function from the [cowplots package](https://wilkelab.org/cowplot/articles/plot_grid.html) - which is a much more powerful option.
 
 If you want to include a graphic that is not generated from R code, you may use the `knitr::include_graphics()` function, which gives you more control over the attributes of the image than the Markdown syntax of `![alt text or image title](path/to/image)` (e.g., you can specify the image width via `out.width`). Figure \@ref(fig:include-graphics) provides an example of this.
 
@@ -217,7 +218,7 @@ knitr::include_graphics('https://github.com/rstudio/rmarkdown-book/raw/master/im
 knitr::include_graphics('https://github.com/rstudio/rmarkdown-book/raw/master/images/hex-rmarkdown.png')
 ```
 
-## Part 3: Parameterized reporting (20 mins)
+## Part 3: Parameterized reporting (25 mins)
 
 ### Code chunk options (`include`, `echo`, `message`, `warning`)
 
@@ -286,7 +287,7 @@ When you knit this file, the above should do a calculation that computes the Are
 This is perhaps one of the coolest features of RMarkdown! You should **definitely** use this feature in your STAT 547 project!
 There are many ways this can be useful, including reporting of summary statistics, or reporting on your linear regression, etc...
 
-## Part 4: References and citations in RMarkdown (15 mins)
+## Part 4: References and citations in RMarkdown (10 mins)
 
 There are multiple ways to insert citations,\index{citation} and we recommend that you use BibTeX databases, because they work better when the output format is LaTeX/PDF. [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) of @xie2016 has explained the details. The key idea is that when you have a BibTeX database (a plain-text file with the conventional filename extension `.bib`) that contains entries like:
 
