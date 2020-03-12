@@ -32,8 +32,8 @@ library(tidyverse)
 - Break
 
 - Part 3: Parameterized Reports (25 mins)
-  - Global options
   - Code chunk options (`include`, `echo`, `message`, `warning`)
+  - Global options
   - How to use R variables in-line with text
 
 - Part 4: Citations in RMarkdown (Optional, if there's time; 10 mins)
