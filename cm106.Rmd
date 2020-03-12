@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**90% complete** (Need to clean up the sections a bit and remove unnecessary narratives and information not relevant for STAT 547)
+**100% complete**
 
 ## Today's Agenda
 
@@ -24,8 +24,9 @@ library(tidyverse)
 
 - Part 2: Output options in RMarkdown (25 mins)
   - Review of YAML headers
-  - Table of contents & navigating between headings and images
-  - Output options (html, md, pdf, word, github)
+  - Table of contents
+  - Setting themes
+  - Output formats (html, md, pdf, word, github)
   - Figures and Tables
   
 - Break
@@ -76,13 +77,105 @@ rmarkdown::render('foo.Rmd', 'pdf_document')
 
 The function call gives you much more freedom (e.g., you can generate a series of reports in a loop), but you should bear reproducibility in mind when you render documents this way. Of course, you can start a new and clean R session by yourself, and call `rmarkdown::render()` in that session. As long as you do not manually interact with that session (e.g., manually creating variables in the R console), your reports should be reproducible.
 
-Another main way to work with Rmd documents is the R Markdown Notebooks, which will be introduced in Section \@ref(notebook). With notebooks, you can run code chunks individually and see results right inside the RStudio editor. This is a convenient way to interact or experiment with code in an Rmd document, because you do not have to compile the whole document. Without using the notebooks, you can still partially execute code chunks, but the execution only occurs in the R console, and the notebook interface presents results of code chunks right beneath the chunks in the editor, which can be a great advantage. Again, for the sake of reproducibility, you will need to compile the whole document eventually in a clean environment.
+Another main way to work with Rmd documents is the R Markdown Notebooks, which will be introduced in [Section 3.2](https://bookdown.org/yihui/rmarkdown/notebook.html). With notebooks, you can run code chunks individually and see results right inside the RStudio editor. This is a convenient way to interact or experiment with code in an Rmd document, because you do not have to compile the whole document. Without using the notebooks, you can still partially execute code chunks, but the execution only occurs in the R console, and the notebook interface presents results of code chunks right beneath the chunks in the editor, which can be a great advantage. Again, for the sake of reproducibility, you will need to compile the whole document eventually in a clean environment.
 
 Lastly, I want to mention an "unofficial" way to compile Rmd documents: the function `xaringan::inf_mr()`, or equivalently, the RStudio addin "Infinite Moon Reader". Obviously, this requires you to install the **xaringan** package [@R-xaringan], which is available on CRAN. The main advantage of this way is LiveReload: a technology that enables you to live preview the output as soon as you save the source document, and you do not need to hit the `Knit` button. The other advantage is that it compiles the Rmd document _in the current R session_, which may or may not be what you desire. Note that this method only works for Rmd documents that output to HTML, including HTML documents and presentations.
 
 A few R Markdown extension packages, such as **bookdown** and **blogdown**, have their own way of compiling documents, and we will introduce them later.
 
-Note that it is also possible to render a series of reports instead of single one from a single R Markdown source document. You can parameterize an R Markdown document, and generate different reports using different parameters. See Chapter \@ref(parameterized-reports) for details.
+Note that it is also possible to render a series of reports instead of single one from a single R Markdown source document. You can parameterize an R Markdown document, and generate different reports using different parameters. See [Chapter 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) for details.
+
+### Table of contents
+
+You can add a table of contents (TOC) using the `toc` option and specify the depth of headers that it applies to using the `toc_depth` option. For example:
+
+```yaml
+---
+title: "Habits"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+```
+
+If the table of contents depth is not explicitly specified, it defaults to 3 (meaning that all level 1, 2, and 3 headers will be included in the table of contents).
+
+#### Controlling headers/sections in table of contents
+
+The text in an R Markdown document is written with the Markdown syntax\index{Markdown syntax}. Precisely speaking, it is Pandoc's Markdown. There are many flavors of Markdown invented by different people, and Pandoc's flavor is the most comprehensive one to our knowledge. You can find the full documentation of Pandoc's Markdown at https://pandoc.org/MANUAL.html. We strongly recommend that you read this page at least once to know all the possibilities with Pandoc's Markdown, even if you will not use all of them. This section is adapted from [Section 2.1](https://bookdown.org/yihui/bookdown/markdown-syntax.html) of @xie2016, and only covers a small subset of Pandoc's Markdown syntax.
+
+Section headers can be written after a number of pound signs, e.g.,
+
+```markdown
+# First-level header
+
+## Second-level header
+
+### Third-level header
+```
+
+If you do not want a certain heading to be numbered, you can add `{-}` or `{.unnumbered}` after the heading, e.g.,
+
+```markdown
+## Preface {-}
+```
+
+#### Floating TOC
+
+You can specify the `toc_float` option to float the table of contents to the left of the main document content. The floating table of contents will always be visible even when the document is scrolled. For example:
+
+```yaml
+---
+title: "Habits"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+```
+
+You may optionally specify a list of options for the `toc_float` parameter which control its behavior. These options include:
+
+- `collapsed` (defaults to `TRUE`) controls whether the TOC appears with only the top-level (e.g., H2) headers. If collapsed initially, the TOC is automatically expanded inline when necessary.
+
+- `smooth_scroll` (defaults to `TRUE`) controls whether page scrolls are animated when TOC items are navigated to via mouse clicks.
+
+For example:
+
+```yaml
+---
+title: "Habits"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+```
+
+### Setting themes
+
+There are several options that control the appearance of HTML documents:
+
+- `theme` specifies the Bootstrap theme to use for the page (themes are drawn from the [Bootswatch](https://bootswatch.com/3/) theme library). Valid themes include `r knitr::combine_words(rmarkdown:::themes())`. Pass `null` for no theme (in this case you can use the `css` parameter to add your own styles).
+
+- `highlight` specifies the syntax highlighting style. Supported styles include `r knitr::combine_words(rmarkdown:::html_highlighters(), before='\x60')`. Pass `null` to prevent syntax highlighting.
+
+- `smart` indicates whether to produce typographically correct output, converting straight quotes to curly quotes, `---` to em-dashes, `--` to en-dashes, and `...` to ellipses. Note that `smart` is enabled by default.
+
+For example:
+
+```yaml
+---
+title: "Habits"
+output:
+  html_document:
+    theme: united
+    highlight: tango
+---
+```
 
 ### Output formats
 
@@ -90,7 +183,7 @@ There are two types of output formats\index{output formats} in the **rmarkdown**
 
 `r knitr::combine_words(grep('^[^_]+_(document|presentation)$', ls(asNamespace('rmarkdown')), value = TRUE), sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-We will document these output formats in detail in Chapters \@ref(documents) and \@ref(presentations). There are more output formats provided in other extension packages (starting from Chapter \@ref(dashboards)). For the output format names in the YAML metadata of an Rmd file, you need to include the package name if a format is from an extension package, e.g.,
+We will document these output formats in detail in Chapters [3](https://bookdown.org/yihui/rmarkdown/documents.html) and [4](https://bookdown.org/yihui/rmarkdown/presentations.html). There are more output formats provided in other extension packages (described in [Chapter 5](https://bookdown.org/yihui/rmarkdown/dashboards.html)). For the output format names in the YAML metadata of an Rmd file, you need to include the package name if a format is from an extension package, e.g.,
 
 ```yaml
 output: tufte::tufte_html
@@ -120,25 +213,7 @@ output:
     dev: 'svg'
 ```
 
-The translation is often straightforward. Remember that R's `TRUE`, `FALSE`, and `NULL` are `true`, `false`, and `null`, respectively, in YAML. Character strings in YAML often do not require the quotes (e.g., `dev: 'svg'` and `dev: svg` are the same), unless they contain special characters, such as the colon `:`. If you are not sure if a string should be quoted or not, test it with the **yaml** package, e.g.,
-
-```{r test-yaml, tidy=FALSE, comment='', class.output='yaml'}
-cat(yaml::as.yaml(list(
-  title = 'A Wonderful Day',
-  subtitle = 'hygge: a quality of coziness'
-)))
-```
-
-Note that the subtitle in the above example is quoted because of the colon.
-
-If you have options that need to be the result of an evaluated R expression, you can use `!expr`, which tells the 
-**yaml** package that it needs to parse and evaluate that option. Below is an example that uses a random theme for the HTML output:
-
-```yaml
-output:
-  html_document:
-    theme: !expr sample(c("yeti", "united", "lumen"), 1)
-```
+The translation is often straightforward. Remember that R's `TRUE`, `FALSE`, and `NULL` are `true`, `false`, and `null`, respectively, in YAML. Character strings in YAML often do not require the quotes (e.g., `dev: 'svg'` and `dev: svg` are the same), unless they contain special characters, such as the colon `:`.
 
 If a certain option has sub-options (which means the value of this option is a list in R), the sub-options need to be further indented, e.g.,
 
@@ -152,26 +227,6 @@ output:
 ```
 
 Some options are passed to **knitr**, such as `dev`, `fig_width`, and `fig_height`. Detailed documentation of these options can be found on the **knitr** documentation page: https://yihui.name/knitr/options/. Note that the actual **knitr** option names can be different. In particular, **knitr** uses `.` in names, but **rmarkdown** uses `_`, e.g., `fig_width` in **rmarkdown** corresponds to `fig.width` in **knitr**. We apologize for the inconsistencies---programmers often strive for consistencies in their own world, yet one standard plus one standard [often equals three standards.](https://xkcd.com/927/) If I were to design the **knitr** package again, I would definitely use `_`.
-
-### Markdown syntax
-
-The text in an R Markdown document is written with the Markdown syntax\index{Markdown syntax}. Precisely speaking, it is Pandoc's Markdown. There are many flavors of Markdown invented by different people, and Pandoc's flavor is the most comprehensive one to our knowledge. You can find the full documentation of Pandoc's Markdown at https://pandoc.org/MANUAL.html. We strongly recommend that you read this page at least once to know all the possibilities with Pandoc's Markdown, even if you will not use all of them. This section is adapted from [Section 2.1](https://bookdown.org/yihui/bookdown/markdown-syntax.html) of @xie2016, and only covers a small subset of Pandoc's Markdown syntax.
-
-Section headers can be written after a number of pound signs, e.g.,
-
-```markdown
-# First-level header
-
-## Second-level header
-
-### Third-level header
-```
-
-If you do not want a certain heading to be numbered, you can add `{-}` or `{.unnumbered}` after the heading, e.g.,
-
-```markdown
-## Preface {-}
-```
 
 ### Figures and Tables
 
@@ -191,7 +246,7 @@ plot(cars, pch = 18)
 ```
 ````
 
-You can provide a figure caption using `fig.cap` in the chunk options. If the document output format supports the option `fig_caption: true` (e.g., the output format `rmarkdown::html_document`), the R plots will be placed into figure environments. In the case of PDF output, such figures will be automatically numbered. If you also want to number figures in other formats (such as HTML), please see the **bookdown** package in Chapter \@ref(books) (in particular, see Section \@ref(a-single-document)).
+You can provide a figure caption using `fig.cap` in the chunk options. If the document output format supports the option `fig_caption: true` (e.g., the output format `rmarkdown::html_document`), the R plots will be placed into figure environments. In the case of PDF output, such figures will be automatically numbered. If you also want to number figures in other formats (such as HTML), please see the **bookdown** package in [Chapter 12](https://bookdown.org/yihui/rmarkdown/books.html).
 
 PDF documents are generated through the LaTeX files generated from R Markdown. A highly surprising fact to LaTeX beginners is that figures float by default: even if you generate a plot in a code chunk on the first page, the whole figure environment may float to the next page. This is just how LaTeX works by default. It has a tendency to float figures to the top or bottom of pages. Although it can be annoying and distracting, we recommend that you refrain from playing the "Whac-A-Mole" game in the beginning of your writing, i.e., desparately trying to position figures "correctly" while they seem to be always dodging you. You may wish to fine-tune the positions once the content is complete using the `fig.pos` chunk option (e.g., `fig.pos = 'h')`. See https://www.overleaf.com/learn/latex/Positioning_images_and_tables for possible values of `fig.pos` and more general tips about this behavior in LaTeX. In short, this can be a difficult problem for PDF output.
 
@@ -287,10 +342,9 @@ When you knit this file, the above should do a calculation that computes the Are
 This is perhaps one of the coolest features of RMarkdown! You should **definitely** use this feature in your STAT 547 project!
 There are many ways this can be useful, including reporting of summary statistics, or reporting on your linear regression, etc...
 
-## Part 4: References and citations in RMarkdown (10 mins)
+## OPTIONAL Part 4: Citations and Cross-references in RMarkdown (10 mins)
 
 There are multiple ways to insert citations,\index{citation} and we recommend that you use BibTeX databases, because they work better when the output format is LaTeX/PDF. [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) of @xie2016 has explained the details. The key idea is that when you have a BibTeX database (a plain-text file with the conventional filename extension `.bib`) that contains entries like:
-
 
 ```bibtex
 @Manual{R-base,
@@ -304,4 +358,62 @@ There are multiple ways to insert citations,\index{citation} and we recommend th
 }
 ```
 
+Note: Thisfollowing paragraphs are from the bookdown textbook [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) used under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+
+A bibliography entry starts with `@type{`, where `type` may be `article`, `book`, `manual`, and so on.^[The type name is case-insensitive, so it does not matter if it is `manual`, `Manual`, or `MANUAL`.] Then there is a citation key, like `R-base` in the above example. To cite an entry, use `@key` or `[@key]` (the latter puts the citation in braces), e.g., `@R-base` is rendered as @R-base, and `[@R-base]` generates "[@R-base]". If you are familiar with the **natbib** package in LaTeX, `@key` is basically `\citet{key}`, and `[@key]` is equivalent to `\citep{key}`.
+
+There are a number of fields in a bibliography entry, such as `title`, `author`, and `year`, etc. You may see https://en.wikipedia.org/wiki/BibTeX for possible types of entries and fields in BibTeX.
+
+There is a helper function `write_bib()` in **knitr** to generate BibTeX entries automatically for R packages. Note that it only generates one BibTeX entry for the package itself at the moment, whereas a package may contain multiple entries in the `CITATION` file, and some entries are about the publications related to the package. These entries are ignored by `write_bib()`.
+
+```{r write-bib, comment='', warning=FALSE}
+# the second argument can be a .bib file
+knitr::write_bib(c('knitr', 'stringr'), '', width = 60)
+```
+
+Once you have one or multiple `.bib` files, you may use the field `bibliography` in the YAML metadata of your first R Markdown document (which is typically `index.Rmd`), and you can also specify the bibliography style via `biblio-style` (this only applies to PDF output), e.g.,
+
+```yaml
+---
+bibliography: ["one.bib", "another.bib", "yet-another.bib"]
+biblio-style: "apalike"
+link-citations: true
+---
+```
+
+The field `link-citations` can be used to add internal links from the citation text of the author-year style to the bibliography entry in the HTML output.
+
+When the output format is LaTeX, citations will be automatically put in a chapter or section. For non-LaTeX output, you can add an empty chapter as the last chapter of your book. For example, if your last chapter is the Rmd file `06-references.Rmd`, its content can be an inline R expression:
+
+```markdown
+`r "\x60r if (knitr::is_html_output()) '# References {-}'\x60"`
+```
+
 You may add a field named `bibliography` to the YAML metadata, and set its value to the path of the BibTeX file. Then in Markdown, you may use `@R-base` (which generates "@R-base") or `[@R-base]` (which generates "[@R-base]") to reference the BibTeX entry. Pandoc will automatically generated a list of references in the end of the document.
+
+### Cross-referencing
+
+You can also reference sections using the same syntax `\@ref(label)`, where `label` is the section ID. By default, Pandoc will generate an ID for all section headers, e.g., a section `# Hello World` will have an ID `hello-world`. We recommend you to manually assign an ID to a section header to make sure you do not forget to update the reference label after you change the section header. To assign an ID to a section header, simply add `{#id}` to the end of the section header.  Further attributes of section headers can be set using standard [Pandoc syntax](http://pandoc.org/MANUAL.html#heading-identifiers).
+When a referenced label cannot be found, you will see two question marks like \@ref(fig:does-not-exist), as well as a warning message in the R console when rendering the book.
+You can also create text-based links using explicit or automatic section IDs or even the actual section header text.
+- If you are happy with the section header as the link text, use it inside a single set of square brackets:
+    - `[Section header text]`: example "[A single document]" via `[A single document]`
+- There are two ways to specify custom link text:
+    - `[link text][Section header text]`, e.g., "[non-English books][Internationalization]" via `[non-English books][Internationalization]`
+    - `[link text](#ID)`, e.g., "[Table stuff](#tables)" via `[Table stuff](#tables)`
+The Pandoc documentation provides more details on [automatic section IDs](http://pandoc.org/MANUAL.html#extension-auto_identifiers) and [implicit header references.](http://pandoc.org/MANUAL.html#extension-implicit_header_references)
+Cross-references still work even when we refer to an item that is not on the current page of the PDF or HTML output.
+
+## Take-home messages
+
+- RMarkdown is incredibly powerful and gives you many, many options for creating reports, presentations, documents, analysis notebooks!
+- Understanding YAML headers and all the different knitr options will really help you leverage RMarkdown reports
+- You can easily turn your RMarkdown reports into beautiful presentations!
+- More advanced usage of RMarkdown documents includes using cross-references and citations (use these to stay organized)
+- Adding in-line R-code to your RMarkdown documents will change your life; I encourage you to add these to your report so you at least have a example of how they work!
+
+## Additional references
+
+1. [RMarkdown textbook](https://bookdown.org/yihui/rmarkdown/) 
+2. [RMarkdown Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+3. [Add citations and cross-references in an RMarkdown report](https://www.earthdatascience.org/courses/earth-analytics/document-your-science/add-citations-to-rmarkdown-report/)
