@@ -29,6 +29,7 @@ library(tidyverse)
 
 - Part 3: Summary and Review (10 mins)
   - Dash components and terminology
+  - Here is today's [repl.it](https://repl.it/join/lxplstfb-firasm)
   - Go over Assignment 4
   
 ### Lecture Learning Objecives
@@ -55,6 +56,8 @@ Here is our plan for the next 2 weeks:
 | cm110 | Styling dashboards | 
 
 By the end of these four classes, you will be able to create this dashboard.
+
+(Class demo)
 
 ### Purpose of Dashboards
 
