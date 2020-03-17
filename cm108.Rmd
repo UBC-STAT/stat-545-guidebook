@@ -34,4 +34,49 @@ Part 3:
 
 ## Part 2: 
 
+### Anatomy of a Dash app
+
+Here is a useful way to visualize elements of a DashR dashboard:
+
+![](img/cm107_dashR_anatomy.png)
+
+#### 1. Create Dash App
+
+- `app <- Dash$new()` creates a new instance of a dash app
+
+#### 2. [Optional] Function to create a plot
+
+- To make your app more organized, you may optionally create a function that outputs a ggplot object
+- We will call this functino `make_plot` to be consistent, but it can be called anything and there can even be multiple functions.
+- The input arguments of the `make_plot` function will be the features that the user can filter or select for.
+- The `make_plot` function will filter the data based on the provided input arguments and ouput a plot based on the filtered data.
+
+#### App Layout `app$layout()`
+
+- `app$layout()` describes the layout of your app.
+- `app$layout()` allows you to specify where to add divisions in your dashboard to, for example, create an area for plots, a header for a title, or a sidebar for filters. It also allows you to specify where in your dashboard to place your graphs and filters.
+- See [here](https://dashr.plot.ly/getting-started) for more information on Dash layouts.
+
+#### App Callbacks `app$callback()`
+
+- `app$callback()` allows you to use Dash core components (ex. dropdown menu filter) to interactively change your plots.
+- `app$callback()` essentially links your filters to your plots. It allows you to interactively update your plots based on user selection (the values that the user filters for).
+
+#### Update Plot
+
+- Your plots will be updated using a wrapper function.
+- The wrapper function will call `make_plot` using the user's selections as the input arguments.
+- The wrapper function will output the updated plot.
+
+\newline
+
+- See [here](https://dashr.plot.ly/getting-started-part-2) for more information on Dash callbacks.
+
+#### Run App
+
+- `app$run_server()` runs your Dash app.
+- Render your Dash app by running `$ Rscript app.R` in your terminal.
+- Look at the output of your shell and navigate to the specified address (should be  http://127.0.0.1:8050/) in your web browser. You should see your dash app.
+- Note: everytime you make a change in your app, your must rerun `$ Rscript app.R` in your terminal for the changes to appear.
+
 ## Part 3: 
