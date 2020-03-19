@@ -12,26 +12,28 @@ library(tidyverse)
 
 ## Today's Agenda
 
-- Announcements:
-  - 
-  - 
-  - 
+- Announcements: (5 mins)
+  - Reminder to [give anonymous feedback](https://firasmoosvi.typeform.com/to/KvvsII) on how things are going with online class
+  - Please create an issue in our [`Discussion`](https://github.com/STAT547-UBC-2019-20/Discussions/issues) repo if you have questions!
+  - Reminder about milestone04 and assignment04 
+  - Go over [teamwork document](https://stat545.stat.ubc.ca/evaluation/teamwork/)
 
-- Part 1: Review of Dash app (10 mins)
+- Part 1: Review of Dash app (5 mins)
   - Demo from cm107: adding a ggplot object
   - Basic Dash anatomy
   
 - Part 2: Organizing your Dash app (20 mins)
-  - 
-  - 
-  - 
+  - Make Plot
+  - Assign components to variables
 
 - Part 3: Callbacks in Dash (45 mins)
-  -
-  - 
-  - 
+  - Template App
+  - Interlude: `!!sym()` syntax
+  - Call backs in Dash
 
-## Part 1: Review of Dash app (10 mins)
+- Part 4: Bonus/Optional - Change the scale of the y-axis using a button
+
+## Part 1: Review of Dash app (5 mins)
 
 Let's make sure everyone is on the same page about the [last demo from cm107](https://repl.it/join/lxplstfb-firasm): a ggplot graph inside a Dash app.
 
@@ -297,9 +299,15 @@ It contains a dropdown menu with different values for the y-axis, and a scatter 
 Let's now try to link the dropdown menu and the plot, so that the y-axis of the plot is the value selected from the dropdown menu. 
 
 **Step 1 : Update the `make_plot()` function **
+
 The first thing we have to do is to specify in our `make_plot()` function that the name of the y-axis is going to be an input. 
 We also need to update the function so that the graph depends on the value of this input.
 Try to make all the changes that you think necessary so that the plot depends on the value of the input `yaxis`. You can set 'gdpPercap' as the default value. Make sure that the title of the plot depends on the input too.
+
+### Interlude: `!!sym()` syntax
+
+
+### Back to regularly scheduled programming: Updating make_plot()
 
 ```{make_plot_answer}
 ## YOUR SOLUTION HERE
@@ -531,7 +539,7 @@ You can see that what is displayed by the graph on the y-axis depends on the val
 
 Congratulations, you just did your first callback and a "real" dashboard!!!
 
-## Part 4: BONUS OPTIONAL (if you want extra practice!) : Change the scale of the y-axis using a button
+## Part 4: BONUS/OPTIONAL (if you want extra practice!) : Change the scale of the y-axis using a button
 
 Now, let's do another exercise : add a button to specify if we want the scale of the y-axis to be linear or logarithmic.
 
@@ -652,7 +660,7 @@ make_plot <- function(yaxis = "gdpPercap",
 												text = paste('continent: ', continent,
 																		 '</br></br></br> Year:', year,
 																		 '</br></br>GDP:', gdpPercap))) +
-		geom_jitter(alpha = 0.6, jitter=TRUE) +
+		geom_jitter(alpha = 0.6) +
 		scale_color_manual(name = 'Continent', values = continent_colors) +
 		scale_x_continuous(breaks = unique(data$year))+
 		xlab("Year") +
