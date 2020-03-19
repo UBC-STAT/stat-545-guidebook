@@ -8,6 +8,8 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
+**This lecture is 75% completed.** I need to still restructure things a bit to balance lecturing and code exercises.
+
 ## Today's Agenda
 
 Announcements:
@@ -15,68 +17,669 @@ Announcements:
   - 
   - 
 
-Part 1: 
+Part 1: Review of Dash app (10 mins)
   - 
   -
   - 
   
-Part 2: 
+Part 2: Organizing your Dash app (20 mins)
   - 
   - 
   - 
 
-Part 3: 
+Part 3: Callbacks in Dash (45 mins)
   -
   - 
   - 
 
-## Part 1: 
+## Part 1: Review of Dash app (10 mins)
 
-## Part 2: 
+Let's make sure everyone is on the same page about the [last demo from cm107](https://repl.it/join/lxplstfb-firasm): a ggplot graph inside a Dash app.
 
-### Anatomy of a Dash app
+![](img/cm107_dashR_anatomy_basic.png)
+
+## Part 2: Organizing your Dash app (20 mins)
+
+Today we will look at a complete dash app. But before we get there, we need to add a few more items to our Dash app
+
+### Anatomy of a full Dash app
 
 Here is a useful way to visualize elements of a DashR dashboard:
 
 ![](img/cm107_dashR_anatomy.png)
 
-#### 1. Create Dash App
+#### 1. Load required libraries and add documentation of what the app does
+
+#### 2. Create instance of a Dash App
 
 - `app <- Dash$new()` creates a new instance of a dash app
 
-#### 2. [Optional] Function to create a plot
+#### 3. [Optional] Function to create a plot
 
 - To make your app more organized, you may optionally create a function that outputs a ggplot object
 - We will call this functino `make_plot` to be consistent, but it can be called anything and there can even be multiple functions.
 - The input arguments of the `make_plot` function will be the features that the user can filter or select for.
 - The `make_plot` function will filter the data based on the provided input arguments and ouput a plot based on the filtered data.
 
-#### App Layout `app$layout()`
+#### 4. Specify App Layout `app$layout()`
 
 - `app$layout()` describes the layout of your app.
-- `app$layout()` allows you to specify where to add divisions in your dashboard to, for example, create an area for plots, a header for a title, or a sidebar for filters. It also allows you to specify where in your dashboard to place your graphs and filters.
+- An `htmlDiv` is placed inside an `app$layout()` call that allows you to specify where to add "Divs" in your dashboard. For example, create an area for plots, a header for a title, or a sidebar for filters. It also allows you to specify where in your dashboard to place your graphs and filters. We will look at these later in the layouts section ; for now, you will need just one div and specify Dash components using a list
 - See [here](https://dashr.plot.ly/getting-started) for more information on Dash layouts.
 
-#### App Callbacks `app$callback()`
+#### (**NEW**) 5. App Callbacks `app$callback()`
 
 - `app$callback()` allows you to use Dash core components (ex. dropdown menu filter) to interactively change your plots.
 - `app$callback()` essentially links your filters to your plots. It allows you to interactively update your plots based on user selection (the values that the user filters for).
 
-#### Update Plot
+\newline
+
+- See [here](https://dashr.plot.ly/getting-started-part-2) for more information on Dash callbacks.
+
+#### (**NEW**) 6. Update Plot
 
 - Your plots will be updated using a wrapper function.
 - The wrapper function will call `make_plot` using the user's selections as the input arguments.
 - The wrapper function will output the updated plot.
 
-\newline
+#### 7. Run App
 
-- See [here](https://dashr.plot.ly/getting-started-part-2) for more information on Dash callbacks.
+- `app$run_server()` runs your Dash app.
+- Render your Dash app by running `$ Rscript app.R` in your terminal.
+- Look at the output of your shell and navigate to the specified address (should be  http://127.0.0.1:8050/) in your web browser. You should see your dash app.
+- Note: To automatically reload your dashboard when you make changes, add `debug=TRUE` to the `app$run_server` call.
 
 #### Run App
 
 - `app$run_server()` runs your Dash app.
 - Render your Dash app by running `$ Rscript app.R` in your terminal.
 - Look at the output of your shell and navigate to the specified address (should be  http://127.0.0.1:8050/) in your web browser. You should see your dash app.
-- Note: everytime you make a change in your app, your must rerun `$ Rscript app.R` in your terminal for the changes to appear.
+- Note: To automatically reload your dashboard when you make changes, add `debug=TRUE` to the `app$run_server` call.
 
-## Part 3: 
+## Part 3: Callbacks in Dash (45 mins)
+
+So far, you've learnt how to create Dash core components (ex. dropdown menu filter) and plots. Let's now try to link those two things, and interactively update our plots based on the user selection. To do so, we are going to use what are called `callbacks`. 
+
+Callbacks are chunks of code that  you are going to put towards the end of your code :
+
+- after you created your layout (that contains your plots, your dropdown menus,...)
+
+- before you run your application (so before the `app$run_server()` line)
+
+Callbacks usually have the following structure : 
+
+```
+app$callback(
+  #What you want to update 
+  output=list(id = <element_id>, property= <element_type>),
+  #Based on the following values
+  params=list(input(id = '<value_1>', property='value'),
+              input(id = '<value_2>', property='value'),
+              input(id = '<value_3>', property='value')),
+  #translate your list of params into function arguments
+  function(<value_1>, <value_2>, <value_3>) {
+    my_function(<value_1>, <value_2>, <value_3>)
+  })
+```
+The angle brackets mean that you have to change those names into the ones that corresponds to the elements of your app. 
+
+The way callbacks work is the following : Dash is going to use the inputs that are in the `params` list as the inputs of the `function` in order to change the property of the Dash component that are specified in the `output` argument.
+
+I gave you the general structure of a callback so that you can see what it looks like. Let's now use an example to understand better how to specify callbacks. In our example, we are going to change what variable is used as the y-axis of a graph by using a dropdown menu.
+
+## Exercise 1 : change what we display on the y-axis using a dropdown menu
+
+**Step 0 : create the different components**
+
+First, copy the following code in a new R file named `app.R`.
+
+```{app.R_template}
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+app <- Dash$new(external_stylesheets = "https://codepen.io/chriddyp/pen/bWLwgP.css")
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                   value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+  id = "y-axis",
+  options = map(
+    1:nrow(yaxisKey), function(i){
+      list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+    }),
+  value = "gdpPercap"
+)
+# Use a function make_graph() to create the graph
+make_graph <- function(){
+  
+  # gets the label matching the column value
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  p <- ggplot(data, aes(x = year, y = gdpPercap, colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab("GDP Per Capita") +
+    ggtitle(paste0("Change in GDP Per Capita Over Time")) +
+    theme_bw()
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+# Now we define the graph as a dash component using generated figure
+graph <- dccGraph(
+  id = 'gap-graph',
+  figure=make_graph() # gets initial data using argument defaults
+)
+app$layout(
+  htmlDiv(
+    list(
+      htmlH1('Gapminder Dash Demo'),
+      htmlH2('Looking at country data interactively'),
+      #selection components
+      htmlLabel('Select y-axis metric:'),
+      yaxisDropdown,
+      #graph and table
+      graph,
+      htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+      dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+    )
+  )
+)
+app$run_server()
+```
+
+To run this code, run `Rscript app.R` in your terminal from the folder where your `app.R` is.
+
+This script creates an app to analyze the gapminder dataset. It contains a dropdown menu with different values for the y-axis, and a scatter plot. 
+
+Let's now try to link the dropdown menu and the plot, so that the y-axis of the plot is the value selected from the dropdown menu. 
+
+**Step 1 : Update the `make_graph()` function **
+The first thing we have to do is to specify in our `make_graph()` function that the name of the y-axis is going to be an input. We also need to update the function so that the graph depends on the value of this input.
+Try to make all the changes that you think necessary so that the plot depends on the value of the input `yaxis`. You can set 'gdpPercap' as the default value. Make sure that the title of the plot depends on the input too.
+```{make_graph_answer}
+make_graph <- function(yaxis = "gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  # on converting yaxis string to col reference (quosure) by `!!sym()`
+  # see: https://github.com/r-lib/rlang/issues/116#issuecomment-298969559
+  #
+  # `sym()` turns strings (or list of strings) to symbols (https://www.rdocumentation.org/packages/rlang/versions/0.2.2/topics/sym)
+  #
+  # `paste` concatenates vectors after converting to characters (https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/paste)
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time")) +
+    theme_bw()
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+```
+Now that we changed the function that creates the graph so that it takes a value of the y-axis as an input, we have to link the two dash components that we have : the graph and the dropdown menu. This is when you create the callback! 
+**Step 2 : create the callback**
+
+**Step 2.1 : define the output of the callback**
+
+If we look back at the general structure of a callback, we can see that the first thing we have to define is the element we want to update : this is the output of the callback.
+
+Try to fill up the blanks : 
+
+```{output_question}
+output=list(id = <element_id>, property= <element_type>)
+```
+
+Here is the answer : 
+
+```{output_answer}
+output=list(id = 'gap-graph', property= 'figure')
+```
+
+The id 'gap-graph' is the id of the component you want to display (cf line 99 of the code above). The `property` argument refers to which property of your component you want to display (here it's the `figure`, cf line 100 of the code above).
+
+**Step 2.2 : define the input(s) of the callback**
+
+Then, we have to define our parameters, which are the values we are going to us as an input of our callback to update our graph.
+
+Try to  fill up the blanks : 
+
+```{params_question}
+params=list(input(id = '<value_1>', property='value')),
+```
+
+Here is the answer : 
+
+```{params_answer}
+params=list(input(id = 'y-axis', property='value')),
+```
+
+The way to read this code is the same as before : our input is the "value" property of the component that has the ID "y-axis" (cf line 55 and 60 on the code above).
+
+**Step 2.3 : define the function in the callback**
+
+Finally, we just have translate our list of params into a function arguments.
+
+Try to fill up the blanks : 
+
+```{function_question}
+  function(<value_1>) {
+    my_function(<value_1>)
+  }
+```
+
+Here is the answer : 
+
+```{function_answer}
+  function(yaxis_value) {
+    make_graph(yaxis_value)
+}
+```
+
+Notice that we have never defined `yaxis_value` before, this is just the name that I decided to give to the input of my function. What is important here is that the argument of your function has the same name as the argument you put inside the `make_graph()` function. 
+
+If we gather all those answers, we obtain the complete callback : 
+
+```{callback}
+app$callback(
+  #update figure of gap-graph
+  output=list(id = 'gap-graph', property='figure'),
+  #based on values of year, continent, y-axis components
+  params=list(input(id = 'y-axis', property='value')),
+  #this translates your list of params into function arguments
+  function(yaxis_value) {
+    make_graph(yaxis_value)
+  })
+```
+
+What happends here is that Dash takes the input property (the 'value' of the 'y-axis' component), uses it as an input argument of the function, and updates the property of the output component (the 'figure' of the 'gap-graph' component) with whatever was returned by the function.
+
+**Step 3 : put it all together!**
+
+Now, add this chunck of code in your app. You should have the following code : 
+
+```{app_1}
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+app <- Dash$new(external_stylesheets = "https://codepen.io/chriddyp/pen/bWLwgP.css")
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                   value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+  id = "y-axis",
+  options = map(
+    1:nrow(yaxisKey), function(i){
+      list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+    }),
+  value = "gdpPercap"
+)
+# Use a function make_graph() to create the graph
+make_graph <- function(yaxis = "gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  # on converting yaxis string to col reference (quosure) by `!!sym()`
+  # see: https://github.com/r-lib/rlang/issues/116#issuecomment-298969559
+  #
+  # `sym()` turns strings (or list of strings) to symbols (https://www.rdocumentation.org/packages/rlang/versions/0.2.2/topics/sym)
+  #
+  # `paste` concatenates vectors after converting to characters (https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/paste)
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time")) +
+    theme_bw()
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+# Now we define the graph as a dash component using generated figure
+graph <- dccGraph(
+  id = 'gap-graph',
+  figure=make_graph() # gets initial data using argument defaults
+)
+app$layout(
+  htmlDiv(
+    list(
+      htmlH1('Gapminder Dash Demo'),
+      htmlH2('Looking at country data interactively'),
+      #selection components
+      htmlLabel('Select y-axis metric:'),
+      yaxisDropdown,
+      #graph and table
+      graph,
+      htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+      dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+    )
+  )
+)
+app$callback(
+  #update figure of gap-graph
+  output=list(id = 'gap-graph', property='figure'),
+  #based on values of year, continent, y-axis components
+  params=list(input(id = 'y-axis', property='value')),
+  #this translates your list of params into function arguments
+  function(yaxis_value) {
+    make_graph(yaxis_value)
+  })
+app$run_server()
+```
+
+Run this app, and try to play with the dropdown menu. You can see that what is displayed by the graph on the y-axis depends on the value you choose on your dropdown menu. 
+
+Congratulations, you just did your first callback!!!
+
+Now, let's do another exercise : add a button to specify if we want the scale of the y-axis to be linear or logarithmic.
+
+## Exercise 2 : change the scale of the y-axis using a button
+
+**Step 0 : add the button**
+
+Try to add a button with 2 choices : `Linear` and `Log`
+
+```{answer_code_with_button}
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+app <- Dash$new(external_stylesheets = "https://codepen.io/chriddyp/pen/bWLwgP.css")
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                   value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+  id = "y-axis",
+  options = map(
+    1:nrow(yaxisKey), function(i){
+      list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+    }),
+  value = "gdpPercap"
+)
+#Create the button 
+logbutton <- dccRadioItems(
+          id = 'yaxis-type',
+          options = list(list(label = 'Linear', value = 'linear'),
+                         list(label = 'Log', value = 'log')),
+          value = 'linear'
+)
+# Use a function make_graph() to create the graph
+make_graph <- function(yaxis = "gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  # on converting yaxis string to col reference (quosure) by `!!sym()`
+  # see: https://github.com/r-lib/rlang/issues/116#issuecomment-298969559
+  #
+  # `sym()` turns strings (or list of strings) to symbols (https://www.rdocumentation.org/packages/rlang/versions/0.2.2/topics/sym)
+  #
+  # `paste` concatenates vectors after converting to characters (https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/paste)
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time")) +
+    theme_bw()
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+# Now we define the graph as a dash component using generated figure
+graph <- dccGraph(
+  id = 'gap-graph',
+  figure=make_graph() # gets initial data using argument defaults
+)
+app$layout(
+  htmlDiv(
+    list(
+      htmlH1('Gapminder Dash Demo'),
+      htmlH2('Looking at country data interactively'),
+      #selection components
+      htmlLabel('Select y-axis metric:'),
+      yaxisDropdown,
+      htmlIframe(height=15, width=10, style=list(borderWidth = 0)), #space
+      htmlLabel('Select y scale : '),
+      logbutton,
+      #graph and table
+      graph,
+      htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+      dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+    )
+  )
+)
+app$callback(
+  #update figure of gap-graph
+  output=list(id = 'gap-graph', property='figure'),
+  #based on values of year, continent, y-axis components
+  params=list(input(id = 'y-axis', property='value')),
+  #this translates your list of params into function arguments
+  function(yaxis_value) {
+    make_graph(yaxis_value)
+  })
+app$run_server()
+```
+
+**Step 1 : Update the `make_graph()` function**
+
+Try to update the `make_graph()` function so that one of its arguments changes the scale of the y-axis.
+
+```{answer_make_graph_button}
+make_graph <- function(yaxis = "gdpPercap", scale = "linear"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  # on converting yaxis string to col reference (quosure) by `!!sym()`
+  # see: https://github.com/r-lib/rlang/issues/116#issuecomment-298969559
+  #
+  # `sym()` turns strings (or list of strings) to symbols (https://www.rdocumentation.org/packages/rlang/versions/0.2.2/topics/sym)
+  #
+  # `paste` concatenates vectors after converting to characters (https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/paste)
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time (Scale : ", scale, ")")) +
+    theme_bw()
+  
+  if (scale == 'log'){
+    p <- p + scale_y_continuous(trans='log10')
+  }
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+```
+
+**Step 2 : Create the callback**
+
+Now, it's time to create the callback!
+
+*Hint* : As the Dash component you have to update is the same as the one we updated in Exercise 1, so you can use the same callback as before and just add another variable as part of the input. 
+
+```{answer_callback_button}
+app$callback(
+  #update figure of gap-graph
+  output=list(id = 'gap-graph', property='figure'),
+  #based on values of year, continent, y-axis components
+  params=list(input(id = 'y-axis', property='value'),
+              input(id = 'yaxis-type', property='value')),
+  #this translates your list of params into function arguments
+  function(yaxis_value, yaxis_scale) {
+    make_graph(yaxis_value, yaxis_scale)
+  })
+```
+
+**Step 3 : put it all togheter**
+
+Now, gather all your chunks of code. Your final answer should be similar to this : 
+
+```{answer_code_with_button}
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+app <- Dash$new(external_stylesheets = "https://codepen.io/chriddyp/pen/bWLwgP.css")
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                   value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+  id = "y-axis",
+  options = map(
+    1:nrow(yaxisKey), function(i){
+      list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+    }),
+  value = "gdpPercap"
+)
+#Create the button 
+logbutton <- dccRadioItems(
+          id = 'yaxis-type',
+          options = list(list(label = 'Linear', value = 'linear'),
+                         list(label = 'Log', value = 'log')),
+          value = 'linear'
+)
+# Use a function make_graph() to create the graph
+make_graph <- function(yaxis = "gdpPercap", scale = "linear"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  # on converting yaxis string to col reference (quosure) by `!!sym()`
+  # see: https://github.com/r-lib/rlang/issues/116#issuecomment-298969559
+  #
+  # `sym()` turns strings (or list of strings) to symbols (https://www.rdocumentation.org/packages/rlang/versions/0.2.2/topics/sym)
+  #
+  # `paste` concatenates vectors after converting to characters (https://www.rdocumentation.org/packages/base/versions/3.6.1/topics/paste)
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent,
+                        text = paste('continent: ', continent,
+                                     '</br></br></br> Year:', year,
+                                     '</br></br></br> GDP:', gdpPercap))) +
+    geom_point(alpha = 0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time (Scale : ", scale, ")")) +
+    theme_bw()
+  
+  if (scale == 'log'){
+    p <- p + scale_y_continuous(trans='log10')
+  }
+  
+  # passing c("text") into tooltip only shows the contents of 
+  ggplotly(p, tooltip = c("text"))
+}
+# Now we define the graph as a dash component using generated figure
+graph <- dccGraph(
+  id = 'gap-graph',
+  figure=make_graph() # gets initial data using argument defaults
+)
+app$layout(
+  htmlDiv(
+    list(
+      htmlH1('Gapminder Dash Demo'),
+      htmlH2('Looking at country data interactively'),
+      #selection components
+      htmlLabel('Select y-axis metric:'),
+      yaxisDropdown,
+      htmlIframe(height=15, width=10, style=list(borderWidth = 0)), #space
+      htmlLabel('Select y scale : '),
+      logbutton,
+      #graph and table
+      graph,
+      htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+      dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+    )
+  )
+)
+app$callback(
+  #update figure of gap-graph
+  output=list(id = 'gap-graph', property='figure'),
+  #based on values of year, continent, y-axis components
+  params=list(input(id = 'y-axis', property='value'),
+              input(id = 'yaxis-type', property='value')),
+  #this translates your list of params into function arguments
+  function(yaxis_value, yaxis_scale) {
+    make_graph(yaxis_value, yaxis_scale)
+  })
+app$run_server()
+```
+
+Finally, try to run your app to make sure everything works.
+
+Now you know how to create a simple callback! 
+
+For the second part of this lecture, we are going to go one level up : it's time to deal with complex callbacks!! 
