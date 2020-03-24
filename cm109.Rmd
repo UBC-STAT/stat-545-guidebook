@@ -320,7 +320,7 @@ Your final code should be similar to this:
 # author: YOUR NAME
 # date: THE DATE
 
-"This script is the main file that creates a Dash app for cm108 on the gapminder dataset.
+"This script is the main file that creates a Dash app for cm109 on the gapminder dataset.
 
 Usage: app.R
 "
