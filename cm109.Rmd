@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**This lecture is about 100% complete.**
+**This lecture is 100% complete.**
 
 ## Today's Agenda (10 mins)
 
@@ -37,6 +37,7 @@ By the end of this class you will :
 - apply principles of effective dashboards when creating your own.
 - link two graphs together using multi-level callbacks.
 - explore sample dashboard layouts.
+- The [repl.it](https://repl.it/join/zjzcanpx-firasm) for today.
 
 ## Part 1: Effective Dashboards [25 mins]
 
@@ -514,7 +515,7 @@ These were done by former students:
 Next class, we will explore in detail how to achieve the aesthetics that we need. 
 In the meantime, feel free to explore one of the layouts from [this repo](https://github.com/matthewconnell/dashr_sample_layouts) created by Matthew as a starting point.
 
-## Appendix: Another example of a Dash multi-level callback
+## OPTIONAL Appendix: Another example of a Dash multi-level callback
 
 **Link between a bar chart and a scatter plot**
 
