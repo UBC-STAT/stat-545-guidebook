@@ -1,4 +1,4 @@
-# (9) DashR: styling dashboards
+# (9) DashR: Multi-level callbacks and layouts
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -8,30 +8,682 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-## Today's Agenda
+**This lecture is about 70% done, I need to add the slides for Part 1, and clean up Part 2 a bit more**
 
-Announcements:
-  - 
-  - 
-  - 
+## Today's Agenda (10 mins)
 
-Part 1: 
-  - 
-  -
-  - 
+- Announcements:
+  - [Assignment 05](https://stat545.stat.ubc.ca/evaluation/assignment_05/assignment_05/) and [Milestone 05](https://stat545.stat.ubc.ca/evaluation/milestone_05/milestone_05/) have now been posted
   
-Part 2: 
-  - 
-  - 
-  - 
+- Part 1: Effective Dashboards [25 mins]
+  - Going through the process of building dashboards
+  - Principles of effective dashboards
+  - Examples of effective dashboards
+  
+- Part 2: Multi-level callbacks in Dash [30 mins]
+  - Example 1: Linking two graphs together with clicks (by Sirine)
+  - Example 2: (Optional) Extra example linking graphs together (by Sirine)
 
-Part 3: 
-  -
-  - 
-  - 
+- Part 3: Preview of Layouts in Dash [10 mins]
+  - Demo of layout possibilities
+  - Link to layout templates (by Matthew)
 
-## Part 1: 
+  
+### Lecture Learning Objecives
 
-## Part 2: 
+By the end of this class you will : 
 
-## Part 3: 
+- have completed your first online class in STAT 547M!
+- be able to explain elements of the Dash framework.
+- be able to create a Dash app with several components.
+- be able to describe principles of effective dashboards.
+
+## Part 1: Effective Dashboards [25 mins]
+
+## Part 2: Part 2: Multi-level callbacks in Dash [30 mins]
+
+
+Let's improve the app we created last time and add a line graph to it. This line graph is going to represent the same variables as the plot that we already have in our app (the value that we select from the dropdown menu VS years), but only for one country. To select which country we want to study, we are going to select if from our first scatter plot. 
+
+Here is the code we had : 
+
+```{app_origin_ex1}
+# author: YOUR NAME
+# date: THE DATE
+
+"This script is the main file that creates a Dash app for cm108 on the gapminder dataset.
+
+Usage: app.R
+"
+
+## Load libraries
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+
+## Make plot
+
+make_plot <- function(yaxis = "gdpPercap",
+                                            scale = "linear"){
+    
+    # gets the label matching the column value
+    y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+    
+    #filter our data based on the year/continent selections
+    data <- gapminder
+    # make the plot!
+    p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent)) +
+        geom_jitter(alpha = 0.6) +
+        scale_color_manual(name = 'Continent', values = continent_colors) +
+        scale_x_continuous(breaks = unique(data$year))+
+        xlab("Year") +
+        ylab(y_label) +
+        ggtitle(paste0("Change in ", y_label, " over time (Scale : ", scale, ")")) +
+        theme_bw()
+    
+    if (scale == 'log'){
+        p <- p + scale_y_continuous(trans='log10')
+    }
+    # passing c("text") into tooltip only shows the contents of 
+    ggplotly(p, tooltip = c("text"))
+}
+
+## Assign components to variables
+
+heading_title <- htmlH1('Gapminder Dash Demo')
+heading_subtitle <- htmlH2('Looking at country data interactively')
+
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                                     value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+    id = "y-axis",
+    options = map(
+        1:nrow(yaxisKey), function(i){
+            list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+        }),
+    value = "gdpPercap"
+)
+
+#Create the button 
+logbutton <- dccRadioItems(
+    id = 'yaxis-type',
+    options = list(list(label = 'Linear', value = 'linear'),
+                                 list(label = 'Log', value = 'log')),
+    value = 'linear'
+)
+
+graph <- dccGraph(
+    id = 'gap-graph',
+    figure=make_plot() # gets initial data using argument defaults
+)
+
+sources <- dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+
+## Create Dash instance
+
+app <- Dash$new()
+
+## Specify App layout
+
+app$layout(
+    htmlDiv(
+        list(
+            heading_title,
+            heading_subtitle,
+            #selection components
+            htmlLabel('Select y-axis metric:'),
+            yaxisDropdown,
+            htmlIframe(height=15, width=10, style=list(borderWidth = 0)), #space
+            htmlLabel('Select y scale : '),
+            logbutton,
+            #graph
+            graph,
+            htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+            sources
+        )
+    )
+)
+
+## App Callbacks
+
+app$callback(
+    #update figure of gap-graph
+    output=list(id = 'gap-graph', property='figure'),
+    #based on values of year, continent, y-axis components
+    params=list(input(id = 'y-axis', property='value'),
+                            input(id = 'yaxis-type', property='value')),
+    #this translates your list of params into function arguments
+    function(yaxis_value, yaxis_scale) {
+        make_plot(yaxis_value, yaxis_scale)
+    })
+
+## Run app
+
+app$run_server()
+
+# command to add dash app in Rstudio viewer:
+# rstudioapi::viewer("http://127.0.0.1:8050")
+
+``` 
+
+**Step 0 : create the new graph**
+
+The first thing we have to do is to create the line graph. 
+
+```{make_line_graph_ex1}
+
+make_country_graph <- function(country_select="Canada",
+                               yaxis="gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder %>%
+    filter(country == country_select)
+  
+  # make the plot
+  p <- ggplot(data, aes(x=year, y=!!sym(yaxis), colour=continent)) +
+    geom_line() +
+    scale_color_manual(name="Continent", values=continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time: ", 
+                   country_select)) +
+    theme_bw()
+  
+  ggplotly(p)
+}
+
+```
+
+Let's add this code to our app, and create the corresponding Dash component : 
+
+```{app_all_graphs_ex1}
+# author: YOUR NAME
+# date: THE DATE
+
+"This script is the main file that creates a Dash app for cm108 on the gapminder dataset.
+
+Usage: app.R
+"
+
+## Load libraries
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+
+## Make plot
+
+make_plot <- function(yaxis = "gdpPercap",
+                      scale = "linear"){
+    
+    # gets the label matching the column value
+    y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+    
+    #filter our data based on the year/continent selections
+    data <- gapminder
+    # make the plot!
+    
+    p <- ggplot(data, aes(x = year, y = !!sym(yaxis), colour = continent)) +
+        geom_jitter(alpha = 0.6) +
+        scale_color_manual(name = 'Continent', values = continent_colors) +
+        scale_x_continuous(breaks = unique(data$year))+
+        xlab("Year") +
+        ylab(y_label) +
+        ggtitle(paste0("Change in ", y_label, " over time (Scale : ", scale, ")")) +
+        theme_bw()
+    
+    if (scale == 'log'){
+        p <- p + scale_y_continuous(trans='log10')
+    }
+    # passing c("text") into tooltip only shows the contents of 
+    ggplotly(p, tooltip = c("text"))
+}
+
+####NEW : create the line graph
+
+make_country_graph <- function(country_select="Canada",
+                               yaxis="gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder %>%
+    filter(country == country_select)
+  
+  # make the plot
+  p <- ggplot(data, aes(x=year, y=!!sym(yaxis), colour=continent)) +
+    geom_line() +
+    scale_color_manual(name="Continent", values=continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time: ", 
+                   country_select)) +
+    theme_bw()
+  
+  ggplotly(p)
+}
+
+
+## Assign components to variables
+
+heading_title <- htmlH1('Gapminder Dash Demo')
+heading_subtitle <- htmlH2('Looking at country data interactively')
+
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                                     value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+    id = "y-axis",
+    options = map(
+        1:nrow(yaxisKey), function(i){
+            list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+        }),
+    value = "gdpPercap"
+)
+
+#Create the button 
+logbutton <- dccRadioItems(
+    id = 'yaxis-type',
+    options = list(list(label = 'Linear', value = 'linear'),
+                                 list(label = 'Log', value = 'log')),
+    value = 'linear'
+)
+
+graph <- dccGraph(
+    id = 'gap-graph',
+    figure=make_plot() # gets initial data using argument defaults
+)
+
+####NEW : create the Dash component
+
+graph_country <- dccGraph(
+    id = 'gap-graph-country',
+    figure=make_country_graph() # gets initial data using argument defaults
+)
+
+sources <- dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+
+## Create Dash instance
+
+app <- Dash$new()
+
+## Specify App layout
+
+app$layout(
+    htmlDiv(
+        list(
+            heading_title,
+            heading_subtitle,
+            #selection components
+            htmlLabel('Select y-axis metric:'),
+            yaxisDropdown,
+            htmlIframe(height=15, width=10, style=list(borderWidth = 0)), #space
+            htmlLabel('Select y scale : '),
+            logbutton,
+            #graph
+            graph,
+            ####NEW : display the plot
+            graph_country,
+            htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+            sources
+        )
+    )
+)
+
+## App Callbacks
+
+app$callback(
+    #update figure of gap-graph
+    output=list(id = 'gap-graph', property='figure'),
+    #based on values of year, continent, y-axis components
+    params=list(input(id = 'y-axis', property='value'),
+                            input(id = 'yaxis-type', property='value')),
+    #this translates your list of params into function arguments
+    function(yaxis_value, yaxis_scale) {
+        make_plot(yaxis_value, yaxis_scale)
+    })
+
+## Run app
+
+app$run_server()
+
+# command to add dash app in Rstudio viewer:
+# rstudioapi::viewer("http://127.0.0.1:8050")
+
+``` 
+
+Now, if you run this code, you should see two graphs : the scatter plot we had last time, and a line graph. The scatter plot should be dynamic (it should still change depending on what the user select in the dropdown menu), while the line graph shouldn't change for now. 
+
+Now, let's link the two graphs together!
+
+**Step 1 : specify the action when you click on the first plot**
+
+The first thing we have to do is to specify that clicking on the first graph is going to create an action. To do so, our code have to contain the following information : we want to save the country name of the point selected by the user. For that, we are going to specify `customdata=country` in our plot aesthetics. The `customdata` argument allows you to specify what information you want to save when the user clicks on this plot (here, it's the variable `country` that we want to save).
+
+Just adding `customdata=country` in the aesthetics would be enough, but I also recommand to change the way the plot looks when the user clicks on it, in order to highlight the selected point. To do so, we have to pip our ggplotly object into the `layout(clickmode = 'event+select')` function.
+
+Let's introduce those two elements in the `make_plot` function.
+
+```{specify_action_ex1}
+
+
+make_plot <- function(yaxis = "gdpPercap",
+                      scale = "linear"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  
+  ####NEW: the customdata mapping adds country to the tooltip and allows
+  # its selection using clickData.
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), 
+                        colour = continent, 
+                        customdata=country)) +
+    geom_jitter(alpha=0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " over time (Scale : ", scale, ")")) +
+    theme_bw()
+  
+  if (scale == 'log'){
+    p <- p + scale_y_continuous(trans='log10')
+  }
+  
+  ggplotly(p) %>%
+    ####NEW: this is optional but changes how the graph appears on click
+    # more layout stuff: https://plotly-r.com/improving-ggplotly.html
+    layout(clickmode = 'event+select')
+  
+}
+
+```
+
+
+**Step 2 : create the callback**
+
+Now, it's time to create the callback that is going to link our two graphs. This is very similar to what we did in the previous lecture.
+Let's focus on the `ouput` and `params` arguments first.  Try to fill the blanks in the following code.
+
+
+*Hint* : 
+
+- There are 2 inputs : one corresponds to the value selected in the dropdown menu, and the other one is the point selected from the scatter plot.
+
+- The proporty that corresponds to the graph is `clickData`
+
+```{callback_ex1}
+
+output = list(id = <your_answer>, property = <your_answer>),
+params = list(input(id=<your_answer>, property=<your_answer>),
+          # Here's where we check for graph interactions!
+          input(id=<your_answer>, property=<your_answer>))
+
+## YOUR SOLUTION HERE
+
+output = list(id = 'gap-graph-country', property = 'figure'),
+params = list(input(id='y-axis', property='value'),
+         # Here's where we check for graph interactions!
+         input(id='gap-graph', property='clickData'))
+
+```
+
+Now that we have the `output` and the `params` arguments specified, let's focus on the `function` .
+
+This function in going to have two arguments, as we have two inputs. We can call those two arguments `yaxis_value` and `clickData`. Then inside this function, we are going to call our `make_country_graph` function, that we created in step 0. 
+
+The `make_country_graph` function takes two arguments : the country that we want to display, and the variable that we want to represent on the y-axis. 
+
+- The second argument is not a problem, we can directly take the `yaxis_value` as we already did so many times. 
+
+- The issue here is going to be the input that comes from the scatter plot. Indeed, the `clickData` property doesn't return the value that we saved in the `customdata` directly, we have to look for it. To access the country name, we have to do the following : `clickData$points[[1]]$customdata`. 
+
+With all those information at hand, try to fill the following code : 
+
+```{final_callback_ex1}
+
+function(<your_answer>, <your_answer>) {
+ country_name = <your_answer>
+ make_country_graph(country_name, <your_answer>)
+})
+
+## YOUR SOLUTION HERE
+
+function(yaxis_value, clickData) {
+ # clickData contains $x, $y and $customdata
+ # you can't access these by gapminder column name!
+ country_name = clickData$points[[1]]$customdata
+ make_country_graph(country_name, yaxis_value)
+})
+
+```
+
+Now, the last step is just to gather all the different chunks of code we created.
+
+**Step 3 : put it all together**
+
+Your final code should be similar to this one : 
+
+```{app_final_ex1}
+# author: YOUR NAME
+# date: THE DATE
+
+"This script is the main file that creates a Dash app for cm108 on the gapminder dataset.
+
+Usage: app.R
+"
+
+## Load libraries
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+library(tidyverse)
+library(plotly)
+library(gapminder)
+
+## Make plot
+
+make_plot <- function(yaxis = "gdpPercap",
+                      scale = "linear"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder
+  # make the plot!
+  
+  ####NEW: the customdata mapping adds country to the tooltip and allows
+  # its selection using clickData.
+  
+  p <- ggplot(data, aes(x = year, y = !!sym(yaxis), 
+                        colour = continent, 
+                        customdata=country)) +
+    geom_jitter(alpha=0.6) +
+    scale_color_manual(name = 'Continent', values = continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " over time (Scale : ", scale, ")")) +
+    theme_bw()
+  
+  if (scale == 'log'){
+    p <- p + scale_y_continuous(trans='log10')
+  }
+  
+  ggplotly(p) %>%
+    ####NEW: this is optional but changes how the graph appears on click
+    # more layout stuff: https://plotly-r.com/improving-ggplotly.html
+    layout(clickmode = 'event+select')
+  
+}
+
+####NEW : create the line graph
+
+make_country_graph <- function(country_select="Canada",
+                               yaxis="gdpPercap"){
+  
+  # gets the label matching the column value
+  y_label <- yaxisKey$label[yaxisKey$value==yaxis]
+  
+  #filter our data based on the year/continent selections
+  data <- gapminder %>%
+    filter(country == country_select)
+  
+  # make the plot
+  p <- ggplot(data, aes(x=year, y=!!sym(yaxis), colour=continent)) +
+    geom_line() +
+    scale_color_manual(name="Continent", values=continent_colors) +
+    scale_x_continuous(breaks = unique(data$year))+
+    xlab("Year") +
+    ylab(y_label) +
+    ggtitle(paste0("Change in ", y_label, " Over Time: ", 
+                   country_select)) +
+    theme_bw()
+  
+  ggplotly(p)
+}
+
+
+## Assign components to variables
+
+heading_title <- htmlH1('Gapminder Dash Demo')
+heading_subtitle <- htmlH2('Looking at country data interactively')
+
+# Storing the labels/values as a tibble means we can use this both 
+# to create the dropdown and convert colnames -> labels when plotting
+yaxisKey <- tibble(label = c("GDP Per Capita", "Life Expectancy", "Population"),
+                                     value = c("gdpPercap", "lifeExp", "pop"))
+#Create the dropdown
+yaxisDropdown <- dccDropdown(
+    id = "y-axis",
+    options = map(
+        1:nrow(yaxisKey), function(i){
+            list(label=yaxisKey$label[i], value=yaxisKey$value[i])
+        }),
+    value = "gdpPercap"
+)
+
+#Create the button 
+logbutton <- dccRadioItems(
+    id = 'yaxis-type',
+    options = list(list(label = 'Linear', value = 'linear'),
+                                 list(label = 'Log', value = 'log')),
+    value = 'linear'
+)
+
+graph <- dccGraph(
+    id = 'gap-graph',
+    figure=make_plot() # gets initial data using argument defaults
+)
+
+####NEW : create the Dash component
+
+graph_country <- dccGraph(
+    id = 'gap-graph-country',
+    figure=make_country_graph() # gets initial data using argument defaults
+)
+
+sources <- dccMarkdown("[Data Source](https://cran.r-project.org/web/packages/gapminder/README.html)")
+
+## Create Dash instance
+
+app <- Dash$new()
+
+## Specify App layout
+
+app$layout(
+    htmlDiv(
+        list(
+            heading_title,
+            heading_subtitle,
+            #selection components
+            htmlLabel('Select y-axis metric:'),
+            yaxisDropdown,
+            htmlIframe(height=15, width=10, style=list(borderWidth = 0)), #space
+            htmlLabel('Select y scale : '),
+            logbutton,
+            #graph
+            graph,
+            ####NEW : display the plot
+            graph_country,
+            htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
+            sources
+        )
+    )
+)
+
+## App Callbacks
+
+app$callback(
+    #update figure of gap-graph
+    output=list(id = 'gap-graph', property='figure'),
+    #based on values of year, continent, y-axis components
+    params=list(input(id = 'y-axis', property='value'),
+                            input(id = 'yaxis-type', property='value')),
+    #this translates your list of params into function arguments
+    function(yaxis_value, yaxis_scale) {
+        make_plot(yaxis_value, yaxis_scale)
+    })
+
+####NEW: updates our second graph using linked interactivity
+app$callback(output = list(id = 'gap-graph-country', property = 'figure'),
+             params = list(input(id='y-axis', property='value'),
+                           # Here's where we check for graph interactions!
+                           input(id='gap-graph', property='clickData')),
+            function(yaxis_value, clickData) {
+                 # clickData contains $x, $y and $customdata
+                 # you can't access these by gapminder column name!
+                 country_name = clickData$points[[1]]$customdata
+                 make_country_graph(country_name, yaxis_value)
+            })
+
+## Run app
+
+app$run_server()
+
+# command to add dash app in Rstudio viewer:
+# rstudioapi::viewer("http://127.0.0.1:8050")
+
+``` 
+
+Run this app and play with it. You can notice that the second graph is going to change depending on which point you select on the first graph. 
+
+Well, thi is it, you just did your first cross-filtering!! 
+
+## Part 3: Preview of Layouts in Dash [10 mins]
+
+Here are three examples of what dashboards look like in R once layouts have been applied to them. 
+These were done by former students:
+
+- [Boston Crime Dashboard](https://group-dash-milestone-4.herokuapp.com)
+- [Interactive Movie Dashboard](https://movies214-milestone4.herokuapp.com)
+- [Job Analyzer](https://dsci532-milestone4-r-107.herokuapp.com)
+
+Next class, we will explore in detail how to achieve the aesthetics that we need. 
+In the meantime, feel free to explore one of the layouts from [this repo](https://github.com/matthewconnell/dashr_sample_layouts) created by Matthew as a starting point.
+
