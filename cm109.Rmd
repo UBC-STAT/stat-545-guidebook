@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**This lecture is about 70% done, I need to add the slides for Part 1, and clean up Part 2 a bit more**
+**This lecture is about 100% complete.**
 
 ## Today's Agenda (10 mins)
 
@@ -16,8 +16,8 @@ library(tidyverse)
   - [Assignment 05](https://stat545.stat.ubc.ca/evaluation/assignment_05/assignment_05/) and [Milestone 05](https://stat545.stat.ubc.ca/evaluation/milestone_05/milestone_05/) have now been posted
   
 - Part 1: Effective Dashboards [25 mins]
-  - Going through the process of building dashboards
   - Principles of effective dashboards
+  - Other considerations for building dashboards
   - Examples of effective dashboards
   
 - Part 2: Multi-level callbacks in Dash [30 mins]
@@ -40,7 +40,7 @@ By the end of this class you will :
 
 ## Part 1: Effective Dashboards [25 mins]
 
-The slides for this section can be found [here]().
+The slides for this section can be found [here](https://github.com/firasm/bits/raw/master/2020-03-23%20-%20Effective%20Dashboards.pdf) and in your participation repo.
 
 ## Part 2: Part 2: Multi-level callbacks in Dash [30 mins]
 
