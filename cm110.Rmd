@@ -1,4 +1,4 @@
-# (10) DashR: Deployment
+# (10) DashR: Layouts and Styling Dashboards
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -8,30 +8,239 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-## Today's Agenda
+**This lecture is 90% complete.**
 
-Announcements:
-  - 
-  - 
-  - 
+## Today's Agenda (10 mins)
 
-Part 1: 
-  - 
-  -
-  - 
+- Announcements:
+  - None
   
-Part 2: 
-  - 
-  - 
-  - 
+- Part 1: Recap of multi-level callbacks [10 mins]
 
-Part 3: 
-  -
-  - 
-  - 
+- Part 2: Restructuring the dash app [15 mins]
+  - Moving plot functions to `dash_functions.R`
+  - Moving components to `dash_components.R`
+  - Using `source(path/to/file.R)` to load objects
+  
+- Part 3: Layouts in Dash [45 mins]
+  - Header
+  - Sidebar
+  - Multi-column layouts
+  - Link to layout templates (by Matthew)
+  
+- Part 4: Looking ahead [5 mins]
+  - Next Tuesday we will deploy our app on the web so it's publicly viewable
+  - Before next class, [create a few heroku account](https://signup.heroku.com)
 
-## Part 1: 
+## Part 1: Recap of multi-level callbacks [10 mins]
 
-## Part 2: 
+## Part 2: Restructuring the dash app [15 mins]
 
-## Part 3: 
+Live demo:
+
+- `suppressPackageStartupMessages(library(plotly))` 
+- `suppressPackageStartupMessages(library(tidyverse))`
+- Delete `htmlIframe(...` that we added for empty spacing, we'll learn a better way today!
+- Comment out callbacks (for faster reloading) and set `debug=TRUE`
+- Move functions to a new file called `dash_functions.R` (optional)
+- Move components to a new file called `dash_components.R` (optional)
+- At the top of your main app, source the two files above:
+
+```
+source('dash_functions.R')
+source('dash_components.R')
+```
+- Just like we created Dash components and stored them as variables, let's also create layout elements and store them as variables:
+
+```
+## Specify App layout
+
+app$layout(
+	htmlDiv(
+		list(
+			heading_title,
+			heading_subtitle,
+			#selection components
+			htmlLabel('Select y-axis metric:'),
+			yaxisDropdown,
+			htmlLabel('Select y scale : '),
+			logbutton,
+			#graph
+			graph,
+			graph_country,
+			sources
+		)
+	)
+)
+```
+
+to:
+
+```
+## Specify layout elements
+
+div_header <- htmlDiv(
+  list(heading_title,
+       heading_subtitle
+  )
+)
+
+div_sidebar <- htmlDiv(
+  list(htmlLabel('Select y-axis metric:'),
+       htmlBr(),
+       yaxisDropdown,
+       htmlLabel('Select y scale : '),
+       htmlBr(),
+       logbutton,
+       sources
+  )
+)
+
+div_main <- htmlDiv(
+  list(graph,
+       graph_country
+  )
+)
+
+## Specify App layout
+
+app$layout(
+  div_header,
+	htmlDiv(
+	  list(
+	    div_side_bar,
+	    div_main
+	  )
+	)
+)
+
+```
+
+## Part 3: Layouts and styles in Dash [45 mins]
+
+### Styles
+
+- Add styles to your `div_header` 
+- (Get your colours from [htmlcolorcodes.com](https://htmlcolorcodes.com)
+)
+
+```
+## Add this property after your list of components
+style = list(
+			backgroundColor = '#337DFF', ## COLOUR OF YOUR CHOICE
+			textAlign = 'center',
+			color = 'white',
+			margin = 5,
+			marginTop = 0
+			)
+```
+
+Run your app, make sure everything still works - you should notice your header is now a different colour and centered on the page.
+
+- Add styles to your sidebar:
+
+```
+style = list('background-color' = '#BBCFF1',
+						 'padding' = 10)
+```
+
+Here is a handy  title of useful CSS properties:
+
+| CSS property | Dash style | What does it do ? |
+|------------- | ---------- | ----------------- |
+| color | color | Sets the text color for elements |
+| margin-top | marginTop | |
+| margin-bottom | marginBottom | |
+| margin | margin | [Sets the amount of space outside a block element (in pixels) ](https://www.w3schools.com/cssref/pr_margin.asp) |
+| text-align | textAlign | [Aligns text left, right, center or justify] (https://www.w3schools.com/cssref/pr_text_text-align.ASP) |
+
+Outside of this, there are hundreds of properties you could control to set every pixel where you want it to be - we will not fuss with such minutiae here!
+For your apps, you are welcome to be as creative as you like.
+If you have questions about how to do specific things, post on the Discussions repo as an issue and I'll try and get to it.
+
+### Diving deeper into htmlDivs 
+
+### Flexbox
+
+Let's quickly do a whirlwhind tour of the flexbox options that we will most likely use.
+
+The first thing to understand is that the flexbox "system" has properties for the "flex container" and the "flex items" within a flex container.
+The images from CSS-Tricks below illustrate the differences nicely.
+
+First, here's the container:
+
+![](https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg)
+
+And the items within the container:
+
+![](https://css-tricks.com/wp-content/uploads/2018/10/02-items.svg)
+
+To use the flexbox layout system in Dash, the first thing you need to do is attach the `'flex' = 'display'` property on a parent `htmlDiv` container.
+
+Here is how to do it:
+
+Start with a layout:
+```
+## Specify App layout
+
+app$layout(
+	htmlDiv(
+		# Div1 : for say, a sidebar
+		# Div2 : for the main content
+	)
+)
+```
+
+to:
+
+```
+## Specify App layout
+
+app$layout(
+	htmlDiv(
+		list(
+		# Div1 : for say, a sidebar
+		# Div2 : for the main content
+		), style = list('display' = 'flex')
+	)
+)
+```
+
+There are many additional properties we could specify using the style property in Dash.
+
+In fact, it is also possible to set style properties for individual elements (divs) in a parent container.
+To do this, simply attach the `style = list()` to the appropriate div. 
+
+For example, let's say we wanted to make sure the sidebar took up at least 30% of the width in our container:
+
+```
+# sidebar and main
+htmlDiv(list(
+	htmlDiv(sidebar, style = list('flex-basis' = '20%')),
+	htmlDiv(main)
+), style = list('display' = 'flex')))
+```
+
+A [through guide to the flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) may be useful if you want to explore options.
+
+Here are the (most important) flex properties summarized in a table for you:
+
+| Flex property (Dash syntax) | Container or Item? | What does it do ? |
+|------------- | ---------- | ----------------- |
+| 'display' = 'flex' | Container | [Creates flexbox div](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) |
+| 'flex-wrap' = 'wrap' | Container | [Controls whether elements wrap if window size is reduced](https://css-tricks.com/almanac/properties/f/flex-wrap/)|
+| 'justify-content' = 'center' | Container | [Justifies items within a container](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)|
+| 'flex-basis' = '20%' | Item | Defines the default size of an element before the remaining space is distributed. |
+
+### Final app
+
+For full participation marks today, in your repository you should have a functioning app with all the elements (including restructuring the app) we discussed today in class.
+
+## Part 4: Looking ahead [5 mins]
+
+- Next Tuesday we will deploy our app on the web so it's publicly viewable
+- Before next class, please [create a few heroku account](https://signup.heroku.com)
+
+```
+Heroku ID: ## YOUR ID HERE
+```
