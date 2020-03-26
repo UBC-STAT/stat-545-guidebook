@@ -36,6 +36,7 @@ library(tidyverse)
 ## Part 1: Recap of multi-level callbacks [10 mins]
 
 Recap: 
+
   - `clickData`
   - `ggplotly(p) %>% layout(clickmode = 'event+select')`
   - `...+ scale_color_manual(name = 'Continent', values = continent_colors) + ...`
