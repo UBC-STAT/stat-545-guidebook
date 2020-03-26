@@ -8,12 +8,13 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**This lecture is 90% complete.**
+**This lecture is 100% complete.**
 
 ## Today's Agenda (10 mins)
 
 - Announcements:
-  - None
+  - New thing: I wil post the repl.it for each class here
+  - [Today's code](https://repl.it/join/dsnqaqbz-firasm)
   
 - Part 1: Recap of multi-level callbacks [10 mins]
 
@@ -33,6 +34,37 @@ library(tidyverse)
   - Before next class, [create a few heroku account](https://signup.heroku.com)
 
 ## Part 1: Recap of multi-level callbacks [10 mins]
+
+Recap: 
+  - `clickData`
+  - `ggplotly(p) %>% layout(clickmode = 'event+select')`
+  - `...+ scale_color_manual(name = 'Continent', values = continent_colors) + ...`
+  - Callbacks:
+  
+```
+app$callback(
+    #update figure of gap-graph
+    output=list(id = 'gap-graph', property='figure'),
+    #based on values of year, continent, y-axis components
+    params=list(input(id = 'y-axis', property='value'),
+                            input(id = 'yaxis-type', property='value')),
+    #this translates your list of params into function arguments
+    function(yaxis_value, yaxis_scale) {
+        make_plot(yaxis_value, yaxis_scale)
+    })
+
+####NEW: updates our second graph using linked interactivity
+app$callback(output = list(id = 'gap-graph-country', property = 'figure'),
+             params = list(input(id='y-axis', property='value'),
+                           # Here's where we check for graph interactions!
+                           input(id='gap-graph', property='clickData')),
+            function(yaxis_value, clickData) {
+                 # clickData contains $x, $y and $customdata
+                 # you can't access these by gapminder column name!
+                 country_name = clickData$points[[1]]$customdata
+                 make_country_graph(country_name, yaxis_value)
+            })
+```
 
 ## Part 2: Restructuring the dash app [15 mins]
 
@@ -160,6 +192,8 @@ If you have questions about how to do specific things, post on the Discussions r
 
 ### Diving deeper into htmlDivs 
 
+Whiteboard sketch of what's going on...
+
 ### Flexbox
 
 Let's quickly do a whirlwhind tour of the flexbox options that we will most likely use.
@@ -185,8 +219,10 @@ Start with a layout:
 
 app$layout(
 	htmlDiv(
-		# Div1 : for say, a sidebar
-		# Div2 : for the main content
+	  list(
+  		# Div1 : for say, a sidebar
+  		# Div2 : for the main content	  
+	  )
 	)
 )
 ```
@@ -198,10 +234,10 @@ to:
 
 app$layout(
 	htmlDiv(
-		list(
-		# Div1 : for say, a sidebar
-		# Div2 : for the main content
-		), style = list('display' = 'flex')
+	  list(
+  		# Div1 : for say, a sidebar
+  		# Div2 : for the main content	  
+	  ), style = list('display' = 'flex')
 	)
 )
 ```
@@ -211,14 +247,12 @@ There are many additional properties we could specify using the style property i
 In fact, it is also possible to set style properties for individual elements (divs) in a parent container.
 To do this, simply attach the `style = list()` to the appropriate div. 
 
-For example, let's say we wanted to make sure the sidebar took up at least 30% of the width in our container:
+For example, let's say we wanted to make sure the sidebar took up at least 30% of the width in our container.
+We would need to add `'flex-basis' = '30%'` as a style property to the "item" inside a container.
 
 ```
-# sidebar and main
-htmlDiv(list(
-	htmlDiv(sidebar, style = list('flex-basis' = '20%')),
-	htmlDiv(main)
-), style = list('display' = 'flex')))
+style = list('flex-basis' = '30%'),
+
 ```
 
 A [through guide to the flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) may be useful if you want to explore options.
@@ -232,11 +266,25 @@ Here are the (most important) flex properties summarized in a table for you:
 | 'justify-content' = 'center' | Container | [Justifies items within a container](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)|
 | 'flex-basis' = '20%' | Item | Defines the default size of an element before the remaining space is distributed. |
 
+### Other layout examples
+
+Feel free to explore one of the layouts from [this repo](https://github.com/matthewconnell/dashr_sample_layouts) created by Matthew as a starting point for your project apps.
+
 ### Final app
 
 For full participation marks today, in your repository you should have a functioning app with all the elements (including restructuring the app) we discussed today in class.
 
+
 ## Part 4: Looking ahead [5 mins]
+
+Here are three examples of **deployed** dashboards look like in R once layouts have been applied to them. 
+These were done by former students:
+
+- [Boston Crime Dashboard](https://group-dash-milestone-4.herokuapp.com)
+- [Interactive Movie Dashboard](https://movies214-milestone4.herokuapp.com)
+- [Job Analyzer](https://dsci532-milestone4-r-107.herokuapp.com)
+
+### Before next class
 
 - Next Tuesday we will deploy our app on the web so it's publicly viewable
 - Before next class, please [create a few heroku account](https://signup.heroku.com)
