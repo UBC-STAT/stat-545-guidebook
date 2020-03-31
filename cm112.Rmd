@@ -1,4 +1,4 @@
-# (12) TBD
+# (12) Introduction to creating packages in R
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -8,24 +8,26 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
+**This lecture is 0% complete**
+
 ## Today's Agenda
 
-Announcements:
+- Announcements:
   - 
   - 
   - 
 
-Part 1: 
+- Part 1: 
   - 
   -
   - 
   
-Part 2: 
+- Part 2: 
   - 
   - 
   - 
 
-Part 3: 
+- Part 3: 
   -
   - 
   - 

@@ -1,4 +1,4 @@
-# (11) Creating Packages in R
+# (11) Deploying your dashboards on Heroku
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
@@ -8,30 +8,202 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
+**This lecture is 90% complete**
+
 ## Today's Agenda
 
-Announcements:
-  - 
-  - 
-  - 
+- Announcements:
+  - Milestone 6 is released
+  - Assignment 6 will be released later today (apologies for the delay)
+  - Our repl.it for today [is here](https://repl.it/join/qlttzkps-firasm)
 
-Part 1: 
-  - 
-  -
-  - 
+- Part 1: Course Overview [10 mins]
+  - The big picture
+  - [Teaching Evaluations for Firas](https://canvas.ubc.ca/courses/45004/external_tools/4732)
   
-Part 2: 
-  - 
-  - 
-  - 
+- Part 2: Deploy the class app [30 mins]
+  - Install Heroku Command line interface
+  - Copy the required files to your repo
+  - Push the class app to Heroku
 
-Part 3: 
-  -
-  - 
-  - 
+- Part 3: Explanation of the required files [20 mins]
+  - `Dockerfile`
+  - `apt-packages`
+  - `heroku.yml` 
+  - `app.json`
+  - `init.R`
+  
+- Part 4: Dashboard reviews [20 mins]
+  - Explanation of process
+  - Breakout sessions
+  - Debrief
+  
+## Part 1: Course Overview [10 mins]
+  
+- The big picture
 
-## Part 1: 
-
+- [Teaching Evaluations for Firas](https://canvas.ubc.ca/courses/45004/external_tools/4732)
+  
 ## Part 2: 
 
-## Part 3: 
+Alright, let's get started with deploying our class Dash app on Heroku!
+There are a few things you need before we get started:
+
+### Heroku Account
+
+Please make sure you have [created a (free) Heroku account](https://signup.heroku.com)
+
+Note as with most online companies and services, Heroku servers reside in the United States. If you have privacy concerns about your data, you may create a secondary email with a nickname and no other personally identifiable information.
+
+If you are aware of the privacy implications and are comfortable, you may just "Log in with your GitHub account" or create a new account with an email address.
+    
+### Heroku Command Line Interface 
+
+You will also need to install the Heroku Command Line interface (CLI) to issue commands to Heroku for your app.
+
+#### Windows Users
+
+Instructions for windows users:
+
+1. Visit [this page](https://devcenter.heroku.com/articles/heroku-cli).
+1. Select the 32-bit or 64-bit version of the installer. 
+1. If you need to check, here are the directions [from the website](https://support.microsoft.com/en-ca/help/15056/windows-32-64-bit-faq):
+1. Run the installer.
+
+![](https://raw.githubusercontent.com/firasm/bits/master/windows.png)
+
+#### macOS Users
+
+Instructions for macOS users:
+
+1. Visit [this page](https://devcenter.heroku.com/articles/heroku-cli).
+1. Download the Installer.
+1. Run the installer.
+
+#### Ubuntu Users
+
+Instructions for users on Ubuntu 16+:
+
+1. Open a new terminal
+1. Run this line of code: `sudo snap install --classic heroku`
+
+#### Confirm the heroku CLI is installed on your machine
+
+1. Open a new terminal/command-prompt.
+1. Run this line of code: `heroku --version`
+1. You should get an output that looks like this:
+
+```
+heroku/7.35.0 darwin-x64 node-v12.13.0
+```
+
+If you get an output with heroku version greater than 7, you should be good to go!
+
+#### Configure the heroku CLI
+
+These instructions have been adapted from the [Heroku CLI installation instructions](https://devcenter.heroku.com/articles/heroku-cli).
+
+Now that you have the heroku CLI installed, we need to link it to your heroku account. 
+
+In the same terminal, type:
+
+```
+heroku login
+```
+
+A browser window should open up asking you to authenticate with your heroku account. 
+The CLI saves your email address and an API token to ~/.netrc for future use. For more information, see [Heroku CLI Authentication](https://devcenter.heroku.com/articles/authentication).
+
+Now you’re ready to create your first Heroku app!
+
+#### Deploy your app to heroku
+
+1. First, open a new terminal and create a new directory in a temporary location (not in your participation folder), perhaps something like `~/Downloads/tmp`.
+2. Navigate to that `tmp` directory (it can be called anything, but it CANNOT already be a git repository).
+3. Fork [the classroom app](https://github.com/STAT547-UBC-2019-20/deployed_class_app) repo.
+4. Grab the clone URL and clone it into the tmp folder:
+
+```
+git clone https://github.com/<<your_username>>/deployed_class_app.git
+```
+
+5. Change directory into the `deployed_class_app` folder (`cd deployed_class_app`).
+6. **NEW** Run the following command to create a new app with a name of your choice (firas-12112 below), and set its "stack" as container (this will be explained in Part 3).
+
+```
+heroku create firas-12112 --stack container
+```
+
+7. **NEW** If you were successful, you should see a message like this:
+
+```
+Creating ⬢ firas-12112... done, stack is container
+https://firas-12112.herokuapp.com/ | https://git.heroku.com/firas-12112.git
+```
+
+8. **NEW** Next you need to add 5 files from today's [repl.it]() to this repository, commit, and push it.
+
+9. **NEW** Go to heroku.com and log in. You should see the new app you created!
+
+![](https://raw.githubusercontent.com/firasm/bits/master/heroku_app.png)
+
+10. **NEW** Click on `Deploy`, then `GitHub`. You will need to authenticate and connect your GitHub account with Heroku.
+
+![](https://raw.githubusercontent.com/firasm/bits/master/heroku_2.png)
+
+11. **NEW** Search for the app you'd like to deploy (the one you forked).
+
+12. **NEW** Under the `Manual deploy` section, choose the master branch to deploy and click `Deploy Branch`.
+
+![](https://raw.githubusercontent.com/firasm/bits/master/heroku_3.png)
+
+13. **NEW** Heroku will then attempt to recreate the entire environment to run your app. This will take at least 20-30 minutes
+
+![](https://raw.githubusercontent.com/firasm/bits/master/heroku_4.png)
+
+That's it! Now you wait! Once the app is finished building, heroku will tell you the app is ready and the URL will be something like: https://firas-12112.herokuapp.com.
+
+Don't forget to submit a link to your functioning and deployed Dash app as part of cm111 participation:
+
+```
+## YOUR LINK TO THE DEPLOYED APP HERE
+```
+
+## Part 3: Explanation of the required files [15 mins]
+
+Let's go through each of these files and describe what they do.
+
+  - `Dockerfile`: 
+  - `apt-packages`: 
+  - `heroku.yml`: 
+  - `app.json`: 
+  - `init.R`: 
+
+## Part 4: Part 4: Dashboard reviews [20 mins]
+
+It is extremely valuable to get feedback on your dashboards because creators often develop blindspots and having another person look at it will give you additional perspective. 
+We will do that today in class!
+
+Here is how we will do this activity:
+
+- You will be randomly paired up with another person from a different team in a different breakout room.
+- Between the two of you, you will first decide who will be the first to get feedback (person A). The other will give feedback first (person B).
+- Person A should give person B two things:
+  1. The link to person A's project repository.
+  2. The tagged release or commit SHA of the version of the dashboard person A would like to get feedback on.
+- Person B will now share their screen with Person A.
+- Person B will now open a new terminal window and clone person A's dashboard.
+  - `git clone -b <tagname> <repository url>`.
+  - Then, `Rscript app.R`.
+  - Then, open a browser and visit http://127.0.0.1:8050.
+- At this point, person A should not say anything and silently listen and take notes. This will go on for about 3 minutes while person B goes through the dashboard looking at it for likely the first time (as most other users will be).
+- Person B should vocalize everything they are thinking and doing as they go through the dashboard (trust me, it will really help the other person!)
+- Once Person B is done interacting with the dashboard, this is the time for a discussion and Q&A and to address any confusions or misunderstanding. 
+- It will be hard for Person A to stay silent, but it is very important as it will highlight any deficiencies in existing instructions, directions, and sign-posts.
+- This process should take about 10 minutes total and when directed, the partners will switch roles do the activity again.
+
+**Both Person A and Person B should take notes and record them in an issue in their own repository. They should provide a link to this issue for full participation marks for today's class**.
+
+```
+## YOUR LINK TO THE ISSUE YOU CREATED WITH FEEDBACK ABOUT YOUR APP HERE
+```
