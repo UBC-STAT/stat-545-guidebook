@@ -141,7 +141,7 @@ Creating ⬢ firas-12112... done, stack is container
 https://firas-12112.herokuapp.com/ | https://git.heroku.com/firas-12112.git
 ```
 
-8. **NEW** Next you need to add 5 files from today's [repl.it]() to this repository, commit, and push it.
+8. **NEW** Next you need to add 5 files from today's [repl.it](https://repl.it/join/qlttzkps-firasm) OR [from here](https://github.com/STAT547-UBC-2019-20/dashR_heroku_deploy) to this repository, commit, and push it.
 
 9. **NEW** Go to heroku.com and log in. You should see the new app you created!
 
