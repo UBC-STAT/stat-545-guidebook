@@ -44,7 +44,7 @@ library(tidyverse)
 
 - [Teaching Evaluations for Firas](https://canvas.ubc.ca/courses/45004/external_tools/4732)
   
-## Part 2: 
+## Part 2: Deploy the class app [30 mins]
 
 Alright, let's get started with deploying our class Dash app on Heroku!
 There are a few things you need before we get started:
