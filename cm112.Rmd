@@ -8,32 +8,36 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**This lecture is 0% complete**
+**This lecture is 60% complete**
 
 ## Today's Agenda
 
-- Announcements:
-  - 
-  - 
-  - 
+- Announcements: (2 mins)
+  - Reminder! Participation repos are due soon!
+  - [Assignment 6](https://stat545.stat.ubc.ca/evaluation/assignment_06/assignment_06/) is posted (I have added 24 hours extra since it was posted late)
 
-- Part 1: 
-  - 
-  -
-  - 
+- Part 1: Showcase of the best STAT 547 dashboards! (10 mins)
+  - [Dashboard 1 - by ]()
+  - [Dashboard 2 - by ]()
+  - [Dashboard 3 - by ]()
   
-- Part 2: 
-  - 
-  - 
-  - 
+- Part 2: Package in R (10 mins)
+  - Why make packages?
+  - Components of a package in R
+  - Releasing a package
+  
+- Part 3: Creating a package in R (45 mins)
+  - [Chapter 2 of R packages](https://r-pkgs.org/whole-game.html)
+  
+- Part 4: Final debrief: what's next? (5 mins)
+  - RShiny
+  - Tests! Unit Tests!
+  - Continuous integration
 
-- Part 3: 
-  -
-  - 
-  - 
+## Part 1: Showcase of the best STAT 547 dashboards! (10 mins)
 
-## Part 1: 
+## Part 2: Creating a package in R (45 mins)
 
-## Part 2: 
+## Part 3: Creating a package in R (45 mins)
 
-## Part 3: 
+## Part 4: Final debrief: what's next? (5 mins)
