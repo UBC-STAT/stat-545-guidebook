@@ -8,20 +8,25 @@ knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
 library(tidyverse)
 ```
 
-**This lecture is 60% complete**
+**This lecture is 100% complete**
 
 ## Today's Agenda
 
-- Announcements: (2 mins)
-  - Reminder! Participation repos are due soon!
+- Announcements: (5 mins)
+  - Reminder! Participation repos are due on Saturday April 11th!
+    - The participation checklist file [is here](https://stat545.stat.ubc.ca/evaluation/participation/)
+    - If you finish early, please submit early also so we can get started on marking!
   - [Assignment 6](https://stat545.stat.ubc.ca/evaluation/assignment_06/assignment_06/) is posted (I have added 24 hours extra since it was posted late)
 
 - Part 1: Showcase of the best STAT 547 dashboards! (10 mins)
-  - [Dashboard 1 - by ]()
-  - [Dashboard 2 - by ]()
-  - [Dashboard 3 - by ]()
-  
-- Part 2: Package in R (10 mins)
+  - [Medical Expenses - by Diana and Nima](https://github.com/STAT547-UBC-2019-20/group_01_dlin_njamshidi)
+  - [Mental Health Toll of Grad School - by Icíar and Jake](https://github.com/STAT547-UBC-2019-20/group05)
+  - [Canadian Airbnb Listings - by Martin and Sherry](https://github.com/STAT547-UBC-2019-20/group_3_mksm1228_sihaoyu1220)
+  - [Exploring student performance in a Portuguese school - by Almas](https://github.com/STAT547-UBC-2019-20/team11_akhan)
+  - [Adult Income - by Jimmy and Hannah](https://github.com/STAT547-UBC-2019-20/group_08_ADULT-INCOME)
+  - [Barcelona Airbnb - by Kristina Wright ](https://github.com/kristinawright/group_09-1)
+
+- Part 2: Packages in R (10 mins)
   - Why make packages?
   - Components of a package in R
   - Releasing a package
@@ -36,8 +41,71 @@ library(tidyverse)
 
 ## Part 1: Showcase of the best STAT 547 dashboards! (10 mins)
 
-## Part 2: Creating a package in R (45 mins)
+*Demo on laptop*
 
-## Part 3: Creating a package in R (45 mins)
+## Part 2: Packages in R (10 mins)
+
+### Why make packages?
+
+We will introduce packages by tallking through sections of [Chapter 1](https://r-pkgs.org/intro.html) of the R-pkgs textbook.
+
+### Components of a package in R
+
+[Section 1.2](https://r-pkgs.org/intro.html#intro-outline) of the textbook discusses the major components of an R package
+
+- R code and functions
+- Package "metadata"
+- Documentation
+- Vignettes
+- Tests
+- Namespace
+- External data (if applicable)
+
+### [OPTIONAL] Releasing a package
+
+If you are interested in releasing a package on CRAN (the R package repository), I suggest [Chapter 18](https://r-pkgs.org/release.html#release) of the R-pkgs textbook.
+
+## Part 3: Creating a package from scratch (45 mins)
+
+Here we will be going through [Chapter 2 of R packages](https://r-pkgs.org/whole-game.html).
+
+Additional explanatory notes for STAT 547 by Firas:
+
+- Section 2.4: after running`create_package`, in the new RStudio session, you will need to again run `library('devtools')`
+
+- Section 2.7: running `use_r("fbind")` will automatically put `fbind.R` in the directory `foofactors/R/`
+
+- Section 2.8: `load_all()` should be run in the R console
+
+- Section 2.8.1: Commit `fbind()` to your repo using the following commands (in a Terminal):
+
+```
+git add . #adds all modified files to stage for commit
+git commit -m "add fbind function" # commits the modified files with a commit message
+```
+
+- Once you're finished, "zip" or compress the foofactors directory, and commit it to your participation repo for cm112.
 
 ## Part 4: Final debrief: what's next? (5 mins)
+
+- [RShiny](https://mastering-shiny.org) and a [tutorial](https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/)
+- [Tests! Unit Tests!](http://r-pkgs.had.co.nz/tests.html)
+- [Continuous integration](https://devguide.ropensci.org/ci.html)
+
+### Final reminder about Instructor and TA evaluations
+
+- [Teaching Evaluations for Firas](https://canvas.ubc.ca/courses/45004/external_tools/4732)
+  
+Even under the extraordinary circumstances this term, we want to give you an opportunity to provide feedback to your Teaching Assistants (TAs), and for your TAs to learn from you. To fill out evaluations for this course's TA(s):
+
+1. [Remind yourself of our TAs (Andrea, Matthew, Sirine, and Yulia)](https://stat545.stat.ubc.ca)
+
+2.  [Visit this link](https://ubc.ca1.qualtrics.com/jfe/form/SV_5zmSl4z18IOutSJ), and fill out the form for each TA you'd like to evaluate. You'll be asked for this course's name and section, which is [STAT-547M section 201], and you'll be asked for the TA's name.
+
+3.  If you want to evaluate more than one TA, fill out the form again. 
+
+4.  The TA evaluation form will be available from March 28th to April 13th.
+
+Your responses are anonymous—no student-identifying information will be collected. Your TAs will not see any evaluations until after final course grades have been submitted. The Department Head will also have access to these evaluations.
+
+Thank you for your feedback!
