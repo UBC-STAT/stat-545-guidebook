@@ -173,11 +173,11 @@ Don't forget to submit a link to your functioning and deployed Dash app as part 
 
 Let's go through each of these files and describe what they do.
 
-  - `Dockerfile`: 
-  - `apt-packages`: 
-  - `heroku.yml`: 
-  - `app.json`: 
-  - `init.R`: 
+  - `apt-packages`: List of (ubuntu) system packages that need to be installed 
+  - `init.R`: List of R packages that need to be installed
+  - `Dockerfile`: This file is like a "Makefile"; it contains a list of "scripts" that need to be run, and then at the end run the `app.R` file
+  - `heroku.yml`: Tells Heroku that this is a web application that uses a Dockerfile for configuration.
+  - `app.json`: Description of the app
 
 ## Part 4: Part 4: Dashboard reviews [20 mins]
 
