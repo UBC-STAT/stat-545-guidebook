@@ -1,6 +1,5 @@
 ---
-title: "STAT 547 @ UBC: Class Meeting Guide 2019/20"
-author: "Firas Moosvi"
+title: "STAT 545 @ UBC: Class Meeting Guide 2019/20"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -8,8 +7,9 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 #github-repo: org/repo
-cover-image: "stat-547.png"
 ---
+
+**Fall 2020**: This guidebook is **deprecated**. See the worksheets, tutorials, and videos instead -- found on the STAT 545 homepage: https://stat545.stat.ubc.ca
 
 # About This Guide {-}
 
@@ -22,7 +22,8 @@ If you're looking for the list of tutorials written by Jenny Bryan, you can find
 
 Various people have contributed to the current state of this guidebook in various ways.
 
-- [Vincenzo Coia](https://vincenzocoia.com) migrated the stat545 content to this bookdown format and was instrumental in creating most if not all of the stat545 and stat 547 content in the guidenbook.
+- [Firas Moosvi](https://firas.moosvi.com/) updated Part II (STAT 547M, now STAT 545B) of the course and guidebook.
+- [Vincenzo Coia](https://vincenzocoia.com) migrated the stat545 content to this bookdown format and was instrumental in creating most if not all of the stat545 and stat 547 content in the guidebook.
 - [Jenny Bryan](https://jennybryan.org/) founded the course, and the big-picture organization of material in this guidebook originated from her work.
 - [Victor Yuan](https://twitter.com/victor2wy) delivered and contributed to the [Intro to data wrangling, Part I] lecture (cm006) in 2019.
 - [Rashedul Islam](https://www.linkedin.com/in/rashedul-islam-12170432/) delivered and contributed to the [Tibble Joins] lecture (cm010) in 2018.
